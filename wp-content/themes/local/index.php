@@ -1,1 +1,1 @@
-<?php require get_template_directory()."/dist/index.html"; ?>
+<?php require get_template_directory()."/frontend/build/index.html"; ?>
