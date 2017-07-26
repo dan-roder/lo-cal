@@ -1,0 +1,1 @@
+export const WP_API = "{YOUR-SITE-NAME}/wp-json/wp/v2/";
