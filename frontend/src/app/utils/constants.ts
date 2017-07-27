@@ -1,1 +1,1 @@
-export const WP_API = "{YOUR-SITE-NAME}/wp-json/wp/v2/";
+export const WP_API = "/wp-json/wp/v2/";
