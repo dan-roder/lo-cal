@@ -3,15 +3,21 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
+import { AppRoutingModule } from './app-routing.module';
+
+// Components
 import { AppComponent } from './app.component';
 import { MainLayoutComponent } from './layouts/main-layout/main-layout.component';
 
-import { AppRoutingModule } from './app-routing.module';
+// Services
+import { WordpressService } from './services/wp.service';
+import { HomeComponent } from './pages/home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    MainLayoutComponent
+    MainLayoutComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -19,7 +25,7 @@ import { AppRoutingModule } from './app-routing.module';
     HttpModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [ WordpressService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
