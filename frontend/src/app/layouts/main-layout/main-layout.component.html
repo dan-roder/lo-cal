@@ -1,6 +1,10 @@
 <div class="site-container">
   <div class="menu-container">
-    Menu Here
+    <ul class="menu">
+      <li *ngFor="let item of mainMenuLinks" [attr.class]="item.classes ? item.classes : null">
+        <a href="{{ item.url }}">{{ item.title }}</a>
+      </li>
+    </ul>
   </div>
   <div class="main-container">
     <router-outlet></router-outlet>
