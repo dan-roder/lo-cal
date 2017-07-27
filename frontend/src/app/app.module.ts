@@ -5,6 +5,9 @@ import { HttpModule } from '@angular/http';
 
 import { AppRoutingModule } from './app-routing.module';
 
+// Config
+import { Config } from './utils/constants';
+
 // Components
 import { AppComponent } from './app.component';
 import { MainLayoutComponent } from './layouts/main-layout/main-layout.component';
@@ -25,7 +28,7 @@ import { HomeComponent } from './pages/home/home.component';
     HttpModule,
     AppRoutingModule
   ],
-  providers: [ WordpressService ],
+  providers: [ Config, WordpressService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
