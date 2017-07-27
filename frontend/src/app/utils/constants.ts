@@ -1,1 +1,6 @@
-export const WP_API = "/wp-json/wp/v2/";
+import { Injectable } from "@angular/core";
+
+@Injectable()
+export class Config {
+  public wordpressApiUrl = "http://dev-lo-cal.pantheonsite.io/wp-json"
+}
