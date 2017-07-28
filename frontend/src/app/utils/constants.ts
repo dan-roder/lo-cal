@@ -7,6 +7,7 @@ export class Config {
   public wordpressApiUrl:string = '';
 
   constructor(private winRef: WindowRef){
+    console.log(winRef.nativeWindow.location);
     switch(winRef.nativeWindow.location.hostname){
       case 'localhost':
         this.wordpressApiUrl = "http://lo-cal.dev/wp-json";

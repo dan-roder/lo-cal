@@ -405,6 +405,7 @@ var Config = (function () {
         this.winRef = winRef;
         //public wordpressApiUrl = "http://dev-lo-cal.pantheonsite.io/wp-json"
         this.wordpressApiUrl = '';
+        console.log(winRef.nativeWindow.location);
         switch (winRef.nativeWindow.location.hostname) {
             case 'localhost':
                 this.wordpressApiUrl = "http://lo-cal.dev/wp-json";
