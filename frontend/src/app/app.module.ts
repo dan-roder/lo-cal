@@ -11,10 +11,11 @@ import { Config } from './utils/constants';
 // Components
 import { AppComponent } from './app.component';
 import { MainLayoutComponent } from './layouts/main-layout/main-layout.component';
+import { HomeComponent } from './pages/home/home.component';
 
 // Services
 import { WordpressService } from './services/wp.service';
-import { HomeComponent } from './pages/home/home.component';
+import { WindowRef } from './utils/windowref';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,7 @@ import { HomeComponent } from './pages/home/home.component';
     HttpModule,
     AppRoutingModule
   ],
-  providers: [ Config, WordpressService ],
+  providers: [ Config, WindowRef, WordpressService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
