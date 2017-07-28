@@ -6,12 +6,12 @@ import { WordpressService } from '../../services/wp.service';
   templateUrl: './main-layout.component.html',
 })
 export class MainLayoutComponent implements OnInit {
-  private mainMenuLinks;
+  public mainMenuLinks;
 
   constructor( private wpService: WordpressService ) { }
 
   ngOnInit() {
-    this.wpService.getMenu(2).subscribe(m => {this.mainMenuLinks = m.items; console.log(m.items)});
+    this.wpService.getMenu(2).subscribe(m => this.mainMenuLinks = m.items);
   }
 
 }
