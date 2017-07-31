@@ -6,7 +6,7 @@ import { WordpressService } from '../../services/wp.service';
   templateUrl: './home.component.html'
 })
 export class HomeComponent implements OnInit {
-  private pageContent : object = {};
+  public pageContent : any;
 
   constructor(private wpService: WordpressService) { }
 

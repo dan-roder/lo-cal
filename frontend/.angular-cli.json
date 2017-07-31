@@ -6,7 +6,7 @@
   "apps": [
     {
       "root": "src",
-      "outDir": "dist",
+      "outDir": "../wp-content/themes/local/dist",
       "assets": [
         "assets",
         "favicon.ico"
