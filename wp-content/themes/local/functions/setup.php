@@ -69,9 +69,9 @@ function my_mce_before_init_insert_formats( $init_array ) {
 	$style_formats = array(
 		// Each array child is a format with it's own settings
 		array(
-			'title' => 'Button',
+			'title' => 'Red Button',
 			'block' => 'div',
-			'classes' => 'button',
+			'classes' => 'red-button',
 			'wrapper' => false,
 		),
 
