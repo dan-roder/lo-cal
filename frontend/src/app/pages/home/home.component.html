@@ -1,6 +1,23 @@
-<div class="header-container">
-
-</div>
+<header class="header-container">
+  <div class="content">
+    <img [src]="featuredImage?.source_url" [alt]="featuredImage?.alt_text" />
+    <div class="header-content text-center" [innerHtml]="pageContent?.content?.rendered"></div>
+  </div>
+</header>
 <div class="content-container">
-  <div class="content" [innerHtml]="pageContent?.content?.rendered"></div>
+
+  <div class="section section-white callout">
+    <div class="content">
+      <h2 class="title" [innerHtml]="pageContent?.acf?.title"></h2>
+      <div class="body" [innerHtml]="pageContent?.acf?.body"></div>
+      <a [href]="pageContent?.acf?.link">Learn More</a>
+    </div>
+  </div>
+
+  <div class="section section-grey our-content">
+    <div class="content">
+
+    </div>
+  </div>
+
 </div>
