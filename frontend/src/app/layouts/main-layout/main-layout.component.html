@@ -1,10 +1,12 @@
 <div class="site-container">
-  <div class="menu-container">
-    <ul class="menu">
-      <li *ngFor="let item of mainMenuLinks" [attr.class]="item.classes ? item.classes : null">
-        <a href="{{ item.url }}">{{ item.title }}</a>
-      </li>
-    </ul>
+  <div class="sticky-header">
+    <div class="menu-container">
+      <ul class="menu">
+        <li *ngFor="let item of mainMenuLinks" [attr.class]="item.classes ? item.classes : null">
+          <a href="{{ item.url }}">{{ item.title }}</a>
+        </li>
+      </ul>
+    </div>
   </div>
   <div class="main-container">
     <router-outlet></router-outlet>
