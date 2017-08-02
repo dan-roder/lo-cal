@@ -13,15 +13,6 @@ function image_alt($attachment_id){
 	$alt = trim(strip_tags( get_post_meta($attachment_id, '_wp_attachment_image_alt', true) ));
 	return $alt;
 }
-// Loads The Mission Statement
-function load_mission() {
-	echo "<h2>Our Mission </h2>";
-	the_field('mission_statement', 'option');
-}
-
-function call_to_action($cta, $link) {
-	return "<a class='btn' href='". $link . "'>" . $cta . "</a>";
-}
 
 function get_img_src($location) {
 	echo get_template_directory_uri() . "/img/" . $location;
@@ -109,64 +100,6 @@ function my_wp_nav_menu_objects_sub_menu( $sorted_menu_items, $args ) {
     return $sorted_menu_items;
   } else {
     return $sorted_menu_items;
-  }
-}
-
-if ( ! function_exists( 'kastle_paging_nav' ) ) {
-  /**
-   * Display navigation to next/previous set of posts when applicable.
-   *
-   * @since Twenty Fourteen 1.0
-   *
-   * @global WP_Query   $wp_query   WordPress Query object.
-   * @global WP_Rewrite $wp_rewrite WordPress Rewrite object.
-   */
-  function kastle_paging_nav() {
-    global $wp_query, $wp_rewrite;
-
-    // Don't print empty markup if there's only one page.
-    if ( $wp_query->max_num_pages < 2 ) {
-      return;
-    }
-
-    $paged        = get_query_var( 'paged' ) ? intval( get_query_var( 'paged' ) ) : 1;
-    $pagenum_link = html_entity_decode( get_pagenum_link() );
-    $query_args   = array();
-    $url_parts    = explode( '?', $pagenum_link );
-
-    if ( isset( $url_parts[1] ) ) {
-      wp_parse_str( $url_parts[1], $query_args );
-    }
-
-    $pagenum_link = remove_query_arg( array_keys( $query_args ), $pagenum_link );
-    $pagenum_link = trailingslashit( $pagenum_link ) . '%_%';
-
-    $format  = $wp_rewrite->using_index_permalinks() && ! strpos( $pagenum_link, 'index.php' ) ? 'index.php/' : '';
-    $format .= $wp_rewrite->using_permalinks() ? user_trailingslashit( $wp_rewrite->pagination_base . '/%#%', 'paged' ) : '?paged=%#%';
-
-    // Set up paginated links.
-    $links = paginate_links( array(
-      'base'     => $pagenum_link,
-      'format'   => $format,
-      'total'    => $wp_query->max_num_pages,
-      'current'  => $paged,
-      'mid_size' => 1,
-      'add_args' => array_map( 'urlencode', $query_args ),
-      'prev_text' => __( '&larr; Previous', 'kastle' ),
-      'next_text' => __( 'Next &rarr;', 'kastle' ),
-    ) );
-
-    if ( $links ) :
-
-    ?>
-    <nav class="navigation paging-navigation" role="navigation">
-      <h1 class="screen-reader-text"><?php _e( 'Posts navigation', 'kastle' ); ?></h1>
-      <div class="pagination loop-pagination">
-        <?php echo $links; ?>
-      </div><!-- .pagination -->
-    </nav><!-- .navigation -->
-    <?php
-    endif;
   }
 }
 
