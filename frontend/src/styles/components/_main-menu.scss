@@ -1,0 +1,22 @@
+.menu-container{
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+
+  ul.menu{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    li{
+      display: inline-block;
+
+      a{
+        @include fontsize();
+        color: $devils-grey;
+      }
+    }
+  }
+}

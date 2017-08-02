@@ -32,6 +32,10 @@ p{
   @extend %sofia-regular;
 }
 
+a{
+  @extend %sofia-regular;
+}
+
 h1{
   @extend %sofia-bold;
   @include fontsize(45);
@@ -54,4 +58,16 @@ h4{
 
 h5{
 
+}
+
+.text-center{
+  text-align: center;
+}
+
+.text-left{
+  text-align: left;
+}
+
+.text-right{
+  text-align: right;
 }

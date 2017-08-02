@@ -1,24 +1,7 @@
 // Colors
-$c-black: #000000;
-$c-2: #222;
-$c-white: #ffffff;
-$c-light-blue: #6ECEEA;
-$c-dark-blue: #003366;
-$c-slate-blue: #1c3564;
-$c-twitter-blue: #6eceea;
-$c-red: #ff0000;
-$c-dark-red: #9B1C20;
-$c-darkish-red: #b11f27;
-$c-light-red: #ec1f24;
-$c-dark-gray: #63666a;
-$c-light-gray: #97999b;
-$c-c: #ccc;
-$c-devils-grey: #666;
-$c-9: #999;
-$c-a: #aaa;
-$c-4a: #4a4a4a;
-$c-e6: #e6e6e6;
-$c-f1: #f1f1f1;
+$black: #000;
+$white: #fff;
+$devils-grey: #666;
 
 // Base Font Size
 $base-font-size: 16;
@@ -37,17 +20,10 @@ $bp-575: 575px;
 $bp-600: 600px;
 $bp-680: 680px;
 $bp-768: 768px;
-$bp-830: 830px;
-$bp-860: 860px;
-$bp-970: 970px;
-$bp-980: 980px;
-$bp-1024: 1024px;
-$bp-1060: 1060px;
-$bp-1560: 1560px;
 
 // The max-width of the stage on full desktop in pixels (see mixin stagecenter)
-$max-stage-width: 1170;
-$content-width: 1170;
+$max-stage-width: 1140;
+$content-width: 1140;
 
 $no-query: '.no-mediaqueries';
 

@@ -1,0 +1,28 @@
+header{
+  position: relative;
+
+  img{
+    display: block;
+    width: 100%;
+  }
+
+  .header-content{
+    position: absolute;
+    left: 0;
+    right: 0;
+    @include stagecenter(900);
+    top: 25%;
+
+    h2{
+      @include fontsize(72);
+      @extend %sofia-medium;
+      line-height: 1.2;
+      margin: .5em 0;
+    }
+
+    h3{
+      @include fontsize(32);
+      @extend %sofia-light;
+    }
+  }
+}
