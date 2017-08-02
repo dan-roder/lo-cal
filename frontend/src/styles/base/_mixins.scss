@@ -1,0 +1,437 @@
+@mixin svg-bg($name) {
+  background: url(../images/#{$name}.png) no-repeat;
+  background: none, url(../images/#{$name}.svg) no-repeat;
+}
+
+@mixin fontsize($number) {
+  font-size: $number + px; //this line can be commented out if we're not supporting IE8
+  font-size: $number/$base-font-size + rem;
+}
+
+@mixin stagecenter($stage-width: $max-stage-width, $container-font-size: $base-font-size) {
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 15px;
+  padding-right: 15px;
+  max-width: px-to-em($stage-width, $container-font-size);
+  .no-mediaqueries & {
+    width: px-to-em($stage-width, $container-font-size);
+  }
+}
+
+@mixin vertical-align {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+}
+
+@mixin placeholder($c-placeholder: '#888888') {
+  input::-webkit-input-placeholder,
+  textarea::-webkit-input-placeholder {
+    color: $c-placeholder;
+  }
+
+  input:-moz-placeholder,
+  textarea:-moz-placeholder {
+    color: $c-placeholder;
+  }
+
+  input.placeholder_text,
+  textarea.placeholder_text {
+    color: $c-placeholder;
+  }
+}
+
+@mixin gradient-hor($color1, $color2) {
+  background: $color2; //fallback; it could just as easily be $color1
+  background: linear-gradient(to bottom,  $color1 0%,$color2 100%); //god bless autoprefixer
+}
+
+@mixin gradient-vert($color1, $color2) {
+  background: $color2; //fallback; it could just as easily be $color1
+  background: linear-gradient(to right,  $color1 0%,$color2 100%);
+}
+
+@mixin transform($var) {
+  transform: $var;
+}
+
+@mixin transition($property: all, $timing: 300ms, $easing: ease-in-out) {
+  transition: $property $timing $easing;
+}
+
+@mixin old-angle($top-or-bottom, $direction, $height, $color){
+  @if($top-or-bottom == 'top'){
+    &:before{
+      content:'';
+      position: absolute;
+      #{$top-or-bottom}: 0;
+      #{$direction}: 0;
+      width: 0;
+      height: 0;
+      z-index: 99;
+      border-#{$top-or-bottom}: $height solid $color;
+      border-#{$direction}: 100vw solid transparent;
+    }
+  }
+  @else{
+    &:after{
+      content:'';
+      position: absolute;
+      #{$top-or-bottom}: 0;
+      #{$direction}: 0;
+      width: 0;
+      height: 0;
+      z-index: 99;
+      border-#{$top-or-bottom}: $height solid $color;
+      border-#{$direction}: 100vw solid transparent;
+    }
+  }
+}
+
+// mixin
+@mixin angle($pseudo, $flip: false, $angle: 1.5deg) {
+  // Possible values for $pseudo are: before, after, both
+  @if $pseudo == 'before' or $pseudo == 'after' or $pseudo == 'both' {
+    position: relative;
+    z-index: 1;
+    $selector: if($pseudo == 'both', '&:before,&:after', '&:#{$pseudo}');
+
+    #{$selector} {
+      background: inherit;
+      content: '';
+      display: block;
+      height: 50%;
+      left: 0;
+      position: absolute;
+      right: 0;
+      z-index: -1;
+      //-webkit-backface-visibility: hidden; // for Chrome Windows
+    }
+
+    @if $pseudo == 'before' {
+      #{$selector} {
+        top: 0;
+
+        @if $flip {
+          transform: skewY($angle * -1);
+          transform-origin: 0 0;
+        } @else {
+          transform: skewY($angle);
+          transform-origin: 100% 0;
+        }
+      }
+    }
+
+    @if $pseudo == 'after' {
+      #{$selector} {
+        bottom: 0;
+
+        @if $flip {
+          transform: skewY($angle);
+          transform-origin: 0 100%;
+        } @else {
+          transform: skewY($angle * -1);
+          transform-origin: 100%;
+        }
+      }
+    }
+
+    @if $pseudo == 'both' {
+      &:before {
+        top: 0;
+
+        @if $flip {
+          transform: skewY($angle * -1);
+          transform-origin: 0 0;
+        } @else {
+          transform: skewY($angle);
+          transform-origin: 100% 0;
+        }
+      }
+
+      &:after {
+        bottom: 0;
+
+        @if $flip {
+          transform: skewY($angle);
+          transform-origin: 0 0;
+        } @else {
+          transform: skewY($angle * -1);
+          transform-origin: 100%;
+        }
+      }
+    }
+  }
+}
+
+@mixin deangle($pseudo, $flip: false){
+
+  // Possible values for $pseudo are: before, after, both
+  @if $pseudo == 'before' or $pseudo == 'after' or $pseudo == 'both' {
+    position: static;
+    z-index: 1;
+    $selector: if($pseudo == 'both', '&:before,&:after', '&:#{$pseudo}');
+
+    #{$selector} {
+      background: inherit;
+      content: '';
+      display: block;
+      height: auto;
+      left: auto;
+      position: static;
+      right: auto;
+    }
+
+    @if $pseudo == 'before' {
+      #{$selector} {
+        top: auto;
+
+        @if $flip {
+          transform: none;
+          transform-origin: 50% 50% 0;
+        } @else {
+          transform: none;
+          transform-origin: 50% 50% 0;
+        }
+      }
+    }
+
+    @if $pseudo == 'after' {
+      #{$selector} {
+        bottom: auto;
+
+        @if $flip {
+          transform: none;
+          transform-origin: 50% 50% 0;
+        } @else {
+          transform: none;
+          transform-origin: 50% 50% 0;
+        }
+      }
+    }
+
+    @if $pseudo == 'both' {
+      &:before {
+        top: auto;
+
+        @if $flip {
+          transform: none;
+          transform-origin: 50% 50% 0;
+        } @else {
+          transform: none;
+          transform-origin: 50% 50% 0;
+        }
+      }
+
+      &:after {
+        bottom: auto;
+
+        @if $flip {
+          transform: none;
+        } @else {
+          transform: none;
+          transform-origin: 50% 50% 0;
+        }
+      }
+    }
+  }
+}
+
+/**
+Enable when using the pager CSS in typography partial
+@mixin inline{
+  display: inline;
+}
+*/
+
+/**
+ *
+ * Take any drupal view formatted as Unformatted or HTML List and apply a 3 column grid layout
+ *
+ * $wrapper-name: The immediate div name above view-content and views-row
+ *
+ * $number-items: The number of items in the grid
+ *
+ * Future Plans:
+ * Make a variable column version
+ *
+ */
+@mixin gridify($wrapper-name, $number-items: 30) {
+  #{$wrapper-name} {
+    @extend %clearfix;
+    clear: both;
+    width: 100%;
+  }
+  #{$wrapper-name} .views-row {
+    float: left;
+    margin-bottom: 2em;
+    width: 31%;
+    vertical-align: top;
+
+    .item-list li.views-row {
+      margin-left: 0;
+      margin-bottom: 5px;
+    }
+
+    .item-list ul li {
+      margin: 0;
+      padding: 0;
+    }
+
+    .item-list {
+      margin-right: 0;
+    }
+  }
+
+  #{$wrapper-name} .views-row {
+    margin-right: 2%;
+  }
+
+  #{$wrapper-name} .views-row-even {
+    margin-right: 2%;
+  }
+
+  #{$wrapper-name} .views-row-odd {
+    clear: none;
+  }
+
+  $loop-rows: $number-items;
+  $last-row: 1;
+  @for $i from 1 through $loop-rows {
+    @if $i % 3 == 0 {
+      #{$wrapper-name} .views-row-#{$i} {
+        margin-right: 0;
+      }
+    }
+
+    @if $i == $last-row {
+      $last-row: $last-row + 3;
+      #{$wrapper-name} .views-row-#{$i} {
+        clear: left;
+      }
+    }
+  }
+
+}
+
+@mixin overlay($opacity: .7){
+  position: relative;
+
+  &:before{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    content: '';
+    background: rgba($c-black, $opacity);
+  }
+}
+
+@mixin columns($columnCount: 3, $columnGap: 30px){
+  -webkit-column-count: $columnCount;
+  -moz-column-count: $columnCount;
+  column-count: $columnCount;
+  -moz-column-gap: $columnGap;
+  -webkit-column-gap: $columnGap;
+  column-gap: $columnGap;
+
+  .views-row{
+    display: inline-block;
+    background: $c-white;
+    margin-bottom: 30px;
+    box-sizing: border-box;
+    width: 100%;
+    column-break-inside: avoid;
+    -webkit-column-break-inside: avoid;
+    -moz-column-break-inside: avoid;
+  }
+}
+
+/**
+ *
+ * This method returns the content wrapped in the requested media query. It also checks to see if
+ * the no-query variable has been defined. If the variable exists the content is output and wrapped
+ * in a class as defined by the variable.
+ *
+ * The $no-query defined class is to wrap content in when there are no media queries available for
+ * the current browser. This is typically provided by a javascript plugin like modernizr.
+ *
+ * $bp: The breakpoint in pixels
+ *
+ * $no-ie: To override this breakpoint and not use it in browsers that don't support media queries
+ * pass true as the second argument.
+ *
+ */
+@mixin breakpoint($bp, $no-ie: false) {
+
+  // Pass the given content and wrap it in a min-width media query
+  @media (min-width: #{$bp}) {
+    // The content contained within the call to our mixin
+    @content;
+  }
+
+  // Check to see if we have defined the no-query variable
+  @if variable-exists(no-query) and $no-ie == false {
+    // If media queries are not available we wrap the content in this class
+    #{$no-query} & {
+      // The content contained within the call to our mixin
+      @content;
+    }
+  }
+
+}
+
+/**
+ *
+ * This method returns the content wrapped in the requested media query. It also checks to see if
+ * the no-query variable has been defined. If the variable exists the content is output and wrapped
+ * in a class as defined by the variable.
+ *
+ * The $no-query defined class is to wrap content in when there are no media queries available for
+ * the current browser. This is typically provided by a javascript plugin like modernizr.
+ *
+ * $bp: The breakpoint in pixels
+ *
+ * $no-ie: To override this breakpoint and not use it in browsers that don't support media queries
+ * pass true as the second argument.
+ *
+ */
+@mixin max-breakpoint($bp, $no-ie: false) {
+
+  // Pass the given content and wrap it in a min-width media query
+  @media (max-width: #{$bp}) {
+    // The content contained within the call to our mixin
+    @content;
+  }
+
+  // Check to see if we have defined the no-query variable
+  @if variable-exists(no-query) and $no-ie == false {
+    // If media queries are not available we wrap the content in this class
+    #{$no-query} & {
+      // The content contained within the call to our mixin
+      @content;
+    }
+  }
+}
+
+@mixin height-breakpoint($bp-height, $bp-width, $no-ie: false) {
+
+  // Pass the given content and wrap it in a min-width media query
+  @media screen and (min-width: #{$bp-width}) and (min-height: #{$bp-height}) {
+    // The content contained within the call to our mixin
+    @content;
+  }
+
+  // Check to see if we have defined the no-query variable
+  @if variable-exists(no-query) and $no-ie == false {
+    // If media queries are not available we wrap the content in this class
+    #{$no-query} & {
+      // The content contained within the call to our mixin
+      @content;
+    }
+  }
+
+}
