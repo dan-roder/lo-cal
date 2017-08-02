@@ -1,9 +1,12 @@
-.menu-container{
+.sticky-header{
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   z-index: 1;
+}
+.menu-container{
+  padding: 20px 30px;
 
   ul.menu{
     margin: 0;
@@ -14,8 +17,14 @@
       display: inline-block;
 
       a{
-        @include fontsize();
+        @extend %sofia-light;
+        @include fontsize(20);
         color: $devils-grey;
+        text-decoration: none;
+
+        &:hover{
+          text-decoration: underline;
+        }
       }
     }
   }

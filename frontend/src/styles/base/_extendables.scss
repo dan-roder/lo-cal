@@ -48,6 +48,20 @@
 }
 
 //
+// Buttons
+//
+%red-button{
+	text-align: center;
+  color: $off-black;
+  display: inline-block;
+  border: 1px solid $off-black;
+  border-radius: 4px;
+  padding: 8px 40px 10px;
+  @include fontsize(24);
+  @extend %sofia-light;
+}
+
+//
 // Icons
 //
 %icon {

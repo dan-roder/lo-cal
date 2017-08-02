@@ -1,3 +1,7 @@
+body,html{
+  color: $off-black;
+}
+
 %sofia{
   font-family: "sofia-pro",sans-serif;
   font-style: normal;
@@ -43,7 +47,7 @@ h1{
 
 h2{
   @extend %sofia-semi-bold;
-  @include fontsize(24);
+  @include fontsize(19);
 }
 
 h3{
@@ -53,11 +57,7 @@ h3{
 
 h4{
   @extend %sofia-medium;
-  @include fontsize(16);
-}
-
-h5{
-
+  @include fontsize(14);
 }
 
 .text-center{
@@ -70,4 +70,8 @@ h5{
 
 .text-right{
   text-align: right;
+}
+
+.red-button{
+  @extend %red-button;
 }
