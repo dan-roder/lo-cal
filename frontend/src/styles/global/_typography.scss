@@ -1,0 +1,57 @@
+%sofia{
+  font-family: "sofia-pro",sans-serif;
+  font-style: normal;
+}
+
+%sofia-regular{
+  @extend %sofia;
+  font-weight: 400;
+}
+
+%sofia-light{
+  @extend %sofia;
+  font-weight: 300;
+}
+
+%sofia-medium{
+  @extend %sofia;
+  font-weight: 500;
+}
+
+%sofia-semi-bold{
+  @extend %sofia;
+  font-weight: 600;
+}
+
+%sofia-bold{
+  @extend %sofia;
+  font-weight: 700;
+}
+
+p{
+  @extend %sofia-regular;
+}
+
+h1{
+  @extend %sofia-bold;
+  @include fontsize(45);
+}
+
+h2{
+  @extend %sofia-semi-bold;
+  @include fontsize(24);
+}
+
+h3{
+  @extend %sofia-medium;
+  @include fontsize(18);
+}
+
+h4{
+  @extend %sofia-medium;
+  @include fontsize(16);
+}
+
+h5{
+
+}
