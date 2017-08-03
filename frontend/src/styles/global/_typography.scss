@@ -34,6 +34,7 @@ body,html{
 
 p{
   @extend %sofia-regular;
+  @include fontsize(16);
 }
 
 a{

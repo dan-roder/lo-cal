@@ -1,0 +1,15 @@
+.section{
+  padding: 80px 0;
+
+  &.section-white{
+    background: $white;
+  }
+
+  &.section-grey{
+    background: $devils-grey;
+  }
+}
+
+.callout{
+  @include stagecenter(740);
+}
