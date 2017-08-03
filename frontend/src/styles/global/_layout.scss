@@ -12,4 +12,15 @@
 
 .callout{
   @include stagecenter(740);
+
+  h3{
+    text-align: center;
+    text-transform: uppercase;
+    @extend %sofia-regular;
+    @include fontsize(30);
+  }
+
+  p{
+    @include fontsize(18);
+  }
 }
