@@ -1,5 +1,6 @@
 body,html{
   color: $off-black;
+  @extend %sofia-regular;
 }
 
 %sofia{
