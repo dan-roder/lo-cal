@@ -6,12 +6,8 @@
   }
 
   &.section-grey{
-    background: $devils-grey;
+    background: $e1;
   }
-}
-
-.callout{
-  @include stagecenter(740);
 
   h3{
     text-align: center;
@@ -23,4 +19,57 @@
   p{
     @include fontsize(18);
   }
+
+  .button-wrapper{
+    margin: 50px 0 0;
+  }
+}
+
+.food-details{
+  .content{
+    @include stagecenter(740);
+  }
+
+  .three-column-data{
+    margin: 50px 0 0;
+    @include stagecenter();
+    @extend %clearfix;
+
+    .data{
+      width: 33.3333%;
+      float: left;
+
+      .content-wrapper{
+        padding: 0 15px;
+
+        .image{
+          img{
+            max-width: 130px;
+          }
+        }// .image
+
+        .title{
+          margin: 30px 0;
+          @include fontsize(24);
+          @extend %sofia-medium;
+        }// .title
+
+        .description{
+          p{
+            margin: 0;
+            @include fontsize(18);
+            @extend %sofia-light;
+          }
+        }
+      }// .content-wrapper
+    }// .data
+  }// .three-column-data
+}// .food-details
+
+.callout{
+  @include stagecenter(740);
+}
+
+.button-wrapper{
+  text-align: center;
 }
