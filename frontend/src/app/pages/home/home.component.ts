@@ -13,10 +13,10 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.wpService.getPage(4).subscribe(page => {
-      this.pageContent = page;
+      this.pageContent = page; console.log(page);
 
       if(page.featured_media != 0){
-        this.wpService.getMedia(page.featured_media).subscribe(media => {this.featuredImage = media; console.log(media)});
+        this.wpService.getMedia(page.featured_media).subscribe(media => this.featuredImage = media);
       }
     });
   }
