@@ -1,6 +1,6 @@
 <header class="header-container">
   <div class="content">
-    <img [src]="featuredImage?.source_url" [alt]="featuredImage?.alt_text" />
+    <img *ngIf="featuredImage" [src]="featuredImage?.source_url" [alt]="featuredImage?.alt_text" />
     <div class="header-content text-center" [innerHtml]="pageContent?.content?.rendered"></div>
   </div>
 </header>
@@ -10,13 +10,25 @@
     <div class="content">
       <h3 class="title" [innerHtml]="pageContent?.acf?.title"></h3>
       <div class="body" [innerHtml]="pageContent?.acf?.body"></div>
-      <a [href]="pageContent?.acf?.link">Learn More</a>
+      <div class="button-wrapper text-center">
+        <a [href]="pageContent?.acf?.link" class="red-button">Learn More</a>
+      </div>
     </div>
   </div>
 
-  <div class="section section-grey our-content">
+  <div class="section section-grey food-details">
     <div class="content">
-
+      <h3 class="title" [innerHtml]="pageContent?.acf?.our_food_title"></h3>
+      <div class="body" [innerHtml]="pageContent?.acf?.our_food_body"></div>
+    </div>
+    <div class="three-column-data">
+      <div class="data item-{{ i+1 }}" *ngFor="let item of pageContent?.acf?.food; let i = index">
+        <div class="content-wrapper text-center">
+          <div class="image"><img *ngIf="item?.image?.url" [src]="item?.image?.url" [alt]="item?.image?.alt"></div>
+          <div class="title">{{ item?.title }}</div>
+          <div class="description"><p>{{ item?.description }}</p></div>
+        </div>
+      </div>
     </div>
   </div>
 
