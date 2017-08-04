@@ -57,6 +57,7 @@
   border: 1px solid $off-black;
   border-radius: 4px;
   padding: 8px 40px 10px;
+  text-decoration: none;
   @include fontsize(24);
   @extend %sofia-light;
 }
