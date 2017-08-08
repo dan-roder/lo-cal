@@ -1,0 +1,23 @@
+.home{
+  .menu-items{
+    @extend %clearfix;
+    margin: 30px auto;
+
+    .item{
+      width: 20%;
+      float: left;
+      margin: 0 0 40px;
+
+      .item-wrapper{
+        margin: 0 15px;
+        padding: 15px;
+        border: 1px solid;
+      }
+
+      .title{
+        @include fontsize(18);
+        @extend %sofia-medium;
+      }
+    }// .item
+  }// .menu-items
+}// .home
