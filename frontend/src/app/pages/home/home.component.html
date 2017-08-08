@@ -17,7 +17,7 @@
     </div>
 
     <div class="section section-grey food-details">
-      <div class="content">
+      <div class="content center-740">
         <h3 class="title" [innerHtml]="pageContent?.acf?.our_food_title"></h3>
         <div class="body" [innerHtml]="pageContent?.acf?.our_food_body"></div>
       </div>
@@ -25,12 +25,28 @@
         <div class="data item-{{ i+1 }}" *ngFor="let item of pageContent?.acf?.food; let i = index">
           <div class="content-wrapper text-center">
             <div class="image"><img *ngIf="item?.image?.url" [src]="item?.image?.url" [alt]="item?.image?.alt"></div>
-            <div class="title">{{ item?.title }}</div>
-            <div class="description"><p>{{ item?.description }}</p></div>
+            <div class="title" *ngIf="item?.title">{{ item?.title }}</div>
+            <div class="description" *ngIf="item?.description"><p>{{ item?.description }}</p></div>
           </div>
         </div>
+      </div>
+    </div><!-- /.food-details -->
+
+    <div class="section section-white our-menu">
+      <div class="content text-center">
+        <h3 class="title" [innerHtml]="pageContent?.acf?.menu_title"></h3>
+        <div class="body center-740" [innerHtml]="pageContent?.acf?.menu_description"></div>
+        <div class="menu-items center">
+          <div class="item item-{{ i+1 }}" *ngFor="let item of pageContent?.acf?.menu_items; let i = index">
+            <div class="item-wrapper text-center">
+              <div class="image"><img *ngIf="item?.image?.url" [src]="item?.image?.url" [alt]="item?.image?.alt"></div>
+              <div class="title" *ngIf="item?.item_title">{{ item?.item_title }}</div>
+            </div>
+          </div>
+        </div><!-- /.menu-items -->
+        <div class="link"><a *ngIf="pageContent?.acf?.full_menu_link" [href]="pageContent?.acf?.full_menu_link" class="red-button">View the Full Menu</a></div>
       </div>
     </div>
 
   </div>
-</div>
+</div><!-- /.home -->
