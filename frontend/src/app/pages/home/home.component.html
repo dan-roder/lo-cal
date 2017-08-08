@@ -1,6 +1,6 @@
 <div class="home">
   <header class="header-container">
-    <div class="content" style.backgroundImage="url({{featuredImage?.source_url}})">
+    <div class="content" [ngStyle]="{'background-image':'url(' + featuredImage?.source_url + ')'}">
       <div class="header-content text-center" [innerHtml]="pageContent?.content?.rendered"></div>
     </div>
   </header>
@@ -24,7 +24,7 @@
       <div class="three-column-data">
         <div class="data item-{{ i+1 }}" *ngFor="let item of pageContent?.acf?.food; let i = index">
           <div class="content-wrapper text-center">
-            <div class="image"><img *ngIf="item?.image?.url" [src]="item?.image?.url" [alt]="item?.image?.alt"></div>
+            <div class="image" *ngIf="item?.image?.url"><img [src]="item?.image?.url" [alt]="item?.image?.alt"></div>
             <div class="title" *ngIf="item?.title">{{ item?.title }}</div>
             <div class="description" *ngIf="item?.description"><p>{{ item?.description }}</p></div>
           </div>
@@ -45,6 +45,12 @@
           </div>
         </div><!-- /.menu-items -->
         <div class="link"><a *ngIf="pageContent?.acf?.full_menu_link" [href]="pageContent?.acf?.full_menu_link" class="red-button">View the Full Menu</a></div>
+      </div>
+    </div><!-- /.out-menu -->
+
+    <div class="section section-grey app-ad">
+      <div class="content">
+
       </div>
     </div>
 
