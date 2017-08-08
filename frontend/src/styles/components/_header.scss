@@ -7,11 +7,19 @@ header{
   }
 
   .header-content{
-    position: absolute;
-    left: 0;
-    right: 0;
-    @include stagecenter(900);
-    top: 25%;
+    .home &{
+      padding: 200px 0;
+      @include stagecenter(900);
+
+      h1{
+        margin-top: 0;
+      }
+    }
+
+    h1{
+      @include fontsize(70);
+      @extend %sofia-medium;
+    }
 
     h2{
       @include fontsize(72);
@@ -25,4 +33,9 @@ header{
       @extend %sofia-light;
     }
   }
-}
+
+  .content{
+    background-size: cover;
+    background-position: center;
+  }
+}// header

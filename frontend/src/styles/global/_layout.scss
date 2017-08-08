@@ -1,5 +1,5 @@
 .section{
-  padding: 80px 0;
+  padding: 50px 0;
 
   &.section-white{
     background: $white;
@@ -10,6 +10,7 @@
   }
 
   h3{
+    margin-top: 0;
     text-align: center;
     text-transform: uppercase;
     @extend %sofia-regular;
@@ -36,8 +37,13 @@
     @extend %clearfix;
 
     .data{
-      width: 33.3333%;
-      float: left;
+      margin: 20px 0;
+
+      @include breakpoint($bp-660){
+        width: 33.3333%;
+        float: left;
+        margin: 0;
+      }
 
       .content-wrapper{
         padding: 0 15px;
