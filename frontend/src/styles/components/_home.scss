@@ -20,4 +20,36 @@
       }
     }// .item
   }// .menu-items
+
+  .app-ad{
+    .content{
+      @extend %clearfix;
+
+      > div{
+        display: table-cell;
+        width: 50%;
+        vertical-align: middle;
+      }
+
+      h3{
+        text-align: left;
+        text-transform: none;
+      }
+    }
+
+    // .left{
+    //   float: left;
+    //   width: 47%;
+    //   margin-right: 2%;
+
+    //   + .right{
+    //     float: right;
+    //     width: 47%;
+
+    //     .inner-content{
+    //       @include vertical-align();
+    //     }
+    //   }
+    // }
+  }
 }// .home

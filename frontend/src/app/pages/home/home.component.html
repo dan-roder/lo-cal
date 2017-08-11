@@ -8,21 +8,21 @@
 
     <div class="section section-white callout">
       <div class="content">
-        <h3 class="title" [innerHtml]="pageContent?.acf?.title"></h3>
-        <div class="body" [innerHtml]="pageContent?.acf?.body"></div>
+        <h3 class="title" [innerHtml]="acf?.title"></h3>
+        <div class="body" [innerHtml]="acf?.body"></div>
         <div class="button-wrapper text-center">
-          <a [href]="pageContent?.acf?.link" class="red-button">Learn More</a>
+          <a [href]="acf?.link" class="red-button">Learn More</a>
         </div>
       </div>
     </div>
 
     <div class="section section-grey food-details">
       <div class="content center-740">
-        <h3 class="title" [innerHtml]="pageContent?.acf?.our_food_title"></h3>
-        <div class="body" [innerHtml]="pageContent?.acf?.our_food_body"></div>
+        <h3 class="title" [innerHtml]="acf?.our_food_title"></h3>
+        <div class="body" [innerHtml]="acf?.our_food_body"></div>
       </div>
       <div class="three-column-data">
-        <div class="data item-{{ i+1 }}" *ngFor="let item of pageContent?.acf?.food; let i = index">
+        <div class="data item-{{ i+1 }}" *ngFor="let item of acf?.food; let i = index">
           <div class="content-wrapper text-center">
             <div class="image" *ngIf="item?.image?.url"><img [src]="item?.image?.url" [alt]="item?.image?.alt"></div>
             <div class="title" *ngIf="item?.title">{{ item?.title }}</div>
@@ -34,25 +34,35 @@
 
     <div class="section section-white our-menu">
       <div class="content text-center">
-        <h3 class="title" [innerHtml]="pageContent?.acf?.menu_title"></h3>
-        <div class="body center-740" [innerHtml]="pageContent?.acf?.menu_description"></div>
+        <h3 class="title" [innerHtml]="acf?.menu_title"></h3>
+        <div class="body center-740" [innerHtml]="acf?.menu_description"></div>
         <div class="menu-items center">
-          <div class="item item-{{ i+1 }}" *ngFor="let item of pageContent?.acf?.menu_items; let i = index">
+          <div class="item item-{{ i+1 }}" *ngFor="let item of acf?.menu_items; let i = index">
             <div class="item-wrapper text-center">
               <div class="image"><img *ngIf="item?.image?.url" [src]="item?.image?.url" [alt]="item?.image?.alt"></div>
               <div class="title" *ngIf="item?.item_title">{{ item?.item_title }}</div>
             </div>
           </div>
         </div><!-- /.menu-items -->
-        <div class="link"><a *ngIf="pageContent?.acf?.full_menu_link" [href]="pageContent?.acf?.full_menu_link" class="red-button">View the Full Menu</a></div>
+        <div class="link"><a *ngIf="acf?.full_menu_link" [href]="acf?.full_menu_link" class="red-button">View the Full Menu</a></div>
       </div>
     </div><!-- /.out-menu -->
 
     <div class="section section-grey app-ad">
-      <div class="content">
-
+      <div class="content center">
+        <div class="left" *ngIf="acf?.app_image">
+          <img [src]="acf?.app_image?.url" [alt]="acf?.app_image?.alt" />
+        </div>
+        <div class="right">
+          <div class="inner-content">
+            <h3 class="title" [innerHtml]="acf?.mobile_order_title"></h3>
+            <div class="body">
+              <p [innerHtml]="acf?.mobile_ordering_text"></p>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
+    </div><!-- /.app-ad -->
 
   </div>
 </div><!-- /.home -->
