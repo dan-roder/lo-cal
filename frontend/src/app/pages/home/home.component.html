@@ -64,5 +64,15 @@
       </div>
     </div><!-- /.app-ad -->
 
+    <div class="section section-white location-details">
+      <h3 class="title text-center">LOCATION</h3>
+      <div class="content center">
+        <div class="left" *ngIf="acf?.location_image">
+          <img [src]="acf?.location_image?.url" [alt]="acf?.location_image?.alt" />
+        </div>
+        <div class="right" *ngIf="acf?.location_details" [innerHtml]="acf?.location_details"></div>
+      </div>
+    </div>
+
   </div>
 </div><!-- /.home -->
