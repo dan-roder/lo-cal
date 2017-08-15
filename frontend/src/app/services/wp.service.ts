@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+import { Http, Response } from '@angular/http';
 import { Config } from '../utils/constants';
+import { Observable } from 'rxjs/Observable';
+
 import 'rxjs/add/operator/map';
 
 @Injectable()
@@ -60,11 +62,9 @@ export class WordpressService {
     });
   }
 
-  getPage(id) {
+  getPage(id): Observable<any> {
     return this.http.get(this.config.wordpressApiUrl + `/wp/v2/pages/${id}`)
-      .map(result => {
-      return result.json();
-    });
+      .map((res: Response) => res.json());
   }
 
   getMenus() {
