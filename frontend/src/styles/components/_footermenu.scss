@@ -1,21 +1,45 @@
 footer{
   .content{
+    padding: 20px;
+    @extend %clearfix;
+
     ul.menu{
       margin: 0;
       padding: 0;
+      float: left;
 
       li{
         display: inline-block;
+        margin-left: 45px;
+
+        &:first-child{
+          margin: 0;
+        }
 
         a{
+          @include fontsize(12);
           display: block;
           color: $devils-grey;
+          text-decoration: none;
 
-          &:hover{
+          &:hover,
+          &:focus{
             text-decoration: underline;
           }
         }
       }
+    }// ul.menu
+
+    input[type=email]{
+      @extend %sofia-light;
+      @include fontsize(12);
+      float: left;
+      margin-left: 60px;
+      width: 310px;
+      border: none;
+      border-bottom: 1px solid;
+      color: $e1;
+      padding: 5px 0;
     }
-  }
-}
+  }// .content
+}// footer
