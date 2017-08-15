@@ -1,0 +1,7 @@
+<footer>
+    <ul class="menu">
+      <li *ngFor="let item of footerMenu" [attr.class]="item.classes ? item.classes : null">
+          <a href="{{ item.url }}">{{ item.title }}</a>
+      </li>
+    </ul>
+</footer>
