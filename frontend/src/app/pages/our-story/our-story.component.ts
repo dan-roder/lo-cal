@@ -16,7 +16,6 @@ export class OurStoryComponent implements OnInit {
     this.wpService.getPage(47).subscribe(page => {
       this.pageContent = page;
       this.acf = page.acf;
-      console.log(this.pageContent);
 
       if(page.featured_media != 0){
         this.wpService.getMedia(page.featured_media).subscribe(media => this.featuredImage = media);
