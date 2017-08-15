@@ -17,13 +17,15 @@ import { FooterComponent } from './shared/components/footer/footer.component';
 // Services
 import { WordpressService } from './services/wp.service';
 import { WindowRef } from './utils/windowref';
+import { OurStoryComponent } from './pages/our-story/our-story.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MainLayoutComponent,
     HomeComponent,
-    FooterComponent
+    FooterComponent,
+    OurStoryComponent
   ],
   imports: [
     BrowserModule,
