@@ -8,7 +8,7 @@ import { WordpressService } from '../../services/wp.service';
 })
 export class MainLayoutComponent implements OnInit {
   public mainMenuLinks;
-  public currentUrl : string = '';
+  public currentUrl : any;
 
   constructor( private wpService: WordpressService, private _router: Router ) {
     _router.events.subscribe( (url : any) => this.currentUrl = url);
