@@ -1,9 +1,7 @@
 <div class="home">
-  <header class="header-container">
-    <div class="content" [ngStyle]="{'background-image':'url(' + featuredImage?.source_url + ')'}">
-      <div class="header-content text-center" [innerHtml]="pageContent?.content?.rendered"></div>
-    </div>
-  </header>
+
+  <lo-cal-header [featuredImage]="featuredImage" [pageContent]="pageContent"></lo-cal-header>
+
   <div class="content-container">
 
     <div class="section section-white callout">
