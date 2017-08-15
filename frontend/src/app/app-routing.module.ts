@@ -22,7 +22,7 @@ const routes: Routes = [
     path: 'our-story',
     component: MainLayoutComponent,
     pathMatch: 'full',
-    children[
+    children: [
       {
         path: '',
         component: OurStoryComponent
