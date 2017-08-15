@@ -19,6 +19,11 @@ const routes: Routes = [
     ]
   },
   {
+    path: 'home',
+    redirectTo: '',
+    pathMatch: 'full'
+  },
+  {
     path: 'our-story',
     component: MainLayoutComponent,
     pathMatch: 'full',
