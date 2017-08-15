@@ -1,5 +1,8 @@
 <header class="header-container">
   <div class="content" [ngStyle]="{'background-image':'url(' + featuredImage?.source_url + ')'}">
-    <div class="header-content text-center" [innerHtml]="pageContent?.content?.rendered"></div>
+    <div class="header-content text-center">
+      <h1 [innerHtml]="pageContent?.title?.rendered"></h1>
+      <div [innerHtml]="pageContent?.content?.rendered"></div>
+    </div>
   </div>
 </header>
