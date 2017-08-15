@@ -7,18 +7,13 @@ header{
   }
 
   .header-content{
-    .home &{
-      padding: 200px 0;
-      @include stagecenter(900);
-
-      h1{
-        margin-top: 0;
-      }
-    }
+    padding: 200px 0;
+    @include stagecenter(900);
 
     h1{
       @include fontsize(70);
       @extend %sofia-medium;
+      margin-top: 0;
     }
 
     h2{
