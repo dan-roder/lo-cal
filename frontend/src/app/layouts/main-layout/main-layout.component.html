@@ -2,9 +2,14 @@
   <div class="sticky-header">
     <div class="menu-container">
       <ul class="menu">
-        <li><h1 class="page-title" *ngIf="currentUrl?.url == '/'"><a routerLink="/">Lo•Cal</a></h1></li>
+        <li>
+          <h1 class="page-title" *ngIf="currentUrl?.url == '/'; else regularLink"><a routerLink="/">Lo•Cal</a></h1>
+          <ng-template #regularLink>
+            <div class="page-title"><a routerLink="/">Lo•Cal</a></div>
+          </ng-template>
+        </li>
         <li *ngFor="let item of mainMenuLinks" [attr.class]="item.classes ? item.classes : null">
-          <a href="{{ item.url }}" routerLinkActive="active">{{ item.title }}</a>
+          <a routerLink="{{ item.object_slug }}" routerLinkActive="active">{{ item.title }}</a>
         </li>
       </ul>
     </div>
