@@ -32,8 +32,11 @@
         }
       }
 
-      h1{
+      .page-title{
         margin: 0;
+        line-height: 1;
+        @include fontsize(32);
+
         a{
           @extend %sofia-light;
           @include fontsize(32);
