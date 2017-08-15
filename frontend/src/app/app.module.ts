@@ -12,6 +12,7 @@ import { Config } from './utils/constants';
 import { AppComponent } from './app.component';
 import { MainLayoutComponent } from './layouts/main-layout/main-layout.component';
 import { HomeComponent } from './pages/home/home.component';
+import { FooterComponent } from './shared/components/footer/footer.component';
 
 // Services
 import { WordpressService } from './services/wp.service';
@@ -21,7 +22,8 @@ import { WindowRef } from './utils/windowref';
   declarations: [
     AppComponent,
     MainLayoutComponent,
-    HomeComponent
+    HomeComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
