@@ -9,7 +9,7 @@
           </ng-template>
         </li>
         <li *ngFor="let item of mainMenuLinks" [attr.class]="item.classes ? item.classes : null">
-          <a routerLink="{{ item.object_slug }}" routerLinkActive="active">{{ item.title }}</a>
+          <a routerLink="/{{ item.object_slug }}" routerLinkActive="active">{{ item.title }}</a>
         </li>
       </ul>
     </div>
