@@ -21,21 +21,7 @@
       </div>
     </div>
 
-    <div class="section section-grey food-details">
-      <div class="content center-740">
-        <h3 class="title" [innerHtml]="acf?.our_food_title"></h3>
-        <div class="body" [innerHtml]="acf?.our_food_body"></div>
-      </div>
-      <div class="three-column-data">
-        <div class="data item-{{ i+1 }}" *ngFor="let item of acf?.food; let i = index">
-          <div class="content-wrapper text-center">
-            <div class="image" *ngIf="item?.image?.url"><img [src]="item?.image?.url" [alt]="item?.image?.alt"></div>
-            <div class="title" *ngIf="item?.title">{{ item?.title }}</div>
-            <div class="description" *ngIf="item?.description"><p>{{ item?.description }}</p></div>
-          </div>
-        </div>
-      </div>
-    </div><!-- /.food-details -->
+    <lo-cal-title-body-images [acf]="acf"></lo-cal-title-body-images>
 
     <div class="section section-white our-menu">
       <div class="content text-center">

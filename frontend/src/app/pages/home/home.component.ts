@@ -1,10 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { WordpressService } from '../../services/wp.service';
+import { AutoUnsubscribe } from "ngx-auto-unsubscribe";
 
 @Component({
   selector: 'lo-cal-home',
   templateUrl: './home.component.html'
 })
+
+@AutoUnsubscribe()
+
 export class HomeComponent implements OnInit {
   public pageContent : any;
   public acf : any;
@@ -22,6 +26,10 @@ export class HomeComponent implements OnInit {
         this.wpService.getMedia(page.featured_media).subscribe(media => this.featuredImage = media);
       }
     });
+  }
+
+  ngOnDestroy(){
+
   }
 
 }
