@@ -27,11 +27,9 @@ export class WordpressService {
     });
   }
 
-  getPost(id) {
+  getPost(id): Observable<any> {
     return this.http.get(this.config.wordpressApiUrl + `/wp/v2/posts/${id}?_embed`)
-      .map(result => {
-      return result.json();
-    });
+      .map((res: Response) => res.json());
   }
 
   getMedia(id) {
@@ -88,6 +86,16 @@ export class WordpressService {
       str.push(encodeURIComponent(p) + '=' + encodeURIComponent(obj[p]));
     }
     return str.join('&');
+  }
+
+  getCustomPostType( base ): Observable<any>{
+    return this.http.get(this.config.wordpressApiUrl + `/${base}`)
+      .map((res: Response) => res.json());
+  }
+
+  getCustomPostTypeById( base, id ): Observable<any>{
+    return this.http.get(this.config.wordpressApiUrl + `/wp/v2/${base}/${id}`)
+      .map((res: Response) => res.json());
   }
 
 }
