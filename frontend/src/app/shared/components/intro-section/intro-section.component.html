@@ -1,0 +1,9 @@
+<div class="section section-{{ color }} callout" *ngIf="acf">
+  <div class="content">
+    <h3 class="title" *ngIf="acf?.title" [innerHtml]="acf?.title"></h3>
+    <div class="body" *ngIf="acf?.body" [innerHtml]="acf?.body"></div>
+    <div class="button-wrapper text-center" *ngIf="acf?.link">
+      <a [href]="acf?.link" class="red-button">Learn More</a>
+    </div>
+  </div>
+</div>
