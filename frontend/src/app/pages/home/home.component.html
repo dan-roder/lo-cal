@@ -11,17 +11,9 @@
 
   <div class="content-container">
 
-    <div class="section section-white callout">
-      <div class="content">
-        <h3 class="title" [innerHtml]="acf?.title"></h3>
-        <div class="body" [innerHtml]="acf?.body"></div>
-        <div class="button-wrapper text-center">
-          <a [href]="acf?.link" class="red-button">Learn More</a>
-        </div>
-      </div>
-    </div>
+    <lo-cal-intro-section [acf]="acf" [color]="white"></lo-cal-intro-section>
 
-    <lo-cal-title-body-images [acf]="acf"></lo-cal-title-body-images>
+    <lo-cal-title-body-images [acf]="acf" [color]="'grey'"></lo-cal-title-body-images>
 
     <div class="section section-white our-menu">
       <div class="content text-center">
