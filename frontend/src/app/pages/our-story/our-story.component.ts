@@ -17,7 +17,7 @@ export class OurStoryComponent implements OnInit {
   constructor(private wpService: WordpressService) { }
 
   ngOnInit() {
-    this.wpService.getPage(47).subscribe(page => {
+    this.wpService.getCustomPostTypeById('landing_page', 80).subscribe(page => {
       this.pageContent = page;
       this.acf = page.acf;
 
