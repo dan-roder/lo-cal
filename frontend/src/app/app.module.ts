@@ -14,11 +14,13 @@ import { MainLayoutComponent } from './layouts/main-layout/main-layout.component
 import { HomeComponent } from './pages/home/home.component';
 import { HeaderComponent } from './shared/components/header/header.component';
 import { FooterComponent } from './shared/components/footer/footer.component';
+import { TitleBodyImagesComponent } from './shared/components/title-body-images/title-body-images.component';
 
 // Services
 import { WordpressService } from './services/wp.service';
 import { WindowRef } from './utils/windowref';
 import { OurStoryComponent } from './pages/our-story/our-story.component';
+
 
 @NgModule({
   declarations: [
@@ -27,7 +29,8 @@ import { OurStoryComponent } from './pages/our-story/our-story.component';
     HomeComponent,
     FooterComponent,
     OurStoryComponent,
-    HeaderComponent
+    HeaderComponent,
+    TitleBodyImagesComponent
   ],
   imports: [
     BrowserModule,
