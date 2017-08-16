@@ -1,10 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { WordpressService } from '../../services/wp.service';
+import { AutoUnsubscribe } from "ngx-auto-unsubscribe";
 
 @Component({
   selector: 'lo-cal-our-story',
   templateUrl: './our-story.component.html'
 })
+
+@AutoUnsubscribe()
+
 export class OurStoryComponent implements OnInit {
   public pageContent : any;
   public acf : any;
@@ -23,4 +27,7 @@ export class OurStoryComponent implements OnInit {
     });
   }
 
+  ngOnDestroy(){
+
+  }
 }
