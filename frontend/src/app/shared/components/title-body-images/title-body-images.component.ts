@@ -6,6 +6,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class TitleBodyImagesComponent implements OnInit {
   @Input() acf : any;
+  @Input() color : string = 'white';
 
   constructor() { }
 
