@@ -73,7 +73,13 @@ function my_mce_before_init_insert_formats( $init_array ) {
 			'block' => 'div',
 			'classes' => 'red-button',
 			'wrapper' => false,
-		),
+    ),
+    array(
+      'title' => 'Black Button',
+			'block' => 'div',
+			'classes' => 'black-button',
+			'wrapper' => false,
+    )
 
 	);
 	// Insert the array, JSON ENCODED, into 'style_formats'
