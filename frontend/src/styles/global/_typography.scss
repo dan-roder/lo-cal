@@ -43,23 +43,27 @@ a{
 }
 
 h1{
-  @extend %sofia-bold;
-  @include fontsize(45);
+  @extend %sofia-semi-bold;
+  @include fontsize(60);
 }
 
 h2{
   @extend %sofia-semi-bold;
-  @include fontsize(19);
+  @include fontsize(34);
 }
 
 h3{
-  @extend %sofia-medium;
-  @include fontsize(18);
+  @extend %sofia-semi-bold;
+  @include fontsize(26);
 }
 
 h4{
   @extend %sofia-medium;
-  @include fontsize(14);
+  @include fontsize(24);
+}
+
+h5{
+  @include fontsize(18);
 }
 
 img{
@@ -81,6 +85,20 @@ img{
 
 .red-button{
   @extend %red-button;
+  @include transition();
+
+  &:hover{
+    background: $red-hover;
+  }
+}
+
+.black-button{
+  @extend %black-button;
+  @include transition();
+
+  &:hover{
+    background: $c-4a;
+  }
 }
 
 .visuallyhidden{

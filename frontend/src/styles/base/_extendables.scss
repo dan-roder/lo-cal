@@ -52,14 +52,32 @@
 //
 %red-button{
 	text-align: center;
-  color: $off-black;
+  color: $white;
   display: inline-block;
-  border: 1px solid $off-black;
-  border-radius: 4px;
+  border-radius: 3px;
   padding: 8px 40px 10px;
   text-decoration: none;
-  @include fontsize(24);
-  @extend %sofia-light;
+  text-transform: uppercase;
+  box-shadow: 1px 2px 4px 0 rgba(0, 0, 0, 0.23);
+  background: $orange-red;
+  letter-spacing: 1.1px;
+  @include fontsize(20);
+  @extend %sofia-medium;
+}
+
+%black-button{
+  text-align: center;
+  color: $e1;
+  display: inline-block;
+  border-radius: 3px;
+  padding: 8px 40px 10px;
+  text-decoration: none;
+  text-transform: uppercase;
+  box-shadow: 1px 2px 4px 0 rgba(0, 0, 0, 0.23);
+  background: $off-black;
+  letter-spacing: 1.1px;
+  @include fontsize(20);
+  @extend %sofia-medium;
 }
 
 //
