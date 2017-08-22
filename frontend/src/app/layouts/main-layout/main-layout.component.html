@@ -3,9 +3,9 @@
     <div class="menu-container">
       <ul class="menu">
         <li>
-          <h1 class="page-title" *ngIf="currentUrl?.url == '/'; else regularLink"><a routerLink="/">Lo•Cal</a></h1>
+          <h1 class="page-title" *ngIf="currentUrl?.url == '/'; else regularLink"><a routerLink="/"><span class="visuallyhidden">Lo•Cal Kitchen</span></a></h1>
           <ng-template #regularLink>
-            <div class="page-title"><a routerLink="/">Lo•Cal</a></div>
+            <div class="page-title"><a routerLink="/"><span class="visuallyhidden">Lo•Cal Kitchen</span></a></div>
           </ng-template>
         </li>
         <li *ngFor="let item of mainMenuLinks" [attr.class]="item.classes ? item.classes : null">
