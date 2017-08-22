@@ -2,9 +2,11 @@
 
     <header class="header-container">
       <div class="content" [ngStyle]="{'background-image':'url(' + featuredImage?.source_url + ')'}">
-        <div class="header-content text-center">
-          <h2 [innerHtml]="pageContent?.title?.rendered"></h2>
-          <div [innerHtml]="pageContent?.content?.rendered"></div>
+        <div class="header-content center-1440 clearfix">
+          <div class="wysiwyg-content">
+              <h2 [innerHtml]="pageContent?.title?.rendered"></h2>
+              <div [innerHtml]="pageContent?.content?.rendered"></div>
+          </div>
         </div>
       </div>
     </header>
