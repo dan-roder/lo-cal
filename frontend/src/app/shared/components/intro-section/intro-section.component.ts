@@ -6,7 +6,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class IntroSectionComponent implements OnInit {
   @Input() acf : any;
-  @Input() color : string = '';
+  @Input() color : string = 'white';
 
   constructor() { }
 
