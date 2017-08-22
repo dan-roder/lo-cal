@@ -81,6 +81,14 @@
   @include stagecenter(740);
 }
 
+.center-1440{
+  @include stagecenter(1440);
+}
+
 .center{
   @include stagecenter();
+}
+
+.clearfix{
+  @extend %clearfix;
 }
