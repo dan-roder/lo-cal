@@ -84,20 +84,26 @@ img{
 }
 
 .red-button{
-  @extend %red-button;
-  @include transition();
+  a{
+    @extend %red-button;
+    @include transition();
 
-  &:hover{
-    background: $red-hover;
+    &:hover,
+    &:focus{
+      background: $red-hover;
+    }
   }
 }
 
 .black-button{
-  @extend %black-button;
-  @include transition();
+  a{
+    @extend %black-button;
+    @include transition();
 
-  &:hover{
-    background: $c-4a;
+    &:hover,
+    &:focus{
+      background: $c-4a;
+    }
   }
 }
 
