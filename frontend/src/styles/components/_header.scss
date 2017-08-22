@@ -7,8 +7,7 @@ header{
   }
 
   .header-content{
-    padding: 200px 0;
-    @include stagecenter(900);
+    padding: 200px 15px;
 
     h1{
       @include fontsize(70);
@@ -16,16 +15,26 @@ header{
       margin-top: 0;
     }
 
-    h2{
-      @include fontsize(72);
-      @extend %sofia-medium;
-      line-height: 1.2;
-      margin: .5em 0;
-    }
+    .home &{
+      .wysiwyg-content{
+        max-width: 445px;
+        background: rgba(255, 255, 255, .6);
+        padding: 45px 30px;
+        float: right;
+      }
 
-    h3{
-      @include fontsize(32);
-      @extend %sofia-light;
+      h2{
+        @include fontsize(60);
+        @extend %sofia-medium;
+        line-height: 1.2;
+        margin: 0 0 .5em;
+        color: $orange-red;
+      }
+
+      h3{
+        @include fontsize(24);
+        @extend %sofia-light;
+      }
     }
   }
 
