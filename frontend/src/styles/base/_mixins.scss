@@ -1,6 +1,6 @@
 @mixin svg-bg($name) {
-  background: url(../images/#{$name}.png) no-repeat;
-  background: none, url(../images/#{$name}.svg) no-repeat;
+  background: url(/assets/#{$name}.png) no-repeat;
+  background: none, url(/assets/#{$name}.svg) no-repeat;
 }
 
 @mixin fontsize($number) {
