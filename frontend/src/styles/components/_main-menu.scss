@@ -6,7 +6,7 @@
   z-index: 1;
 }
 .menu-container{
-  padding: 20px 30px;
+  padding: 20px 60px;
 
   ul.menu{
     margin: 0;
@@ -16,15 +16,18 @@
     li{
       display: inline-block;
       margin-left: 45px;
+      vertical-align: middle;
 
       &:first-child{
         margin: 0;
       }
 
       a{
-        @extend %sofia-light;
-        @include fontsize(20);
-        color: $devils-grey;
+        @extend %sofia-regular;
+        @include fontsize(16);
+        color: $off-black;
+        letter-spacing: 1px;
+        text-transform: uppercase;
         text-decoration: none;
 
         &:hover{
@@ -35,12 +38,16 @@
       .page-title{
         margin: 0;
         line-height: 1;
-        @include fontsize(32);
 
         a{
+          display: block;
           @extend %sofia-light;
-          @include fontsize(32);
           margin: 0;
+          @include svg-bg(logo/logo);
+          background-repeat: no-repeat;
+          background-size: 100%;
+          width: 135px;
+          height: 60px;
         }
       }
     }
