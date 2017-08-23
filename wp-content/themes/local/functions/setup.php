@@ -79,6 +79,12 @@ function my_mce_before_init_insert_formats( $init_array ) {
 			'block' => 'div',
 			'classes' => 'black-button',
 			'wrapper' => false,
+    ),
+    array(
+      'title' => 'Promotion Paragraph',
+      'block' => 'p',
+      'classes' => 'promotion-text',
+      'wrapper' => false
     )
 
 	);
