@@ -97,10 +97,12 @@ function my_mce_before_init_insert_formats( $init_array ) {
 // Attach callback to 'tiny_mce_before_init'
 add_filter( 'tiny_mce_before_init', 'my_mce_before_init_insert_formats' );
 
-// function my_theme_add_editor_styles() {
-//     add_editor_style( 'styles/main.css' );
-// }
-// add_action( 'after_setup_theme', 'my_theme_add_editor_styles' );
+function my_theme_add_editor_styles() {
+  add_editor_style( 'styles/editor-styles.css' );
+}
+add_action( 'after_setup_theme', 'my_theme_add_editor_styles' );
+
+
 add_filter( 'get_the_archive_title', function ($title) {
 
   if ( is_category() ) {
