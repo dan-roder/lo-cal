@@ -20,8 +20,8 @@
     <div class="section section-white our-menu">
       <div class="content text-center">
         <h3 class="title" [innerHtml]="acf?.menu_title"></h3>
-        <div class="body center-740" [innerHtml]="acf?.menu_description"></div>
-        <div class="menu-items center">
+        <p class="body center-740 text-center" [innerHtml]="acf?.menu_description"></p>
+        <div class="menu-items center-1440">
           <div class="item item-{{ i+1 }}" *ngFor="let item of acf?.menu_items; let i = index">
             <div class="item-wrapper text-center">
               <div class="image"><img *ngIf="item?.image?.url" [src]="item?.image?.url" [alt]="item?.image?.alt"></div>
@@ -35,12 +35,9 @@
 
     <div class="section section-grey app-ad">
       <div class="content center">
-        <div class="left" *ngIf="acf?.app_image">
-          <img [src]="acf?.app_image?.url" [alt]="acf?.app_image?.alt" />
-        </div>
-        <div class="right">
+        <div class="left">
           <div class="inner-content">
-            <h3 class="title" [innerHtml]="acf?.mobile_order_title"></h3>
+            <h4 class="title" [innerHtml]="acf?.mobile_order_title"></h4>
             <div class="body">
               <p [innerHtml]="acf?.mobile_ordering_text"></p>
             </div>
