@@ -13,12 +13,9 @@
     margin-top: 0;
     text-align: center;
     text-transform: uppercase;
-    @extend %sofia-regular;
-    @include fontsize(30);
-  }
-
-  p{
-    @include fontsize(18);
+    color: $orange-red;
+    @include fontsize(34);
+    letter-spacing: 1.3px;
   }
 
   .button-wrapper{
@@ -68,10 +65,6 @@
     }// .data
   }// .three-column-data
 }// .food-details
-
-.callout{
-
-}
 
 .button-wrapper{
   text-align: center;
