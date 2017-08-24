@@ -1,47 +1,25 @@
 .home{
-  .menu-items{
-    @extend %clearfix;
-    margin: 30px auto;
+  .app-ad{
+    padding: 100px 0;
+    // background: url(/) TODO: add iphone image background
 
-    .item{
-      width: 20%;
-      float: left;
-      margin: 0 0 40px;
+    .left{
+      max-width: 50%;
+    }
 
-      .item-wrapper{
-        margin: 0 15px;
-        padding: 15px;
-        border: 1px solid $e1;
-      }
+    h4{
+      text-transform: uppercase;
+    }
+  }
 
-      .title{
-        @include fontsize(18);
-        @extend %sofia-medium;
-      }
-    }// .item
-  }// .menu-items
-
-  .app-ad,
   .location-details{
     .content{
       @extend %clearfix;
-      .left{
-        text-align: center;
-      }
 
       .right{
         p{
           @include fontsize(24);
           @extend %sofia-light;
-        }
-      }
-
-      @include breakpoint($bp-600){
-        > div{
-          display: table-cell;
-          width: 50%;
-          vertical-align: middle;
-          padding: 0 15px;
         }
       }
 
@@ -54,19 +32,5 @@
 
   .location-details .content .right p{
     @include fontsize(18);
-  }
-
-  .section ul{
-    @extend %clearfix;
-    @include stagecenter(1100);
-
-    li{
-      list-style-image: url(/assets/icons/selected-mark-icon.svg);
-      float: left;
-      width: 45%;
-      margin: 8px 2% 8px 15px;
-      text-indent: 15px;
-      text-align: left;
-    }
   }
 }// .home
