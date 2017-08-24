@@ -1,5 +1,6 @@
 body,html{
   color: $off-black;
+  @include fontsize(16);
   @extend %sofia-regular;
 }
 
@@ -35,7 +36,14 @@ body,html{
 
 p{
   @extend %sofia-regular;
-  @include fontsize(16);
+  @include fontsize(18);
+
+  &.promotion-text{
+    @include fontsize(24);
+    @extend %sofia-regular;
+    letter-spacing: 0.8px;
+    color: $off-black;
+  }
 }
 
 a{
@@ -45,25 +53,30 @@ a{
 h1{
   @extend %sofia-semi-bold;
   @include fontsize(60);
+  margin: 15px 0;
 }
 
 h2{
   @extend %sofia-semi-bold;
   @include fontsize(34);
+  margin: 15px 0;
 }
 
 h3{
   @extend %sofia-semi-bold;
   @include fontsize(26);
+  margin: 15px 0;
 }
 
 h4{
   @extend %sofia-medium;
   @include fontsize(24);
+  margin: 15px 0;
 }
 
 h5{
   @include fontsize(18);
+  margin: 15px 0;
 }
 
 img{
