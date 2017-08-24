@@ -13,9 +13,9 @@
   margin-right: auto;
   padding-left: 15px;
   padding-right: 15px;
-  max-width: px-to-em($stage-width, $container-font-size);
+  max-width: #{$stage-width}px;
   .no-mediaqueries & {
-    width: px-to-em($stage-width, $container-font-size);
+    width: #{$stage-width}px;
   }
 }
 
