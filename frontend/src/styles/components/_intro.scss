@@ -1,0 +1,19 @@
+.intro-section{
+  p{
+    @include stagecenter(800);
+  }
+
+  ul{
+    @extend %clearfix;
+    @include stagecenter(1100);
+
+    li{
+      list-style-image: url(/assets/icons/selected-mark-icon.svg);
+      float: left;
+      width: 45%;
+      margin: 8px 2% 8px 15px;
+      text-indent: 15px;
+      text-align: left;
+    }
+  }
+}
