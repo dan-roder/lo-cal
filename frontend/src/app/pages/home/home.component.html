@@ -40,6 +40,10 @@
             <h4 class="title" [innerHtml]="acf?.mobile_order_title"></h4>
             <div class="body">
               <p [innerHtml]="acf?.mobile_ordering_text"></p>
+              <div class="app-downloads" *ngIf="acf?.ios_app_link && acf?.android_app_link">
+                <a [href]="acf?.ios_app_link"><img *ngIf="acf?.ios_app_store_image?.url" [src]="acf?.ios_app_store_image?.url" [alt]="acf?.ios_app_store_image?.alt" /></a>
+                <a [href]="acf?.android_app_link"><img *ngIf="acf?.android_app_store_image?.url" [src]="acf?.android_app_store_image?.url" [alt]="acf?.android_app_store_image?.alt" /></a>
+              </div>
             </div>
           </div>
         </div>
@@ -47,12 +51,13 @@
     </div><!-- /.app-ad -->
 
     <div class="section section-white location-details">
-      <h3 class="title text-center">LOCATION</h3>
-      <div class="content center">
+      <div class="content">
         <div class="left" *ngIf="acf?.location_image">
           <img [src]="acf?.location_image?.url" [alt]="acf?.location_image?.alt" />
         </div>
-        <div class="right" *ngIf="acf?.location_details" [innerHtml]="acf?.location_details"></div>
+        <div class="right" *ngIf="acf?.location_details">
+          <div class="inner-content" [innerHtml]="acf?.location_details"></div>
+        </div>
       </div>
     </div>
 
