@@ -1,25 +1,56 @@
 .home{
   .app-ad{
-    padding: 100px 0;
-    // background: url(/) TODO: add iphone image background
+    padding: 0;
+
+    .content{
+      background: url(assets/images/app-image.png) no-repeat 98% bottom;
+      padding: 150px 15px;
+    }
+
+    p{
+      @include fontsize(20);
+    }
 
     .left{
-      max-width: 50%;
+      max-width: 60%;
     }
 
     h4{
+      @include fontsize(26);
       text-transform: uppercase;
+    }
+
+    .app-downloads{
+      margin: 20px 0 0;
+
+      a:first-child{
+        margin-right: 30px;
+      }
     }
   }
 
   .location-details{
+    padding: 0;
+
     .content{
       @extend %clearfix;
+      display: flex;
+
+      .left{
+        width: 60%;
+
+        img{
+          width: 100%;
+        }
+      }
 
       .right{
-        p{
-          @include fontsize(24);
-          @extend %sofia-light;
+        width: 40%;
+        align-self: center;
+        background: $light-grey;
+
+        .inner-content{
+          padding: 20px;
         }
       }
 
