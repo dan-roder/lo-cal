@@ -50,16 +50,7 @@
       </div>
     </div><!-- /.app-ad -->
 
-    <div class="section section-white location-details">
-      <div class="content">
-        <div class="left" *ngIf="acf?.left_image">
-          <img [src]="acf?.left_image?.url" [alt]="acf?.left_image?.alt" />
-        </div>
-        <div class="right" *ngIf="acf?.right_details">
-          <div class="inner-content" [innerHtml]="acf?.right_details"></div>
-        </div>
-      </div>
-    </div>
+    <lo-cal-image-and-text [acf]="acf"></lo-cal-image-and-text>
 
   </div>
 </div><!-- /.home -->
