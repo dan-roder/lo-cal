@@ -41,6 +41,10 @@ function custom_post_type() {
         'thumbnail',
         'page-attributes'
       ),
+      'rewrite'               => array(
+        'slug' => '/',
+        'with_front' => false
+      ),
       'show_in_rest'          => true,
       'rest_base'             => 'landing_page',
       'hierarchical'          => true,
