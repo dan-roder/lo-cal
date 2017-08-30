@@ -16,11 +16,13 @@ import { HeaderComponent } from './shared/components/header/header.component';
 import { FooterComponent } from './shared/components/footer/footer.component';
 import { TitleBodyImagesComponent } from './shared/components/title-body-images/title-body-images.component';
 import { IntroSectionComponent } from './shared/components/intro-section/intro-section.component';
+import { ImageAndTextComponent } from './shared/components/image-and-text/image-and-text.component';
 
 // Services
 import { WordpressService } from './services/wp.service';
 import { WindowRef } from './utils/windowref';
 import { OurStoryComponent } from './pages/our-story/our-story.component';
+
 
 
 
@@ -33,7 +35,8 @@ import { OurStoryComponent } from './pages/our-story/our-story.component';
     OurStoryComponent,
     HeaderComponent,
     TitleBodyImagesComponent,
-    IntroSectionComponent
+    IntroSectionComponent,
+    ImageAndTextComponent
   ],
   imports: [
     BrowserModule,
