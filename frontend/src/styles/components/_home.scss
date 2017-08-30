@@ -40,16 +40,18 @@
         width: 60%;
 
         img{
+          display: block;
           width: 100%;
         }
       }
 
       .right{
         width: 40%;
-        align-self: center;
+        display: flex;
         background: $light-grey;
 
         .inner-content{
+          align-self: center;
           padding: 20px;
         }
       }

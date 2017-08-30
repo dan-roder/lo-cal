@@ -1,4 +1,6 @@
 footer{
+  background: $off-black;
+
   .content{
     padding: 20px;
     @extend %clearfix;
@@ -19,7 +21,7 @@ footer{
         a{
           @include fontsize(12);
           display: block;
-          color: $devils-grey;
+          color: $white;
           text-decoration: none;
 
           &:hover,
@@ -39,7 +41,8 @@ footer{
       border: none;
       border-bottom: 1px solid;
       color: $e1;
-      padding: 5px 0;
+      padding: 5px 0 5px 5px;
+      background: none;
     }
   }// .content
 }// footer
