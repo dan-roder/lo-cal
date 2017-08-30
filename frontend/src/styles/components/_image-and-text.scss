@@ -1,0 +1,33 @@
+.image-and-text{
+  padding: 0;
+
+  .content{
+    @extend %clearfix;
+    display: flex;
+
+    .left{
+      width: 60%;
+
+      img{
+        display: block;
+        width: 100%;
+      }
+    }
+
+    .right{
+      width: 40%;
+      display: flex;
+      background: $light-grey;
+
+      .inner-content{
+        align-self: center;
+        padding: 20px;
+      }
+    }
+
+    h3{
+      text-align: left;
+      text-transform: none;
+    }
+  }
+}// .image-and-text
