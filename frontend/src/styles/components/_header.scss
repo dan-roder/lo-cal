@@ -10,9 +10,13 @@ header{
     padding: 200px 15px;
 
     h1{
-      @include fontsize(70);
-      @extend %sofia-medium;
+      @include fontsize(60);
+      @extend %sofia-semi-bold;
+      letter-spacing: 2.7px;
       margin-top: 0;
+      text-transform: uppercase;
+      text-shadow: 0 1px 10px rgba(0, 0, 0, 0.23);
+      color: $white;
     }
 
     .home &{
