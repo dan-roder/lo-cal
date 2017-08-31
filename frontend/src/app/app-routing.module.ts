@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { MainLayoutComponent } from './layouts/main-layout/main-layout.component';
 import { HomeComponent } from './pages/home/home.component';
 import { OurStoryComponent } from './pages/our-story/our-story.component';
+import { OurFoodComponent } from './pages/our-food/our-food.component';
 
 
 const routes: Routes = [
@@ -31,6 +32,17 @@ const routes: Routes = [
       {
         path: '',
         component: OurStoryComponent
+      }
+    ]
+  },
+  {
+    path: 'our-food',
+    component: MainLayoutComponent,
+    pathMatch: 'full',
+    children: [
+      {
+        path: '',
+        component: OurFoodComponent
       }
     ]
   }
