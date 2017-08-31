@@ -1,0 +1,15 @@
+<div class="page-landing-page">
+  <lo-cal-header [featuredImage]="featuredImage" [pageContent]="pageContent"></lo-cal-header>
+
+  <lo-cal-intro-section [acf]="acf" [color]="'white'"></lo-cal-intro-section>
+
+  <lo-cal-title-body-images [acf]="acf" [color]="'grey'"></lo-cal-title-body-images>
+
+  <div class="background-section section section-white eating-well">
+    <div class="content center">
+      <div class="body" [innerHtml]="acf?.text"></div>
+    </div>
+  </div>
+
+  <lo-cal-image-and-text [acf]="acf" [color]="'grey'"></lo-cal-image-and-text>
+</div>
