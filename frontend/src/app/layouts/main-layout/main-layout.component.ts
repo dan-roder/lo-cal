@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { WordpressService } from '../../services/wp.service';
+import { WindowScrollDirective } from '../../shared/directives/window-scroll.directive';
 
 @Component({
   selector: 'lo-cal-main-layout',
