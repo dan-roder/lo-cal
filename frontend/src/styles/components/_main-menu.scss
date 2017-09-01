@@ -4,9 +4,10 @@
   left: 0;
   right: 0;
   z-index: 1;
+  background: rgba($white, .9);
 }
 .menu-container{
-  padding: 20px 60px;
+  padding: 0 60px;
 
   ul.menu{
     margin: 0;
@@ -29,9 +30,18 @@
         letter-spacing: 1px;
         text-transform: uppercase;
         text-decoration: none;
+        display: block;
+        padding: 40px 0;
+        border-bottom: 3px solid $white;
+        @include transition(padding);
+
+        .scrolled &{
+          padding: 25px 0;
+        }
 
         &:hover{
-          text-decoration: underline;
+          color: $orange-red;
+          border-bottom: 3px solid $orange-red;
         }
       }
 
@@ -48,6 +58,8 @@
           background-size: 100%;
           width: 135px;
           height: 60px;
+          border: none;
+          padding: 0;
         }
       }
     }
