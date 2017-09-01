@@ -27,6 +27,9 @@ import { HamburgerComponent } from './shared/components/hamburger/hamburger.comp
 import { WordpressService } from './services/wp.service';
 import { WindowRef } from './utils/windowref';
 
+// Directives
+import { WindowScrollDirective } from './shared/directives/window-scroll.directive';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,7 +42,8 @@ import { WindowRef } from './utils/windowref';
     IntroSectionComponent,
     ImageAndTextComponent,
     OurFoodComponent,
-    HamburgerComponent
+    HamburgerComponent,
+    WindowScrollDirective
   ],
   imports: [
     BrowserModule,
