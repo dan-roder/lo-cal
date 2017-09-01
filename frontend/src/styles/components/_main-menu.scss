@@ -1,26 +1,52 @@
 .sticky-header{
   position: fixed;
   top: 0;
-  left: 0;
-  right: 0;
+  width: 100%;
   z-index: 1;
   background: rgba($white, .9);
 }
 .menu-container{
-  padding: 0 60px;
+  @include transition(padding);
+  padding: 23px;
+
+  .scrolled &{
+    padding: 10px 23px;
+  }
+
+  @include breakpoint($bp-768){
+    padding: 0 60px;
+
+    .scrolled &{
+      padding: 0 60px;
+    }
+  }
 
   ul.menu{
-    margin: 0;
     padding: 0;
     list-style: none;
+    width: 135px;
+    margin: 0 auto;
+
+    @include breakpoint($bp-768){
+      width: auto;
+    }
 
     li{
-      display: inline-block;
       margin-left: 45px;
       vertical-align: middle;
+      display: none;
+
+      @include breakpoint($bp-768){
+        display: inline-block;
+      }
 
       &:first-child{
         margin: 0;
+        display: block;
+
+        @include breakpoint($bp-768){
+          display: inline-block;
+        }
       }
 
       a{
@@ -39,7 +65,9 @@
           padding: 25px 0;
         }
 
-        &:hover{
+        &:hover,
+        &:focus,
+        &.active{
           color: $orange-red;
           border-bottom: 3px solid $orange-red;
         }

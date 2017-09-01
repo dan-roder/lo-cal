@@ -1,14 +1,13 @@
 .hamburger{
   width: 24px;
   height: 16px;
-  //position: absolute;
+  position: absolute;
   transform: rotate(0deg);
   @include transition();
   cursor: pointer;
   top: 50%;
-  left: 0;
   z-index: 55;
-  margin-top: -11px;
+  margin-top: -13px;
 
   @include breakpoint($bp-768){
     display: none;
