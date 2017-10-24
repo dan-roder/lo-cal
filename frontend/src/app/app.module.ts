@@ -15,6 +15,7 @@ import { MainLayoutComponent } from './layouts/main-layout/main-layout.component
 import { HomeComponent } from './pages/home/home.component';
 import { OurStoryComponent } from './pages/our-story/our-story.component';
 import { OurFoodComponent } from './pages/our-food/our-food.component';
+import { MenuPageComponent } from './pages/menu/menu.component';
 
 import { HeaderComponent } from './shared/components/header/header.component';
 import { FooterComponent } from './shared/components/footer/footer.component';
@@ -43,7 +44,8 @@ import { WindowScrollDirective } from './shared/directives/window-scroll.directi
     ImageAndTextComponent,
     OurFoodComponent,
     HamburgerComponent,
-    WindowScrollDirective
+    WindowScrollDirective,
+    MenuPageComponent
   ],
   imports: [
     BrowserModule,
