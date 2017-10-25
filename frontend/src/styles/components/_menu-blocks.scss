@@ -1,0 +1,28 @@
+.menu-categories{
+  .menu-items{
+    @extend %clearfix;
+
+    .item{
+      float: left;
+      width: 50%;
+
+      @include breakpoint($bp-500){
+        width: 33.3333%;
+      }
+
+      @include breakpoint($bp-660){
+        width: 25%;
+      }
+
+      @include breakpoint($bp-860){
+        width: 20%;
+      }
+
+      .item-wrapper{
+        padding: 20px;
+        border: 1px solid $e1;
+        margin: 15px;
+      }
+    }
+  }
+}
