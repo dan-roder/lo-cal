@@ -7,7 +7,7 @@ header{
   }
 
   .header-content{
-    padding: 200px 15px;
+    padding: 200px 0;
 
     h1{
       @include fontsize(60);
@@ -45,5 +45,6 @@ header{
   .content{
     background-size: cover;
     background-position: center;
+    position: relative;
   }
 }// header
