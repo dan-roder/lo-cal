@@ -1,0 +1,42 @@
+.menu-categories{
+  .content{
+    margin: 0 -15px;
+  }
+}
+
+.menu-card{
+  float: left;
+  width: 25%;
+
+  .card-wrapper{
+    margin: 0 15px;
+    border: 1px solid $e1;
+  }
+
+  img{
+    display: block;
+  }
+
+  .details{
+    padding: 5px 10px;
+    border-top: 1px solid $e1;
+
+    .title{
+      text-transform: uppercase;
+      @include fontsize(18);
+      @extend %sofia-bold;
+    }
+
+    .description{
+      p{
+        @include fontsize(12);
+        @extend %sofia-light;
+        margin: 5px 0;
+      }
+    }
+
+    .fine-details{
+      @include fontsize(12);
+    }
+  }// .details
+}
