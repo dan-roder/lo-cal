@@ -1,9 +1,13 @@
 .menu-menu{
   background: $white;
+  position: absolute;
+  bottom: 10%;
+  left: 0;
+  right: 0;
 
   ul.menu{
     margin: 0;
-    padding: 0;
+    padding: 0 15px;
     text-align: left;
     list-style: none;
 
@@ -14,6 +18,13 @@
 
       a{
         display: block;
+        padding: 12px 8px;
+        text-decoration: none;
+        border-bottom: 2px solid $white;
+
+        &:hover{
+          border-bottom: 2px solid $red-hover;
+        }
       }
     }
   }
