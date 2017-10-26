@@ -5,16 +5,27 @@
 }
 
 .menu-card{
-  float: left;
-  width: 25%;
+  @include breakpoint($bp-500){
+    float: left;
+    width: 50%;
+  }
+
+  @include breakpoint($bp-768){
+    width: 33.3333%;
+  }
+
+  @include breakpoint($bp-940){
+    width: 25%;
+  }
 
   .card-wrapper{
-    margin: 0 15px;
+    margin: 0 15px 30px;
     border: 1px solid $e1;
   }
 
   img{
     display: block;
+    width: 100%;
   }
 
   .details{
@@ -37,6 +48,21 @@
 
     .fine-details{
       @include fontsize(12);
+      margin: 10px 0 0;
+      display: flex;
+      justify-content: space-between;
+
+      .allergens{
+        .allergen{
+          display: inline-block;
+          text-align: center;
+          background: $e1;
+          border-radius: 50%;
+          width: 20px;
+          height: 20px;
+          margin: 0 1px;
+        }
+      }
     }
   }// .details
 }
