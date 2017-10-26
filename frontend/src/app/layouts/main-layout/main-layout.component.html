@@ -2,7 +2,7 @@
   <div class="sticky-header">
     <div class="menu-container">
       <lo-cal-hamburger></lo-cal-hamburger>
-      <ul class="menu">
+      <ul class="menu main-menu">
         <li>
           <h1 class="page-title" *ngIf="currentUrl?.url == '/'; else regularLink"><a routerLink="/"><span class="visuallyhidden">Lo•Cal Kitchen</span></a></h1>
           <ng-template #regularLink>
@@ -11,6 +11,14 @@
         </li>
         <li *ngFor="let item of mainMenuLinks" [attr.class]="item.classes ? item.classes : null">
           <a routerLink="/{{ item.object_slug }}" routerLinkActive="active">{{ item.title }}</a>
+        </li>
+      </ul>
+      <ul class="cart-menu menu">
+        <li>
+          <a href="#">ACCOUNT</a>
+        </li>
+        <li>
+          <a href="#">BAG</a>
         </li>
       </ul>
     </div>
