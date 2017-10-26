@@ -6,6 +6,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { OurStoryComponent } from './pages/our-story/our-story.component';
 import { OurFoodComponent } from './pages/our-food/our-food.component';
 import { MenuPageComponent } from './pages/menu/menu.component';
+import { MenuCustomizeComponent } from './pages/menu-customize/menu-customize.component';
 
 
 const routes: Routes = [
@@ -22,24 +23,25 @@ const routes: Routes = [
   },
   {
     path: 'home',
-    redirectTo: '',
-    pathMatch: 'full'
+    redirectTo: ''
   },
   {
     path: 'menu',
     component: MainLayoutComponent,
-    pathMatch: 'full',
     children: [
       {
         path: '',
         component: MenuPageComponent
+      },
+      {
+        path: ':type',
+        component: MenuCustomizeComponent
       }
     ]
   },
   {
     path: 'our-story',
     component: MainLayoutComponent,
-    pathMatch: 'full',
     children: [
       {
         path: '',
@@ -50,7 +52,6 @@ const routes: Routes = [
   {
     path: 'our-food',
     component: MainLayoutComponent,
-    pathMatch: 'full',
     children: [
       {
         path: '',
