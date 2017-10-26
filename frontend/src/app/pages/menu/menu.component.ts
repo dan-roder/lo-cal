@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { WordpressService } from '../../services/wp.service';
 import { AutoUnsubscribe } from "ngx-auto-unsubscribe";
 
@@ -23,6 +23,10 @@ export class MenuPageComponent implements OnInit {
         this.wpService.getMedia(page.featured_media).subscribe(media => this.featuredImage = media);
       }
     });
+  }
+
+  ngOnDestroy(){
+
   }
 
 }
