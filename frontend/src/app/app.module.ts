@@ -12,10 +12,12 @@ import { Config } from './utils/constants';
 import { AppComponent } from './app.component';
 import { MainLayoutComponent } from './layouts/main-layout/main-layout.component';
 
+// Pages
 import { HomeComponent } from './pages/home/home.component';
 import { OurStoryComponent } from './pages/our-story/our-story.component';
 import { OurFoodComponent } from './pages/our-food/our-food.component';
 import { MenuPageComponent } from './pages/menu/menu.component';
+import { MenuCustomizeComponent } from './pages/menu-customize/menu-customize.component';
 
 import { HeaderComponent } from './shared/components/header/header.component';
 import { FooterComponent } from './shared/components/footer/footer.component';
@@ -45,7 +47,8 @@ import { WindowScrollDirective } from './shared/directives/window-scroll.directi
     OurFoodComponent,
     HamburgerComponent,
     WindowScrollDirective,
-    MenuPageComponent
+    MenuPageComponent,
+    MenuCustomizeComponent
   ],
   imports: [
     BrowserModule,
