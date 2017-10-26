@@ -27,10 +27,6 @@
     width: 135px;
     margin: 0 auto;
 
-    @include breakpoint($bp-768){
-      width: auto;
-    }
-
     li{
       margin-left: 45px;
       vertical-align: middle;
@@ -91,5 +87,19 @@
         }
       }
     }
-  }
+
+    &.main-menu{
+      @include breakpoint($bp-768){
+        width: auto;
+        float: left;
+      }
+    }
+
+    &.cart-menu{
+      @include breakpoint($bp-768){
+        width: auto;
+        float: right;
+      }
+    }
+  }// ul.menu
 }
