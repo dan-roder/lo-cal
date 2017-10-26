@@ -33,10 +33,16 @@ const routes: Routes = [
         path: '',
         component: MenuPageComponent
       },
+    ]
+  },
+  {
+    path: 'menu/:item',
+    component: MainLayoutComponent,
+    children: [
       {
         path: ':type',
         component: MenuCustomizeComponent
-      }
+      },
     ]
   },
   {
