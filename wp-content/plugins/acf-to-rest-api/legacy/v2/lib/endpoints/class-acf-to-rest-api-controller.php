@@ -41,11 +41,11 @@ if ( ! class_exists( 'ACF_To_REST_API_Controller' ) ) {
 
 		protected function get_rest_base( $type ) {
 			global $wp_post_types;
-			
+
 			$default = apply_filters( 'acf/rest_api/default_rest_base', ! in_array( $type, array( 'post', 'page' ) ), $type );
 
-			if ( $default && isset( $wp_post_types[$type] ) && isset( $wp_post_types[$type]->rest_base ) ) {
-				return $wp_post_types[$type]->rest_base;
+			if ( $default && isset( $wp_post_types[ $type ] ) && isset( $wp_post_types[ $type ]->rest_base ) ) {
+				return $wp_post_types[ $type ]->rest_base;
 			}
 
 			return $type;
@@ -58,11 +58,11 @@ if ( ! class_exists( 'ACF_To_REST_API_Controller' ) ) {
 		public function get_item_permissions_check( $request ) {
 			return apply_filters( 'acf/rest_api/item_permissions/get', true, $request, $this->type );
 		}
-		
+
 		public function rest_prepare( $response, $post, $request ) {
 			return $this->get_fields( $request, $response, $post );
 		}
-		
+
 		public function update_item_permissions_check( $request ) {
 			return apply_filters( 'acf/rest_api/item_permissions/update', current_user_can( 'edit_posts' ), $request, $this->type );
 		}
@@ -72,8 +72,8 @@ if ( ! class_exists( 'ACF_To_REST_API_Controller' ) ) {
 
 			if ( is_array( $item ) && count( $item ) > 0 ) {
 				foreach ( $item['data'] as $key => $value ) {
-					if ( isset( $item['fields'][$key]['key'] ) ) {
-						$field = $item['fields'][$key];
+					if ( isset( $item['fields'][ $key ]['key'] ) ) {
+						$field = $item['fields'][ $key ];
 						if ( function_exists( 'acf_update_value' ) ) {
 							acf_update_value( $value, $item['id'], $field );
 						} elseif ( function_exists( 'update_field' ) ) {
@@ -86,7 +86,7 @@ if ( ! class_exists( 'ACF_To_REST_API_Controller' ) ) {
 
 				return new WP_REST_Response( $this->get_fields( $request ), 200 );
 			}
-			
+
 			return new WP_Error( 'cant_update_item', __( 'Cannot update item', 'acf-to-rest-api' ), array( 'status' => 500 ) );
 		}
 
@@ -114,8 +114,8 @@ if ( ! class_exists( 'ACF_To_REST_API_Controller' ) ) {
 						$fields = $this->get_field_objects( $this->id );
 
 						if ( is_array( $fields ) && ! empty( $fields ) ) {
-							if ( $field && isset( $data[$field] ) ) {
-								$data = array( $field => $data[$field] );
+							if ( $field && isset( $data[ $field ] ) ) {
+								$data = array( $field => $data[ $field ] );
 							}
 
 							$item = array(
@@ -142,7 +142,7 @@ if ( ! class_exists( 'ACF_To_REST_API_Controller' ) ) {
 					$this->id = $object['ID'];
 				}
 			} elseif ( is_object( $object ) ) {
-				if( $object instanceof WP_REST_Response ) {
+				if ( $object instanceof WP_REST_Response ) {
 					return $this->get_id( $object->get_data() );
 				} elseif ( $object instanceof WP_REST_Request ) {
 					$this->id = $object->get_param( 'id' );
@@ -162,8 +162,8 @@ if ( ! class_exists( 'ACF_To_REST_API_Controller' ) ) {
 
 		protected function format_id( $object ) {
 			$this->get_id( $object );
-			
-			switch( $this->type ) {
+
+			switch ( $this->type ) {
 				case 'comment' :
 					$this->id = 'comment_' . $this->id;
 					break;
@@ -220,7 +220,7 @@ if ( ! class_exists( 'ACF_To_REST_API_Controller' ) ) {
 			} else {
 				$data['acf'] = array();
 			}
-			
+
 			if ( $swap ) {
 				$response->data = $data;
 				$data = $response;
@@ -237,14 +237,14 @@ if ( ! class_exists( 'ACF_To_REST_API_Controller' ) ) {
 			$fields     = array();
 			$fields_tmp = array();
 
-			if ( function_exists( 'acf_get_field_groups' ) && function_exists( 'acf_get_fields' ) && function_exists( 'acf_extract_var' ) ) {				
+			if ( function_exists( 'acf_get_field_groups' ) && function_exists( 'acf_get_fields' ) && function_exists( 'acf_extract_var' ) ) {
 				$field_groups = acf_get_field_groups( array( 'post_id' => $id ) );
 
 				if ( is_array( $field_groups ) && ! empty( $field_groups ) ) {
 					foreach ( $field_groups as $field_group ) {
 						$field_group_fields = acf_get_fields( $field_group );
 						if ( is_array( $field_group_fields ) && ! empty( $field_group_fields ) ) {
-							foreach( array_keys( $field_group_fields ) as $i ) {
+							foreach ( array_keys( $field_group_fields ) as $i ) {
 								$fields_tmp[] = acf_extract_var( $field_group_fields, $i );
 							}
 						}
@@ -263,7 +263,7 @@ if ( ! class_exists( 'ACF_To_REST_API_Controller' ) ) {
 				$acfs = apply_filters( 'acf/get_field_groups', array() );
 
 				if ( is_array( $acfs ) && ! empty( $acfs ) && is_array( $field_groups ) && ! empty( $field_groups ) ) {
-					foreach( $acfs as $acf ) {
+					foreach ( $acfs as $acf ) {
 						if ( in_array( $acf['id'], $field_groups ) ) {
 							$fields_tmp = array_merge( $fields_tmp, apply_filters( 'acf/field_group/get_fields', array(), $acf['id'] ) );
 						}
@@ -272,9 +272,9 @@ if ( ! class_exists( 'ACF_To_REST_API_Controller' ) ) {
 			}
 
 			if ( is_array( $fields_tmp ) && ! empty( $fields_tmp ) ) {
-				foreach( $fields_tmp as $field ) {
+				foreach ( $fields_tmp as $field ) {
 					if ( is_array( $field ) && isset( $field['name'] ) ) {
-						$fields[$field['name']] = $field;
+						$fields[ $field['name'] ] = $field;
 					}
 				}
 			}

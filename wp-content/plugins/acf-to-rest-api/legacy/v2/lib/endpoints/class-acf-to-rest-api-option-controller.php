@@ -10,7 +10,7 @@ if ( ! class_exists( 'ACF_To_REST_API_Option_Controller' ) ) {
 			parent::__construct( $type );
 			$this->rest_base = 'options';
 		}
-		
+
 		public function register_routes() {
 			register_rest_route( $this->namespace, '/' . $this->rest_base . '/?(?P<field>[\w\-\_]+)?', array(
 				array(

@@ -31,14 +31,14 @@ if ( ! class_exists( 'ACF_To_REST_API_Term_Controller' ) ) {
 
 		protected function get_rest_base( $request ) {
 			global $wp_taxonomies;
-			
+
 			$taxonomy = false;
 			if ( $request instanceof WP_REST_Request ) {
-				$taxonomy = $request->get_param( 'taxonomy' );				
+				$taxonomy = $request->get_param( 'taxonomy' );
 			}
 
 			if ( $taxonomy && ! array_key_exists( $taxonomy, $wp_taxonomies ) ) {
-				foreach( $wp_taxonomies as $tax_key => $tax_value ) {
+				foreach ( $wp_taxonomies as $tax_key => $tax_value ) {
 					if ( isset( $tax_value->rest_base ) && $taxonomy == $tax_value->rest_base ) {
 						$request->set_param( 'taxonomy', $tax_key );
 						return $tax_key;
@@ -50,11 +50,9 @@ if ( ! class_exists( 'ACF_To_REST_API_Term_Controller' ) ) {
 		}
 
 		protected function show( $object ) {
-			global $wp_taxonomies;
-			
+			global $wp_taxonomies;	
 			$taxonomy = $this->get_rest_base( $object );
-			
-			return $taxonomy && isset( $wp_taxonomies[$taxonomy]->show_in_rest ) && $wp_taxonomies[$taxonomy]->show_in_rest;
+			return $taxonomy && isset( $wp_taxonomies[ $taxonomy ]->show_in_rest ) && $wp_taxonomies[ $taxonomy ]->show_in_rest;
 		}
 	}
 }
