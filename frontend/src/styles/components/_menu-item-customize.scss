@@ -1,0 +1,31 @@
+.page-item-detail{
+  @include stagecenter();
+  margin: 135px auto 0;
+
+  .menu-item-header{
+    position: relative;
+    margin: 0 0 30px;
+
+    .breadcrumb{
+      position: absolute;
+
+      ul{
+        li{
+          display: inline-block;
+          list-style: none;
+          @include fontsize(14);
+          margin: 0 2px 0 0;
+
+          &.active{
+            @extend %sofia-semi-bold;
+          }// li.active
+
+          a{
+            margin: 0 5px 0 0;
+            display: inline-block;
+          }
+        }
+      }
+    }
+  }// .menu-item-header
+}// .page-item-detail
