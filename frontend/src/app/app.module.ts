@@ -25,6 +25,7 @@ import { TitleBodyImagesComponent } from './shared/components/title-body-images/
 import { IntroSectionComponent } from './shared/components/intro-section/intro-section.component';
 import { ImageAndTextComponent } from './shared/components/image-and-text/image-and-text.component';
 import { HamburgerComponent } from './shared/components/hamburger/hamburger.component';
+import { BagComponent } from './shared/components/bag/bag.component';
 
 // Services
 import { WordpressService } from './services/wp.service';
@@ -48,7 +49,8 @@ import { WindowScrollDirective } from './shared/directives/window-scroll.directi
     HamburgerComponent,
     WindowScrollDirective,
     MenuPageComponent,
-    MenuCustomizeComponent
+    MenuCustomizeComponent,
+    BagComponent
   ],
   imports: [
     BrowserModule,
