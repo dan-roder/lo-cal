@@ -1,0 +1,41 @@
+.bag-overlay{
+  position: fixed;
+  top: 106px;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background: rgba(0,0,0,.6);
+  @include transition();
+
+  .scrolled &{
+    top: 76px;
+  }
+
+  .bag-content-wrapper{
+    background: $white;
+    height: 100%;
+    position: absolute;
+    width: 45%;
+    right: 0;
+    bottom: 0;
+    box-sizing: border-box;
+    padding: 20px;
+  }// .bag-content-wrapper
+
+  .bag-header{
+    display: flex;
+    justify-content: space-between;
+    padding: 30px 0;
+
+    .close{
+      position: relative;
+
+      span{
+        background: $black;
+        width: 15px;
+        height: 3px;
+        display: inline-block;
+      }
+    }
+  }
+}// .bag-overlay
