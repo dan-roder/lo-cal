@@ -98,7 +98,9 @@ img{
 }
 
 .red-button{
-  a{
+  a,
+  button{
+    border: none;
     @extend %red-button;
     @include transition();
 
