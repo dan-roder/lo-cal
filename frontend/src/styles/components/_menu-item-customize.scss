@@ -28,4 +28,174 @@
       }
     }
   }// .menu-item-header
+
+  .customization-container{
+    @extend %clearfix;
+
+    .left{
+      float: left;
+      width: 45%;
+      margin-right: 2%;
+    }
+
+    .right{
+      float: right;
+      width: 45%;
+      margin-left: 2%;
+    }
+
+    .customization-category{
+      background: $white;
+      box-shadow: 0 0 5px #000;
+      margin: 0 0 20px;
+
+      .header{
+        padding: 30px 20px;
+        display: grid;
+        grid-template-columns: 2fr 2fr .5fr;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid $e1;
+
+        span{
+          &.title{
+            text-transform: uppercase;
+            @extend %sofia-semi-bold;
+            @include fontsize(20);
+          }// span.title
+        }// span
+      }// .header
+
+      .options{
+        .option{
+          padding: 20px;
+          border-top: 1px solid $e1;
+          display: grid;
+          grid-template-columns: 2fr 2fr .5fr;
+          justify-content: space-between;
+          align-items: center;
+
+          &:first-child{
+            border-top: none;
+          }
+
+          .selected{
+            display: inline-block;
+            border-radius: 50%;
+            border: 1px solid $e1;
+            width: 45px;
+            height: 45px;
+            cursor: pointer;
+          }
+        }// .option
+      }// .options
+
+      .more-options{
+        text-align: center;
+        border-top: 1px solid $e1;
+
+        span{
+          display: inline-block;
+          width: 6px;
+          height: 6px;
+          background: $devils-grey;
+          margin: 0 2px;
+          border-radius: 50%;
+        }
+      }
+    }// .customization-category
+  }// .customization-container
+
+  .final-product{
+    padding: 20px;
+    background: $white;
+    box-shadow: 0 0 5px #000;
+
+    .title{
+      @extend %sofia-semi-bold;
+      @include fontsize(26);
+      text-transform: uppercase;
+    }
+
+    .ingredients{
+      @include fontsize(18);
+      @extend %sofia-light;
+      margin: 15px 0;
+    }
+
+    .fine-details{
+      @include fontsize(18);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      .allergens{
+        span{
+          background: $e1;
+          border-radius: 50%;
+          width: 35px;
+          height: 30px;
+          padding: 5px 0 0;
+          display: inline-block;
+          text-align: center;
+        }
+      }
+    }
+  }// .final-product
+
+  .special-instructions{
+    margin: 20px 0 0;
+    padding: 15px 20px;
+    background: $e1;
+
+    label{
+      display: block;
+      @extend %sofia-light;
+      font-style: italic;
+    }
+
+    textarea{
+      display: block;
+      width: 100%;
+      border: none;
+      border-bottom: 1px solid $devils-grey;
+      background: $e1;
+      margin: 5px 0 0;
+    }
+  }// .special-instructions
+
+  .quantity-wrapper{
+    margin: 20px 0 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .text{
+      @include fontsize(18);
+    }
+
+    .quantity-changer{
+      @include fontsize(24);
+
+      span{
+        margin: 0 20px;
+      }
+
+      .plus,
+      .minus{
+        color: $orange-red;
+        @include fontsize(30);
+        cursor: pointer;
+      }
+    }// .quantity-changer
+  }
+
+  .add-button{
+    margin: 20px 0 0;
+
+    button{
+      display: block;
+      width: 100%;
+    }
+  }
 }// .page-item-detail
