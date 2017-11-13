@@ -66,3 +66,56 @@
     }
   }// .details
 }
+
+.item-detail-card{
+  padding: 20px;
+  background: $white;
+  width: 80%;
+  display: grid;
+  grid-template-rows: repeat(3, 1fr);
+
+  .title-container{
+    display: flex;
+    justify-content: space-between;
+
+    .quantity{
+      @include fontsize(22);
+    }
+
+    .edit{
+      text-decoration: none;
+      @include fontsize(18);
+    }
+  }
+
+  .title{
+    @extend %sofia-semi-bold;
+    @include fontsize(26);
+    text-transform: uppercase;
+  }
+
+  .ingredients{
+    @include fontsize(18);
+    @extend %sofia-light;
+    margin: 0;
+  }
+
+  .fine-details{
+    @include fontsize(18);
+    display: flex;
+    justify-content: space-between;
+    align-self: flex-end;
+
+    .allergens{
+      span{
+        background: $e1;
+        border-radius: 50%;
+        width: 35px;
+        height: 30px;
+        padding: 5px 0 0;
+        display: inline-block;
+        text-align: center;
+      }
+    }
+  }
+}// .final-product
