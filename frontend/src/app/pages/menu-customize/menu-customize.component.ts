@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 export class MenuCustomizeComponent implements OnInit {
   private lettuceChoices: number = 0;
   private maxLettuceChoices: number = 2;
-  private quantity: number = 0;
+  public quantity: number = 0;
 
   constructor() { }
 
