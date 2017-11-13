@@ -87,4 +87,25 @@
       }
     }
   }// .bag-header
+
+  .bag-items{
+    .item{
+      display: flex;
+      border: 1px solid $e1;
+
+      .image{
+        width: 20%;
+
+        img{
+          width: 100%;
+          display: block;
+        }
+      }// .image
+
+      .details{
+        padding: 15px;
+        width: 80%;
+      }
+    }// .item
+  }// .bag-items
 }// .bag-overlay
