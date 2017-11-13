@@ -66,9 +66,9 @@ export class WordpressService {
       .map((res: Response) => res.json());
   }
 
-  getPage2(id) {
-    this.httpClient.get(this.config.wordpressApiUrl + `/wp/v2/pages/${id}`)
-      .map((res) => {return res});
+  getPage2(id): Observable<any> {
+    return this.httpClient.get(this.config.wordpressApiUrl + `/wp/v2/pages/${id}`);
+      //.map((res) => {return res});
   }
 
   getMenus() {
