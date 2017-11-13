@@ -1,5 +1,7 @@
 <div class="bag-overlay">
   <div class="bag-content-wrapper">
+
+    <div class="bag-top">
       <div class="bag-header">
         <div class="back">
           <span class="back-1"></span>
@@ -17,8 +19,11 @@
           <div class="left image">
             <img src="http://via.placeholder.com/160x240" alt="">
           </div>
-          <div class="right details">
-            <div class="title">Athena Bowl</div>
+          <div class="item-detail-card">
+            <div class="title-container">
+                <div class="title">Athena Bowl <span class="quantity">x 1</span></div>
+                <a href="#" class="edit">Edit</a>
+            </div>
             <div class="ingredients">
               Romaine, grilled shrimp, cucumber, tomato, kalamata olives, feta, chickpeas, greek dressing
             </div>
@@ -31,9 +36,37 @@
                 <span class="allergen">V</span>
               </span>
             </div>
-          </div><!-- /.right.details -->
+          </div><!-- /.item-detail-card -->
         </div>
-      </div>
+      </div><!-- /.bag-items -->
+    </div><!-- /.bag-top -->
+
+
+    <div class="bag-bottom">
+      <div class="cart-prices">
+        <div class="price-wrapper">
+          <div class="flex-between subtotal">
+            <span class="label">Subtotal</span>
+            <span class="price">$22.88</span>
+          </div>
+          <div class="flex-between tax">
+            <span class="label">Tax</span>
+            <span class="price">$3.00</span>
+          </div>
+          <div class="flex-between total">
+            <span class="label">Total</span>
+            <span class="price">$25.88</span>
+          </div>
+          <div class="checkout-button red-button">
+            <button type="submit">Checkout as Guest</button>
+          </div>
+          <div class="login-options">
+            <div class="login">LOG IN</div>
+            <div class="signup">SIGN UP</div>
+          </div>
+        </div>
+      </div><!-- /.cart-prices -->
+    </div><!-- /.bag-bottom -->
 
   </div>
 </div>
