@@ -17,7 +17,7 @@ export class HomeComponent implements OnInit {
   constructor(private wpService: WordpressService) { }
 
   ngOnInit() {
-    this.wpService.getPage(4).subscribe(page => {
+    this.wpService.getPage2(4).subscribe(page => {
       this.pageContent = page;
       this.acf = page.acf;
       console.log(this.acf);
