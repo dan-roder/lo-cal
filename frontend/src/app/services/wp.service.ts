@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
+import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Config } from '../utils/constants';
 import { Observable } from 'rxjs/Observable';
 
@@ -8,7 +9,7 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class WordpressService {
 
-  constructor(private http: Http, private config: Config) {}
+  constructor(private http: Http, private config: Config, private httpClient: HttpClient) {}
 
   login(data) {
     let url = this.config.wordpressApiUrl + '/jwt-auth/v1/token';
@@ -63,6 +64,11 @@ export class WordpressService {
   getPage(id): Observable<any> {
     return this.http.get(this.config.wordpressApiUrl + `/wp/v2/pages/${id}`)
       .map((res: Response) => res.json());
+  }
+
+  getPage2(id) {
+    this.httpClient.get(this.config.wordpressApiUrl + `/wp/v2/pages/${id}`)
+      .map((res) => {return res});
   }
 
   getMenus() {
