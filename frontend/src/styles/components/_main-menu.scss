@@ -45,7 +45,8 @@
         }
       }
 
-      a{
+      a,
+      span{
         @extend %sofia-regular;
         @include fontsize(16);
         color: $off-black;
@@ -56,6 +57,7 @@
         padding: 40px 0;
         border-bottom: 3px solid $white;
         @include transition(padding);
+        cursor: pointer;
 
         .scrolled &{
           padding: 25px 0;
