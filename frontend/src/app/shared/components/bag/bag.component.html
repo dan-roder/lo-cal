@@ -1,4 +1,4 @@
-<div class="bag-overlay">
+<div class="bag-overlay" [ngClass]="state">
   <div class="bag-content-wrapper" [@hideShowBag]='state'>
 
     <div class="bag-top">
@@ -15,6 +15,7 @@
       </div>
 
       <div class="bag-items">
+
         <div class="item">
           <div class="left image">
             <img src="http://via.placeholder.com/160x240" alt="">
@@ -37,7 +38,54 @@
               </span>
             </div>
           </div><!-- /.item-detail-card -->
-        </div>
+        </div><!-- /.item -->
+        <div class="item">
+          <div class="left image">
+            <img src="http://via.placeholder.com/160x240" alt="">
+          </div>
+          <div class="item-detail-card">
+            <div class="title-container">
+                <div class="title">Athena Bowl <span class="quantity">x 1</span></div>
+                <a href="#" class="edit">Edit</a>
+            </div>
+            <div class="ingredients">
+              Romaine, grilled shrimp, cucumber, tomato, kalamata olives, feta, chickpeas, greek dressing
+            </div>
+            <div class="fine-details">
+              <span class="price">$12.99</span>
+              <span class="calories">360 cal</span>
+              <span class="allergens">
+                <span class="allergen">VG</span>
+                <span class="allergen">PL</span>
+                <span class="allergen">V</span>
+              </span>
+            </div>
+          </div><!-- /.item-detail-card -->
+        </div><!-- /.item -->
+        <div class="item">
+            <div class="left image">
+              <img src="http://via.placeholder.com/160x240" alt="">
+            </div>
+            <div class="item-detail-card">
+              <div class="title-container">
+                  <div class="title">Athena Bowl <span class="quantity">x 1</span></div>
+                  <a href="#" class="edit">Edit</a>
+              </div>
+              <div class="ingredients">
+                Romaine, grilled shrimp, cucumber, tomato, kalamata olives, feta, chickpeas, greek dressing
+              </div>
+              <div class="fine-details">
+                <span class="price">$12.99</span>
+                <span class="calories">360 cal</span>
+                <span class="allergens">
+                  <span class="allergen">VG</span>
+                  <span class="allergen">PL</span>
+                  <span class="allergen">V</span>
+                </span>
+              </div>
+            </div><!-- /.item-detail-card -->
+          </div><!-- /.item -->
+
       </div><!-- /.bag-items -->
     </div><!-- /.bag-top -->
 
