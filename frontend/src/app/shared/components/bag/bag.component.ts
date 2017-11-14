@@ -32,4 +32,8 @@ export class BagComponent implements OnInit {
     this.bagState.emit(this.state);
   }
 
+  nextStep(){
+
+  }
+
 }
