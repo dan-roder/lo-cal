@@ -1,5 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { trigger,state,style,transition,animate,keyframes } from '@angular/animations';
+import { stagger } from '@angular/animations/src/animation_metadata';
 
 @Component({
   selector: 'lo-cal-bag',
@@ -14,11 +15,12 @@ import { trigger,state,style,transition,animate,keyframes } from '@angular/anima
       })),
       transition('invisible => visible', animate('300ms ease-in-out')),
       transition('visible => invisible', animate('300ms ease-in-out')),
-    ]),
+    ])
   ]
 })
 export class BagComponent implements OnInit {
   @Input() state: string = 'invisible';
+  @Output() bagState: EventEmitter<string> = new EventEmitter<string>();
 
   constructor() { }
 
@@ -26,9 +28,8 @@ export class BagComponent implements OnInit {
   }
 
   toggleBagState(){
-    // Need to emit event that close button within this component was clicked
-    //  so bag link/main layout component knows it was closed
     this.state = (this.state === 'invisible') ? 'visible' : 'invisible';
+    this.bagState.emit(this.state);
   }
 
 }
