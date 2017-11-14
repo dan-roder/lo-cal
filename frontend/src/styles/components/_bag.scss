@@ -5,7 +5,14 @@
   left: 0;
   bottom: 0;
   background: rgba(0,0,0,.6);
+  opacity: 0;
+  pointer-events: none;
   @include transition();
+
+  &.visible{
+    opacity: 1;
+    pointer-events: auto;
+  }
 
   .scrolled &{
     top: 76px;
@@ -23,6 +30,7 @@
     display: grid;
     grid-auto-flow: row;
     align-items: flex-start;
+    overflow-y: scroll;
 
     .bag-top{
       align-self: flex-start;
@@ -104,6 +112,7 @@
     .item{
       display: flex;
       border: 1px solid $e1;
+      margin: 0 0 15px;
 
       .image{
         width: 20%;
