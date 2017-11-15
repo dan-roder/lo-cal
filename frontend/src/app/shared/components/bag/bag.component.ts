@@ -21,6 +21,7 @@ import { stagger } from '@angular/animations/src/animation_metadata';
 export class BagComponent implements OnInit {
   @Input() state: string = 'invisible';
   @Output() bagState: EventEmitter<string> = new EventEmitter<string>();
+  public stepState: number = 1;
 
   constructor() { }
 
@@ -33,7 +34,12 @@ export class BagComponent implements OnInit {
   }
 
   nextStep(){
+    this.stepState++;
+    console.log(this.stepState);
+  }
 
+  previousStep(){
+    this.stepState = (this.stepState > 0) ? (this.stepState - 1) : this.stepState;
   }
 
 }
