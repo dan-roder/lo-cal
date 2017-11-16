@@ -97,6 +97,22 @@ img{
   text-align: right;
 }
 
+.light{
+  @extend %sofia-light;
+}
+
+.medium{
+  @extend %sofia-medium;
+}
+
+.semi-bold{
+  @extend %sofia-semi-bold;
+}
+
+.bold{
+  @extend %sofia-bold;
+}
+
 .red-button{
   a,
   button{
