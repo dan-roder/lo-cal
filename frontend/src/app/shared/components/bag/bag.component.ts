@@ -13,8 +13,7 @@ import { stagger } from '@angular/animations/src/animation_metadata';
       state('visible', style({
           right: '0px',
       })),
-      transition('invisible => visible', animate('300ms ease-in-out')),
-      transition('visible => invisible', animate('300ms ease-in-out')),
+      transition('invisible <=> visible', animate('300ms ease-in-out'))
     ])
   ]
 })
