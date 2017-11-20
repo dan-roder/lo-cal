@@ -6,10 +6,6 @@
           <div class="checkout-top">
             <div class="checkout-header">
               <div class="back">
-                <div class="back-button">
-                  <span class="back-1"></span>
-                  <span class="back-2"></span>
-                </div>
               </div>
               <div class="checkout-title">My Bag</div>
               <div class="close" (click)="toggleBagState()">
@@ -22,9 +18,10 @@
 
               <div class="item">
                 <div class="left image">
-                  <img src="http://via.placeholder.com/160x240" alt="">
+                  <img src="http://via.placeholder.com/160x240" alt="" class="item-image">
+                  <img src="/assets/icons/delete-cross-icon.svg" alt="X to remove item from cart" class="remove-image">
                 </div>
-                <div class="item-detail-card">
+                <div class="bag-detail-card">
                   <div class="title-container">
                       <div class="title">Athena Bowl <span class="quantity">x 1</span></div>
                       <a href="#" class="edit">Edit</a>
@@ -33,7 +30,7 @@
                     Romaine, grilled shrimp, cucumber, tomato, kalamata olives, feta, chickpeas, greek dressing
                   </div>
                   <div class="fine-details">
-                    <span class="price light">$12.99</span>
+                    <span class="price">$12.99</span>
                     <span class="calories">360 cal</span>
                     <span class="allergens">
                       <span class="allergen">VG</span>
@@ -41,13 +38,14 @@
                       <span class="allergen">V</span>
                     </span>
                   </div>
-                </div><!-- /.item-detail-card -->
+                </div><!-- /.bag-detail-card -->
               </div><!-- /.item -->
               <div class="item">
                 <div class="left image">
-                  <img src="http://via.placeholder.com/160x240" alt="">
+                  <img src="http://via.placeholder.com/160x240" alt="" class="item-image">
+                  <img src="/assets/icons/delete-cross-icon.svg" alt="X to remove item from cart" class="remove-image">
                 </div>
-                <div class="item-detail-card">
+                <div class="bag-detail-card">
                   <div class="title-container">
                       <div class="title">Athena Bowl <span class="quantity">x 1</span></div>
                       <a href="#" class="edit">Edit</a>
@@ -56,7 +54,7 @@
                     Romaine, grilled shrimp, cucumber, tomato, kalamata olives, feta, chickpeas, greek dressing
                   </div>
                   <div class="fine-details">
-                    <span class="price light">$12.99</span>
+                    <span class="price">$12.99</span>
                     <span class="calories">360 cal</span>
                     <span class="allergens">
                       <span class="allergen">VG</span>
@@ -64,13 +62,14 @@
                       <span class="allergen">V</span>
                     </span>
                   </div>
-                </div><!-- /.item-detail-card -->
+                </div><!-- /.bag-detail-card -->
               </div><!-- /.item -->
               <div class="item">
                   <div class="left image">
-                    <img src="http://via.placeholder.com/160x240" alt="">
+                    <img src="http://via.placeholder.com/160x240" alt="" class="item-image">
+                    <img src="/assets/icons/delete-cross-icon.svg" alt="X to remove item from cart" class="remove-image">
                   </div>
-                  <div class="item-detail-card">
+                  <div class="bag-detail-card">
                     <div class="title-container">
                         <div class="title">Athena Bowl <span class="quantity">x 1</span></div>
                         <a href="#" class="edit">Edit</a>
@@ -87,7 +86,7 @@
                         <span class="allergen">V</span>
                       </span>
                     </div>
-                  </div><!-- /.item-detail-card -->
+                  </div><!-- /.bag-detail-card -->
                 </div><!-- /.item -->
 
             </div><!-- /.checkout-items -->
@@ -98,12 +97,12 @@
             <div class="cart-prices">
               <div class="price-wrapper">
                 <div class="flex-between subtotal">
-                  <span class="label light">Subtotal</span>
-                  <span class="value light">$22.88</span>
+                  <span class="label">Subtotal</span>
+                  <span class="value">$22.88</span>
                 </div>
                 <div class="flex-between tax">
-                  <span class="label light">Tax</span>
-                  <span class="value light">$3.00</span>
+                  <span class="label">Tax</span>
+                  <span class="value">$3.00</span>
                 </div>
                 <div class="flex-between total">
                   <span class="label medium">Total</span>

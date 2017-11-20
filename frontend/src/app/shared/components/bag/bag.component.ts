@@ -8,7 +8,7 @@ import { stagger } from '@angular/animations/src/animation_metadata';
   animations: [
     trigger('hideShowBag', [
       state('invisible', style({
-          right: '-740px',
+          right: '-500px',
       })),
       state('visible', style({
           right: '0px',
@@ -34,7 +34,6 @@ export class BagComponent implements OnInit {
 
   nextStep(){
     this.stepState++;
-    console.log(this.stepState);
   }
 
   previousStep(){
