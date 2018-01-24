@@ -1,10 +1,28 @@
 .page-item-detail{
-  @include stagecenter();
-  margin: 135px auto 0;
+  margin: 0 auto;
+  background: $light-grey;
 
   .menu-item-header{
     position: relative;
     margin: 0 0 30px;
+
+    h1{
+      position: absolute;
+      left: 0;
+      right: 0;
+      text-align: center;
+      color: $white;
+      top: 45%;
+      text-transform: uppercase;
+      @include fontsize(60);
+      text-shadow: 0 1px 10px rgba(0, 0, 0, 0.23);
+      letter-spacing: 2.7px;
+    }
+
+    img{
+      display: block;
+      width: 100%;
+    }
 
     .breadcrumb{
       position: absolute;
@@ -46,7 +64,7 @@
 
     .customization-category{
       background: $white;
-      box-shadow: 0 0 5px #000;
+      box-shadow: 0 0 1px #aaa;
       margin: 0 0 20px;
 
       .header{
@@ -63,6 +81,11 @@
             @extend %sofia-semi-bold;
             @include fontsize(20);
           }// span.title
+
+          &.edit{
+            text-transform: uppercase;
+            color: $orange-red;
+          }
         }// span
       }// .header
 
@@ -108,8 +131,6 @@
 
   .final-product{
     padding: 20px;
-    background: $white;
-    box-shadow: 0 0 5px #000;
 
     .title{
       @extend %sofia-semi-bold;
