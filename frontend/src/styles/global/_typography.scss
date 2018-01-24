@@ -44,6 +44,10 @@ p{
     letter-spacing: 0.8px;
     color: $off-black;
   }
+
+  &.small-text{
+    @include fontsize(14);
+  }
 }
 
 a{
@@ -113,6 +117,10 @@ img{
   @extend %sofia-bold;
 }
 
+.no-margin{
+  margin: 0;
+}
+
 .red-button{
   a,
   button{
@@ -141,4 +149,8 @@ img{
 
 .visuallyhidden{
   @extend %visuallyhidden;
+}
+
+.red-text{
+  color: $orange-red;
 }
