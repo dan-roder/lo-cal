@@ -19,7 +19,7 @@
   }
 
   .checkout-content-wrapper{
-    background: $white;
+    background: $light-grey;
     height: 100%;
     position: absolute;
     width: 500px;
@@ -122,7 +122,7 @@
       .back-button{
         position: relative;
         width: 18px;
-        height: 28px;
+        height: 25px;
         z-index: 1;
         display: inline-block;
 
@@ -130,19 +130,19 @@
           display: block;
           position: absolute;
           left: 0;
-          height: 3px;
-          width: 20px;
+          height: 2px;
+          width: 14px;
           background: $black;
           border-radius: 10px;
 
           &:nth-child(1){
             transform: rotate(-45deg);
-            top: 6px;
+            top: 8px;
           }
 
           &:nth-child(2){
             transform: rotate(45deg);
-            top: 18px;
+            top: 17px;
           }
         }
       }// .back-button
@@ -188,7 +188,7 @@
     }// .item
   }// .checkout-items
 
-  .cart-prices,
+  .checkout-bottom,
   .pickup-info{
     .flex-between{
       padding: 10px 0;
@@ -207,7 +207,44 @@
         @include fontsize(20);
       }
     }
-  }// .cart-prices
+
+    h3{
+      @include fontsize(19);
+      @extend %sofia-semi-bold;
+      letter-spacing: 2px;
+      margin: 5px 0;
+    }
+
+    .indent{
+      margin: 15px 18px
+    }
+  }// .pickup-info.checkout-bottom
+
+  .pickup-options{
+    background: $white;
+
+    div{
+      @extend %sofia-semi-bold;
+      @include fontsize(15);
+      padding: 10px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      &:first-child{
+        border-bottom: 1px solid $light-grey;
+      }
+
+      span.option{
+        display: inline-block;
+        border-radius: 50%;
+        border: 1px solid $c-31;
+        width: 30px;
+        height: 30px;
+        cursor: pointer;
+      }
+    }
+  }// .pickup-options
 
   .checkout-button{
     margin: 15px 0;
@@ -236,5 +273,5 @@
         border-right: 2px solid $e1;
       }
     }
-  }
+  }// .login-options
 }// .checkout-overlay
