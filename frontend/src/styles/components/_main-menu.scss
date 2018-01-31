@@ -102,6 +102,12 @@
         width: auto;
         float: right;
       }
+
+      li{
+        a,span{
+          border: none;
+        }
+      }
     }
   }// ul.menu
 }
