@@ -51,15 +51,21 @@
     @extend %clearfix;
 
     .left{
-      float: left;
-      width: 45%;
-      margin-right: 2%;
+      @include breakpoint($bp-768){
+        float: left;
+        width: 45%;
+        margin-right: 2%;
+      }
     }
 
     .right{
-      float: right;
-      width: 45%;
-      margin-left: 2%;
+      margin: 0 0 30px;
+
+      @include breakpoint($bp-768){
+        float: right;
+        width: 45%;
+        margin: 0 2% 0 0;
+      }
     }
 
     .customization-category{
@@ -76,10 +82,12 @@
         border-bottom: 1px solid $e1;
 
         span{
+          padding: 0 2px;
+
           &.title{
             text-transform: uppercase;
             @extend %sofia-semi-bold;
-            @include fontsize(20);
+            @include fontsize(18);
           }// span.title
 
           &.edit{
