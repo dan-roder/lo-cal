@@ -1,11 +1,22 @@
 <footer>
   <div class="content">
-    <ul class="menu">
-      <li *ngFor="let item of footerMenu" [attr.class]="item.classes ? item.classes : null">
-          <a href="{{ item.url }}">{{ item.title }}</a>
-      </li>
-    </ul>
-    <label for="email-newsletter" class="visuallyhidden">Enter your Email Address and Stay in Touch</label>
-    <input type="email" name="newsletter" id="email-newsletter" placeholder="Enter your Email Address and Stay in Touch">
+    <div class="left">
+      <ul class="menu">
+        <li *ngFor="let item of footerMenu" [attr.class]="item.classes ? item.classes : null">
+            <a href="{{ item.url }}">{{ item.title }}</a>
+        </li>
+      </ul>
+      <div class="newsletter-signup">
+        <label for="email-newsletter"><span class="visuallyhidden">Enter your Email Address and</span> Stay in Touch</label>
+        <input type="email" name="newsletter" id="email-newsletter" placeholder="Enter your Email">
+      </div>
+    </div>
+    <div class="right">
+      <ul class="menu social-menu">
+        <li><a href=""></a></li>
+        <li><a href=""></a></li>
+        <li><a href=""></a></li>
+      </ul>
+    </div>
   </div>
 </footer>
