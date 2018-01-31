@@ -246,6 +246,14 @@
     }
   }// .pickup-options
 
+  .cart-prices{
+    .value{
+      @include svg-bg(icons/left-arrow-red);
+      background-position: right center;
+      padding: 0 18px 0 0;
+    }
+  }
+
   .checkout-button{
     margin: 15px 0;
 
