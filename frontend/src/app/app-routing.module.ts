@@ -40,6 +40,10 @@ const routes: Routes = [
     component: MainLayoutComponent,
     children: [
       {
+        path: '',
+        component: MenuPageComponent
+      },
+      {
         path: ':type',
         component: MenuCustomizeComponent
       },
