@@ -4,12 +4,18 @@ import { Config } from '../utils/constants';
 import { Observable } from 'rxjs/Observable';
 
 @Injectable()
-export class MenuServiceService {
+export class MenuService {
 
   constructor(private config: Config, private httpClient: HttpClient) { }
 
   getMenuCategories(){
+    return this.get('submenus')
+  }
 
+  get(apiMethod: string){
+    let url = this.config.railsApi + '/' + apiMethod;
+
+    return this.httpClient.get(url);
   }
 
 }
