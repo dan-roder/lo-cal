@@ -1,12 +1,10 @@
 .menu-menu{
-  background: $white;
-  position: absolute;
-  bottom: 10%;
-  left: 0;
-  right: 0;
+  background: $fa;
+  border-bottom: 2px solid $white;
 
   ul.menu{
-    margin: 0;
+    @include stagecenter();
+    margin: 10px auto;
     padding: 0 15px;
     text-align: left;
     list-style: none;
@@ -20,10 +18,12 @@
         display: block;
         padding: 12px 8px;
         text-decoration: none;
-        border-bottom: 2px solid $white;
+        color: $c-31;
+        text-transform: uppercase;
+        @include transition(color, 200ms);
 
         &:hover{
-          border-bottom: 2px solid $red-hover;
+          color: $red-hover;
         }
       }
     }
