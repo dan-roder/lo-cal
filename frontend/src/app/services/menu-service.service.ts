@@ -8,7 +8,7 @@ export class MenuService {
 
   constructor(private config: Config, private httpClient: HttpClient) { }
 
-  getMenuCategories(){
+  getSubMenus(){
     return this.get('submenus')
   }
 
