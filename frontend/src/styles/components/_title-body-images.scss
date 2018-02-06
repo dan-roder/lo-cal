@@ -1,42 +1,43 @@
 .food-details{
 
     .three-column-data{
-      margin: 50px 0 0;
-      @include stagecenter();
+      @include stagecenter(1400);
+      margin: 20px auto 0;
       @extend %clearfix;
-      display: flex;
+
+      @include breakpoint($bp-768){
+        display: flex;
+        margin: 50px auto 0;
+      }
 
       .data{
         margin: 20px 0;
 
-        @include breakpoint($bp-660){
+        @include breakpoint($bp-768){
           width: 33.3333%;
-          // float: left;
-          // margin: 0;
         }
 
         .content-wrapper{
           padding: 0 15px;
 
-          .image{
-            img{
-              max-width: 130px;
-            }
-          }// .image
-
           .title{
-            margin: 30px 0;
+            margin: 20px 0 10px;
             @include fontsize(24);
             @extend %sofia-semi-bold;
             letter-spacing: 1.3px;
             text-transform: uppercase;
+
+            @include breakpoint($bp-768){
+              margin: 30px 0;
+            }
           }// .title
 
           .description{
             p{
-              margin: 0;
+              margin: 0 auto;
               @include fontsize(16);
               @extend %sofia-light;
+              max-width: 90%;
             }
           }
         }// .content-wrapper

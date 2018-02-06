@@ -1,19 +1,17 @@
 .intro-section{
   p{
     @include stagecenter(800);
+    line-height: 30px;
   }
 
-  ul{
-    @extend %clearfix;
-    @include stagecenter(1100);
-
-    li{
-      list-style-image: url(/assets/icons/selected-mark-icon.svg);
-      float: left;
-      width: 45%;
-      margin: 8px 2% 8px 15px;
-      text-indent: 15px;
-      text-align: left;
-    }
+  a{
+    @include svg-bg(icons/left-arrow-red);
+    background-position: right center;
+    padding: 0 15px 0 0;
+    text-transform: uppercase;
+    color: $c-31;
+    @extend %sofia-semi-bold;
+    text-decoration: none;
+    letter-spacing: 2px;
   }
 }
