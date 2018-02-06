@@ -1,28 +1,43 @@
 .menu-categories{
   .menu-items{
     @extend %clearfix;
+    display: flex;
+    flex-wrap: wrap;
 
     .item{
-      float: left;
       width: 50%;
+      display: flex;
 
       @include breakpoint($bp-500){
         width: 33.3333%;
       }
 
-      @include breakpoint($bp-660){
-        width: 25%;
-      }
-
-      @include breakpoint($bp-860){
-        width: 20%;
-      }
-
       .item-wrapper{
         padding: 20px;
         border: 1px solid $e1;
-        margin: 15px;
-      }
-    }
-  }
-}
+        margin: 15px auto;
+        max-width: 260px;
+        width: 100%;
+
+        .title{
+          max-width: 200px;
+          margin: 0 auto;
+        }
+
+        a{
+          text-decoration: none;
+          @include fontsize(22);
+          @extend %sofia-medium;
+          color: $c-31;
+          text-transform: uppercase;
+          display: block;
+          @include transition(color, 200ms);
+
+          &:hover{
+            color: $red-hover;
+          }
+        }
+      }// .item-wrapper
+    }// .item
+  }// .menu-items
+}// .menu-categories
