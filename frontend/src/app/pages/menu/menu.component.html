@@ -16,42 +16,16 @@
   </div>
 
   <!-- MENU PLACEHOLDER LAYOUT HTML -->
-  <div class="section section-white menu-categories text-center center">
+  <div class="section section-white menu-categories center">
     <div class="content">
       <div class="menu-items category-featured">
 
-        <div class="item item-1">
+        <div class="item item-{{ i+1 }}" *ngFor="let menuItem of subMenus; let i = index">
           <div class="item-wrapper text-center">
-            <div class="image"><img src="//via.placeholder.com/115x115"></div>
-            <div class="title">Menu Item</div>
-          </div>
-        </div>
-
-        <div class="item item-1">
-          <div class="item-wrapper text-center">
-            <div class="image"><img src="//via.placeholder.com/115x115"></div>
-            <div class="title">Menu Item</div>
-          </div>
-        </div>
-
-        <div class="item item-1">
-          <div class="item-wrapper text-center">
-            <div class="image"><img src="//via.placeholder.com/115x115"></div>
-            <div class="title">Menu Item</div>
-          </div>
-        </div>
-
-        <div class="item item-1">
-          <div class="item-wrapper text-center">
-            <div class="image"><img src="//via.placeholder.com/115x115"></div>
-            <div class="title">Menu Item</div>
-          </div>
-        </div>
-
-        <div class="item item-1">
-          <div class="item-wrapper text-center">
-            <div class="image"><img src="//via.placeholder.com/115x115"></div>
-            <div class="title">Menu Item</div>
+            <a routerLink="{{ menuItem?.Name | lowercase }}">
+              <div class="image"><img src="//via.placeholder.com/200x200"></div>
+              <div class="title">{{ menuItem?.DisplayName }}</div>
+            </a>
           </div>
         </div>
 
