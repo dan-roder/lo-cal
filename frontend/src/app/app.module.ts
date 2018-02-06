@@ -31,6 +31,7 @@ import { BagComponent } from './shared/components/bag/bag.component';
 
 // Services
 import { WordpressService } from './services/wp.service';
+import { MenuService } from './services/menu-service.service';
 import { WindowRef } from './utils/windowref';
 
 // Directives
