@@ -63,7 +63,7 @@ import { WindowScrollDirective } from './shared/directives/window-scroll.directi
     AppRoutingModule,
     BrowserAnimationsModule
   ],
-  providers: [ Config, WindowRef, WordpressService ],
+  providers: [ Config, WindowRef, WordpressService, MenuService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
