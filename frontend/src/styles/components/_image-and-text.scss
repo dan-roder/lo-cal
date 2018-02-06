@@ -21,13 +21,17 @@
 
       .inner-content{
         align-self: center;
-        padding: 20px;
+        padding: 10px 40px;
       }
     }
 
     h3{
       text-align: left;
       text-transform: none;
+    }
+
+    p{
+      @include fontsize(16);
     }
   }
 }// .image-and-text
