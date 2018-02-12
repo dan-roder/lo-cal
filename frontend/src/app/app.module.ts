@@ -20,7 +20,9 @@ import { OurStoryComponent } from './pages/our-story/our-story.component';
 import { OurFoodComponent } from './pages/our-food/our-food.component';
 import { MenuPageComponent } from './pages/menu/menu.component';
 import { MenuCustomizeComponent } from './pages/menu-customize/menu-customize.component';
+import { SubMenuComponent } from './pages/sub-menu/sub-menu.component';
 
+// Shared Components
 import { HeaderComponent } from './shared/components/header/header.component';
 import { FooterComponent } from './shared/components/footer/footer.component';
 import { TitleBodyImagesComponent } from './shared/components/title-body-images/title-body-images.component';
@@ -53,7 +55,8 @@ import { WindowScrollDirective } from './shared/directives/window-scroll.directi
     WindowScrollDirective,
     MenuPageComponent,
     MenuCustomizeComponent,
-    BagComponent
+    BagComponent,
+    SubMenuComponent
   ],
   imports: [
     BrowserModule,
