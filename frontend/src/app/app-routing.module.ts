@@ -7,6 +7,7 @@ import { OurStoryComponent } from './pages/our-story/our-story.component';
 import { OurFoodComponent } from './pages/our-food/our-food.component';
 import { MenuPageComponent } from './pages/menu/menu.component';
 import { MenuCustomizeComponent } from './pages/menu-customize/menu-customize.component';
+import { SubMenuComponent } from './pages/sub-menu/sub-menu.component';
 
 
 const routes: Routes = [
@@ -36,12 +37,12 @@ const routes: Routes = [
     ]
   },
   {
-    path: 'menu/:item',
+    path: 'menu/:category',
     component: MainLayoutComponent,
     children: [
       {
         path: '',
-        component: MenuPageComponent
+        component: SubMenuComponent
       },
       {
         path: ':type',
