@@ -3,15 +3,7 @@
 
   <div class="menu-menu">
     <ul class="menu">
-      <li class="item-1"><a href="#">featured</a></li>
-      <li class="item-2"><a href="#">salad</a></li>
-      <li class="item-3"><a href="#">smoothie</a></li>
-      <li class="item-4"><a href="#">breakfast</a></li>
-      <li class="item-5"><a href="#">quinoa bowl</a></li>
-      <li class="item-6"><a href="#">soup</a></li>
-      <li class="item-7"><a href="#">burger and sandwich</a></li>
-      <li class="item-8"><a href="#">breakfast</a></li>
-      <li class="item-9"><a href="#">beverage</a></li>
+        <li class="item-{{ i+1 }}" *ngFor="let item of subMenus; let i = index"><a href="#">{{ item?.Name }}</a></li>
     </ul>
   </div>
 
@@ -22,7 +14,7 @@
 
         <div class="item item-{{ i+1 }}" *ngFor="let menuItem of subMenus; let i = index">
           <div class="item-wrapper text-center">
-            <a routerLink="{{ menuItem?.Name | lowercase }}">
+            <a routerLink="{{ menuItem?.Name | lowercase }}" (click)="setMenuId(menuItem?.SubMenuId)">
               <div class="image"><img src="//via.placeholder.com/200x200"></div>
               <div class="title">{{ menuItem?.DisplayName }}</div>
             </a>
@@ -34,117 +26,4 @@
   </div>
   <!-- MENU PLACEHOLDER LAYOUT HTML -->
 
-  <!-- Menu Card Layout HTML -->
-  <div class="section section-white menu-categories center" id="featured">
-    <h2>Special / Featured items</h2>
-
-    <div class="content clearfix">
-
-      <div class="menu-card">
-        <div class="card-wrapper">
-          <div class="image">
-            <img src="//via.placeholder.com/265x115" alt="">
-          </div>
-          <div class="details">
-            <div class="title">Athena Bowl</div>
-            <div class="description">
-              <p>
-                  Romaine, grilled shrimp, cucumber, tomato, kalamata olives, feta, chickpeas, something else, greek dressing
-              </p>
-            </div>
-            <div class="fine-details">
-              <span class="price">$12.99</span>
-              <span class="calories">360 cal</span>
-              <span class="allergens">
-                <span class="allergen">VG</span>
-                <span class="allergen">PL</span>
-                <span class="allergen">V</span>
-              </span>
-              <a href="" class="add-to-cart">Add</a>
-            </div>
-          </div>
-        </div>
-      </div><!-- /.menu-card -->
-
-      <div class="menu-card">
-        <div class="card-wrapper">
-          <div class="image">
-            <img src="//via.placeholder.com/265x115" alt="">
-          </div>
-          <div class="details">
-            <div class="title">Athena Bowl</div>
-            <div class="description">
-              <p>
-                  Romaine, grilled shrimp, cucumber, tomato, kalamata olives, feta, chickpeas, something else, greek dressing
-              </p>
-            </div>
-            <div class="fine-details">
-              <span class="price">$12.99</span>
-              <span class="calories">360 cal</span>
-              <span class="allergens">
-                <span class="allergen">VG</span>
-                <span class="allergen">PL</span>
-                <span class="allergen">V</span>
-              </span>
-              <a href="" class="add-to-cart">Add</a>
-            </div>
-          </div>
-        </div>
-      </div><!-- /.menu-card -->
-
-      <div class="menu-card">
-        <div class="card-wrapper">
-          <div class="image">
-            <img src="//via.placeholder.com/265x115" alt="">
-          </div>
-          <div class="details">
-            <div class="title">Athena Bowl</div>
-            <div class="description">
-              <p>
-                  Romaine, grilled shrimp, cucumber, tomato, kalamata olives, feta, chickpeas, something else, greek dressing
-              </p>
-            </div>
-            <div class="fine-details">
-              <span class="price">$12.99</span>
-              <span class="calories">360 cal</span>
-              <span class="allergens">
-                <span class="allergen">VG</span>
-                <span class="allergen">PL</span>
-                <span class="allergen">V</span>
-              </span>
-              <a href="" class="add-to-cart">Add</a>
-            </div>
-          </div>
-        </div>
-      </div><!-- /.menu-card -->
-
-      <div class="menu-card">
-        <div class="card-wrapper">
-          <div class="image">
-            <img src="//via.placeholder.com/265x115" alt="">
-          </div>
-          <div class="details">
-            <div class="title">Athena Bowl</div>
-            <div class="description">
-              <p>
-                  Romaine, grilled shrimp, cucumber, tomato, kalamata olives, feta, chickpeas, something else, greek dressing
-              </p>
-            </div>
-            <div class="fine-details">
-              <span class="price">$12.99</span>
-              <span class="calories">360 cal</span>
-              <span class="allergens">
-                <span class="allergen">VG</span>
-                <span class="allergen">PL</span>
-                <span class="allergen">V</span>
-              </span>
-              <a href="" class="add-to-cart">Add</a>
-            </div>
-          </div>
-        </div>
-      </div><!-- /.menu-card -->
-
-    </div>
-  </div>
-  <!-- Menu Card Layout HTML -->
 </div>

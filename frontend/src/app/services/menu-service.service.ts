@@ -5,11 +5,16 @@ import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class MenuService {
+  public menuItemId: number = null;
 
   constructor(private config: Config, private httpClient: HttpClient) { }
 
   getSubMenus(){
-    return this.get('submenus')
+    return this.get('submenus');
+  }
+
+  getSubMenuItems(subMenuItemName){
+    return this.get(subMenuItemName);
   }
 
   get(apiMethod: string){

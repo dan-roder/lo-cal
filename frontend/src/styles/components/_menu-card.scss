@@ -14,10 +14,6 @@
     width: 33.3333%;
   }
 
-  @include breakpoint($bp-940){
-    width: 25%;
-  }
-
   .card-wrapper{
     margin: 0 15px 30px;
     border: 1px solid $e1;

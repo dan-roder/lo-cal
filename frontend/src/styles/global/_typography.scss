@@ -65,6 +65,10 @@ h2{
   @extend %sofia-semi-bold;
   @include fontsize(34);
   margin: 15px 0;
+
+  .menu-categories &{
+    color: $orange-red;
+  }
 }
 
 h3{
@@ -153,4 +157,8 @@ img{
 
 .red-text{
   color: $orange-red;
+}
+
+.capitalize{
+  text-transform: capitalize;
 }

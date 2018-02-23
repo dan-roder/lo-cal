@@ -39,6 +39,9 @@ import { WindowRef } from './utils/windowref';
 // Directives
 import { WindowScrollDirective } from './shared/directives/window-scroll.directive';
 
+//Pipes
+import { AllergensPipe } from './pipes/allergens.pipe';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -56,7 +59,8 @@ import { WindowScrollDirective } from './shared/directives/window-scroll.directi
     MenuPageComponent,
     MenuCustomizeComponent,
     BagComponent,
-    SubMenuComponent
+    SubMenuComponent,
+    AllergensPipe
   ],
   imports: [
     BrowserModule,

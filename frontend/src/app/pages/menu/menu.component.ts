@@ -36,4 +36,8 @@ export class MenuPageComponent implements OnInit {
 
   }
 
+  setMenuId(id){
+    this.menuService.menuItemId = id;
+  }
+
 }
