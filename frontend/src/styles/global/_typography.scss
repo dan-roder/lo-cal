@@ -129,12 +129,14 @@ img{
   a,
   button{
     border: none;
+    box-shadow: none;
     @extend %red-button;
     @include transition();
 
     &:hover,
     &:focus{
       background: $red-hover;
+      box-shadow: 1px 2px 4px rgba(0,0,0,.23);
     }
   }
 }
@@ -143,10 +145,12 @@ img{
   a{
     @extend %black-button;
     @include transition();
+    box-shadow: none;
 
     &:hover,
     &:focus{
       background: $c-4a;
+      box-shadow: 1px 2px 4px rgba(0,0,0,.23);
     }
   }
 }
