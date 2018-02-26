@@ -12,6 +12,7 @@ export class MenuPageComponent implements OnInit {
   public acf : any;
   public featuredImage : any;
   public subMenus : any;
+  public menu : any;
 
   constructor(private wpService: WordpressService, private menuService: MenuService) { }
 
@@ -30,6 +31,7 @@ export class MenuPageComponent implements OnInit {
       console.log(submenus);
       this.subMenus = submenus;
     })
+
   }
 
   ngOnDestroy(){
