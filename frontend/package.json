@@ -23,6 +23,7 @@
     "@angular/platform-server": "^5.0.1",
     "@angular/router": "^5.0.1",
     "core-js": "^2.4.1",
+    "font-awesome": "^4.7.0",
     "lodash": "^4.17.5",
     "ngx-auto-unsubscribe": "^1.0.2",
     "normalize.scss": "^0.1.0",
