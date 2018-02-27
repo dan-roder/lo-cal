@@ -8,7 +8,7 @@ import { WindowScrollDirective } from '../../shared/directives/window-scroll.dir
   templateUrl: './main-layout.component.html',
 })
 export class MainLayoutComponent implements OnInit {
-  public mainMenuLinks;
+  public mainMenuLinks: any;
   public currentUrl : any;
   public openBag: EventEmitter<any> = new EventEmitter<any>();
   public bagState: string = 'invisible';
