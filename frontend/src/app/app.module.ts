@@ -41,6 +41,7 @@ import { WindowScrollDirective } from './shared/directives/window-scroll.directi
 
 //Pipes
 import { AllergensPipe } from './pipes/allergens.pipe';
+import { SafeHtml } from './pipes/safe-html.pipe';
 
 @NgModule({
   declarations: [
@@ -60,7 +61,8 @@ import { AllergensPipe } from './pipes/allergens.pipe';
     MenuCustomizeComponent,
     BagComponent,
     SubMenuComponent,
-    AllergensPipe
+    AllergensPipe,
+    SafeHtml
   ],
   imports: [
     BrowserModule,
