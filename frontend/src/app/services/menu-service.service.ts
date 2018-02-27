@@ -1,9 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpResponse } from '@angular/common/http';
-import { Config } from '../utils/constants';
+import { Config } from '@local/utils/constants';
 import { Observable } from 'rxjs/Observable';
-import { Window } from 'selenium-webdriver';
-import { WindowRef } from '../utils/windowref';
 
 @Injectable()
 export class MenuService {
