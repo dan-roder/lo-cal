@@ -36,7 +36,6 @@
             p{
               margin: 0 auto;
               @include fontsize(16);
-              @extend %sofia-light;
               max-width: 90%;
             }
           }
