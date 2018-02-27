@@ -71,6 +71,10 @@ export class WordpressService {
       //.map((res) => {return res});
   }
 
+  getMenuItemBySlug(_slug: string, _postType: string){
+    return this.httpClient.get(this.config.wordpressApiUrl + `/wp/v2/${_postType}?slug=${_slug}`);
+  }
+
   getMenus() {
     return this.http.get(this.config.wordpressApiUrl + '/wp-api-menus/v2/menus')
     .map(result => {
