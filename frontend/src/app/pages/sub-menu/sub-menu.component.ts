@@ -12,6 +12,7 @@ export class SubMenuComponent implements OnInit {
   public subMenuId: number = null;
   public subMenuType: string = '';
   public subMenuItems: any;
+  public pageContent: any;
 
   constructor(private menuService: MenuService, private router: ActivatedRoute) { }
 
