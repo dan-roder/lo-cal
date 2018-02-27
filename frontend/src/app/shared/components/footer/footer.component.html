@@ -12,10 +12,10 @@
       </div>
     </div>
     <div class="right">
-      <ul class="menu social-menu">
-        <li><a href=""></a></li>
-        <li><a href=""></a></li>
-        <li><a href=""></a></li>
+      <ul class="menu social-menu" *ngIf="footerLinks">
+        <li *ngFor="let item of footerLinks" [attr.class]="item.classes ? item.classes : null">
+          <a href="{{ item?.url }}" target="_blank">{{ item.title }}</a>
+        </li>
       </ul>
     </div>
   </div>
