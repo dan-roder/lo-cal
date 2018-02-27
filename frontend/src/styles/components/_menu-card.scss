@@ -16,7 +16,6 @@
 
   .card-wrapper{
     margin: 0 15px 30px;
-    border: 1px solid $e1;
   }
 
   img{
@@ -25,28 +24,34 @@
   }
 
   .details{
-    padding: 5px 10px;
+    padding: 5px 20px;
     border-top: 1px solid $e1;
 
     .title{
       text-transform: uppercase;
       @include fontsize(18);
-      @extend %sofia-bold;
+      @extend %sofia-semi-bold;
+      letter-spacing: 1px;
     }
 
     .description{
       p{
-        @include fontsize(12);
-        @extend %sofia-light;
+        @include fontsize(13);
         margin: 5px 0;
       }
     }
 
     .fine-details{
-      @include fontsize(12);
+      @include fontsize(13);
       margin: 10px 0 0;
       display: flex;
       justify-content: space-between;
+
+      a.add-to-cart{
+        text-decoration: none;
+        text-transform: uppercase;
+        @extend %sofia-semi-bold;
+      }
 
       .allergens{
         .allergen{
