@@ -8,6 +8,7 @@ import { OurFoodComponent } from './pages/our-food/our-food.component';
 import { MenuPageComponent } from './pages/menu/menu.component';
 import { MenuCustomizeComponent } from './pages/menu-customize/menu-customize.component';
 import { SubMenuComponent } from './pages/sub-menu/sub-menu.component';
+import { LoginComponent } from '@local/pages/login/login.component';
 
 
 const routes: Routes = [
@@ -67,6 +68,16 @@ const routes: Routes = [
       {
         path: '',
         component: OurFoodComponent
+      }
+    ]
+  },
+  {
+    path: 'login',
+    component: MainLayoutComponent,
+    children: [
+      {
+        path: '',
+        component: LoginComponent
       }
     ]
   }
