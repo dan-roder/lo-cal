@@ -2,7 +2,7 @@
   <div class="content" [ngStyle]="{'background-image':'url(' + featuredImage?.source_url + ')'}">
     <div class="header-content text-center">
       <h1 [innerHtml]="pageContent?.title?.rendered"></h1>
-      <h2 *ngIf="pageContent?.content?.rendered" [innerHtml]="pageContent?.content?.rendered"></h2>
+      <!-- <h2 *ngIf="pageContent?.content?.rendered" [innerHtml]="pageContent?.content?.rendered"></h2> -->
       <ng-content></ng-content>
     </div>
   </div>
