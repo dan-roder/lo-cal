@@ -1,7 +1,7 @@
 <footer>
   <div class="content">
     <div class="left">
-      <ul class="menu">
+      <ul class="menu footer-menu">
         <li *ngFor="let item of footerMenu" [attr.class]="item.classes ? item.classes : null">
             <a href="{{ item.url }}">{{ item.title }}</a>
         </li>
@@ -11,10 +11,13 @@
         <input type="email" name="newsletter" id="email-newsletter" placeholder="Enter your Email">
       </div>
     </div>
-    <div class="right">
+    <div class="right clearfix">
       <ul class="menu social-menu" *ngIf="footerLinks">
-        <li *ngFor="let item of footerLinks" [attr.class]="item.classes ? item.classes : null">
-          <a href="{{ item?.url }}" target="_blank">{{ item.title }}</a>
+        <li *ngFor="let item of footerLinks">
+          <a href="{{ item?.url }}" target="_blank">
+            <span class="visuallyhidden">{{ item.title }}</span>
+            <i [attr.class]="item.classes ? item.classes : null"></i>
+          </a>
         </li>
       </ul>
     </div>
