@@ -22,8 +22,8 @@
 
           .title{
             margin: 20px 0 10px;
-            @include fontsize(24);
-            @extend %sofia-semi-bold;
+            @include fontsize(22);
+            @extend %sofia-medium;
             letter-spacing: 1.3px;
             text-transform: uppercase;
 
@@ -35,7 +35,7 @@
           .description{
             p{
               margin: 0 auto;
-              @include fontsize(16);
+              @include fontsize(14);
               max-width: 90%;
             }
           }
