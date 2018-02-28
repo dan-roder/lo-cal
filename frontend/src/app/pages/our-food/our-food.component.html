@@ -1,5 +1,10 @@
 <div class="page-landing-page">
   <lo-cal-header [featuredImage]="featuredImage" [pageContent]="pageContent"></lo-cal-header>
+  <div class="section section-white">
+    <div class="content center">
+      <div class="body center-740" [innerHtml]="pageContent?.content?.rendered | safeHtml"></div>
+    </div>
+  </div>
 
   <lo-cal-intro-section [acf]="acf" [color]="'white'"></lo-cal-intro-section>
 
