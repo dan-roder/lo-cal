@@ -1,0 +1,63 @@
+.login-wrapper{
+  margin: 300px 0;
+
+  h1{
+
+  }
+
+  form{
+    .component{
+      margin: 10px 0;
+    }
+
+    .submit{
+      margin: 40px 0 15px;
+    }
+
+    input{
+      display: block;
+      width: 100%;
+      box-sizing: border-box;
+      @include fontsize(15);
+      padding: 8px 0;
+
+      &:focus{
+        outline: 0;
+      }
+
+      &[type=text],
+      &[type=password]{
+        border: none;
+        border-bottom: 1px solid $black;
+        box-shadow: none;
+      }
+
+      &[type=submit]{
+        @include fontsize(15);
+        @extend %sofia-regular;
+      }
+    }// input
+  }// form
+
+  .account-actions{
+    display: flex;
+    justify-content: space-between;
+
+    div.action{
+      text-align: center;
+      width: 50%;
+
+      &:first-child{
+        border-right: 1px solid #aaa;
+      }
+    }
+
+    a{
+      color: $black;
+      text-decoration: none;
+      text-transform: uppercase;
+      @include fontsize(14);
+      @extend %sofia-medium;
+    }
+  }
+}// .login-wrapper
