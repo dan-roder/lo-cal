@@ -127,7 +127,8 @@ img{
 
 .red-button{
   a,
-  button{
+  button,
+  input[type=submit]{
     border: none;
     box-shadow: none;
     @extend %red-button;
