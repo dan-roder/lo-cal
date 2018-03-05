@@ -17,7 +17,7 @@ export class PostComponent implements OnInit {
     let slug = (this.route.snapshot.paramMap.get('slug'));
 
     this.wordpressService.getPostBySlug(slug, 'posts').subscribe(page => {
-      this.pageContent = page;
+      this.pageContent = page[0];
       console.log(page);
     })
   }
