@@ -1,3 +1,6 @@
-<p>
-  post works!
-</p>
+<div class="basic-page-container">
+  <div class="basic-page-content center" *ngIf="pageContent">
+    <h1 class="text-center" [innerHtml]="pageContent?.title?.rendered"></h1>
+    <div class="content" [innerHtml]="pageContent?.content?.rendered | safeHtml"></div>
+  </div>
+</div>
