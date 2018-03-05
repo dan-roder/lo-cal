@@ -36,7 +36,7 @@ body,html{
 
 p{
   @extend %sofia-regular;
-  @include fontsize(18);
+  @include fontsize(16);
 
   &.promotion-text{
     @include fontsize(24);
@@ -47,6 +47,10 @@ p{
 
   &.small-text{
     @include fontsize(14);
+  }
+
+  strong{
+    @extend %sofia-semi-bold;
   }
 }
 
