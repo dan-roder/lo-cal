@@ -22,6 +22,7 @@ import { MenuPageComponent } from './pages/menu/menu.component';
 import { MenuCustomizeComponent } from './pages/menu-customize/menu-customize.component';
 import { SubMenuComponent } from './pages/sub-menu/sub-menu.component';
 import { LoginComponent } from './pages/login/login.component';
+import { PostComponent } from './pages/post/post.component';
 
 // Shared Components
 import { HeaderComponent } from './shared/components/header/header.component';
@@ -64,7 +65,8 @@ import { SafeHtml } from './pipes/safe-html.pipe';
     SubMenuComponent,
     AllergensPipe,
     SafeHtml,
-    LoginComponent
+    LoginComponent,
+    PostComponent
   ],
   imports: [
     BrowserModule,
