@@ -9,6 +9,7 @@ import { MenuPageComponent } from './pages/menu/menu.component';
 import { MenuCustomizeComponent } from './pages/menu-customize/menu-customize.component';
 import { SubMenuComponent } from './pages/sub-menu/sub-menu.component';
 import { LoginComponent } from '@local/pages/login/login.component';
+import { PostComponent } from './pages/post/post.component'
 
 
 const routes: Routes = [
@@ -80,7 +81,17 @@ const routes: Routes = [
         component: LoginComponent
       }
     ]
-  }
+  },
+  {
+    path: ':slug',
+    component: MainLayoutComponent,
+    children: [
+      {
+        path: '',
+        component: PostComponent
+      }
+    ]
+  },
 ]
 
 @NgModule({
