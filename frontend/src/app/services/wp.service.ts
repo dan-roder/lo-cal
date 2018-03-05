@@ -71,7 +71,7 @@ export class WordpressService {
       //.map((res) => {return res});
   }
 
-  getMenuItemBySlug(_slug: string, _postType: string){
+  getPostBySlug(_slug: string, _postType: string){
     return this.httpClient.get(this.config.wordpressApiUrl + `/wp/v2/${_postType}?slug=${_slug}`);
   }
 
