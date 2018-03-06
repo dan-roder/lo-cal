@@ -23,6 +23,7 @@ import { MenuCustomizeComponent } from './pages/menu-customize/menu-customize.co
 import { SubMenuComponent } from './pages/sub-menu/sub-menu.component';
 import { LoginComponent } from './pages/login/login.component';
 import { PostComponent } from './pages/post/post.component';
+import { CateringComponent } from './pages/catering/catering.component';
 
 // Shared Components
 import { HeaderComponent } from './shared/components/header/header.component';
@@ -45,6 +46,7 @@ import { WindowScrollDirective } from './shared/directives/window-scroll.directi
 import { AllergensPipe } from './pipes/allergens.pipe';
 import { SafeHtml } from './pipes/safe-html.pipe';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -66,7 +68,8 @@ import { SafeHtml } from './pipes/safe-html.pipe';
     AllergensPipe,
     SafeHtml,
     LoginComponent,
-    PostComponent
+    PostComponent,
+    CateringComponent
   ],
   imports: [
     BrowserModule,
