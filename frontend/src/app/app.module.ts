@@ -1,10 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
 import { AppRoutingModule } from './app-routing.module';
 
 // Config
@@ -24,6 +23,7 @@ import { SubMenuComponent } from './pages/sub-menu/sub-menu.component';
 import { LoginComponent } from './pages/login/login.component';
 import { PostComponent } from './pages/post/post.component';
 import { CateringComponent } from './pages/catering/catering.component';
+import { ContactComponent } from './pages/contact/contact.component';
 
 // Shared Components
 import { HeaderComponent } from './shared/components/header/header.component';
@@ -69,11 +69,13 @@ import { SafeHtml } from './pipes/safe-html.pipe';
     SafeHtml,
     LoginComponent,
     PostComponent,
-    CateringComponent
+    CateringComponent,
+    ContactComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpModule,
     HttpClientModule,
     AppRoutingModule,
