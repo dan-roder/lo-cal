@@ -8,6 +8,9 @@ import { AutoUnsubscribe } from "ngx-auto-unsubscribe";
   templateUrl: './sub-menu.component.html',
   encapsulation: ViewEncapsulation.None
 })
+
+@AutoUnsubscribe()
+
 export class SubMenuComponent implements OnInit {
   public subMenuId: number = null;
   public subMenuType: string = '';

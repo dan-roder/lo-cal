@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { WordpressService } from '@local/services/wp.service';
 import { ActivatedRoute, ParamMap } from '@angular/router';
+import { AutoUnsubscribe } from 'ngx-auto-unsubscribe';
 import 'rxjs/add/operator/switchMap';
 
 @Component({
@@ -8,6 +9,9 @@ import 'rxjs/add/operator/switchMap';
   templateUrl: './post.component.html',
   encapsulation: ViewEncapsulation.None
 })
+
+@AutoUnsubscribe()
+
 export class PostComponent implements OnInit {
   public pageContent : any;
 
@@ -20,6 +24,10 @@ export class PostComponent implements OnInit {
       this.pageContent = page[0];
       console.log(page);
     })
+  }
+
+  ngOnDestroy(){
+
   }
 
 }

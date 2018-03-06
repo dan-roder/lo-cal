@@ -6,6 +6,9 @@ import { AutoUnsubscribe } from "ngx-auto-unsubscribe";
   selector: 'lo-cal-our-food',
   templateUrl: './our-food.component.html'
 })
+
+@AutoUnsubscribe()
+
 export class OurFoodComponent implements OnInit {
   public pageContent : any;
   public acf : any;

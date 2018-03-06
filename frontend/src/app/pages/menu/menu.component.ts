@@ -7,6 +7,9 @@ import { AutoUnsubscribe } from "ngx-auto-unsubscribe";
   selector: 'lo-cal-menu',
   templateUrl: './menu.component.html'
 })
+
+@AutoUnsubscribe()
+
 export class MenuPageComponent implements OnInit {
   public pageContent : any;
   public acf : any;
