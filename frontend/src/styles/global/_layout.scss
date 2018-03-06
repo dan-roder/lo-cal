@@ -35,6 +35,10 @@
   @include stagecenter(740);
 }
 
+.center-960{
+  @include stagecenter(960);
+}
+
 .center-1440{
   @include stagecenter(1440);
 }
