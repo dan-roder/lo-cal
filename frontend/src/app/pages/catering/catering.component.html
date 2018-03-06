@@ -13,11 +13,42 @@
     </div>
   </div>
 
-  <lo-cal-title-body-images [acf]="acf" [color]="'grey'"></lo-cal-title-body-images>
-
-  <div class="background-section section section-white eating-well">
+  <div class="section section-white">
     <div class="content center">
-      <div class="body" [innerHtml]="acf?.text"></div>
+      <h3>Contact Us for Catering Requests</h3>
+      <form action="" [formGroup]="cateringForm" class="catering-form">
+        <div class="form-section half-and-half">
+          <div class="form-component form-component-text">
+            <label for="full-name" class="visuallyhidden">Full Name *</label>
+            <input type="text" name="full-name" id="full-name" placeholder="Full Name *" formControlName="full-name">
+          </div>
+          <div class="form-component form-component-text">
+            <label for="phone" class="visuallyhidden">Phone Number *</label>
+            <input type="text" name="phone" id="phone" placeholder="Phone Number *" formControlName="phone">
+          </div>
+        </div>
+        <div class="form-section half-and-half">
+          <div class="form-component form-component-email">
+            <label for="email" class="visuallyhidden">Email *</label>
+            <input type="email" name="email" id="email" placeholder="Email *" formControlName="email">
+          </div>
+          <div class="form-component form-component-text">
+            <label for="service-date" class="visuallyhidden">Service Date *</label>
+            <input type="text" name="service-date" id="service-date" placeholder="Service Date *" formControlName="service-date">
+          </div>
+        </div>
+        <div class="form-section">
+          <div class="form-component form-component-textarea">
+            <label for="notes">Notes</label>
+            <textarea name="notes" id="notes" rows="4" formControlName="notes"></textarea>
+          </div>
+        </div>
+        <div class="form-actions">
+          <div class="form-submit red-button">
+            <input type="submit" value="Send" (click)="submitForm(cateringForm)">
+          </div>
+        </div>
+      </form>
     </div>
   </div>
 
