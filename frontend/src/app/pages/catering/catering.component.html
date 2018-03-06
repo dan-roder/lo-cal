@@ -1,3 +1,25 @@
-<p>
-  catering works!
-</p>
+<div class="page-landing-page">
+  <lo-cal-header [featuredImage]="featuredImage" [pageContent]="pageContent"></lo-cal-header>
+  <div class="section section-white">
+    <div class="content center">
+      <div class="body center-960" [innerHtml]="pageContent?.content?.rendered | safeHtml"></div>
+    </div>
+  </div>
+
+  <div class="section section-grey intro-section" *ngIf="acf?.body">
+    <div class="content">
+      <h3 class="title" *ngIf="acf?.title" [innerHtml]="acf?.title"></h3>
+      <div class="body" *ngIf="acf?.body" [innerHtml]="acf?.body | safeHtml"></div>
+    </div>
+  </div>
+
+  <lo-cal-title-body-images [acf]="acf" [color]="'grey'"></lo-cal-title-body-images>
+
+  <div class="background-section section section-white eating-well">
+    <div class="content center">
+      <div class="body" [innerHtml]="acf?.text"></div>
+    </div>
+  </div>
+
+  <lo-cal-image-and-text [acf]="acf" [color]="'grey'"></lo-cal-image-and-text>
+</div>
