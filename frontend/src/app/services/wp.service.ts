@@ -62,13 +62,7 @@ export class WordpressService {
   }
 
   getPage(id): Observable<any> {
-    return this.http.get(this.config.wordpressApiUrl + `/wp/v2/pages/${id}`)
-      .map((res: Response) => res.json());
-  }
-
-  getPage2(id): Observable<any> {
     return this.httpClient.get(this.config.wordpressApiUrl + `/wp/v2/pages/${id}`);
-      //.map((res) => {return res});
   }
 
   getPostBySlug(_slug: string, _postType: string){
