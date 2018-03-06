@@ -10,18 +10,19 @@ import { MenuCustomizeComponent } from './pages/menu-customize/menu-customize.co
 import { SubMenuComponent } from './pages/sub-menu/sub-menu.component';
 import { LoginComponent } from '@local/pages/login/login.component';
 import { PostComponent } from './pages/post/post.component'
+import { CateringComponent } from '@local/pages/catering/catering.component';
 
 
 const routes: Routes = [
   {
     path: '',
     component: MainLayoutComponent,
-    pathMatch: 'full',
     children: [
-      {
-        path: '',
-        component: HomeComponent
-      }
+      { path: '', component: HomeComponent },
+      { path: 'our-story', component: OurStoryComponent },
+      { path: 'our-food', component: OurFoodComponent },
+      { path: 'catering', component: CateringComponent },
+      { path: 'login', component: LoginComponent },
     ]
   },
   {
@@ -52,36 +53,7 @@ const routes: Routes = [
       },
     ]
   },
-  {
-    path: 'our-story',
-    component: MainLayoutComponent,
-    children: [
-      {
-        path: '',
-        component: OurStoryComponent
-      }
-    ]
-  },
-  {
-    path: 'our-food',
-    component: MainLayoutComponent,
-    children: [
-      {
-        path: '',
-        component: OurFoodComponent
-      }
-    ]
-  },
-  {
-    path: 'login',
-    component: MainLayoutComponent,
-    children: [
-      {
-        path: '',
-        component: LoginComponent
-      }
-    ]
-  },
+
   {
     path: ':slug',
     component: MainLayoutComponent,
