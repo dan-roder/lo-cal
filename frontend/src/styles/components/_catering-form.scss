@@ -1,0 +1,83 @@
+.catering-form{
+  .form-section{
+
+    @include breakpoint($bp-600){
+      margin: 10px 0 20px;
+    }
+
+    &.half-and-half{
+      @include breakpoint($bp-600){
+        display: flex;
+        justify-content: space-between;
+      }
+    }
+  }
+
+  label{
+    display: block;
+    clear: both;
+    @include fontsize(15);
+  }
+
+  .form-component-text,
+  .form-component-email{
+    margin: 15px 0;
+
+    @include breakpoint($bp-600){
+      width: 48%;
+      margin: 0;
+    }
+
+    input{
+      @extend %sofia-regular;
+      @include fontsize(15);
+      border: none;
+      border-bottom: 1px solid $black;
+      padding: 8px 4px;
+      display: block;
+      width: 100%;
+      box-sizing: border-box;
+
+      &:focus{
+        outline: 0;
+      }
+
+      &::placeholder{
+        opacity: .5;
+      }
+    }
+  }
+
+  .form-component-textarea{
+    margin: 15px 0;
+
+    @include breakpoint($bp-600){
+      margin: 0;
+    }
+
+    label{
+      opacity: .5;
+      padding: 8px 4px;
+    }
+
+    textarea{
+      display: block;
+      width: 100%;
+      box-sizing: border-box;
+      resize: none;
+      padding: 8px;
+
+      &:focus{
+        outline: 0;
+      }
+    }
+  }
+
+  .form-actions{
+    input[type=submit]{
+      @include fontsize(15);
+      @extend %sofia-light;
+      padding: 8px 150px;
+    }
+  }
+}
