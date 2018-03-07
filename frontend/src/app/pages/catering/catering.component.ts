@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewEncapsulation } from '@angular/core';
 import { AutoUnsubscribe } from 'ngx-auto-unsubscribe';
 import { WordpressService } from '@local/services/wp.service';
 import { FormControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -43,7 +43,5 @@ export class CateringComponent implements OnInit {
     });
   }
 
-  ngOnDestroy(){
-
-  }
+  ngOnDestroy(){}
 }
