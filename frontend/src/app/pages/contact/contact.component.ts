@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { AutoUnsubscribe } from 'ngx-auto-unsubscribe/dist/ngx-auto-unsubscribe';
 import { FormControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { WordpressService } from '@local/services/wp.service';
@@ -13,8 +13,17 @@ export class ContactComponent implements OnInit {
   public cateringForm : FormGroup;
   public featuredImage : any;
   public acf : any;
+  public contactForm : FormGroup;
 
-  constructor(private wpService: WordpressService) { }
+  constructor(private wpService: WordpressService, private fb: FormBuilder) {
+    this.contactForm = fb.group({
+      'contact-reason' : [null, Validators.required],
+      'first-name' : [null, Validators.required],
+      'last-name' : [null, Validators.required],
+      'email' : [null, Validators.required, Validators.email],
+      'comments' : null
+    })
+  }
 
   ngOnInit() {
     this.wpService.getPage(132).subscribe(page => {
@@ -26,5 +35,7 @@ export class ContactComponent implements OnInit {
       }
     });
   }
+
+  ngOnDestroy(){}
 
 }
