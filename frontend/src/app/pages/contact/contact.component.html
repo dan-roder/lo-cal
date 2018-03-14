@@ -1,3 +1,56 @@
-<p>
-  contact works!
-</p>
+<div class="page-landing-page">
+  <lo-cal-header [featuredImage]="featuredImage" [pageContent]="pageContent"></lo-cal-header>
+  <div class="section section-white">
+    <div class="content center">
+      <div class="body center-960" [innerHtml]="pageContent?.content?.rendered | safeHtml"></div>
+    </div>
+  </div>
+
+  <div class="section section-grey intro-section" *ngIf="acf?.body">
+    <div class="content">
+      <h3 class="title" *ngIf="acf?.title" [innerHtml]="acf?.title"></h3>
+      <div class="body" *ngIf="acf?.body" [innerHtml]="acf?.body | safeHtml"></div>
+    </div>
+  </div>
+
+  <div class="section section-white">
+    <div class="content center">
+      <h3>Contact Us for Catering Requests</h3>
+      <form action="" [formGroup]="contactForm" class="contact-form">
+        <div class="form-section half-and-half">
+          <div class="form-component form-component-text">
+            <label for="first-name" class="visuallyhidden">First Name *</label>
+            <input type="text" name="first-name" id="first-name" placeholder="Full Name *" formControlName="full-name">
+          </div>
+          <div class="form-component form-component-text">
+            <label for="phone" class="visuallyhidden">Phone Number *</label>
+            <input type="text" name="phone" id="phone" placeholder="Phone Number *" formControlName="phone">
+          </div>
+        </div>
+        <div class="form-section half-and-half">
+          <div class="form-component form-component-email">
+            <label for="email" class="visuallyhidden">Email *</label>
+            <input type="email" name="email" id="email" placeholder="Email *" formControlName="email">
+          </div>
+          <div class="form-component form-component-text">
+            <label for="service-date" class="visuallyhidden">Service Date *</label>
+            <input type="text" name="service-date" id="service-date" placeholder="Service Date *" formControlName="service-date">
+          </div>
+        </div>
+        <div class="form-section">
+          <div class="form-component form-component-textarea">
+            <label for="notes">Notes</label>
+            <textarea name="notes" id="notes" rows="4" formControlName="notes"></textarea>
+          </div>
+        </div>
+        <div class="form-actions">
+          <div class="form-submit red-button">
+            <input type="submit" value="Send" (click)="submitForm(cateringForm)">
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+    <lo-cal-image-and-text [acf]="acf" [color]="'grey'"></lo-cal-image-and-text>
+  </div>
