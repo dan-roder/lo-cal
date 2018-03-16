@@ -14,6 +14,7 @@ export class ContactComponent implements OnInit {
   public featuredImage : any;
   public acf : any;
   public contactForm : FormGroup;
+  public submittedOnce : boolean = false;
 
   constructor(private wpService: WordpressService, private fb: FormBuilder) {
     this.contactForm = fb.group({
@@ -26,14 +27,18 @@ export class ContactComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.wpService.getPage(132).subscribe(page => {
-      this.pageContent = page;
-      this.acf = page.acf;
+    // this.wpService.getPage(132).subscribe(page => {
+    //   this.pageContent = page;
+    //   this.acf = page.acf;
 
-      if(page.featured_media != 0){
-        this.wpService.getMedia(page.featured_media).subscribe(media => this.featuredImage = media);
-      }
-    });
+    //   if(page.featured_media != 0){
+    //     this.wpService.getMedia(page.featured_media).subscribe(media => this.featuredImage = media);
+    //   }
+    // });
+  }
+
+  submitForm(formData){
+    console.log(formData);
   }
 
   ngOnDestroy(){}
