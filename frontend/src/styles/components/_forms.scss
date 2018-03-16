@@ -9,6 +9,23 @@
       @include breakpoint($bp-600){
         display: flex;
         justify-content: space-between;
+
+        .form-component-text,
+        .form-component-email{
+          width: 48%;
+        }
+      }
+    }
+
+    &.thirds{
+      @include breakpoint($bp-600){
+        display: flex;
+        justify-content: space-between;
+
+        .form-component-text,
+        .form-component-email{
+          width: 32%;
+        }
       }
     }
   }
@@ -22,11 +39,6 @@
   .form-component-text,
   .form-component-email{
     margin: 15px 0;
-
-    @include breakpoint($bp-600){
-      width: 48%;
-      margin: 0;
-    }
 
     input{
       @extend %sofia-regular;
