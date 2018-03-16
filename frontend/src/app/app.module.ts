@@ -45,6 +45,8 @@ import { WindowScrollDirective } from './shared/directives/window-scroll.directi
 //Pipes
 import { AllergensPipe } from './pipes/allergens.pipe';
 import { SafeHtml } from './pipes/safe-html.pipe';
+import { BlogComponent } from './pages/blog/blog.component';
+import { BlogPostComponent } from './pages/blog-post/blog-post.component';
 
 
 @NgModule({
@@ -70,7 +72,9 @@ import { SafeHtml } from './pipes/safe-html.pipe';
     LoginComponent,
     PostComponent,
     CateringComponent,
-    ContactComponent
+    ContactComponent,
+    BlogComponent,
+    BlogPostComponent
   ],
   imports: [
     BrowserModule,
