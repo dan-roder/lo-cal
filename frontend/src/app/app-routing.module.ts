@@ -11,6 +11,7 @@ import { SubMenuComponent } from './pages/sub-menu/sub-menu.component';
 import { LoginComponent } from '@local/pages/login/login.component';
 import { PostComponent } from './pages/post/post.component'
 import { CateringComponent } from '@local/pages/catering/catering.component';
+import { ContactComponent } from '@local/pages/contact/contact.component';
 
 
 const routes: Routes = [
@@ -23,6 +24,7 @@ const routes: Routes = [
       { path: 'our-food', component: OurFoodComponent },
       { path: 'catering', component: CateringComponent },
       { path: 'login', component: LoginComponent },
+      { path: 'contact', component: ContactComponent },
     ]
   },
   {
