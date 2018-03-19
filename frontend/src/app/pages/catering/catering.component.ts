@@ -22,7 +22,7 @@ export class CateringComponent implements OnInit {
     this.cateringForm = fb.group({
       'full-name' : [null, Validators.required],
       'phone' : [null, Validators.required],
-      'email' : [null, Validators.required, Validators.email],
+      'email' : [null, [Validators.required, Validators.email]],
       'service-date' : [null, Validators.required],
       'notes' : null
     })
