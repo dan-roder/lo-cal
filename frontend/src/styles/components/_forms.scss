@@ -57,6 +57,10 @@
       &::placeholder{
         opacity: .5;
       }
+
+      &.has-error{
+        border-bottom: 1px solid $orange-red;
+      }
     }
   }
 
