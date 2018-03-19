@@ -15,26 +15,25 @@
 
   <div class="section section-white">
     <div class="content center">
-      <h3>Contact Us for Catering Requests</h3>
       <form action="" [formGroup]="contactForm" class="contact-form">
         <div class="form-section">
           <div class="form-conponent form-component-text">
             <label for="contact-reason" class="visuallyhidden">What are you interested in sharing/asking?</label>
-            <input type="text" name="contact-reason" id="contact-reason" formControlName="contact-reason" placeholder="What are you interested in sharing/asking?">
+            <input type="text" name="contact-reason" id="contact-reason" formControlName="contact-reason" placeholder="What are you interested in sharing/asking?" [ngClass]="{'has-error':!contactForm.controls['contact-reason'].valid && submittedOnce}">
           </div>
         </div>
         <div class="form-section thirds">
           <div class="form-component form-component-text">
             <label for="first-name" class="visuallyhidden">First Name *</label>
-            <input type="text" name="first-name" id="first-name" placeholder="First Name *" formControlName="first-name">
+            <input type="text" name="first-name" id="first-name" placeholder="First Name *" formControlName="first-name" [ngClass]="{'has-error':!contactForm.controls['first-name'].valid && submittedOnce}">
           </div>
           <div class="form-component form-component-text">
             <label for="last-name" class="visuallyhidden">Last Name *</label>
-            <input type="text" name="last-name" id="last-name" placeholder="Last Name *" formControlName="last-name">
+            <input type="text" name="last-name" id="last-name" placeholder="Last Name *" formControlName="last-name" [ngClass]="{'has-error':!contactForm.controls['last-name'].valid && submittedOnce}">
           </div>
           <div class="form-component form-component-email">
             <label for="email" class="visuallyhidden">Email *</label>
-            <input type="email" name="email" id="email" placeholder="Email *" formControlName="email">
+            <input type="email" name="email" id="email" placeholder="Email *" formControlName="email" [ngClass]="{'has-error':!contactForm.controls['email'].valid && submittedOnce}">
           </div>
         </div>
         <div class="form-section">
