@@ -62,6 +62,12 @@
         border-bottom: 1px solid $orange-red;
       }
     }
+
+    .error-message{
+      @include fontsize(15);
+      padding: 8px 4px;
+      color: $orange-red;
+    }
   }
 
   .form-component-textarea{
