@@ -27,17 +27,18 @@ export class ContactComponent implements OnInit {
   }
 
   ngOnInit() {
-    // this.wpService.getPage(132).subscribe(page => {
-    //   this.pageContent = page;
-    //   this.acf = page.acf;
+    this.wpService.getPage(132).subscribe(page => {
+      this.pageContent = page;
+      this.acf = page.acf;
 
-    //   if(page.featured_media != 0){
-    //     this.wpService.getMedia(page.featured_media).subscribe(media => this.featuredImage = media);
-    //   }
-    // });
+      if(page.featured_media != 0){
+        this.wpService.getMedia(page.featured_media).subscribe(media => this.featuredImage = media);
+      }
+    });
   }
 
   submitForm(formData){
+    this.submittedOnce = true;
     console.log(formData);
   }
 
