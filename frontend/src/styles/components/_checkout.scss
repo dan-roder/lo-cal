@@ -248,9 +248,13 @@
 
   .cart-prices{
     .value{
-      @include svg-bg(icons/left-arrow-red);
-      background-position: right center;
       padding: 0 18px 0 0;
+
+      &.editable{
+        @include svg-bg(icons/left-arrow-red);
+        background-position: right center;
+        cursor: pointer;
+      }
     }
   }
 
