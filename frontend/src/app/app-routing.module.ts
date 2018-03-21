@@ -27,16 +27,8 @@ const routes: Routes = [
       { path: 'catering', component: CateringComponent },
       { path: 'login', component: LoginComponent },
       { path: 'contact', component: ContactComponent },
-      {
-        path: 'blog',
-        component: BlogComponent,
-        children: [
-          {
-            path: ':blogpost',
-            component: BlogPostComponent
-          }
-        ]
-      },
+      { path: 'blog', component: BlogComponent },
+      { path: 'blog/:post', component: BlogPostComponent }
     ]
   },
   {
