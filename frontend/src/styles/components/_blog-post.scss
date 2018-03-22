@@ -4,6 +4,12 @@
       @extend %sofia-light;
     }
   }
+
+  .share-text{
+    @include fontsize(14);
+    @extend %sofia-light;
+    opacity: .7;
+  }
 }
 
 .blog-details{
