@@ -1,0 +1,12 @@
+.blog-post{
+  .content{
+    p,a{
+      @extend %sofia-light;
+    }
+  }
+}
+
+.blog-details{
+  margin-bottom: 15px;
+}
+
