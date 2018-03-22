@@ -186,6 +186,8 @@ function blog_post() {
 		'publicly_queryable'    => true,
 		'rewrite'               => $rewrite,
 		'capability_type'       => 'page',
+		'show_in_rest'          => true,
+    'rest_base'             => 'blog_post',
 	);
 	register_post_type( 'blog_post', $args );
 
