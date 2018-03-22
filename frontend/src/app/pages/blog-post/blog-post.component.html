@@ -1,3 +1,37 @@
-<p>
-  this is a blog post
-</p>
+<div class="basic-page-container blog-post">
+  <div class="basic-page-content" *ngIf="pageContent">
+    <div class="blog-details center-960">
+      <h1 [innerHtml]="pageContent?.title?.rendered"></h1>
+      <span class="published-date" *ngIf="pageContent?.date">{{ pageContent?.date | date:'MMMM d yyyy' }}</span><span class="category"></span>
+    </div>
+    <div class="featured-image center" *ngIf="featuredImage">
+      <img [src]="featuredImage?.source_url" [alt]="featuredImage?.alt_text">
+    </div>
+    <div class="content center-740" [innerHtml]="pageContent?.content?.rendered | safeHtml"></div>
+    <div class="share-links center-960">
+      <ul class="menu social-menu">
+        <li>
+          Share:
+        </li>
+        <li>
+          <a target="_blank" href="http://www.facebook.com">
+            <span class="visuallyhidden">Share on Facebook</span>
+            <i class="fa fa-facebook"></i>
+          </a>
+        </li>
+        <li>
+          <a target="_blank" href="http://twitter.com">
+            <span class="visuallyhidden">Share on Twitter</span>
+            <i class="fa fa-twitter"></i>
+          </a>
+        </li>
+        <li>
+          <a target="_blank" href="http://instagram.com">
+            <span class="visuallyhidden">Share on Instagram</span>
+            <i class="fa fa-instagram"></i>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
