@@ -51,6 +51,14 @@
   @extend %clearfix;
 }
 
+.float-left{
+  float: left;
+}
+
+.float-right{
+  float: right;
+}
+
 .flex-between{
   display: flex;
   justify-content: space-between;
