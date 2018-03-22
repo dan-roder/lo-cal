@@ -1,0 +1,33 @@
+.social-menu{
+  margin: 0;
+  padding: 0;
+
+  li{
+    display: inline-block;
+    margin: 0 10px;
+  }
+
+  a{
+    @include fontsize(22);
+    color: $black;
+    border-radius: 50%;
+    background: $white;
+    display: inline-block;
+    width: 34px;
+    height: 34px;
+    text-align: center;
+
+    .blog-post &{
+      background: $black;
+      color: $white;
+    }
+  }
+
+  .blog-post &{
+    margin: 60px 0 10px;
+    padding: 20px 0;
+    border-top: 1px solid $light-grey;
+    border-bottom: 1px solid $light-grey;
+  }
+}
+
