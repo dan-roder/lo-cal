@@ -10,7 +10,9 @@
       <div class="blog-posts">
         <div class="post" *ngFor="let post of allBlogPosts">
           <div class="left" *ngIf="post?.featured_media">
-            {{ post?.featured_media | featuredImage | async }}
+            <a [routerLink]="[post?.slug]" replaceUrl=true>
+              <img src="{{ post?._embedded | featuredImage: 'medium' }}" alt="{{ post?._embedded | featuredImage: 'alt' }}">
+            </a>
           </div>
           <div class="right">
             <div class="title" *ngIf="post?.title">{{ post?.title?.rendered }}</div>
