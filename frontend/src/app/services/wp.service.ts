@@ -93,8 +93,7 @@ export class WordpressService {
   }
 
   getCustomPostType( base ): Observable<any>{
-    return this.http.get(this.config.wordpressApiUrl + `/${base}`)
-      .map((res: Response) => res.json());
+    return this.httpClient.get(this.config.wordpressApiUrl + `/wp/v2/${base}`);
   }
 
   getCustomPostTypeById( base, id ): Observable<any>{
