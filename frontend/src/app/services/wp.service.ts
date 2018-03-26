@@ -34,10 +34,7 @@ export class WordpressService {
   }
 
   getMedia(id) {
-    return this.http.get(this.config.wordpressApiUrl + `/wp/v2/media/${id}`)
-      .map(result => {
-      return result.json();
-    });
+    return this.httpClient.get(this.config.wordpressApiUrl + `/wp/v2/media/${id}`);
   }
 
   getCategories() {
@@ -93,12 +90,11 @@ export class WordpressService {
   }
 
   getCustomPostType( base ): Observable<any>{
-    return this.httpClient.get(this.config.wordpressApiUrl + `/wp/v2/${base}`);
+    return this.httpClient.get(this.config.wordpressApiUrl + `/wp/v2/${base}?_embed`);
   }
 
   getCustomPostTypeById( base, id ): Observable<any>{
-    return this.http.get(this.config.wordpressApiUrl + `/wp/v2/${base}/${id}`)
-      .map((res: Response) => res.json());
+    return this.httpClient.get(this.config.wordpressApiUrl + `/wp/v2/${base}/${id}`);
   }
 
 }
