@@ -16,7 +16,9 @@ export class BlogComponent implements OnInit {
   constructor(private wordpressService: WordpressService) { }
 
   ngOnInit() {
-    this.wordpressService.getCustomPostType('blog_post').subscribe(posts => {this.allBlogPosts = posts; console.log(posts);})
+    this.wordpressService.getCustomPostType('blog_post').subscribe(posts => {
+      this.allBlogPosts = posts; console.log(posts);
+    })
   }
 
 }
