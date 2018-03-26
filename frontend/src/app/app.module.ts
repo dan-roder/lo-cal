@@ -47,6 +47,7 @@ import { AllergensPipe } from './pipes/allergens.pipe';
 import { SafeHtml } from './pipes/safe-html.pipe';
 import { BlogComponent } from './pages/blog/blog.component';
 import { BlogPostComponent } from './pages/blog-post/blog-post.component';
+import { FeaturedImagePipe } from './pipes/featured-image.pipe';
 
 
 @NgModule({
@@ -74,7 +75,8 @@ import { BlogPostComponent } from './pages/blog-post/blog-post.component';
     CateringComponent,
     ContactComponent,
     BlogComponent,
-    BlogPostComponent
+    BlogPostComponent,
+    FeaturedImagePipe
   ],
   imports: [
     BrowserModule,
