@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { WordpressService } from '../../services/wp.service';
 import { AutoUnsubscribe } from "ngx-auto-unsubscribe";
+import { IPost } from '@local/models/post';
 
 @Component({
   selector: 'lo-cal-our-food',
@@ -10,7 +11,7 @@ import { AutoUnsubscribe } from "ngx-auto-unsubscribe";
 @AutoUnsubscribe()
 
 export class OurFoodComponent implements OnInit {
-  public pageContent : any;
+  public pageContent : IPost;
   public acf : any;
   public featuredImage : any;
 
