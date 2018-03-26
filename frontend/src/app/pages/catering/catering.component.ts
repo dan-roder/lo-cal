@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy, ViewEncapsulation } from '@angular/core';
 import { AutoUnsubscribe } from 'ngx-auto-unsubscribe';
 import { WordpressService } from '@local/services/wp.service';
 import { FormControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { IPost } from '@local/models/post';
 
 @Component({
   selector: 'lo-cal-catering',
@@ -13,7 +14,7 @@ import { FormControl, FormBuilder, FormGroup, Validators } from '@angular/forms'
 
 export class CateringComponent implements OnInit {
   public cateringForm : FormGroup;
-  public pageContent : any;
+  public pageContent : IPost;
   public acf : any;
   public featuredImage : any;
   public submittedOnce : boolean = false;
