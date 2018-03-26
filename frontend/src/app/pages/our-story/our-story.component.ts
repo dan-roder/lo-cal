@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { WordpressService } from '../../services/wp.service';
 import { AutoUnsubscribe } from "ngx-auto-unsubscribe";
+import { IPost } from '@local/models/post';
 
 @Component({
   selector: 'lo-cal-our-story',
@@ -10,7 +11,7 @@ import { AutoUnsubscribe } from "ngx-auto-unsubscribe";
 @AutoUnsubscribe()
 
 export class OurStoryComponent implements OnInit {
-  public pageContent : any;
+  public pageContent : IPost;
   public acf : any;
   public featuredImage : any;
 
@@ -20,8 +21,6 @@ export class OurStoryComponent implements OnInit {
     this.wpService.getCustomPostTypeById('landing_page', 80).subscribe(page => {
       this.pageContent = page;
       this.acf = page.acf;
-
-      console.log(page);
 
       if(page.featured_media != 0){
         this.wpService.getMedia(page.featured_media).subscribe(media => this.featuredImage = media);
