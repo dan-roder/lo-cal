@@ -15,11 +15,7 @@ add_action( 'init', 'register_theme_menus' );
 
 add_theme_support( 'post-thumbnails' );
 
-add_image_size( 'Square-Small', '180', '180', array('left', 'top') );
-add_image_size( 'Square', '230', '230', array('left', 'top') );
-add_image_size( 'Square-Medium', '330', '330', array('left', 'top') );
-add_image_size( 'Program-Medium', '310', '310', array('left', 'top') );
-add_image_size( 'Square-Large', '420', '420', array('left', 'top') );
+
 add_image_size( 'blog-preview', '260', '180', array('center', 'center') );
 
 
@@ -33,21 +29,6 @@ function custom_excerpt_more( $more ) {
 }
 add_filter('excerpt_more', 'custom_excerpt_more');
 add_filter( 'excerpt_length', 'custom_excerpt_length', 999 );
-
-
-// function theme_widgets_init() {
-
-// 	register_sidebar( array(
-// 		'name' => 'Sidebar',
-// 		'id' => 'sidebar',
-// 		'before_widget' => '<div class="sidebar">',
-// 		'after_widget' => '</div>',
-// 		'before_title' => '<h3 class="sidebar">',
-// 		'after_title' => '</h3>',
-// 	) );
-// }
-// add_action( 'widgets_init', 'theme_widgets_init' );
-
 
 add_filter( 'post_thumbnail_html', 'remove_thumbnail_dimensions', 10, 3 );
 
