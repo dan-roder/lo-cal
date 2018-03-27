@@ -1,6 +1,6 @@
 <?php
   // Register Custom Post Type
-function custom_post_type() {
+function landing_page() {
 
   $labels = array(
     'name'                  => _x( 'Landing Pages', 'Post Type General Name', 'text_domain' ),
@@ -170,7 +170,7 @@ function blog_post() {
 		'label'                 => __( 'Blog Post', 'text_domain' ),
 		'description'           => __( 'Blog Posts', 'text_domain' ),
 		'labels'                => $labels,
-		'supports'              => array( 'title', 'editor', 'thumbnail' ),
+		'supports'              => array( 'title', 'editor', 'thumbnail', 'excerpt' ),
 		'taxonomies'            => array( 'category', 'post_tag' ),
 		'hierarchical'          => false,
 		'public'                => true,
@@ -196,5 +196,5 @@ function blog_post() {
 
 add_action( 'init', 'blog_post', 0 );
 add_action( 'init', 'Menu_Item', 0 );
-add_action( 'init', 'custom_post_type', 0 );
+add_action( 'init', 'landing_page', 0 );
 ?>
