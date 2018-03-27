@@ -10,16 +10,16 @@
       <div class="blog-posts">
         <div class="post" *ngFor="let post of allBlogPosts">
           <div class="left" *ngIf="post?.featured_media">
-            <a [routerLink]="[post?.slug]" replaceUrl=true>
-              <img src="{{ post?._embedded | featuredImage: 'medium' }}" alt="{{ post?._embedded | featuredImage: 'alt' }}">
+            <a [routerLink]="[post?.slug]">
+              <img src="{{ post?._embedded | featuredImage: 'blog-preview' }}" alt="{{ post?._embedded | featuredImage: 'alt' }}">
             </a>
           </div>
           <div class="right">
             <div class="title" *ngIf="post?.title">{{ post?.title?.rendered }}</div>
             <div class="date" *ngIf="post?.date"> {{ post?.date | date:'MMMM d, yyyy' }} </div>
-            <div class="excerpt"></div>
-            <div class="link">
-              <a href=""></a>
+            <div class="excerpt" *ngIf="post?.excerpt" [innerHtml]="post?.excerpt?.rendered | safeHtml"></div>
+            <div class="link" *ngIf="post?.slug">
+              <a [routerLink]="[post?.slug]">Read More</a>
             </div>
           </div>
         </div>
