@@ -20,6 +20,7 @@ add_image_size( 'Square', '230', '230', array('left', 'top') );
 add_image_size( 'Square-Medium', '330', '330', array('left', 'top') );
 add_image_size( 'Program-Medium', '310', '310', array('left', 'top') );
 add_image_size( 'Square-Large', '420', '420', array('left', 'top') );
+add_image_size( 'blog-preview', '260', '180', array('center', 'center') );
 
 
 
