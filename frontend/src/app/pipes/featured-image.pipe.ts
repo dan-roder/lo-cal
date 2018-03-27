@@ -1,6 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import { WordpressService } from '@local/services/wp.service';
-import { Observable } from 'rxjs/Observable';
 
 @Pipe({
   name: 'featuredImage'
