@@ -65,8 +65,13 @@ function landing_page() {
 
 }
 
-  // Register Custom Post Type
-function Menu_Item() {
+
+/**
+ *
+ * Menu Item Custom Post Type
+ *
+ */
+function menu_item() {
 
 	$labels = array(
 		'name'                  => _x( 'Menu Items', 'Post Type General Name', 'text_domain' ),
@@ -98,7 +103,7 @@ function Menu_Item() {
 		'filter_items_list'     => __( 'Filter items list', 'text_domain' ),
 	);
 	$rewrite = array(
-		'slug'                  => 'menu-item',
+		'slug'                  => 'menu/%category-name%',
 		'with_front'            => true,
 		'pages'                 => true,
 		'feeds'                 => true,
@@ -128,7 +133,78 @@ function Menu_Item() {
 	register_post_type( 'menu_item', $args );
 }
 
-// Register Custom Post Type
+/**
+ *
+ * Menu Categories Custom Post Type
+ *
+ */
+function menu_categories() {
+
+	$labels = array(
+		'name'                  => _x( 'Menu Categories', 'Post Type General Name', 'text_domain' ),
+		'singular_name'         => _x( 'Menu Category', 'Post Type Singular Name', 'text_domain' ),
+		'menu_name'             => __( 'Menu Categories', 'text_domain' ),
+		'name_admin_bar'        => __( 'Post Type', 'text_domain' ),
+		'archives'              => __( 'Item Archives', 'text_domain' ),
+		'attributes'            => __( 'Item Attributes', 'text_domain' ),
+		'parent_item_colon'     => __( 'Parent Item:', 'text_domain' ),
+		'all_items'             => __( 'All Categories', 'text_domain' ),
+		'add_new_item'          => __( 'Add New Category', 'text_domain' ),
+		'add_new'               => __( 'Add Category', 'text_domain' ),
+		'new_item'              => __( 'New Category', 'text_domain' ),
+		'edit_item'             => __( 'Edit Category', 'text_domain' ),
+		'update_item'           => __( 'Update Category', 'text_domain' ),
+		'view_item'             => __( 'View Category', 'text_domain' ),
+		'view_items'            => __( 'View Categories', 'text_domain' ),
+		'search_items'          => __( 'Search Category', 'text_domain' ),
+		'not_found'             => __( 'Not found', 'text_domain' ),
+		'not_found_in_trash'    => __( 'Not found in Trash', 'text_domain' ),
+		'featured_image'        => __( 'Header Image', 'text_domain' ),
+		'set_featured_image'    => __( 'Set Header image', 'text_domain' ),
+		'remove_featured_image' => __( 'Remove header image', 'text_domain' ),
+		'use_featured_image'    => __( 'Use as header image', 'text_domain' ),
+		'insert_into_item'      => __( 'Insert into item', 'text_domain' ),
+		'uploaded_to_this_item' => __( 'Uploaded to this item', 'text_domain' ),
+		'items_list'            => __( 'Items list', 'text_domain' ),
+		'items_list_navigation' => __( 'Items list navigation', 'text_domain' ),
+		'filter_items_list'     => __( 'Filter items list', 'text_domain' ),
+	);
+	$rewrite = array(
+		'slug'                  => 'menu',
+		'with_front'            => true,
+		'pages'                 => true,
+		'feeds'                 => true,
+	);
+	$args = array(
+		'label'                 => __( 'Menu Category', 'text_domain' ),
+		'description'           => __( 'Menu Category details', 'text_domain' ),
+		'labels'                => $labels,
+		'supports'              => array( 'title', 'editor', 'thumbnail' ),
+		'taxonomies'            => array( 'category', 'post_tag' ),
+		'hierarchical'          => true,
+		'public'                => true,
+		'show_ui'               => true,
+		'show_in_menu'          => true,
+		'menu_position'         => 5,
+		'menu_icon'             => 'dashicons-cart',
+		'show_in_admin_bar'     => true,
+		'show_in_nav_menus'     => true,
+		'can_export'            => true,
+		'has_archive'           => 'menu-categories',
+		'exclude_from_search'   => false,
+		'publicly_queryable'    => true,
+		'rewrite'               => $rewrite,
+		'capability_type'       => 'page',
+		'show_in_rest'          => true,
+	);
+	register_post_type( 'menu_categories', $args );
+}
+
+/**
+ *
+ * Blog Post Custom Post Type
+ *
+ */
 function blog_post() {
 
 	$labels = array(
@@ -193,8 +269,43 @@ function blog_post() {
 
 }
 
+add_action('add_meta_boxes', function() {
+	add_meta_box('menu-item-parent', 'Menu Categories', 'categories_attributes_meta_box', 'menu_item', 'side', 'default');
+});
+
+function categories_attributes_meta_box($post) {
+	$pages = wp_dropdown_pages(array('post_type' => 'menu_categories', 'selected' => $post->post_parent, 'name' => 'parent_id', 'show_option_none' => __('(no parent)'), 'sort_column'=> 'menu_order, post_title', 'echo' => 0));
+	if ( ! empty($pages) ) {
+		echo $pages;
+	} // end empty pages check
+}
+
+add_action( 'init', function() {
+	add_rewrite_rule( '^menu/(.*)/([^/]+)/?$','index.php?menu_item=$matches[2]','top' );
+});
+
+add_filter( 'post_type_link', function( $link, $post ) {
+	if ( 'menu_item' == get_post_type( $post ) ) {
+		//Lets go to get the parent cartoon-series name
+		// var_dump($post->post_parent); die();
+		if( $post->post_parent ) {
+			$parent = get_post( $post->post_parent );
+			if( !empty($parent->post_name) ) {
+				return str_replace( '%category-name%', $parent->post_name, $link );
+			}
+		} else {
+				//This seems to not work. It is intented to build pretty permalinks
+				//when episodes has not parent, but it seems that it would need
+				//additional rewrite rules
+				//return str_replace( '/%series_name%', '', $link );
+		}
+
+	}
+	return $link;
+}, 10, 2 );
 
 add_action( 'init', 'blog_post', 0 );
-add_action( 'init', 'Menu_Item', 0 );
+add_action( 'init', 'menu_item', 0 );
+add_action( 'init', 'menu_categories', 0 );
 add_action( 'init', 'landing_page', 0 );
 ?>
