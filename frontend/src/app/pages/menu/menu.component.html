@@ -14,9 +14,9 @@
 
         <div class="item item-{{ i+1 }}" *ngFor="let menuItem of subMenus; let i = index">
           <div class="item-wrapper text-center">
-            <a routerLink="{{ menuItem?.Name | lowercase }}" (click)="setMenuId(menuItem?.SubMenuId)">
+            <a routerLink="{{ menuItem?.slug }}" (click)="setMenuId(menuItem?.acf?.submenuid)">
               <div class="image"><img src="//via.placeholder.com/200x200"></div>
-              <div class="title">{{ menuItem?.DisplayName }}</div>
+              <div class="title" [innerHtml]="menuItem?.title?.rendered | safeHtml"></div>
             </a>
           </div>
         </div>
