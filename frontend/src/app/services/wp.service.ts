@@ -59,7 +59,7 @@ export class WordpressService {
   }
 
   getPage(id): Observable<any> {
-    return this.httpClient.get(this.config.wordpressApiUrl + `/wp/v2/pages/${id}`);
+    return this.httpClient.get(this.config.wordpressApiUrl + `/wp/v2/pages/${id}?_embed`);
   }
 
   getPostBySlug(_slug: string, _postType: string){
