@@ -22,8 +22,8 @@ export class MenuService {
     return this.get('submenus');
   }
 
-  getSubMenuItems(subMenuItemName){
-    return this.get(subMenuItemName);
+  getSubMenuItems(subMenuId){
+    return this.get('submenus/' + subMenuId);
   }
 
   get(apiMethod: string = ''){
