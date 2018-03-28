@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { WordpressService } from '../../services/wp.service';
 import { MenuService } from '../../services/menu-service.service';
 import { AutoUnsubscribe } from "ngx-auto-unsubscribe";
+import { SubMenu } from '@local/models/SubMenu';
 
 @Component({
   selector: 'lo-cal-menu',
@@ -20,26 +21,22 @@ export class MenuPageComponent implements OnInit {
   constructor(private wpService: WordpressService, private menuService: MenuService) { }
 
   ngOnInit() {
-    this.wpService.getPage(103).subscribe(page => {
-      this.pageContent = page;
-      this.acf = page.acf;
+    this.wpService.getPage(103).subscribe(_page => {
+      this.pageContent = _page;
+      this.acf = _page.acf;
       console.log(this.pageContent);
+      this.featuredImage = _page._embedded['wp:featuredmedia'][0].media_details.sizes.full;
 
-      if(page.featured_media != 0){
-        this.wpService.getMedia(page.featured_media).subscribe(media => this.featuredImage = media);
-      }
     });
 
-    this.menuService.getSubMenus().subscribe(submenus => {
-      console.log(submenus);
-      this.subMenus = submenus;
+    this.wpService.getCustomPostType('menu_categories', 30).subscribe(_subMenus => {
+      console.log(_subMenus);
+      this.subMenus = _subMenus;
     })
 
   }
 
-  ngOnDestroy(){
-
-  }
+  ngOnDestroy(){}
 
   setMenuId(id){
     this.menuService.menuItemId = id;
