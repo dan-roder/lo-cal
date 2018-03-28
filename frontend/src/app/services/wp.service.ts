@@ -89,8 +89,9 @@ export class WordpressService {
     return str.join('&');
   }
 
-  getCustomPostType( base ): Observable<any>{
-    return this.httpClient.get(this.config.wordpressApiUrl + `/wp/v2/${base}?_embed`);
+  getCustomPostType( postType, _perPage : number = null ): Observable<any>{
+    let perPage = (_perPage !== null) ? `&per_page=${_perPage}` : '';
+    return this.httpClient.get(this.config.wordpressApiUrl + `/wp/v2/${postType}?_embed${perPage}`);
   }
 
   getCustomPostTypeById( base, id ): Observable<any>{
