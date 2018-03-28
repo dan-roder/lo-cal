@@ -24,15 +24,12 @@ export class MenuPageComponent implements OnInit {
     this.wpService.getPage(103).subscribe(_page => {
       this.pageContent = _page;
       this.acf = _page.acf;
-      console.log(this.pageContent);
       this.featuredImage = _page._embedded['wp:featuredmedia'][0].media_details.sizes.full;
-
     });
 
     this.wpService.getCustomPostType('menu_categories', 30).subscribe(_subMenus => {
-      console.log(_subMenus);
       this.subMenus = _subMenus;
-    })
+    });
 
   }
 
