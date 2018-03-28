@@ -25,7 +25,7 @@
 
   <!-- Menu Card Layout HTML -->
   <div class="section-white menu-categories center" id="featured">
-    <h2 class="capitalize text-center">{{ subMenuType }}</h2>
+    <h2 class="capitalize text-center" [innerHtml]="pageContent?.title?.rendered"></h2>
     <h4></h4>
 
     <div class="content clearfix">
