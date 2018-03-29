@@ -1,6 +1,6 @@
 <div class="page-item-detail">
   <div class="menu-item-header">
-    <h1 class="title">Athena Bowl</h1>
+    <h1 class="title">{{ menuItemDetails?.item?.Name }}</h1>
     <img src="//via.placeholder.com/1400x515" alt="Image of food">
   </div>
 
@@ -188,17 +188,15 @@
     </div><!-- /.left.customization-options -->
     <div class="right">
       <div class="final-product">
-        <div class="title">Athena Bowl</div>
-        <div class="ingredients">
-          Romaine, grilled shrimp, cucumber, tomato, kalamata olives, feta, chickpeas, greek dressing
+        <div class="title">{{ menuItemDetails?.item?.Name }}</div>
+        <div class="ingredients" *ngIf="menuItemDetails?.item?.Description">
+          {{ (menuItemDetails?.item?.Description | allergens)?.description }}
         </div>
         <div class="fine-details">
-          <span class="price">$12.99</span>
-          <span class="calories">360 cal</span>
-          <span class="allergens">
-            <span class="allergen">VG</span>
-            <span class="allergen">PL</span>
-            <span class="allergen">V</span>
+          <span class="price">{{ salesItemDetails?.Price | currency }}</span>
+          <span class="calories">{{ salesItemDetails?.CaloricValue }} cal</span>
+          <span class="allergens" *ngIf="(menuItemDetails?.item?.Description)">
+            <span class="allergen" *ngFor="let allergen of (menuItemDetails?.item?.Description | allergens).allergens">{{ allergen }}</span>
           </span>
         </div>
       </div><!-- /.final-product -->
@@ -220,7 +218,7 @@
       </div>
 
       <div class="add-button red-button">
-        <button>Add to Bag (+$12.99)</button>
+        <button *ngIf="totalPrice">Add to Bag (+{{ totalPrice | currency }})</button>
       </div>
     </div><!-- /.right -->
   </div>
