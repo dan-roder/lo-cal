@@ -18,6 +18,10 @@ export class MenuService {
     });
   }
 
+  getMenuItemDetails( _menuItemId : number ){
+    return this.get(`menu-item/${_menuItemId}`);
+  }
+
   getSubMenus(){
     return this.get('submenus');
   }
@@ -28,7 +32,6 @@ export class MenuService {
 
   get(apiMethod: string = ''){
     let url = this.config.railsApi + '/' + apiMethod;
-    console.log(url);
     return this.httpClient.get(url);
   }
 
