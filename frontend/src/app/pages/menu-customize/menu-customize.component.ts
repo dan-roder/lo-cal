@@ -9,7 +9,7 @@ import { IPost } from '@local/models/post';
   templateUrl: './menu-customize.component.html'
 })
 export class MenuCustomizeComponent implements OnInit {
-  private quantity: number = 1;
+  public quantity: number = 1;
   public itemContent : IPost;
   public menuItemDetails : any;
   public salesItemDetails : any;
@@ -36,12 +36,12 @@ export class MenuCustomizeComponent implements OnInit {
     console.log(el);
   }
 
-  private incrementQuantity(){
+  public incrementQuantity(){
     this.quantity++;
     this.recalculateCost();
   }
 
-  private decrementQuantity(){
+  public decrementQuantity(){
     if(this.quantity > 1){
       this.quantity--;
       this.recalculateCost();
