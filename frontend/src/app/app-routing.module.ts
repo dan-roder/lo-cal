@@ -54,7 +54,7 @@ const routes: Routes = [
         component: SubMenuComponent
       },
       {
-        path: ':type',
+        path: ':item',
         component: MenuCustomizeComponent
       },
     ]
