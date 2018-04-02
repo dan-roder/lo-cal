@@ -7,181 +7,22 @@
   <div class="customization-container center-1440">
     <div class="left customization-options">
 
-      <div class="customization-category">
+      <div class="customization-category" *ngFor="let modGroup of salesItemDetails?.ModGroups">
         <div class="content">
           <div class="header">
-            <span class="title">Lettuces</span>
-            <span class="choices">Choose up to 2 (1/2)</span>
+            <span class="title">{{ modGroup?.Name }}</span>
+            <span class="choices">Choose up to {{ modGroup?.MaximumItems }} (1/{{ modGroup?.MaximumItems }})</span>
             <span class="edit">Done</span>
           </div>
-          <div class="options">
+          <div class="options" *ngFor="let modifier of modGroup?.Mods">
             <div class="option">
-              <div class="ingredient">Romaine</div>
+              <div class="ingredient">{{ modifier?.Name }}</div>
               <div class="calories">30 cal</div>
               <div class="selected" (click)="toggleChoice($event)">
                 <span class="counter"></span>
               </div>
             </div><!-- /.option -->
-            <div class="option">
-              <span class="ingredient">Arugula</span>
-              <span class="calories">30 cal</span>
-              <span class="selected">
-                <span class="counter"></span>
-              </span>
-            </div><!-- /.option -->
-            <div class="option">
-              <span class="ingredient">Baby Spinach</span>
-              <span class="calories">30 cal</span>
-              <span class="selected">
-                <span class="counter"></span>
-              </span>
-            </div><!-- /.option -->
-            <div class="option">
-              <span class="ingredient">Baby Kale</span>
-              <span class="calories">30 cal</span>
-              <span class="selected">
-                <span class="counter"></span>
-              </span>
-            </div><!-- /.option -->
-            <div class="option">
-              <span class="ingredient">Mesculin Mix</span>
-              <span class="calories">30 cal</span>
-              <span class="selected">
-                <span class="counter"></span>
-              </span>
-            </div><!-- /.option -->
           </div>
-        </div>
-      </div><!-- /.customization-category -->
-
-      <div class="customization-category">
-        <div class="content">
-          <div class="header">
-            <span class="title">Toppings</span>
-            <span class="choices">Choose up to 5 (4/5)</span>
-            <span class="edit">Edit</span>
-          </div>
-          <div class="options">
-            <div class="option">
-              <div class="ingredient">Cherry Tomato</div>
-              <div class="calories">30 cal</div>
-              <div class="selected" (click)="toggleChoice($event)">
-                <span class="counter"></span>
-              </div>
-            </div><!-- /.option -->
-            <div class="option">
-              <span class="ingredient">Cucumber</span>
-              <span class="calories">30 cal</span>
-              <span class="selected">
-                <span class="counter"></span>
-              </span>
-            </div><!-- /.option -->
-            <div class="option">
-              <span class="ingredient">Kalamata Olives</span>
-              <span class="calories">30 cal</span>
-              <span class="selected">
-                <span class="counter"></span>
-              </span>
-            </div><!-- /.option -->
-            <div class="more-options">
-              <span class="dots"></span>
-              <span class="dots"></span>
-              <span class="dots"></span>
-            </div><!-- /.more-options -->
-          </div><!-- /.options -->
-        </div>
-      </div><!-- /.customization-category -->
-
-      <div class="customization-category">
-        <div class="content">
-          <div class="header">
-            <span class="title">Cheese</span>
-            <span class="choices">Choose up to 2 (2/2)</span>
-            <span class="edit">Edit</span>
-          </div>
-          <div class="options">
-            <div class="option">
-              <div class="ingredient">Cheese 1</div>
-              <div class="calories">30 cal</div>
-              <div class="selected" (click)="toggleChoice($event)">
-                <span class="counter"></span>
-              </div>
-            </div><!-- /.option -->
-            <div class="option">
-              <span class="ingredient">Cheese 2</span>
-              <span class="calories">30 cal</span>
-              <span class="selected">
-                <span class="counter"></span>
-              </span>
-            </div><!-- /.option -->
-            <div class="more-options">
-              <span class="dots"></span>
-              <span class="dots"></span>
-              <span class="dots"></span>
-            </div><!-- /.more-options -->
-          </div><!-- /.options -->
-        </div>
-      </div><!-- /.customization-category -->
-
-      <div class="customization-category">
-        <div class="content">
-          <div class="header">
-            <span class="title">Protein</span>
-            <span class="choices">Choose up to 2 (2/2)</span>
-            <span class="edit">Edit</span>
-          </div>
-          <div class="options">
-            <div class="option">
-              <div class="ingredient">Chickpeas</div>
-              <div class="calories">30 cal</div>
-              <div class="selected" (click)="toggleChoice($event)">
-                <span class="counter"></span>
-              </div>
-            </div><!-- /.option -->
-            <div class="option">
-              <span class="ingredient">Shrimp</span>
-              <span class="calories">30 cal</span>
-              <span class="selected">
-                <span class="counter"></span>
-              </span>
-            </div><!-- /.option -->
-            <div class="more-options">
-              <span class="dots"></span>
-              <span class="dots"></span>
-              <span class="dots"></span>
-            </div><!-- /.more-options -->
-          </div><!-- /.options -->
-        </div>
-      </div><!-- /.customization-category -->
-
-      <div class="customization-category">
-        <div class="content">
-          <div class="header">
-            <span class="title">Dressing</span>
-            <span class="choices">Choose up to 2 (2/2)</span>
-            <span class="edit">Edit</span>
-          </div>
-          <div class="options">
-            <div class="option">
-              <div class="ingredient">Balsamic Vinagrette</div>
-              <div class="calories">30 cal</div>
-              <div class="selected" (click)="toggleChoice($event)">
-                <span class="counter"></span>
-              </div>
-            </div><!-- /.option -->
-            <div class="option">
-              <span class="ingredient">Rance</span>
-              <span class="calories">30 cal</span>
-              <span class="selected">
-                <span class="counter"></span>
-              </span>
-            </div><!-- /.option -->
-            <div class="more-options">
-              <span class="dots"></span>
-              <span class="dots"></span>
-              <span class="dots"></span>
-            </div><!-- /.more-options -->
-          </div><!-- /.options -->
         </div>
       </div><!-- /.customization-category -->
 
