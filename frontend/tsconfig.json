@@ -3,6 +3,7 @@
   "compilerOptions": {
     "outDir": "./dist/out-tsc",
     "sourceMap": true,
+    "target": "es6",
     "declaration": false,
     "moduleResolution": "node",
     "emitDecoratorMetadata": true,
