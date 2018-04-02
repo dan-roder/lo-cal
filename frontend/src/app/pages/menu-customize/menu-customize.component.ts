@@ -3,6 +3,8 @@ import { WordpressService } from '@local/services/wp.service';
 import { MenuService } from '@local/services/menu-service.service';
 import { ActivatedRoute } from '@angular/router';
 import { IPost } from '@local/models/post';
+import { SalesItem } from '@local/models/SalesItem';
+import * as _ from 'lodash';
 
 @Component({
   selector: 'lo-cal-menu-customize',
@@ -12,9 +14,11 @@ export class MenuCustomizeComponent implements OnInit {
   public quantity: number = 1;
   public itemContent : IPost;
   public menuItemDetails : any;
-  public salesItemDetails : any;
+  public salesItemDetails : SalesItem;
+  public salesItemDefault : SalesItem;
   public itemPrice : number;
   public totalPrice : number;
+  private defaultItemId : number;
 
   constructor(
     private wpService: WordpressService,
@@ -32,7 +36,7 @@ export class MenuCustomizeComponent implements OnInit {
     });
   }
 
-  toggleChoice(el){
+  public toggleChoice(el){
     console.log(el);
   }
 
@@ -56,8 +60,13 @@ export class MenuCustomizeComponent implements OnInit {
     this.menuService.getMenuItemDetails(_menuItemId).subscribe(_menuItemDetails => {
       // Set necessary variables for template rendering
       this.menuItemDetails = _menuItemDetails;
-      this.salesItemDetails = _menuItemDetails['salesItems'][0];
-      this.itemPrice = _menuItemDetails['salesItems'][0]['Price'];
+      // Find default Sales Item Id
+      this.defaultItemId = _menuItemDetails['item']['DefaultItemId'];
+      // Using default Sales Item Id, return object with all details of that Sales Item
+      this.salesItemDetails = _.find(_menuItemDetails['salesItems'], {'SalesItemId': this.defaultItemId});
+
+      this.itemPrice = this.salesItemDetails['Price'];
+
       // Calculate initial cost based on initial quantity of 1
       this.recalculateCost();
     });
