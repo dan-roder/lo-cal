@@ -49,6 +49,7 @@
 
   .customization-container{
     @extend %clearfix;
+    padding: 0 0 40px;
 
     .left{
       @include breakpoint($bp-768){
