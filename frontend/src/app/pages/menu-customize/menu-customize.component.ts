@@ -15,7 +15,6 @@ export class MenuCustomizeComponent implements OnInit {
   public itemContent : IPost;
   public menuItemDetails : any;
   public salesItemDetails : SalesItem;
-  public salesItemDefault : SalesItem;
   public itemPrice : number;
   public totalPrice : number;
   private defaultItemId : number;
@@ -52,11 +51,15 @@ export class MenuCustomizeComponent implements OnInit {
     }
   }
 
+  public addToBag(){
+
+  }
+
   private recalculateCost(){
     this.totalPrice = this.itemPrice * this.quantity;
   }
 
-  getMenuItemDetails( _menuItemId ){
+  private getMenuItemDetails( _menuItemId ){
     this.menuService.getMenuItemDetails(_menuItemId).subscribe(_menuItemDetails => {
       // Set necessary variables for template rendering
       this.menuItemDetails = _menuItemDetails;
@@ -65,6 +68,7 @@ export class MenuCustomizeComponent implements OnInit {
       // Using default Sales Item Id, return object with all details of that Sales Item
       this.salesItemDetails = _.find(_menuItemDetails['salesItems'], {'SalesItemId': this.defaultItemId});
 
+      console.log(this.salesItemDetails);
       this.itemPrice = this.salesItemDetails['Price'];
 
       // Calculate initial cost based on initial quantity of 1
