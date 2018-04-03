@@ -12,12 +12,12 @@
           <div class="header">
             <span class="title">{{ modGroup?.Name }}</span>
             <span class="choices">Choose up to {{ modGroup?.MaximumItems }} (1/{{ modGroup?.MaximumItems }})</span>
-            <span class="edit">Done</span>
+            <span class="edit">Edit</span>
           </div>
           <div class="options" *ngFor="let modifier of modGroup?.Mods">
             <div class="option">
               <div class="ingredient">{{ modifier?.Name }}</div>
-              <div class="calories">30 cal</div>
+              <div class="calories" *ngIf="modifier?.ItemModifiers[0]?.CaloricValue !== null">{{ modifier?.ItemModifiers[0]?.CaloricValue }} cal</div>
               <div class="selected" (click)="toggleChoice($event)">
                 <span class="counter"></span>
               </div>
@@ -35,7 +35,7 @@
         </div>
         <div class="fine-details">
           <span class="price">{{ salesItemDetails?.Price | currency }}</span>
-          <span class="calories">{{ salesItemDetails?.CaloricValue }} cal</span>
+          <span class="calories" *ngIf="salesItemDetails?.CaloricValue !== null">{{ salesItemDetails?.CaloricValue }} cal</span>
           <span class="allergens" *ngIf="(menuItemDetails?.item?.Description)">
             <span class="allergen" *ngFor="let allergen of (menuItemDetails?.item?.Description | allergens).allergens">{{ allergen }}</span>
           </span>
@@ -59,7 +59,7 @@
       </div>
 
       <div class="add-button red-button">
-        <button *ngIf="totalPrice">Add to Bag (+{{ totalPrice | currency }})</button>
+        <button *ngIf="totalPrice" (click)="addToBag()">Add to Bag (+{{ totalPrice | currency }})</button>
       </div>
     </div><!-- /.right -->
   </div>
