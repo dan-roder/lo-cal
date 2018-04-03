@@ -73,6 +73,20 @@ export class MenuCustomizeComponent implements OnInit {
 
       // Calculate initial cost based on initial quantity of 1
       this.recalculateCost();
+
+      /**
+       * NEED TO SET A LOT OF VARIABLES HERE FOR CUSTOMIZATION
+       *  MOSTLY FOR CREATE YOUR OWN VARIETY OPTIONS
+       *
+       * 1) DOES ITEM HAVE MODIFIERS AT ALL. IF NOT SKIP EVERYTHING
+       *
+       * 2) DOES IT HAVE MODIFIERS
+       *    a) Are the modifiers optional (juices with protein powder). No defaults set
+       *    b) Are there default options. Need to check the boxes if they're defaults
+       *
+       *
+       *
+       */
     });
   }
 }
