@@ -117,9 +117,15 @@
             display: inline-block;
             border-radius: 50%;
             border: 1px solid $e1;
-            width: 45px;
-            height: 45px;
             cursor: pointer;
+            width: 25px;
+            height: 25px;
+            padding: 5px;
+            background: $white;
+            border: 1px solid $e1;
+            color: #666;
+            text-align: center;
+            @include fontsize(18);
           }
         }// .option
       }// .options
