@@ -18,9 +18,7 @@
             <div class="option">
               <div class="ingredient">{{ modifier?.Name }}</div>
               <div class="calories" *ngIf="modifier?.ItemModifiers[0]?.CaloricValue !== null">{{ modifier?.ItemModifiers[0]?.CaloricValue }} cal</div>
-              <div class="selected" (click)="toggleChoice($event)">
-                <span class="counter"></span>
-              </div>
+              <div class="selected" (click)="toggleChoice(modGroup, modifier)"></div>
             </div><!-- /.option -->
           </div>
         </div>
