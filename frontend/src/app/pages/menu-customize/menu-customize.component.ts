@@ -18,6 +18,7 @@ export class MenuCustomizeComponent implements OnInit {
   public itemPrice : number;
   public totalPrice : number;
   private defaultItemId : number;
+  public selectionRestrictions : Object;
 
   constructor(
     private wpService: WordpressService,
@@ -35,8 +36,18 @@ export class MenuCustomizeComponent implements OnInit {
     });
   }
 
-  public toggleChoice(el){
-    console.log(el);
+  public toggleChoice(modGroup, modifierClicked){
+    // Retrieve maxSelections for Modifier Group and if any are currently selected
+    let maxSelectionsForGroup = modGroup.MaximumItems;
+    let currentSelectionsArray = this.selectionRestrictions[modGroup.$id]['currentlySelected'];
+    // If max selections for the current group is not reached
+    if(currentSelectionsArray.length < maxSelectionsForGroup){
+      this.selectionRestrictions[modGroup.$id]['currentlySelected'].push(modifierClicked);
+      console.log(this.selectionRestrictions);
+    }
+    else{
+      console.log('selection for current category full');
+    }
   }
 
   public incrementQuantity(){
@@ -68,7 +79,6 @@ export class MenuCustomizeComponent implements OnInit {
       // Using default Sales Item Id, return object with all details of that Sales Item
       this.salesItemDetails = _.find(_menuItemDetails['salesItems'], {'SalesItemId': this.defaultItemId});
 
-      console.log(this.salesItemDetails);
       this.itemPrice = this.salesItemDetails['Price'];
 
       // Calculate initial cost based on initial quantity of 1
@@ -79,6 +89,12 @@ export class MenuCustomizeComponent implements OnInit {
        *  MOSTLY FOR CREATE YOUR OWN VARIETY OPTIONS
        *
        * 1) DOES ITEM HAVE MODIFIERS AT ALL. IF NOT SKIP EVERYTHING
+       * */
+      if(this.salesItemDetails.ModGroups.length > 0){
+        this.registerCustomizationVariables( this.salesItemDetails.ModGroups );
+      }
+      /**
+       *
        *
        * 2) DOES IT HAVE MODIFIERS
        *    a) Are the modifiers optional (juices with protein powder). No defaults set
@@ -88,5 +104,22 @@ export class MenuCustomizeComponent implements OnInit {
        *
        */
     });
+  }
+
+  private registerCustomizationVariables( allModifiers ){
+    let tempObj = new Object();
+
+    _.forEach(allModifiers, function(modifierDetails, key){
+      // Create new object to store values in
+      let modObject = new Object();
+      modObject['maximumItems'] = modifierDetails.MaximumItems;
+      modObject['minimumItems'] = modifierDetails.MaximumItems;
+      modObject['currentlySelected'] = new Array;
+      tempObj[modifierDetails.$id] = new Object();
+      tempObj[modifierDetails.$id] = modObject;
+    });
+
+    this.selectionRestrictions = tempObj;
+    console.log(this.selectionRestrictions);
   }
 }
