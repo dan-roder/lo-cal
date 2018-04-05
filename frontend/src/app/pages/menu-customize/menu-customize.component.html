@@ -11,14 +11,21 @@
         <div class="content">
           <div class="header">
             <span class="title">{{ modGroup?.Name }}</span>
-            <span class="choices">Choose up to {{ modGroup?.MaximumItems }} (1/{{ modGroup?.MaximumItems }})</span>
-            <span class="edit">Edit</span>
+            <span class="choices">Choose up to {{ modGroup?.MaximumItems }} ({{ customizationData[modGroup?.$id].currentlySelected.length }}/{{ modGroup?.MaximumItems }})</span>
           </div>
           <div class="options" *ngFor="let modifier of modGroup?.Mods">
             <div class="option">
               <div class="ingredient">{{ modifier?.Name }}</div>
               <div class="calories" *ngIf="modifier?.ItemModifiers[0]?.CaloricValue !== null">{{ modifier?.ItemModifiers[0]?.CaloricValue }} cal</div>
-              <div class="selected" (click)="toggleChoice(modGroup, modifier)"></div>
+              <div class="choice-controls">
+                <span class="minus" [ngClass]="(customizationData[modGroup?.$id].currentlySelected.length > 0 && customizationData[modGroup?.$id].modifiers[modifier?.$id].quantity > 0) ? 'enabled' : 'disabled'" (click)="removeModifier(modGroup, modifier)">-</span>
+                <span class="quantity-container" [ngClass]="customizationData[modGroup?.$id].modifiers[modifier?.$id]?.quantity > 0 ? 'populated' : ''">
+                  <span class="quantity" *ngIf="customizationData[modGroup?.$id].modifiers[modifier?.$id]?.quantity !== 0">
+                    {{ customizationData[modGroup?.$id].modifiers[modifier?.$id]?.quantity }}
+                  </span>
+                </span>
+                <span class="plus" [ngClass]="(customizationData[modGroup?.$id].currentlySelected.length < modGroup?.MaximumItems) ? 'enabled' : 'disabled'" (click)="addModifier(modGroup, modifier)">+</span>
+              </div>
             </div><!-- /.option -->
           </div>
         </div>
@@ -29,6 +36,9 @@
       <div class="final-product">
         <div class="title">{{ menuItemDetails?.item?.Name }}</div>
         <div class="ingredients" *ngIf="menuItemDetails?.item?.Description">
+          <div class="customization-ingredients" *ngIf="customizationData">
+            <!-- <span class="customization" *ngFor="let item of customizationData">{{ item }}</span> -->
+          </div>
           {{ (menuItemDetails?.item?.Description | allergens)?.description }}
         </div>
         <div class="fine-details">
@@ -42,9 +52,7 @@
 
       <div class="special-instructions">
         <label for="special-instructions">Add Special Instruction (optional)</label>
-        <textarea name="special-instructions" id="" cols="30" rows="5">
-
-        </textarea>
+        <textarea name="special-instructions" id="" cols="30" rows="5"></textarea>
       </div><!-- /.special-instructions -->
 
       <div class="quantity-wrapper">
