@@ -18,7 +18,8 @@ export class MenuCustomizeComponent implements OnInit {
   public itemPrice : number;
   public totalPrice : number;
   private defaultItemId : number;
-  public selectionRestrictions : Object;
+  public customizationData : Object;
+  public testArr : Array<Object>;
 
   constructor(
     private wpService: WordpressService,
@@ -36,18 +37,38 @@ export class MenuCustomizeComponent implements OnInit {
     });
   }
 
-  public toggleChoice(modGroup, modifierClicked){
+  public addModifier(modGroup, modifierClicked){
     // Retrieve maxSelections for Modifier Group and if any are currently selected
     let maxSelectionsForGroup = modGroup.MaximumItems;
-    let currentSelectionsArray = this.selectionRestrictions[modGroup.$id]['currentlySelected'];
+    let currentSelectionsArray = this.customizationData[modGroup.$id]['currentlySelected'];
     // If max selections for the current group is not reached
     if(currentSelectionsArray.length < maxSelectionsForGroup){
-      this.selectionRestrictions[modGroup.$id]['currentlySelected'].push(modifierClicked);
-      console.log(this.selectionRestrictions);
+      this.customizationData[modGroup.$id]['currentlySelected'].push(modifierClicked);
+      this.customizationData[modGroup.$id].modifiers[modifierClicked.$id]['quantity'] += 1;
     }
     else{
       console.log('selection for current category full');
     }
+    console.log(this.customizationData);
+  }
+
+  public removeModifier(modGroup, modifierClicked){
+    let currentSelectionsArray = this.customizationData[modGroup.$id]['currentlySelected'];
+    // If max selections for the current group is not reached
+    if(currentSelectionsArray.length > 0){
+      let indexToRemove = _.findIndex(currentSelectionsArray, {'$id' : modifierClicked.$id});
+      let currentQuantity = this.customizationData[modGroup.$id].modifiers[modifierClicked.$id]['quantity'];
+
+      if(indexToRemove > -1 && currentQuantity > 0){
+        let newSelectionsArray = currentSelectionsArray.splice(indexToRemove, 1);
+        currentSelectionsArray = newSelectionsArray;
+        this.customizationData[modGroup.$id].modifiers[modifierClicked.$id]['quantity'] -= 1;
+      }
+    }
+    else{
+      console.log('selection for current category already empty');
+    }
+    console.log(this.customizationData);
   }
 
   public incrementQuantity(){
@@ -108,18 +129,28 @@ export class MenuCustomizeComponent implements OnInit {
 
   private registerCustomizationVariables( allModifiers ){
     let tempObj = new Object();
+    let tempArr = new Array();
 
-    _.forEach(allModifiers, function(modifierDetails, key){
+    _.forEach(allModifiers, function(modifierGroup, key){
       // Create new object to store values in
       let modObject = new Object();
-      modObject['maximumItems'] = modifierDetails.MaximumItems;
-      modObject['minimumItems'] = modifierDetails.MaximumItems;
+      modObject['maximumItems'] = modifierGroup.MaximumItems;
+      modObject['minimumItems'] = modifierGroup.MaximumItems;
       modObject['currentlySelected'] = new Array;
-      tempObj[modifierDetails.$id] = new Object();
-      tempObj[modifierDetails.$id] = modObject;
-    });
+      modObject['modifiers'] = new Object();
 
-    this.selectionRestrictions = tempObj;
-    console.log(this.selectionRestrictions);
+      _.forEach(modifierGroup.Mods, function(modifier, key){
+        modObject['modifiers'][modifier.$id] = new Object();
+        modObject['modifiers'][modifier.$id]['quantity'] = 0;
+      });
+
+      tempObj[modifierGroup.$id] = new Object();
+      tempObj[modifierGroup.$id] = modObject;
+      tempArr.push(tempObj);
+    });
+    this.testArr = tempArr;
+    console.log(this.testArr);
+
+    this.customizationData = tempObj;
   }
 }
