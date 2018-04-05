@@ -76,8 +76,8 @@
 
       .header{
         padding: 30px 20px;
-        display: grid;
-        grid-template-columns: 2fr 2fr .5fr;
+        display: flex;
+        // grid-template-columns: 2fr 2fr .5fr;
         justify-content: space-between;
         align-items: center;
         border-bottom: 1px solid $e1;
@@ -102,22 +102,46 @@
         .option{
           padding: 20px;
           border-top: 1px solid $e1;
-          // display: grid;
-          // grid-template-columns: 2fr 2fr .5fr;
-          // justify-content: space-between;
-          // align-items: center;
-          display: flex;
+          display: grid;
+          grid-template-columns: 2fr 1fr .5fr;
           justify-content: space-between;
+          align-items: center;
+          // display: flex;
+
+          .choice-controls{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            span{
+              display: inline-block;
+
+              &.plus,
+              &.minus{
+                @include fontsize(22);
+                @include transition(opacity,200ms);
+                cursor: auto;
+
+                &.disabled{
+                  opacity: .4;
+                }
+
+                &.enabled{
+                  opacity: 1;
+                  cursor: pointer;
+                }
+              }
+            }
+          }
 
           &:first-child{
             border-top: none;
           }
 
-          .selected{
+          .quantity-container{
             display: inline-block;
             border-radius: 50%;
             border: 1px solid $e1;
-            cursor: pointer;
             width: 25px;
             height: 25px;
             padding: 5px;
@@ -126,6 +150,13 @@
             color: #666;
             text-align: center;
             @include fontsize(18);
+            @include transition(all,200ms);
+
+            &.populated{
+              color: $black;
+              border-color: $black;
+            }
+
           }
         }// .option
       }// .options
@@ -218,13 +249,6 @@
       span{
         margin: 0 20px;
       }
-
-      .plus,
-      .minus{
-        color: $orange-red;
-        @include fontsize(30);
-        cursor: pointer;
-      }
     }// .quantity-changer
   }
 
@@ -235,5 +259,12 @@
       display: block;
       width: 100%;
     }
+  }
+
+  .plus,
+  .minus{
+    color: $orange-red;
+    @include fontsize(30);
+    cursor: pointer;
   }
 }// .page-item-detail
