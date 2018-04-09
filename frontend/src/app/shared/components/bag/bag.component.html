@@ -16,78 +16,28 @@
 
             <div class="checkout-items">
 
-              <div class="item">
+              <div class="item" *ngFor="let menuItem of menuItemsInBag; let i = index;">
                 <div class="left image">
                   <img src="http://via.placeholder.com/160x240" alt="" class="item-image">
-                  <img src="/assets/icons/delete-cross-icon.svg" alt="X to remove item from cart" class="remove-image">
+                  <img src="/assets/icons/delete-cross-icon.svg" alt="X to remove item from cart" class="remove-image" (click)="removeFromBagAtIndex(i)">
                 </div>
                 <div class="bag-detail-card">
                   <div class="title-container">
-                      <div class="title">Athena Bowl <span class="quantity">x 1</span></div>
+                      <div class="title">{{ menuItem?.item?.Name }} <span class="quantity">x {{ menuItem?.Quantity }}</span></div>
                       <a href="#" class="edit">Edit</a>
                   </div>
                   <div class="ingredients">
-                    Romaine, grilled shrimp, cucumber, tomato, kalamata olives, feta, chickpeas, greek dressing
+                    {{ (menuItem?.item?.Description | allergens)?.description }}
                   </div>
                   <div class="fine-details">
-                    <span class="price">$12.99</span>
-                    <span class="calories">360 cal</span>
-                    <span class="allergens">
-                      <span class="allergen">VG</span>
-                      <span class="allergen">PL</span>
-                      <span class="allergen">V</span>
+                    <span class="price">{{ menuItem.totalPrice | currency }}</span>
+                    <span class="calories">{{ menuItem.salesItems[0].CaloricValue }} cal</span>
+                    <span class="allergens" *ngIf="(menuItem?.item?.Description)">
+                      <span class="allergen" *ngFor="let allergen of (menuItem?.item?.Description | allergens).allergens">{{ allergen }}</span>
                     </span>
                   </div>
                 </div><!-- /.bag-detail-card -->
               </div><!-- /.item -->
-              <div class="item">
-                <div class="left image">
-                  <img src="http://via.placeholder.com/160x240" alt="" class="item-image">
-                  <img src="/assets/icons/delete-cross-icon.svg" alt="X to remove item from cart" class="remove-image">
-                </div>
-                <div class="bag-detail-card">
-                  <div class="title-container">
-                      <div class="title">Athena Bowl <span class="quantity">x 1</span></div>
-                      <a href="#" class="edit">Edit</a>
-                  </div>
-                  <div class="ingredients">
-                    Romaine, grilled shrimp, cucumber, tomato, kalamata olives, feta, chickpeas, greek dressing
-                  </div>
-                  <div class="fine-details">
-                    <span class="price">$12.99</span>
-                    <span class="calories">360 cal</span>
-                    <span class="allergens">
-                      <span class="allergen">VG</span>
-                      <span class="allergen">PL</span>
-                      <span class="allergen">V</span>
-                    </span>
-                  </div>
-                </div><!-- /.bag-detail-card -->
-              </div><!-- /.item -->
-              <div class="item">
-                  <div class="left image">
-                    <img src="http://via.placeholder.com/160x240" alt="" class="item-image">
-                    <img src="/assets/icons/delete-cross-icon.svg" alt="X to remove item from cart" class="remove-image">
-                  </div>
-                  <div class="bag-detail-card">
-                    <div class="title-container">
-                        <div class="title">Athena Bowl <span class="quantity">x 1</span></div>
-                        <a href="#" class="edit">Edit</a>
-                    </div>
-                    <div class="ingredients">
-                      Romaine, grilled shrimp, cucumber, tomato, kalamata olives, feta, chickpeas, greek dressing
-                    </div>
-                    <div class="fine-details">
-                      <span class="price">$12.99</span>
-                      <span class="calories">360 cal</span>
-                      <span class="allergens">
-                        <span class="allergen">VG</span>
-                        <span class="allergen">PL</span>
-                        <span class="allergen">V</span>
-                      </span>
-                    </div>
-                  </div><!-- /.bag-detail-card -->
-                </div><!-- /.item -->
 
             </div><!-- /.checkout-items -->
           </div><!-- /.checkout-top -->
