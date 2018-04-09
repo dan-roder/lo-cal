@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { WordpressService } from '@local/services/wp.service';
 import { MenuService } from '@local/services/menu-service.service';
+import { BagService } from '@local/services/bag.service';
 import { ActivatedRoute } from '@angular/router';
 import { IPost } from '@local/models/post';
 import { SalesItem } from '@local/models/SalesItem';
@@ -20,10 +21,12 @@ export class MenuCustomizeComponent implements OnInit {
   private defaultItemId : number;
   public customizationData : Object;
   public testArr : Array<Object>;
+  public specialInstructions : string;
 
   constructor(
     private wpService: WordpressService,
     private menuService: MenuService,
+    private bagService: BagService,
     private router: ActivatedRoute
   ) { }
 
@@ -84,6 +87,14 @@ export class MenuCustomizeComponent implements OnInit {
   }
 
   public addToBag(){
+    // Adding to bag needs to have all details of modifications
+    //  Start simple. Add just the item itself
+
+    // Special instructions don't already exist on the menuItem so add them
+    this.menuItemDetails['SpecialInstructions'] = this.specialInstructions;
+    // Retrieve Quantity and add it to menuItem sent to bagService
+    this.menuItemDetails['Quantity'] = this.quantity;
+    this.bagService.createLineItem(this.menuItemDetails);
 
   }
 
