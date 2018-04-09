@@ -1,3 +1,5 @@
+import { LineItem } from "@local/models/LineItem";
+
 export interface Order{
   SiteId : number; // : Get or set the SiteId property ,
   OrderId : number; // Get or set the OrderId property ,
@@ -10,7 +12,7 @@ export interface Order{
   PaymentMode : string; // ['Unknown' or 'ProvidedToSite' or 'PaymentDeferred' or 'PaidOnline'] : Get or set the PaymentMode property ,
   Customer : any; // (OrderCustomer , optional) : Get or set the Customer property ,
   CustomerAddressForOrder : any; // (CustomerAddress , optional) : Get or set the CustomerAddressForOrder property ,
-  LineItems : any; // (array[ExternalLineItem] , optional) : Get or set the LineItems property ,
+  LineItems : Array<LineItem>; // (array[ExternalLineItem] , optional) : Get or set the LineItems property ,
   SubTotalAmount : number; // Get or set the SubTotalAmount property ,
   TaxAmount : number; // Get or set the TaxAmount property ,
   PaymentAmount : number; // Get or set the PaymentAmount property ,
