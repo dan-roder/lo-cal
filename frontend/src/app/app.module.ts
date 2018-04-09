@@ -37,6 +37,7 @@ import { BagComponent } from './shared/components/bag/bag.component';
 // Services
 import { WordpressService } from './services/wp.service';
 import { MenuService } from './services/menu-service.service';
+import { BagService } from './services/bag.service';
 import { WindowRef } from './utils/windowref';
 
 // Directives
@@ -87,7 +88,7 @@ import { FeaturedImagePipe } from './pipes/featured-image.pipe';
     AppRoutingModule,
     BrowserAnimationsModule
   ],
-  providers: [ Config, WindowRef, WordpressService, MenuService ],
+  providers: [ Config, WindowRef, WordpressService, MenuService, BagService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
