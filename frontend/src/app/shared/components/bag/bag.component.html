@@ -23,17 +23,17 @@
                 </div>
                 <div class="bag-detail-card">
                   <div class="title-container">
-                      <div class="title">{{ menuItem?.item?.Name }} <span class="quantity">x {{ menuItem?.Quantity }}</span></div>
+                      <div class="title">{{ menuItem?.Name }} <span class="quantity">x {{ menuItem?.Quantity }}</span></div>
                       <a href="#" class="edit">Edit</a>
                   </div>
                   <div class="ingredients">
-                    {{ (menuItem?.item?.Description | allergens)?.description }}
+                    {{ (menuItem?.ShortDescription | allergens)?.description }}
                   </div>
                   <div class="fine-details">
-                    <span class="price">{{ menuItem.totalPrice | currency }}</span>
-                    <span class="calories">{{ menuItem.salesItems[0].CaloricValue }} cal</span>
-                    <span class="allergens" *ngIf="(menuItem?.item?.Description)">
-                      <span class="allergen" *ngFor="let allergen of (menuItem?.item?.Description | allergens).allergens">{{ allergen }}</span>
+                    <span class="price">{{ menuItem.ExtendedPrice | currency }}</span>
+                    <span class="calories"></span>
+                    <span class="allergens" *ngIf="(menuItem?.ShortDescription)">
+                      <span class="allergen" *ngFor="let allergen of (menuItem?.ShortDescription | allergens).allergens">{{ allergen }}</span>
                     </span>
                   </div>
                 </div><!-- /.bag-detail-card -->

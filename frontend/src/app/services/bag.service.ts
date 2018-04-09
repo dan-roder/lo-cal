@@ -9,25 +9,23 @@ export class BagService {
 
   constructor() { }
 
-  public createLineItem ( menuItem ){
+  public createLineItem ( passedMenuItem ){
     let lineItem : LineItem = {};
-    lineItem.SalesItemId = menuItem.item.DefaultItemId; // Not sure if this should come from the SalesItem object instead of the DefaultItemId
-    lineItem.MenuItemId = menuItem.item.MenuItemId;
-    lineItem.Name = menuItem.item.Name;
-    lineItem.ShortDescription = menuItem.item.Description;
-    lineItem.SpecialInstructions = menuItem.SpecialInstructions;
-    lineItem.UnitPrice = menuItem.salesItems[0].Price;
-    lineItem.Quantity = menuItem.Quantity;
 
-    menuItem['totalPrice'] = lineItem.UnitPrice * lineItem.Quantity;
+    lineItem.SalesItemId = passedMenuItem.item.DefaultItemId; // Not sure if this should come from the SalesItem object instead of the DefaultItemId
+    lineItem.MenuItemId = passedMenuItem.item.MenuItemId;
+    lineItem.Name = passedMenuItem.item.Name;
+    lineItem.ShortDescription = passedMenuItem.item.Description;
+    lineItem.SpecialInstructions = passedMenuItem.SpecialInstructions;
+    lineItem.UnitPrice = passedMenuItem.salesItems[0].Price;
+    lineItem.Quantity = passedMenuItem.Quantity;
+    lineItem.ExtendedPrice = lineItem.UnitPrice * lineItem.Quantity;
 
     // Push menuItem and lineItem into arrays
     this._lineItems.push(lineItem);
-    this._menuItemsInBag.push(menuItem);
 
     lineItem = null;
-    menuItem = null;
-    console.log(this._menuItemsInBag);
+    console.log(this._lineItems);
   }
 
   public removeFromBagAtIndex( index ){
@@ -36,7 +34,11 @@ export class BagService {
     this._menuItemsInBag.splice(index, 1);
   }
 
-  get menuItemsInBag() : any{
-    return this._menuItemsInBag;
+  // get menuItemsInBag() : any{
+  //   return this._menuItemsInBag;
+  // }
+
+  get lineItems() : Array<LineItem>{
+    return this._lineItems;
   }
 }

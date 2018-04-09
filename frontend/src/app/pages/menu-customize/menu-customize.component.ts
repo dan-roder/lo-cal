@@ -89,15 +89,29 @@ export class MenuCustomizeComponent implements OnInit {
   public addToBag(){
     // Adding to bag needs to have all details of modifications
     //  Start simple. Add just the item itself
-
     let menuItem = {};
-    menuItem = this.menuItemDetails;
-    // Special instructions don't already exist on the menuItem so add them
-    menuItem['SpecialInstructions'] = this.specialInstructions;
-    // Retrieve Quantity and add it to menuItem sent to bagService
-    menuItem['Quantity'] = this.quantity;
 
+    console.log('before any additions', menuItem);
+
+    menuItem = this.menuItemDetails;
+    console.log('current menu item', menuItem);
+    // add quantity and totalPrice to object
+    let quantity = this.quantity;
+    let totalPrice = this.totalPrice;
+    menuItem['Quantity'] = quantity;
+    menuItem['TotalPrice'] = totalPrice;
+    console.log('adding price+quantity', menuItem['Quantity'], menuItem['TotalPrice']);
+    // Log full object at this stage
+    console.log('full object after price and quantity', menuItem);
+
+
+    // Push full object to bag service
     this.bagService.createLineItem(menuItem);
+
+    // Wipe out local values
+    menuItem = null;
+    quantity = null;
+    totalPrice = null;
   }
 
   private recalculateCost(){
