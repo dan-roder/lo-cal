@@ -5,6 +5,7 @@ import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
+import { LocalStorageModule } from '@ngx-pwa/local-storage';
 
 // Config
 import { Config } from './utils/constants';
@@ -86,7 +87,8 @@ import { FeaturedImagePipe } from './pipes/featured-image.pipe';
     HttpModule,
     HttpClientModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    LocalStorageModule
   ],
   providers: [ Config, WindowRef, WordpressService, MenuService, BagService ],
   bootstrap: [AppComponent]
