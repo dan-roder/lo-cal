@@ -20,7 +20,6 @@ export class MenuCustomizeComponent implements OnInit {
   public totalPrice : number;
   private defaultItemId : number;
   public customizationData : Object;
-  public testArr : Array<Object>;
   public specialInstructions : string;
 
   constructor(
@@ -91,18 +90,18 @@ export class MenuCustomizeComponent implements OnInit {
     //  Start simple. Add just the item itself
     let menuItem = {};
 
-    console.log('before any additions', menuItem);
+    // console.log('before any additions', menuItem);
 
     menuItem = this.menuItemDetails;
-    console.log('current menu item', menuItem);
+    // console.log('current menu item', menuItem);
     // add quantity and totalPrice to object
     let quantity = this.quantity;
     let totalPrice = this.totalPrice;
     menuItem['Quantity'] = quantity;
     menuItem['TotalPrice'] = totalPrice;
-    console.log('adding price+quantity', menuItem['Quantity'], menuItem['TotalPrice']);
+    // console.log('adding price+quantity', menuItem['Quantity'], menuItem['TotalPrice']);
     // Log full object at this stage
-    console.log('full object after price and quantity', menuItem);
+    // console.log('full object after price and quantity', menuItem);
 
 
     // Push full object to bag service
@@ -175,8 +174,6 @@ export class MenuCustomizeComponent implements OnInit {
       tempObj[modifierGroup.$id] = modObject;
       tempArr.push(tempObj);
     });
-    this.testArr = tempArr;
-    console.log(this.testArr);
 
     this.customizationData = tempObj;
   }
