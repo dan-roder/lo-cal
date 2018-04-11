@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, SimpleChanges } from '@angular/core';
 import { trigger,state,style,transition,animate,keyframes } from '@angular/animations';
 import { stagger } from '@angular/animations/src/animation_metadata';
 import { BagService } from '@local/services/bag.service';
@@ -22,15 +22,16 @@ import { LineItem } from '@local/models/LineItem';
 })
 export class BagComponent implements OnInit {
   @Input() state: string = 'invisible';
+  @Input() bagCount : number = 0;
   @Output() bagState: EventEmitter<string> = new EventEmitter<string>();
+  public _bagItems : Array<LineItem>;
   public stepState: number = 1;
-  public menuItemsInBag : Array<LineItem> = [];
   public itemsInBagCounter : number = 0;
 
   constructor(private bagService: BagService) { }
 
   ngOnInit() {
-    this.menuItemsInBag = this.bagService._lineItems;
+    this.bagCount = this.bagService.itemCountInBag;
   }
 
   toggleBagState(){
@@ -48,6 +49,16 @@ export class BagComponent implements OnInit {
 
   public removeFromBagAtIndex( index ){
     this.bagService.removeFromBagAtIndex(index);
+    console.log(this.itemsInBagCounter);
+  }
+
+  @Input()
+  set bagItems(items: Array<LineItem>){
+    this._bagItems = items;
+  }
+
+  get bagItems(): Array<LineItem>{
+    return this._bagItems;
   }
 
 }
