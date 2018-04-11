@@ -17,8 +17,9 @@
         <li>
           <a routerLink="/login">ACCOUNT</a>
         </li>
-        <li>
-          <span (click)="toggleBagState($event)">BAG <span class="cart-number" *ngIf="numberOfItemsInBag > 0">{{ numberOfItemsInBag }}</span></span>
+        <li class="bag-link">
+          <span (click)="toggleBagState($event)">MY BAG</span>
+          <span class="cart-number" [hidden]="numberOfItemsInBag > 0">{{ numberOfItemsInBag }}</span>
         </li>
       </ul>
     </div>
@@ -28,5 +29,5 @@
   </div>
 
   <lo-cal-footer></lo-cal-footer>
-  <lo-cal-bag [state]="bagState" [bagCount]="numberOfItemsInBag" [menuItemsInBag]="bagItems" (bagState)="toggleBagState($event)"></lo-cal-bag>
+  <lo-cal-bag [state]="bagState" [bagCount]="numberOfItemsInBag" [bagItems]="bagItems" (bagState)="toggleBagState($event)"></lo-cal-bag>
 </div>
