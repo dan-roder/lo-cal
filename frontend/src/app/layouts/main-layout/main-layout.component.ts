@@ -17,8 +17,7 @@ export class MainLayoutComponent implements OnInit {
   public openBag: EventEmitter<any> = new EventEmitter<any>();
   public bagState: string = 'invisible';
   public numberOfItemsInBag : number = 0;
-  public bagItems : Array<LineItem> = [];
-
+  public _bagItems : Array<LineItem> = [];
 
   constructor(
     private wpService: WordpressService,
@@ -28,17 +27,15 @@ export class MainLayoutComponent implements OnInit {
 
   ngOnInit() {
     this.wpService.getMenu(2).subscribe(m => this.mainMenuLinks = m.items);
-    // See if localStorage object for cart is populated
-    this.localStorage.getItem('bag').subscribe((bagItems) => {
-      this.bagItems = bagItems;
-      console.log(bagItems);
-    }, (error) => {
-      console.log(error);
-    })
   }
 
   toggleBagState(state){
     this.bagState = (this.bagState === 'invisible') ? 'visible' : 'invisible';
+  }
+
+  get bagItems() : Array<LineItem>{
+    console.log('calling service getter for bag items');
+    return this.bagService.itemsInBag;
   }
 
 }
