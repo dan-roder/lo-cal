@@ -17,11 +17,12 @@ export class MenuCustomizeComponent implements OnInit {
   public itemContent : IPost;
   public menuItemDetails : any;
   public salesItemDetails : SalesItem;
-  public itemPrice : number;
-  public totalPrice : number;
+  private _itemPrice : number;
+  private _totalPrice : number;
   private defaultItemId : number;
   public customizationData : Object;
   public specialInstructions : string;
+  private _calorieCount : number = 0;
 
   constructor(
     private wpService: WordpressService,
@@ -41,15 +42,24 @@ export class MenuCustomizeComponent implements OnInit {
   }
 
   public addModifier(modGroup, modifierClicked){
-    console.log(modGroup, modifierClicked);
-
     // Retrieve maxSelections for Modifier Group and if any are currently selected
     let maxSelectionsForGroup = modGroup.MaximumItems;
     let currentSelectionsArray = this.customizationData[modGroup.$id]['currentlySelected'];
+
     // If max selections for the current group is not reached
     if(currentSelectionsArray.length < maxSelectionsForGroup){
       this.customizationData[modGroup.$id]['currentlySelected'].push(modifierClicked);
       this.customizationData[modGroup.$id].modifiers[modifierClicked.$id]['quantity'] += 1;
+
+      // If modifier item has modifier values with it
+      if(modifierClicked.ItemModifiers.length > 0){
+        // Add to total calorie count
+        this.calorieCount += modifierClicked.ItemModifiers[0].CaloricValue;
+
+        // If modifier includes additional price, add to itemPrice
+        this.itemPrice += modifierClicked.ItemModifiers[0].Price;
+        this.recalculateCost();
+      }
     }
     else{
       console.log('selection for current category full');
@@ -59,6 +69,7 @@ export class MenuCustomizeComponent implements OnInit {
 
   public removeModifier(modGroup, modifierClicked){
     let currentSelectionsArray = this.customizationData[modGroup.$id]['currentlySelected'];
+
     // If max selections for the current group is not reached
     if(currentSelectionsArray.length > 0){
       let indexToRemove = _.findIndex(currentSelectionsArray, {'$id' : modifierClicked.$id});
@@ -68,6 +79,15 @@ export class MenuCustomizeComponent implements OnInit {
         let newSelectionsArray = currentSelectionsArray.splice(indexToRemove, 1);
         currentSelectionsArray = newSelectionsArray;
         this.customizationData[modGroup.$id].modifiers[modifierClicked.$id]['quantity'] -= 1;
+      }
+
+      // Subract from calorie count if the modifier has calorie changes
+      if(modifierClicked.ItemModifiers.length > 0){
+        this.calorieCount -= modifierClicked.ItemModifiers[0].CaloricValue;
+
+        // If modifier includes additional price, remove from price
+        this.itemPrice -= modifierClicked.ItemModifiers[0].Price;
+        this.recalculateCost();
       }
     }
     else{
@@ -94,16 +114,13 @@ export class MenuCustomizeComponent implements OnInit {
     let menuItem = {};
 
     menuItem = this.menuItemDetails;
-    // console.log('current menu item', menuItem);
+
     // add quantity and totalPrice to object
     let quantity = this.quantity;
     let totalPrice = this.totalPrice;
     menuItem['Quantity'] = quantity;
     menuItem['TotalPrice'] = totalPrice;
-    // console.log('adding price+quantity', menuItem['Quantity'], menuItem['TotalPrice']);
-    // Log full object at this stage
-    // console.log('full object after price and quantity', menuItem);
-
+    menuItem['Modifiers'] = _.values(this.customizationData);
 
     // Push full object to bag service
     this.bagService.createLineItem(menuItem);
@@ -120,7 +137,6 @@ export class MenuCustomizeComponent implements OnInit {
 
   private getMenuItemDetails( _menuItemId ){
     this.menuService.getMenuItemDetails(_menuItemId).subscribe(_menuItemDetails => {
-
       // Set necessary variables for template rendering
       this.menuItemDetails = _menuItemDetails;
       // Find default Sales Item Id
@@ -129,6 +145,7 @@ export class MenuCustomizeComponent implements OnInit {
       this.salesItemDetails = _.find(_menuItemDetails['salesItems'], {'SalesItemId': this.defaultItemId});
 
       this.itemPrice = this.salesItemDetails['Price'];
+      this.calorieCount = this.salesItemDetails.CaloricValue;
 
       // Calculate initial cost based on initial quantity of 1
       this.recalculateCost();
@@ -148,16 +165,6 @@ export class MenuCustomizeComponent implements OnInit {
 
         this.registerCustomizationVariables( this.salesItemDetails.ModGroups, defaults );
       }
-      /**
-       *
-       *
-       * 2) DOES IT HAVE MODIFIERS
-       *    a) Are the modifiers optional (juices with protein powder). No defaults set
-       *    b) Are there default options. Need to check the boxes if they're defaults
-       *
-       *
-       *
-       */
     });
   }
 
@@ -172,8 +179,10 @@ export class MenuCustomizeComponent implements OnInit {
       modObject['minimumItems'] = modifierGroup.MaximumItems;
       modObject['currentlySelected'] = new Array;
       modObject['modifiers'] = new Object();
+      modObject['groupDetails'] = new Object();
 
       _.forEach(modifierGroup.Mods, function(modifier, key){
+        modObject['groupDetails'] = modifierGroup;
         modObject['modifiers'][modifier.$id] = new Object();
         let isModDefault = _.find(defaultOptions, {'ModifierId': modifier.ModifierId});
         if(isModDefault !== undefined){
@@ -191,5 +200,34 @@ export class MenuCustomizeComponent implements OnInit {
     });
 
     this.customizationData = tempObj;
+  }
+
+  /**
+   *
+   * Getters & Setters
+   *
+   */
+  get calorieCount(): number{
+    return this._calorieCount;
+  }
+
+  set calorieCount(calories: number){
+    this._calorieCount = calories;
+  }
+
+  get totalPrice(): number{
+    return this._totalPrice;
+  }
+
+  set totalPrice(price : number){
+    this._totalPrice = price;
+  }
+
+  get itemPrice(): number{
+    return this._itemPrice;
+  }
+
+  set itemPrice(price : number){
+    this._itemPrice = price;
   }
 }
