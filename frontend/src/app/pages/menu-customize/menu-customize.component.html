@@ -10,13 +10,13 @@
       <div class="customization-category" *ngFor="let modGroup of salesItemDetails?.ModGroups">
         <div class="content">
           <div class="header">
-            <span class="title">{{ modGroup?.Name }}</span>
+            <span class="title">{{ modGroup?.DisplayName }}</span>
             <span class="choices">Choose up to {{ modGroup?.MaximumItems }} ({{ customizationData[modGroup?.$id].currentlySelected.length }}/{{ modGroup?.MaximumItems }})</span>
           </div>
           <div class="options" *ngFor="let modifier of modGroup?.Mods">
             <div class="option">
               <div class="ingredient">{{ modifier?.Name }}</div>
-              <div class="calories" *ngIf="modifier?.ItemModifiers[0]?.CaloricValue !== null">{{ modifier?.ItemModifiers[0]?.CaloricValue }} cal</div>
+              <div class="calories">{{ modifier?.ItemModifiers[0]?.CaloricValue }} <span *ngIf="modifier?.ItemModifiers[0]?.CaloricValue !== null">cal</span> </div>
               <div class="choice-controls">
                 <span class="minus" [ngClass]="(customizationData[modGroup?.$id].currentlySelected.length > 0 && customizationData[modGroup?.$id].modifiers[modifier?.$id].quantity > 0) ? 'enabled' : 'disabled'" (click)="removeModifier(modGroup, modifier)">-</span>
                 <span class="quantity-container" [ngClass]="customizationData[modGroup?.$id].modifiers[modifier?.$id]?.quantity > 0 ? 'populated' : ''">
