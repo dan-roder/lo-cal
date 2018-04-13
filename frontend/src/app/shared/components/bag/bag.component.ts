@@ -49,7 +49,6 @@ export class BagComponent implements OnInit {
 
   public removeFromBagAtIndex( index ){
     this.bagService.removeFromBagAtIndex(index);
-    console.log(this.itemsInBagCounter);
   }
 
   @Input()
