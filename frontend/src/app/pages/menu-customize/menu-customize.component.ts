@@ -6,6 +6,7 @@ import { ActivatedRoute } from '@angular/router';
 import { IPost } from '@local/models/post';
 import { SalesItem } from '@local/models/SalesItem';
 import * as _ from 'lodash';
+import { DefaultOption } from '@local/models/DefaultOption';
 
 @Component({
   selector: 'lo-cal-menu-customize',
@@ -40,6 +41,8 @@ export class MenuCustomizeComponent implements OnInit {
   }
 
   public addModifier(modGroup, modifierClicked){
+    console.log(modGroup, modifierClicked);
+
     // Retrieve maxSelections for Modifier Group and if any are currently selected
     let maxSelectionsForGroup = modGroup.MaximumItems;
     let currentSelectionsArray = this.customizationData[modGroup.$id]['currentlySelected'];
@@ -90,8 +93,6 @@ export class MenuCustomizeComponent implements OnInit {
     //  Start simple. Add just the item itself
     let menuItem = {};
 
-    // console.log('before any additions', menuItem);
-
     menuItem = this.menuItemDetails;
     // console.log('current menu item', menuItem);
     // add quantity and totalPrice to object
@@ -119,6 +120,7 @@ export class MenuCustomizeComponent implements OnInit {
 
   private getMenuItemDetails( _menuItemId ){
     this.menuService.getMenuItemDetails(_menuItemId).subscribe(_menuItemDetails => {
+
       // Set necessary variables for template rendering
       this.menuItemDetails = _menuItemDetails;
       // Find default Sales Item Id
@@ -137,8 +139,14 @@ export class MenuCustomizeComponent implements OnInit {
        *
        * 1) DOES ITEM HAVE MODIFIERS AT ALL. IF NOT SKIP EVERYTHING
        * */
+      let defaults = [];
       if(this.salesItemDetails.ModGroups.length > 0){
-        this.registerCustomizationVariables( this.salesItemDetails.ModGroups );
+        // Does the sales item have defaults?
+        if(this.salesItemDetails.DefaultOptions.length > 0){
+          defaults = this.salesItemDetails.DefaultOptions;
+        }
+
+        this.registerCustomizationVariables( this.salesItemDetails.ModGroups, defaults );
       }
       /**
        *
@@ -153,11 +161,11 @@ export class MenuCustomizeComponent implements OnInit {
     });
   }
 
-  private registerCustomizationVariables( allModifiers ){
+  private registerCustomizationVariables( allModifiers, defaultOptions : Array<DefaultOption> = [] ){
     let tempObj = new Object();
-    let tempArr = new Array();
+    let defaultsArray = new Array();
 
-    _.forEach(allModifiers, function(modifierGroup, key){
+    _.forEach(allModifiers, function(modifierGroup, modGroupKey){
       // Create new object to store values in
       let modObject = new Object();
       modObject['maximumItems'] = modifierGroup.MaximumItems;
@@ -167,12 +175,19 @@ export class MenuCustomizeComponent implements OnInit {
 
       _.forEach(modifierGroup.Mods, function(modifier, key){
         modObject['modifiers'][modifier.$id] = new Object();
-        modObject['modifiers'][modifier.$id]['quantity'] = 0;
+        let isModDefault = _.find(defaultOptions, {'ModifierId': modifier.ModifierId});
+        if(isModDefault !== undefined){
+          modObject['modifiers'][modifier.$id]['quantity'] = isModDefault.DefaultQuantity;
+          modObject['currentlySelected'].push(modifier);
+        }
+        else{
+          modObject['modifiers'][modifier.$id]['quantity'] = 0;
+        }
+
       });
 
       tempObj[modifierGroup.$id] = new Object();
       tempObj[modifierGroup.$id] = modObject;
-      tempArr.push(tempObj);
     });
 
     this.customizationData = tempObj;
