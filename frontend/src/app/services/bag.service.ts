@@ -11,7 +11,6 @@ export class BagService {
 
   constructor(protected localStorage: LocalStorage) {
     this.localStorage.getItem('bag').subscribe(bagItemsFromLocalStorage => {
-      console.log('bag items retrieved', bagItemsFromLocalStorage);
       this.itemsInBag = bagItemsFromLocalStorage;
     })
   }
@@ -41,6 +40,7 @@ export class BagService {
     // Remove item from both arrays
     this._itemsInBag.splice(index, 1);
     // Bag was modified, overwrite localStorage object with saved object
+    this.saveToLocalStorage();
   }
 
   get itemCountInBag() : number{
@@ -57,9 +57,7 @@ export class BagService {
   }
 
   protected saveToLocalStorage(){
-    this.localStorage.setItem('bag', this.itemsInBag).subscribe(() => {
-      console.log('saved to localStorage', this.itemsInBag);
-    })
+    this.localStorage.setItem('bag', this.itemsInBag).subscribe(() => {});
   }
 
   public retrieveBagFromStorage(): Observable<Array<LineItem>>{
