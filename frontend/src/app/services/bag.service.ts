@@ -44,15 +44,14 @@ export class BagService {
     let formattedLineItemModifierArray : Array<LineItemModifier> = [];
 
     _.forEach(allModifiers, function(modGroup, key){
-      console.log('group', modGroup, key);
       let modifierGroupId = modGroup.groupDetails.ModifierGroupId;
 
       if(modGroup.currentlySelected.length > 0){
         _.forEach(modGroup.currentlySelected, function(modifier, key){
-          console.log('modifier', modifier, key);
-          let lineItemModifierObject = <LineItemModifier>{};
-          lineItemModifierObject.ItemOptionGroupId = modifierGroupId;
-          lineItemModifierObject.SalesItemOptionId = modifier.ModifierId;
+          let lineItemModifierObject : LineItemModifier = {
+            ItemOptionGroupId : modifierGroupId,
+            SalesItemOptionId : modifier.ModifierId
+          };
           formattedLineItemModifierArray.push(lineItemModifierObject);
         });
       }
