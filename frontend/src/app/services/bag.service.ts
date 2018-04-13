@@ -48,12 +48,11 @@ export class BagService {
   }
 
   get itemsInBag() : Array<LineItem>{
-    console.log('service bag items getter', this._itemsInBag);
+    // console.log('service bag items getter', this._itemsInBag);
     return this._itemsInBag;
   }
 
   set itemsInBag(items: Array<LineItem>){
-    console.log('service bag items setter', items);
     this._itemsInBag = items;
   }
 
@@ -65,7 +64,6 @@ export class BagService {
 
   public retrieveBagFromStorage(): Observable<Array<LineItem>>{
     return this.localStorage.getItem('bag').map(data => {
-      // this._itemsInBag = data;
       return data;
     })
   }
