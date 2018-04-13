@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { LineItem } from '@local/models/LineItem';
+import { LineItem, LineItemModifier } from '@local/models/LineItem';
 import { LocalStorage } from '@ngx-pwa/local-storage';
 import { Observable } from 'rxjs/Observable';
+import * as _ from 'lodash';
 
 @Injectable()
 export class BagService {
@@ -16,6 +17,7 @@ export class BagService {
   }
 
   public createLineItem ( passedMenuItem ){
+    // console.log(passedMenuItem);
     let lineItem : LineItem = {};
 
     lineItem.SalesItemId = passedMenuItem.item.DefaultItemId; // Not sure if this should come from the SalesItem object instead of the DefaultItemId
@@ -27,6 +29,8 @@ export class BagService {
     lineItem.Quantity = passedMenuItem.Quantity;
     lineItem.ExtendedPrice = lineItem.UnitPrice * lineItem.Quantity;
 
+    this.constructLineItemModifiers(passedMenuItem.Modifiers);
+
     // Push menuItem and lineItem into arrays
     this._itemsInBag.push(lineItem);
 
@@ -34,6 +38,28 @@ export class BagService {
     this.saveToLocalStorage();
 
     lineItem = null;
+  }
+
+  private constructLineItemModifiers(allModifiers) : Array<LineItemModifier>{
+    let formattedLineItemModifierArray : Array<LineItemModifier> = [];
+
+    _.forEach(allModifiers, function(modGroup, key){
+      console.log('group', modGroup, key);
+      let modifierGroupId = modGroup.groupDetails.ModifierGroupId;
+
+      if(modGroup.currentlySelected.length > 0){
+        _.forEach(modGroup.currentlySelected, function(modifier, key){
+          console.log('modifier', modifier, key);
+          let lineItemModifierObject = <LineItemModifier>{};
+          lineItemModifierObject.ItemOptionGroupId = modifierGroupId;
+          lineItemModifierObject.SalesItemOptionId = modifier.ModifierId;
+          formattedLineItemModifierArray.push(lineItemModifierObject);
+        });
+      }
+    });
+
+    console.log('returned modifier array', formattedLineItemModifierArray)
+    return formattedLineItemModifierArray;
   }
 
   public removeFromBagAtIndex( index ){
