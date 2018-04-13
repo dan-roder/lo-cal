@@ -16,7 +16,7 @@ export class MainLayoutComponent implements OnInit {
   public currentUrl : any;
   public openBag: EventEmitter<any> = new EventEmitter<any>();
   public bagState: string = 'invisible';
-  public numberOfItemsInBag : number = 0;
+  public _numberOfItemsInBag : number = 0;
   public _bagItems : Array<LineItem> = [];
 
   constructor(
@@ -34,8 +34,11 @@ export class MainLayoutComponent implements OnInit {
   }
 
   get bagItems() : Array<LineItem>{
-    console.log('calling service getter for bag items');
     return this.bagService.itemsInBag;
+  }
+
+  get numberOfItemsInBag() : number{
+    return this.bagService.itemCountInBag;
   }
 
 }
