@@ -19,7 +19,7 @@
         </li>
         <li class="bag-link">
           <span (click)="toggleBagState($event)">MY BAG</span>
-          <span class="cart-number" [hidden]="numberOfItemsInBag > 0">{{ numberOfItemsInBag }}</span>
+          <span class="cart-number" [hidden]="numberOfItemsInBag == 0">{{ numberOfItemsInBag }}</span>
         </li>
       </ul>
     </div>
