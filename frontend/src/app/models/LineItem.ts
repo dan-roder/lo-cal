@@ -23,8 +23,8 @@ export interface LineItem{
 
 export interface LineItemModifier{
   SequenceNumber?: number; // (integer , optional) : The internal index for the modfiers for an line item ,
-  ItemOptionGroupId?: number; // (integer , optional) : The group id in the ItemOptionGroups table ,
-  SalesItemOptionId?: number; // (integer , optional) : The option id in the SalesItemOptions table ,
+  ItemOptionGroupId: number; // (integer , optional) : The group id in the ItemOptionGroups table ,
+  SalesItemOptionId: number; // (integer , optional) : The option id in the SalesItemOptions table ,
   Action?: string; // (enum , optional) = ['Default' or 'Add' or 'No' or 'Extra' or 'Side' or 'Light' or 'Everything' or 'Plain'] : Tells the system how the modifier should be applied to the line item ,
   DefaultAction?: string; // (enum , optional) = ['Default' or 'Add' or 'No' or 'Extra' or 'Side' or 'Light' or 'Everything' or 'Plain'] : The default way how the modifier is added to the item ,
   ItemLineNumber?: number; // (integer , optional) : The line item index where this modifier is to be applied to use 0 if the parent item is a modifier ,
