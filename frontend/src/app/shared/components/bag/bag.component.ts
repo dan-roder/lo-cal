@@ -4,6 +4,7 @@ import { stagger } from '@angular/animations/src/animation_metadata';
 import { BagService } from '@local/services/bag.service';
 import { MenuItem } from '@local/models/MenuItem';
 import { LineItem } from '@local/models/LineItem';
+import * as _ from 'lodash';
 
 @Component({
   selector: 'lo-cal-bag',
@@ -24,9 +25,10 @@ export class BagComponent implements OnInit {
   @Input() state: string = 'invisible';
   @Input() bagCount : number = 0;
   @Output() bagState: EventEmitter<string> = new EventEmitter<string>();
-  public _bagItems : Array<LineItem>;
-  public stepState: number = 1;
+  private _bagItems : Array<LineItem>;
+  public _bagTotalPrice : number;
   public itemsInBagCounter : number = 0;
+
 
   constructor(private bagService: BagService) { }
 
@@ -37,14 +39,6 @@ export class BagComponent implements OnInit {
   toggleBagState(){
     this.state = (this.state === 'invisible') ? 'visible' : 'invisible';
     this.bagState.emit(this.state);
-  }
-
-  nextStep(){
-    this.stepState++;
-  }
-
-  previousStep(){
-    this.stepState = (this.stepState > 0) ? (this.stepState - 1) : this.stepState;
   }
 
   public removeFromBagAtIndex( index ){
@@ -58,6 +52,10 @@ export class BagComponent implements OnInit {
 
   get bagItems(): Array<LineItem>{
     return this._bagItems;
+  }
+
+  get bagTotalPrice() : number{
+    return this.bagService.totalPrice;
   }
 
 }
