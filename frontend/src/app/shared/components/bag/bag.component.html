@@ -24,13 +24,15 @@
                 <div class="bag-detail-card">
                   <div class="title-container">
                       <div class="title">{{ menuItem?.Name }} <span class="quantity">x {{ menuItem?.Quantity }}</span></div>
-                      <a href="#" class="edit">Edit</a>
                   </div>
                   <div class="ingredients">
                     {{ (menuItem?.ShortDescription | allergens)?.description }}
                   </div>
+                  <div class="additions" *ngIf="menuItem?.Modifiers">
+                    <span class="modifier" *ngFor="let mod of menuItem?.Modifiers">{{ mod?.Name }}</span>
+                  </div>
                   <div class="fine-details">
-                    <span class="price">{{ menuItem.ExtendedPrice | currency }}</span>
+                    <span class="price">{{ menuItem?.ExtendedPrice | currency }}</span>
                     <span class="calories"></span>
                     <span class="allergens" *ngIf="(menuItem?.ShortDescription)">
                       <span class="allergen" *ngFor="let allergen of (menuItem?.ShortDescription | allergens).allergens">{{ allergen }}</span>
@@ -46,17 +48,9 @@
           <div class="checkout-bottom">
             <div class="cart-prices">
               <div class="price-wrapper">
-                <div class="flex-between subtotal">
-                  <span class="label">Subtotal</span>
-                  <span class="value">$22.88</span>
-                </div>
-                <div class="flex-between tax">
-                  <span class="label">Tax</span>
-                  <span class="value">$3.00</span>
-                </div>
                 <div class="flex-between total">
                   <span class="label medium">Total</span>
-                  <span class="value medium">$25.88</span>
+                  <span class="value medium">{{ bagTotalPrice | currency }}</span>
                 </div>
                 <div class="checkout-button red-button">
                   <button type="submit" (click)="nextStep()">Checkout as Guest</button>
