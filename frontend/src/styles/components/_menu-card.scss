@@ -155,6 +155,16 @@
     margin: 0;
   }
 
+  .additions{
+    @include fontsize(13);
+    color: $orange-red;
+    margin: 4px 0 0;
+
+    .modifier{
+      margin: 0 4px 0 0;
+    }
+  }// .additions
+
   .fine-details{
     @include fontsize(14);
     display: flex;
