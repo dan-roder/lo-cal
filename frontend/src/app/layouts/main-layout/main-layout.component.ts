@@ -29,7 +29,7 @@ export class MainLayoutComponent implements OnInit {
     this.wpService.getMenu(2).subscribe(m => this.mainMenuLinks = m.items);
   }
 
-  toggleBagState(state){
+  toggleBagState(){
     this.bagState = (this.bagState === 'invisible') ? 'visible' : 'invisible';
   }
 
