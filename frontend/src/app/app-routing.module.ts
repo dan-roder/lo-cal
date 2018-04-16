@@ -14,6 +14,7 @@ import { CateringComponent } from '@local/pages/catering/catering.component';
 import { ContactComponent } from '@local/pages/contact/contact.component';
 import { BlogComponent } from '@local/pages/blog/blog.component';
 import { BlogPostComponent } from '@local/pages/blog-post/blog-post.component';
+import { CreateAccountComponent } from '@local/pages/create-account/create-account.component';
 
 
 const routes: Routes = [
@@ -26,6 +27,7 @@ const routes: Routes = [
       { path: 'our-food', component: OurFoodComponent },
       { path: 'catering', component: CateringComponent },
       { path: 'login', component: LoginComponent },
+      { path: 'create-account', component: CreateAccountComponent },
       { path: 'contact', component: ContactComponent },
       { path: 'blog', component: BlogComponent },
       { path: 'blog/:post', component: BlogPostComponent }
