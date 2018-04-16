@@ -239,8 +239,8 @@
   .checkout-button{
     margin: 15px 0;
 
-    button{
-      width: 100%;
+    a{
+      display: block;
       padding: 15px;
       @include fontsize(16);
     }
