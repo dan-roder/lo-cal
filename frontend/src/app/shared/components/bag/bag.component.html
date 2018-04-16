@@ -53,7 +53,7 @@
                   <span class="value medium">{{ bagTotalPrice | currency }}</span>
                 </div>
                 <div class="checkout-button red-button">
-                  <button type="submit" (click)="nextStep()">Checkout as Guest</button>
+                  <a type="submit" routerLink="/login">Checkout as Guest</a>
                 </div>
               </div>
             </div><!-- /.cart-prices -->
