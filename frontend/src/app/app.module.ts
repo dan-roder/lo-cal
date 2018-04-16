@@ -25,6 +25,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { PostComponent } from './pages/post/post.component';
 import { CateringComponent } from './pages/catering/catering.component';
 import { ContactComponent } from './pages/contact/contact.component';
+import { CreateAccountComponent } from './pages/create-account/create-account.component';
 
 // Shared Components
 import { HeaderComponent } from './shared/components/header/header.component';
@@ -78,7 +79,8 @@ import { FeaturedImagePipe } from './pipes/featured-image.pipe';
     ContactComponent,
     BlogComponent,
     BlogPostComponent,
-    FeaturedImagePipe
+    FeaturedImagePipe,
+    CreateAccountComponent
   ],
   imports: [
     BrowserModule,
