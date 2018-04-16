@@ -44,28 +44,6 @@
       transition: all 300ms ease-in-out;
       padding: 0 20px;
       display: grid;
-
-      &.step-1{
-        transform: translateX(0%);
-
-        &.inactive{
-          transform: translateX(-100%);
-        }
-      }
-
-      &.step-2{
-        transform: translateX(100%);
-
-        &.active{
-          transform: translateX(-0%);
-        }
-
-
-      }
-
-      &.step-3{
-        transform: translateX(100%);
-      }
     }
 
     .checkout-top{
