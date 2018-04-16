@@ -9,30 +9,37 @@ export class BagService {
   public _lineItems : Array<LineItem> = [];
   public _itemsInBag : Array<LineItem> = [];
   public _itemCountInBag : number = 0;
+  private _totalPrice : number;
 
   constructor(protected localStorage: LocalStorage) {
     this.localStorage.getItem('bag').subscribe(bagItemsFromLocalStorage => {
       this.itemsInBag = bagItemsFromLocalStorage;
+      this.updatePrice(bagItemsFromLocalStorage);
     })
   }
 
   public createLineItem ( passedMenuItem ){
-    // console.log(passedMenuItem);
-    let lineItem : LineItem = {};
+    console.log(passedMenuItem);
 
-    lineItem.SalesItemId = passedMenuItem.item.DefaultItemId; // Not sure if this should come from the SalesItem object instead of the DefaultItemId
-    lineItem.MenuItemId = passedMenuItem.item.MenuItemId;
-    lineItem.Name = passedMenuItem.item.Name;
-    lineItem.ShortDescription = passedMenuItem.item.Description;
-    lineItem.SpecialInstructions = passedMenuItem.SpecialInstructions;
-    lineItem.UnitPrice = passedMenuItem.salesItems[0].Price;
-    lineItem.Quantity = passedMenuItem.Quantity;
-    lineItem.ExtendedPrice = lineItem.UnitPrice * lineItem.Quantity;
+    // Send item to get Modifiers
+    let modifiers = this.constructLineItemModifiers(passedMenuItem.Modifiers);
 
-    this.constructLineItemModifiers(passedMenuItem.Modifiers);
+    let lineItem : LineItem = {
+      SalesItemId : passedMenuItem.item.DefaultItemId, // Not sure if this should come from the SalesItem object instead of the DefaultItemId
+      MenuItemId : passedMenuItem.item.MenuItemId,
+      Name : passedMenuItem.item.Name,
+      ShortDescription : passedMenuItem.item.Description,
+      SpecialInstructions : passedMenuItem.SpecialInstructions,
+      UnitPrice : passedMenuItem.salesItems[0].Price,
+      Quantity : passedMenuItem.Quantity,
+      ExtendedPrice : passedMenuItem.TotalPrice * passedMenuItem.Quantity,
+      Modifiers : modifiers
+    };
 
     // Push menuItem and lineItem into arrays
     this._itemsInBag.push(lineItem);
+    // Update pricing
+    this._totalPrice += passedMenuItem.TotalPrice;
 
     // Save to localStorage
     this.saveToLocalStorage();
@@ -47,12 +54,30 @@ export class BagService {
       let modifierGroupId = modGroup.groupDetails.ModifierGroupId;
 
       if(modGroup.currentlySelected.length > 0){
+        let previousModifierId : number = 0;
+
         _.forEach(modGroup.currentlySelected, function(modifier, key){
-          let lineItemModifierObject : LineItemModifier = {
-            ItemOptionGroupId : modifierGroupId,
-            SalesItemOptionId : modifier.ModifierId
-          };
-          formattedLineItemModifierArray.push(lineItemModifierObject);
+          // Set initial quantity for the modifier being added
+          let modifierQuantity : number = 1;
+
+          // If the modifier ID we're iterating over exists
+          let modExists = _.findIndex(formattedLineItemModifierArray, {SalesItemOptionId: modifier.ModifierId});
+
+          // If it does, increase the quantity of that modifier
+          if(modExists !== -1){
+            formattedLineItemModifierArray[modExists].Quantity++;
+          }
+          // Else, construct the object and insert it
+          else{
+            let lineItemModifierObject : LineItemModifier = {
+              Name : modifier.Name,
+              ItemOptionGroupId : modifierGroupId,
+              SalesItemOptionId : modifier.ModifierId,
+              Quantity : modifierQuantity
+            };
+
+            formattedLineItemModifierArray.push(lineItemModifierObject);
+          }
         });
       }
     });
@@ -62,10 +87,22 @@ export class BagService {
   }
 
   public removeFromBagAtIndex( index ){
+    // Update front facing price
+    this._totalPrice -= this._itemsInBag[index].ExtendedPrice;
     // Remove item from both arrays
     this._itemsInBag.splice(index, 1);
     // Bag was modified, overwrite localStorage object with saved object
     this.saveToLocalStorage();
+  }
+
+  private updatePrice(bagItems){
+    let value = 0;
+
+    _.forEach(bagItems, function(item, key){
+      value += item.ExtendedPrice;
+    });
+
+    this._totalPrice = value;
   }
 
   get itemCountInBag() : number{
@@ -73,12 +110,19 @@ export class BagService {
   }
 
   get itemsInBag() : Array<LineItem>{
-    // console.log('service bag items getter', this._itemsInBag);
     return this._itemsInBag;
   }
 
   set itemsInBag(items: Array<LineItem>){
     this._itemsInBag = items;
+  }
+
+  get totalPrice(): number{
+    return this._totalPrice;
+  }
+
+  set totalPrice(price: number){
+    this._totalPrice = price;
   }
 
   protected saveToLocalStorage(){
