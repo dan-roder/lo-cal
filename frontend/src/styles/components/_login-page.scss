@@ -1,10 +1,6 @@
 .login-wrapper{
   margin: 300px 0;
 
-  h1{
-
-  }
-
   form{
     .component{
       margin: 10px 0;
@@ -37,6 +33,40 @@
         @extend %sofia-regular;
       }
     }// input
+
+    select{
+      display: block;
+      margin: 7px 0;
+      width: 100%;
+      border: none;
+      background: none;
+
+      &:focus{
+        outline: 0;
+      }
+    }
+
+    .component-group{
+      display: flex;
+      justify-content: space-between;
+      margin: 10px 0;
+
+      .component{
+        margin: 0;
+      }
+
+      &.group-2{
+        .component{
+          width: 45%;
+        }
+      }
+
+      &.group-3{
+        .component{
+          width: 30%;
+        }
+      }
+    }
   }// form
 
   .account-actions{
