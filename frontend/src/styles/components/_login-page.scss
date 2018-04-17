@@ -2,70 +2,8 @@
   margin: 300px 0;
 
   form{
-    .component{
-      margin: 10px 0;
-    }
-
     .submit{
       margin: 40px 0 15px;
-    }
-
-    input{
-      display: block;
-      width: 100%;
-      box-sizing: border-box;
-      @include fontsize(15);
-      padding: 8px 0;
-
-      &:focus{
-        outline: 0;
-      }
-
-      &[type=text],
-      &[type=password]{
-        border: none;
-        border-bottom: 1px solid $black;
-        box-shadow: none;
-      }
-
-      &[type=submit]{
-        @include fontsize(15);
-        @extend %sofia-regular;
-      }
-    }// input
-
-    select{
-      display: block;
-      margin: 7px 0;
-      width: 100%;
-      border: none;
-      background: none;
-
-      &:focus{
-        outline: 0;
-      }
-    }
-
-    .component-group{
-      display: flex;
-      justify-content: space-between;
-      margin: 10px 0;
-
-      .component{
-        margin: 0;
-      }
-
-      &.group-2{
-        .component{
-          width: 45%;
-        }
-      }
-
-      &.group-3{
-        .component{
-          width: 30%;
-        }
-      }
     }
   }// form
 
