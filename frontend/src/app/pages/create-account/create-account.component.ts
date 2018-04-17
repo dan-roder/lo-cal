@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Customer, CustomerAddress } from '@local/models/Customer';
+import { Customer, CustomerAddress, InRegistration } from '@local/models/Customer';
+import { PasswordMatch } from '@local/utils/passwordmatch';
+
 
 @Component({
   selector: 'lo-cal-create-account',
@@ -15,8 +17,8 @@ export class CreateAccountComponent implements OnInit {
       'first-name' : [null, Validators.required],
       'last-name' : [null, Validators.required],
       'email' : [null, [Validators.required, Validators.email]],
-      'password' : [null, Validators.required],
-      'confirm-password' : [null, Validators.required],
+      'password' : ['', [Validators.required, Validators.minLength(8)]],
+      'confirm-password' : ['', Validators.required],
       'security-question' : [null, Validators.required],
       'security-answer' : [null, Validators.required],
       'full-address' : fb.group({
@@ -26,15 +28,21 @@ export class CreateAccountComponent implements OnInit {
         'state' : ['', Validators.required],
         'zip' : [null, [Validators.required, Validators.pattern('^[0-9]{5}$')]]
       })
+    }, {
+      validator : PasswordMatch.MatchPassword
     })
   }
 
   ngOnInit() {
   }
 
+  showErrors(){
+    console.log(this.accountForm.controls['password']);
+  }
+
   public submitForm(form){
     this.submittedOnce = true;
-    console.log(form.controls);
+    console.log(form);
 
     // Set up customer object for submission to API
     if(form.valid) {
@@ -51,7 +59,18 @@ export class CreateAccountComponent implements OnInit {
         }]
       }
 
-      console.log(customer);
+      let registration : InRegistration = {
+        Customer : customer,
+        Password : form.controls['password'].value,
+        SecurityQuestion : form.controls['security-question'].value,
+        SecurityAnswer : form.controls['security-answer'].value
+      }
+
+      let customerDataForApi = {
+        "customer_info" : registration
+      }
+
+      console.log(customerDataForApi);
     }
   }
 }
