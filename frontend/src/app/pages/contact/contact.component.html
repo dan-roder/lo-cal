@@ -15,9 +15,9 @@
 
   <div class="section section-white">
     <div class="content center">
-      <form action="" [formGroup]="contactForm" class="contact-form">
+      <form action="" [formGroup]="contactForm" class="lo-cal-form">
         <div class="form-section">
-          <div class="form-conponent form-component-text">
+          <div class="form-component form-component-text">
             <label for="contact-reason" class="visuallyhidden">What are you interested in sharing/asking?</label>
             <input type="text" name="contact-reason" id="contact-reason" formControlName="contact-reason" placeholder="What are you interested in sharing/asking?" [ngClass]="{'has-error':!contactForm.controls['contact-reason'].valid && submittedOnce}">
             <div class="error-message" *ngIf="!contactForm.controls['contact-reason'].valid && submittedOnce">This field is required.</div>
