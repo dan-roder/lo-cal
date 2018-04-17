@@ -22,13 +22,26 @@
       </div>
       <div class="form-component form-component-text">
         <label for="password" class="visuallyhidden">Password</label>
-        <input type="password" name="password" id="password" formControlName="password" placeholder="Password*" [ngClass]="{'has-error':!accountForm.controls['password'].valid && submittedOnce}">
+        <input type="password" name="password" id="password" formControlName="password" placeholder="Password* (8 or more characters)" [ngClass]="{'has-error':!accountForm.controls['password'].valid && submittedOnce}">
         <div class="error-message" *ngIf="!accountForm.controls['password'].valid && submittedOnce">This field is required.</div>
+        <div class="error-message" *ngIf="accountForm.controls['password'].value.length > 2 && accountForm.controls['password'].errors?.minlength">Password must be at least 8 characters.</div>
       </div>
       <div class="form-component form-component-text">
         <label for="confirm-password" class="visuallyhidden">Confirm Password</label>
         <input type="password" name="confirm-password" id="confirm-password" formControlName="confirm-password" placeholder="Confirm Password*" [ngClass]="{'has-error':!accountForm.controls['confirm-password'].valid && submittedOnce}">
+        <div class="error-message" *ngIf="!accountForm.controls['confirm-password'].valid && submittedOnce">This field is required.</div>
+        <div class="error-message" *ngIf="accountForm.controls['confirm-password'].errors?.MatchPassword">Password does not match.</div>
       </div>
+      <div class="form-component form-component-text">
+        <label for="security-question" class="visuallyhidden">Security Question</label>
+        <input type="text" name="security-question" id="security-question" formControlName="security-question" placeholder="Security Question*" [ngClass]="{'has-error':!accountForm.controls['security-question'].valid && submittedOnce}">
+        <div class="error-message" *ngIf="!accountForm.controls['security-question'].valid && submittedOnce">This field is required.</div>
+      </div>
+        <div class="form-component form-component-text">
+          <label for="security-answer" class="visuallyhidden">Security Answer</label>
+          <input type="text" name="confirm-password" id="security-answer" formControlName="security-answer" placeholder="Security Answer*" [ngClass]="{'has-error':!accountForm.controls['security-answer'].valid && submittedOnce}">
+          <div class="error-message" *ngIf="!accountForm.controls['security-answer'].valid && submittedOnce">This field is required.</div>
+        </div>
       <div class="control-wrapper" formGroupName="full-address">
         <div class="form-component form-component-text">
           <label for="address" class="visuallyhidden">Address</label>
@@ -106,6 +119,7 @@
             <label for="zip" class="visuallyhidden">Zip Code</label>
             <input type="text" name="zip" id="zip" formControlName="zip" placeholder="Zip*" [ngClass]="{'has-error':!accountForm.controls['full-address'].controls['zip'].valid && submittedOnce}">
             <div class="error-message" *ngIf="!accountForm.controls['full-address'].controls['zip'].valid && submittedOnce">This field is required.</div>
+            <div class="error-message" *ngIf="accountForm.controls['full-address'].controls['zip'].errors?.pattern && accountForm.controls['full-address'].controls['zip'].value.length > 5">Zip code must be only 5 digits.</div>
           </div>
         </div>
       </div>
