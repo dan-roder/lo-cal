@@ -7,6 +7,7 @@ import { FormControl, FormBuilder, FormGroup, Validators } from '@angular/forms'
 })
 export class CreateAccountComponent implements OnInit {
   public accountForm : FormGroup;
+  public submittedOnce : boolean = false;
 
   constructor(private fb: FormBuilder) {
     this.accountForm = fb.group({
@@ -18,9 +19,9 @@ export class CreateAccountComponent implements OnInit {
       'security-question' : [null, Validators.required],
       'security-answer' : [null, Validators.required],
       'full-address' : fb.group({
-        'address' : null,
+        'address' : [null, Validators.required],
         'address2' : null,
-        'city' : null,
+        'city' : [null, Validators.required],
         'state' : ['', Validators.required],
         'zip' : [null, [Validators.required, Validators.pattern('^[0-9]{5}$')]]
       })
@@ -31,6 +32,7 @@ export class CreateAccountComponent implements OnInit {
   }
 
   public submitForm(formData){
+    this.submittedOnce = true;
     console.log(formData);
     console.log(formData.controls);
   }
