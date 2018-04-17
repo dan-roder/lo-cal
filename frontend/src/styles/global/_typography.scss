@@ -149,6 +149,14 @@ img{
       box-shadow: 1px 2px 4px rgba(0,0,0,.23);
     }
   }
+
+  &.full-width-button{
+    a,
+    button,
+    input[type=submit]{
+      width: 100%;
+    }
+  }
 }
 
 .black-button{
