@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Customer, CustomerAddress } from '@local/models/Customer';
 
 @Component({
   selector: 'lo-cal-create-account',
@@ -31,9 +32,26 @@ export class CreateAccountComponent implements OnInit {
   ngOnInit() {
   }
 
-  public submitForm(formData){
+  public submitForm(form){
     this.submittedOnce = true;
-    console.log(formData);
-    console.log(formData.controls);
+    console.log(form.controls);
+
+    // Set up customer object for submission to API
+    if(form.valid) {
+      let customer : Customer = {
+        EMail : form.controls.email.value,
+        FirstName : form.controls['first-name'].value,
+        LastName : form.controls['last-name'].value,
+        Addresses : [{
+          AddressLine1 : form.controls['full-address'].controls.address.value,
+          AddressLine2 : form.controls['full-address'].controls.address2.value,
+          City : form.controls['full-address'].controls.city.value,
+          State : form.controls['full-address'].controls.state.value,
+          Postal : form.controls['full-address'].controls.zip.value
+        }]
+      }
+
+      console.log(customer);
+    }
   }
 }
