@@ -31,7 +31,7 @@ export class MenuService {
   }
 
   get(apiMethod: string = ''){
-    let url = this.config.railsApi + '/' + apiMethod;
+    let url = this.config.railsMenuApi + '/' + apiMethod;
     return this.httpClient.get(url);
   }
 
