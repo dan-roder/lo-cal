@@ -2,26 +2,6 @@
 <div class="login-wrapper">
   <div class="login-container center-400">
     <h1 class="text-center">Welcome</h1>
-    <form action="" class="lo-cal-form">
-      <div class="form-component form-component-text">
-          <label for="password" class="visuallyhidden">Email</label>
-        <input type="text" name="email" id="email" placeholder="Email">
-      </div>
-      <div class="form-component form-component-text">
-        <label for="password" class="visuallyhidden">Password</label>
-        <input type="password" name="password" id="password" placeholder="Password">
-      </div>
-      <div class="submit red-button full-width-button">
-        <input type="submit" value="Log In">
-      </div>
-      <div class="account-actions">
-        <div class="action">
-          <a routerLink="/create-account">New Account</a>
-        </div>
-        <div class="action">
-          <a routerLink="/password-reset">Forgot Password</a>
-        </div>
-      </div>
-    </form>
+    <lo-cal-login-form></lo-cal-login-form>
   </div>
 </div>
