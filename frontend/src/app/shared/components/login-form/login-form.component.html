@@ -1,0 +1,24 @@
+<form action="" class="lo-cal-form" [formGroup]="loginForm">
+  <div class="form-errors" *ngIf="errorData?.error"><p>Sorry. We did not find a valid account for that username and password.</p></div>
+  <div class="form-component form-component-text">
+    <label for="password" class="visuallyhidden">Email</label>
+    <input type="text" name="email" id="email" placeholder="Email" formControlName="email" [ngClass]="{'has-error':!loginForm.controls['email'].valid && submittedOnce}">
+    <div class="error-message" *ngIf="!loginForm.controls['email'].valid && submittedOnce">This field is required.</div>
+  </div>
+  <div class="form-component form-component-text">
+    <label for="password" class="visuallyhidden">Password</label>
+    <input type="password" name="password" id="password" placeholder="Password" formControlName="password" [ngClass]="{'has-error':!loginForm.controls['password'].valid && submittedOnce}">
+    <div class="error-message" *ngIf="!loginForm.controls['password'].valid && submittedOnce">This field is required.</div>
+  </div>
+  <div class="submit red-button full-width-button">
+    <input type="submit" value="Log In" (click)="login(loginForm)">
+  </div>
+  <div class="account-actions">
+    <div class="action">
+      <a routerLink="/create-account">New Account</a>
+    </div>
+    <div class="action">
+      <a routerLink="/password-reset">Forgot Password</a>
+    </div>
+  </div>
+</form>
