@@ -24,7 +24,6 @@ export class CustomerService {
   }
 
   public logIn(loginInfo : RailsLogin): Observable<any>{
-    console.log('logging in', loginInfo);
     return this.httpClient.post(this.config.authenticateEndpoint, loginInfo).map(data => {
       return data;
     })
@@ -36,8 +35,8 @@ export class CustomerService {
     });
   }
 
-  public isLoggedIn(): string{
-    return
+  public isLoggedIn(){
+    return this.localStorage.getItem('user').map(userInfo => {return userInfo});
   }
 
 }
