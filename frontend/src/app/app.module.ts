@@ -37,10 +37,11 @@ import { HamburgerComponent } from './shared/components/hamburger/hamburger.comp
 import { BagComponent } from './shared/components/bag/bag.component';
 
 // Services
+import { WindowRef } from './utils/windowref';
 import { WordpressService } from './services/wp.service';
 import { MenuService } from './services/menu-service.service';
 import { BagService } from './services/bag.service';
-import { WindowRef } from './utils/windowref';
+import { CustomerService } from './services/customer.service';
 
 // Directives
 import { WindowScrollDirective } from './shared/directives/window-scroll.directive';
@@ -51,6 +52,7 @@ import { SafeHtml } from './pipes/safe-html.pipe';
 import { BlogComponent } from './pages/blog/blog.component';
 import { BlogPostComponent } from './pages/blog-post/blog-post.component';
 import { FeaturedImagePipe } from './pipes/featured-image.pipe';
+
 
 
 @NgModule({
@@ -92,7 +94,7 @@ import { FeaturedImagePipe } from './pipes/featured-image.pipe';
     BrowserAnimationsModule,
     LocalStorageModule
   ],
-  providers: [ Config, WindowRef, WordpressService, MenuService, BagService ],
+  providers: [ Config, WindowRef, WordpressService, MenuService, BagService, CustomerService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
