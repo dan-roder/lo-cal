@@ -4,7 +4,9 @@ import { WindowRef } from './windowref';
 @Injectable()
 export class Config {
   public wordpressApiUrl : string = '';
-  public railsApi : string = 'http://138.197.123.70/menus/1';
+  public railsMenuApi : string = 'http://138.197.123.70/menus/1';
+  public railsCustomerEndpoint : string = 'http://138.197.123.70/customers';
+  public authenticateEndpoint : string = 'http://138.197.123.70/authenticate';
 
   constructor(private winRef: WindowRef){
     // Setting API URL based on current environment
