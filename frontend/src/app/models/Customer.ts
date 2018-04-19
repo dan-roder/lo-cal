@@ -39,3 +39,15 @@ export interface InRegistration{
   SecurityAnswer: string;
 }
 
+export interface RailsCustomer{
+  customer_info : InRegistration;
+}
+
+export interface InLogin{
+  Email : string;
+  Password : string;
+}
+
+export interface RailsLogin{
+  credentials : InLogin;
+}
