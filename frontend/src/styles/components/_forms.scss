@@ -98,6 +98,12 @@
   }
 
   .form-component-select{
+    margin: 15px 0;
+
+    @include breakpoint($bp-600){
+      margin: 0;
+    }
+
     select{
       display: block;
       margin: 7px 0;
@@ -120,6 +126,14 @@
       @include fontsize(15);
       @extend %sofia-light;
       padding: 8px 150px;
+    }
+  }
+
+  .form-errors{
+    p{
+      color: $orange-red;
+      @include fontsize(15);
+      text-align: center;
     }
   }
 }
