@@ -35,6 +35,7 @@ import { IntroSectionComponent } from './shared/components/intro-section/intro-s
 import { ImageAndTextComponent } from './shared/components/image-and-text/image-and-text.component';
 import { HamburgerComponent } from './shared/components/hamburger/hamburger.component';
 import { BagComponent } from './shared/components/bag/bag.component';
+import { LoginFormComponent } from './shared/components/login-form/login-form.component';
 
 // Services
 import { WindowRef } from './utils/windowref';
@@ -82,7 +83,8 @@ import { FeaturedImagePipe } from './pipes/featured-image.pipe';
     BlogComponent,
     BlogPostComponent,
     FeaturedImagePipe,
-    CreateAccountComponent
+    CreateAccountComponent,
+    LoginFormComponent
   ],
   imports: [
     BrowserModule,
