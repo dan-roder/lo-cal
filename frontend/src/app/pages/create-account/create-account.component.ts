@@ -49,11 +49,11 @@ export class CreateAccountComponent implements OnInit {
             FirstName : form.controls['first-name'].value,
             LastName : form.controls['last-name'].value,
             Addresses : [{
-              AddressLine1 : form.controls['full-address'].controls.address.value,
-              AddressLine2 : form.controls['full-address'].controls.address2.value,
-              City : form.controls['full-address'].controls.city.value,
-              State : form.controls['full-address'].controls.state.value,
-              Postal : form.controls['full-address'].controls.zip.value
+              AddressLine1 : form.controls['full-address'].controls['address'].value,
+              AddressLine2 : form.controls['full-address'].controls['address2'].value,
+              City : form.controls['full-address'].controls['city'].value,
+              State : form.controls['full-address'].controls['state'].value,
+              Postal : form.controls['full-address'].controls['zip'].value
             }]
           },
           Password : form.controls['password'].value,
