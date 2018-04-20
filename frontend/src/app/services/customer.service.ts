@@ -39,4 +39,10 @@ export class CustomerService {
     return this.localStorage.getItem('user').map(userInfo => {return userInfo});
   }
 
+  public getCustomerInfo(customerId: string): Observable<any>{
+    return this.httpClient.get(this.config.railsCustomerEndpoint + `/${customerId}`).map(userData => {
+      return userData;
+    })
+  }
+
 }
