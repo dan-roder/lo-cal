@@ -15,6 +15,8 @@ import { ContactComponent } from '@local/pages/contact/contact.component';
 import { BlogComponent } from '@local/pages/blog/blog.component';
 import { BlogPostComponent } from '@local/pages/blog-post/blog-post.component';
 import { CreateAccountComponent } from '@local/pages/create-account/create-account.component';
+import { AccountComponent } from '@local/pages/account/account.component';
+import { AuthGuard } from '@local/guards/auth.guard';
 
 
 const routes: Routes = [
@@ -30,7 +32,10 @@ const routes: Routes = [
       { path: 'create-account', component: CreateAccountComponent },
       { path: 'contact', component: ContactComponent },
       { path: 'blog', component: BlogComponent },
-      { path: 'blog/:post', component: BlogPostComponent }
+      { path: 'blog/:post', component: BlogPostComponent },
+      {
+        path: 'account', component: AccountComponent, canActivate: [AuthGuard]
+      }
     ]
   },
   {
