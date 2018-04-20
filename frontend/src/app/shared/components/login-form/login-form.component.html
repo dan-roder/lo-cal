@@ -1,4 +1,4 @@
-<form action="" class="lo-cal-form" [formGroup]="loginForm">
+<form action="" class="lo-cal-form" [formGroup]="loginForm" (submit)="login(loginForm)">
   <div class="form-errors" *ngIf="errorData?.error"><p>Sorry. We did not find a valid account for that username and password.</p></div>
   <div class="form-component form-component-text">
     <label for="password" class="visuallyhidden">Email</label>
@@ -11,7 +11,7 @@
     <div class="error-message" *ngIf="!loginForm.controls['password'].valid && submittedOnce">This field is required.</div>
   </div>
   <div class="submit red-button full-width-button">
-    <input type="submit" value="Log In" (click)="login(loginForm)">
+    <input type="submit" value="Log In">
   </div>
   <div class="account-actions">
     <div class="action">
