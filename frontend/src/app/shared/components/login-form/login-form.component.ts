@@ -13,6 +13,7 @@ export class LoginFormComponent implements OnInit {
   public loginForm : FormGroup;
   public submittedOnce : boolean = false;
   public errorData : any = {};
+  private returnUrl : string = '';
 
   constructor(private fb: FormBuilder, private customerService: CustomerService, private localStorage: LocalStorage, private router: Router, private route: ActivatedRoute) {
     this.loginForm = fb.group({
@@ -22,6 +23,7 @@ export class LoginFormComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
   }
 
   public login(loginFormData){
@@ -37,8 +39,8 @@ export class LoginFormComponent implements OnInit {
 
       this.customerService.logIn(loginDetails).subscribe(customerId => {
         this.localStorage.setItem('user', customerId).subscribe(() => {
-          console.log(this.router);
-          console.log(this.route);
+          console.log('success', this.returnUrl);
+          this.router.navigate([this.returnUrl]);
         });
       }, error => {
         this.errorData = error;
