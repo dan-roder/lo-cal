@@ -26,6 +26,7 @@ import { PostComponent } from './pages/post/post.component';
 import { CateringComponent } from './pages/catering/catering.component';
 import { ContactComponent } from './pages/contact/contact.component';
 import { CreateAccountComponent } from './pages/create-account/create-account.component';
+import { AccountComponent } from './pages/account/account.component';
 
 // Shared Components
 import { HeaderComponent } from './shared/components/header/header.component';
@@ -46,6 +47,7 @@ import { CustomerService } from './services/customer.service';
 
 // Directives
 import { WindowScrollDirective } from './shared/directives/window-scroll.directive';
+import { InputSwitcherDirective } from './shared/directives/input-switcher.directive';
 
 //Pipes
 import { AllergensPipe } from './pipes/allergens.pipe';
@@ -53,6 +55,9 @@ import { SafeHtml } from './pipes/safe-html.pipe';
 import { BlogComponent } from './pages/blog/blog.component';
 import { BlogPostComponent } from './pages/blog-post/blog-post.component';
 import { FeaturedImagePipe } from './pipes/featured-image.pipe';
+
+//Guards
+import { AuthGuard } from '@local/guards/auth.guard';
 
 
 
@@ -84,7 +89,9 @@ import { FeaturedImagePipe } from './pipes/featured-image.pipe';
     BlogPostComponent,
     FeaturedImagePipe,
     CreateAccountComponent,
-    LoginFormComponent
+    LoginFormComponent,
+    AccountComponent,
+    InputSwitcherDirective
   ],
   imports: [
     BrowserModule,
@@ -96,7 +103,7 @@ import { FeaturedImagePipe } from './pipes/featured-image.pipe';
     BrowserAnimationsModule,
     LocalStorageModule
   ],
-  providers: [ Config, WindowRef, WordpressService, MenuService, BagService, CustomerService ],
+  providers: [ Config, WindowRef, WordpressService, MenuService, BagService, CustomerService, AuthGuard ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
