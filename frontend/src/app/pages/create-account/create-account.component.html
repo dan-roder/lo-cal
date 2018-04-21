@@ -37,16 +37,16 @@
         <input type="text" name="security-question" id="security-question" formControlName="security-question" placeholder="Security Question*" [ngClass]="{'has-error':!accountForm.controls['security-question'].valid && submittedOnce}">
         <div class="error-message" *ngIf="!accountForm.controls['security-question'].valid && submittedOnce">This field is required.</div>
       </div>
-        <div class="form-component form-component-text">
-          <label for="security-answer" class="visuallyhidden">Security Answer</label>
-          <input type="text" name="confirm-password" id="security-answer" formControlName="security-answer" placeholder="Security Answer*" [ngClass]="{'has-error':!accountForm.controls['security-answer'].valid && submittedOnce}">
-          <div class="error-message" *ngIf="!accountForm.controls['security-answer'].valid && submittedOnce">This field is required.</div>
-        </div>
+      <div class="form-component form-component-text">
+        <label for="security-answer" class="visuallyhidden">Security Answer</label>
+        <input type="text" name="confirm-password" id="security-answer" formControlName="security-answer" placeholder="Security Answer*" [ngClass]="{'has-error':!accountForm.controls['security-answer'].valid && submittedOnce}">
+        <div class="error-message" *ngIf="!accountForm.controls['security-answer'].valid && submittedOnce">This field is required.</div>
+      </div>
       <div class="control-wrapper" formGroupName="full-address">
         <div class="form-component form-component-text">
           <label for="address" class="visuallyhidden">Address</label>
-          <input type="text" name="address" id="address" formControlName="address" placeholder="Address*" [ngClass]="{'has-error':!accountForm.controls['full-address'].controls['address'].valid && submittedOnce}">
-          <div class="error-message" *ngIf="!accountForm.controls['full-address'].controls['address'].valid && submittedOnce">This field is required.</div>
+          <input type="text" name="address" id="address" formControlName="address" placeholder="Address*" [ngClass]="{'has-error':!accountForm.controls['full-address']['controls']['address'].valid && submittedOnce}">
+          <div class="error-message" *ngIf="!accountForm.controls['full-address']['controls']['address'].valid && submittedOnce">This field is required.</div>
         </div>
         <div class="form-component form-component-text">
           <label for="address2" class="visuallyhidden">Address 2</label>
@@ -55,12 +55,12 @@
         <div class="form-section thirds">
           <div class="form-component form-component-text">
             <label for="city" class="visuallyhidden">City</label>
-            <input type="text" name="city" id="city" formControlName="city" placeholder="City*" [ngClass]="{'has-error':!accountForm.controls['full-address'].controls['city'].valid && submittedOnce}">
-            <div class="error-message" *ngIf="!accountForm.controls['full-address'].controls['city'].valid && submittedOnce">This field is required.</div>
+            <input type="text" name="city" id="city" formControlName="city" placeholder="City*" [ngClass]="{'has-error':!accountForm.controls['full-address']['controls']['city'].valid && submittedOnce}">
+            <div class="error-message" *ngIf="!accountForm.controls['full-address']['controls']['city'].valid && submittedOnce">This field is required.</div>
           </div>
           <div class="form-component form-component-select">
             <label for="state" class="visuallyhidden">State</label>
-            <select name="state" id="state" formControlName="state" [ngClass]="{'has-error':!accountForm.controls['full-address'].controls['state'].valid && submittedOnce}">
+            <select name="state" id="state" formControlName="state" [ngClass]="{'has-error':!accountForm.controls['full-address']['controls']['state'].valid && submittedOnce}">
               <option value="" selected="selected">-- Select --</option>
               <option value="AL">Alabama</option>
               <option value="AK">Alaska</option>
@@ -117,9 +117,9 @@
           </div>
           <div class="form-component form-component-text">
             <label for="zip" class="visuallyhidden">Zip Code</label>
-            <input type="text" name="zip" id="zip" formControlName="zip" placeholder="Zip*" [ngClass]="{'has-error':!accountForm.controls['full-address'].controls['zip'].valid && submittedOnce}">
-            <div class="error-message" *ngIf="!accountForm.controls['full-address'].controls['zip'].valid && submittedOnce">This field is required.</div>
-            <div class="error-message" *ngIf="accountForm.controls['full-address'].controls['zip'].errors?.pattern && accountForm.controls['full-address'].controls['zip'].value.length > 5">Zip code must be only 5 digits.</div>
+            <input type="text" name="zip" id="zip" formControlName="zip" placeholder="Zip*" [ngClass]="{'has-error':!accountForm.controls['full-address']['controls']['zip'].valid && submittedOnce}">
+            <div class="error-message" *ngIf="!accountForm.controls['full-address']['controls']['zip'].valid && submittedOnce">This field is required.</div>
+            <div class="error-message" *ngIf="accountForm.controls['full-address']['controls']['zip'].errors?.pattern && accountForm.controls['full-address']['controls']['zip'].value.length > 5">Zip code must be only 5 digits.</div>
           </div>
         </div>
       </div>
