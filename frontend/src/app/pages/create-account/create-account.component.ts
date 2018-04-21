@@ -53,7 +53,8 @@ export class CreateAccountComponent implements OnInit {
               AddressLine2 : form.controls['full-address'].controls['address2'].value,
               City : form.controls['full-address'].controls['city'].value,
               State : form.controls['full-address'].controls['state'].value,
-              Postal : form.controls['full-address'].controls['zip'].value
+              Postal : form.controls['full-address'].controls['zip'].value,
+              IsDefault : true
             }]
           },
           Password : form.controls['password'].value,
@@ -63,7 +64,10 @@ export class CreateAccountComponent implements OnInit {
       }
 
       // Call service to create customer
-      this.customerService.createCustomer(registration);
+      this.customerService.createCustomer(registration).subscribe(data => {
+        // handle successful return of account created
+        // redirect to appropriate location
+      });
     }
   }
 
