@@ -15,11 +15,11 @@ export class CustomerService {
     private localStorage: LocalStorage,
     private router: Router) { }
 
-  public createCustomer(customer: RailsCustomer, ){
-    this.httpClient.put(this.config.railsCustomerEndpoint, customer).subscribe(returnData => {
-      console.log(returnData);
+  public createCustomer(customer: RailsCustomer){
+    return this.httpClient.put(this.config.railsCustomerEndpoint, customer).map(returnData => {
+      return returnData;
     }, errorData => {
-      console.log(errorData);
+      return errorData;
     })
   }
 
