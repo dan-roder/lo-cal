@@ -106,7 +106,7 @@ export class BagService {
   }
 
   get itemCountInBag() : number{
-    return this._itemsInBag.length;
+    return (this._itemsInBag === null) ? 0 : this._itemsInBag.length;
   }
 
   get itemsInBag() : Array<LineItem>{
