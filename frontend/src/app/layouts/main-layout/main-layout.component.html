@@ -20,7 +20,7 @@
         <li class="bag-link">
           <a tabindex="0" (click)="toggleBagState()" (keyup.enter)="toggleBagState()" title="Click to open your bag">
             <span>MY BAG</span>
-            <span class="cart-number" [hidden]="numberOfItemsInBag == 0">{{ numberOfItemsInBag }}</span>
+            <span class="cart-number" [ngClass]="numberOfItemsInBag == 0 ? 'hidden' : ''">{{ numberOfItemsInBag }}</span>
           </a>
         </li>
       </ul>
