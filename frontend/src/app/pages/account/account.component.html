@@ -126,14 +126,19 @@
             </div>
             <form action="" [formGroup]="passwordForm" class="lo-cal-form" [ngClass]="editingPassword ? 'editing' : 'static'" (submit)="saveNewPassword(passwordForm)">
               <div class="form-component form-component-text">
-                <label for="password" class="visuallyhidden">Password</label>
-                <input type="password" name="password" id="password" formControlName="password" placeholder="Password* (8 or more characters)" [ngClass]="{'has-error':!passwordForm.controls['password'].valid && submittedOnce}">
+                <label for="password" class="visuallyhidden">Old Password</label>
+                <input type="password" [readonly]="!editingPassword" name="old-password" id="old-password" formControlName="old-password" placeholder="Old Password*" [ngClass]="{'has-error':!passwordForm.controls['old-password'].valid && submittedOnce}">
+                <div class="error-message" *ngIf="!passwordForm.controls['old-password'].valid && submittedOnce">This field is required.</div>
+              </div>
+              <div class="form-component form-component-text">
+                <label for="password" class="visuallyhidden">New Password</label>
+                <input type="password" [readonly]="!editingPassword" name="password" id="password" formControlName="password" placeholder="New Password* (8 or more characters)" [ngClass]="{'has-error':!passwordForm.controls['password'].valid && submittedOnce}">
                 <div class="error-message" *ngIf="!passwordForm.controls['password'].valid && submittedOnce">This field is required.</div>
                 <div class="error-message" *ngIf="passwordForm.controls['password'].value.length > 2 && passwordForm.controls['password'].errors?.minlength">Password must be at least 8 characters.</div>
               </div>
               <div class="form-component form-component-text">
                 <label for="confirm-password" class="visuallyhidden">Confirm Password</label>
-                <input type="password" name="confirm-password" id="confirm-password" formControlName="confirm-password" placeholder="Confirm Password*" [ngClass]="{'has-error':!passwordForm.controls['confirm-password'].valid && submittedOnce}">
+                <input type="password" [readonly]="!editingPassword" name="confirm-password" id="confirm-password" formControlName="confirm-password" placeholder="Confirm Password*" [ngClass]="{'has-error':!passwordForm.controls['confirm-password'].valid && submittedOnce}">
                 <div class="error-message" *ngIf="!passwordForm.controls['confirm-password'].valid && submittedOnce">This field is required.</div>
                 <div class="error-message" *ngIf="passwordForm.controls['confirm-password'].errors?.MatchPassword">Password does not match.</div>
               </div>
