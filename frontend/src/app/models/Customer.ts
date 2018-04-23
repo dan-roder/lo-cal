@@ -41,17 +41,25 @@ export interface InRegistration{
   SecurityAnswer: string;
 }
 
+export interface InLogin{
+  Email : string;
+  Password : string;
+}
+
+export interface InLoginUpdate{
+  Email: string; // (string Required) ,
+  OldPassword: string; // (string Required) ,
+  NewPassword: string; // (string , optional) ,
+  NewSecurityQuestion?: string; // (string , optional) ,
+  NewAnswer?: string; // (string , optional)
+}
+
 export interface RailsUpdate{
   customer_info : Customer;
 }
 
 export interface RailsCustomer{
   customer_info : InRegistration;
-}
-
-export interface InLogin{
-  Email : string;
-  Password : string;
 }
 
 export interface RailsLogin{
