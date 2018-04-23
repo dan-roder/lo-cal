@@ -52,4 +52,10 @@ export class CustomerService {
       })
   }
 
+  public getSavedPayments(customerId: string): Observable<any>{
+    return this.httpClient.get(this.config.railsCustomerEndpoint + `${customerId}` + '/Payments').map(data => {
+      return data;
+    })
+  }
+
 }
