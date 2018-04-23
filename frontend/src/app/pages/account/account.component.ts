@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CustomerService } from '@local/services/customer.service';
-import { Customer, RailsUpdate } from '@local/models/Customer';
+import { Customer, RailsUpdate, InLoginUpdate } from '@local/models/Customer';
 import { LocalStorage } from '@ngx-pwa/local-storage';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { PasswordMatch } from '@local/utils/passwordmatch';
@@ -33,6 +33,7 @@ export class AccountComponent implements OnInit {
     })
 
     this.passwordForm = fb.group({
+      'old-password' : ['', Validators.required],
       'password' : ['', [Validators.required, Validators.minLength(8)]],
       'confirm-password' : ['', Validators.required],
     }, {
@@ -114,7 +115,15 @@ export class AccountComponent implements OnInit {
     console.log(formData);
 
     if(formData.valid){
+      let inLoginUpdate : InLoginUpdate = {
+        Email : this.customer.EMail,
+        OldPassword : formData.controls['old-password'].value,
+        NewPassword : formData.controls['new-password'].value
+      }
 
+      // Submit password update to API
+
+      // If successful, destroy login session and redirect to login page
     }
 
     this.editingPassword = false;
