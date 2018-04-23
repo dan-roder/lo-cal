@@ -1,5 +1,7 @@
+import { CustomerService } from "@local/services/customer.service";
+
 export interface Customer{
-  CustomerId?: number; //  (Guid , optional) : Nullable The unique identifier for a customer. PUT - CustomerId will be ignored ,
+  CustomerId?: string; //  (Guid , optional) : Nullable The unique identifier for a customer. PUT - CustomerId will be ignored ,
   EMail: string; //  (integer , Required) : The customer's email address ,
   FirstName: string; //  (integer , Required) : The customer's first name ,
   LastName: string; //  (integer , Required) : The customer's last name ,
@@ -37,6 +39,10 @@ export interface InRegistration{
   Password: string;
   SecurityQuestion: string;
   SecurityAnswer: string;
+}
+
+export interface RailsUpdate{
+  customer_info : Customer;
 }
 
 export interface RailsCustomer{
