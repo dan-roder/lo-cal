@@ -11,52 +11,40 @@
         <div class="account-section">
           <div class="account-heading">
             <h3>Account Details</h3>
-            <a href="" (click)="editAccountDetails()" role="button">Edit</a>
+            <a href="" (click)="editAccountDetails()" role="button">{{ editing ? 'Cancel' : 'Edit' }}</a>
           </div>
           <form action="" [formGroup]="accountForm" class="lo-cal-form" [ngClass]="editing ? 'editing' : 'static'" (submit)="saveAccountDetails(accountForm)">
             <div class="form-section half-and-half">
               <div class="form-component form-component-text">
                 <label for="first-name" class="visuallyhidden">First Name</label>
-                <input type="text" [value]="customer?.FirstName" name="first-name" id="first-name" formControlName="first-name" placeholder="First Name*" [ngClass]="{'has-error':!accountForm.controls['first-name'].valid && submittedOnce}">
+                <input type="text" [readonly]="!editing" name="first-name" id="first-name" formControlName="first-name" placeholder="First Name*" [ngClass]="{'has-error':!accountForm.controls['first-name'].valid && submittedOnce}">
                 <div class="error-message" *ngIf="!accountForm.controls['first-name'].valid && submittedOnce">This field is required.</div>
               </div>
               <div class="form-component form-component-text">
                 <label for="last-name" class="visuallyhidden">Last Name</label>
-                <input type="text" [value]="customer?.LastName" name="last-name" id="last-name" formControlName="last-name" placeholder="Last Name*" [ngClass]="{'has-error':!accountForm.controls['last-name'].valid && submittedOnce}">
+                <input type="text" [readonly]="!editing" name="last-name" id="last-name" formControlName="last-name" placeholder="Last Name*" [ngClass]="{'has-error':!accountForm.controls['last-name'].valid && submittedOnce}">
                 <div class="error-message" *ngIf="!accountForm.controls['last-name'].valid && submittedOnce">This field is required.</div>
               </div>
             </div>
             <div class="form-component form-component-email">
               <label for="email" class="visuallyhidden">Email</label>
-              <input type="text" [value]="customer?.EMail" name="email" id="email" formControlName="email" placeholder="Email*" [ngClass]="{'has-error':!accountForm.controls['email'].valid && submittedOnce}">
+              <input type="text" [readonly]="!editing" name="email" id="email" formControlName="email" placeholder="Email*" [ngClass]="{'has-error':!accountForm.controls['email'].valid && submittedOnce}">
               <div class="error-message" *ngIf="!accountForm.controls['email'].valid && submittedOnce">This field is required.</div>
-            </div>
-            <div class="form-component form-component-text">
-              <label for="password" class="visuallyhidden">Password</label>
-              <input type="password" name="password" id="password" formControlName="password" placeholder="Password* (8 or more characters)" [ngClass]="{'has-error':!accountForm.controls['password'].valid && submittedOnce}">
-              <div class="error-message" *ngIf="!accountForm.controls['password'].valid && submittedOnce">This field is required.</div>
-              <div class="error-message" *ngIf="accountForm.controls['password'].value.length > 2 && accountForm.controls['password'].errors?.minlength">Password must be at least 8 characters.</div>
-            </div>
-            <div class="form-component form-component-text">
-              <label for="confirm-password" class="visuallyhidden">Confirm Password</label>
-              <input type="password" name="confirm-password" id="confirm-password" formControlName="confirm-password" placeholder="Confirm Password*" [ngClass]="{'has-error':!accountForm.controls['confirm-password'].valid && submittedOnce}">
-              <div class="error-message" *ngIf="!accountForm.controls['confirm-password'].valid && submittedOnce">This field is required.</div>
-              <div class="error-message" *ngIf="accountForm.controls['confirm-password'].errors?.MatchPassword">Password does not match.</div>
             </div>
             <div class="control-wrapper" formGroupName="full-address">
               <div class="form-component form-component-text">
                 <label for="address" class="visuallyhidden">Address</label>
-                <input type="text" [value]="customer?.Addresses[0]?.AddressLine1" name="address" id="address" formControlName="address" placeholder="Address*" [ngClass]="{'has-error':!accountForm.controls['full-address']['controls']['address'].valid && submittedOnce}">
+                <input type="text" [readonly]="!editing" name="address" id="address" formControlName="address" placeholder="Address*" [ngClass]="{'has-error':!accountForm.controls['full-address']['controls']['address'].valid && submittedOnce}">
                 <div class="error-message" *ngIf="!accountForm.controls['full-address']['controls']['address'].valid && submittedOnce">This field is required.</div>
               </div>
               <div class="form-component form-component-text">
                 <label for="address2" class="visuallyhidden">Address 2</label>
-                <input type="text" [value]="customer?.Addresses[0]?.AddressLine2" name="address2" id="address2" formControlName="address2" placeholder="Apartment/Suite/Unit/Building (optional)">
+                <input type="text" [readonly]="!editing" name="address2" id="address2" formControlName="address2" placeholder="Apartment/Suite/Unit/Building (optional)">
               </div>
               <div class="form-section thirds">
                 <div class="form-component form-component-text">
                   <label for="city" class="visuallyhidden">City</label>
-                  <input type="text" [value]="customer?.Addresses[0]?.City" name="city" id="city" formControlName="city" placeholder="City*" [ngClass]="{'has-error':!accountForm.controls['full-address']['controls']['city'].valid && submittedOnce}">
+                  <input type="text" [readonly]="!editing" name="city" id="city" formControlName="city" placeholder="City*" [ngClass]="{'has-error':!accountForm.controls['full-address']['controls']['city'].valid && submittedOnce}">
                   <div class="error-message" *ngIf="!accountForm.controls['full-address']['controls']['city'].valid && submittedOnce">This field is required.</div>
                 </div>
                 <div class="form-component form-component-select">
@@ -118,18 +106,44 @@
                 </div>
                 <div class="form-component form-component-text">
                   <label for="zip" class="visuallyhidden">Zip Code</label>
-                  <input type="text" [value]="customer?.Addresses[0]?.Postal" name="zip" id="zip" formControlName="zip" placeholder="Zip*" [ngClass]="{'has-error':!accountForm.controls['full-address']['controls']['zip'].valid && submittedOnce}">
+                  <input type="text" [readonly]="!editing" name="zip" id="zip" formControlName="zip" placeholder="Zip*" [ngClass]="{'has-error':!accountForm.controls['full-address']['controls']['zip'].valid && submittedOnce}">
                   <div class="error-message" *ngIf="!accountForm.controls['full-address']['controls']['zip'].valid && submittedOnce">This field is required.</div>
                   <div class="error-message" *ngIf="accountForm.controls['full-address']['controls']['zip'].errors?.pattern && accountForm.controls['full-address']['controls']['zip'].value.length > 5">Zip code must be only 5 digits.</div>
                 </div>
               </div>
             </div>
 
-            <div class="submit red-button full-width-button">
+            <div class="submit red-button full-width-button submit">
               <input type="submit" value="Save" *ngIf="editing">
             </div>
           </form>
         </div>
+
+        <div class="account-section">
+            <div class="account-heading">
+              <h3>Change Password</h3>
+              <a href="" (click)="editPassword()" role="button">{{ editingPassword ? 'Cancel' : 'Edit' }}</a>
+            </div>
+            <form action="" [formGroup]="passwordForm" class="lo-cal-form" [ngClass]="editingPassword ? 'editing' : 'static'" (submit)="saveNewPassword(passwordForm)">
+              <div class="form-component form-component-text">
+                <label for="password" class="visuallyhidden">Password</label>
+                <input type="password" name="password" id="password" formControlName="password" placeholder="Password* (8 or more characters)" [ngClass]="{'has-error':!passwordForm.controls['password'].valid && submittedOnce}">
+                <div class="error-message" *ngIf="!passwordForm.controls['password'].valid && submittedOnce">This field is required.</div>
+                <div class="error-message" *ngIf="passwordForm.controls['password'].value.length > 2 && passwordForm.controls['password'].errors?.minlength">Password must be at least 8 characters.</div>
+              </div>
+              <div class="form-component form-component-text">
+                <label for="confirm-password" class="visuallyhidden">Confirm Password</label>
+                <input type="password" name="confirm-password" id="confirm-password" formControlName="confirm-password" placeholder="Confirm Password*" [ngClass]="{'has-error':!passwordForm.controls['confirm-password'].valid && submittedOnce}">
+                <div class="error-message" *ngIf="!passwordForm.controls['confirm-password'].valid && submittedOnce">This field is required.</div>
+                <div class="error-message" *ngIf="passwordForm.controls['confirm-password'].errors?.MatchPassword">Password does not match.</div>
+              </div>
+
+              <div class="submit red-button full-width-button submit">
+                <input type="submit" value="Save" *ngIf="editingPassword">
+              </div>
+            </form>
+          </div>
+
         <div class="account-section">
           <h3 class="account-heading">Saved Payments</h3>
         </div>
