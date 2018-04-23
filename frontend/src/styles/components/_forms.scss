@@ -45,6 +45,7 @@
     input{
       @extend %sofia-regular;
       @include fontsize(15);
+      @include transition(all);
       border: none;
       border-bottom: 1px solid $black;
       padding: 8px 4px;
@@ -135,5 +136,9 @@
       @include fontsize(15);
       text-align: center;
     }
+  }
+
+  .submit{
+    margin: 40px 0 15px;
   }
 }
