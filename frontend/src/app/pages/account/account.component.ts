@@ -76,7 +76,7 @@ export class AccountComponent implements OnInit {
   }
 
   public editPassword(){
-    this.editingPassword = true;
+    this.editingPassword = !this.editingPassword;
     return false;
   }
 
