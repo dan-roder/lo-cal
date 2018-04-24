@@ -13,7 +13,7 @@ export class BagService {
 
   constructor(protected localStorage: LocalStorage) {
     this.localStorage.getItem('bag').subscribe(bagItemsFromLocalStorage => {
-      this.itemsInBag = bagItemsFromLocalStorage;
+      this.itemsInBag = bagItemsFromLocalStorage || [];
       this.updatePrice(bagItemsFromLocalStorage);
     })
   }
