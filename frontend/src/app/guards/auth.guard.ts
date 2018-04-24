@@ -8,9 +8,7 @@ import { CustomerService } from '@local/services/customer.service';
 export class AuthGuard implements CanActivate {
   private currentUser : any;
 
-  constructor(private router: Router, private localStorage: LocalStorage, private customerService: CustomerService){
-    this.localStorage.getItem('user').subscribe(user => {this.currentUser = user;});
-  }
+  constructor(private router: Router, private localStorage: LocalStorage, private customerService: CustomerService){ }
 
   canActivate(
     next: ActivatedRouteSnapshot,
