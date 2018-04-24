@@ -17,6 +17,9 @@ import { BlogPostComponent } from '@local/pages/blog-post/blog-post.component';
 import { CreateAccountComponent } from '@local/pages/create-account/create-account.component';
 import { AccountComponent } from '@local/pages/account/account.component';
 import { AuthGuard } from '@local/guards/auth.guard';
+import { CheckoutLoginComponent } from '@local/pages/checkout-login/checkout-login.component';
+import { AccessGuard } from '@local/guards/access.guard';
+import { CheckoutReviewComponent } from '@local/pages/checkout-review/checkout-review.component';
 
 
 const routes: Routes = [
@@ -33,9 +36,11 @@ const routes: Routes = [
       { path: 'contact', component: ContactComponent },
       { path: 'blog', component: BlogComponent },
       { path: 'blog/:post', component: BlogPostComponent },
+      { path: 'account', component: AccountComponent, canActivate: [AuthGuard] },
       {
-        path: 'account', component: AccountComponent, canActivate: [AuthGuard]
-      }
+        path: 'checkout', component: CheckoutLoginComponent, canActivate: [AccessGuard]
+      },
+      { path: 'checkout/review', component: CheckoutReviewComponent }
     ]
   },
   {
