@@ -6,7 +6,6 @@ import { CustomerService } from '@local/services/customer.service';
 
 @Injectable()
 export class AuthGuard implements CanActivate {
-  private currentUser : any;
 
   constructor(private router: Router, private localStorage: LocalStorage, private customerService: CustomerService){ }
 
