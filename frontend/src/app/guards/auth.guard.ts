@@ -1,13 +1,12 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
-import { LocalStorage } from '@ngx-pwa/local-storage';
 import { CustomerService } from '@local/services/customer.service';
 
 @Injectable()
 export class AuthGuard implements CanActivate {
 
-  constructor(private router: Router, private localStorage: LocalStorage, private customerService: CustomerService){ }
+  constructor(private router: Router, private customerService: CustomerService){ }
 
   canActivate(
     next: ActivatedRouteSnapshot,
