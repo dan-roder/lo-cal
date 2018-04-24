@@ -27,6 +27,8 @@ import { CateringComponent } from './pages/catering/catering.component';
 import { ContactComponent } from './pages/contact/contact.component';
 import { CreateAccountComponent } from './pages/create-account/create-account.component';
 import { AccountComponent } from './pages/account/account.component';
+import { CheckoutLoginComponent } from './pages/checkout-login/checkout-login.component';
+import { CheckoutReviewComponent } from './pages/checkout-review/checkout-review.component';
 
 // Shared Components
 import { HeaderComponent } from './shared/components/header/header.component';
@@ -58,6 +60,7 @@ import { FeaturedImagePipe } from './pipes/featured-image.pipe';
 
 //Guards
 import { AuthGuard } from '@local/guards/auth.guard';
+import { AccessGuard } from '@local/guards/access.guard';
 
 
 
@@ -91,7 +94,9 @@ import { AuthGuard } from '@local/guards/auth.guard';
     CreateAccountComponent,
     LoginFormComponent,
     AccountComponent,
-    InputSwitcherDirective
+    InputSwitcherDirective,
+    CheckoutLoginComponent,
+    CheckoutReviewComponent
   ],
   imports: [
     BrowserModule,
@@ -103,7 +108,7 @@ import { AuthGuard } from '@local/guards/auth.guard';
     BrowserAnimationsModule,
     LocalStorageModule
   ],
-  providers: [ Config, WindowRef, WordpressService, MenuService, BagService, CustomerService, AuthGuard ],
+  providers: [ Config, WindowRef, WordpressService, MenuService, BagService, CustomerService, AuthGuard, AccessGuard ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
