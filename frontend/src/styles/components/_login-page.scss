@@ -23,4 +23,38 @@
       @extend %sofia-medium;
     }
   }
+
+  .simple{
+    .account-actions{
+      display: block;
+    }
+
+    div.action{
+      width: auto;
+
+      &:first-child{
+        border: none;
+      }
+    }
+  }
+
+  .checkout-options{
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+
+    .left{
+      width: 46%;
+    }
+
+    .right{
+      width: 46%;
+      padding-left: 4%;
+      border-left: 1px solid $light-grey;
+    }
+
+    .guest-link{
+      margin: 30px 0 0;
+    }
+  }
 }// .login-wrapper
