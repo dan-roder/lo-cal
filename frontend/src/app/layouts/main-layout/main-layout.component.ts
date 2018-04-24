@@ -30,7 +30,9 @@ export class MainLayoutComponent implements OnInit {
   }
 
   toggleBagState(){
-    this.bagState = (this.bagState === 'invisible') ? 'visible' : 'invisible';
+    if(this.numberOfItemsInBag > 0){
+      this.bagState = (this.bagState === 'invisible') ? 'visible' : 'invisible';
+    }
   }
 
   get bagItems() : Array<LineItem>{
