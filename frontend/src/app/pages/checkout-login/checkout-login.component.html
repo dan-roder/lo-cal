@@ -1,0 +1,21 @@
+
+<div class="login-wrapper">
+  <div class="login-container center-960">
+    <h1 class="text-center">Checkout</h1>
+    <div class="checkout-options">
+      <div class="left">
+        <h2>Login</h2>
+        <lo-cal-login-form [simpleForm]="true"></lo-cal-login-form>
+      </div>
+      <div class="right">
+        <h2>Create Account</h2>
+        <div class="red-button">
+          <a [routerLink]="['/create-account']" [queryParams]="{returnUrl: '/checkout/review'}">Create Account</a>
+        </div>
+        <div class="guest-link">
+          <a [routerLink]="['/checkout/review']">Checkout as Guest</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
