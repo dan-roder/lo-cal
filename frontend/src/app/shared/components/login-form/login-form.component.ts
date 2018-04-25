@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CustomerService } from '@local/services/customer.service';
 import { RailsLogin } from '@local/models/Customer';
@@ -14,6 +14,7 @@ export class LoginFormComponent implements OnInit {
   public submittedOnce : boolean = false;
   public errorData : any = {};
   private returnUrl : string = '';
+  @Input() simpleForm : boolean = false;
 
   constructor(private fb: FormBuilder, private customerService: CustomerService, private localStorage: LocalStorage, private router: Router, private route: ActivatedRoute) {
     this.loginForm = fb.group({
