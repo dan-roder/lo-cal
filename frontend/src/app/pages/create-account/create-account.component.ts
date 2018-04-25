@@ -3,6 +3,7 @@ import { FormControl, FormBuilder, FormGroup, Validators } from '@angular/forms'
 import { RailsCustomer } from '@local/models/Customer';
 import { PasswordMatch } from '@local/utils/passwordmatch';
 import { CustomerService } from '@local/services/customer.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 
 @Component({
@@ -12,8 +13,9 @@ import { CustomerService } from '@local/services/customer.service';
 export class CreateAccountComponent implements OnInit {
   public accountForm : FormGroup;
   public submittedOnce : boolean = false;
+  private redirectUrl : string = '';
 
-  constructor(private fb: FormBuilder, private customerService: CustomerService) {
+  constructor(private fb: FormBuilder, private customerService: CustomerService, private route: ActivatedRoute, private router: Router) {
     this.accountForm = fb.group({
       'first-name' : [null, Validators.required],
       'last-name' : [null, Validators.required],
@@ -35,6 +37,7 @@ export class CreateAccountComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.redirectUrl = (typeof this.route.snapshot.queryParams['returnUrl'] !== undefined) ? this.route.snapshot.queryParams['returnUrl'] : '';
   }
 
   public submitForm(form){
@@ -63,10 +66,17 @@ export class CreateAccountComponent implements OnInit {
         }
       }
 
-      // Call service to create customer
       this.customerService.createCustomer(registration).subscribe(data => {
         // handle successful return of account created
         // redirect to appropriate location
+        if(this.redirectUrl !== ''){
+          // Need to set logged in status
+          this.router.navigate([this.redirectUrl]);
+        }
+        else{
+          // Should I set logged in status immediately or no?
+          this.router.navigate(['/']);
+        }
       });
     }
   }
