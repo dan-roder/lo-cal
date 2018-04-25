@@ -1,4 +1,4 @@
-<form action="" class="lo-cal-form" [formGroup]="loginForm" (submit)="login(loginForm)">
+<form action="" class="lo-cal-form" [formGroup]="loginForm" (submit)="login(loginForm)" [ngClass]="simpleForm ? 'simple' : ''">
   <div class="form-errors" *ngIf="errorData?.error"><p>Sorry. We did not find a valid account for that username and password.</p></div>
   <div class="form-component form-component-text">
     <label for="password" class="visuallyhidden">Email</label>
@@ -14,7 +14,7 @@
     <input type="submit" value="Log In">
   </div>
   <div class="account-actions">
-    <div class="action">
+    <div class="action" *ngIf="!simpleForm">
       <a routerLink="/create-account">New Account</a>
     </div>
     <div class="action">
