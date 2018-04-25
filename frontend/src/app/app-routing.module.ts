@@ -38,7 +38,7 @@ const routes: Routes = [
       { path: 'blog/:post', component: BlogPostComponent },
       { path: 'account', component: AccountComponent, canActivate: [AuthGuard] },
       {
-        path: 'checkout', component: CheckoutLoginComponent, canActivate: [AccessGuard]
+        path: 'checkout', component: CheckoutLoginComponent
       },
       { path: 'checkout/review', component: CheckoutReviewComponent }
     ]
