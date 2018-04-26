@@ -241,14 +241,6 @@
     .text{
       @include fontsize(18);
     }
-
-    .quantity-changer{
-      @include fontsize(24);
-
-      span{
-        margin: 0 20px;
-      }
-    }// .quantity-changer
   }
 
   .add-button{
@@ -267,3 +259,11 @@
     cursor: pointer;
   }
 }// .page-item-detail
+
+.quantity-changer{
+  @include fontsize(24);
+
+  span{
+    margin: 0 20px;
+  }
+}// .quantity-changer
