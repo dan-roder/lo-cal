@@ -170,16 +170,104 @@
     display: flex;
     justify-content: space-between;
     align-self: flex-end;
+  }
+
+  .allergens{
+    span{
+      background: $e1;
+      border-radius: 50%;
+      width: 23px;
+      height: 20px;
+      display: inline-block;
+      text-align: center;
+    }
+  }
+
+  .details-and-edit{
+    display: flex;
+    justify-content: space-between;
 
     .allergens{
       span{
-        background: $e1;
-        border-radius: 50%;
-        width: 23px;
-        height: 20px;
-        display: inline-block;
-        text-align: center;
+        width: 27px;
+        height: 24px;
       }
     }
-  }
+  }// .details-and-edit
 }
+
+.checkout-items{
+  .item{
+    margin: 0 0 15px;
+  }
+
+  .item-review-wrapper{
+    display: flex;
+    border: 1px solid $e1;
+
+    .image{
+      width: 25%;
+      position: relative;
+
+      .item-image{
+        width: 100%;
+        display: block;
+      }
+
+      .remove-image{
+        position: absolute;
+        top: 5px;
+        left: 5px;
+        width: 18px;
+        height: 18px;
+        cursor: pointer;
+      }
+    }// .image
+
+    .bag-detail-card{
+      padding: 15px;
+      width: 75%;
+      box-sizing: border-box;
+    }
+  }// .item
+
+  .review-item-card{
+    .bag-detail-card{
+      .details{
+        > span{
+          border-left: 1px solid $c;
+          padding: 0 8px;
+
+          &:first-child{
+            border: none;
+          }
+        }
+      }// .details
+
+      .allergens{
+        span{
+          margin: 0 4px;
+        }
+      }// .allergens
+    }// .bag-detail-card
+  }// .review-item-card
+
+  .edit-pane{
+    box-sizing: border-box;
+    width: 75%;
+    float: right;
+    display: flex;
+    justify-content: space-between;
+    background: $white;
+    padding: 40px 20px;
+    align-items: center;
+
+    .quantity-selector{
+      width: 48%;
+    }
+
+    .customize-this{
+      width: 48%;
+    }
+  }
+}// .checkout-items
