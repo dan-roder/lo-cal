@@ -17,4 +17,8 @@ export class CheckoutReviewComponent implements OnInit {
   get bagItems(){
     return this.bagService.itemsInBag;
   }
+
+  public removeFromBagAtIndex( index ){
+    this.bagService.removeFromBagAtIndex(index);
+  }
 }
