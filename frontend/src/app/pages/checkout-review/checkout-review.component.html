@@ -2,31 +2,53 @@
   <div class="basic-page-content center-960">
     <h1>Review Your Order</h1>
 
-    <div class="review-item-card">
-      <div class="item" *ngFor="let menuItem of bagItems; let i = index;">
-        <div class="left image">
-          <img src="http://via.placeholder.com/200x200" alt="" class="item-image">
-          <img src="/assets/icons/delete-cross-icon.svg" alt="X to remove item from cart" class="remove-image" (click)="removeFromBagAtIndex(i)">
-        </div>
-        <div class="bag-detail-card">
-          <div class="title-container">
-              <div class="title">{{ menuItem?.Name }} <span class="quantity">x {{ menuItem?.Quantity }}</span></div>
-          </div>
-          <div class="ingredients">
-            {{ (menuItem?.ShortDescription | allergens)?.description }}
-          </div>
-          <div class="additions" *ngIf="menuItem?.Modifiers">
-            <span class="modifier" *ngFor="let mod of menuItem?.Modifiers">{{ mod?.Name }}</span>
-          </div>
-          <div class="fine-details">
-            <span class="price">{{ menuItem?.ExtendedPrice | currency }}</span>
-            <span class="calories"></span>
-            <span class="allergens" *ngIf="(menuItem?.ShortDescription)">
-              <span class="allergen" *ngFor="let allergen of (menuItem?.ShortDescription | allergens).allergens">{{ allergen }}</span>
-            </span>
-          </div>
-        </div><!-- /.bag-detail-card -->
-      </div><!-- /.item -->
+    <div class="checkout-items">
+      <div class="review-item-card">
+        <div class="item clearfix" *ngFor="let menuItem of bagItems; let i = index;">
+          <div class="item-review-wrapper">
+            <div class="left image">
+              <img src="http://via.placeholder.com/200x200" alt="" class="item-image">
+              <img src="/assets/icons/delete-cross-icon.svg" alt="X to remove item from cart" class="remove-image" (click)="removeFromBagAtIndex(i)">
+            </div>
+            <div class="bag-detail-card">
+              <div class="title-container">
+                  <div class="title">{{ menuItem?.Name }} <span class="quantity">x {{ menuItem?.Quantity }}</span></div>
+              </div>
+              <div class="ingredients">
+                {{ (menuItem?.ShortDescription | allergens)?.description }}
+              </div>
+              <div class="additions" *ngIf="menuItem?.Modifiers">
+                <span class="modifier" *ngFor="let mod of menuItem?.Modifiers">{{ mod?.Name }}</span>
+              </div>
+              <div class="details-and-edit">
+                <div class="details">
+                  <span class="price">{{ menuItem?.ExtendedPrice | currency }}</span>
+                  <span class="calories" *ngIf="menuItem?.CaloricValue"></span>
+                  <span class="allergens" *ngIf="(menuItem?.ShortDescription)">
+                    <span class="allergen" *ngFor="let allergen of (menuItem?.ShortDescription | allergens).allergens">{{ allergen }}</span>
+                  </span>
+                </div>
+                <div class="edit">
+                  <span>EDIT</span>
+                </div>
+              </div><!-- /. details-and-edit -->
+            </div><!-- /.bag-detail-card -->
+          </div><!-- /.item-review-wrapper -->
+          <div class="edit-pane">
+            <div class="quantity-selector">
+              <div class="quantity-changer">
+                <span class="minus" (click)="decrementQuantity()">-</span>
+                <span class="quantity">{{ menuItem?.Quantity }}</span>
+                <span class="plus" (click)="incrementQuantity()">+</span>
+              </div>
+            </div>
+            <div class="customize-this">
+              <p>Go back to customize this item</p>
+            </div>
+          </div><!-- /.edit-pane -->
+        </div><!-- /.item -->
+      </div><!-- /.review-item-card -->
     </div>
+
   </div>
 </div>
