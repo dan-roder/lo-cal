@@ -17,30 +17,31 @@
             <div class="checkout-items">
 
               <div class="item" *ngFor="let menuItem of bagItems; let i = index;">
-                <div class="left image">
-                  <img src="http://via.placeholder.com/160x240" alt="" class="item-image">
-                  <img src="/assets/icons/delete-cross-icon.svg" alt="X to remove item from cart" class="remove-image" (click)="removeFromBagAtIndex(i)">
-                </div>
-                <div class="bag-detail-card">
-                  <div class="title-container">
-                      <div class="title">{{ menuItem?.Name }} <span class="quantity">x {{ menuItem?.Quantity }}</span></div>
+                <div class="item-review-wrapper">
+                  <div class="left image">
+                    <img src="http://via.placeholder.com/160x240" alt="" class="item-image">
+                    <img src="/assets/icons/delete-cross-icon.svg" alt="X to remove item from cart" class="remove-image" (click)="removeFromBagAtIndex(i)">
                   </div>
-                  <div class="ingredients">
-                    {{ (menuItem?.ShortDescription | allergens)?.description }}
-                  </div>
-                  <div class="additions" *ngIf="menuItem?.Modifiers">
-                    <span class="modifier" *ngFor="let mod of menuItem?.Modifiers">{{ mod?.Name }}</span>
-                  </div>
-                  <div class="fine-details">
-                    <span class="price">{{ menuItem?.ExtendedPrice | currency }}</span>
-                    <span class="calories"></span>
-                    <span class="allergens" *ngIf="(menuItem?.ShortDescription)">
-                      <span class="allergen" *ngFor="let allergen of (menuItem?.ShortDescription | allergens).allergens">{{ allergen }}</span>
-                    </span>
-                  </div>
-                </div><!-- /.bag-detail-card -->
-              </div><!-- /.item -->
-
+                  <div class="bag-detail-card">
+                    <div class="title-container">
+                        <div class="title">{{ menuItem?.Name }} <span class="quantity">x {{ menuItem?.Quantity }}</span></div>
+                    </div>
+                    <div class="ingredients">
+                      {{ (menuItem?.ShortDescription | allergens)?.description }}
+                    </div>
+                    <div class="additions" *ngIf="menuItem?.Modifiers">
+                      <span class="modifier" *ngFor="let mod of menuItem?.Modifiers">{{ mod?.Name }}</span>
+                    </div>
+                    <div class="fine-details">
+                      <span class="price">{{ menuItem?.ExtendedPrice | currency }}</span>
+                      <span class="calories"></span>
+                      <span class="allergens" *ngIf="(menuItem?.ShortDescription)">
+                        <span class="allergen" *ngFor="let allergen of (menuItem?.ShortDescription | allergens).allergens">{{ allergen }}</span>
+                      </span>
+                    </div>
+                  </div><!-- /.bag-detail-card -->
+                </div><!-- /.item -->
+                </div><!-- /.item-review-wrapper -->
             </div><!-- /.checkout-items -->
           </div><!-- /.checkout-top -->
 
