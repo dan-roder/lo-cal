@@ -74,6 +74,12 @@
       .page-title{
         margin: 0;
         line-height: 1;
+        padding: 23px 0;
+        @include transition(padding);
+
+        .scrolled &{
+          padding: 8px 0;
+        }
 
         a{
           display: block;
@@ -112,6 +118,9 @@
       .bag-link{
         a{
           padding: 0;
+          @include svg-bg(icons/bag);
+          background-position: left center;
+          padding-left: 35px;
         }
         span{
           display: inline-block;
@@ -134,6 +143,14 @@
               opacity: 0;
             }
           }
+        }
+      }// .bag-link
+
+      .account-link{
+        a{
+          @include svg-bg(icons/account);
+          background-position: left center;
+          padding-left: 35px;
         }
       }
     }
