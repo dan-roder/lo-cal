@@ -1,0 +1,47 @@
+.review-wrapper{
+  display: flex;
+  justify-content: space-between;
+
+  .checkout-items{
+    width: 65%;
+  }
+
+  .order-summary{
+    width: 30%;
+  }
+
+  .itemized-summary{
+    @include fontsize(14);
+
+    .item{
+      margin: 0 0 20px;
+
+      .item-name{
+        text-transform: uppercase;
+      }
+
+      .additions{
+        @include fontsize(13);
+        margin: 0 0 0 20px;
+      }
+    }
+  }// .itemized-summary
+
+  .pricing-details{
+    margin: 40px 0 50px;
+    @include fontsize(13);
+
+    .flex-between{
+      padding: 8px 0;
+    }
+
+    .subtotal{
+      border-top: 1px dotted;
+    }
+
+    .total{
+      @include fontsize(15);
+      border-top: 1px solid;
+    }
+  }// .pricing-details
+}// .review-wrapper
