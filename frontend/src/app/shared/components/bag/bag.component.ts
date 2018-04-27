@@ -5,6 +5,7 @@ import { BagService } from '@local/services/bag.service';
 import { MenuItem } from '@local/models/MenuItem';
 import { LineItem } from '@local/models/LineItem';
 import * as _ from 'lodash';
+import { OrderService } from '@local/services/order.service';
 
 @Component({
   selector: 'lo-cal-bag',
@@ -30,7 +31,7 @@ export class BagComponent implements OnInit {
   public itemsInBagCounter : number = 0;
 
 
-  constructor(private bagService: BagService) { }
+  constructor(private bagService: BagService, private orderService: OrderService) { }
 
   ngOnInit() {
     this.bagCount = this.bagService.itemCountInBag;
@@ -54,8 +55,12 @@ export class BagComponent implements OnInit {
     return this._bagItems;
   }
 
-  get bagTotalPrice() : number{
+  get bagTotalPrice(): number{
     return this.bagService.totalPrice;
+  }
+
+  public createOrder(){
+    this.orderService.putOrder(this.bagItems);
   }
 
 }
