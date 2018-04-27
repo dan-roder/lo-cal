@@ -186,12 +186,10 @@
   .details-and-edit{
     display: flex;
     justify-content: space-between;
+    @include fontsize(14);
 
-    .allergens{
-      span{
-        width: 27px;
-        height: 24px;
-      }
+    .edit{
+      cursor: pointer;
     }
   }// .details-and-edit
 }
@@ -250,24 +248,53 @@
         }
       }// .allergens
     }// .bag-detail-card
+
+    .red-button a{
+      @include fontsize(14);
+    }
   }// .review-item-card
 
   .edit-pane{
     box-sizing: border-box;
     width: 75%;
     float: right;
-    display: flex;
-    justify-content: space-between;
     background: $white;
-    padding: 40px 20px;
-    align-items: center;
+    // padding: 40px 20px;
+
+    .edit-pane-wrapper{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      > div{
+        padding: 40px 20px;
+      }
+    }
 
     .quantity-selector{
       width: 48%;
+      margin-right: 2%;
+      border-right: 1px solid $e1;
     }
 
     .customize-this{
       width: 48%;
+
+      p{
+        margin: 0;
+      }
+
+      a{
+        @include svg-bg(icons/right-arrow);
+        background-position: right center;
+        text-decoration: none;
+        padding: 0 15px 0 0;
+        @include fontsize(14);
+      }
     }
   }
 }// .checkout-items
+
+.location-details{
+  margin: 40px 0 10px 0;
+}
