@@ -266,4 +266,19 @@
   span{
     margin: 0 20px;
   }
+
+  .edit-pane &{
+    @include fontsize(16);
+
+    span{
+      margin: 0 4px;
+    }
+
+    .plus,
+    .minus{
+      @include fontsize(22);
+      color: $orange-red;
+      cursor: pointer;
+    }
+  }
 }// .quantity-changer
