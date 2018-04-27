@@ -46,6 +46,7 @@ import { WordpressService } from './services/wp.service';
 import { MenuService } from './services/menu-service.service';
 import { BagService } from './services/bag.service';
 import { CustomerService } from './services/customer.service';
+import { OrderService } from '@local/services/order.service';
 
 // Directives
 import { WindowScrollDirective } from './shared/directives/window-scroll.directive';
@@ -61,6 +62,7 @@ import { FeaturedImagePipe } from './pipes/featured-image.pipe';
 //Guards
 import { AuthGuard } from '@local/guards/auth.guard';
 import { AccessGuard } from '@local/guards/access.guard';
+
 
 
 
@@ -108,7 +110,7 @@ import { AccessGuard } from '@local/guards/access.guard';
     BrowserAnimationsModule,
     LocalStorageModule
   ],
-  providers: [ Config, WindowRef, WordpressService, MenuService, BagService, CustomerService, AuthGuard, AccessGuard ],
+  providers: [ Config, WindowRef, WordpressService, MenuService, BagService, CustomerService, AuthGuard, AccessGuard, OrderService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
