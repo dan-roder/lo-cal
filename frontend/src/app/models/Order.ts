@@ -1,5 +1,5 @@
 import { LineItem, LineItemModifier } from "@local/models/LineItem";
-import { Customer, CustomerAddress } from "@local/models/Customer";
+import { Customer, CustomerAddress, OrderCustomer } from "@local/models/Customer";
 
 export interface Order{
   SiteId?: number; //  (integer , optional) : Get or set the SiteId property ,
@@ -72,3 +72,71 @@ export interface OrderResults{
   ErrorCode: number; // (integer , optional) : The site communication error code ,
   AmountDueAtSite: number; // (number , optional) : The payment amount due at the site upon pickup
 }
+
+export interface InOrder{
+  SiteId: number; // (integer Required Range: inclusive between 1 and 9.22337203685478E+18) : The site that the order is being submitted to, value retrieved from get sites ,
+  OrderId?: number; // (integer Range: inclusive between 0 and 9.22337203685478E+18, optional) : Nullable The order id that you are updating, when creating a new order pass in null ,
+  DesignId?: number; //  (integer , optional) : The web design id that user is ordering from ,
+  MenuId?: number; //  (integer , optional) : The menu that the user is ordering from ,
+  PromiseDateTime: string; // (string Required) : When the order is ready for pick up by the customer, and it follows Prep Time and Capacity management from ATO, Do not send timezone info with this ,
+  LineItems?: Array<InOrderLineItem>; // [(InOrderLineItem)] , optional) : The list of items that the customer is ordering form ,
+  ComboItems?: Array<ComboItem>; // [(ComboItem)] , optional) : Distinct List of items in a websales group( i.e Combo Items) ,
+  OrderMode: string; // (enum Required) = ['Pickup' or 'Delivery' or 'CurbSide'] : How the food is being ordered ,
+  UpdateTimeDisabled?: boolean; // (boolean , optional) : Nullable Drives whether we increment the PromiseTime if the user doesn’t submit the order before the promise time, If no value is provided defaults to false ,
+  PaymentMode: string; // (enum Required) = ['Unknown' or 'ProvidedToSite' or 'PaymentDeferred' or 'PaidOnline'] : How the customer is going to pay for the order ,
+  OrderSource?: string; // (enum , optional) = ['Web' or 'Mobile' or 'MobileWeb'] : Nullable How the customer is placing the order ,
+  Destination?: string; // (enum , optional) = ['DestinationNull' or 'MobileDineIn' or 'MobileCarryOut' or 'MobileCurbSide' or 'MobileDriveThru' or 'CateringPickup' or 'CateringDelivery'] : Nullable Identifies the location in store to deliver an order ,
+  ShouldManualRelease?: boolean; // (boolean , optional) : States whether an order should automatically be released at the time given, or if it should be held for manual release ,
+  TaxJurisdictionId?: number; //  (integer , optional) : Identifies the tax jurisdiction that is used to calculated taxes ,
+  Customer: OrderCustomer; // (OrderCustomer Required) : The customer that is placing the order, If the customer already exists send up the customer's First and Last name also ,
+  CustomerAddressForOrder?: any; // (CustomerAddress , optional) : Nullable The delivery address if the order is to be delivered ,
+  SpecialInstructions?: number; //  (string , optional) : Instructions that the customer wants to give the site about the order ,
+  LoyaltyNumber?: number; //  (string , optional) : Nullable The loyalty card number for the order ,
+  CompId?: number; //  (integer , optional) : Nullable The Comp that is to be placed on the order ,
+  ReferenceNumber?: number; //  (integer , optional) : Nullable An open field for you want to attach to the order, for example a third party id for this order
+}
+
+export interface InOrderLineItem{
+  ItemLineNumber?: number; //  (integer , optional) : The internal index for the line items for the order ,
+  SalesItemId?: number; //  (integer Required Range: inclusive between 1 and 9.22337203685478E+18) : The item id in the SalesItemId table ,
+  MenuItemId?: number; //  (integer Required Range: inclusive between 1 and 9.22337203685478E+18) : The item id in the MenuItem table ,
+  SpecialInstructions?: string; //  (string , optional) : Special instructions for this item ,
+  RecipientName?: string; //  (string , optional) : The person that is suppose to receive this specific item ,
+  Quantity?: number; //  (integer , optional) : The number of items ,
+  NextModifierSequenceNumber?: number; //  (integer , optional) : The internal index for the modifiers for this line item ,
+  ItemOrderingMode?: string; // (enum , optional) = ['Normal' or 'Pizza' or 'QtyModifierItem' or 'BuildYourOwn' or 'ModifierDeterminesQty'] : Tells the POS how to apply the modifiers to the item ,
+  UnitPriceOverride?: number; // (number , optional) : Nullable Used in conjunction with EnablePriceOverride to override the POS price. EnablePriceOverride must be True ,
+  EnablePriceOverride?: boolean; // (boolean , optional) : Nullable Used in conjunction with UnitPriceOverride to override the POS price. The site setting UseTakeOutPrice must also be True ,
+  Section1Type?: string; // (enum , optional) = ['Unassigned' or 'Half' or 'Third' or 'Quarter' or 'Left' or 'Right'] : Nullable Pizza configuration _only used for Pizza items_ ,
+  Section2Type?: string; // (enum , optional) = ['Unassigned' or 'Half' or 'Third' or 'Quarter' or 'Left' or 'Right'] : Nullable Pizza configuration _only used for Pizza items_ ,
+  Section3Type?: string; // (enum , optional) = ['Unassigned' or 'Half' or 'Third' or 'Quarter' or 'Left' or 'Right'] : Nullable Pizza configuration _only used for Pizza items_ ,
+  Section4Type?: string; // (enum , optional) = ['Unassigned' or 'Half' or 'Third' or 'Quarter' or 'Left' or 'Right'] : Nullable Pizza configuration _only used for Pizza items_ ,
+  Modifiers?: Array<InOrderLineItemModifier>; // [(InOrderLineItemModifier)] , optional) : The modfiers for the item
+}
+
+export interface InOrderLineItemModifier{
+  SequenceNumber?: number; // (integer , optional) : The internal index for the modfiers for an line item ,
+  ItemOptionGroupId: number; // (integer Required Range: inclusive between 1 and 9.22337203685478E+18) : The group id in the ItemOptionGroups table ,
+  SalesItemOptionId: number; // (integer Required Range: inclusive between 1 and 9.22337203685478E+18 ) : The option id in the SalesItemOptions table ,
+  Action?: string; // (string , optional) = ['Default' or 'Add' or 'No' or 'Extra' or 'Side' or 'Light' or 'Everything' or 'Plain'] : Tells the system how the modifier should be applied to the line item ,
+  DefaultAction?: string; // (string , optional) = ['Default' or 'Add' or 'No' or 'Extra' or 'Side' or 'Light' or 'Everything' or 'Plain'] : The default way how the modifier is added to the item ,
+  ItemLineNumber?: number; // (integer , optional) : The line item index where this modifier is to be applied to use 0 if the parent item is a modifier ,
+  ParentSequenceNumber?: number; // (integer , optional) : The parent internal index for the modifier where this modifier is to be applied to ,
+  Quantity?: number; // (integer , optional) : The number of modifiers that should be applied. ,
+  IsOnEntireItem?: boolean; // (boolean , optional) : Nullable Value to match up the Pizza configuration, if no value is provided defaults to true ,
+  IsOnSection1?: boolean; // (boolean , optional) : Nullable Value to match up the Pizza configuration, if no value is provided defaults to false ,
+  IsOnSection2?: boolean; // (boolean , optional) : Nullable Value to match up the Pizza configuration, if no value is provided defaults to false ,
+  IsOnSection3?: boolean; // (boolean , optional) : Nullable Value to match up the Pizza configuration, if no value is provided defaults to false ,
+  IsOnSection4?: boolean; // (boolean , optional) : Nullable Value to match up the Pizza configuration, if no value is provided defaults to false ,
+  FreeQuantity?: number; // (integer , optional) : The number of modifiers that are to be free ,
+  Modifiers?: Array<InOrderLineItemModifier>; // [(InOrderLineItemModifier)] , optional) : Allows the user add modifiers to another modifier
+}
+
+export interface ComboItem{
+
+}
+
+export interface RailsOrder{
+  order : InOrder;
+}
+
