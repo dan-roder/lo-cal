@@ -36,7 +36,9 @@ export class CustomerService {
   }
 
   public isLoggedIn(){
-    return this.localStorage.getItem('user').map(userInfo => {return userInfo});
+    return this.localStorage.getItem('user').map(userInfo => {
+      return userInfo;
+    });
   }
 
   public getCustomerInfo(customerId: string): Observable<any>{
