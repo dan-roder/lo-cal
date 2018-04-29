@@ -7,6 +7,9 @@ export class Config {
   public railsMenuApi : string = 'http://138.197.123.70/menus/1';
   public railsCustomerEndpoint : string = 'http://138.197.123.70/customers';
   public authenticateEndpoint : string = 'http://138.197.123.70/authenticate';
+  public railsOrderEndpoint : string = 'http://138.197.123.70/orders';
+  public siteId : number = 1;
+  public menuId : number = 1001;
 
   constructor(private winRef: WindowRef){
     // Setting API URL based on current environment
