@@ -54,6 +54,10 @@ export interface InLoginUpdate{
   NewAnswer?: string; // (string , optional)
 }
 
+export interface OrderCustomer{
+
+}
+
 export interface RailsUpdate{
   customer_info : Customer;
 }
