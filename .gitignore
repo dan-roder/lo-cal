@@ -59,3 +59,5 @@ Thumbs.db
 # SASS #
 ##########
 .sass-cache
+
+node_modules
