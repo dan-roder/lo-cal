@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { LocalStorage } from '@ngx-pwa/local-storage';
-import { RailsOrder, InOrderLineItem } from '@local/models/Order';
+import { RailsOrder, InOrderLineItem, Order } from '@local/models/Order';
 import { LineItem } from '@local/models/LineItem';
 import { Config } from '@local/utils/constants';
 import * as moment from 'moment';
@@ -17,6 +17,7 @@ import * as _ from 'lodash';
 export class OrderService {
   private userId : string;
   private _customerInfo : Customer;
+  public _currentOrder : Order;
 
   constructor(private httpClient: HttpClient, private localStorage: LocalStorage, private config: Config, private customerService: CustomerService) {
     this.customerService.isLoggedIn().subscribe(userId => {
@@ -59,7 +60,25 @@ export class OrderService {
     return order;
   }
 
-  public
+  public hasOrderBeenCreated(){
+    return this.localStorage.getItem('order').map(orderDetails => {
+      return orderDetails;
+    });
+  }
+
+  public getPreSavedOrder(){
+    return this.localStorage.getItem('order').map(orderDetails => {
+      return orderDetails;
+    })
+  }
+
+  public getFullOrderDetails(orderId: number){
+    let orderEndpoint = this.config.railsOrderEndpoint + `/${this.config.siteId}/${orderId}`;
+    return this.httpClient.get(orderEndpoint).map(fullOrder => {
+      this.currentOrder = fullOrder;
+      return fullOrder;
+    })
+  }
 
   get customerInfo(): Customer{
     return this._customerInfo;
@@ -67,5 +86,13 @@ export class OrderService {
 
   set customerInfo(customer: Customer){
     this._customerInfo = customer;
+  }
+
+  get currentOrder(): Order{
+    return this._currentOrder;
+  }
+
+  set currentOrder(order){
+    this._currentOrder = order;
   }
 }
