@@ -2,8 +2,8 @@
   <div class="basic-page-content center">
     <h1>Review Your Order</h1>
 
-    <div class="review-wrapper">
-      <div class="checkout-items">
+    <div class="checkout-wrapper">
+      <div class="left-pane">
         <div class="review-item-card">
           <div class="item clearfix" *ngFor="let menuItem of bagItems; let i = index;">
             <div class="item-review-wrapper">
@@ -70,18 +70,33 @@
               <span class="price">{{ menuItem?.ExtendedPrice | currency }}</span>
             </div>
           </div>
+          <div class="item flex-between" *ngFor="let menuItem of allOrderDetails?.LineItems">
+            <div class="item-specifics">
+              <div class="title semi-bold"><span class="quantity">{{ menuItem?.Quantity }} x</span> <span class="item-name">{{ menuItem?.Name }}</span></div>
+              <div class="additions" *ngIf="menuItem?.Modifiers">
+                <span class="modifier" *ngFor="let mod of menuItem?.Modifiers">{{ mod?.Name }}</span>
+              </div>
+            </div>
+            <div class="item-price">
+              <span class="price">{{ menuItem?.ExtendedPrice | currency }}</span>
+            </div>
+          </div>
           <div class="pricing-details">
             <div class="flex-between subtotal">
               <span class="label">Subtotal</span>
-              <span class="value">$21.50</span>
+              <span class="value">{{ allOrderDetails?.SubTotalAmount | currency }}</span>
             </div>
             <div class="flex-between">
               <span class="label">Tax</span>
-              <span class="value">$3.50</span>
+              <span class="value">{{ allOrderDetails?.TaxAmount | currency }}</span>
             </div>
             <div class="flex-between total">
               <span class="label semi-bold">Total</span>
-              <span class="value semi-bold">$21.50</span>
+              <span class="value semi-bold">{{ allOrderDetails?.TotalAmount | currency }}</span>
+            </div>
+
+            <div class="red-button full-width-button">
+              <a routerLink="/checkout/payment">Proceed to Checkout</a>
             </div>
           </div>
           <div class="location-details">
