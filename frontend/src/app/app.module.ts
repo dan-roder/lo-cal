@@ -62,8 +62,8 @@ import { FeaturedImagePipe } from './pipes/featured-image.pipe';
 //Guards
 import { AuthGuard } from '@local/guards/auth.guard';
 import { AccessGuard } from '@local/guards/access.guard';
-
-
+import { OrderGuard } from '@local/guards/order.guard';
+import { CheckoutPaymentComponent } from './pages/checkout-payment/checkout-payment.component';
 
 
 @NgModule({
@@ -98,7 +98,8 @@ import { AccessGuard } from '@local/guards/access.guard';
     AccountComponent,
     InputSwitcherDirective,
     CheckoutLoginComponent,
-    CheckoutReviewComponent
+    CheckoutReviewComponent,
+    CheckoutPaymentComponent
   ],
   imports: [
     BrowserModule,
@@ -110,7 +111,7 @@ import { AccessGuard } from '@local/guards/access.guard';
     BrowserAnimationsModule,
     LocalStorageModule
   ],
-  providers: [ Config, WindowRef, WordpressService, MenuService, BagService, CustomerService, AuthGuard, AccessGuard, OrderService ],
+  providers: [ Config, WindowRef, WordpressService, MenuService, BagService, CustomerService, AuthGuard, AccessGuard, OrderService, OrderGuard ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
