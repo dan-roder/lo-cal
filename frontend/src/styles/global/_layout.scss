@@ -67,3 +67,16 @@
   display: flex;
   justify-content: space-between;
 }
+
+.checkout-wrapper{
+  display: flex;
+  justify-content: space-between;
+
+  .left-pane{
+    width: 65%;
+  }
+
+  .order-summary{
+    width: 30%;
+  }
+}
