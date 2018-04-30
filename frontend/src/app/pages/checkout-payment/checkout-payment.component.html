@@ -1,0 +1,159 @@
+<div class="basic-page-container checkout-review">
+  <div class="basic-page-content center">
+    <h1>Complete Your Order</h1>
+
+    <div class="checkout-wrapper">
+      <div class="left-pane">
+        <div class="step">
+          <div class="inner-step-wrapper">
+            <div class="step-heading">1. Pickup</div>
+            <div class="step-question-wrapper">
+              <p class="question">Select a time to pickup your order.</p>
+              <div class="response"></div>
+            </div>
+            <div class="next-step black-button">
+              <button>Next Step</button>
+            </div>
+          </div><!-- /. inner-step-wrapper -->
+        </div><!-- /.step -->
+        <div class="step">
+          <div class="inner-step-wrapper">
+            <div class="step-heading">2. Contact Information</div>
+            <div class="step-question-wrapper">
+              <form action="" class="lo-cal-form" [formGroup]="contactInfoForm">
+                <div class="form-section half-and-half">
+                  <div class="form-component form-component-text">
+                    <label for="first-name" class="visuallyhidden">First Name</label>
+                    <input type="text" name="first-name" id="first-name" formControlName="first-name" placeholder="First Name*" [ngClass]="{'has-error':!contactInfoForm.controls['first-name'].valid && submittedOnce}">
+                    <div class="error-message" *ngIf="!contactInfoForm.controls['first-name'].valid && submittedOnce">This field is required.</div>
+                  </div>
+                  <div class="form-component form-component-text">
+                    <label for="last-name" class="visuallyhidden">Last Name</label>
+                    <input type="text" name="last-name" id="last-name" formControlName="last-name" placeholder="Last Name*" [ngClass]="{'has-error':!contactInfoForm.controls['last-name'].valid && submittedOnce}">
+                    <div class="error-message" *ngIf="!contactInfoForm.controls['last-name'].valid && submittedOnce">This field is required.</div>
+                  </div>
+                </div>
+                <div class="form-section half-and-half">
+                  <div class="form-component form-component-text">
+                    <label for="phone" class="visuallyhidden">Phone</label>
+                    <input type="text" name="phone" id="phone" formControlName="phone" placeholder="Phone*" [ngClass]="{'has-error':!contactInfoForm.controls['phone'].valid && submittedOnce}">
+                    <div class="error-message" *ngIf="!contactInfoForm.controls['phone'].valid && submittedOnce">This field is required.</div>
+                  </div>
+                  <div class="form-component form-component-email">
+                    <label for="email" class="visuallyhidden">Email</label>
+                    <input type="text" name="email" id="email" formControlName="email" placeholder="Email*" [ngClass]="{'has-error':!contactInfoForm.controls['email'].valid && submittedOnce}">
+                    <div class="error-message" *ngIf="!contactInfoForm.controls['email'].valid && submittedOnce">This field is required.</div>
+                  </div>
+                </div>
+                <div class="next-step black-button">
+                  <button [disabled]="!contactInfoForm.valid">Next Step</button>
+                </div>
+              </form>
+            </div>
+          </div><!-- /. inner-step-wrapper -->
+        </div><!-- /.step -->
+        <div class="step">
+          <div class="inner-step-wrapper">
+            <div class="step-heading">3. Payment</div>
+            <div class="step-question-wrapper">
+              <form action="" class="lo-cal-form" [formGroup]="paymentForm">
+                <div class="form-section half-and-half">
+                  <div class="form-component form-component-text">
+                    <label for="card-number" class="visuallyhidden">Credit Card Number</label>
+                    <input type="text" name="card-number" id="card-number" formControlName="card-number" placeholder="Credit Card Number*" [ngClass]="{'has-error':!paymentForm.controls['card-number'].valid && submittedOnce}">
+                    <div class="error-message" *ngIf="!paymentForm.controls['card-number'].valid && submittedOnce">This field is required.</div>
+                  </div>
+                  <div class="form-component form-component-text">
+                    <label for="last-name" class="visuallyhidden">Expiration Date</label>
+                    <input type="text" name="expiration-date" id="expiration-date" formControlName="expiration-date" placeholder="Expiration Date (mm/yy)*" [ngClass]="{'has-error':!paymentForm.controls['expiration-date'].valid && submittedOnce}">
+                    <div class="error-message" *ngIf="!paymentForm.controls['expiration-date'].valid && submittedOnce">This field is required.</div>
+                  </div>
+                </div>
+                <div class="form-section half-and-half">
+                  <div class="form-component form-component-text">
+                    <label for="phone" class="visuallyhidden">Name On Card</label>
+                    <input type="text" name="name-on-card" id="name-on-card" formControlName="name-on-card" placeholder="Name on card*" [ngClass]="{'has-error':!paymentForm.controls['name-on-card'].valid && submittedOnce}">
+                    <div class="error-message" *ngIf="!paymentForm.controls['name-on-card'].valid && submittedOnce">This field is required.</div>
+                  </div>
+                  <div class="form-component form-component-email">
+                    <label for="email" class="visuallyhidden">CVV</label>
+                    <input type="text" name="cvv" id="cvv" formControlName="cvv" placeholder="CVV*" [ngClass]="{'has-error':!paymentForm.controls['cvv'].valid && submittedOnce}">
+                    <div class="error-message" *ngIf="!paymentForm.controls['cvv'].valid && submittedOnce">This field is required.</div>
+                  </div>
+                </div>
+                <div class="next-step black-button">
+                  <button [disabled]="!paymentForm.valid">Next Step</button>
+                </div>
+              </form>
+            </div>
+          </div><!-- /. inner-step-wrapper -->
+        </div><!-- /.step -->
+        <div class="step">
+          <div class="inner-step-wrapper">
+            <div class="step-heading">4. Place Your Order</div>
+            <div class="step-question-wrapper">
+              <p class="question semi-bold">Your total: {{ currentOrder?.TotalAmount | currency }}</p>
+              <div class="response"></div>
+            </div>
+            <div class="red-button small-text">
+              <button>Place Order Now</button>
+            </div>
+            <p class="terms-and-conditions small-text">
+              By placing your order you agree to our Terms of Conditions. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vehicula ac orci sed venenatis. Phasellus venenatis blandit nulla non pretium. Sed id metus non nisi pulvinar dictum.
+            </p>
+          </div><!-- /. inner-step-wrapper -->
+        </div><!-- /.step -->
+      </div><!-- /.left-pane -->
+      <div class="order-summary">
+        <h4>Order Summary</h4>
+        <div class="itemized-summary">
+          <div class="item flex-between" *ngFor="let menuItem of currentOrder?.LineItems">
+            <div class="item-specifics">
+              <div class="title semi-bold"><span class="quantity">{{ menuItem?.Quantity }} x</span> <span class="item-name">{{ menuItem?.Name }}</span></div>
+              <div class="additions" *ngIf="menuItem?.Modifiers">
+                <span class="modifier" *ngFor="let mod of menuItem?.Modifiers">{{ mod?.Name }}</span>
+              </div>
+            </div>
+            <div class="item-price">
+              <span class="price">{{ menuItem?.ExtendedPrice | currency }}</span>
+            </div>
+          </div>
+          <div class="pricing-details">
+            <div class="flex-between subtotal">
+              <span class="label">Subtotal</span>
+              <span class="value">{{ currentOrder?.SubTotalAmount | currency }}</span>
+            </div>
+            <div class="flex-between">
+              <span class="label">Tax</span>
+              <span class="value">{{ currentOrder?.TaxAmount | currency }}</span>
+            </div>
+            <div class="flex-between total">
+              <span class="label semi-bold">Total</span>
+              <span class="value semi-bold">{{ currentOrder?.TotalAmount | currency }}</span>
+            </div>
+
+            <div class="red-button full-width-button">
+              <a routerLink="/checkout/payment">Place Order Now</a>
+            </div>
+          </div>
+          <div class="location-details">
+            <p class="semi-bold">You are ordering from</p>
+            <h4>Lo·Cal Long Island</h4>
+            <p>
+              The Mall at The Source<br/>
+              1504 Old Country Rd, Westbury, NY 11590
+            </p>
+            <div class="map-image">
+              <img src="" alt="">
+            </div>
+            <p class="bold">
+              Tel: 987-012-2345
+            </p>
+          </div>
+        </div>
+
+      </div><!-- /.order-summary -->
+    </div>
+
+  </div><!-- /.basic-page-content -->
+</div><!-- /.checkout-review -->
