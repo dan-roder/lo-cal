@@ -20,6 +20,8 @@ import { AuthGuard } from '@local/guards/auth.guard';
 import { CheckoutLoginComponent } from '@local/pages/checkout-login/checkout-login.component';
 import { AccessGuard } from '@local/guards/access.guard';
 import { CheckoutReviewComponent } from '@local/pages/checkout-review/checkout-review.component';
+import { OrderGuard } from '@local/guards/order.guard';
+import { CheckoutPaymentComponent } from '@local/pages/checkout-payment/checkout-payment.component';
 
 
 const routes: Routes = [
@@ -40,7 +42,8 @@ const routes: Routes = [
       {
         path: 'checkout', component: CheckoutLoginComponent
       },
-      { path: 'checkout/review', component: CheckoutReviewComponent }
+      { path: 'checkout/review', component: CheckoutReviewComponent, canActivate: [OrderGuard] },
+      { path: 'checkout/payment', component: CheckoutPaymentComponent, canActivate: [OrderGuard] }
     ]
   },
   {
