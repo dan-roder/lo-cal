@@ -155,12 +155,21 @@ img{
     button,
     input[type=submit]{
       width: 100%;
+      box-sizing: border-box;
+    }
+  }
+
+  &.small-text{
+    a,
+    button{
+      @include fontsize(14);
     }
   }
 }
 
 .black-button{
-  a{
+  a,
+  button{
     @extend %black-button;
     @include transition();
     box-shadow: none;
