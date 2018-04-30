@@ -1,0 +1,38 @@
+.checkout-wrapper{
+  .inner-step-wrapper{
+    background: $white;
+    margin: 0 0 20px;
+    padding: 25px 35px;
+  }
+
+  .step-heading{
+    @include fontsize(19);
+    @extend %sofia-semi-bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin: 0 0 15px;
+  }
+
+  .step{
+
+
+    .lo-cal-form{
+      input{
+        background: $white;
+      }
+    }
+  }
+
+  .next-step{
+    margin: 40px 0 0;
+
+    button{
+      @include fontsize(14);
+      opacity: 1;
+
+      &:disabled{
+        opacity: .5;
+      }
+    }
+  }
+}
