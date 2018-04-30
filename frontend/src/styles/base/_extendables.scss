@@ -78,6 +78,7 @@
   letter-spacing: 1.1px;
   @include fontsize(20);
   @extend %sofia-medium;
+  @include transition();
 }
 
 //
