@@ -25,6 +25,14 @@
         background: $white;
       }
     }
+
+    &.step-4{
+      display: none;
+
+      @include breakpoint($bp-680){
+        display: block;
+      }
+    }
   }
 
   .next-step{
@@ -38,6 +46,14 @@
         opacity: .5;
       }
     }
+
+    &.step-4-button{
+      display: none;
+
+      @include breakpoint($bp-680){
+        display: block;
+      }
+    }
   }
 
   .lo-cal-form{
@@ -46,7 +62,11 @@
       border: 1px solid $e1;
       border-radius: 0;
       height: 35px;
-      width: 50%;
+      width: 100%;
+
+      @include breakpoint($bp-680){
+        width: 50%;
+      }
     }
 
     .pickup-time-label{
@@ -59,9 +79,31 @@
     }
 
     .radio-options{
-      width: 60%;
+      display: block;
+
+      @include breakpoint($bp-460){
+        display: flex;
+      }
+
+      @include breakpoint($bp-575){
+        width: 80%;
+      }
+
+      @include breakpoint($bp-680){
+        width: 95%;
+      }
+
+      @include breakpoint($bp-940){
+        width: 65%;
+      }
 
       .option{
+        margin: 0 0 10px;
+
+        @include breakpoint($bp-460){
+          margin: 0 4px 0 0;
+        }
+
         input{
           border: 0;
           clip: rect(0 0 0 0);
