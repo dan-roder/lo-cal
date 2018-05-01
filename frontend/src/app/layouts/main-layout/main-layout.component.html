@@ -1,6 +1,6 @@
 <div class="site-container" loCalWindowScroll>
   <div class="sticky-header">
-    <div class="menu-container">
+    <div class="menu-container clearfix">
       <lo-cal-hamburger></lo-cal-hamburger>
       <ul class="menu main-menu">
         <li>
@@ -15,11 +15,11 @@
       </ul>
       <ul class="cart-menu menu">
         <li class="account-link">
-          <a routerLink="/account">ACCOUNT</a>
+          <a routerLink="/account"><span class="account-text">ACCOUNT</span></a>
         </li>
         <li class="bag-link">
           <a tabindex="0" (click)="toggleBagState()" (keyup.enter)="toggleBagState()" title="Click to open your bag">
-            <span>MY BAG</span>
+            <span class="bag-text">MY BAG</span>
             <span class="cart-number" [ngClass]="numberOfItemsInBag == 0 ? 'hidden' : ''">{{ numberOfItemsInBag }}</span>
           </a>
         </li>
