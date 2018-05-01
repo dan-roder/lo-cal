@@ -14,7 +14,7 @@
               </div>
             </div><!-- /.checkout-header -->
 
-            <div class="checkout-items">
+            <div class="items">
 
               <div class="item" *ngFor="let menuItem of bagItems; let i = index;">
                 <div class="item-review-wrapper">
@@ -54,7 +54,7 @@
                   <span class="value medium">{{ bagTotalPrice | currency }}</span>
                 </div>
                 <div class="checkout-button red-button">
-                  <a type="submit" (click)="createOrder()">Checkout</a>
+                  <a routerLink="/checkout/review">Checkout</a>
                 </div>
               </div>
             </div><!-- /.cart-prices -->
