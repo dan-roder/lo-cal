@@ -6,20 +6,62 @@
       <div class="left-pane">
         <div class="step">
           <div class="inner-step-wrapper">
-            <div class="step-heading">1. Pickup</div>
-            <div class="step-question-wrapper">
-              <p class="question">Select a time to pickup your order.</p>
-              <div class="response"></div>
-            </div>
-            <div class="next-step black-button">
-              <button>Next Step</button>
+            <div class="step-heading" (click)="editSection(1)">1. Pickup</div>
+            <div class="step-wrapper" [hidden]="sectionOpen !== 1">
+              <form action="" class="lo-cal-form" [formGroup]="timeForm">
+                <label for="pickup-time" class="pickup-time-label">Select a time to pickup your order?</label>
+                <select name="pickup-time"  id="pickup-time" formControlName="pickup-time" class="pickup-time" [(ngModel)]="timeSelectBox" (ngModelChange)="timeSelectChanged()">
+                  <option value="">-- Select --</option>
+                  <option value="next">Next Available</option>
+                </select>
+                <div class="response">
+                  <fieldset>
+                    <legend>How would you like to pickup your order?</legend>
+                    <div class="radio-options flex-between">
+                      <div class="option">
+                        <label for="in-store">
+                          <input type="radio" name="pickup-selection" id="in-store" value="1" formControlName="pickup-selection">
+                          <span class="semi-bold">In Store Pick Up</span>
+                        </label>
+                      </div>
+                      <div class="option">
+                        <label for="curbside">
+                          <input type="radio" name="pickup-selection" id="curbside" value="4" formControlName="pickup-selection">
+                          <span class="semi-bold">Curbside Pickup</span>
+                        </label>
+                      </div>
+                    </div>
+                  </fieldset>
+                  <div class="car-options" *ngIf="timeForm.controls['pickup-selection'].value === '4'">
+                    <div class="form-section half-and-half">
+                      <div class="form-component form-component-text">
+                        <label for="vehicle-make" class="visuallyhidden">Vehicle Make</label>
+                        <input type="text" name="vehicle-make" id="vehicle-make" formControlName="vehicle-make" placeholder="Vehicle Make*">
+                      </div>
+                      <div class="form-component form-component-text">
+                        <label for="vehicle-model" class="visuallyhidden">Vehicle Model</label>
+                        <input type="text" name="vehicle-model" id="vehicle-model" formControlName="vehicle-model" placeholder="Vehicle Model*">
+                      </div>
+                    </div>
+                    <div class="form-section half-and-half">
+                      <div class="form-component form-component-text">
+                        <label for="vehicle-color" class="visuallyhidden">Vehicle Color</label>
+                        <input type="text" name="vehicle-color" id="vehicle-color" formControlName="vehicle-color" placeholder="Vehicle Color*">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="next-step black-button">
+                  <button [disabled]="!timeForm.valid"(click)="nextStep()">Next Step</button>
+                </div>
+              </form>
             </div>
           </div><!-- /. inner-step-wrapper -->
         </div><!-- /.step -->
         <div class="step">
           <div class="inner-step-wrapper">
-            <div class="step-heading">2. Contact Information</div>
-            <div class="step-question-wrapper">
+            <div class="step-heading" (click)="editSection(2)">2. Contact Information</div>
+            <div class="step-wrapper" [hidden]="sectionOpen !== 2">
               <form action="" class="lo-cal-form" [formGroup]="contactInfoForm">
                 <div class="form-section half-and-half">
                   <div class="form-component form-component-text">
@@ -46,7 +88,7 @@
                   </div>
                 </div>
                 <div class="next-step black-button">
-                  <button [disabled]="!contactInfoForm.valid">Next Step</button>
+                  <button [disabled]="!contactInfoForm.valid"(click)="nextStep()">Next Step</button>
                 </div>
               </form>
             </div>
@@ -54,8 +96,8 @@
         </div><!-- /.step -->
         <div class="step">
           <div class="inner-step-wrapper">
-            <div class="step-heading">3. Payment</div>
-            <div class="step-question-wrapper">
+            <div class="step-heading" (click)="editSection(3)">3. Payment</div>
+            <div class="step-wrapper" [hidden]="sectionOpen !== 3">
               <form action="" class="lo-cal-form" [formGroup]="paymentForm">
                 <div class="form-section half-and-half">
                   <div class="form-component form-component-text">
@@ -82,7 +124,7 @@
                   </div>
                 </div>
                 <div class="next-step black-button">
-                  <button [disabled]="!paymentForm.valid">Next Step</button>
+                  <button [disabled]="!paymentForm.valid"(click)="nextStep()">Next Step</button>
                 </div>
               </form>
             </div>
@@ -91,12 +133,11 @@
         <div class="step">
           <div class="inner-step-wrapper">
             <div class="step-heading">4. Place Your Order</div>
-            <div class="step-question-wrapper">
+            <div class="step-wrapper">
               <p class="question semi-bold">Your total: {{ currentOrder?.TotalAmount | currency }}</p>
-              <div class="response"></div>
             </div>
             <div class="red-button small-text">
-              <button>Place Order Now</button>
+              <button [disabled]="!timeForm.valid && !paymentForm.valid && !contactInfoForm.valid">Place Order Now</button>
             </div>
             <p class="terms-and-conditions small-text">
               By placing your order you agree to our Terms of Conditions. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vehicula ac orci sed venenatis. Phasellus venenatis blandit nulla non pretium. Sed id metus non nisi pulvinar dictum.
@@ -132,8 +173,8 @@
               <span class="value semi-bold">{{ currentOrder?.TotalAmount | currency }}</span>
             </div>
 
-            <div class="red-button full-width-button">
-              <a routerLink="/checkout/payment">Place Order Now</a>
+            <div class="red-button full-width-button small-text">
+              <button [disabled]="!timeForm.valid && !paymentForm.valid && !contactInfoForm.valid">Place Order Now</button>
             </div>
             <p class="go-back text-center">
               <a href="">or go back to edit your order</a>
