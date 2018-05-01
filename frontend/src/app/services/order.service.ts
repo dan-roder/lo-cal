@@ -80,6 +80,22 @@ export class OrderService {
     })
   }
 
+  public getNextAvailableTime(){
+    return this.httpClient.get(this.config.railsTimeEndpoint + '/1').map(times => {
+      return times;
+    })
+  }
+
+  public retrieveTimes(orderMode: string, orderSource: string = '0'): Observable<any>{
+    // Order Sources
+    //  0 - Website
+    //  1 - Mobile (iPhone)
+    //  2 - Mobile Web
+    return this.httpClient.get(this.config.railsTimeEndpoint + `/${orderMode}/${orderSource}/${this.config.menuId}`).map(times => {
+      return times;
+    })
+  }
+
   get customerInfo(): Customer{
     return this._customerInfo;
   }
