@@ -129,4 +129,8 @@ export class AccountComponent implements OnInit {
     this.editingPassword = false;
   }
 
+  public logout(){
+    this.customerService.logOut();
+  }
+
 }
