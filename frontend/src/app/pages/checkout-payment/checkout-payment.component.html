@@ -123,14 +123,14 @@
                     <div class="error-message" *ngIf="!paymentForm.controls['cvv'].valid && submittedOnce">This field is required.</div>
                   </div>
                 </div>
-                <div class="next-step black-button">
+                <div class="next-step black-button step-4-button">
                   <button [disabled]="!paymentForm.valid"(click)="nextStep()">Next Step</button>
                 </div>
               </form>
             </div>
           </div><!-- /. inner-step-wrapper -->
         </div><!-- /.step -->
-        <div class="step">
+        <div class="step step-4">
           <div class="inner-step-wrapper">
             <div class="step-heading">4. Place Your Order</div>
             <div class="step-wrapper">
@@ -146,8 +146,8 @@
         </div><!-- /.step -->
       </div><!-- /.left-pane -->
       <div class="order-summary">
-        <h4>Order Summary</h4>
         <div class="itemized-summary">
+          <h4>Order Summary</h4>
           <div class="item flex-between" *ngFor="let menuItem of currentOrder?.LineItems">
             <div class="item-specifics">
               <div class="title semi-bold"><span class="quantity">{{ menuItem?.Quantity }} x</span> <span class="item-name">{{ menuItem?.Name }}</span></div>
@@ -159,6 +159,8 @@
               <span class="price">{{ menuItem?.ExtendedPrice | currency }}</span>
             </div>
           </div>
+        </div><!-- /.itemized-summary -->
+        <div class="pricing-and-location">
           <div class="pricing-details">
             <div class="flex-between subtotal">
               <span class="label">Subtotal</span>
@@ -194,7 +196,7 @@
               Tel: 987-012-2345
             </p>
           </div>
-        </div>
+        </div><!-- /.pricing-and-location -->
 
       </div><!-- /.order-summary -->
     </div>
