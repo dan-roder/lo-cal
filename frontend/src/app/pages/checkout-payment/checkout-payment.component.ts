@@ -12,6 +12,11 @@ export class CheckoutPaymentComponent implements OnInit {
   public contactInfoForm : FormGroup;
   public submittedOnce : boolean = false;
   public paymentForm : FormGroup;
+  public timeForm : FormGroup;
+  public times : any;
+  public timeSelectBox : string;
+  private selectedTime : string = '';
+  public sectionOpen : number = 1;
 
   constructor(private orderService: OrderService, private fb: FormBuilder) {
     this.contactInfoForm = fb.group({
@@ -21,16 +26,58 @@ export class CheckoutPaymentComponent implements OnInit {
       'phone' : [null, Validators.required]
     });
     this.paymentForm = fb.group({
-      'card-number' : [null, Validators.required],
-      'expiration-date' : [null, Validators.required],
+      'card-number' : [null, [Validators.required, Validators.pattern('^[0-9]+$')]],
+      'expiration-date' : [null, [Validators.required, Validators.pattern('^[0-9]{2}\/{1}[0-9]{2}$')]],
       'name-on-card' : [null, Validators.required],
-      'cvv' : [null, Validators.required],
+      'cvv' : [null, [Validators.required, Validators.pattern('^[0-9]{3,4}$')]],
     });
+    this.timeForm = fb.group({
+      'pickup-time' : ['', Validators.required],
+      'pickup-selection' : ['', Validators.required],
+      'vehicle-make' : [null],
+      'vehicle-model' : [null],
+      'vehicle-color' : [null]
+    })
   }
 
   ngOnInit() {
     // This returns undefined if page is not accessed from review screen
     this.currentOrder = this.orderService.currentOrder;
+    // this.retrievePickupTimes();
+  }
+
+  private getNextAvailableTime(){
+    this.orderService.getNextAvailableTime().subscribe(nextTime => {
+      console.log(nextTime);
+      // this.selectedTime = nextTime;
+    })
+  }
+
+  private retrievePickupTimes(){
+    this.orderService.retrieveTimes('4').subscribe(times => {
+      this.times = times;
+      console.log(times);
+    })
+  }
+
+  public editSection(num: number){
+    this.sectionOpen = (this.sectionOpen === num) ? -1 : num;
+  }
+
+  public nextStep(){
+    this.sectionOpen++;
+  }
+
+  timeSelectChanged(){
+    console.log(this.timeSelectBox);
+    switch(this.timeSelectBox){
+      case 'next':
+        this.getNextAvailableTime();
+      break;
+      default:
+        this.selectedTime = this.timeSelectBox;
+      break;
+    }
   }
 
 }
