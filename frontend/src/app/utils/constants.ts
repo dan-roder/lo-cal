@@ -8,6 +8,7 @@ export class Config {
   public railsCustomerEndpoint : string = 'http://138.197.123.70/customers';
   public authenticateEndpoint : string = 'http://138.197.123.70/authenticate';
   public railsOrderEndpoint : string = 'http://138.197.123.70/orders';
+  public railsTimeEndpoint : string = 'http://138.197.123.70/times/1';
   public siteId : number = 1;
   public menuId : number = 1001;
 
