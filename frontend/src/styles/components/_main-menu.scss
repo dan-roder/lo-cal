@@ -5,15 +5,17 @@
   z-index: 1;
   background: rgba($white, .8);
 }
+
 .menu-container{
   @include transition(padding);
-  padding: 23px;
+  padding: 0 20px;
+  position: relative;
 
   .scrolled &{
-    padding: 10px 23px;
+    padding: 0 20px;
   }
 
-  @include breakpoint($bp-768){
+  @include breakpoint($bp-1130){
     padding: 0 60px;
 
     .scrolled &{
@@ -24,25 +26,19 @@
   ul.menu{
     padding: 0;
     list-style: none;
-    width: 135px;
-    margin: 0 auto;
+    margin: 0;
 
     li{
-      margin-left: 45px;
       vertical-align: middle;
       display: none;
 
-      @include breakpoint($bp-768){
+      @include breakpoint($bp-900){
         display: inline-block;
+        margin-left: 20px;
       }
 
-      &:first-child{
-        margin: 0;
-        display: block;
-
-        @include breakpoint($bp-768){
-          display: inline-block;
-        }
+      @include breakpoint($bp-1130){
+        margin-left: 45px
       }
 
       a,
@@ -97,16 +93,39 @@
     }
 
     &.main-menu{
+      padding: 0;
+      list-style: none;
+      width: 135px;
+      margin: 0 auto;
+
       @include breakpoint($bp-768){
         width: auto;
         float: left;
       }
+
+      li{
+        &:first-child{
+          margin: 0;
+          display: block;
+
+          @include breakpoint($bp-768){
+            display: inline-block;
+          }
+        }
+      }
     }
 
     &.cart-menu{
+      position: absolute;
+      top: 50%;
+      right: 20px;
+      margin: -14px 0 0 0;
+
       @include breakpoint($bp-768){
+        position: static;
         width: auto;
         float: right;
+        margin: 0;
       }
 
       li{
@@ -116,12 +135,19 @@
       }
 
       .bag-link{
+        display: inline-block;
+
         a{
           padding: 0;
           @include svg-bg(icons/bag);
           background-position: left center;
-          padding-left: 35px;
+          padding-left: 20px;
+
+          @include breakpoint($bp-768){
+            padding-left: 35px;
+          }
         }
+
         span{
           display: inline-block;
 
@@ -144,9 +170,19 @@
             }
           }
         }
+
+        .bag-text{
+          display: none;
+
+          @include breakpoint($bp-768){
+            display: inline-block;
+          }
+        }
       }// .bag-link
 
       .account-link{
+        display: inline-block;
+
         a{
           @include svg-bg(icons/account);
           background-position: left center;
