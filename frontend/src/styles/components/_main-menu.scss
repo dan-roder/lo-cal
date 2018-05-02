@@ -179,6 +179,10 @@
             &.hidden{
               opacity: 0;
             }
+
+            &.populated{
+              width: 22px;
+            }
           }
         }
 
