@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'lo-cal-hamburger',
@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HamburgerComponent implements OnInit {
   public toggleClass : string = 'closed';
+  @Output() mobileMenuState : EventEmitter<string> = new EventEmitter<string>();
 
   constructor() { }
 
@@ -13,7 +14,8 @@ export class HamburgerComponent implements OnInit {
   }
 
   toggle(){
-    this.toggleClass = (this.toggleClass == 'closed') ? 'open' : 'closed';
+    this.toggleClass = (this.toggleClass == 'mobileMenuClosed') ? 'mobileMenuOpen' : 'mobileMenuClosed';
+    this.mobileMenuState.emit(this.toggleClass);
   }
 
 }
