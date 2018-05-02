@@ -5,7 +5,7 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
   templateUrl: './hamburger.component.html'
 })
 export class HamburgerComponent implements OnInit {
-  public toggleClass : string = 'closed';
+  public toggleClass : string = 'mobileMenuClosed';
   @Output() mobileMenuState : EventEmitter<string> = new EventEmitter<string>();
 
   constructor() { }
