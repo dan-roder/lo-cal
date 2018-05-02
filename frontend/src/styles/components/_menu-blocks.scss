@@ -3,12 +3,13 @@
     @extend %clearfix;
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-between;
 
     .item{
       width: 50%;
       display: flex;
 
-      @include breakpoint($bp-500){
+      @include breakpoint($bp-768){
         width: 33.3333%;
       }
 
