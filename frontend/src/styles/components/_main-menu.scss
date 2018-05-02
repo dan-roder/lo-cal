@@ -1,26 +1,9 @@
-.sticky-header{
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 1;
-  background: rgba($white, .8);
-}
-
 .menu-container{
-  @include transition(padding);
   padding: 0 20px;
   position: relative;
 
-  .scrolled &{
-    padding: 0 20px;
-  }
-
   @include breakpoint($bp-1130){
     padding: 0 60px;
-
-    .scrolled &{
-      padding: 0 60px;
-    }
   }
 
   ul.menu{
@@ -30,32 +13,32 @@
 
     li{
       vertical-align: middle;
-      display: none;
+      display: inline-block;
+      margin: 0 0 0 12px;
 
       @include breakpoint($bp-900){
-        display: inline-block;
-        margin-left: 20px;
-      }
-
-      @include breakpoint($bp-1130){
-        margin-left: 45px
+        margin: 0 0 0 20px;
       }
 
       a{
         @extend %sofia-regular;
         @include fontsize(16);
         color: $off-black;
-        letter-spacing: 1px;
         text-transform: uppercase;
         text-decoration: none;
         display: block;
-        padding: 40px 0;
         border-bottom: 3px solid transparent;
         @include transition(padding);
         cursor: pointer;
+        padding: 35px 0;
+
+        @include breakpoint($bp-900){
+          letter-spacing: 1px;
+        }
 
         .scrolled &{
-          padding: 25px 0;
+          padding-top: 20px;
+          padding-bottom: 20px;
         }
 
         &:hover,
@@ -66,15 +49,9 @@
         }
       }
 
-      .page-title{
+      .logo{
         margin: 0;
         line-height: 1;
-        padding: 23px 0;
-        @include transition(padding);
-
-        .scrolled &{
-          padding: 8px 0;
-        }
 
         a{
           display: block;
@@ -83,152 +60,141 @@
           @include svg-bg(logo/logo);
           background-repeat: no-repeat;
           background-size: 100%;
+          background-position: center;
           width: 110px;
           height: 50px;
           border: none;
-          padding: 0;
+          padding: 18px 0;
 
-          @include breakpoint($bp-768){
+          .scrolled &{
+            padding: 4px 0;
+          }
+
+          @include breakpoint($bp-900){
             width: 135px;
             height: 60px;
           }
         }
-      }
+      }// .logo
     }
-
-    &.main-menu{
-      padding: 0;
-      list-style: none;
-      width: 110px;
-      margin: 0 auto;
-
-      @include breakpoint($bp-768){
-        width: auto;
-        float: left;
-      }
-
-      li{
-        &:first-child{
-          margin: 0;
-          display: block;
-
-          @include breakpoint($bp-768){
-            display: inline-block;
-          }
-        }
-      }
-    }
-
-    &.cart-menu{
-      position: absolute;
-      top: 50%;
-      right: 20px;
-      margin: -14px 0 0 0;
-
-      @include breakpoint($bp-768){
-        position: static;
-        width: auto;
-        float: right;
-        margin: 0;
-      }
-
-      li{
-
-
-        a,span{
-          border: none;
-        }
-
-        a{
-          padding: 0;
-
-          @include breakpoint($bp-768){
-            padding: inherit;
-          }
-        }
-      }
-
-      .bag-link{
-        display: inline-block;
-
-        a{
-          @include svg-bg(icons/bag);
-          background-position: left center;
-          padding-left: 20px;
-          display: flex;
-          align-items: center;
-
-          @include breakpoint($bp-768){
-            padding-left: 30px;
-          }
-        }
-
-        span{
-          display: inline-block;
-
-          &.cart-number{
-            display: inline-block;
-            border-radius: 50%;
-            width: 22px;
-            height: 22px;
-            padding: 3px;
-            @include fontsize(14);
-            background: $orange-red;
-            color: $white;
-            text-align: center;
-            margin: 0 0 0 5px;
-            @include transition(all,200ms);
-            opacity: 1;
-
-            &.hidden{
-              opacity: 0;
-            }
-
-            &.populated{
-              width: 22px;
-            }
-          }
-        }
-
-        .bag-text{
-          display: none;
-
-          @include breakpoint($bp-768){
-            display: inline-block;
-          }
-        }
-      }// .bag-link
-
-      .account-link{
-        display: inline-block;
-        margin: 0 5px 0 0;
-
-        .account-text{
-          display: none;
-
-          @include breakpoint($bp-768){
-            display: inline-block;
-          }
-        }
-
-        a{
-          @include svg-bg(icons/account);
-          background-position: left center;
-          padding: 14px 0 14px 30px;
-
-          .scrolled &{
-            padding: 14px 0 14px 30px;
-          }
-
-          @include breakpoint($bp-768){
-            padding: 40px 0 40px 30px;
-
-            .scrolled &{
-              padding: 25px 0 25px 30px;
-            }
-          }
-        }
-      }
-    }// .cart-menu
   }// ul.menu
-}// .menu-container
+
+  ul.main-menu{
+    width: 110px;
+    margin: 0 auto;
+
+    @include breakpoint($bp-768){
+      float: left;
+      width: auto;
+      margin: 0;
+    }
+
+    li{
+      display: none;
+
+      @include breakpoint($bp-768){
+        display: inline-block;
+      }
+
+      &:first-child{
+        margin: 0;
+        display: inline-block;
+      }
+    }
+  }// .main-menu
+
+  .cart-menu{
+    position: absolute;
+    right: 20px;
+    top: 0;
+
+    @include breakpoint($bp-768){
+      float: right;
+    }
+
+    li a,span{
+      border-bottom: none !important;
+    }
+
+    .bag-link{
+      display: inline-block;
+
+      a{
+        @include svg-bg(icons/bag);
+        background-position: left center;
+        padding-left: 20px;
+        display: flex;
+        align-items: center;
+
+        @include breakpoint($bp-768){
+          padding-left: 30px;
+        }
+      }
+
+      span{
+        display: inline-block;
+
+        &.cart-number{
+          display: inline-block;
+          border-radius: 50%;
+          width: 20px;
+          height: 20px;
+          padding: 2px;
+          @include fontsize(13);
+          background: $orange-red;
+          color: $white;
+          text-align: center;
+          margin: 0 0 0 5px;
+          @include transition(all,200ms);
+          opacity: 1;
+
+          &.hidden{
+            opacity: 0;
+          }
+
+          &.populated{
+            width: 22px;
+          }
+        }
+      }
+
+      .bag-text{
+        display: none;
+
+        @include breakpoint($bp-768){
+          display: inline-block;
+        }
+      }
+    }// .bag-link
+
+    .account-link{
+      display: inline-block;
+
+      .account-text{
+        display: none;
+
+        @include breakpoint($bp-768){
+          display: inline-block;
+        }
+      }
+
+      a{
+        @include svg-bg(icons/account);
+        background-position: left center;
+        padding-left: 30px;
+
+        // .scrolled &{
+        //   padding: 14px 0 14px 30px;
+        // }
+
+        // @include breakpoint($bp-768){
+        //   padding: 40px 0 40px 30px;
+
+        //   .scrolled &{
+        //     padding: 25px 0 25px 30px;
+        //   }
+        // }
+      }
+    }// .account-link
+  }// .cart-menu
+}
