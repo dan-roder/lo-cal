@@ -133,6 +133,8 @@
       }
 
       li{
+
+
         a,span{
           border: none;
         }
@@ -153,9 +155,11 @@
           @include svg-bg(icons/bag);
           background-position: left center;
           padding-left: 20px;
+          display: flex;
+          align-items: center;
 
           @include breakpoint($bp-768){
-            padding-left: 35px;
+            padding-left: 30px;
           }
         }
 
@@ -197,6 +201,7 @@
 
       .account-link{
         display: inline-block;
+        margin: 0 5px 0 0;
 
         .account-text{
           display: none;
@@ -209,10 +214,10 @@
         a{
           @include svg-bg(icons/account);
           background-position: left center;
-          padding: 14px 0 14px 35px;
+          padding: 14px 0 14px 30px;
 
           @include breakpoint($bp-768){
-            padding: 40px 0 40px 35px;
+            padding: 40px 0 40px 30px;
           }
         }
       }
