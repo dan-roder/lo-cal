@@ -25,6 +25,31 @@
 
 .site-container{
   background: $light-grey;
+  @include transition();
+  transform: translate3d(0,0,0);
+
+  &.mobileMenuOpen{
+    transform: translate3d(260px,0,0);
+    overflow-x: hidden;
+    box-shadow: -3px 0 10px 0 rgba(0,0,0,.6);
+  }
+}
+
+.mobile-menu{
+  background: $off-black;
+  position: fixed;
+  top: 0;
+  width: 260px;
+  left: -260px;
+  overflow-y: auto;
+  min-height: 100%;
+  -webkit-overflow-scrolling: touch;
+  z-index: 100;
+  @include transition();
+
+  &.mobileMenuOpen{
+    transform: translate3d(260px,0,0);
+  }
 }
 
 .button-wrapper{
