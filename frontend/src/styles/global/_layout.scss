@@ -26,12 +26,15 @@
 .site-container{
   background: $light-grey;
   @include transition();
-  transform: translate3d(0,0,0);
+  // transform: translateX(0);
+  left: 0;
+  position: relative;
 
   &.mobileMenuOpen{
-    transform: translate3d(260px,0,0);
+    // transform: translateX(260px);
     overflow-x: hidden;
     box-shadow: -3px 0 10px 0 rgba(0,0,0,.6);
+    left: 260px;
   }
 }
 
@@ -48,7 +51,8 @@
   @include transition();
 
   &.mobileMenuOpen{
-    transform: translate3d(260px,0,0);
+    // transform: translateX(260px);
+    left: 0;
   }
 }
 
