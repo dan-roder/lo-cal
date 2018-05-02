@@ -65,6 +65,9 @@ import { AccessGuard } from '@local/guards/access.guard';
 import { OrderGuard } from '@local/guards/order.guard';
 import { CheckoutPaymentComponent } from './pages/checkout-payment/checkout-payment.component';
 
+// Modules
+import { ResponsiveModule } from 'ng2-responsive';
+
 
 @NgModule({
   declarations: [
@@ -109,7 +112,8 @@ import { CheckoutPaymentComponent } from './pages/checkout-payment/checkout-paym
     HttpClientModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    LocalStorageModule
+    LocalStorageModule,
+    ResponsiveModule
   ],
   providers: [ Config, WindowRef, WordpressService, MenuService, BagService, CustomerService, AuthGuard, AccessGuard, OrderService, OrderGuard ],
   bootstrap: [AppComponent]
