@@ -18,9 +18,9 @@
           <a routerLink="/account"><span class="account-text">ACCOUNT</span></a>
         </li>
         <li class="bag-link">
-          <a tabindex="0" (click)="toggleBagState()" (keyup.enter)="toggleBagState()" title="Click to open your bag">
+          <a tabindex="0" (click)="toggleBagState()" (keyup.enter)="toggleBagState()" title="Click to view your bag">
             <span class="bag-text">MY BAG</span>
-            <span class="cart-number" [ngClass]="numberOfItemsInBag == 0 ? 'hidden' : ''">{{ numberOfItemsInBag }}</span>
+            <span class="cart-number" [ngClass]="numberOfItemsInBag == 0 ? 'hidden' : 'populated'">{{ numberOfItemsInBag }}</span>
           </a>
         </li>
       </ul>
