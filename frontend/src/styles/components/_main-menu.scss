@@ -216,8 +216,16 @@
           background-position: left center;
           padding: 14px 0 14px 30px;
 
+          .scrolled &{
+            padding: 14px 0 14px 30px;
+          }
+
           @include breakpoint($bp-768){
             padding: 40px 0 40px 30px;
+
+            .scrolled &{
+              padding: 25px 0 25px 30px;
+            }
           }
         }
       }
