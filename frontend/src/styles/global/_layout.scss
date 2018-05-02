@@ -38,6 +38,14 @@
   }
 }
 
+.sticky-header{
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+  background: rgba($white, .8);
+}
+
 .mobile-menu{
   background: $off-black;
   position: fixed;
