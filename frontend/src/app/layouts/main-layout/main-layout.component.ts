@@ -18,6 +18,7 @@ export class MainLayoutComponent implements OnInit {
   public bagState: string = 'invisible';
   public _numberOfItemsInBag : number = 0;
   public _bagItems : Array<LineItem> = [];
+  public mobileMenuState: string = 'mobileMenuClosed';
 
   constructor(
     private wpService: WordpressService,
@@ -33,6 +34,10 @@ export class MainLayoutComponent implements OnInit {
     if(this.numberOfItemsInBag > 0){
       this.bagState = (this.bagState === 'invisible') ? 'visible' : 'invisible';
     }
+  }
+
+  public toggleMobileMenuState(){
+    this.mobileMenuState = (this.mobileMenuState === 'mobileMenuClosed') ? 'mobileMenuOpen' : 'mobileMenuClosed';
   }
 
   get bagItems() : Array<LineItem>{
