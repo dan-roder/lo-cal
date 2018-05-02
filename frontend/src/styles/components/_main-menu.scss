@@ -41,8 +41,7 @@
         margin-left: 45px
       }
 
-      a,
-      span{
+      a{
         @extend %sofia-regular;
         @include fontsize(16);
         color: $off-black;
@@ -84,10 +83,15 @@
           @include svg-bg(logo/logo);
           background-repeat: no-repeat;
           background-size: 100%;
-          width: 135px;
-          height: 60px;
+          width: 110px;
+          height: 50px;
           border: none;
           padding: 0;
+
+          @include breakpoint($bp-768){
+            width: 135px;
+            height: 60px;
+          }
         }
       }
     }
@@ -95,7 +99,7 @@
     &.main-menu{
       padding: 0;
       list-style: none;
-      width: 135px;
+      width: 110px;
       margin: 0 auto;
 
       @include breakpoint($bp-768){
@@ -132,13 +136,20 @@
         a,span{
           border: none;
         }
+
+        a{
+          padding: 0;
+
+          @include breakpoint($bp-768){
+            padding: inherit;
+          }
+        }
       }
 
       .bag-link{
         display: inline-block;
 
         a{
-          padding: 0;
           @include svg-bg(icons/bag);
           background-position: left center;
           padding-left: 20px;
@@ -183,12 +194,24 @@
       .account-link{
         display: inline-block;
 
+        .account-text{
+          display: none;
+
+          @include breakpoint($bp-768){
+            display: inline-block;
+          }
+        }
+
         a{
           @include svg-bg(icons/account);
           background-position: left center;
-          padding-left: 35px;
+          padding: 14px 0 14px 35px;
+
+          @include breakpoint($bp-768){
+            padding: 40px 0 40px 35px;
+          }
         }
       }
-    }
+    }// .cart-menu
   }// ul.menu
-}
+}// .menu-container
