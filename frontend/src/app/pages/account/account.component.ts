@@ -22,14 +22,14 @@ export class AccountComponent implements OnInit {
     this.accountForm = fb.group({
       'first-name' : [null, Validators.required],
       'last-name' : [null, Validators.required],
-      'email' : [null, [Validators.required, Validators.email]],
-      'full-address' : fb.group({
-        'address' : [null, Validators.required],
-        'address2' : null,
-        'city' : [null, Validators.required],
-        'state' : ['', Validators.required],
-        'zip' : [null, [Validators.required, Validators.pattern('^[0-9]{5}$')]]
-      })
+      'email' : [null, [Validators.required, Validators.email]]
+      // 'full-address' : fb.group({
+      //   'address' : [null, Validators.required],
+      //   'address2' : null,
+      //   'city' : [null, Validators.required],
+      //   'state' : ['', Validators.required],
+      //   'zip' : [null, [Validators.required, Validators.pattern('^[0-9]{5}$')]]
+      // })
     })
 
     this.passwordForm = fb.group({

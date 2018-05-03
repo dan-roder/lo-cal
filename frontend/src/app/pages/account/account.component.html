@@ -32,7 +32,7 @@
               <input type="text" [readonly]="!editing" name="email" id="email" formControlName="email" placeholder="Email*" [ngClass]="{'has-error':!accountForm.controls['email'].valid && submittedOnce}">
               <div class="error-message" *ngIf="!accountForm.controls['email'].valid && submittedOnce">This field is required.</div>
             </div>
-            <div class="control-wrapper" formGroupName="full-address">
+            <!-- <div class="control-wrapper" formGroupName="full-address">
               <div class="form-component form-component-text">
                 <label for="address" class="visuallyhidden">Address</label>
                 <input type="text" [readonly]="!editing" name="address" id="address" formControlName="address" placeholder="Address*" [ngClass]="{'has-error':!accountForm.controls['full-address']['controls']['address'].valid && submittedOnce}">
@@ -112,7 +112,7 @@
                   <div class="error-message" *ngIf="accountForm.controls['full-address']['controls']['zip'].errors?.pattern && accountForm.controls['full-address']['controls']['zip'].value.length > 5">Zip code must be only 5 digits.</div>
                 </div>
               </div>
-            </div>
+            </div> -->
 
             <div class="submit red-button full-width-button submit">
               <input type="submit" value="Save" *ngIf="editing">
