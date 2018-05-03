@@ -43,13 +43,9 @@ export class AccountComponent implements OnInit {
 
   ngOnInit() {
     // Get customer ID
-    this.localStorage.getItem('user').subscribe(userId => {
-      this.customerId = userId;
-      this.customerService.getCustomerInfo(userId).subscribe(customerData => {
-        this.customer = customerData;
-        this.patchAccountForm(customerData);
-        console.log(customerData);
-      })
+    this.localStorage.getItem('user').subscribe(customerData => {
+      this.customerId = customerData.CustomerId;
+      this.patchAccountForm(customerData);
     })
   }
 
