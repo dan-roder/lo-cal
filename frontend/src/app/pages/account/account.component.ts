@@ -34,7 +34,7 @@ export class AccountComponent implements OnInit {
 
     this.passwordForm = fb.group({
       'old-password' : ['', Validators.required],
-      'password' : ['', [Validators.required, Validators.minLength(8)]],
+      'password' : ['', Validators.compose([Validators.required, Validators.minLength(8), Validators.pattern(/(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/)])],
       'confirm-password' : ['', Validators.required],
     }, {
       validator : PasswordMatch.MatchPassword
@@ -53,13 +53,7 @@ export class AccountComponent implements OnInit {
     this.accountForm.patchValue({
       'first-name' : customerData.FirstName,
       'last-name' : customerData.LastName,
-      'email' : customerData.EMail,
-      'full-address' : {
-        'address' : customerData.Addresses[0].AddressLine1,
-        'address2' : customerData.Addresses[0].AddressLine2,
-        'city' : customerData.Addresses[0].City,
-        'zip' : customerData.Addresses[0].Postal
-      }
+      'email' : customerData.EMail
     })
   }
 
