@@ -20,13 +20,11 @@ export class OrderService {
   public _currentOrder : Order;
 
   constructor(private httpClient: HttpClient, private localStorage: LocalStorage, private config: Config, private customerService: CustomerService) {
-    this.customerService.isLoggedIn().subscribe(userId => {
-      this.userId = userId;
+    this.customerService.isLoggedIn().subscribe(customerData => {
+      this.userId = customerData.CustomerId;
 
-      if(userId !== null || userId !== undefined){
-        this.customerService.getCustomerInfo(userId).subscribe(data => {
-          this.customerInfo = data;
-        })
+      if(customerData !== null || customerData !== undefined){
+        this.customerInfo = customerData;
       }
     })
   }
