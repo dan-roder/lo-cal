@@ -23,18 +23,22 @@ export class CreateAccountComponent implements OnInit {
       'password' : ['', [Validators.required, Validators.minLength(8)]],
       'confirm-password' : ['', Validators.required],
       'security-question' : [null, Validators.required],
-      'security-answer' : [null, Validators.required],
-      'full-address' : fb.group({
-        'address' : [null, Validators.required],
-        'address2' : null,
-        'city' : [null, Validators.required],
-        'state' : ['', Validators.required],
-        'zip' : [null, [Validators.required, Validators.pattern('^[0-9]{5}$')]]
-      })
+      'security-answer' : [null, Validators.required]
     }, {
       validator : PasswordMatch.MatchPassword
     })
   }
+
+  /**
+   * REMOVED: Address info not needed for any transactional part of the process
+   */
+  // 'full-address' : fb.group({
+  //   'address' : [null, Validators.required],
+  //   'address2' : null,
+  //   'city' : [null, Validators.required],
+  //   'state' : ['', Validators.required],
+  //   'zip' : [null, [Validators.required, Validators.pattern('^[0-9]{5}$')]]
+  // })
 
   ngOnInit() {
     this.redirectUrl = (typeof this.route.snapshot.queryParams['returnUrl'] !== undefined) ? this.route.snapshot.queryParams['returnUrl'] : '';
@@ -51,14 +55,7 @@ export class CreateAccountComponent implements OnInit {
             EMail : form.controls.email.value,
             FirstName : form.controls['first-name'].value,
             LastName : form.controls['last-name'].value,
-            Addresses : [{
-              AddressLine1 : form.controls['full-address'].controls['address'].value,
-              AddressLine2 : form.controls['full-address'].controls['address2'].value,
-              City : form.controls['full-address'].controls['city'].value,
-              State : form.controls['full-address'].controls['state'].value,
-              Postal : form.controls['full-address'].controls['zip'].value,
-              IsDefault : true
-            }]
+            Addresses : []
           },
           Password : form.controls['password'].value,
           SecurityQuestion : form.controls['security-question'].value,
