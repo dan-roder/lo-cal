@@ -9,10 +9,11 @@
       <div class="newsletter-signup">
         <label for="email-newsletter"><span class="visuallyhidden">Enter your Email Address and</span> Stay in Touch</label>
         <input type="email" name="newsletter" id="email-newsletter" placeholder="Enter your Email">
+        <input type="image" src="/assets/icons/right-arrow.svg" alt="Click to sign up for our newsletter">
       </div>
     </div>
     <div class="right clearfix">
-      <ul class="menu social-menu float-right" *ngIf="footerLinks">
+      <ul class="menu social-menu" *ngIf="footerLinks">
         <li *ngFor="let item of footerLinks">
           <a href="{{ item?.url }}" target="_blank">
             <span class="visuallyhidden">{{ item.title }}</span>
