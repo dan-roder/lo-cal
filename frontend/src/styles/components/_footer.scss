@@ -2,19 +2,22 @@ footer{
 
   .content{
     padding: 20px;
-    @extend %clearfix;
-    display: flex;
-    justify-content: space-between;
-  }
 
-  .left,
-  .right{
-    width: 48%;
+    @include breakpoint($bp-768){
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
   }
 
   .left{
-    display: flex;
-    justify-content: space-between;
+
+
+    @include breakpoint($bp-980){
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
   }
 
   label{
@@ -26,10 +29,38 @@ footer{
     margin: 0 10px 0 0;
   }
 
+  .newsletter-signup{
+    position: relative;
+    margin: 0 auto 20px;
+    width: 280px;
+
+    @include breakpoint($bp-460){
+      display: flex;
+      align-items: flex-end;
+      margin: 0 auto 20px;
+      width: 410px;
+    }
+
+    @include breakpoint($bp-768){
+      margin: 0;
+    }
+
+    input[type=image]{
+      position: absolute;
+      right: 0;
+      bottom: 6px;
+
+      @include breakpoint($bp-460){
+        bottom: auto;
+        top: 10px;
+      }
+    }
+  }
+
   input[type=email]{
     @extend %sofia-light;
     @include fontsize(14);
-    width: 310px;
+    width: 280px;
     border: none;
     border-bottom: 1px solid;
     color: $e1;
