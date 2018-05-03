@@ -135,7 +135,7 @@
                 <label for="password" class="visuallyhidden">New Password</label>
                 <input type="password" [readonly]="!editingPassword" name="password" id="password" formControlName="password" placeholder="New Password* (8 or more characters)" [ngClass]="{'has-error':!passwordForm.controls['password'].valid && submittedOnce}">
                 <div class="error-message" *ngIf="!passwordForm.controls['password'].valid && submittedOnce">This field is required.</div>
-                <div class="error-message" *ngIf="passwordForm.controls['password'].value.length > 2 && passwordForm.controls['password'].errors?.minlength">Password must be at least 8 characters.</div>
+                <div class="error-message" *ngIf="passwordForm.controls['password'].value.length > 2 && passwordForm.controls['password'].errors?.minlength">Password must be at least 8 characters, contain at least 1 number, and 1 uppercase character.</div>
               </div>
               <div class="form-component form-component-text">
                 <label for="confirm-password" class="visuallyhidden">Confirm Password</label>
