@@ -39,10 +39,11 @@ export class LoginFormComponent implements OnInit {
       }
 
       this.customerService.logIn(loginDetails).subscribe(customerId => {
-        this.localStorage.setItem('user', customerId).subscribe(() => {
-          console.log('success', this.returnUrl);
-          this.router.navigate([this.returnUrl]);
-        });
+        this.customerService.getCustomerInfo(customerId).subscribe(customerInfo => {
+          this.localStorage.setItem('user', customerInfo).subscribe(() => {
+            this.router.navigate([this.returnUrl]);
+          });
+        })
       }, error => {
         this.errorData = error;
       })
