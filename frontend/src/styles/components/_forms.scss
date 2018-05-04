@@ -71,12 +71,6 @@
         border-bottom: 1px solid $orange-red;
       }
     }
-
-    .error-message{
-      @include fontsize(12);
-      padding: 5px 4px;
-      color: $orange-red;
-    }
   }
 
   .form-component-textarea{
@@ -157,5 +151,19 @@
   legend{
     @include fontsize(16);
     margin: 10px 0 20px;
+  }
+
+  .error-message,
+  .error-message p{
+    @include fontsize(12);
+    padding: 5px 4px;
+    color: $orange-red;
+  }
+
+  .error-message p{
+    @include fontsize(15);
+    padding: 5px 0;
+    color: $orange-red;
+    margin: 0;
   }
 }
