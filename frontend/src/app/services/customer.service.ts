@@ -60,4 +60,8 @@ export class CustomerService {
     })
   }
 
+  public updatePassword(){
+
+  }
+
 }
