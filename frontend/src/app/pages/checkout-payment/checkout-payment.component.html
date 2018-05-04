@@ -99,28 +99,44 @@
             <div class="step-heading" (click)="editSection(3)">3. Payment</div>
             <div class="step-wrapper" [hidden]="sectionOpen !== 3">
               <form action="" class="lo-cal-form" [formGroup]="paymentForm">
-                <div class="form-section half-and-half">
-                  <div class="form-component form-component-text">
-                    <label for="card-number" class="visuallyhidden">Credit Card Number</label>
-                    <input type="text" name="card-number" id="card-number" formControlName="card-number" placeholder="Credit Card Number*" [ngClass]="{'has-error':!paymentForm.controls['card-number'].valid && submittedOnce}">
-                    <div class="error-message" *ngIf="!paymentForm.controls['card-number'].valid && submittedOnce">This field is required.</div>
+                <div class="radio-options flex-between">
+                  <div class="option">
+                    <label for="cc">
+                      <input type="radio" name="payment-choice" id="cc" value="1" formControlName="payment-choice"  [(ngModel)]="paymentChoice" (ngModelChange)="paymentChoiceChanged()">
+                      <span class="semi-bold">Pay now with a credit card</span>
+                    </label>
                   </div>
-                  <div class="form-component form-component-text">
-                    <label for="last-name" class="visuallyhidden">Expiration Date</label>
-                    <input type="text" name="expiration-date" id="expiration-date" formControlName="expiration-date" placeholder="Expiration Date (mm/yy)*" [ngClass]="{'has-error':!paymentForm.controls['expiration-date'].valid && submittedOnce}">
-                    <div class="error-message" *ngIf="!paymentForm.controls['expiration-date'].valid && submittedOnce">This field is required.</div>
+                  <div class="option">
+                    <label for="pay-at-store">
+                      <input type="radio" name="payment-choice" id="pay-at-store" value="2" formControlName="payment-choice" [(ngModel)]="paymentChoice" (ngModelChange)="paymentChoiceChanged()">
+                      <span class="semi-bold">Pay at the store</span>
+                    </label>
                   </div>
                 </div>
-                <div class="form-section half-and-half">
-                  <div class="form-component form-component-text">
-                    <label for="phone" class="visuallyhidden">Name On Card</label>
-                    <input type="text" name="name-on-card" id="name-on-card" formControlName="name-on-card" placeholder="Name on card*" [ngClass]="{'has-error':!paymentForm.controls['name-on-card'].valid && submittedOnce}">
-                    <div class="error-message" *ngIf="!paymentForm.controls['name-on-card'].valid && submittedOnce">This field is required.</div>
+                <div class="new-card-section" *ngIf="paymentForm.controls['payment-choice'].value === '1'">
+                  <div class="form-section half-and-half">
+                    <div class="form-component form-component-text">
+                      <label for="card-number" class="visuallyhidden">Credit Card Number</label>
+                      <input type="text" name="card-number" id="card-number" formControlName="card-number" placeholder="Credit Card Number*" [ngClass]="{'has-error':!paymentForm.controls['card-number'].valid && submittedOnce}">
+                      <div class="error-message" *ngIf="!paymentForm.controls['card-number'].valid && submittedOnce">This field is required.</div>
+                    </div>
+                    <div class="form-component form-component-text">
+                      <label for="last-name" class="visuallyhidden">Expiration Date</label>
+                      <input type="text" name="expiration-date" id="expiration-date" formControlName="expiration-date" placeholder="Expiration Date (mm/yy)*" [ngClass]="{'has-error':!paymentForm.controls['expiration-date'].valid && submittedOnce}">
+                      <div class="error-message" *ngIf="!paymentForm.controls['expiration-date'].valid && submittedOnce">This field is required.</div>
+                    </div>
                   </div>
-                  <div class="form-component form-component-email">
-                    <label for="email" class="visuallyhidden">CVV</label>
-                    <input type="text" name="cvv" id="cvv" formControlName="cvv" placeholder="CVV*" [ngClass]="{'has-error':!paymentForm.controls['cvv'].valid && submittedOnce}">
-                    <div class="error-message" *ngIf="!paymentForm.controls['cvv'].valid && submittedOnce">This field is required.</div>
+                  <div class="form-section half-and-half">
+                    <div class="form-component form-component-text">
+                      <label for="phone" class="visuallyhidden">Name On Card</label>
+                      <input type="text" name="name-on-card" id="name-on-card" formControlName="name-on-card" placeholder="Name on card*" [ngClass]="{'has-error':!paymentForm.controls['name-on-card'].valid && submittedOnce}">
+                      <div class="error-message" *ngIf="!paymentForm.controls['name-on-card'].valid && submittedOnce">This field is required.</div>
+                    </div>
+                    <div class="form-component form-component-email">
+                      <label for="email" class="visuallyhidden">CVV</label>
+                      <input type="text" name="cvv" id="cvv" formControlName="cvv" placeholder="CVV*" [ngClass]="{'has-error':!paymentForm.controls['cvv'].valid && submittedOnce}">
+                      <div class="error-message" *ngIf="!paymentForm.controls['cvv'].valid && submittedOnce">This field is required.</div>
+                    </div>
                   </div>
                 </div>
                 <div class="next-step black-button step-4-button">
