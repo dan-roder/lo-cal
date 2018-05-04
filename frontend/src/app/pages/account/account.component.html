@@ -15,22 +15,27 @@
             <a href="" (click)="editAccountDetails()" role="button">{{ editing ? 'Cancel' : 'Edit' }}</a>
           </div>
           <form action="" [formGroup]="accountForm" class="lo-cal-form" [ngClass]="editing ? 'editing' : 'static'" (submit)="saveAccountDetails(accountForm)">
+            <div class="error-message" *ngIf="errorOccurred">
+              <p>
+                Something went wrong. Please try again.
+              </p>
+            </div>
             <div class="form-section half-and-half">
               <div class="form-component form-component-text">
                 <label for="first-name" class="visuallyhidden">First Name</label>
-                <input type="text" [readonly]="!editing" name="first-name" id="first-name" formControlName="first-name" placeholder="First Name*" [ngClass]="{'has-error':!accountForm.controls['first-name'].valid && submittedOnce}">
-                <div class="error-message" *ngIf="!accountForm.controls['first-name'].valid && submittedOnce">This field is required.</div>
+                <input type="text" [readonly]="!editing" name="first-name" id="first-name" formControlName="first-name" placeholder="First Name*" [ngClass]="{'has-error':!accountForm.controls['first-name'].valid}">
+                <div class="error-message" *ngIf="!accountForm.controls['first-name'].valid">This field is required.</div>
               </div>
               <div class="form-component form-component-text">
                 <label for="last-name" class="visuallyhidden">Last Name</label>
-                <input type="text" [readonly]="!editing" name="last-name" id="last-name" formControlName="last-name" placeholder="Last Name*" [ngClass]="{'has-error':!accountForm.controls['last-name'].valid && submittedOnce}">
-                <div class="error-message" *ngIf="!accountForm.controls['last-name'].valid && submittedOnce">This field is required.</div>
+                <input type="text" [readonly]="!editing" name="last-name" id="last-name" formControlName="last-name" placeholder="Last Name*" [ngClass]="{'has-error':!accountForm.controls['last-name'].valid}">
+                <div class="error-message" *ngIf="!accountForm.controls['last-name'].valid">This field is required.</div>
               </div>
             </div>
             <div class="form-component form-component-email">
               <label for="email" class="visuallyhidden">Email</label>
-              <input type="text" [readonly]="!editing" name="email" id="email" formControlName="email" placeholder="Email*" [ngClass]="{'has-error':!accountForm.controls['email'].valid && submittedOnce}">
-              <div class="error-message" *ngIf="!accountForm.controls['email'].valid && submittedOnce">This field is required.</div>
+              <input type="text" [readonly]="!editing" name="email" id="email" formControlName="email" placeholder="Email*" [ngClass]="{'has-error':!accountForm.controls['email'].valid}">
+              <div class="error-message" *ngIf="!accountForm.controls['email'].valid">This field is required.</div>
             </div>
             <!-- <div class="control-wrapper" formGroupName="full-address">
               <div class="form-component form-component-text">
@@ -127,11 +132,6 @@
             </div>
             <form action="" [formGroup]="passwordForm" class="lo-cal-form" [ngClass]="editingPassword ? 'editing' : 'static'" (submit)="saveNewPassword(passwordForm)">
               <div class="form-component form-component-text">
-                <label for="password" class="visuallyhidden">Old Password</label>
-                <input type="password" [readonly]="!editingPassword" name="old-password" id="old-password" formControlName="old-password" placeholder="Old Password*" [ngClass]="{'has-error':!passwordForm.controls['old-password'].valid && submittedOnce}">
-                <div class="error-message" *ngIf="!passwordForm.controls['old-password'].valid && submittedOnce">This field is required.</div>
-              </div>
-              <div class="form-component form-component-text">
                 <label for="password" class="visuallyhidden">New Password</label>
                 <input type="password" [readonly]="!editingPassword" name="password" id="password" formControlName="password" placeholder="New Password* (8 or more characters)" [ngClass]="{'has-error':!passwordForm.controls['password'].valid && submittedOnce}">
                 <div class="error-message" *ngIf="!passwordForm.controls['password'].valid && submittedOnce">This field is required.</div>
@@ -142,6 +142,14 @@
                 <input type="password" [readonly]="!editingPassword" name="confirm-password" id="confirm-password" formControlName="confirm-password" placeholder="Confirm Password*" [ngClass]="{'has-error':!passwordForm.controls['confirm-password'].valid && submittedOnce}">
                 <div class="error-message" *ngIf="!passwordForm.controls['confirm-password'].valid && submittedOnce">This field is required.</div>
                 <div class="error-message" *ngIf="passwordForm.controls['confirm-password'].errors?.MatchPassword">Password does not match.</div>
+              </div>
+              <div class="form-component form-component-text" *ngIf="editingPassword">
+                <p></p>
+              </div>
+              <div class="form-component form-component-text">
+                <label for="password" class="visuallyhidden">Security Answer</label>
+                <input type="password" [readonly]="!editingPassword" name="security-answer" id="security-answer" formControlName="security-answer" placeholder="Old Password*" [ngClass]="{'has-error':!passwordForm.controls['security-answer'].valid && submittedOnce}">
+                <div class="error-message" *ngIf="!passwordForm.controls['security-answer'].valid && submittedOnce">This field is required.</div>
               </div>
 
               <div class="submit red-button full-width-button submit">

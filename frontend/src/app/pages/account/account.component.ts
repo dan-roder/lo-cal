@@ -16,7 +16,7 @@ export class AccountComponent implements OnInit {
   public passwordForm : FormGroup;
   public editing : boolean = false;
   public editingPassword : boolean = false;
-  public submittedOnce : boolean = false;
+  public errorOccurred : boolean = false;
 
   constructor(private customerService: CustomerService, private localStorage : LocalStorage, private fb: FormBuilder) {
     this.accountForm = fb.group({
@@ -33,9 +33,9 @@ export class AccountComponent implements OnInit {
     })
 
     this.passwordForm = fb.group({
-      'old-password' : ['', Validators.required],
       'password' : ['', Validators.compose([Validators.required, Validators.minLength(8), Validators.pattern(/(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/)])],
       'confirm-password' : ['', Validators.required],
+      'security-answer' : ['', Validators.required],
     }, {
       validator : PasswordMatch.MatchPassword
     })
@@ -44,6 +44,7 @@ export class AccountComponent implements OnInit {
   ngOnInit() {
     // Get customer ID
     this.localStorage.getItem('user').subscribe(customerData => {
+      this.customer = customerData;
       this.customerId = customerData.CustomerId;
       this.patchAccountForm(customerData);
     })
@@ -71,8 +72,6 @@ export class AccountComponent implements OnInit {
   }
 
   public saveAccountDetails(formData){
-    console.log(formData);
-
     if(formData.valid){
       let updateCustomer : RailsUpdate = {
         customer_info : {
@@ -80,25 +79,22 @@ export class AccountComponent implements OnInit {
           EMail : formData.controls.email.value,
           FirstName : formData.controls['first-name'].value,
           LastName : formData.controls['last-name'].value,
-          Addresses : [{
-            AddressLine1 : formData.controls['full-address'].controls['address'].value,
-            AddressLine2 : formData.controls['full-address'].controls['address2'].value,
-            City : formData.controls['full-address'].controls['city'].value,
-            State : formData.controls['full-address'].controls['state'].value,
-            Postal : formData.controls['full-address'].controls['zip'].value,
-            IsDefault : true
-          }]
+          Addresses : []
         }
       };
 
       this.customerService.updateCustomerInfo(updateCustomer).subscribe(data => {
-        console.log(data);
+        this.customerService.getCustomerInfo(this.customerId).subscribe(updatedCustomerInfo => {
+          this.patchAccountForm(updatedCustomerInfo);
+          this.localStorage.setItem('user', updatedCustomerInfo).subscribe(() => {});
+          this.editing = false;
+        })
       }, error => {
-        console.log(error);
+        // Update failed for some reason. Show error, return form to initial state
+        this.errorOccurred = true;
+        this.patchAccountForm(this.customer);
       })
     }
-
-    this.editing = false;
   }
 
   public saveNewPassword(formData){
