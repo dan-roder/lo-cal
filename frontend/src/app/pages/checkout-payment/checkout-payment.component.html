@@ -102,13 +102,13 @@
                 <div class="radio-options flex-between">
                   <div class="option">
                     <label for="cc">
-                      <input type="radio" name="payment-choice" id="cc" value="1" formControlName="payment-choice"  [(ngModel)]="paymentChoice" (ngModelChange)="paymentChoiceChanged()">
+                      <input type="radio" name="payment-choice" id="cc" value="1" formControlName="payment-choice"  [(ngModel)]="paymentChoice">
                       <span class="semi-bold">Pay now with a credit card</span>
                     </label>
                   </div>
                   <div class="option">
                     <label for="pay-at-store">
-                      <input type="radio" name="payment-choice" id="pay-at-store" value="2" formControlName="payment-choice" [(ngModel)]="paymentChoice" (ngModelChange)="paymentChoiceChanged()">
+                      <input type="radio" name="payment-choice" id="pay-at-store" value="2" formControlName="payment-choice" [(ngModel)]="paymentChoice">
                       <span class="semi-bold">Pay at the store</span>
                     </label>
                   </div>
@@ -140,7 +140,7 @@
                   </div>
                 </div>
                 <div class="next-step black-button step-4-button">
-                  <button [disabled]="!paymentForm.valid"(click)="nextStep()">Next Step</button>
+                  <button [disabled]="(!paymentForm.valid && paymentChoice !== '2')"(click)="nextStep()">Next Step</button>
                 </div>
               </form>
             </div>
@@ -152,8 +152,8 @@
             <div class="step-wrapper">
               <p class="question semi-bold">Your total: {{ currentOrder?.TotalAmount | currency }}</p>
             </div>
-            <div class="red-button small-text">
-              <button [disabled]="!timeForm.valid && !paymentForm.valid && !contactInfoForm.valid">Place Order Now</button>
+            <div class="red-button small-text" [ngClass]="processing ? 'loading' : ''">
+              <button [disabled]="!timeForm.valid && !paymentForm.valid && !contactInfoForm.valid" (click)="submitOrder()">Place Order Now</button>
             </div>
             <p class="terms-and-conditions small-text">
               By placing your order you agree to our Terms of Conditions. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vehicula ac orci sed venenatis. Phasellus venenatis blandit nulla non pretium. Sed id metus non nisi pulvinar dictum.
@@ -191,8 +191,9 @@
               <span class="value semi-bold">{{ currentOrder?.TotalAmount | currency }}</span>
             </div>
 
-            <div class="red-button full-width-button small-text">
-              <button [disabled]="!timeForm.valid && !paymentForm.valid && !contactInfoForm.valid">Place Order Now</button>
+            <div class="red-button full-width-button small-text" [ngClass]="processing ? 'loading' : ''">
+              <!-- <button [disabled]="!timeForm.valid && !paymentForm.valid && !contactInfoForm.valid" (click)="submitOrder()">Place Order Now</button> -->
+              <button (click)="submitOrder()">Place Order Now</button>
             </div>
             <p class="go-back text-center">
               <a href="">or go back to edit your order</a>
