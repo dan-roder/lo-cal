@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { OrderService } from '@local/services/order.service';
-import { Order } from '@local/models/Order';
+import { Order, InSubmitOrderInformation } from '@local/models/Order';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
@@ -18,6 +18,7 @@ export class CheckoutPaymentComponent implements OnInit {
   private selectedTime : string = '';
   public sectionOpen : number = 1;
   public paymentChoice : string = '1';
+  public processing : boolean = false;
 
   constructor(private orderService: OrderService, private fb: FormBuilder) {
     this.contactInfoForm = fb.group({
@@ -70,18 +71,7 @@ export class CheckoutPaymentComponent implements OnInit {
     this.sectionOpen++;
   }
 
-  public paymentChoiceChanged(){
-    console.log(this.paymentChoice);
-    // User chose pay at store. set payment form to valid
-    if(this.paymentChoice === '2'){
-      this.paymentForm.clearValidators();
-    }
-    else{
-
-    }
-  }
-
-  timeSelectChanged(){
+  public timeSelectChanged(){
     console.log(this.timeSelectBox);
     switch(this.timeSelectBox){
       case 'next':
@@ -91,6 +81,32 @@ export class CheckoutPaymentComponent implements OnInit {
         this.selectedTime = this.timeSelectBox;
       break;
     }
+  }
+
+  public submitOrder(){
+    console.log(this.currentOrder);
+    // 1. Start spinner
+    this.processing = true;
+    // 2. Retrieve order
+    // TEMPORARY
+    this.orderService.getPreSavedOrder().subscribe(order => {
+      let orderId = order.OrderId;
+
+      this.orderService.getFullOrderDetails(orderId).subscribe(fullOrder => {
+        console.log(fullOrder);
+        this.constructOrder(fullOrder);
+      })
+    })
+    // 3. Construct order with all form details
+    //
+  }
+
+  protected constructOrder(order: Order){
+    // let inSubmitOrderInfo : InSubmitOrderInformation = {
+    //   PaymentMethods : {
+
+    //   }
+    // }
   }
 
 }
