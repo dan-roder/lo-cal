@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { LocalStorage } from '@ngx-pwa/local-storage';
-import { RailsOrder, InOrderLineItem, Order } from '@local/models/Order';
+import { RailsOrder, InOrderLineItem, Order, OrderResults } from '@local/models/Order';
 import { LineItem } from '@local/models/LineItem';
 import { Config } from '@local/utils/constants';
 import * as moment from 'moment';
@@ -64,13 +64,13 @@ export class OrderService {
     });
   }
 
-  public getPreSavedOrder(){
+  public getPreSavedOrder(): Observable<OrderResults>{
     return this.localStorage.getItem('order').map(orderDetails => {
       return orderDetails;
     })
   }
 
-  public getFullOrderDetails(orderId: number){
+  public getFullOrderDetails(orderId: number): Observable<Order>{
     let orderEndpoint = this.config.railsOrderEndpoint + `/${this.config.siteId}/${orderId}`;
     return this.httpClient.get(orderEndpoint).map(fullOrder => {
       this.currentOrder = fullOrder;
@@ -109,4 +109,6 @@ export class OrderService {
   set currentOrder(order){
     this._currentOrder = order;
   }
+
+  public submitOrder(order: )
 }
