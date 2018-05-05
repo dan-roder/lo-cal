@@ -110,5 +110,7 @@ export class OrderService {
     this._currentOrder = order;
   }
 
-  public submitOrder(order: )
+  public submitOrder(order: Order){
+
+  }
 }
