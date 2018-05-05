@@ -134,6 +134,6 @@ export interface ComboItem{
 }
 
 export interface RailsOrder{
-  order : InOrder;
+  order : InSubmitOrderInformation;
 }
 
