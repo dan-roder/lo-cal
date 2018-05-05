@@ -38,7 +38,7 @@ export interface Order{
   ReferenceNumber?: number; //  (integer , optional) : Gets or sets the reference number. ,
   ComboItems?: Array<ComboItem>; // (array[ComboItem] , optional) : A list of combo items in the order ,
   SVCAmount?: number; //  (number , optional) : Stored value card amount applied to the order ,
-  Payments?: Array<ExternalPayment>; // (array[ExternalPayment] , optional) : List of payments assigned to this order ,
+  Payments?: Array<any>; // (array[ExternalPayment] , optional) : List of payments assigned to this order ,
   NextOrderOfProcessing?: number; //  (integer , optional) : The order of processing that will be given to the next payment added to the order
 }
 
@@ -57,10 +57,6 @@ export interface OrderWebSalesGroup{
   SalesItemId?: number; // (integer , optional) : The item id in the SalesItemId table
 }
 
-export interface ExternalPayment{
-
-}
-
 export interface OrderResults{
   ResultCode: string; // (enum , optional) = ['Success|0' or 'GeneralFailure|1' or 'SiteCommunicationFailure|2' or 'ItemFailures|3' or 'PromiseTimeChanged|4' or 'OrderMinimumNotMet|5' or 'FailedToStartOrder|6' or 'FailedToUpdateOrder|7' or 'InvalidSiteOrOrder|11' or 'SiteNotAcceptingOrders|12' or 'CapacityExceeded|13' or 'InvalidPaymentInformation|14' or 'FailedToSubmitOrder|15' or 'UnsupportedOrderMode|16'] : Gets or sets the ResultCode ,
   OrderId: number; // (integer , optional) : ID of newly created order. ,
@@ -73,27 +69,28 @@ export interface OrderResults{
   AmountDueAtSite: number; // (number , optional) : The payment amount due at the site upon pickup
 }
 
-export interface InOrder{
-  SiteId: number; // (integer Required Range: inclusive between 1 and 9.22337203685478E+18) : The site that the order is being submitted to, value retrieved from get sites ,
-  OrderId?: number; // (integer Range: inclusive between 0 and 9.22337203685478E+18, optional) : Nullable The order id that you are updating, when creating a new order pass in null ,
-  DesignId?: number; //  (integer , optional) : The web design id that user is ordering from ,
-  MenuId?: number; //  (integer , optional) : The menu that the user is ordering from ,
-  PromiseDateTime: string; // (string Required) : When the order is ready for pick up by the customer, and it follows Prep Time and Capacity management from ATO, Do not send timezone info with this ,
-  LineItems?: Array<InOrderLineItem>; // [(InOrderLineItem)] , optional) : The list of items that the customer is ordering form ,
-  ComboItems?: Array<ComboItem>; // [(ComboItem)] , optional) : Distinct List of items in a websales group( i.e Combo Items) ,
-  OrderMode: string; // (enum Required) = ['Pickup' or 'Delivery' or 'CurbSide'] : How the food is being ordered ,
-  UpdateTimeDisabled?: boolean; // (boolean , optional) : Nullable Drives whether we increment the PromiseTime if the user doesn’t submit the order before the promise time, If no value is provided defaults to false ,
-  PaymentMode: string; // (enum Required) = ['Unknown' or 'ProvidedToSite' or 'PaymentDeferred' or 'PaidOnline'] : How the customer is going to pay for the order ,
-  OrderSource?: string; // (enum , optional) = ['Web' or 'Mobile' or 'MobileWeb'] : Nullable How the customer is placing the order ,
-  Destination?: string; // (enum , optional) = ['DestinationNull' or 'MobileDineIn' or 'MobileCarryOut' or 'MobileCurbSide' or 'MobileDriveThru' or 'CateringPickup' or 'CateringDelivery'] : Nullable Identifies the location in store to deliver an order ,
-  ShouldManualRelease?: boolean; // (boolean , optional) : States whether an order should automatically be released at the time given, or if it should be held for manual release ,
-  TaxJurisdictionId?: number; //  (integer , optional) : Identifies the tax jurisdiction that is used to calculated taxes ,
-  Customer: OrderCustomer; // (OrderCustomer Required) : The customer that is placing the order, If the customer already exists send up the customer's First and Last name also ,
-  CustomerAddressForOrder?: any; // (CustomerAddress , optional) : Nullable The delivery address if the order is to be delivered ,
-  SpecialInstructions?: number; //  (string , optional) : Instructions that the customer wants to give the site about the order ,
-  LoyaltyNumber?: number; //  (string , optional) : Nullable The loyalty card number for the order ,
-  CompId?: number; //  (integer , optional) : Nullable The Comp that is to be placed on the order ,
-  ReferenceNumber?: number; //  (integer , optional) : Nullable An open field for you want to attach to the order, for example a third party id for this order
+export interface InSubmitOrderInformation{
+  PaymentMethods: Payment; // [(Payment)] Required) : Information describing the Payment Method ,
+  Vehicle?: Vehicle; // (Vehicle , optional) : Information describing the Vehicle ,
+  LoyaltyNumber?: string; // (string , optional) ,
+  SpecialInstructions?: string; // (string , optional) ,
+  SendEmail?: boolean; // (boolean , optional) ,
+  FavoriteName?: string; // (string , optional) ,
+  UpdateTimeDisabled?: boolean; // (boolean , optional) ,
+  EnforceATODeposit?: boolean; // (boolean , optional) ,
+  ASAPDeliveryTimeEnabled?: boolean; // (boolean , optional) : Information that sets the delivery time to ASAP, this bypasses the earlier available time
+}
+
+export interface Payment{
+  PaymentMethod: string; // 0 - SecureCreditCardPayment (saved), 1 - ClearCreditCardPayment, 2 - PayAtSitePayment
+  AccountId?: number; // Used for SecureCreditCardPayment
+  AccountNumber?: number; // Credit card number
+}
+
+export interface Vehicle{
+  Make?: string; // (string , optional) : The make of the vehicle ,
+  Model?: string; // (string , optional) : The model of the vehicle ,
+  Color?: string; // (string , optional) : The color of the vehicle
 }
 
 export interface InOrderLineItem{
