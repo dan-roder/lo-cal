@@ -100,4 +100,7 @@ add_filter( 'get_the_archive_title', function ($title) {
   return $title;
 
 });
+
+// Enable the option edit in rest
+add_filter( 'acf/rest_api/field_settings/edit_in_rest', '__return_true' );
 ?>
