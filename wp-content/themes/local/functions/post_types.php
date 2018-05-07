@@ -304,7 +304,7 @@ add_filter( 'post_type_link', function( $link, $post ) {
 	return $link;
 }, 10, 2 );
 
-register_meta( 'menu_item', 'menu_category', [ 'show_in_rest' => true ] );  ?>
+register_meta( 'menu_item', 'menu_category', [ 'show_in_rest' => true ] );
 
 add_action( 'init', 'blog_post', 0 );
 add_action( 'init', 'menu_item', 0 );
