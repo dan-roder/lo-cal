@@ -101,6 +101,9 @@ add_filter( 'get_the_archive_title', function ($title) {
 
 });
 
+// Enable the option show in rest
+add_filter( 'acf/rest_api/field_settings/show_in_rest', '__return_true' );
+
 // Enable the option edit in rest
 add_filter( 'acf/rest_api/field_settings/edit_in_rest', '__return_true' );
 ?>
