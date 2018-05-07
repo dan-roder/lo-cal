@@ -24,6 +24,7 @@
     "@angular/router": "^5.2.9",
     "@ngx-pwa/local-storage": "^5.2.0",
     "core-js": "^2.5.4",
+    "credit-card-type": "^6.3.0",
     "font-awesome": "^4.7.0",
     "lodash": "^4.17.5",
     "moment": "^2.22.1",
