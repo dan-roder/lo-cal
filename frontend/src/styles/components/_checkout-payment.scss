@@ -114,7 +114,7 @@
           width: 1px;
 
           &:checked + span::before{
-            background: $black;
+            @include svg-bg(icons/checkmark);
           }
 
           // &:focus + span::after{
