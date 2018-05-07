@@ -119,11 +119,11 @@
                       <label for="card-number" class="visuallyhidden">Credit Card Number</label>
                       <input type="text" name="card-number" id="card-number" formControlName="card-number" placeholder="Credit Card Number*" [ngClass]="{'has-error':!paymentForm.controls['card-number'].valid && submittedOnce}" #ccNumber ([ngModel])="cardType" (ngModelChange)="detectCardType(ccNumber.value)">
                       <div class="card-sprite-wrapper">
-                        <div class="card visa" [ngClass]="activeCardClass === 'visa' ? 'active' : ''"></div>
-                        <div class="card master-card" [ngClass]="activeCardClass === 'master-card' ? 'active' : ''"></div>
-                        <div class="card american-express" [ngClass]="activeCardClass === 'american-express' ? 'active' : ''"></div>
-                        <div class="card discover" [ngClass]="activeCardClass === 'discover' ? 'active' : ''"></div>
-                        <div class="card diners-club" [ngClass]="activeCardClass === 'diners-club' ? 'active' : ''"></div>
+                        <div class="card visa" [ngClass]="activeCardClass === 'visa' ? 'active' : ''" title="Visa"></div>
+                        <div class="card master-card" [ngClass]="activeCardClass === 'master-card' ? 'active' : ''" title="MasterCard"></div>
+                        <div class="card american-express" [ngClass]="activeCardClass === 'american-express' ? 'active' : ''" title="American Express"></div>
+                        <div class="card discover" [ngClass]="activeCardClass === 'discover' ? 'active' : ''" title="Discover"></div>
+                        <div class="card diners-club" [ngClass]="activeCardClass === 'diners-club' ? 'active' : ''" title="Diners Club"></div>
                       </div>
                       <div class="error-message" *ngIf="!paymentForm.controls['card-number'].valid && submittedOnce">This field is required.</div>
                     </div>
