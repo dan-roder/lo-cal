@@ -67,6 +67,7 @@ import { CheckoutPaymentComponent } from './pages/checkout-payment/checkout-paym
 
 // Modules
 import { ResponsiveModule } from 'ng2-responsive';
+import { MonthMaskDirective } from './shared/directives/month-mask.directive';
 
 
 @NgModule({
@@ -102,7 +103,8 @@ import { ResponsiveModule } from 'ng2-responsive';
     InputSwitcherDirective,
     CheckoutLoginComponent,
     CheckoutReviewComponent,
-    CheckoutPaymentComponent
+    CheckoutPaymentComponent,
+    MonthMaskDirective
   ],
   imports: [
     BrowserModule,
