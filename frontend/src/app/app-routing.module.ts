@@ -42,7 +42,7 @@ const routes: Routes = [
       {
         path: 'checkout', component: CheckoutLoginComponent
       },
-      { path: 'checkout/review', component: CheckoutReviewComponent, canActivate: [OrderGuard] },
+      { path: 'checkout/review', component: CheckoutReviewComponent, canActivate: [AccessGuard] },
       { path: 'checkout/payment', component: CheckoutPaymentComponent, canActivate: [OrderGuard] }
     ]
   },
