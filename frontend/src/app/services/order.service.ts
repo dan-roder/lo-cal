@@ -21,9 +21,8 @@ export class OrderService {
 
   constructor(private httpClient: HttpClient, private localStorage: LocalStorage, private config: Config, private customerService: CustomerService) {
     this.customerService.isLoggedIn().subscribe(customerData => {
-      this.userId = customerData.CustomerId;
-
-      if(customerData !== null || customerData !== undefined){
+      if(customerData !== null && customerData !== undefined){
+        this.userId = customerData.CustomerId;
         this.customerInfo = customerData;
       }
     })
