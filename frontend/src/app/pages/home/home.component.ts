@@ -18,10 +18,8 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.wpService.getPage(4).subscribe(page => {
-      console.log(page);
       this.pageContent = page;
       this.acf = page.acf;
-      console.log(this.acf);
 
       if(page.featured_media != 0){
         this.wpService.getMedia(page.featured_media).subscribe(media => this.featuredImage = media);
