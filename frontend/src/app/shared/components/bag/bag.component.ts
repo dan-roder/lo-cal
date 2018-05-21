@@ -60,13 +60,4 @@ export class BagComponent implements OnInit {
     return this.bagService.totalPrice;
   }
 
-  public createOrder(){
-    this.orderService.putOrder(this.bagItems).subscribe(response => {
-      if(response){
-        // Route to checkout
-        this.router.navigate(['/checkout']);
-      }
-    });
-  }
-
 }
