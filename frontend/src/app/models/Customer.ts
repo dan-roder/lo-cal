@@ -54,6 +54,12 @@ export interface InLoginUpdate{
   NewAnswer?: string; // (string , optional)
 }
 
+export interface GuestCustomer{
+  FirstName : string;
+  LastName : string;
+  EMail : string;
+}
+
 export interface OrderCustomer{
 
 }
