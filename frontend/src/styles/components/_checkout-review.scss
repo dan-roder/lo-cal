@@ -36,14 +36,6 @@
     margin: 40px 0 50px;
     @include fontsize(13);
 
-    .flex-between{
-      padding: 8px 0;
-    }
-
-    .subtotal{
-      border-top: 1px dotted;
-    }
-
     .total{
       @include fontsize(15);
       border-top: 1px solid;
@@ -53,4 +45,11 @@
       @include fontsize(14);
     }
   }// .pricing-details
+
+  .order-summary{
+    form{
+      border-top: 1px dotted;
+      margin: 0 0 20px;
+    }
+  }
 }// .checkout-wrapper
