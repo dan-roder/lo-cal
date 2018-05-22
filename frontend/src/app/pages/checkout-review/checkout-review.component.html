@@ -52,8 +52,8 @@
                 </div>
               </div><!-- /.edit-pane -->
             </div><!-- /.item -->
-            <div class="red-button">
-              <a routerLink="/checkout/payment">Proceed to Checkout</a>
+            <div class="red-button small-text">
+              <button (click)="putOrder()">Proceed to Checkout</button>
             </div>
           </div><!-- /.review-item-card -->
         </div>
@@ -99,8 +99,8 @@
               <span class="value semi-bold">{{ allOrderDetails?.TotalAmount | currency }}</span>
             </div>
 
-            <div class="red-button full-width-button">
-              <a routerLink="/checkout/payment">Proceed to Checkout</a>
+            <div class="red-button full-width-button small-text">
+              <button (click)="putOrder()">Proceed to Checkout</button>
             </div>
           </div>
           <div class="location-details">
