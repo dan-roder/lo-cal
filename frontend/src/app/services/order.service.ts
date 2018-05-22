@@ -18,6 +18,7 @@ export class OrderService {
   private userId : string;
   private _customerInfo : Customer;
   public _currentOrder : Order;
+  private orderTime : any;
 
   constructor(private httpClient: HttpClient, private localStorage: LocalStorage, private config: Config, private customerService: CustomerService) {
     this.customerService.isLoggedIn().subscribe(customerData => {
@@ -32,25 +33,21 @@ export class OrderService {
     let orderEndpoint = this.config.railsOrderEndpoint + '/' + this.config.siteId;
     let order = this.constructOrderObject(bagItems);
 
-    console.log(order);
-
     return this.httpClient.put(orderEndpoint, order).map(response => {
       // Save order to localStorage
-      this.localStorage.setItem('order', response).subscribe(() => {});
+      this.localStorage.setItem('order', order).subscribe(() => {});
+
       return response;
     });
   }
 
   protected constructOrderObject(bagItems: Array<LineItem>){
-    // TODO: This will not work. Order fails if this time isn't retrieved from API
-    //  Need to find next available time
-    let now = moment().format('YYYY-MM-DDTHH:mm:ss');
 
     let order : RailsOrder = {
       order : {
         SiteId : this.config.siteId,
         MenuId : this.config.menuId,
-        PromiseDateTime : now,
+        PromiseDateTime : this.orderTime,
         LineItems : bagItems,
         Customer : this.customerInfo,
         OrderMode : 'Pickup',
@@ -82,8 +79,9 @@ export class OrderService {
   }
 
   public getNextAvailableTime(){
-    return this.httpClient.get(this.config.railsTimeEndpoint + '/1').map(times => {
-      return times;
+    return this.httpClient.get(this.config.railsTimeEndpoint + '/1').map(time => {
+      this.orderTime = time;
+      return time;
     })
   }
 
@@ -109,11 +107,7 @@ export class OrderService {
     return this._currentOrder;
   }
 
-  set currentOrder(order){
+  set currentOrder(order: Order){
     this._currentOrder = order;
-  }
-
-  public submitOrder(order: Order){
-
   }
 }
