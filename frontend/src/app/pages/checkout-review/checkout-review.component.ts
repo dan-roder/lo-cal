@@ -5,6 +5,7 @@ import { Config } from '@local/utils/constants';
 import { OrderService } from '@local/services/order.service';
 import { OrderResults, Order } from '@local/models/Order';
 import { Router } from '@angular/router';
+import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'lo-cal-checkout-review',
@@ -16,14 +17,25 @@ export class CheckoutReviewComponent implements OnInit {
   public envUrl : string = '';
   private currentOrder : any;
   public allOrderDetails : Order;
+  public timeForm : FormGroup;
+  public timeSelectBox : string;
+  private selectedTime : string = '';
+  public times : any;
 
   constructor(
     private bagService: BagService,
     private constants: Config,
     private orderService: OrderService,
-    private router: Router) { }
+    private router: Router,
+    private fb: FormBuilder) {
+      this.timeForm = fb.group({
+        'pickup-time' : ['', Validators.required]
+      })
+    }
 
   ngOnInit() {
+    // TODO: Retrieve times on init to populate dropdown
+    // this.retrievePickupTimes();
   }
 
   get bagItems(){
@@ -63,5 +75,30 @@ export class CheckoutReviewComponent implements OnInit {
         // this.router.navigate(['/checkout/payment']);
       }
     });
+  }
+
+  public timeSelectChanged(){
+    switch(this.timeSelectBox){
+      case 'next':
+        this.getNextAvailableTime();
+      break;
+      default:
+        this.selectedTime = this.timeSelectBox;
+      break;
+    }
+  }
+
+  private getNextAvailableTime(){
+    this.orderService.getNextAvailableTime().subscribe(nextTime => {
+      console.log(nextTime);
+      // this.selectedTime = nextTime;
+    })
+  }
+
+  private retrievePickupTimes(){
+    this.orderService.retrieveTimes('4').subscribe(times => {
+      this.times = times;
+      console.log(times);
+    })
   }
 }
