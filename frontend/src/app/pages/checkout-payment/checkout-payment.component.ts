@@ -76,7 +76,6 @@ export class CheckoutPaymentComponent implements OnInit {
   }
 
   public timeSelectChanged(){
-    console.log(this.timeSelectBox);
     switch(this.timeSelectBox){
       case 'next':
         this.getNextAvailableTime();
