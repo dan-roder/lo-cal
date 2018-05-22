@@ -44,6 +44,14 @@
     .red-button a{
       @include fontsize(14);
     }
+
+    .subtotal{
+      border-top: 1px dotted;
+    }
+
+    .flex-between{
+      padding: 5px 0;
+    }
   }// .pricing-details
 
   .order-summary{
