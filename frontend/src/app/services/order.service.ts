@@ -29,9 +29,11 @@ export class OrderService {
   }
 
   public putOrder(bagItems: Array<LineItem>): Observable<any>{
+    let orderEndpoint = this.config.railsOrderEndpoint + '/' + this.config.siteId;
     let order = this.constructOrderObject(bagItems);
 
-    let orderEndpoint = this.config.railsOrderEndpoint + '/' + this.config.siteId;
+    console.log(order);
+
     return this.httpClient.put(orderEndpoint, order).map(response => {
       // Save order to localStorage
       this.localStorage.setItem('order', response).subscribe(() => {});
@@ -40,7 +42,9 @@ export class OrderService {
   }
 
   protected constructOrderObject(bagItems: Array<LineItem>){
-    let now = moment().format('YYYY-MM-DDThh:mm:ss');
+    // TODO: This will not work. Order fails if this time isn't retrieved from API
+    //  Need to find next available time
+    let now = moment().format('YYYY-MM-DDTHH:mm:ss');
 
     let order : RailsOrder = {
       order : {
