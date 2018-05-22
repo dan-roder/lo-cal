@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { GuestCustomer } from '@local/models/Customer';
+import { Customer } from '@local/models/Customer';
 import { LocalStorage } from '@ngx-pwa/local-storage';
 import { Router, ActivatedRoute } from '@angular/router';
+import { OrderService } from '@local/services/order.service';
 
 @Component({
   selector: 'lo-cal-checkout-login',
@@ -16,7 +17,8 @@ export class CheckoutLoginComponent implements OnInit {
     private fb: FormBuilder,
     private localStorage: LocalStorage,
     private router: Router,
-    private route: ActivatedRoute) {
+    private route: ActivatedRoute,
+    private orderService: OrderService) {
     this.guestForm = fb.group({
       'first-name' : ['', Validators.required],
       'last-name' : ['', Validators.required],
@@ -29,10 +31,9 @@ export class CheckoutLoginComponent implements OnInit {
   }
 
   public checkoutAsGuest(formData){
-    console.log(formData);
     if(formData.valid){
       // Save customer as normal
-      let customer: GuestCustomer = {
+      let customer: Customer = {
         FirstName : formData.controls['first-name'].value,
         LastName : formData.controls['last-name'].value,
         EMail : formData.controls['email-address'].value
@@ -40,6 +41,7 @@ export class CheckoutLoginComponent implements OnInit {
 
       // Redirect to checkout review
       this.localStorage.setItem('user', customer).subscribe(() => {
+        this.orderService.customerInfo = customer;
         this.router.navigate([this.returnUrl]);
       });
     }
