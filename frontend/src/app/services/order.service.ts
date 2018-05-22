@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClientModule, HttpHeaders, HttpClient } from '@angular/common/http';
 import { LocalStorage } from '@ngx-pwa/local-storage';
 import { RailsOrder, InOrderLineItem, Order, OrderResults } from '@local/models/Order';
 import { LineItem } from '@local/models/LineItem';
