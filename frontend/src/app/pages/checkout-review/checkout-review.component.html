@@ -53,7 +53,7 @@
               </div><!-- /.edit-pane -->
             </div><!-- /.item -->
             <div class="red-button small-text">
-              <button (click)="putOrder()">Proceed to Checkout</button>
+              <button (click)="putOrder()" [disabled]="!timeForm.valid">Proceed to Checkout</button>
             </div>
           </div><!-- /.review-item-card -->
         </div>
@@ -86,21 +86,18 @@
         </div><!-- /.itemized-summary -->
         <div class="pricing-and-location">
           <div class="pricing-details">
-            <div class="flex-between subtotal">
-              <span class="label">Subtotal</span>
-              <span class="value">{{ allOrderDetails?.SubTotalAmount | currency }}</span>
-            </div>
-            <div class="flex-between">
-              <span class="label">Tax</span>
-              <span class="value">{{ allOrderDetails?.TaxAmount | currency }}</span>
-            </div>
-            <div class="flex-between total">
-              <span class="label semi-bold">Total</span>
-              <span class="value semi-bold">{{ allOrderDetails?.TotalAmount | currency }}</span>
-            </div>
+            <form action="" class="lo-cal-form" [formGroup]="timeForm">
+              <label for="pickup-time" class="pickup-time-label">Select a time to pickup your order?</label>
+              <select name="pickup-time"  id="pickup-time" formControlName="pickup-time" class="pickup-time" [(ngModel)]="timeSelectBox" (ngModelChange)="timeSelectChanged()">
+                <option value="">-- Select --</option>
+                <option value="next">Next Available</option>
+              </select>
+            </form>
+
+            <!-- ADD Location to show next-available time before submission -->
 
             <div class="red-button full-width-button small-text">
-              <button (click)="putOrder()">Proceed to Checkout</button>
+              <button (click)="putOrder()" [disabled]="!timeForm.valid">Proceed to Checkout</button>
             </div>
           </div>
           <div class="location-details">
