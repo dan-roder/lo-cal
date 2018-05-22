@@ -50,6 +50,14 @@
     form{
       border-top: 1px dotted;
       margin: 0 0 20px;
+
+      select.pickup-time{
+        background: $white;
+        border: 1px solid $e1;
+        border-radius: 0;
+        height: 35px;
+        width: 100%;
+      }
     }
   }
 }// .checkout-wrapper
