@@ -57,17 +57,6 @@
   }
 
   .lo-cal-form{
-    select.pickup-time{
-      background: $white;
-      border: 1px solid $e1;
-      border-radius: 0;
-      height: 35px;
-      width: 100%;
-
-      @include breakpoint($bp-680){
-        width: 50%;
-      }
-    }
 
     .pickup-time-label{
       @include fontsize(16);
