@@ -14,10 +14,7 @@ export class CheckoutPaymentComponent implements OnInit {
   public contactInfoForm : FormGroup;
   public submittedOnce : boolean = false;
   public paymentForm : FormGroup;
-  public timeForm : FormGroup;
-  public times : any;
-  public timeSelectBox : string;
-  private selectedTime : string = '';
+  public pickupForm : FormGroup;
   public sectionOpen : number = 1;
   public paymentChoice : string = '1';
   public processing : boolean = false;
@@ -38,8 +35,7 @@ export class CheckoutPaymentComponent implements OnInit {
       'name-on-card' : [null, Validators.required],
       'cvv' : [null, [Validators.required, Validators.pattern('^[0-9]{3,4}$')]],
     });
-    this.timeForm = fb.group({
-      'pickup-time' : ['', Validators.required],
+    this.pickupForm = fb.group({
       'pickup-selection' : ['', Validators.required],
       'vehicle-make' : [null],
       'vehicle-model' : [null],
@@ -53,37 +49,12 @@ export class CheckoutPaymentComponent implements OnInit {
     // this.retrievePickupTimes();
   }
 
-  private getNextAvailableTime(){
-    this.orderService.getNextAvailableTime().subscribe(nextTime => {
-      console.log(nextTime);
-      // this.selectedTime = nextTime;
-    })
-  }
-
-  private retrievePickupTimes(){
-    this.orderService.retrieveTimes('4').subscribe(times => {
-      this.times = times;
-      console.log(times);
-    })
-  }
-
   public editSection(num: number){
     this.sectionOpen = (this.sectionOpen === num) ? -1 : num;
   }
 
   public nextStep(){
     this.sectionOpen++;
-  }
-
-  public timeSelectChanged(){
-    switch(this.timeSelectBox){
-      case 'next':
-        this.getNextAvailableTime();
-      break;
-      default:
-        this.selectedTime = this.timeSelectBox;
-      break;
-    }
   }
 
   public submitOrder(){
