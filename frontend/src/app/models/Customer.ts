@@ -14,7 +14,7 @@ export interface Customer{
   FavoriteSiteId?: number; //  (integer , optional) : The site id that the customer likes the most ,
   LoyaltyCardNumber?: string; //  (string , optional) : The customer's loyalty number ,
   SecondaryEmailAddress?: string; //  (string , optional) : The customer's second email address ,
-  Addresses: Array<CustomerAddress>; // (array[CustomerAddress] Required) : A collection of addresses for this customer ,
+  Addresses?: Array<CustomerAddress>; // (array[CustomerAddress] Required) : A collection of addresses for this customer ,
   Birthday?: string; //  (string , optional) : Get or set the Birthday property ,
   LoyaltyZipCode?: string; //  (string , optional) : Get or set the LoyaltyZipCode property ,
   FacebookId?: number; //  (integer , optional) : Get or sets facebookid property
@@ -52,12 +52,6 @@ export interface InLoginUpdate{
   NewPassword: string; // (string , optional) ,
   NewSecurityQuestion?: string; // (string , optional) ,
   NewAnswer?: string; // (string , optional)
-}
-
-export interface GuestCustomer{
-  FirstName : string;
-  LastName : string;
-  EMail : string;
 }
 
 export interface OrderCustomer{
