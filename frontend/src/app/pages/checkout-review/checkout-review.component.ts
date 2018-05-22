@@ -4,6 +4,7 @@ import { LineItem } from '@local/models/LineItem';
 import { Config } from '@local/utils/constants';
 import { OrderService } from '@local/services/order.service';
 import { OrderResults, Order } from '@local/models/Order';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'lo-cal-checkout-review',
@@ -16,21 +17,13 @@ export class CheckoutReviewComponent implements OnInit {
   private currentOrder : any;
   public allOrderDetails : Order;
 
-  constructor(private bagService: BagService, private constants: Config, private orderService: OrderService) { }
+  constructor(
+    private bagService: BagService,
+    private constants: Config,
+    private orderService: OrderService,
+    private router: Router) { }
 
   ngOnInit() {
-    // this.envUrl = this.constants.wordpressApiUrl
-
-    this.orderService.getPreSavedOrder().subscribe(orderResult => {
-      this.currentOrder = orderResult;
-      console.log(orderResult);
-      let orderId = orderResult.OrderId;
-      // Retrieve full order details from NCR
-      this.orderService.getFullOrderDetails(orderId).subscribe(orderDetails => {
-        console.log(orderDetails);
-        this.allOrderDetails = orderDetails;
-      });
-    });
   }
 
   get bagItems(){
@@ -61,5 +54,14 @@ export class CheckoutReviewComponent implements OnInit {
     }
   }
 
-
+  public putOrder(){
+    // TODO: See order service, need to retrieve next available time before putting order
+    this.orderService.putOrder(this.bagItems).subscribe(response => {
+      if(response){
+        console.log(response);
+        // Route to checkout
+        // this.router.navigate(['/checkout/payment']);
+      }
+    });
+  }
 }
