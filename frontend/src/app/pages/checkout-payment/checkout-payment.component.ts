@@ -4,6 +4,9 @@ import { Order, InSubmitOrderInformation } from '@local/models/Order';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import * as ccinfo from 'credit-card-type';
 import { Config } from '@local/utils/constants';
+import { CustomerService } from '@local/services/customer.service';
+import { Customer } from '@local/models/Customer';
+import * as _ from 'lodash';
 
 @Component({
   selector: 'lo-cal-checkout-payment',
@@ -20,8 +23,11 @@ export class CheckoutPaymentComponent implements OnInit {
   public processing : boolean = false;
   public cardType : number = undefined;
   public activeCardClass : string = '';
+  public currentCustomer : Customer;
+  public orderForDisplay : Array<any>;
 
-  constructor(private orderService: OrderService, private fb: FormBuilder, private constants: Config) {
+
+  constructor(private orderService: OrderService, private fb: FormBuilder, private constants: Config, private customerService: CustomerService) {
     this.contactInfoForm = fb.group({
       'first-name' : [null, Validators.required],
       'last-name' : [null, Validators.required],
@@ -44,9 +50,20 @@ export class CheckoutPaymentComponent implements OnInit {
   }
 
   ngOnInit() {
-    // This returns undefined if page is not accessed from review screen
-    this.currentOrder = this.orderService.currentOrder;
-    // this.retrievePickupTimes();
+    // Get current customer info. Patch contact form
+    this.customerService.isLoggedIn().subscribe(customer => {
+      this.patchContactForm(customer);
+    })
+
+    // Get Full Order Details from API
+    this.orderService.getPreSavedOrder().subscribe(order => {
+      let orderId = order.OrderId;
+
+      this.orderService.getFullOrderDetails(orderId).subscribe(fullOrder => {
+        this.calculateTotal(fullOrder);
+        this.currentOrder = fullOrder;
+      })
+    });
   }
 
   public editSection(num: number){
@@ -70,7 +87,7 @@ export class CheckoutPaymentComponent implements OnInit {
         this.currentOrder = fullOrder;
         this.constructOrder(fullOrder);
       })
-    })
+    });
     // 3. Construct order with all form details
     //
   }
@@ -90,8 +107,6 @@ export class CheckoutPaymentComponent implements OnInit {
 
     console.log(orderForApi);
     // Order object with payment has been created, submit to API
-
-
   }
 
   protected constructClearCreditCardPayment(): InSubmitOrderInformation{
@@ -123,11 +138,46 @@ export class CheckoutPaymentComponent implements OnInit {
     return inSubmitOrderInfo;
   }
 
+  protected calculateTotal(fullOrder){
+    let orderArray = Array();
+
+    _.forEach(fullOrder.LineItems, function(value, key){
+      let initialPrice = value.UnitPrice;
+      let addOnPrice = 0;
+      let modArray = Array();
+      _.forEach(value.Modifiers, function(value, key){
+        addOnPrice += (value.ExtendedPrice > 0) ? value.ExtendedPrice : 0;
+        let modOject = {
+          'name' : value.Name
+        }
+        modArray.push(modOject);
+      });
+      let finalPrice = initialPrice + addOnPrice;
+      let obj = {
+        'name' : value.Name,
+        'fullPrice' : finalPrice,
+        'quantity' : value.Quantity,
+        'modifiers' : modArray
+      }
+      orderArray.push(obj);
+    });
+
+    this.orderForDisplay = orderArray;
+  }
+
   public detectCardType(val){
     let cardType = ccinfo(val);
     this.activeCardClass = (val.length > 0) ? cardType[0].type : '';
     let cardNumber : number = (val.length > 0) ? this.constants.paymentTypeMap[cardType[0].niceType] : undefined;
     this.cardType = cardNumber;
+  }
+
+  private patchContactForm(customer: Customer){
+    this.contactInfoForm.patchValue({
+      'first-name' : customer.FirstName,
+      'last-name' : customer.LastName,
+      'email' : customer.EMail
+    })
   }
 
 }
