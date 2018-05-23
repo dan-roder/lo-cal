@@ -166,15 +166,15 @@
       <div class="order-summary">
         <div class="itemized-summary">
           <h4>Order Summary</h4>
-          <div class="item flex-between" *ngFor="let menuItem of currentOrder?.LineItems">
+          <div class="item flex-between" *ngFor="let menuItem of orderForDisplay">
             <div class="item-specifics">
-              <div class="title semi-bold"><span class="quantity">{{ menuItem?.Quantity }} x</span> <span class="item-name">{{ menuItem?.Name }}</span></div>
-              <div class="additions" *ngIf="menuItem?.Modifiers">
-                <span class="modifier" *ngFor="let mod of menuItem?.Modifiers">{{ mod?.Name }}</span>
+              <div class="title semi-bold"><span class="quantity">{{ menuItem?.quantity }} x</span> <span class="item-name">{{ menuItem?.name }}</span></div>
+              <div class="additions" *ngIf="menuItem?.modifiers">
+                <span class="modifier" *ngFor="let mod of menuItem?.modifiers">{{ mod?.name }}</span>
               </div>
             </div>
             <div class="item-price">
-              <span class="price">{{ menuItem?.ExtendedPrice | currency }}</span>
+              <span class="price">{{ menuItem?.fullPrice | currency }}</span>
             </div>
           </div>
         </div><!-- /.itemized-summary -->
