@@ -95,6 +95,9 @@
             </form>
 
             <!-- ADD Location to show next-available time before submission -->
+            <div class="next-available-time" *ngIf="selectedTime">
+              <p><strong>Pickup at: </strong>{{ selectedTime | date:"E MMM d, h:mma" }}</p>
+            </div>
 
             <div class="red-button full-width-button small-text">
               <button (click)="putOrder()" [disabled]="!timeForm.valid">Proceed to Checkout</button>
