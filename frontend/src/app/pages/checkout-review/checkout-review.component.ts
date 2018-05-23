@@ -15,11 +15,10 @@ export class CheckoutReviewComponent implements OnInit {
   public _bagItems : Array<LineItem> = [];
   public isOpen: number = -1;
   public envUrl : string = '';
-  private currentOrder : any;
   public allOrderDetails : Order;
   public timeForm : FormGroup;
   public timeSelectBox : string;
-  private selectedTime : string = '';
+  private selectedTime : any;
   public times : any;
 
   constructor(
@@ -67,12 +66,10 @@ export class CheckoutReviewComponent implements OnInit {
   }
 
   public putOrder(){
-    // TODO: See order service, need to retrieve next available time before putting order
     this.orderService.putOrder(this.bagItems).subscribe(response => {
-      if(response){
-        console.log(response);
+      if(response.ResultCode === 0){
         // Route to checkout
-        // this.router.navigate(['/checkout/payment']);
+        this.router.navigate(['/checkout/payment']);
       }
     });
   }
@@ -90,15 +87,13 @@ export class CheckoutReviewComponent implements OnInit {
 
   private getNextAvailableTime(){
     this.orderService.getNextAvailableTime().subscribe(nextTime => {
-      console.log(nextTime);
-      // this.selectedTime = nextTime;
+      this.selectedTime = nextTime;
     })
   }
 
   private retrievePickupTimes(){
     this.orderService.retrieveTimes('4').subscribe(times => {
       this.times = times;
-      console.log(times);
     })
   }
 }
