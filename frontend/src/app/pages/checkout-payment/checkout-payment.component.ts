@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { OrderService } from '@local/services/order.service';
-import { Order, InSubmitOrderInformation } from '@local/models/Order';
+import { Order, InSubmitOrderInformation, RailsInSubmitOrder } from '@local/models/Order';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import * as ccinfo from 'credit-card-type';
 import { Config } from '@local/utils/constants';
@@ -82,8 +82,10 @@ export class CheckoutPaymentComponent implements OnInit {
     this.orderService.getPreSavedOrder().subscribe(order => {
       let orderId = order.OrderId;
 
+      // Retrieve order again to ensure local storage order wasn't manipulated
       this.orderService.getFullOrderDetails(orderId).subscribe(fullOrder => {
         console.log(fullOrder);
+
         this.currentOrder = fullOrder;
         this.constructOrder(fullOrder);
       })
@@ -105,8 +107,13 @@ export class CheckoutPaymentComponent implements OnInit {
       break;
     }
 
-    console.log(orderForApi);
+    let finalOrderForSubmission : RailsInSubmitOrder = {
+      submission : orderForApi
+    }
     // Order object with payment has been created, submit to API
+    this.orderService.submitOrder(finalOrderForSubmission, this.currentOrder.OrderId).subscribe(orderResults => {
+      console.log(orderResults);
+    });
   }
 
   protected constructClearCreditCardPayment(): InSubmitOrderInformation{
