@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClientModule, HttpHeaders, HttpClient } from '@angular/common/http';
 import { LocalStorage } from '@ngx-pwa/local-storage';
-import { RailsOrder, InOrderLineItem, Order, OrderResults } from '@local/models/Order';
+import { RailsOrder, InOrderLineItem, Order, OrderResults, InSubmitOrderInformation, RailsInSubmitOrder } from '@local/models/Order';
 import { LineItem } from '@local/models/LineItem';
 import { Config } from '@local/utils/constants';
 import * as moment from 'moment';
@@ -109,5 +109,11 @@ export class OrderService {
 
   set currentOrder(order: Order){
     this._currentOrder = order;
+  }
+
+  public submitOrder(order: RailsInSubmitOrder, orderId: number): Observable<any>{
+    return this.httpClient.post(this.config.railsOrderEndpoint + `/${this.config.siteId}/${orderId}`, order).map(orderResponse => {
+      return orderResponse;
+    })
   }
 }
