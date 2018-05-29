@@ -19,8 +19,6 @@ export class BagService {
   }
 
   public createLineItem ( passedMenuItem ){
-    console.log(passedMenuItem);
-
     // Send item to get Modifiers
     let modifiers = this.constructLineItemModifiers(passedMenuItem.Modifiers);
 
@@ -82,7 +80,6 @@ export class BagService {
       }
     });
 
-    console.log('returned modifier array', formattedLineItemModifierArray)
     return formattedLineItemModifierArray;
   }
 
