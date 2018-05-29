@@ -29,6 +29,7 @@ import { CreateAccountComponent } from './pages/create-account/create-account.co
 import { AccountComponent } from './pages/account/account.component';
 import { CheckoutLoginComponent } from './pages/checkout-login/checkout-login.component';
 import { CheckoutReviewComponent } from './pages/checkout-review/checkout-review.component';
+import { ConfirmationComponent } from './pages/confirmation/confirmation.component';
 
 // Shared Components
 import { HeaderComponent } from './shared/components/header/header.component';
@@ -70,6 +71,7 @@ import { ResponsiveModule } from 'ng2-responsive';
 import { MonthMaskDirective } from './shared/directives/month-mask.directive';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -104,7 +106,8 @@ import { MonthMaskDirective } from './shared/directives/month-mask.directive';
     CheckoutLoginComponent,
     CheckoutReviewComponent,
     CheckoutPaymentComponent,
-    MonthMaskDirective
+    MonthMaskDirective,
+    ConfirmationComponent
   ],
   imports: [
     BrowserModule,
