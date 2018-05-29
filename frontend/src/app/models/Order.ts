@@ -145,5 +145,5 @@ export interface RailsOrder{
 }
 
 export interface RailsInSubmitOrder{
-  submission : InSubmitOrderInformation
+  order_submission : InSubmitOrderInformation
 }
