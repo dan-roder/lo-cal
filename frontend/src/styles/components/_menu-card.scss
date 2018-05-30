@@ -44,7 +44,7 @@
       @include fontsize(18);
       @extend %sofia-semi-bold;
       letter-spacing: 1px;
-      @include svg-bg(svgs/right-arrow);
+      @include svg-bg(svgs/right-arrow-red);
       background-position: right center;
     }
 
@@ -239,7 +239,7 @@
       }
 
       a{
-        @include svg-bg(svgs/right-arrow);
+        @include svg-bg(svgs/right-arrow-red);
         background-position: right center;
         text-decoration: none;
         padding: 0 15px 0 0;
