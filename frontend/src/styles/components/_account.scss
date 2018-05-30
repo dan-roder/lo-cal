@@ -1,18 +1,24 @@
 .account-container{
-  display: flex;
-  justify-content: space-between;
+  @include breakpoint($bp-768){
+    display: flex;
+    justify-content: space-between;
+  }
 
   .account-section{
     margin: 0 0 30px;
   }
 
   .account-details{
-    width: 70%;
-    margin-right: 2%;
+    @include breakpoint($bp-768){
+      width: 70%;
+      margin-left: 4%;
+    }
   }
 
   .account-navigation{
-    width: 28%;
+    @include breakpoint($bp-768){
+      width: 26%;
+    }
   }
 
   .lo-cal-form.static{
