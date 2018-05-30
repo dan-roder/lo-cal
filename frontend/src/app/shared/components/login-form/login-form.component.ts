@@ -38,8 +38,11 @@ export class LoginFormComponent implements OnInit {
         }
       }
 
+      // Log In customer
       this.customerService.logIn(loginDetails).subscribe(customerId => {
+        // If successful, get all customer details
         this.customerService.getCustomerInfo(customerId).subscribe(customerInfo => {
+          // Set full user details to localStorage
           this.localStorage.setItem('user', customerInfo).subscribe(() => {
             this.router.navigate([this.returnUrl]);
           });
