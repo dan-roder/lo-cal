@@ -6,6 +6,8 @@ import { OrderService } from '@local/services/order.service';
 import { OrderResults, Order } from '@local/models/Order';
 import { Router } from '@angular/router';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
+import { Customer } from '@local/models/Customer';
+import { CustomerService } from '@local/services/customer.service';
 
 @Component({
   selector: 'lo-cal-checkout-review',
@@ -14,19 +16,20 @@ import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 export class CheckoutReviewComponent implements OnInit {
   public _bagItems : Array<LineItem> = [];
   public isOpen: number = -1;
-  public envUrl : string = '';
   public allOrderDetails : Order;
   public timeForm : FormGroup;
   public timeSelectBox : string;
   private selectedTime : any;
   public times : any;
+  public processing : boolean = false;
 
   constructor(
     private bagService: BagService,
     private constants: Config,
     private orderService: OrderService,
     private router: Router,
-    private fb: FormBuilder) {
+    private fb: FormBuilder,
+    private customerService: CustomerService) {
       this.timeForm = fb.group({
         'pickup-time' : ['', Validators.required]
       })
@@ -35,6 +38,11 @@ export class CheckoutReviewComponent implements OnInit {
   ngOnInit() {
     // TODO: Retrieve times on init to populate dropdown
     // this.retrievePickupTimes();
+
+    // Need to retrieve current customer so order PUT doesn't fail
+    this.customerService.getCurrentCustomer().subscribe(customerData => {
+      this.orderService.customerInfo = customerData;
+    })
   }
 
   get bagItems(){
@@ -66,10 +74,20 @@ export class CheckoutReviewComponent implements OnInit {
   }
 
   public putOrder(){
+    this.processing = true;
+
     this.orderService.putOrder(this.bagItems).subscribe(response => {
+      // TODO: Error checking for other result codes
       if(response.ResultCode === 0){
-        // Route to checkout
-        this.router.navigate(['/checkout/payment']);
+        // Save to LocalStorage and route to checkout
+        this.orderService.saveOrderToLocalStorage(response).subscribe(result => {
+          if(result){
+            this.router.navigate(['/checkout/payment']);
+          }
+        });
+      }
+      else{
+        console.log('purOrder: error', response);
       }
     });
   }
