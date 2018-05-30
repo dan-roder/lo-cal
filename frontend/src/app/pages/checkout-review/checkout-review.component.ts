@@ -19,7 +19,7 @@ export class CheckoutReviewComponent implements OnInit {
   public allOrderDetails : Order;
   public timeForm : FormGroup;
   public timeSelectBox : string;
-  private selectedTime : any;
+  public selectedTime : any;
   public times : any;
   public processing : boolean = false;
 
