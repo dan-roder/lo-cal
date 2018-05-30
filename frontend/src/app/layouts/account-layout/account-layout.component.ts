@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CustomerService } from '@local/services/customer.service';
 
 @Component({
   selector: 'lo-cal-account-layout',
@@ -6,9 +7,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AccountLayoutComponent implements OnInit {
 
-  constructor() { }
+  constructor(private customerService: CustomerService) { }
 
   ngOnInit() {
+  }
+
+  public logout(){
+    this.customerService.logOut();
   }
 
 }
