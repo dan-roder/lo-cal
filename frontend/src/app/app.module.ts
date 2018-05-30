@@ -30,6 +30,7 @@ import { AccountComponent } from './pages/account/account.component';
 import { CheckoutLoginComponent } from './pages/checkout-login/checkout-login.component';
 import { CheckoutReviewComponent } from './pages/checkout-review/checkout-review.component';
 import { ConfirmationComponent } from './pages/confirmation/confirmation.component';
+import { OrderHistoryComponent } from './pages/order-history/order-history.component';
 
 // Shared Components
 import { HeaderComponent } from './shared/components/header/header.component';
@@ -107,7 +108,8 @@ import { MonthMaskDirective } from './shared/directives/month-mask.directive';
     CheckoutReviewComponent,
     CheckoutPaymentComponent,
     MonthMaskDirective,
-    ConfirmationComponent
+    ConfirmationComponent,
+    OrderHistoryComponent
   ],
   imports: [
     BrowserModule,
