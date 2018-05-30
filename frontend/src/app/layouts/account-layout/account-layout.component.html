@@ -3,8 +3,8 @@
       <div class="account-container center-960">
         <div class="account-navigation">
           <ul>
-            <li><a href="/account">Account</a></li>
-            <li><a href="/account/order-history">Order History</a></li>
+            <li><a routerLink="/account" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Account</a></li>
+            <li><a routerLink="/account/order-history" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Order History</a></li>
             <li><a href="" (click)="logout()" role="button">Logout</a></li>
           </ul>
         </div>
