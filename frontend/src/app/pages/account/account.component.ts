@@ -17,6 +17,7 @@ export class AccountComponent implements OnInit {
   public editing : boolean = false;
   public editingPassword : boolean = false;
   public errorOccurred : boolean = false;
+  public submittedOnce : boolean = false;
 
   constructor(private customerService: CustomerService, private localStorage : LocalStorage, private fb: FormBuilder) {
     this.accountForm = fb.group({
