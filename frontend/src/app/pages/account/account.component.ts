@@ -92,6 +92,7 @@ export class AccountComponent implements OnInit {
         })
       }, error => {
         // Update failed for some reason. Show error, return form to initial state
+        console.log(error);
         this.errorOccurred = true;
         this.patchAccountForm(this.customer);
       })
@@ -115,9 +116,4 @@ export class AccountComponent implements OnInit {
 
     this.editingPassword = false;
   }
-
-  public logout(){
-    this.customerService.logOut();
-  }
-
 }
