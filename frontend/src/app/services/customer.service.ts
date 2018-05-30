@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
 
 @Injectable()
 export class CustomerService {
+  public _customer: Customer;
 
   constructor(
     private config: Config,
@@ -60,8 +61,23 @@ export class CustomerService {
     })
   }
 
+  public getCurrentCustomer(): Observable<any>{
+    return this.localStorage.getItem('user').map(userInfo => {
+      return userInfo;
+    });
+  }
+
   public updatePassword(){
 
+  }
+
+  get customer(): Customer{
+    return this._customer;
+  }
+
+  set customer(customer: Customer){
+    console.log('set customer', customer);
+    this._customer = customer;
   }
 
 }
