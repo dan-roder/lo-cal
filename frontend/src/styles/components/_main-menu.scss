@@ -120,7 +120,7 @@
       display: inline-block;
 
       a{
-        @include svg-bg(icons/bag);
+        @include svg-bg(svgs/bag);
         background-position: left center;
         padding-left: 20px;
         display: flex;
@@ -179,7 +179,7 @@
       }
 
       a{
-        @include svg-bg(icons/account);
+        @include svg-bg(svgs/account);
         background-position: left center;
         padding-left: 30px;
 

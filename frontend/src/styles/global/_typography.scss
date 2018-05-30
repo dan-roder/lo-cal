@@ -177,7 +177,7 @@ img{
 
   &.loading{
     button{
-      @include svg-bg(icons/loading);
+      @include svg-bg(svgs/loading);
       background-position: 98% center;
       background-color: $orange-red;
     }

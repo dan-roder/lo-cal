@@ -197,7 +197,7 @@
       padding: 0 18px 0 0;
 
       &.editable{
-        @include svg-bg(icons/left-arrow-red);
+        @include svg-bg(svgs/left-arrow-red);
         background-position: right center;
         cursor: pointer;
       }
