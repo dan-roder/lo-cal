@@ -20,23 +20,26 @@ export class OrderService {
   public _currentOrder : Order;
   private orderTime : any;
 
-  constructor(private httpClient: HttpClient, private localStorage: LocalStorage, private config: Config, private customerService: CustomerService) {
-    this.customerService.isLoggedIn().subscribe(customerData => {
-      if(customerData !== null && customerData !== undefined){
-        this.userId = customerData.CustomerId;
-        this.customerInfo = customerData;
-      }
-    })
-  }
+  constructor(
+    private httpClient: HttpClient,
+    private localStorage: LocalStorage,
+    private config: Config,
+    private customerService: CustomerService
+  ) { }
 
   public putOrder(bagItems: Array<LineItem>): Observable<any>{
     let orderEndpoint = this.config.railsOrderEndpoint + '/' + this.config.siteId;
     let order = this.constructOrderObject(bagItems);
 
-    return this.httpClient.put(orderEndpoint, order).map(response => {
-      // Save order to localStorage
-      this.localStorage.setItem('order', order).subscribe(() => {});
+    console.log('constructed order', order);
 
+    return this.httpClient.put(orderEndpoint, order).map(apiResponse => {
+      return apiResponse;
+    });
+  }
+
+  public saveOrderToLocalStorage(order){
+    return this.localStorage.setItem('order', order).map((response) => {
       return response;
     });
   }
