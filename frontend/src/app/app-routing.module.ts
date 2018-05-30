@@ -22,6 +22,8 @@ import { AccessGuard } from '@local/guards/access.guard';
 import { CheckoutReviewComponent } from '@local/pages/checkout-review/checkout-review.component';
 import { OrderGuard } from '@local/guards/order.guard';
 import { CheckoutPaymentComponent } from '@local/pages/checkout-payment/checkout-payment.component';
+import { OrderHistoryComponent } from '@local/pages/order-history/order-history.component';
+import { AccountLayoutComponent } from '@local/layouts/account-layout/account-layout.component';
 
 
 const routes: Routes = [
@@ -38,7 +40,12 @@ const routes: Routes = [
       { path: 'contact', component: ContactComponent },
       { path: 'blog', component: BlogComponent },
       { path: 'blog/:post', component: BlogPostComponent },
-      { path: 'account', component: AccountComponent, canActivate: [AuthGuard] },
+      { path: 'account', component: AccountLayoutComponent, canActivate: [AuthGuard],
+        children: [
+          { path: '', component: AccountComponent },
+          { path: 'order-history', component: OrderHistoryComponent }
+        ]
+      },
       {
         path: 'checkout', component: CheckoutLoginComponent
       },
