@@ -32,7 +32,7 @@ export class CheckoutPaymentComponent implements OnInit {
       'first-name' : [null, Validators.required],
       'last-name' : [null, Validators.required],
       'email' : [null, [Validators.required, Validators.email]],
-      'phone' : [null, Validators.required]
+      'phone' : null
     });
     this.paymentForm = fb.group({
       'payment-choice' : [this.paymentChoice, Validators.required],
@@ -84,14 +84,12 @@ export class CheckoutPaymentComponent implements OnInit {
 
       // Retrieve order again to ensure local storage order wasn't manipulated
       this.orderService.getFullOrderDetails(orderId).subscribe(fullOrder => {
-        console.log(fullOrder);
-
         this.currentOrder = fullOrder;
+        // 3. Construct order with all form details
         this.constructOrder(fullOrder);
       })
     });
-    // 3. Construct order with all form details
-    //
+
   }
 
   protected constructOrder(order: Order){
@@ -108,8 +106,9 @@ export class CheckoutPaymentComponent implements OnInit {
     }
 
     let finalOrderForSubmission : RailsInSubmitOrder = {
-      submission : orderForApi
+      order_submission : orderForApi
     }
+    console.log(finalOrderForSubmission);
     // Order object with payment has been created, submit to API
     this.orderService.submitOrder(finalOrderForSubmission, this.currentOrder.OrderId).subscribe(orderResults => {
       console.log(orderResults);
@@ -122,10 +121,11 @@ export class CheckoutPaymentComponent implements OnInit {
       PaymentMethods : {
         PaymentMethod : 1,
         Amount : this.currentOrder.BalanceDueAmount,
-        AccountId : this.paymentForm.get('card-number').value,
+        AccountNumber : this.paymentForm.get('card-number').value,
         ExpirationDate : this.paymentForm.get('expiration-date').value,
         SecurityCode : this.paymentForm.get('cvv').value,
-        PaymentMethodType : this.cardType
+        PaymentMethodType : this.cardType,
+        ProcessingType : 0
       },
       SendEmail: true
     }
@@ -136,8 +136,7 @@ export class CheckoutPaymentComponent implements OnInit {
   protected constructPayAtSitePayment(): InSubmitOrderInformation{
     let inSubmitOrderInfo : InSubmitOrderInformation = {
       PaymentMethods : {
-        PaymentMethod : 2,
-        Amount : this.currentOrder.BalanceDueAmount
+        PaymentMethod : 2
       },
       SendEmail: true
     }
