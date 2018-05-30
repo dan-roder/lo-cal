@@ -54,6 +54,7 @@
             </div><!-- /.item -->
             <div class="red-button small-text">
               <button (click)="putOrder()" [disabled]="!timeForm.valid">Proceed to Checkout</button>
+              <span class="processing" *ngIf="processing">Please Wait...</span>
             </div>
           </div><!-- /.review-item-card -->
         </div>
@@ -101,6 +102,7 @@
 
             <div class="red-button full-width-button small-text">
               <button (click)="putOrder()" [disabled]="!timeForm.valid">Proceed to Checkout</button>
+              <span class="processing" *ngIf="processing">Please Wait...</span>
             </div>
           </div>
           <div class="location-details">
