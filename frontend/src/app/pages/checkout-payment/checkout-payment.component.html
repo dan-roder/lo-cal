@@ -73,7 +73,7 @@
                 <div class="form-section half-and-half">
                   <div class="form-component form-component-text">
                     <label for="phone" class="visuallyhidden">Phone</label>
-                    <input type="text" name="phone" id="phone" formControlName="phone" placeholder="Phone*" [ngClass]="{'has-error':!contactInfoForm.controls['phone'].valid && submittedOnce}">
+                    <input type="text" name="phone" id="phone" formControlName="phone" placeholder="Phone" [ngClass]="{'has-error':!contactInfoForm.controls['phone'].valid && submittedOnce}">
                     <div class="error-message" *ngIf="!contactInfoForm.controls['phone'].valid && submittedOnce">This field is required.</div>
                   </div>
                   <div class="form-component form-component-email">
