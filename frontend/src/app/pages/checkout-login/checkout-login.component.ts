@@ -12,6 +12,7 @@ import { OrderService } from '@local/services/order.service';
 export class CheckoutLoginComponent implements OnInit {
   public guestForm : FormGroup;
   private returnUrl : string = '';
+  public submittedOnce : boolean = false;
 
   constructor(
     private fb: FormBuilder,
