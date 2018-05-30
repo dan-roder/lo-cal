@@ -5,7 +5,7 @@
   }
 
   a{
-    @include svg-bg(svgs/left-arrow-red);
+    @include svg-bg(svgs/right-arrow-red);
     background-position: right center;
     padding: 0 15px 0 0;
     text-transform: uppercase;
