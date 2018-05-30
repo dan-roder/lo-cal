@@ -1,0 +1,40 @@
+.account-navigation{
+  display: none;
+  @include breakpoint($bp-768){
+    display: block;
+  }
+
+  ul{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    li{
+      a{
+        display: block;
+        text-decoration: none;
+        @include fontsize(16);
+        letter-spacing: 1.6px;
+        text-transform: uppercase;
+        color: $black;
+        padding: 10px 0;
+
+        @include breakpoint($bp-768){
+          padding: 15px 20px;
+        }
+
+        &.active{
+          color: $orange-red;
+          text-decoration: underline;
+
+          @include breakpoint($bp-768){
+            @include svg-bg(svgs/right-arrow-red);
+            background-position: 98% center;
+            background-repeat: no-repeat;
+            text-decoration: none;
+          }
+        }
+      }
+    }
+  }
+}
