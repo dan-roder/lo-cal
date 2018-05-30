@@ -166,4 +166,13 @@
     color: $orange-red;
     margin: 0;
   }
+
+  &.catering-form{
+    .form-component-text,
+    .form-component-email{
+      input{
+        background: $white;
+      }
+    }
+  }
 }
