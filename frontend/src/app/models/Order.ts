@@ -92,6 +92,7 @@ export interface Payment{
   CardNumber?: string; // The billing zip code for the credit card, used with the ClearCreditCardPayment enum
   Pin?: string; // Pin for Stored Value Card payment. Required if attempting to apply stored value and if company setting "Aloha Enterprise ePin Validation Required" is set to true.
   PaymentMethodType?: number; // <i>Nullable</i> What kind of card is passed in, used with ClearCreditCardPayment enum NOTE: Include this field with every payment.
+  ProcessingType?: number;
 }
 
 export interface Vehicle{
