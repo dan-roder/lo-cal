@@ -214,3 +214,16 @@ img{
 .size-16{
   @include fontsize(16);
 }
+
+.cta-link{
+  a{
+    @include svg-bg(svgs/right-arrow-red);
+    background-position: right center;
+    padding: 0 15px 0 0;
+    text-transform: uppercase;
+    color: $c-31;
+    @extend %sofia-semi-bold;
+    text-decoration: none;
+    letter-spacing: 2px;
+  }
+}
