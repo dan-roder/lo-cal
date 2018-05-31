@@ -2,7 +2,7 @@
   <div class="content">
     <h3 class="title" *ngIf="acf?.title" [innerHtml]="acf?.title"></h3>
     <div class="body" *ngIf="acf?.body" [innerHtml]="acf?.body | safeHtml"></div>
-    <div class="button-wrapper text-center" *ngIf="acf?.link">
+    <div class="button-wrapper text-center cta-link" *ngIf="acf?.link">
       <a [href]="acf?.link">Get the Full Story</a>
     </div>
   </div>
