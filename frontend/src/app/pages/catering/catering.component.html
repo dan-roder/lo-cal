@@ -6,10 +6,14 @@
     </div>
   </div>
 
-  <div class="section section-grey intro-section" *ngIf="acf?.body">
-    <div class="content">
+  <div class="section section-grey catering-columns" *ngIf="acf?.catering_column">
+    <div class="content center">
       <h3 class="title" *ngIf="acf?.title" [innerHtml]="acf?.title"></h3>
-      <div class="body" *ngIf="acf?.body" [innerHtml]="acf?.body | safeHtml"></div>
+      <div class="columns">
+        <div class="column" *ngFor="let column of acf?.catering_column">
+          <div class="body" [innerHtml]="column?.catering_column_body | safeHtml"></div>
+        </div>
+      </div>
     </div>
   </div>
 

@@ -1,0 +1,22 @@
+.catering-columns{
+  .columns{
+    @include breakpoint($bp-600){
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .column{
+      text-align: center;
+
+      @include breakpoint($bp-600){
+        width: 28%;
+        margin: 0 1%;
+        text-align: left;
+      }
+
+      .promotion-text{
+        text-transform: uppercase;
+      }
+    }
+  }
+}
