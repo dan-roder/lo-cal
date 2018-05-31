@@ -167,7 +167,8 @@
     margin: 0;
   }
 
-  &.catering-form{
+  &.catering-form,
+  &.contact-form{
     .form-component-text,
     .form-component-email{
       input{
