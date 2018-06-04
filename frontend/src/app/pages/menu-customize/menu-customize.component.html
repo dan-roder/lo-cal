@@ -36,10 +36,10 @@
       <div class="final-product">
         <div class="title">{{ menuItemDetails?.item?.Name }}</div>
         <div class="ingredients" *ngIf="menuItemDetails?.item?.Description">
-          <div class="customization-ingredients" *ngIf="customizationData">
-            <!-- <span class="customization" *ngFor="let item of customizationData">{{ item }}</span> -->
-          </div>
           {{ (menuItemDetails?.item?.Description | allergens)?.description }}
+        </div>
+        <div class="customization-ingredients" *ngIf="currentModifierArray">
+          <span class="customization" *ngFor="let item of currentModifierArray; let last = last;">{{ item?.DisplayName }}<span class="separator" *ngIf="!last">, </span></span>
         </div>
         <div class="fine-details">
           <span class="price">{{ salesItemDetails?.Price | currency }}</span>
