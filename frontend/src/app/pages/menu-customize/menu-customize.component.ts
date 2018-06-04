@@ -23,6 +23,7 @@ export class MenuCustomizeComponent implements OnInit {
   public customizationData : Object;
   public specialInstructions : string;
   private _calorieCount : number = 0;
+  public currentModifierArray : Array<any> = [];
 
   constructor(
     private wpService: WordpressService,
@@ -50,6 +51,8 @@ export class MenuCustomizeComponent implements OnInit {
     if(currentSelectionsArray.length < maxSelectionsForGroup){
       this.customizationData[modGroup.$id]['currentlySelected'].push(modifierClicked);
       this.customizationData[modGroup.$id].modifiers[modifierClicked.$id]['quantity'] += 1;
+      // Add to basic array for displaying near item description
+      this.currentModifierArray.push(modifierClicked);
 
       // If modifier item has modifier values with it
       if(modifierClicked.ItemModifiers.length > 0){
@@ -64,7 +67,6 @@ export class MenuCustomizeComponent implements OnInit {
     else{
       console.log('selection for current category full');
     }
-    console.log(this.customizationData);
   }
 
   public removeModifier(modGroup, modifierClicked){
@@ -73,11 +75,17 @@ export class MenuCustomizeComponent implements OnInit {
     // If max selections for the current group is not reached
     if(currentSelectionsArray.length > 0){
       let indexToRemove = _.findIndex(currentSelectionsArray, {'$id' : modifierClicked.$id});
+      let indexInDisplayArray = _.findIndex(this.currentModifierArray, {'$id' : modifierClicked.$id});
+      console.log(modifierClicked.$id, indexInDisplayArray);
+
       let currentQuantity = this.customizationData[modGroup.$id].modifiers[modifierClicked.$id]['quantity'];
 
       if(indexToRemove > -1 && currentQuantity > 0){
         let newSelectionsArray = currentSelectionsArray.splice(indexToRemove, 1);
+        this.currentModifierArray.splice(indexInDisplayArray, 1);
+
         currentSelectionsArray = newSelectionsArray;
+
         this.customizationData[modGroup.$id].modifiers[modifierClicked.$id]['quantity'] -= 1;
       }
 
@@ -93,7 +101,6 @@ export class MenuCustomizeComponent implements OnInit {
     else{
       console.log('selection for current category already empty');
     }
-    console.log(this.customizationData);
   }
 
   public incrementQuantity(){
