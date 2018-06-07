@@ -200,74 +200,6 @@ function menu_categories() {
 	register_post_type( 'menu_categories', $args );
 }
 
-add_action( 'add_meta_boxes', 'menu_categories_meta_box' );
-
-function menu_categories_meta_box() {
-
-	add_meta_box(
-		'menu-item-parent',
-		'Menu Categories',
-		'categories_attributes_meta_box',
-		'menu_item',
-		'side',
-		'default'
-	);
-
-}
-
-/**
- * When the post is saved, saves our custom data.
- *
- * @param int $post_id
- */
-function save_menu_categories_meta_box_data( $post_id ) {
-
-    // // Check if our nonce is set.
-    if ( ! isset( $_POST['menu_category_nonce'] ) ) {
-        return;
-    }
-
-    // // Verify that the nonce is valid.
-    if ( ! wp_verify_nonce( $_POST['menu_category_nonce'], 'menu_category_nonce' ) ) {
-        return;
-    }
-
-    // // If this is an autosave, our form has not been submitted, so we don't want to do anything.
-    if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
-        return;
-    }
-
-    // // Check the user's permissions.
-    if ( isset( $_POST['post_type'] ) && 'page' == $_POST['post_type'] ) {
-
-        if ( ! current_user_can( 'edit_page', $post_id ) ) {
-            return;
-        }
-
-    }
-    else {
-
-        if ( ! current_user_can( 'edit_post', $post_id ) ) {
-            return;
-        }
-    }
-
-    // /* OK, it's safe for us to save the data now. */
-
-    // // Make sure that it is set.
-    if ( ! isset( $_POST['parent_id'] ) ) {
-        return;
-    }
-
-    // // Sanitize user input.
-    $my_data = sanitize_text_field( $_POST['parent_id'] );
-
-    // Update the meta field in the database.
-    update_post_meta( $post_id, 'menu_category', $my_data );
-}
-
-add_action( 'save_post', 'save_menu_categories_meta_box_data' );
-
  /**
  *
  * Blog Post Custom Post Type
@@ -383,6 +315,20 @@ function blog_post() {
 //     return  (isset($_POST[$metaKey . '_nonce']) && wp_verify_nonce( $_POST[$metaKey . '_nonce'], basename(__FILE__)));
 // }
 
+add_action( 'add_meta_boxes', 'menu_categories_meta_box' );
+function menu_categories_meta_box() {
+
+	add_meta_box(
+		'menu-item-parent',
+		'Menu Categories',
+		'categories_attributes_meta_box',
+		'menu_item',
+		'side',
+		'default'
+	);
+
+}
+
 function categories_attributes_meta_box($post) {
 
 
@@ -400,6 +346,14 @@ function categories_attributes_meta_box($post) {
 		echo $pages;
 	} // end empty pages check
 }
+
+add_action( 'save_post', 'save_menu_categories_meta_box_data' );
+
+function save_menu_categories_meta_box_data( $post_id ) {
+    $my_data = sanitize_text_field( $_POST['parent_id'] );
+    update_post_meta( $post_id, 'menu_category', $my_data );
+}
+
 
 add_action( 'init', function() {
 	add_rewrite_rule( '^menu/(.*)/([^/]+)/?$','index.php?menu_item=$matches[2]','top' );
@@ -432,7 +386,7 @@ function create_api_posts_meta_field() {
 	// register_rest_field ( 'name-of-post-type', 'name-of-field-to-return', array-of-callbacks-and-schema() )
 	register_rest_field( 'menu_item', 'menu_category', array(
 		'get_callback' => 'get_post_meta_for_api',
-		'update_callback' => 'update_post_meta_for_api',
+		// 'update_callback' => 'update_post_meta_for_api',
 		'schema' => null,
 	));
 }
