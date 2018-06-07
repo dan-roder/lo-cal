@@ -24,6 +24,7 @@ import { OrderGuard } from '@local/guards/order.guard';
 import { CheckoutPaymentComponent } from '@local/pages/checkout-payment/checkout-payment.component';
 import { OrderHistoryComponent } from '@local/pages/order-history/order-history.component';
 import { AccountLayoutComponent } from '@local/layouts/account-layout/account-layout.component';
+import { ConfirmationComponent } from '@local/pages/confirmation/confirmation.component';
 
 
 const routes: Routes = [
@@ -50,7 +51,8 @@ const routes: Routes = [
         path: 'checkout', component: CheckoutLoginComponent
       },
       { path: 'checkout/review', component: CheckoutReviewComponent, canActivate: [AccessGuard] },
-      { path: 'checkout/payment', component: CheckoutPaymentComponent, canActivate: [OrderGuard] }
+      { path: 'checkout/payment', component: CheckoutPaymentComponent, canActivate: [OrderGuard] },
+      { path: 'checkout/confirmation', component: ConfirmationComponent }
     ]
   },
   {
