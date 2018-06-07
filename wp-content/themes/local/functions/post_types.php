@@ -439,13 +439,13 @@ function create_api_posts_meta_field() {
 
 function get_post_meta_for_api($object) {
 	//get the id of the post object array
-	$post_id = $object['id'];
+	$post_id = $object->id;
 	//return the post meta
 	return get_post_meta( $post_id )["menu_category"][0];
 }
 
 function update_post_meta_for_menu_category($object, $meta_value) {
-	$object_id = $object['id'];
+	$object_id = $object->id;
 	$havemetafield  = get_post_meta($object_id, 'menu_item', false);
 	if ($havemetafield) {
         $ret = update_post_meta($object_id, 'menu_category', $meta_value );
