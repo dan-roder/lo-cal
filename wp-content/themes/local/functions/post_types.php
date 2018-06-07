@@ -398,7 +398,7 @@ function get_post_meta_for_api( $object ) {
 }
 function update_post_meta_for_api( $object ) {
 	//get the id of the post object array
-
+	var_dump($object); die();
 	return update_post_meta($object['id'], $field_name, $value);
 	//return the post meta
 	// return get_post_meta( $post_id )['menu_category'][0];
