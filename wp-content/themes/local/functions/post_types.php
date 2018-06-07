@@ -229,7 +229,7 @@ function menu_categories_callback($post) {
  * @param int $post_id
  */
 function save_menu_categories_meta_box_data( $post_id ) {
-	var_dump($post_id); die();
+
     // Check if our nonce is set.
     if ( ! isset( $_POST['menu_category_nonce'] ) ) {
         return;
