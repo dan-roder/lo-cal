@@ -385,7 +385,7 @@ function create_api_posts_meta_field() {
 	// register_rest_field ( 'name-of-post-type', 'name-of-field-to-return', array-of-callbacks-and-schema() )
 	register_rest_field( 'menu_item', 'menu_category', array(
 		'get_callback' => 'get_post_meta_for_api',
-		// 'update_callback' => 'update_post_meta_for_api',
+		'update_callback' => 'update_post_meta_for_api',
 		'schema' => null,
 	));
 }
@@ -396,7 +396,13 @@ function get_post_meta_for_api( $object ) {
 	//return the post meta
 	return get_post_meta( $post_id )['menu_category'][0];
 }
+function update_post_meta_for_api( $object ) {
+	//get the id of the post object array
 
+	return update_post_meta($object['id'], $field_name, $value);
+	//return the post meta
+	// return get_post_meta( $post_id )['menu_category'][0];
+}
 add_action( 'init', 'blog_post', 0 );
 add_action( 'init', 'menu_item', 0 );
 add_action( 'init', 'menu_categories', 0 );
