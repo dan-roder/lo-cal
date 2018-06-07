@@ -200,7 +200,83 @@ function menu_categories() {
 	register_post_type( 'menu_categories', $args );
 }
 
+add_action( 'add_meta_boxes_menu_item', 'menu_categories_meta_box' );
+
+function menu_categories_meta_box() {
+
+	add_meta_box(
+		'menu-item-parent',
+		'Menu Categories',
+		'categories_attributes_meta_box',
+		'menu_item',
+		'side',
+		'default',
+		'menu_categories_callback'
+	);
+
+}
+
+function menu_categories_callback($post) {
+
+	wp_nonce_field( 'menu_category_nonce', 'menu_category_nonce');
+	// $value = get_post_meta( $post->ID, 'menu_category', true);
+
+}
+
 /**
+ * When the post is saved, saves our custom data.
+ *
+ * @param int $post_id
+ */
+function save_menu_categories_meta_box_data( $post_id ) {
+
+    // Check if our nonce is set.
+    if ( ! isset( $_POST['menu_category_nonce'] ) ) {
+        return;
+    }
+
+    // Verify that the nonce is valid.
+    if ( ! wp_verify_nonce( $_POST['menu_category_nonce'], 'menu_category_nonce' ) ) {
+        return;
+    }
+
+    // If this is an autosave, our form has not been submitted, so we don't want to do anything.
+    if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
+        return;
+    }
+
+    // Check the user's permissions.
+    if ( isset( $_POST['post_type'] ) && 'page' == $_POST['post_type'] ) {
+
+        if ( ! current_user_can( 'edit_page', $post_id ) ) {
+            return;
+        }
+
+    }
+    else {
+
+        if ( ! current_user_can( 'edit_post', $post_id ) ) {
+            return;
+        }
+    }
+
+    /* OK, it's safe for us to save the data now. */
+
+    // Make sure that it is set.
+    if ( ! isset( $_POST['menu_category'] ) ) {
+        return;
+    }
+
+    // Sanitize user input.
+    $my_data = sanitize_text_field( $_POST['menu_category'] );
+
+    // Update the meta field in the database.
+    update_post_meta( $post_id, 'menu_category', $my_data );
+}
+
+add_action( 'save_post', 'save_menu_categories_meta_box_data' );
+
+ /**
  *
  * Blog Post Custom Post Type
  *
@@ -269,57 +345,51 @@ function blog_post() {
 
 }
 
-add_action( 'load-post.php', 'register_menu_cat_meta' );
-add_action( 'load-post-new.php', 'register_menu_cat_meta' );
 
-function register_menu_cat_meta() {
-	add_action('add_meta_boxes', function() {
-		add_meta_box('menu-item-parent', 'Menu Categories', 'categories_attributes_meta_box', 'menu_item', 'side', 'default');
-	});
-}
 
-function add_menu_cat_to_meta_data($postID, $post) {
-	$postType = get_post_type_object( $post->post_type );
 
-	if ( !current_user_can( $postType->cap->edit_post, $postID ) )
-		return $postID;
+// function add_menu_cat_to_meta_data($postID, $post) {
+// 	$postType = get_post_type_object( $post->post_type );
 
-		// Save the Job Description
-		$metaKey = 'menu_category';
+// 	if ( !current_user_can( $postType->cap->edit_post, $postID ) )
+// 		return $postID;
 
-			/* Verify the nonce before proceeding. */
-			if ( verifyMetaNonce($metaKey) )
-				return $postID;
+// 		// Save the Job Description
+// 		$metaKey = 'menu_category';
 
-			/* Get the posted data and sanitize it for use as an HTML class. */
-			$menu_cat = ( isset( $_POST[$metaKey] ) ? sanitize_text_field( $_POST[$metaKey] ) : '' );
+// 			/* Verify the nonce before proceeding. */
+// 			if ( verifyMetaNonce($metaKey) )
+// 				return $postID;
 
-		save_meta_data($postID, $metaKey, $menu_cat);
+// 			/* Get the posted data and sanitize it for use as an HTML class. */
+// 			$menu_cat = ( isset( $_POST[$metaKey] ) ? sanitize_text_field( $_POST[$metaKey] ) : '' );
 
-}
+// 		save_meta_data($postID, $metaKey, $menu_cat);
 
-add_action( 'save_post', 'add_menu_cat_to_meta_data' );
+// }
 
-function save_meta_data($postID, $metaKey, $newMetaValue) {
-    /* Get the meta value of the custom field key. */
-    $metaValue = get_post_meta( $postID, $metaKey, true );
 
-    /* If a new meta value was added and there was no previous value, add it. */
-    if ( $newMetaValue && '' == $metaValue )
-        update_post_meta( $postID, $metaKey, $newMetaValue, true );
 
-    /* If the new meta value does not match the old value, update it. */
-    elseif ( $newMetaValue && $newMetaValue != $metaValue )
-        update_post_meta( $postID, $metaKey, $newMetaValue );
+// function save_meta_data($postID, $metaKey, $newMetaValue) {
+//     /* Get the meta value of the custom field key. */
+//     $metaValue = get_post_meta( $postID, $metaKey, true );
 
-    /* If there is no new meta value but an old value exists, delete it. */
-    elseif ( '' == $newMetaValue && $metaValue )
-        delete_post_meta( $postID, $metaKey, $metaValue );
-}
+//     /* If a new meta value was added and there was no previous value, add it. */
+//     if ( $newMetaValue && '' == $metaValue )
+//         update_post_meta( $postID, $metaKey, $newMetaValue, true );
 
-function verifyMetaNonce($metaKey) {
-    return  (isset($_POST[$metaKey . '_nonce']) && wp_verify_nonce( $_POST[$metaKey . '_nonce'], basename(__FILE__)));
-}
+//     /* If the new meta value does not match the old value, update it. */
+//     elseif ( $newMetaValue && $newMetaValue != $metaValue )
+//         update_post_meta( $postID, $metaKey, $newMetaValue );
+
+//     /* If there is no new meta value but an old value exists, delete it. */
+//     elseif ( '' == $newMetaValue && $metaValue )
+//         delete_post_meta( $postID, $metaKey, $metaValue );
+// }
+
+// function verifyMetaNonce($metaKey) {
+//     return  (isset($_POST[$metaKey . '_nonce']) && wp_verify_nonce( $_POST[$metaKey . '_nonce'], basename(__FILE__)));
+// }
 
 function categories_attributes_meta_box($post) {
 	$pages = wp_dropdown_pages(array('post_type' => 'menu_categories', 'selected' => $post->post_parent, 'name' => 'parent_id', 'show_option_none' => __('(no parent)'), 'sort_column'=> 'menu_order, post_title', 'show_in_rest' => true, 'echo' => 0));
