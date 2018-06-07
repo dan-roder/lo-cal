@@ -445,7 +445,7 @@ function get_post_meta_for_api($object) {
 }
 
 function update_post_meta_for_menu_category($object, $meta_value) {
-	var_dump($object); die();
+	var_dump($object, $meta_value); die();
 	$object_id = $object->id;
 	$havemetafield  = get_post_meta($object_id, 'menu_item', false);
 	if ($havemetafield) {
