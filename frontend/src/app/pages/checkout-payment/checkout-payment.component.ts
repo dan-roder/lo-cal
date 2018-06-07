@@ -7,6 +7,8 @@ import { Config } from '@local/utils/constants';
 import { CustomerService } from '@local/services/customer.service';
 import { Customer } from '@local/models/Customer';
 import * as _ from 'lodash';
+import * as moment from 'moment';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'lo-cal-checkout-payment',
@@ -27,7 +29,7 @@ export class CheckoutPaymentComponent implements OnInit {
   public orderForDisplay : Array<any>;
 
 
-  constructor(private orderService: OrderService, private fb: FormBuilder, private constants: Config, private customerService: CustomerService) {
+  constructor(private orderService: OrderService, private fb: FormBuilder, private constants: Config, private customerService: CustomerService, private router: Router) {
     this.contactInfoForm = fb.group({
       'first-name' : [null, Validators.required],
       'last-name' : [null, Validators.required],
@@ -108,25 +110,30 @@ export class CheckoutPaymentComponent implements OnInit {
     let finalOrderForSubmission : RailsInSubmitOrder = {
       order_submission : orderForApi
     }
-    console.log(finalOrderForSubmission);
+
     // Order object with payment has been created, submit to API
     this.orderService.submitOrder(finalOrderForSubmission, this.currentOrder.OrderId).subscribe(orderResults => {
-      console.log(orderResults);
+      if(orderResults.ResultCode == 0){
+        this.router.navigate(['/checkout/confirmation']);
+      }
     });
   }
 
   protected constructClearCreditCardPayment(): InSubmitOrderInformation{
+    let expirationDate = this.paymentForm.get('expiration-date').value;
+    // let finalExpDate = expirationDate.replace('/', '-');
+    let finalExpDate = moment('01/' + expirationDate, 'DD/MM/YYYY').format('YYYY-MM-DD');
 
     let inSubmitOrderInfo : InSubmitOrderInformation = {
-      PaymentMethods : {
+      PaymentMethods : [{
         PaymentMethod : 1,
         Amount : this.currentOrder.BalanceDueAmount,
         AccountNumber : this.paymentForm.get('card-number').value,
-        ExpirationDate : this.paymentForm.get('expiration-date').value,
+        ExpirationDate : finalExpDate,
         SecurityCode : this.paymentForm.get('cvv').value,
         PaymentMethodType : this.cardType,
         ProcessingType : 0
-      },
+      }],
       SendEmail: true
     }
 
@@ -135,9 +142,9 @@ export class CheckoutPaymentComponent implements OnInit {
 
   protected constructPayAtSitePayment(): InSubmitOrderInformation{
     let inSubmitOrderInfo : InSubmitOrderInformation = {
-      PaymentMethods : {
+      PaymentMethods : [{
         PaymentMethod : 2
-      },
+      }],
       SendEmail: true
     }
 
