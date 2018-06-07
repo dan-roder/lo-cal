@@ -269,9 +269,57 @@ function blog_post() {
 
 }
 
-add_action('add_meta_boxes', function() {
-	add_meta_box('menu-item-parent', 'Menu Categories', 'categories_attributes_meta_box', 'menu_item', 'side', 'default');
-});
+add_action( 'load-post.php', 'register_menu_cat_meta' );
+add_action( 'load-post-new.php', 'register_menu_cat_meta' );
+
+function register_menu_cat_meta() {
+	add_action('add_meta_boxes', function() {
+		add_meta_box('menu-item-parent', 'Menu Categories', 'categories_attributes_meta_box', 'menu_item', 'side', 'default');
+	});
+
+	add_action( 'save_post', 'add_menu_cat_to_meta_data', 10, 2);
+}
+
+function add_menu_cat_to_meta_data($postID, $post) {
+	$postType = get_post_type_object( $post->post_type );
+
+	if ( !current_user_can( $postType->cap->edit_post, $postID ) )
+		return $postID;
+
+		// Save the Job Description
+		$metaKey = 'menu_category';
+
+			/* Verify the nonce before proceeding. */
+			if ( verifyMetaNonce($metaKey) )
+				return $postID;
+
+			/* Get the posted data and sanitize it for use as an HTML class. */
+			$menu_cat = ( isset( $_POST[$metaKey] ) ? sanitize_text_field( $_POST[$metaKey] ) : '' );
+
+		save_meta_data($postID, $metaKey, $menu_cat);
+
+}
+
+function save_meta_data($postID, $metaKey, $newMetaValue) {
+    /* Get the meta value of the custom field key. */
+    $metaValue = get_post_meta( $postID, $metaKey, true );
+
+    /* If a new meta value was added and there was no previous value, add it. */
+    if ( $newMetaValue && '' == $metaValue )
+        update_post_meta( $postID, $metaKey, $newMetaValue, true );
+
+    /* If the new meta value does not match the old value, update it. */
+    elseif ( $newMetaValue && $newMetaValue != $metaValue )
+        update_post_meta( $postID, $metaKey, $newMetaValue );
+
+    /* If there is no new meta value but an old value exists, delete it. */
+    elseif ( '' == $newMetaValue && $metaValue )
+        delete_post_meta( $postID, $metaKey, $metaValue );
+}
+
+function verifyMetaNonce($metaKey) {
+    return  (isset($_POST[$metaKey . '_nonce']) && wp_verify_nonce( $_POST[$metaKey . '_nonce'], basename(__FILE__)));
+}
 
 function categories_attributes_meta_box($post) {
 	$pages = wp_dropdown_pages(array('post_type' => 'menu_categories', 'selected' => $post->post_parent, 'name' => 'parent_id', 'show_option_none' => __('(no parent)'), 'sort_column'=> 'menu_order, post_title', 'echo' => 0));
@@ -308,19 +356,19 @@ add_action( 'rest_api_init', 'create_api_posts_meta_field' );
 
 function create_api_posts_meta_field() {
 
- // register_rest_field ( 'name-of-post-type', 'name-of-field-to-return', array-of-callbacks-and-schema() )
- register_rest_field( 'menu_item', 'post-meta-fields', array(
- 	'get_callback' => 'get_post_meta_for_api',
- 	'schema' => null,
- ));
+	// register_rest_field ( 'name-of-post-type', 'name-of-field-to-return', array-of-callbacks-and-schema() )
+	register_rest_field( 'menu_item', 'post-meta-fields', array(
+		'get_callback' => 'get_post_meta_for_api',
+		'schema' => null,
+	));
 }
 
 function get_post_meta_for_api( $object ) {
- //get the id of the post object array
- $post_id = $object['id'];
+	//get the id of the post object array
+	$post_id = $object['id'];
 
- //return the post meta
- return get_post_meta( $post_id );
+	//return the post meta
+	return get_post_meta( $post_id );
 }
 
 add_action( 'init', 'blog_post', 0 );
