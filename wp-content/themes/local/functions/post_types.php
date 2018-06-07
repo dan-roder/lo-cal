@@ -215,13 +215,6 @@ function menu_categories_meta_box() {
 
 }
 
-function menu_categories_callback($post) {
-
-
-	// $value = get_post_meta( $post->ID, 'menu_category', true);
-
-}
-
 /**
  * When the post is saved, saves our custom data.
  *
@@ -234,7 +227,7 @@ function save_menu_categories_meta_box_data( $post_id ) {
     //     return;
     // }
 	// $value =! isset( $_POST['menu_category_nonce'] );
-	var_dump($_POST); die();
+
     // // Verify that the nonce is valid.
     // if ( ! wp_verify_nonce( $_POST['menu_category_nonce'], 'menu_category_nonce' ) ) {
     //     return;
@@ -268,10 +261,10 @@ function save_menu_categories_meta_box_data( $post_id ) {
     // }
 
     // // Sanitize user input.
-    $my_data = sanitize_text_field( $_POST['menu_category'] );
+    $my_data = sanitize_text_field( $_POST['parent_id'] );
 
     // Update the meta field in the database.
-    update_post_meta( $post_id, 'menu_category', $my_data );
+    update_post_meta( $post_id, 'parent_id', $my_data );
 }
 
 add_action( 'save_post', 'save_menu_categories_meta_box_data' );
@@ -395,6 +388,7 @@ function categories_attributes_meta_box($post) {
 
 
 	wp_nonce_field( 'menu_category_nonce', 'menu_category_nonce');
+
 	$pages = wp_dropdown_pages(array(
 		'post_type' => 'menu_categories',
 		'selected' => $post->post_parent,
