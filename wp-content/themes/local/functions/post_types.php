@@ -391,8 +391,9 @@ function blog_post() {
 // }
 
 function categories_attributes_meta_box($post) {
-	var_dump($post); die();
+
 	$value = get_post_meta( $post->ID, '_menu_category', true );
+	var_dump($value); die();
 	wp_nonce_field( 'menu_category_nonce', 'menu_category_nonce');
 	$pages = wp_dropdown_pages(array(
 		'post_type' => 'menu_categories',
