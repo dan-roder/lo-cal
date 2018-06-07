@@ -445,11 +445,12 @@ function get_post_meta_for_api($object) {
 }
 
 function update_post_meta_for_menu_category($object, $meta_value) {
-	$havemetafield  = get_post_meta($object['id'], 'menu_category', false);
+	$object_id = $object['id'];
+	$havemetafield  = get_post_meta($object_id, 'menu_item', false);
 	if ($havemetafield) {
-        $ret = update_post_meta($object['id'], 'menu_category', $meta_value );
+        $ret = update_post_meta($object_id, 'menu_category', $meta_value );
     } else {
-        $ret = add_post_meta( $object['id'], 'menu_category', $meta_value ,true );
+        $ret = add_post_meta($object_id, 'menu_category', $meta_value ,true );
     }
     return true;
 }
