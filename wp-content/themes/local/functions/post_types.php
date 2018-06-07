@@ -200,7 +200,7 @@ function menu_categories() {
 	register_post_type( 'menu_categories', $args );
 }
 
-/**
+ /**
  *
  * Blog Post Custom Post Type
  *
@@ -269,16 +269,91 @@ function blog_post() {
 
 }
 
-add_action('add_meta_boxes', function() {
-	add_meta_box('menu-item-parent', 'Menu Categories', 'categories_attributes_meta_box', 'menu_item', 'side', 'default');
-});
+
+
+
+// function add_menu_cat_to_meta_data($postID, $post) {
+// 	$postType = get_post_type_object( $post->post_type );
+
+// 	if ( !current_user_can( $postType->cap->edit_post, $postID ) )
+// 		return $postID;
+
+// 		// Save the Job Description
+// 		$metaKey = 'menu_category';
+
+// 			/* Verify the nonce before proceeding. */
+// 			if ( verifyMetaNonce($metaKey) )
+// 				return $postID;
+
+// 			/* Get the posted data and sanitize it for use as an HTML class. */
+// 			$menu_cat = ( isset( $_POST[$metaKey] ) ? sanitize_text_field( $_POST[$metaKey] ) : '' );
+
+// 		save_meta_data($postID, $metaKey, $menu_cat);
+
+// }
+
+
+
+// function save_meta_data($postID, $metaKey, $newMetaValue) {
+//     /* Get the meta value of the custom field key. */
+//     $metaValue = get_post_meta( $postID, $metaKey, true );
+
+//     /* If a new meta value was added and there was no previous value, add it. */
+//     if ( $newMetaValue && '' == $metaValue )
+//         update_post_meta( $postID, $metaKey, $newMetaValue, true );
+
+//     /* If the new meta value does not match the old value, update it. */
+//     elseif ( $newMetaValue && $newMetaValue != $metaValue )
+//         update_post_meta( $postID, $metaKey, $newMetaValue );
+
+//     /* If there is no new meta value but an old value exists, delete it. */
+//     elseif ( '' == $newMetaValue && $metaValue )
+//         delete_post_meta( $postID, $metaKey, $metaValue );
+// }
+
+// function verifyMetaNonce($metaKey) {
+//     return  (isset($_POST[$metaKey . '_nonce']) && wp_verify_nonce( $_POST[$metaKey . '_nonce'], basename(__FILE__)));
+// }
+
+add_action( 'add_meta_boxes', 'menu_categories_meta_box' );
+function menu_categories_meta_box() {
+
+	add_meta_box(
+		'menu-item-parent',
+		'Menu Categories',
+		'categories_attributes_meta_box',
+		'menu_item',
+		'side',
+		'default'
+	);
+
+}
 
 function categories_attributes_meta_box($post) {
-	$pages = wp_dropdown_pages(array('post_type' => 'menu_categories', 'selected' => $post->post_parent, 'name' => 'parent_id', 'show_option_none' => __('(no parent)'), 'sort_column'=> 'menu_order, post_title', 'echo' => 0));
+
+
+	wp_nonce_field( 'menu_category_nonce', 'menu_category_nonce');
+
+	$pages = wp_dropdown_pages(array(
+		'post_type' => 'menu_categories',
+		'selected' => $post->post_parent,
+		'name' => 'parent_id',
+		'show_option_none' => __('(no parent)'),
+		'sort_column'=> 'menu_order, post_title',
+		'echo' => 0
+	));
 	if ( ! empty($pages) ) {
 		echo $pages;
 	} // end empty pages check
 }
+
+add_action( 'save_post', 'save_menu_categories_meta_box_data' );
+
+function save_menu_categories_meta_box_data( $post_id ) {
+    $my_data = sanitize_text_field( $_POST['parent_id'] );
+    update_post_meta( $post_id, 'menu_category', $my_data );
+}
+
 
 add_action( 'init', function() {
 	add_rewrite_rule( '^menu/(.*)/([^/]+)/?$','index.php?menu_item=$matches[2]','top' );
@@ -307,21 +382,36 @@ add_filter( 'post_type_link', function( $link, $post ) {
 add_action( 'rest_api_init', 'create_api_posts_meta_field' );
 
 function create_api_posts_meta_field() {
-
- // register_rest_field ( 'name-of-post-type', 'name-of-field-to-return', array-of-callbacks-and-schema() )
- register_rest_field( 'menu_item', 'post-meta-fields', array(
- 	'get_callback' => 'get_post_meta_for_api',
- 	'schema' => null,
- ));
+	// register_rest_field ( 'name-of-post-type', 'name-of-field-to-return', array-of-callbacks-and-schema() )
+	register_rest_field( 'menu_item', 'menu_category', array(
+		'get_callback' => 'get_post_meta_for_api',
+		'update_callback' => 'update_post_meta_for_api',
+		'schema' => null,
+	));
 }
 
-function get_post_meta_for_api( $object ) {
- //get the id of the post object array
- $post_id = $object['id'];
-
- //return the post meta
- return get_post_meta( $post_id );
+function get_post_meta_for_api( $object, $field_name, $request, $object_type ) {
+	//get the id of the post object array
+	$post_id = $object['id'];
+	//return the post meta
+	return get_post_meta( $post_id )['menu_category'][0];
 }
+function update_post_meta_for_api( $value, $object, $field_name, $request ) {
+	//get the id of the post object array
+	var_dump($value, $object); die();
+	return update_post_meta($object['id'], $field_name, $value);
+	//return the post meta
+	// return get_post_meta( $post_id )['menu_category'][0];
+}
+
+$object_type = 'post';
+$args1 = array(
+    'type' => 'string',
+    'description' => 'Menu Category',
+    'single' => true,
+    'show_in_rest' => true,
+    );
+register_meta( $object_type, 'menu_category', $args1 );
 
 add_action( 'init', 'blog_post', 0 );
 add_action( 'init', 'menu_item', 0 );
