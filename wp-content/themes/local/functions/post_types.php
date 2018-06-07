@@ -276,8 +276,6 @@ function register_menu_cat_meta() {
 	add_action('add_meta_boxes', function() {
 		add_meta_box('menu-item-parent', 'Menu Categories', 'categories_attributes_meta_box', 'menu_item', 'side', 'default');
 	});
-
-	add_action( 'save_post', 'add_menu_cat_to_meta_data', 10, 2);
 }
 
 function add_menu_cat_to_meta_data($postID, $post) {
@@ -299,6 +297,8 @@ function add_menu_cat_to_meta_data($postID, $post) {
 		save_meta_data($postID, $metaKey, $menu_cat);
 
 }
+
+add_action( 'save_post', 'add_menu_cat_to_meta_data' );
 
 function save_meta_data($postID, $metaKey, $newMetaValue) {
     /* Get the meta value of the custom field key. */
@@ -322,7 +322,7 @@ function verifyMetaNonce($metaKey) {
 }
 
 function categories_attributes_meta_box($post) {
-	$pages = wp_dropdown_pages(array('post_type' => 'menu_categories', 'selected' => $post->post_parent, 'name' => 'parent_id', 'show_option_none' => __('(no parent)'), 'sort_column'=> 'menu_order, post_title', 'echo' => 0));
+	$pages = wp_dropdown_pages(array('post_type' => 'menu_categories', 'selected' => $post->post_parent, 'name' => 'parent_id', 'show_option_none' => __('(no parent)'), 'sort_column'=> 'menu_order, post_title', 'show_in_rest' => true, 'echo' => 0));
 	if ( ! empty($pages) ) {
 		echo $pages;
 	} // end empty pages check
