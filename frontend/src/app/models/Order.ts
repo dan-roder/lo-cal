@@ -70,7 +70,7 @@ export interface OrderResults{
 }
 
 export interface InSubmitOrderInformation{
-  PaymentMethods: Payment; // [(Payment)] Required) : Information describing the Payment Method ,
+  PaymentMethods: Array<Payment>; // [(Payment)] Required) : Information describing the Payment Method ,
   Vehicle?: Vehicle; // (Vehicle , optional) : Information describing the Vehicle ,
   LoyaltyNumber?: string; // (string , optional) ,
   SpecialInstructions?: string; // (string , optional) ,
