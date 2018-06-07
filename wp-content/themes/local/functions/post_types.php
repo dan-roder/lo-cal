@@ -233,8 +233,8 @@ function save_menu_categories_meta_box_data( $post_id ) {
     // if ( ! isset( $_POST['menu_category_nonce'] ) ) {
     //     return;
     // }
-	$value =! isset( $_POST['menu_category_nonce'] );
-	var_dump($value); die();
+	// $value =! isset( $_POST['menu_category_nonce'] );
+	var_dump($_POST); die();
     // // Verify that the nonce is valid.
     // if ( ! wp_verify_nonce( $_POST['menu_category_nonce'], 'menu_category_nonce' ) ) {
     //     return;
@@ -268,7 +268,7 @@ function save_menu_categories_meta_box_data( $post_id ) {
     // }
 
     // // Sanitize user input.
-    // $my_data = sanitize_text_field( $_POST['menu_category'] );
+    $my_data = sanitize_text_field( $_POST['menu_category'] );
 
     // Update the meta field in the database.
     update_post_meta( $post_id, 'menu_category', $my_data );
