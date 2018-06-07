@@ -390,15 +390,15 @@ function create_api_posts_meta_field() {
 	));
 }
 
-function get_post_meta_for_api( $object ) {
+function get_post_meta_for_api( $object, $field_name, $request, $object_type ) {
 	//get the id of the post object array
 	$post_id = $object['id'];
 	//return the post meta
 	return get_post_meta( $post_id )['menu_category'][0];
 }
-function update_post_meta_for_api( $object ) {
+function update_post_meta_for_api( $value, $object, $field_name, $request ) {
 	//get the id of the post object array
-	var_dump($object); die();
+	var_dump($value, $object); die();
 	return update_post_meta($object['id'], $field_name, $value);
 	//return the post meta
 	// return get_post_meta( $post_id )['menu_category'][0];
