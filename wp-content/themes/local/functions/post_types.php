@@ -448,7 +448,7 @@ function update_post_meta_for_menu_category($object, $meta_value) {
 
 	$object_id = $object;
 	$havemetafield  = get_post_meta($object_id, 'menu_item', false);
-	var_dump($havemetafield); die();
+	// var_dump($havemetafield); die();
 	if ($havemetafield) {
         $ret = update_post_meta($object_id, 'menu_category', $meta_value );
     } else {
