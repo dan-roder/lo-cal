@@ -392,6 +392,7 @@ function blog_post() {
 
 function categories_attributes_meta_box($post) {
 	var_dump($post); die();
+	$value = get_post_meta( $post->ID, '_menu_category', true );
 	wp_nonce_field( 'menu_category_nonce', 'menu_category_nonce');
 	$pages = wp_dropdown_pages(array(
 		'post_type' => 'menu_categories',
@@ -399,7 +400,6 @@ function categories_attributes_meta_box($post) {
 		'name' => 'parent_id',
 		'show_option_none' => __('(no parent)'),
 		'sort_column'=> 'menu_order, post_title',
-		'show_in_rest' => true,
 		'echo' => 0
 	));
 	if ( ! empty($pages) ) {
