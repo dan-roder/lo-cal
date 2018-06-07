@@ -403,6 +403,16 @@ function update_post_meta_for_api( $value, $object, $field_name, $request ) {
 	//return the post meta
 	// return get_post_meta( $post_id )['menu_category'][0];
 }
+
+$object_type = 'post';
+$args1 = array(
+    'type' => 'string',
+    'description' => 'Menu Category',
+    'single' => true,
+    'show_in_rest' => true,
+    );
+register_meta( $object_type, 'menu_category', $args1 );
+
 add_action( 'init', 'blog_post', 0 );
 add_action( 'init', 'menu_item', 0 );
 add_action( 'init', 'menu_categories', 0 );
