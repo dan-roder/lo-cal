@@ -1,5 +1,274 @@
 webpackJsonp(["main"],{
 
+/***/ "./node_modules/moment/locale recursive ^\\.\\/.*$":
+/***/ (function(module, exports, __webpack_require__) {
+
+var map = {
+	"./af": "./node_modules/moment/locale/af.js",
+	"./af.js": "./node_modules/moment/locale/af.js",
+	"./ar": "./node_modules/moment/locale/ar.js",
+	"./ar-dz": "./node_modules/moment/locale/ar-dz.js",
+	"./ar-dz.js": "./node_modules/moment/locale/ar-dz.js",
+	"./ar-kw": "./node_modules/moment/locale/ar-kw.js",
+	"./ar-kw.js": "./node_modules/moment/locale/ar-kw.js",
+	"./ar-ly": "./node_modules/moment/locale/ar-ly.js",
+	"./ar-ly.js": "./node_modules/moment/locale/ar-ly.js",
+	"./ar-ma": "./node_modules/moment/locale/ar-ma.js",
+	"./ar-ma.js": "./node_modules/moment/locale/ar-ma.js",
+	"./ar-sa": "./node_modules/moment/locale/ar-sa.js",
+	"./ar-sa.js": "./node_modules/moment/locale/ar-sa.js",
+	"./ar-tn": "./node_modules/moment/locale/ar-tn.js",
+	"./ar-tn.js": "./node_modules/moment/locale/ar-tn.js",
+	"./ar.js": "./node_modules/moment/locale/ar.js",
+	"./az": "./node_modules/moment/locale/az.js",
+	"./az.js": "./node_modules/moment/locale/az.js",
+	"./be": "./node_modules/moment/locale/be.js",
+	"./be.js": "./node_modules/moment/locale/be.js",
+	"./bg": "./node_modules/moment/locale/bg.js",
+	"./bg.js": "./node_modules/moment/locale/bg.js",
+	"./bm": "./node_modules/moment/locale/bm.js",
+	"./bm.js": "./node_modules/moment/locale/bm.js",
+	"./bn": "./node_modules/moment/locale/bn.js",
+	"./bn.js": "./node_modules/moment/locale/bn.js",
+	"./bo": "./node_modules/moment/locale/bo.js",
+	"./bo.js": "./node_modules/moment/locale/bo.js",
+	"./br": "./node_modules/moment/locale/br.js",
+	"./br.js": "./node_modules/moment/locale/br.js",
+	"./bs": "./node_modules/moment/locale/bs.js",
+	"./bs.js": "./node_modules/moment/locale/bs.js",
+	"./ca": "./node_modules/moment/locale/ca.js",
+	"./ca.js": "./node_modules/moment/locale/ca.js",
+	"./cs": "./node_modules/moment/locale/cs.js",
+	"./cs.js": "./node_modules/moment/locale/cs.js",
+	"./cv": "./node_modules/moment/locale/cv.js",
+	"./cv.js": "./node_modules/moment/locale/cv.js",
+	"./cy": "./node_modules/moment/locale/cy.js",
+	"./cy.js": "./node_modules/moment/locale/cy.js",
+	"./da": "./node_modules/moment/locale/da.js",
+	"./da.js": "./node_modules/moment/locale/da.js",
+	"./de": "./node_modules/moment/locale/de.js",
+	"./de-at": "./node_modules/moment/locale/de-at.js",
+	"./de-at.js": "./node_modules/moment/locale/de-at.js",
+	"./de-ch": "./node_modules/moment/locale/de-ch.js",
+	"./de-ch.js": "./node_modules/moment/locale/de-ch.js",
+	"./de.js": "./node_modules/moment/locale/de.js",
+	"./dv": "./node_modules/moment/locale/dv.js",
+	"./dv.js": "./node_modules/moment/locale/dv.js",
+	"./el": "./node_modules/moment/locale/el.js",
+	"./el.js": "./node_modules/moment/locale/el.js",
+	"./en-au": "./node_modules/moment/locale/en-au.js",
+	"./en-au.js": "./node_modules/moment/locale/en-au.js",
+	"./en-ca": "./node_modules/moment/locale/en-ca.js",
+	"./en-ca.js": "./node_modules/moment/locale/en-ca.js",
+	"./en-gb": "./node_modules/moment/locale/en-gb.js",
+	"./en-gb.js": "./node_modules/moment/locale/en-gb.js",
+	"./en-ie": "./node_modules/moment/locale/en-ie.js",
+	"./en-ie.js": "./node_modules/moment/locale/en-ie.js",
+	"./en-il": "./node_modules/moment/locale/en-il.js",
+	"./en-il.js": "./node_modules/moment/locale/en-il.js",
+	"./en-nz": "./node_modules/moment/locale/en-nz.js",
+	"./en-nz.js": "./node_modules/moment/locale/en-nz.js",
+	"./eo": "./node_modules/moment/locale/eo.js",
+	"./eo.js": "./node_modules/moment/locale/eo.js",
+	"./es": "./node_modules/moment/locale/es.js",
+	"./es-do": "./node_modules/moment/locale/es-do.js",
+	"./es-do.js": "./node_modules/moment/locale/es-do.js",
+	"./es-us": "./node_modules/moment/locale/es-us.js",
+	"./es-us.js": "./node_modules/moment/locale/es-us.js",
+	"./es.js": "./node_modules/moment/locale/es.js",
+	"./et": "./node_modules/moment/locale/et.js",
+	"./et.js": "./node_modules/moment/locale/et.js",
+	"./eu": "./node_modules/moment/locale/eu.js",
+	"./eu.js": "./node_modules/moment/locale/eu.js",
+	"./fa": "./node_modules/moment/locale/fa.js",
+	"./fa.js": "./node_modules/moment/locale/fa.js",
+	"./fi": "./node_modules/moment/locale/fi.js",
+	"./fi.js": "./node_modules/moment/locale/fi.js",
+	"./fo": "./node_modules/moment/locale/fo.js",
+	"./fo.js": "./node_modules/moment/locale/fo.js",
+	"./fr": "./node_modules/moment/locale/fr.js",
+	"./fr-ca": "./node_modules/moment/locale/fr-ca.js",
+	"./fr-ca.js": "./node_modules/moment/locale/fr-ca.js",
+	"./fr-ch": "./node_modules/moment/locale/fr-ch.js",
+	"./fr-ch.js": "./node_modules/moment/locale/fr-ch.js",
+	"./fr.js": "./node_modules/moment/locale/fr.js",
+	"./fy": "./node_modules/moment/locale/fy.js",
+	"./fy.js": "./node_modules/moment/locale/fy.js",
+	"./gd": "./node_modules/moment/locale/gd.js",
+	"./gd.js": "./node_modules/moment/locale/gd.js",
+	"./gl": "./node_modules/moment/locale/gl.js",
+	"./gl.js": "./node_modules/moment/locale/gl.js",
+	"./gom-latn": "./node_modules/moment/locale/gom-latn.js",
+	"./gom-latn.js": "./node_modules/moment/locale/gom-latn.js",
+	"./gu": "./node_modules/moment/locale/gu.js",
+	"./gu.js": "./node_modules/moment/locale/gu.js",
+	"./he": "./node_modules/moment/locale/he.js",
+	"./he.js": "./node_modules/moment/locale/he.js",
+	"./hi": "./node_modules/moment/locale/hi.js",
+	"./hi.js": "./node_modules/moment/locale/hi.js",
+	"./hr": "./node_modules/moment/locale/hr.js",
+	"./hr.js": "./node_modules/moment/locale/hr.js",
+	"./hu": "./node_modules/moment/locale/hu.js",
+	"./hu.js": "./node_modules/moment/locale/hu.js",
+	"./hy-am": "./node_modules/moment/locale/hy-am.js",
+	"./hy-am.js": "./node_modules/moment/locale/hy-am.js",
+	"./id": "./node_modules/moment/locale/id.js",
+	"./id.js": "./node_modules/moment/locale/id.js",
+	"./is": "./node_modules/moment/locale/is.js",
+	"./is.js": "./node_modules/moment/locale/is.js",
+	"./it": "./node_modules/moment/locale/it.js",
+	"./it.js": "./node_modules/moment/locale/it.js",
+	"./ja": "./node_modules/moment/locale/ja.js",
+	"./ja.js": "./node_modules/moment/locale/ja.js",
+	"./jv": "./node_modules/moment/locale/jv.js",
+	"./jv.js": "./node_modules/moment/locale/jv.js",
+	"./ka": "./node_modules/moment/locale/ka.js",
+	"./ka.js": "./node_modules/moment/locale/ka.js",
+	"./kk": "./node_modules/moment/locale/kk.js",
+	"./kk.js": "./node_modules/moment/locale/kk.js",
+	"./km": "./node_modules/moment/locale/km.js",
+	"./km.js": "./node_modules/moment/locale/km.js",
+	"./kn": "./node_modules/moment/locale/kn.js",
+	"./kn.js": "./node_modules/moment/locale/kn.js",
+	"./ko": "./node_modules/moment/locale/ko.js",
+	"./ko.js": "./node_modules/moment/locale/ko.js",
+	"./ky": "./node_modules/moment/locale/ky.js",
+	"./ky.js": "./node_modules/moment/locale/ky.js",
+	"./lb": "./node_modules/moment/locale/lb.js",
+	"./lb.js": "./node_modules/moment/locale/lb.js",
+	"./lo": "./node_modules/moment/locale/lo.js",
+	"./lo.js": "./node_modules/moment/locale/lo.js",
+	"./lt": "./node_modules/moment/locale/lt.js",
+	"./lt.js": "./node_modules/moment/locale/lt.js",
+	"./lv": "./node_modules/moment/locale/lv.js",
+	"./lv.js": "./node_modules/moment/locale/lv.js",
+	"./me": "./node_modules/moment/locale/me.js",
+	"./me.js": "./node_modules/moment/locale/me.js",
+	"./mi": "./node_modules/moment/locale/mi.js",
+	"./mi.js": "./node_modules/moment/locale/mi.js",
+	"./mk": "./node_modules/moment/locale/mk.js",
+	"./mk.js": "./node_modules/moment/locale/mk.js",
+	"./ml": "./node_modules/moment/locale/ml.js",
+	"./ml.js": "./node_modules/moment/locale/ml.js",
+	"./mn": "./node_modules/moment/locale/mn.js",
+	"./mn.js": "./node_modules/moment/locale/mn.js",
+	"./mr": "./node_modules/moment/locale/mr.js",
+	"./mr.js": "./node_modules/moment/locale/mr.js",
+	"./ms": "./node_modules/moment/locale/ms.js",
+	"./ms-my": "./node_modules/moment/locale/ms-my.js",
+	"./ms-my.js": "./node_modules/moment/locale/ms-my.js",
+	"./ms.js": "./node_modules/moment/locale/ms.js",
+	"./mt": "./node_modules/moment/locale/mt.js",
+	"./mt.js": "./node_modules/moment/locale/mt.js",
+	"./my": "./node_modules/moment/locale/my.js",
+	"./my.js": "./node_modules/moment/locale/my.js",
+	"./nb": "./node_modules/moment/locale/nb.js",
+	"./nb.js": "./node_modules/moment/locale/nb.js",
+	"./ne": "./node_modules/moment/locale/ne.js",
+	"./ne.js": "./node_modules/moment/locale/ne.js",
+	"./nl": "./node_modules/moment/locale/nl.js",
+	"./nl-be": "./node_modules/moment/locale/nl-be.js",
+	"./nl-be.js": "./node_modules/moment/locale/nl-be.js",
+	"./nl.js": "./node_modules/moment/locale/nl.js",
+	"./nn": "./node_modules/moment/locale/nn.js",
+	"./nn.js": "./node_modules/moment/locale/nn.js",
+	"./pa-in": "./node_modules/moment/locale/pa-in.js",
+	"./pa-in.js": "./node_modules/moment/locale/pa-in.js",
+	"./pl": "./node_modules/moment/locale/pl.js",
+	"./pl.js": "./node_modules/moment/locale/pl.js",
+	"./pt": "./node_modules/moment/locale/pt.js",
+	"./pt-br": "./node_modules/moment/locale/pt-br.js",
+	"./pt-br.js": "./node_modules/moment/locale/pt-br.js",
+	"./pt.js": "./node_modules/moment/locale/pt.js",
+	"./ro": "./node_modules/moment/locale/ro.js",
+	"./ro.js": "./node_modules/moment/locale/ro.js",
+	"./ru": "./node_modules/moment/locale/ru.js",
+	"./ru.js": "./node_modules/moment/locale/ru.js",
+	"./sd": "./node_modules/moment/locale/sd.js",
+	"./sd.js": "./node_modules/moment/locale/sd.js",
+	"./se": "./node_modules/moment/locale/se.js",
+	"./se.js": "./node_modules/moment/locale/se.js",
+	"./si": "./node_modules/moment/locale/si.js",
+	"./si.js": "./node_modules/moment/locale/si.js",
+	"./sk": "./node_modules/moment/locale/sk.js",
+	"./sk.js": "./node_modules/moment/locale/sk.js",
+	"./sl": "./node_modules/moment/locale/sl.js",
+	"./sl.js": "./node_modules/moment/locale/sl.js",
+	"./sq": "./node_modules/moment/locale/sq.js",
+	"./sq.js": "./node_modules/moment/locale/sq.js",
+	"./sr": "./node_modules/moment/locale/sr.js",
+	"./sr-cyrl": "./node_modules/moment/locale/sr-cyrl.js",
+	"./sr-cyrl.js": "./node_modules/moment/locale/sr-cyrl.js",
+	"./sr.js": "./node_modules/moment/locale/sr.js",
+	"./ss": "./node_modules/moment/locale/ss.js",
+	"./ss.js": "./node_modules/moment/locale/ss.js",
+	"./sv": "./node_modules/moment/locale/sv.js",
+	"./sv.js": "./node_modules/moment/locale/sv.js",
+	"./sw": "./node_modules/moment/locale/sw.js",
+	"./sw.js": "./node_modules/moment/locale/sw.js",
+	"./ta": "./node_modules/moment/locale/ta.js",
+	"./ta.js": "./node_modules/moment/locale/ta.js",
+	"./te": "./node_modules/moment/locale/te.js",
+	"./te.js": "./node_modules/moment/locale/te.js",
+	"./tet": "./node_modules/moment/locale/tet.js",
+	"./tet.js": "./node_modules/moment/locale/tet.js",
+	"./tg": "./node_modules/moment/locale/tg.js",
+	"./tg.js": "./node_modules/moment/locale/tg.js",
+	"./th": "./node_modules/moment/locale/th.js",
+	"./th.js": "./node_modules/moment/locale/th.js",
+	"./tl-ph": "./node_modules/moment/locale/tl-ph.js",
+	"./tl-ph.js": "./node_modules/moment/locale/tl-ph.js",
+	"./tlh": "./node_modules/moment/locale/tlh.js",
+	"./tlh.js": "./node_modules/moment/locale/tlh.js",
+	"./tr": "./node_modules/moment/locale/tr.js",
+	"./tr.js": "./node_modules/moment/locale/tr.js",
+	"./tzl": "./node_modules/moment/locale/tzl.js",
+	"./tzl.js": "./node_modules/moment/locale/tzl.js",
+	"./tzm": "./node_modules/moment/locale/tzm.js",
+	"./tzm-latn": "./node_modules/moment/locale/tzm-latn.js",
+	"./tzm-latn.js": "./node_modules/moment/locale/tzm-latn.js",
+	"./tzm.js": "./node_modules/moment/locale/tzm.js",
+	"./ug-cn": "./node_modules/moment/locale/ug-cn.js",
+	"./ug-cn.js": "./node_modules/moment/locale/ug-cn.js",
+	"./uk": "./node_modules/moment/locale/uk.js",
+	"./uk.js": "./node_modules/moment/locale/uk.js",
+	"./ur": "./node_modules/moment/locale/ur.js",
+	"./ur.js": "./node_modules/moment/locale/ur.js",
+	"./uz": "./node_modules/moment/locale/uz.js",
+	"./uz-latn": "./node_modules/moment/locale/uz-latn.js",
+	"./uz-latn.js": "./node_modules/moment/locale/uz-latn.js",
+	"./uz.js": "./node_modules/moment/locale/uz.js",
+	"./vi": "./node_modules/moment/locale/vi.js",
+	"./vi.js": "./node_modules/moment/locale/vi.js",
+	"./x-pseudo": "./node_modules/moment/locale/x-pseudo.js",
+	"./x-pseudo.js": "./node_modules/moment/locale/x-pseudo.js",
+	"./yo": "./node_modules/moment/locale/yo.js",
+	"./yo.js": "./node_modules/moment/locale/yo.js",
+	"./zh-cn": "./node_modules/moment/locale/zh-cn.js",
+	"./zh-cn.js": "./node_modules/moment/locale/zh-cn.js",
+	"./zh-hk": "./node_modules/moment/locale/zh-hk.js",
+	"./zh-hk.js": "./node_modules/moment/locale/zh-hk.js",
+	"./zh-tw": "./node_modules/moment/locale/zh-tw.js",
+	"./zh-tw.js": "./node_modules/moment/locale/zh-tw.js"
+};
+function webpackContext(req) {
+	return __webpack_require__(webpackContextResolve(req));
+};
+function webpackContextResolve(req) {
+	var id = map[req];
+	if(!(id + 1)) // check for number or string
+		throw new Error("Cannot find module '" + req + "'.");
+	return id;
+};
+webpackContext.keys = function webpackContextKeys() {
+	return Object.keys(map);
+};
+webpackContext.resolve = webpackContextResolve;
+module.exports = webpackContext;
+webpackContext.id = "./node_modules/moment/locale recursive ^\\.\\/.*$";
+
+/***/ }),
+
 /***/ "./src/$$_lazy_route_resource lazy recursive":
 /***/ (function(module, exports) {
 
@@ -47,12 +316,14 @@ webpackEmptyAsyncContext.id = "./src/$$_lazy_route_resource lazy recursive";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__local_pages_checkout_payment_checkout_payment_component__ = __webpack_require__("./src/app/pages/checkout-payment/checkout-payment.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__local_pages_order_history_order_history_component__ = __webpack_require__("./src/app/pages/order-history/order-history.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__local_layouts_account_layout_account_layout_component__ = __webpack_require__("./src/app/layouts/account-layout/account-layout.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__local_pages_confirmation_confirmation_component__ = __webpack_require__("./src/app/pages/confirmation/confirmation.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -102,7 +373,8 @@ var routes = [
                 path: 'checkout', component: __WEBPACK_IMPORTED_MODULE_18__local_pages_checkout_login_checkout_login_component__["a" /* CheckoutLoginComponent */]
             },
             { path: 'checkout/review', component: __WEBPACK_IMPORTED_MODULE_20__local_pages_checkout_review_checkout_review_component__["a" /* CheckoutReviewComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_19__local_guards_access_guard__["a" /* AccessGuard */]] },
-            { path: 'checkout/payment', component: __WEBPACK_IMPORTED_MODULE_22__local_pages_checkout_payment_checkout_payment_component__["a" /* CheckoutPaymentComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_21__local_guards_order_guard__["a" /* OrderGuard */]] }
+            { path: 'checkout/payment', component: __WEBPACK_IMPORTED_MODULE_22__local_pages_checkout_payment_checkout_payment_component__["a" /* CheckoutPaymentComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_21__local_guards_order_guard__["a" /* OrderGuard */]] },
+            { path: 'checkout/confirmation', component: __WEBPACK_IMPORTED_MODULE_25__local_pages_confirmation_confirmation_component__["a" /* ConfirmationComponent */] }
         ]
     },
     {
@@ -589,7 +861,7 @@ var AccountLayoutComponent = /** @class */ (function () {
 /***/ "./src/app/layouts/main-layout/main-layout.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"mobile-menu\" *responsive=\"{ sizes: {min:300, max:768}}\" [ngClass]=\"mobileMenuState\">\n  <ul>\n    <li><a routerLink=\"/\" routerLinkActive=\"active\">Home</a></li>\n    <li *ngFor=\"let item of mainMenuLinks\" [attr.class]=\"item.classes ? item.classes : null\">\n      <a routerLink=\"/{{ item.object_slug }}\" routerLinkActive=\"active\" [routerLinkActiveOptions]=\"{exact:true}\">{{ item.title }}</a>\n    </li>\n  </ul>\n</div>\n<div class=\"site-container\" [ngClass]=\"mobileMenuState\" loCalWindowScroll>\n  <div class=\"sticky-header\">\n    <div class=\"menu-container clearfix\">\n      <lo-cal-hamburger (mobileMenuState)=\"toggleMobileMenuState()\" *responsive=\"{ sizes: {min:300, max:768}}\"></lo-cal-hamburger>\n      <ul class=\"menu main-menu\">\n        <li>\n          <h1 class=\"logo\" *ngIf=\"currentUrl?.url == '/'; else regularLink\"><a routerLink=\"/\"><span class=\"visuallyhidden\">Lo•Cal Kitchen</span></a></h1>\n          <ng-template #regularLink>\n            <div class=\"logo\"><a routerLink=\"/\"><span class=\"visuallyhidden\">Lo•Cal Kitchen</span></a></div>\n          </ng-template>\n        </li>\n        <li *ngFor=\"let item of mainMenuLinks\" [attr.class]=\"item.classes ? item.classes : null\">\n          <a routerLink=\"/{{ item.object_slug }}\" routerLinkActive=\"active\">{{ item.title }}</a>\n        </li>\n      </ul>\n      <ul class=\"cart-menu menu\">\n        <li class=\"account-link\">\n          <a routerLink=\"/account\"><span class=\"account-text\">ACCOUNT</span></a>\n        </li>\n        <li class=\"bag-link\">\n          <a tabindex=\"0\" (click)=\"toggleBagState()\" (keyup.enter)=\"toggleBagState()\" title=\"Click to view your bag\">\n            <span class=\"bag-text\">MY BAG</span>\n            <span class=\"cart-number\" [ngClass]=\"numberOfItemsInBag == 0 ? 'hidden' : 'populated'\">{{ numberOfItemsInBag }}</span>\n          </a>\n        </li>\n      </ul>\n    </div>\n  </div>\n  <div class=\"main-container\">\n    <router-outlet></router-outlet>\n  </div>\n\n  <lo-cal-footer></lo-cal-footer>\n  <lo-cal-bag [state]=\"bagState\" [bagCount]=\"numberOfItemsInBag\" [bagItems]=\"bagItems\" (bagState)=\"toggleBagState()\"></lo-cal-bag>\n</div>"
+module.exports = "<div class=\"mobile-menu\" *responsive=\"{ sizes: {min:300, max:768}}\" [ngClass]=\"mobileMenuState\">\n  <ul>\n    <li><a routerLink=\"/\" routerLinkActive=\"active\" [routerLinkActiveOptions]=\"{exact:true}\">Home</a></li>\n    <li *ngFor=\"let item of mainMenuLinks\" [attr.class]=\"item.classes ? item.classes : null\">\n      <a routerLink=\"/{{ item.object_slug }}\" routerLinkActive=\"active\" [routerLinkActiveOptions]=\"{exact:true}\">{{ item.title }}</a>\n    </li>\n  </ul>\n</div>\n<div class=\"site-container\" [ngClass]=\"mobileMenuState\" loCalWindowScroll>\n  <div class=\"sticky-header\">\n    <div class=\"menu-container clearfix\">\n      <lo-cal-hamburger (mobileMenuState)=\"toggleMobileMenuState()\" *responsive=\"{ sizes: {min:300, max:768}}\"></lo-cal-hamburger>\n      <ul class=\"menu main-menu\">\n        <li>\n          <h1 class=\"logo\" *ngIf=\"currentUrl?.url == '/'; else regularLink\"><a routerLink=\"/\"><span class=\"visuallyhidden\">Lo•Cal Kitchen</span></a></h1>\n          <ng-template #regularLink>\n            <div class=\"logo\"><a routerLink=\"/\"><span class=\"visuallyhidden\">Lo•Cal Kitchen</span></a></div>\n          </ng-template>\n        </li>\n        <li *ngFor=\"let item of mainMenuLinks\" [attr.class]=\"item.classes ? item.classes : null\">\n          <a routerLink=\"/{{ item.object_slug }}\" routerLinkActive=\"active\">{{ item.title }}</a>\n        </li>\n      </ul>\n      <ul class=\"cart-menu menu\">\n        <li class=\"account-link\">\n          <a routerLink=\"/account\"><span class=\"account-text\">ACCOUNT</span></a>\n        </li>\n        <li class=\"bag-link\">\n          <a tabindex=\"0\" (click)=\"toggleBagState()\" (keyup.enter)=\"toggleBagState()\" title=\"Click to view your bag\">\n            <span class=\"bag-text\">MY BAG</span>\n            <span class=\"cart-number\" [ngClass]=\"numberOfItemsInBag == 0 ? 'hidden' : 'populated'\">{{ numberOfItemsInBag }}</span>\n          </a>\n        </li>\n      </ul>\n    </div>\n  </div>\n  <div class=\"main-container\">\n    <router-outlet></router-outlet>\n  </div>\n\n  <lo-cal-footer></lo-cal-footer>\n  <lo-cal-bag [state]=\"bagState\" [bagCount]=\"numberOfItemsInBag\" [bagItems]=\"bagItems\" (bagState)=\"toggleBagState()\"></lo-cal-bag>\n</div>"
 
 /***/ }),
 
@@ -927,7 +1199,7 @@ var BlogComponent = /** @class */ (function () {
 /***/ "./src/app/pages/catering/catering.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"page-landing-page\">\n  <lo-cal-header [featuredImage]=\"featuredImage\" [pageContent]=\"pageContent\"></lo-cal-header>\n  <div class=\"section section-white\">\n    <div class=\"content center\">\n      <div class=\"body center-960\" [innerHtml]=\"pageContent?.content?.rendered | safeHtml\"></div>\n    </div>\n  </div>\n\n  <div class=\"section section-grey catering-columns\" *ngIf=\"acf?.catering_column\">\n    <div class=\"content center\">\n      <h3 class=\"title\" *ngIf=\"acf?.title\" [innerHtml]=\"acf?.title\"></h3>\n      <div class=\"columns\">\n        <div class=\"column\" *ngFor=\"let column of acf?.catering_column\">\n          <div class=\"body\" [innerHtml]=\"column?.catering_column_body | safeHtml\"></div>\n        </div>\n      </div>\n    </div>\n  </div>\n\n  <div class=\"section section-white\">\n    <div class=\"content center\">\n      <h3>Contact Us for Catering Requests</h3>\n      <form action=\"\" [formGroup]=\"cateringForm\" class=\"lo-cal-form catering-form\">\n        <div class=\"form-section half-and-half\">\n          <div class=\"form-component form-component-text\">\n            <label for=\"full-name\" class=\"visuallyhidden\">Full Name *</label>\n            <input type=\"text\" name=\"full-name\" id=\"full-name\" placeholder=\"Full Name *\" formControlName=\"full-name\" [ngClass]=\"{'has-error':!cateringForm.controls['full-name'].valid && submittedOnce}\">\n            <div class=\"error-message\" *ngIf=\"!cateringForm.controls['full-name'].valid && submittedOnce\">This field is required.</div>\n          </div>\n          <div class=\"form-component form-component-text\">\n            <label for=\"phone\" class=\"visuallyhidden\">Phone Number *</label>\n            <input type=\"text\" name=\"phone\" id=\"phone\" placeholder=\"Phone Number *\" formControlName=\"phone\" [ngClass]=\"{'has-error':!cateringForm.controls['phone'].valid && submittedOnce}\">\n            <div class=\"error-message\" *ngIf=\"!cateringForm.controls['phone'].valid && submittedOnce\">This field is required.</div>\n          </div>\n        </div>\n        <div class=\"form-section half-and-half\">\n          <div class=\"form-component form-component-email\">\n            <label for=\"email\" class=\"visuallyhidden\">Email *</label>\n            <input type=\"email\" name=\"email\" id=\"email\" placeholder=\"Email *\" formControlName=\"email\" [ngClass]=\"{'has-error':!cateringForm.controls['email'].valid && submittedOnce}\">\n            <div class=\"error-message\" *ngIf=\"!cateringForm.controls['email'].valid && submittedOnce\">This field is required.</div>\n          </div>\n          <div class=\"form-component form-component-text\">\n            <label for=\"service-date\" class=\"visuallyhidden\">Service Date *</label>\n            <input type=\"text\" name=\"service-date\" id=\"service-date\" placeholder=\"Service Date *\" formControlName=\"service-date\" [ngClass]=\"{'has-error':!cateringForm.controls['service-date'].valid && submittedOnce}\">\n            <div class=\"error-message\" *ngIf=\"!cateringForm.controls['service-date'].valid && submittedOnce\">This field is required.</div>\n          </div>\n        </div>\n        <div class=\"form-section\">\n          <div class=\"form-component form-component-textarea\">\n            <label for=\"notes\">Notes</label>\n            <textarea name=\"notes\" id=\"notes\" rows=\"4\" formControlName=\"notes\"></textarea>\n          </div>\n        </div>\n        <div class=\"form-actions\">\n          <div class=\"form-submit red-button\">\n            <input type=\"submit\" value=\"Send\" (click)=\"submitForm(cateringForm)\">\n          </div>\n        </div>\n      </form>\n    </div>\n  </div>\n\n  <lo-cal-image-and-text [acf]=\"acf\" [color]=\"'grey'\"></lo-cal-image-and-text>\n</div>"
+module.exports = "<div class=\"page-landing-page\">\n  <lo-cal-header [featuredImage]=\"featuredImage\" [pageContent]=\"pageContent\"></lo-cal-header>\n  <div class=\"section section-white\">\n    <div class=\"content center\">\n      <div class=\"body center-960\" [innerHtml]=\"pageContent?.content?.rendered | safeHtml\"></div>\n    </div>\n  </div>\n\n  <div class=\"section section-grey catering-columns\" *ngIf=\"acf?.catering_column\">\n    <div class=\"content center\">\n      <h3 class=\"title\" *ngIf=\"acf?.title\" [innerHtml]=\"acf?.title\"></h3>\n      <div class=\"columns\">\n        <div class=\"column\" *ngFor=\"let column of acf?.catering_column\">\n          <div class=\"body\" [innerHtml]=\"column?.catering_column_body | safeHtml\"></div>\n        </div>\n      </div>\n    </div>\n  </div>\n\n  <div class=\"section section-white\">\n    <div class=\"content center\">\n      <h3>Contact Us for Catering Requests</h3>\n      <form action=\"\" [formGroup]=\"cateringForm\" class=\"lo-cal-form catering-form\">\n        <div class=\"form-section half-and-half\">\n          <div class=\"form-component form-component-text\">\n            <label for=\"full-name\" class=\"visuallyhidden\">Full Name *</label>\n            <input type=\"text\" name=\"full-name\" id=\"full-name\" placeholder=\"Full Name *\" formControlName=\"full-name\" [ngClass]=\"{'has-error':!cateringForm.controls['full-name'].valid && submittedOnce}\">\n            <div class=\"error-message\" *ngIf=\"!cateringForm.controls['full-name'].valid && submittedOnce\">This field is required.</div>\n          </div>\n          <div class=\"form-component form-component-text\">\n            <label for=\"phone\" class=\"visuallyhidden\">Phone Number *</label>\n            <input type=\"text\" name=\"phone\" id=\"phone\" placeholder=\"Phone Number *\" formControlName=\"phone\" [ngClass]=\"{'has-error':!cateringForm.controls['phone'].valid && submittedOnce}\">\n            <div class=\"error-message\" *ngIf=\"!cateringForm.controls['phone'].valid && submittedOnce\">This field is required.</div>\n          </div>\n        </div>\n        <div class=\"form-section half-and-half\">\n          <div class=\"form-component form-component-email\">\n            <label for=\"email\" class=\"visuallyhidden\">Email *</label>\n            <input type=\"email\" name=\"email\" id=\"email\" placeholder=\"Email *\" formControlName=\"email\" [ngClass]=\"{'has-error':!cateringForm.controls['email'].valid && submittedOnce}\">\n            <div class=\"error-message\" *ngIf=\"!cateringForm.controls['email'].valid && submittedOnce\">This field is required.</div>\n          </div>\n          <div class=\"form-component form-component-text\">\n            <label for=\"service-date\" class=\"visuallyhidden\">Service Date *</label>\n            <input type=\"text\" name=\"service-date\" id=\"service-date\" placeholder=\"Service Date *\" formControlName=\"service-date\" [ngClass]=\"{'has-error':!cateringForm.controls['service-date'].valid && submittedOnce}\">\n            <div class=\"error-message\" *ngIf=\"!cateringForm.controls['service-date'].valid && submittedOnce\">This field is required.</div>\n          </div>\n        </div>\n        <div class=\"form-section\">\n          <div class=\"form-component form-component-textarea\">\n            <label for=\"notes\">Notes</label>\n            <textarea name=\"notes\" id=\"notes\" rows=\"4\" formControlName=\"notes\"></textarea>\n          </div>\n        </div>\n        <div class=\"form-actions\">\n          <div class=\"form-submit red-button submit\">\n            <input type=\"submit\" value=\"Send\" (click)=\"submitForm(cateringForm)\">\n          </div>\n        </div>\n      </form>\n    </div>\n  </div>\n\n  <lo-cal-image-and-text [acf]=\"acf\" [color]=\"'grey'\"></lo-cal-image-and-text>\n</div>"
 
 /***/ }),
 
@@ -974,7 +1246,6 @@ var CateringComponent = /** @class */ (function () {
         this.wpService.getCustomPostTypeById('landing_page', 126).subscribe(function (page) {
             _this.pageContent = page;
             _this.acf = page.acf;
-            console.log(page.acf);
             if (page.featured_media != 0) {
                 _this.wpService.getMedia(page.featured_media).subscribe(function (media) { return _this.featuredImage = media; });
             }
@@ -1083,7 +1354,7 @@ var CheckoutLoginComponent = /** @class */ (function () {
 /***/ "./src/app/pages/checkout-payment/checkout-payment.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"basic-page-container checkout-review\">\n  <div class=\"basic-page-content center\">\n    <h1>Complete Your Order</h1>\n\n    <div class=\"checkout-wrapper\">\n      <div class=\"left-pane\">\n        <div class=\"step\">\n          <div class=\"inner-step-wrapper\">\n            <div class=\"step-heading\" (click)=\"editSection(1)\">1. Pickup</div>\n            <div class=\"step-wrapper\" [hidden]=\"sectionOpen !== 1\">\n              <form action=\"\" class=\"lo-cal-form\" [formGroup]=\"pickupForm\">\n                <div class=\"response\">\n                  <fieldset>\n                    <legend>How would you like to pickup your order?</legend>\n                    <div class=\"radio-options flex-between\">\n                      <div class=\"option\">\n                        <label for=\"in-store\">\n                          <input type=\"radio\" name=\"pickup-selection\" id=\"in-store\" value=\"1\" formControlName=\"pickup-selection\">\n                          <span class=\"semi-bold\">In Store Pick Up</span>\n                        </label>\n                      </div>\n                      <div class=\"option\">\n                        <label for=\"curbside\">\n                          <input type=\"radio\" name=\"pickup-selection\" id=\"curbside\" value=\"4\" formControlName=\"pickup-selection\">\n                          <span class=\"semi-bold\">Curbside Pickup</span>\n                        </label>\n                      </div>\n                    </div>\n                  </fieldset>\n                  <div class=\"car-options\" *ngIf=\"pickupForm.controls['pickup-selection'].value === '4'\">\n                    <div class=\"form-section half-and-half\">\n                      <div class=\"form-component form-component-text\">\n                        <label for=\"vehicle-make\" class=\"visuallyhidden\">Vehicle Make</label>\n                        <input type=\"text\" name=\"vehicle-make\" id=\"vehicle-make\" formControlName=\"vehicle-make\" placeholder=\"Vehicle Make*\">\n                      </div>\n                      <div class=\"form-component form-component-text\">\n                        <label for=\"vehicle-model\" class=\"visuallyhidden\">Vehicle Model</label>\n                        <input type=\"text\" name=\"vehicle-model\" id=\"vehicle-model\" formControlName=\"vehicle-model\" placeholder=\"Vehicle Model*\">\n                      </div>\n                    </div>\n                    <div class=\"form-section half-and-half\">\n                      <div class=\"form-component form-component-text\">\n                        <label for=\"vehicle-color\" class=\"visuallyhidden\">Vehicle Color</label>\n                        <input type=\"text\" name=\"vehicle-color\" id=\"vehicle-color\" formControlName=\"vehicle-color\" placeholder=\"Vehicle Color*\">\n                      </div>\n                    </div>\n                  </div>\n                </div>\n                <div class=\"next-step black-button\">\n                  <button [disabled]=\"!pickupForm.valid\"(click)=\"nextStep()\">Next Step</button>\n                </div>\n              </form>\n            </div>\n          </div><!-- /. inner-step-wrapper -->\n        </div><!-- /.step -->\n        <div class=\"step\">\n          <div class=\"inner-step-wrapper\">\n            <div class=\"step-heading\" (click)=\"editSection(2)\">2. Contact Information</div>\n            <div class=\"step-wrapper\" [hidden]=\"sectionOpen !== 2\">\n              <form action=\"\" class=\"lo-cal-form\" [formGroup]=\"contactInfoForm\">\n                <div class=\"form-section half-and-half\">\n                  <div class=\"form-component form-component-text\">\n                    <label for=\"first-name\" class=\"visuallyhidden\">First Name</label>\n                    <input type=\"text\" name=\"first-name\" id=\"first-name\" formControlName=\"first-name\" placeholder=\"First Name*\" [ngClass]=\"{'has-error':!contactInfoForm.controls['first-name'].valid && submittedOnce}\">\n                    <div class=\"error-message\" *ngIf=\"!contactInfoForm.controls['first-name'].valid && submittedOnce\">This field is required.</div>\n                  </div>\n                  <div class=\"form-component form-component-text\">\n                    <label for=\"last-name\" class=\"visuallyhidden\">Last Name</label>\n                    <input type=\"text\" name=\"last-name\" id=\"last-name\" formControlName=\"last-name\" placeholder=\"Last Name*\" [ngClass]=\"{'has-error':!contactInfoForm.controls['last-name'].valid && submittedOnce}\">\n                    <div class=\"error-message\" *ngIf=\"!contactInfoForm.controls['last-name'].valid && submittedOnce\">This field is required.</div>\n                  </div>\n                </div>\n                <div class=\"form-section half-and-half\">\n                  <div class=\"form-component form-component-text\">\n                    <label for=\"phone\" class=\"visuallyhidden\">Phone</label>\n                    <input type=\"text\" name=\"phone\" id=\"phone\" formControlName=\"phone\" placeholder=\"Phone\" [ngClass]=\"{'has-error':!contactInfoForm.controls['phone'].valid && submittedOnce}\">\n                    <div class=\"error-message\" *ngIf=\"!contactInfoForm.controls['phone'].valid && submittedOnce\">This field is required.</div>\n                  </div>\n                  <div class=\"form-component form-component-email\">\n                    <label for=\"email\" class=\"visuallyhidden\">Email</label>\n                    <input type=\"text\" name=\"email\" id=\"email\" formControlName=\"email\" placeholder=\"Email*\" [ngClass]=\"{'has-error':!contactInfoForm.controls['email'].valid && submittedOnce}\">\n                    <div class=\"error-message\" *ngIf=\"!contactInfoForm.controls['email'].valid && submittedOnce\">This field is required.</div>\n                  </div>\n                </div>\n                <div class=\"next-step black-button\">\n                  <button [disabled]=\"!contactInfoForm.valid\"(click)=\"nextStep()\">Next Step</button>\n                </div>\n              </form>\n            </div>\n          </div><!-- /. inner-step-wrapper -->\n        </div><!-- /.step -->\n        <div class=\"step\">\n          <div class=\"inner-step-wrapper\">\n            <div class=\"step-heading\" (click)=\"editSection(3)\">3. Payment</div>\n            <div class=\"step-wrapper\" [hidden]=\"sectionOpen !== 3\">\n              <form action=\"\" class=\"lo-cal-form\" [formGroup]=\"paymentForm\">\n                <div class=\"radio-options flex-between\">\n                  <div class=\"option\">\n                    <label for=\"cc\">\n                      <input type=\"radio\" name=\"payment-choice\" id=\"cc\" value=\"1\" formControlName=\"payment-choice\"  [(ngModel)]=\"paymentChoice\">\n                      <span class=\"semi-bold\">Pay now with a credit card</span>\n                    </label>\n                  </div>\n                  <div class=\"option\">\n                    <label for=\"pay-at-store\">\n                      <input type=\"radio\" name=\"payment-choice\" id=\"pay-at-store\" value=\"2\" formControlName=\"payment-choice\" [(ngModel)]=\"paymentChoice\">\n                      <span class=\"semi-bold\">Pay at the store</span>\n                    </label>\n                  </div>\n                </div>\n                <div class=\"new-card-section\" *ngIf=\"paymentForm.controls['payment-choice'].value === '1'\">\n                  <div class=\"form-section half-and-half\">\n                    <div class=\"form-component form-component-text\">\n                      <label for=\"card-number\" class=\"visuallyhidden\">Credit Card Number</label>\n                      <input type=\"text\" name=\"card-number\" id=\"card-number\" formControlName=\"card-number\" placeholder=\"Credit Card Number*\" [ngClass]=\"{'has-error':!paymentForm.controls['card-number'].valid && submittedOnce}\" #ccNumber ([ngModel])=\"cardType\" (ngModelChange)=\"detectCardType(ccNumber.value)\">\n                      <div class=\"card-sprite-wrapper\">\n                        <div class=\"card visa\" [ngClass]=\"activeCardClass === 'visa' ? 'active' : ''\" title=\"Visa\"></div>\n                        <div class=\"card master-card\" [ngClass]=\"activeCardClass === 'master-card' ? 'active' : ''\" title=\"MasterCard\"></div>\n                        <div class=\"card american-express\" [ngClass]=\"activeCardClass === 'american-express' ? 'active' : ''\" title=\"American Express\"></div>\n                        <div class=\"card discover\" [ngClass]=\"activeCardClass === 'discover' ? 'active' : ''\" title=\"Discover\"></div>\n                        <div class=\"card diners-club\" [ngClass]=\"activeCardClass === 'diners-club' ? 'active' : ''\" title=\"Diners Club\"></div>\n                      </div>\n                      <div class=\"error-message\" *ngIf=\"!paymentForm.controls['card-number'].valid && submittedOnce\">This field is required.</div>\n                    </div>\n                    <div class=\"form-component form-component-text\">\n                      <label for=\"last-name\" class=\"visuallyhidden\">Expiration Date</label>\n                      <input type=\"text\" name=\"expiration-date\" id=\"expiration-date\" formControlName=\"expiration-date\" placeholder=\"Expiration Date (mm/yyyy)*\" [ngClass]=\"{'has-error':!paymentForm.controls['expiration-date'].valid && submittedOnce}\" loCalMonthMask>\n                      <div class=\"error-message\" *ngIf=\"!paymentForm.controls['expiration-date'].valid && submittedOnce\">This field is required.</div>\n                    </div>\n                  </div>\n                  <div class=\"form-section half-and-half\">\n                    <div class=\"form-component form-component-text\">\n                      <label for=\"phone\" class=\"visuallyhidden\">Name On Card</label>\n                      <input type=\"text\" name=\"name-on-card\" id=\"name-on-card\" formControlName=\"name-on-card\" placeholder=\"Name on card*\" [ngClass]=\"{'has-error':!paymentForm.controls['name-on-card'].valid && submittedOnce}\">\n                      <div class=\"error-message\" *ngIf=\"!paymentForm.controls['name-on-card'].valid && submittedOnce\">This field is required.</div>\n                    </div>\n                    <div class=\"form-component form-component-email\">\n                      <label for=\"email\" class=\"visuallyhidden\">CVV</label>\n                      <input type=\"text\" name=\"cvv\" id=\"cvv\" formControlName=\"cvv\" placeholder=\"CVV*\" [ngClass]=\"{'has-error':!paymentForm.controls['cvv'].valid && submittedOnce}\">\n                      <div class=\"error-message\" *ngIf=\"!paymentForm.controls['cvv'].valid && submittedOnce\">This field is required.</div>\n                    </div>\n                  </div>\n                </div>\n                <div class=\"next-step black-button step-4-button\">\n                  <button [disabled]=\"(!paymentForm.valid && paymentChoice !== '2')\"(click)=\"nextStep()\">Next Step</button>\n                </div>\n              </form>\n            </div>\n          </div><!-- /. inner-step-wrapper -->\n        </div><!-- /.step -->\n        <div class=\"step step-4\">\n          <div class=\"inner-step-wrapper\">\n            <div class=\"step-heading\">4. Place Your Order</div>\n            <div class=\"step-wrapper\">\n              <p class=\"question semi-bold\">Your total: {{ currentOrder?.TotalAmount | currency }}</p>\n            </div>\n            <div class=\"red-button small-text\" [ngClass]=\"processing ? 'loading' : ''\">\n              <button [disabled]=\"!pickupForm.valid && !paymentForm.valid && !contactInfoForm.valid\" (click)=\"submitOrder()\">Place Order Now</button>\n            </div>\n            <p class=\"terms-and-conditions small-text\">\n              By placing your order you agree to our Terms of Conditions. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vehicula ac orci sed venenatis. Phasellus venenatis blandit nulla non pretium. Sed id metus non nisi pulvinar dictum.\n            </p>\n          </div><!-- /. inner-step-wrapper -->\n        </div><!-- /.step -->\n      </div><!-- /.left-pane -->\n      <div class=\"order-summary\">\n        <div class=\"itemized-summary\">\n          <h4>Order Summary</h4>\n          <div class=\"item flex-between\" *ngFor=\"let menuItem of orderForDisplay\">\n            <div class=\"item-specifics\">\n              <div class=\"title semi-bold\"><span class=\"quantity\">{{ menuItem?.quantity }} x</span> <span class=\"item-name\">{{ menuItem?.name }}</span></div>\n              <div class=\"additions\" *ngIf=\"menuItem?.modifiers\">\n                <span class=\"modifier\" *ngFor=\"let mod of menuItem?.modifiers\">{{ mod?.name }}</span>\n              </div>\n            </div>\n            <div class=\"item-price\">\n              <span class=\"price\">{{ menuItem?.fullPrice | currency }}</span>\n            </div>\n          </div>\n        </div><!-- /.itemized-summary -->\n        <div class=\"pricing-and-location\">\n          <div class=\"pricing-details\">\n            <div class=\"flex-between subtotal\">\n              <span class=\"label\">Subtotal</span>\n              <span class=\"value\">{{ currentOrder?.SubTotalAmount | currency }}</span>\n            </div>\n            <div class=\"flex-between\">\n              <span class=\"label\">Tax</span>\n              <span class=\"value\">{{ currentOrder?.TaxAmount | currency }}</span>\n            </div>\n            <div class=\"flex-between total\">\n              <span class=\"label semi-bold\">Total</span>\n              <span class=\"value semi-bold\">{{ currentOrder?.TotalAmount | currency }}</span>\n            </div>\n\n            <div class=\"red-button full-width-button small-text\" [ngClass]=\"processing ? 'loading' : ''\">\n              <!-- <button [disabled]=\"!pickupForm.valid && !paymentForm.valid && !contactInfoForm.valid\" (click)=\"submitOrder()\">Place Order Now</button> -->\n              <button (click)=\"submitOrder()\">Place Order Now</button>\n            </div>\n            <p class=\"go-back text-center\">\n              <a href=\"\">or go back to edit your order</a>\n            </p>\n          </div>\n          <div class=\"location-details\">\n            <p class=\"semi-bold\">You are ordering from</p>\n            <h4>Lo·Cal Long Island</h4>\n            <p>\n              The Mall at The Source<br/>\n              1504 Old Country Rd, Westbury, NY 11590\n            </p>\n            <div class=\"map-image\">\n              <img src=\"\" alt=\"\">\n            </div>\n            <p class=\"bold\">\n              Tel: 987-012-2345\n            </p>\n          </div>\n        </div><!-- /.pricing-and-location -->\n\n      </div><!-- /.order-summary -->\n    </div>\n\n  </div><!-- /.basic-page-content -->\n</div><!-- /.checkout-review -->"
+module.exports = "<div class=\"basic-page-container checkout-review\">\n  <div class=\"basic-page-content center\">\n    <h1>Complete Your Order</h1>\n\n    <div class=\"checkout-wrapper\">\n      <div class=\"left-pane\">\n        <div class=\"step\">\n          <div class=\"inner-step-wrapper\">\n            <div class=\"step-heading\" (click)=\"editSection(1)\">1. Pickup</div>\n            <div class=\"step-wrapper\" [hidden]=\"sectionOpen !== 1\">\n              <form action=\"\" class=\"lo-cal-form\" [formGroup]=\"pickupForm\">\n                <div class=\"response\">\n                  <fieldset>\n                    <legend>How would you like to pickup your order?</legend>\n                    <div class=\"radio-options flex-between\">\n                      <div class=\"option\">\n                        <label for=\"in-store\">\n                          <input type=\"radio\" name=\"pickup-selection\" id=\"in-store\" value=\"1\" formControlName=\"pickup-selection\">\n                          <span class=\"semi-bold\">In Store Pick Up</span>\n                        </label>\n                      </div>\n                      <div class=\"option\">\n                        <label for=\"curbside\">\n                          <input type=\"radio\" name=\"pickup-selection\" id=\"curbside\" value=\"4\" formControlName=\"pickup-selection\">\n                          <span class=\"semi-bold\">Curbside Pickup</span>\n                        </label>\n                      </div>\n                    </div>\n                  </fieldset>\n                  <div class=\"car-options\" *ngIf=\"pickupForm.controls['pickup-selection'].value === '4'\">\n                    <div class=\"form-section half-and-half\">\n                      <div class=\"form-component form-component-text\">\n                        <label for=\"vehicle-make\" class=\"visuallyhidden\">Vehicle Make</label>\n                        <input type=\"text\" name=\"vehicle-make\" id=\"vehicle-make\" formControlName=\"vehicle-make\" placeholder=\"Vehicle Make*\">\n                      </div>\n                      <div class=\"form-component form-component-text\">\n                        <label for=\"vehicle-model\" class=\"visuallyhidden\">Vehicle Model</label>\n                        <input type=\"text\" name=\"vehicle-model\" id=\"vehicle-model\" formControlName=\"vehicle-model\" placeholder=\"Vehicle Model*\">\n                      </div>\n                    </div>\n                    <div class=\"form-section half-and-half\">\n                      <div class=\"form-component form-component-text\">\n                        <label for=\"vehicle-color\" class=\"visuallyhidden\">Vehicle Color</label>\n                        <input type=\"text\" name=\"vehicle-color\" id=\"vehicle-color\" formControlName=\"vehicle-color\" placeholder=\"Vehicle Color*\">\n                      </div>\n                    </div>\n                  </div>\n                </div>\n                <div class=\"next-step black-button\">\n                  <button [disabled]=\"!pickupForm.valid\"(click)=\"nextStep()\">Next Step</button>\n                  <span class=\"processing\" *ngIf=\"processing\">Please Wait...</span>\n                </div>\n              </form>\n            </div>\n          </div><!-- /. inner-step-wrapper -->\n        </div><!-- /.step -->\n        <div class=\"step\">\n          <div class=\"inner-step-wrapper\">\n            <div class=\"step-heading\" (click)=\"editSection(2)\">2. Contact Information</div>\n            <div class=\"step-wrapper\" [hidden]=\"sectionOpen !== 2\">\n              <form action=\"\" class=\"lo-cal-form\" [formGroup]=\"contactInfoForm\">\n                <div class=\"form-section half-and-half\">\n                  <div class=\"form-component form-component-text\">\n                    <label for=\"first-name\" class=\"visuallyhidden\">First Name</label>\n                    <input type=\"text\" name=\"first-name\" id=\"first-name\" formControlName=\"first-name\" placeholder=\"First Name*\" [ngClass]=\"{'has-error':!contactInfoForm.controls['first-name'].valid && submittedOnce}\">\n                    <div class=\"error-message\" *ngIf=\"!contactInfoForm.controls['first-name'].valid && submittedOnce\">This field is required.</div>\n                  </div>\n                  <div class=\"form-component form-component-text\">\n                    <label for=\"last-name\" class=\"visuallyhidden\">Last Name</label>\n                    <input type=\"text\" name=\"last-name\" id=\"last-name\" formControlName=\"last-name\" placeholder=\"Last Name*\" [ngClass]=\"{'has-error':!contactInfoForm.controls['last-name'].valid && submittedOnce}\">\n                    <div class=\"error-message\" *ngIf=\"!contactInfoForm.controls['last-name'].valid && submittedOnce\">This field is required.</div>\n                  </div>\n                </div>\n                <div class=\"form-section half-and-half\">\n                  <div class=\"form-component form-component-text\">\n                    <label for=\"phone\" class=\"visuallyhidden\">Phone</label>\n                    <input type=\"text\" name=\"phone\" id=\"phone\" formControlName=\"phone\" placeholder=\"Phone\" [ngClass]=\"{'has-error':!contactInfoForm.controls['phone'].valid && submittedOnce}\">\n                    <div class=\"error-message\" *ngIf=\"!contactInfoForm.controls['phone'].valid && submittedOnce\">This field is required.</div>\n                  </div>\n                  <div class=\"form-component form-component-email\">\n                    <label for=\"email\" class=\"visuallyhidden\">Email</label>\n                    <input type=\"text\" name=\"email\" id=\"email\" formControlName=\"email\" placeholder=\"Email*\" [ngClass]=\"{'has-error':!contactInfoForm.controls['email'].valid && submittedOnce}\">\n                    <div class=\"error-message\" *ngIf=\"!contactInfoForm.controls['email'].valid && submittedOnce\">This field is required.</div>\n                  </div>\n                </div>\n                <div class=\"next-step black-button\">\n                  <button [disabled]=\"!contactInfoForm.valid\" (click)=\"nextStep()\">Next Step</button>\n                </div>\n              </form>\n            </div>\n          </div><!-- /. inner-step-wrapper -->\n        </div><!-- /.step -->\n        <div class=\"step\">\n          <div class=\"inner-step-wrapper\">\n            <div class=\"step-heading\" (click)=\"editSection(3)\">3. Payment</div>\n            <div class=\"step-wrapper\" [hidden]=\"sectionOpen !== 3\">\n              <form action=\"\" class=\"lo-cal-form\" [formGroup]=\"paymentForm\">\n                <div class=\"radio-options flex-between\">\n                  <div class=\"option\">\n                    <label for=\"cc\">\n                      <input type=\"radio\" name=\"payment-choice\" id=\"cc\" value=\"1\" formControlName=\"payment-choice\"  [(ngModel)]=\"paymentChoice\">\n                      <span class=\"semi-bold\">Pay now with a credit card</span>\n                    </label>\n                  </div>\n                  <div class=\"option\">\n                    <label for=\"pay-at-store\">\n                      <input type=\"radio\" name=\"payment-choice\" id=\"pay-at-store\" value=\"2\" formControlName=\"payment-choice\" [(ngModel)]=\"paymentChoice\">\n                      <span class=\"semi-bold\">Pay at the store</span>\n                    </label>\n                  </div>\n                </div>\n                <div class=\"new-card-section\" *ngIf=\"paymentForm.controls['payment-choice'].value === '1'\">\n                  <div class=\"form-section half-and-half\">\n                    <div class=\"form-component form-component-text\">\n                      <label for=\"card-number\" class=\"visuallyhidden\">Credit Card Number</label>\n                      <input type=\"text\" name=\"card-number\" id=\"card-number\" formControlName=\"card-number\" placeholder=\"Credit Card Number*\" [ngClass]=\"{'has-error':!paymentForm.controls['card-number'].valid && submittedOnce}\" #ccNumber ([ngModel])=\"cardType\" (ngModelChange)=\"detectCardType(ccNumber.value)\">\n                      <div class=\"card-sprite-wrapper\">\n                        <div class=\"card visa\" [ngClass]=\"activeCardClass === 'visa' ? 'active' : ''\" title=\"Visa\"></div>\n                        <div class=\"card master-card\" [ngClass]=\"activeCardClass === 'master-card' ? 'active' : ''\" title=\"MasterCard\"></div>\n                        <div class=\"card american-express\" [ngClass]=\"activeCardClass === 'american-express' ? 'active' : ''\" title=\"American Express\"></div>\n                        <div class=\"card discover\" [ngClass]=\"activeCardClass === 'discover' ? 'active' : ''\" title=\"Discover\"></div>\n                        <div class=\"card diners-club\" [ngClass]=\"activeCardClass === 'diners-club' ? 'active' : ''\" title=\"Diners Club\"></div>\n                      </div>\n                      <div class=\"error-message\" *ngIf=\"!paymentForm.controls['card-number'].valid && submittedOnce\">This field is required.</div>\n                    </div>\n                    <div class=\"form-component form-component-text\">\n                      <label for=\"last-name\" class=\"visuallyhidden\">Expiration Date</label>\n                      <input type=\"text\" name=\"expiration-date\" id=\"expiration-date\" formControlName=\"expiration-date\" placeholder=\"Expiration Date (mm/yyyy)*\" [ngClass]=\"{'has-error':!paymentForm.controls['expiration-date'].valid && submittedOnce}\" loCalMonthMask>\n                      <div class=\"error-message\" *ngIf=\"!paymentForm.controls['expiration-date'].valid && submittedOnce\">This field is required.</div>\n                    </div>\n                  </div>\n                  <div class=\"form-section half-and-half\">\n                    <div class=\"form-component form-component-text\">\n                      <label for=\"phone\" class=\"visuallyhidden\">Name On Card</label>\n                      <input type=\"text\" name=\"name-on-card\" id=\"name-on-card\" formControlName=\"name-on-card\" placeholder=\"Name on card*\" [ngClass]=\"{'has-error':!paymentForm.controls['name-on-card'].valid && submittedOnce}\">\n                      <div class=\"error-message\" *ngIf=\"!paymentForm.controls['name-on-card'].valid && submittedOnce\">This field is required.</div>\n                    </div>\n                    <div class=\"form-component form-component-email\">\n                      <label for=\"email\" class=\"visuallyhidden\">CVV</label>\n                      <input type=\"text\" name=\"cvv\" id=\"cvv\" formControlName=\"cvv\" placeholder=\"CVV*\" [ngClass]=\"{'has-error':!paymentForm.controls['cvv'].valid && submittedOnce}\">\n                      <div class=\"error-message\" *ngIf=\"!paymentForm.controls['cvv'].valid && submittedOnce\">This field is required.</div>\n                    </div>\n                  </div>\n                </div>\n                <div class=\"next-step black-button step-4-button\">\n                  <button [disabled]=\"(!paymentForm.valid && paymentChoice !== '2')\"(click)=\"nextStep()\">Next Step</button>\n                </div>\n              </form>\n            </div>\n          </div><!-- /. inner-step-wrapper -->\n        </div><!-- /.step -->\n        <div class=\"step step-4\">\n          <div class=\"inner-step-wrapper\">\n            <div class=\"step-heading\">4. Place Your Order</div>\n            <div class=\"step-wrapper\">\n              <p class=\"question semi-bold\">Your total: {{ currentOrder?.TotalAmount | currency }}</p>\n            </div>\n            <div class=\"red-button small-text\" [ngClass]=\"processing ? 'loading' : ''\">\n              <button [disabled]=\"(!pickupForm.valid && !paymentForm.valid && !contactInfoForm.valid) || processing\" (click)=\"submitOrder()\">Place Order Now</button>\n            </div>\n            <p class=\"terms-and-conditions small-text\">\n              By placing your order you agree to our Terms of Conditions. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vehicula ac orci sed venenatis. Phasellus venenatis blandit nulla non pretium. Sed id metus non nisi pulvinar dictum.\n            </p>\n          </div><!-- /. inner-step-wrapper -->\n        </div><!-- /.step -->\n      </div><!-- /.left-pane -->\n      <div class=\"order-summary\">\n        <div class=\"itemized-summary\">\n          <h4>Order Summary</h4>\n          <div class=\"item flex-between\" *ngFor=\"let menuItem of orderForDisplay\">\n            <div class=\"item-specifics\">\n              <div class=\"title semi-bold\"><span class=\"quantity\">{{ menuItem?.quantity }} x</span> <span class=\"item-name\">{{ menuItem?.name }}</span></div>\n              <div class=\"additions\" *ngIf=\"menuItem?.modifiers\">\n                <span class=\"modifier\" *ngFor=\"let mod of menuItem?.modifiers\">{{ mod?.name }}</span>\n              </div>\n            </div>\n            <div class=\"item-price\">\n              <span class=\"price\">{{ menuItem?.fullPrice | currency }}</span>\n            </div>\n          </div>\n        </div><!-- /.itemized-summary -->\n        <div class=\"pricing-and-location\">\n          <div class=\"pricing-details\">\n            <div class=\"flex-between subtotal\">\n              <span class=\"label\">Subtotal</span>\n              <span class=\"value\">{{ currentOrder?.SubTotalAmount | currency }}</span>\n            </div>\n            <div class=\"flex-between\">\n              <span class=\"label\">Tax</span>\n              <span class=\"value\">{{ currentOrder?.TaxAmount | currency }}</span>\n            </div>\n            <div class=\"flex-between total\">\n              <span class=\"label semi-bold\">Total</span>\n              <span class=\"value semi-bold\">{{ currentOrder?.TotalAmount | currency }}</span>\n            </div>\n\n            <div class=\"red-button full-width-button small-text\" [ngClass]=\"processing ? 'loading' : ''\">\n              <button [disabled]=\"(!pickupForm.valid && !paymentForm.valid && !contactInfoForm.valid) || processing\" (click)=\"submitOrder()\">Place Order Now</button>\n              <span class=\"processing\" *ngIf=\"processing\">Please Wait...</span>\n            </div>\n            <p class=\"go-back text-center\">\n              <a href=\"\">or go back to edit your order</a>\n            </p>\n          </div>\n          <div class=\"location-details\">\n            <p class=\"semi-bold\">You are ordering from</p>\n            <h4>Lo·Cal Long Island</h4>\n            <p>\n              The Mall at The Source<br/>\n              1504 Old Country Rd, Westbury, NY 11590\n            </p>\n            <div class=\"map-image\">\n              <img src=\"\" alt=\"\">\n            </div>\n            <p class=\"bold\">\n              Tel: 987-012-2345\n            </p>\n          </div>\n        </div><!-- /.pricing-and-location -->\n\n      </div><!-- /.order-summary -->\n    </div>\n\n  </div><!-- /.basic-page-content -->\n</div><!-- /.checkout-review -->"
 
 /***/ }),
 
@@ -1101,6 +1372,9 @@ module.exports = "<div class=\"basic-page-container checkout-review\">\n  <div c
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__local_services_customer_service__ = __webpack_require__("./src/app/services/customer.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_lodash__ = __webpack_require__("./node_modules/lodash/lodash.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_lodash___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_lodash__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_moment__ = __webpack_require__("./node_modules/moment/moment.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_moment__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__angular_router__ = __webpack_require__("./node_modules/@angular/router/esm5/router.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1117,12 +1391,15 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
+
 var CheckoutPaymentComponent = /** @class */ (function () {
-    function CheckoutPaymentComponent(orderService, fb, constants, customerService) {
+    function CheckoutPaymentComponent(orderService, fb, constants, customerService, router) {
         this.orderService = orderService;
         this.fb = fb;
         this.constants = constants;
         this.customerService = customerService;
+        this.router = router;
         this.submittedOnce = false;
         this.sectionOpen = 1;
         this.paymentChoice = '1';
@@ -1187,6 +1464,7 @@ var CheckoutPaymentComponent = /** @class */ (function () {
         });
     };
     CheckoutPaymentComponent.prototype.constructOrder = function (order) {
+        var _this = this;
         var orderForApi;
         // If saved card checked
         switch (this.paymentChoice) {
@@ -1200,32 +1478,36 @@ var CheckoutPaymentComponent = /** @class */ (function () {
         var finalOrderForSubmission = {
             order_submission: orderForApi
         };
-        console.log(finalOrderForSubmission);
         // Order object with payment has been created, submit to API
         this.orderService.submitOrder(finalOrderForSubmission, this.currentOrder.OrderId).subscribe(function (orderResults) {
-            console.log(orderResults);
+            if (orderResults.ResultCode == 0) {
+                _this.router.navigate(['/checkout/confirmation']);
+            }
         });
     };
     CheckoutPaymentComponent.prototype.constructClearCreditCardPayment = function () {
+        var expirationDate = this.paymentForm.get('expiration-date').value;
+        // let finalExpDate = expirationDate.replace('/', '-');
+        var finalExpDate = __WEBPACK_IMPORTED_MODULE_7_moment__('01/' + expirationDate, 'DD/MM/YYYY').format('YYYY-MM-DD');
         var inSubmitOrderInfo = {
-            PaymentMethods: {
-                PaymentMethod: 1,
-                Amount: this.currentOrder.BalanceDueAmount,
-                AccountNumber: this.paymentForm.get('card-number').value,
-                ExpirationDate: this.paymentForm.get('expiration-date').value,
-                SecurityCode: this.paymentForm.get('cvv').value,
-                PaymentMethodType: this.cardType,
-                ProcessingType: 0
-            },
+            PaymentMethods: [{
+                    PaymentMethod: 1,
+                    Amount: this.currentOrder.BalanceDueAmount,
+                    AccountNumber: this.paymentForm.get('card-number').value,
+                    ExpirationDate: finalExpDate,
+                    SecurityCode: this.paymentForm.get('cvv').value,
+                    PaymentMethodType: this.cardType,
+                    ProcessingType: 0
+                }],
             SendEmail: true
         };
         return inSubmitOrderInfo;
     };
     CheckoutPaymentComponent.prototype.constructPayAtSitePayment = function () {
         var inSubmitOrderInfo = {
-            PaymentMethods: {
-                PaymentMethod: 2
-            },
+            PaymentMethods: [{
+                    PaymentMethod: 2
+                }],
             SendEmail: true
         };
         return inSubmitOrderInfo;
@@ -1272,7 +1554,7 @@ var CheckoutPaymentComponent = /** @class */ (function () {
             selector: 'lo-cal-checkout-payment',
             template: __webpack_require__("./src/app/pages/checkout-payment/checkout-payment.component.html")
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__local_services_order_service__["a" /* OrderService */], __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormBuilder */], __WEBPACK_IMPORTED_MODULE_4__local_utils_constants__["a" /* Config */], __WEBPACK_IMPORTED_MODULE_5__local_services_customer_service__["a" /* CustomerService */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__local_services_order_service__["a" /* OrderService */], __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormBuilder */], __WEBPACK_IMPORTED_MODULE_4__local_utils_constants__["a" /* Config */], __WEBPACK_IMPORTED_MODULE_5__local_services_customer_service__["a" /* CustomerService */], __WEBPACK_IMPORTED_MODULE_8__angular_router__["b" /* Router */]])
     ], CheckoutPaymentComponent);
     return CheckoutPaymentComponent;
 }());
@@ -1284,7 +1566,7 @@ var CheckoutPaymentComponent = /** @class */ (function () {
 /***/ "./src/app/pages/checkout-review/checkout-review.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"basic-page-container checkout-review\">\n  <div class=\"basic-page-content center\">\n    <h1>Review Your Order</h1>\n\n    <div class=\"checkout-wrapper\">\n      <div class=\"left-pane\">\n        <div class=\"items\">\n          <div class=\"review-item-card\">\n            <div class=\"item clearfix\" *ngFor=\"let menuItem of bagItems; let i = index;\">\n              <div class=\"item-review-wrapper\">\n                <div class=\"left image\">\n                  <img src=\"http://via.placeholder.com/200x200\" alt=\"\" class=\"item-image\">\n                  <img src=\"/assets/svgs/delete-cross-icon.svg\" alt=\"X to remove item from cart\" class=\"remove-image\" (click)=\"removeFromBagAtIndex(i)\">\n                </div>\n                <div class=\"bag-detail-card\">\n                  <div class=\"title-container\">\n                      <div class=\"title\">{{ menuItem?.Name }} <span class=\"quantity\">x {{ menuItem?.Quantity }}</span></div>\n                  </div>\n                  <div class=\"ingredients\">\n                    {{ (menuItem?.ShortDescription | allergens)?.description }}\n                  </div>\n                  <div class=\"additions\" *ngIf=\"menuItem?.Modifiers\">\n                    <span class=\"modifier\" *ngFor=\"let mod of menuItem?.Modifiers\">{{ mod?.Name }}</span>\n                  </div>\n                  <div class=\"details-and-edit\">\n                    <div class=\"details\">\n                      <span class=\"price\">{{ menuItem?.ExtendedPrice | currency }}</span>\n                      <span class=\"calories\" *ngIf=\"menuItem?.CaloricValue\"></span>\n                      <span class=\"allergens\" *ngIf=\"(menuItem?.ShortDescription)\">\n                        <span class=\"allergen\" *ngFor=\"let allergen of (menuItem?.ShortDescription | allergens).allergens\">{{ allergen }}</span>\n                      </span>\n                    </div>\n                    <div class=\"edit\">\n                      <a tabindex=\"0\" (click)=\"editItemAtIndex(i)\" (keyup.enter)=\"editItemAtIndex(i)\" role=\"button\">EDIT</a>\n                    </div>\n                  </div><!-- /. details-and-edit -->\n                </div><!-- /.bag-detail-card -->\n              </div><!-- /.item-review-wrapper -->\n              <div class=\"edit-pane\" [hidden]=\"isOpen !== i\">\n                <div class=\"edit-pane-wrapper\">\n                  <div class=\"quantity-selector\">\n                    <div class=\"quantity-changer\">\n                      <span class=\"quantity-text\">Quantity</span>\n                      <span class=\"minus\" (click)=\"decrementQuantity(menuItem)\">-</span>\n                      <span class=\"quantity\">{{ menuItem?.Quantity }}</span>\n                      <span class=\"plus\" (click)=\"incrementQuantity(menuItem)\">+</span>\n                    </div>\n                  </div>\n                  <div class=\"customize-this\">\n                    <p><a routerLink=\"/\">Go back to customize this item</a></p>\n                  </div>\n                </div>\n              </div><!-- /.edit-pane -->\n            </div><!-- /.item -->\n            <div class=\"red-button small-text\">\n              <button (click)=\"putOrder()\" [disabled]=\"!timeForm.valid\">Proceed to Checkout</button>\n              <span class=\"processing\" *ngIf=\"processing\">Please Wait...</span>\n            </div>\n          </div><!-- /.review-item-card -->\n        </div>\n      </div>\n      <div class=\"order-summary\">\n        <div class=\"itemized-summary\">\n          <h4>Order Summary</h4>\n          <div class=\"item flex-between\" *ngFor=\"let menuItem of bagItems\">\n            <div class=\"item-specifics\">\n              <div class=\"title semi-bold\"><span class=\"quantity\">{{ menuItem?.Quantity }} x</span> <span class=\"item-name\">{{ menuItem?.Name }}</span></div>\n              <div class=\"additions\" *ngIf=\"menuItem?.Modifiers\">\n                <span class=\"modifier\" *ngFor=\"let mod of menuItem?.Modifiers\">{{ mod?.Name }}</span>\n              </div>\n            </div>\n            <div class=\"item-price\">\n              <span class=\"price\">{{ menuItem?.ExtendedPrice | currency }}</span>\n            </div>\n          </div>\n          <div class=\"item flex-between\" *ngFor=\"let menuItem of allOrderDetails?.LineItems\">\n            <div class=\"item-specifics\">\n              <div class=\"title semi-bold\"><span class=\"quantity\">{{ menuItem?.Quantity }} x</span> <span class=\"item-name\">{{ menuItem?.Name }}</span></div>\n              <div class=\"additions\" *ngIf=\"menuItem?.Modifiers\">\n                <span class=\"modifier\" *ngFor=\"let mod of menuItem?.Modifiers\">{{ mod?.Name }}</span>\n              </div>\n            </div>\n            <div class=\"item-price\">\n              <span class=\"price\">{{ menuItem?.ExtendedPrice | currency }}</span>\n            </div>\n          </div>\n        </div><!-- /.itemized-summary -->\n        <div class=\"pricing-and-location\">\n          <div class=\"pricing-details\">\n            <form action=\"\" class=\"lo-cal-form\" [formGroup]=\"timeForm\">\n              <label for=\"pickup-time\" class=\"pickup-time-label\">Select a time to pickup your order?</label>\n              <select name=\"pickup-time\"  id=\"pickup-time\" formControlName=\"pickup-time\" class=\"pickup-time\" [(ngModel)]=\"timeSelectBox\" (ngModelChange)=\"timeSelectChanged()\">\n                <option value=\"\">-- Select --</option>\n                <option value=\"next\">Next Available</option>\n              </select>\n            </form>\n\n            <!-- ADD Location to show next-available time before submission -->\n            <div class=\"next-available-time\" *ngIf=\"selectedTime\">\n              <p><strong>Pickup at: </strong>{{ selectedTime | date:\"E MMM d, h:mma\" }}</p>\n            </div>\n\n            <div class=\"red-button full-width-button small-text\">\n              <button (click)=\"putOrder()\" [disabled]=\"!timeForm.valid\">Proceed to Checkout</button>\n              <span class=\"processing\" *ngIf=\"processing\">Please Wait...</span>\n            </div>\n          </div>\n          <div class=\"location-details\">\n            <p class=\"semi-bold\">You are ordering from</p>\n            <h4>Lo·Cal Long Island</h4>\n            <p>\n              The Mall at The Source<br/>\n              1504 Old Country Rd, Westbury, NY 11590\n            </p>\n            <div class=\"map-image\">\n              <img src=\"\" alt=\"\">\n            </div>\n            <p class=\"bold\">\n              Tel: 987-012-2345\n            </p>\n          </div>\n        </div><!-- /.pricing-and-location -->\n\n      </div>\n    </div>\n\n  </div>\n</div>"
+module.exports = "<div class=\"basic-page-container checkout-review\">\n  <div class=\"basic-page-content center\">\n    <h1>Review Your Order</h1>\n\n    <div class=\"checkout-wrapper\">\n      <div class=\"left-pane\">\n        <div class=\"items\">\n          <div class=\"review-item-card\">\n            <div class=\"item clearfix\" *ngFor=\"let menuItem of bagItems; let i = index;\">\n              <div class=\"item-review-wrapper\">\n                <div class=\"left image\">\n                  <img src=\"http://via.placeholder.com/200x200\" alt=\"\" class=\"item-image\">\n                  <img src=\"/assets/svgs/delete-cross-icon.svg\" alt=\"X to remove item from cart\" class=\"remove-image\" (click)=\"removeFromBagAtIndex(i)\">\n                </div>\n                <div class=\"bag-detail-card\">\n                  <div class=\"title-container\">\n                      <div class=\"title\">{{ menuItem?.Name }} <span class=\"quantity\">x {{ menuItem?.Quantity }}</span></div>\n                  </div>\n                  <div class=\"ingredients\">\n                    {{ (menuItem?.ShortDescription | allergens)?.description }}\n                  </div>\n                  <div class=\"additions\" *ngIf=\"menuItem?.Modifiers\">\n                    <span class=\"modifier\" *ngFor=\"let mod of menuItem?.Modifiers\">{{ mod?.Name }}</span>\n                  </div>\n                  <div class=\"details-and-edit\">\n                    <div class=\"details\">\n                      <span class=\"price\">{{ menuItem?.ExtendedPrice | currency }}</span>\n                      <span class=\"calories\" *ngIf=\"menuItem?.CaloricValue\"></span>\n                      <span class=\"allergens\" *ngIf=\"(menuItem?.ShortDescription)\">\n                        <span class=\"allergen\" *ngFor=\"let allergen of (menuItem?.ShortDescription | allergens).allergens\">{{ allergen }}</span>\n                      </span>\n                    </div>\n                    <div class=\"edit\">\n                      <a tabindex=\"0\" (click)=\"editItemAtIndex(i)\" (keyup.enter)=\"editItemAtIndex(i)\" role=\"button\">EDIT</a>\n                    </div>\n                  </div><!-- /. details-and-edit -->\n                </div><!-- /.bag-detail-card -->\n              </div><!-- /.item-review-wrapper -->\n              <div class=\"edit-pane\" [hidden]=\"isOpen !== i\">\n                <div class=\"edit-pane-wrapper\">\n                  <div class=\"quantity-selector\">\n                    <div class=\"quantity-changer\">\n                      <span class=\"quantity-text\">Quantity</span>\n                      <span class=\"minus\" (click)=\"decrementQuantity(menuItem)\">-</span>\n                      <span class=\"quantity\">{{ menuItem?.Quantity }}</span>\n                      <span class=\"plus\" (click)=\"incrementQuantity(menuItem)\">+</span>\n                    </div>\n                  </div>\n                  <div class=\"customize-this\">\n                    <p><a routerLink=\"/\">Go back to customize this item</a></p>\n                  </div>\n                </div>\n              </div><!-- /.edit-pane -->\n            </div><!-- /.item -->\n            <div class=\"red-button small-text\">\n              <button (click)=\"putOrder()\" [disabled]=\"!timeForm.valid || !selectedTime\">Proceed to Checkout</button>\n              <span class=\"processing\" *ngIf=\"processing\">Please Wait...</span>\n            </div>\n          </div><!-- /.review-item-card -->\n        </div>\n      </div>\n      <div class=\"order-summary\">\n        <div class=\"itemized-summary\">\n          <h4>Order Summary</h4>\n          <div class=\"item flex-between\" *ngFor=\"let menuItem of bagItems\">\n            <div class=\"item-specifics\">\n              <div class=\"title semi-bold\"><span class=\"quantity\">{{ menuItem?.Quantity }} x</span> <span class=\"item-name\">{{ menuItem?.Name }}</span></div>\n              <div class=\"additions\" *ngIf=\"menuItem?.Modifiers\">\n                <span class=\"modifier\" *ngFor=\"let mod of menuItem?.Modifiers\">{{ mod?.Name }}</span>\n              </div>\n            </div>\n            <div class=\"item-price\">\n              <span class=\"price\">{{ menuItem?.ExtendedPrice | currency }}</span>\n            </div>\n          </div>\n          <div class=\"item flex-between\" *ngFor=\"let menuItem of allOrderDetails?.LineItems\">\n            <div class=\"item-specifics\">\n              <div class=\"title semi-bold\"><span class=\"quantity\">{{ menuItem?.Quantity }} x</span> <span class=\"item-name\">{{ menuItem?.Name }}</span></div>\n              <div class=\"additions\" *ngIf=\"menuItem?.Modifiers\">\n                <span class=\"modifier\" *ngFor=\"let mod of menuItem?.Modifiers\">{{ mod?.Name }}</span>\n              </div>\n            </div>\n            <div class=\"item-price\">\n              <span class=\"price\">{{ menuItem?.ExtendedPrice | currency }}</span>\n            </div>\n          </div>\n        </div><!-- /.itemized-summary -->\n        <div class=\"pricing-and-location\">\n          <div class=\"pricing-details\">\n            <form action=\"\" class=\"lo-cal-form\" [formGroup]=\"timeForm\">\n              <label for=\"pickup-time\" class=\"pickup-time-label\">Select a time to pickup your order?</label>\n              <select name=\"pickup-time\"  id=\"pickup-time\" formControlName=\"pickup-time\" class=\"pickup-time\" [(ngModel)]=\"timeSelectBox\" (ngModelChange)=\"timeSelectChanged()\">\n                <option value=\"\">-- Select --</option>\n                <option value=\"next\">Next Available</option>\n                <option disabled>---------------</option>\n                <option [value]=\"time?.Time\" *ngFor=\"let time of times\">{{ time?.Time | date:\"h:mma\" }}</option>\n              </select>\n            </form>\n\n            <!-- ADD Location to show next-available time before submission -->\n            <div class=\"next-available-time\" *ngIf=\"selectedTime\">\n              <p><strong>Pickup at: </strong>{{ selectedTime | date:\"E MMM d, h:mma\" }}</p>\n            </div>\n\n            <div class=\"red-button full-width-button small-text\">\n              <button (click)=\"putOrder()\" [disabled]=\"!timeForm.valid || !selectedTime\">Proceed to Checkout</button>\n              <span class=\"processing\" *ngIf=\"processing\">Please Wait...</span>\n            </div>\n          </div>\n          <div class=\"location-details\">\n            <p class=\"semi-bold\">You are ordering from</p>\n            <h4>Lo·Cal Long Island</h4>\n            <p>\n              The Mall at The Source<br/>\n              1504 Old Country Rd, Westbury, NY 11590\n            </p>\n            <div class=\"map-image\">\n              <img src=\"\" alt=\"\">\n            </div>\n            <p class=\"bold\">\n              Tel: 987-012-2345\n            </p>\n          </div>\n        </div><!-- /.pricing-and-location -->\n\n      </div>\n    </div>\n\n  </div>\n</div>"
 
 /***/ }),
 
@@ -1332,9 +1614,9 @@ var CheckoutReviewComponent = /** @class */ (function () {
         });
     }
     CheckoutReviewComponent.prototype.ngOnInit = function () {
-        // TODO: Retrieve times on init to populate dropdown
-        // this.retrievePickupTimes();
         var _this = this;
+        // TODO: Retrieve times on init to populate dropdown
+        this.retrievePickupTimes();
         // Need to retrieve current customer so order PUT doesn't fail
         this.customerService.getCurrentCustomer().subscribe(function (customerData) {
             _this.orderService.customerInfo = customerData;
@@ -1403,8 +1685,10 @@ var CheckoutReviewComponent = /** @class */ (function () {
     };
     CheckoutReviewComponent.prototype.retrievePickupTimes = function () {
         var _this = this;
-        this.orderService.retrieveTimes('4').subscribe(function (times) {
-            _this.times = times;
+        this.orderService.retrieveTimes('1').subscribe(function (times) {
+            // 0 position in array indicates current day
+            _this.times = times[0].Value;
+            console.log(times[0].Value);
         });
     };
     CheckoutReviewComponent = __decorate([
@@ -1429,7 +1713,7 @@ var CheckoutReviewComponent = /** @class */ (function () {
 /***/ "./src/app/pages/confirmation/confirmation.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<p>\n  confirmation works!\n</p>\n"
+module.exports = "<div class=\"basic-page-container\">\n    <div class=\"basic-page-content\">\n      <div class=\"blog-details center-960 text-center\">\n        <h1>Confirmation</h1>\n      </div>\n      <!-- <div class=\"featured-image center\" *ngIf=\"featuredImage\">\n        <img [src]=\"featuredImage?.source_url\" [alt]=\"featuredImage?.alt_text\">\n      </div> -->\n      <div class=\"content center-960\">\n\n      </div>\n\n    </div>\n  </div>"
 
 /***/ }),
 
@@ -1471,7 +1755,7 @@ var ConfirmationComponent = /** @class */ (function () {
 /***/ "./src/app/pages/contact/contact.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"page-landing-page\">\n  <lo-cal-header [featuredImage]=\"featuredImage\" [pageContent]=\"pageContent\"></lo-cal-header>\n  <div class=\"section section-white\">\n    <div class=\"content center\">\n      <div class=\"body center-960\" [innerHtml]=\"pageContent?.content?.rendered | safeHtml\"></div>\n    </div>\n  </div>\n\n  <div class=\"section section-grey intro-section\" *ngIf=\"acf?.body\">\n    <div class=\"content\">\n      <h3 class=\"title\" *ngIf=\"acf?.title\" [innerHtml]=\"acf?.title\"></h3>\n      <div class=\"body\" *ngIf=\"acf?.body\" [innerHtml]=\"acf?.body | safeHtml\"></div>\n    </div>\n  </div>\n\n  <div class=\"section section-white\">\n    <div class=\"content center\">\n      <form action=\"\" [formGroup]=\"contactForm\" class=\"lo-cal-form\">\n        <div class=\"form-section\">\n          <div class=\"form-component form-component-text\">\n            <label for=\"contact-reason\" class=\"visuallyhidden\">What are you interested in sharing/asking?</label>\n            <input type=\"text\" name=\"contact-reason\" id=\"contact-reason\" formControlName=\"contact-reason\" placeholder=\"What are you interested in sharing/asking?\" [ngClass]=\"{'has-error':!contactForm.controls['contact-reason'].valid && submittedOnce}\">\n            <div class=\"error-message\" *ngIf=\"!contactForm.controls['contact-reason'].valid && submittedOnce\">This field is required.</div>\n          </div>\n        </div>\n        <div class=\"form-section thirds\">\n          <div class=\"form-component form-component-text\">\n            <label for=\"first-name\" class=\"visuallyhidden\">First Name *</label>\n            <input type=\"text\" name=\"first-name\" id=\"first-name\" placeholder=\"First Name *\" formControlName=\"first-name\" [ngClass]=\"{'has-error':!contactForm.controls['first-name'].valid && submittedOnce}\">\n            <div class=\"error-message\" *ngIf=\"!contactForm.controls['first-name'].valid && submittedOnce\">This field is required.</div>\n          </div>\n          <div class=\"form-component form-component-text\">\n            <label for=\"last-name\" class=\"visuallyhidden\">Last Name *</label>\n            <input type=\"text\" name=\"last-name\" id=\"last-name\" placeholder=\"Last Name *\" formControlName=\"last-name\" [ngClass]=\"{'has-error':!contactForm.controls['last-name'].valid && submittedOnce}\">\n            <div class=\"error-message\" *ngIf=\"!contactForm.controls['last-name'].valid && submittedOnce\">This field is required.</div>\n          </div>\n          <div class=\"form-component form-component-email\">\n            <label for=\"email\" class=\"visuallyhidden\">Email *</label>\n            <input type=\"email\" name=\"email\" id=\"email\" placeholder=\"Email *\" formControlName=\"email\" [ngClass]=\"{'has-error':!contactForm.controls['email'].valid && submittedOnce}\">\n            <div class=\"error-message\" *ngIf=\"!contactForm.controls['email'].valid && submittedOnce\">This field is required.</div>\n          </div>\n        </div>\n        <div class=\"form-section\">\n          <div class=\"form-component form-component-textarea\">\n            <label for=\"comments\">Comments</label>\n            <textarea name=\"comments\" id=\"comments\" rows=\"4\" formControlName=\"comments\"></textarea>\n          </div>\n        </div>\n        <div class=\"form-actions\">\n          <div class=\"form-submit red-button\">\n            <input type=\"submit\" value=\"Send\" (click)=\"submitForm(contactForm)\">\n          </div>\n        </div>\n      </form>\n    </div>\n  </div>\n\n    <lo-cal-image-and-text [acf]=\"acf\" [color]=\"'grey'\"></lo-cal-image-and-text>\n  </div>"
+module.exports = "<div class=\"page-landing-page\">\n  <lo-cal-header [featuredImage]=\"featuredImage\" [pageContent]=\"pageContent\"></lo-cal-header>\n  <div class=\"section section-white\">\n    <div class=\"content center\">\n      <div class=\"body center-960\" [innerHtml]=\"pageContent?.content?.rendered | safeHtml\"></div>\n    </div>\n  </div>\n\n  <div class=\"section section-grey intro-section\" *ngIf=\"acf?.body\">\n    <div class=\"content\">\n      <h3 class=\"title\" *ngIf=\"acf?.title\" [innerHtml]=\"acf?.title\"></h3>\n      <div class=\"body\" *ngIf=\"acf?.body\" [innerHtml]=\"acf?.body | safeHtml\"></div>\n    </div>\n  </div>\n\n  <div class=\"section section-white\">\n    <div class=\"content center\">\n      <form action=\"\" [formGroup]=\"contactForm\" class=\"lo-cal-form contact-form\">\n        <div class=\"form-section\">\n          <div class=\"form-component form-component-text\">\n            <label for=\"contact-reason\" class=\"visuallyhidden\">What are you interested in sharing/asking?</label>\n            <input type=\"text\" name=\"contact-reason\" id=\"contact-reason\" formControlName=\"contact-reason\" placeholder=\"What are you interested in sharing/asking?\" [ngClass]=\"{'has-error':!contactForm.controls['contact-reason'].valid && submittedOnce}\">\n            <div class=\"error-message\" *ngIf=\"!contactForm.controls['contact-reason'].valid && submittedOnce\">This field is required.</div>\n          </div>\n        </div>\n        <div class=\"form-section thirds\">\n          <div class=\"form-component form-component-text\">\n            <label for=\"first-name\" class=\"visuallyhidden\">First Name *</label>\n            <input type=\"text\" name=\"first-name\" id=\"first-name\" placeholder=\"First Name *\" formControlName=\"first-name\" [ngClass]=\"{'has-error':!contactForm.controls['first-name'].valid && submittedOnce}\">\n            <div class=\"error-message\" *ngIf=\"!contactForm.controls['first-name'].valid && submittedOnce\">This field is required.</div>\n          </div>\n          <div class=\"form-component form-component-text\">\n            <label for=\"last-name\" class=\"visuallyhidden\">Last Name *</label>\n            <input type=\"text\" name=\"last-name\" id=\"last-name\" placeholder=\"Last Name *\" formControlName=\"last-name\" [ngClass]=\"{'has-error':!contactForm.controls['last-name'].valid && submittedOnce}\">\n            <div class=\"error-message\" *ngIf=\"!contactForm.controls['last-name'].valid && submittedOnce\">This field is required.</div>\n          </div>\n          <div class=\"form-component form-component-email\">\n            <label for=\"email\" class=\"visuallyhidden\">Email *</label>\n            <input type=\"email\" name=\"email\" id=\"email\" placeholder=\"Email *\" formControlName=\"email\" [ngClass]=\"{'has-error':!contactForm.controls['email'].valid && submittedOnce}\">\n            <div class=\"error-message\" *ngIf=\"!contactForm.controls['email'].valid && submittedOnce\">This field is required.</div>\n          </div>\n        </div>\n        <div class=\"form-section\">\n          <div class=\"form-component form-component-textarea\">\n            <label for=\"comments\">Comments</label>\n            <textarea name=\"comments\" id=\"comments\" rows=\"4\" formControlName=\"comments\"></textarea>\n          </div>\n        </div>\n        <div class=\"form-actions\">\n          <div class=\"form-submit red-button submit\">\n            <input type=\"submit\" value=\"Send\" (click)=\"submitForm(contactForm)\">\n          </div>\n        </div>\n      </form>\n    </div>\n  </div>\n\n    <lo-cal-image-and-text [acf]=\"acf\" [color]=\"'grey'\"></lo-cal-image-and-text>\n  </div>"
 
 /***/ }),
 
@@ -1753,7 +2037,7 @@ var LoginComponent = /** @class */ (function () {
 /***/ "./src/app/pages/menu-customize/menu-customize.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"page-item-detail\">\n  <div class=\"menu-item-header\">\n    <h1 class=\"title\">{{ menuItemDetails?.item?.Name }}</h1>\n    <img src=\"//via.placeholder.com/1400x515\" alt=\"Image of food\">\n  </div>\n\n  <div class=\"customization-container center-1440\">\n    <div class=\"left customization-options\">\n\n      <div class=\"customization-category\" *ngFor=\"let modGroup of salesItemDetails?.ModGroups\">\n        <div class=\"content\">\n          <div class=\"header\">\n            <span class=\"title\">{{ modGroup?.DisplayName }}</span>\n            <span class=\"choices\">Choose up to {{ modGroup?.MaximumItems }} ({{ customizationData[modGroup?.$id].currentlySelected.length }}/{{ modGroup?.MaximumItems }})</span>\n          </div>\n          <div class=\"options\" *ngFor=\"let modifier of modGroup?.Mods\">\n            <div class=\"option\">\n              <div class=\"ingredient\">{{ modifier?.Name }}</div>\n              <div class=\"calories\">{{ modifier?.ItemModifiers[0]?.CaloricValue }} <span *ngIf=\"modifier?.ItemModifiers[0]?.CaloricValue !== null\">cal</span> </div>\n              <div class=\"choice-controls\">\n                <span class=\"minus\" [ngClass]=\"(customizationData[modGroup?.$id].currentlySelected.length > 0 && customizationData[modGroup?.$id].modifiers[modifier?.$id].quantity > 0) ? 'enabled' : 'disabled'\" (click)=\"removeModifier(modGroup, modifier)\">-</span>\n                <span class=\"quantity-container\" [ngClass]=\"customizationData[modGroup?.$id].modifiers[modifier?.$id]?.quantity > 0 ? 'populated' : ''\">\n                  <span class=\"quantity\" *ngIf=\"customizationData[modGroup?.$id].modifiers[modifier?.$id]?.quantity !== 0\">\n                    {{ customizationData[modGroup?.$id].modifiers[modifier?.$id]?.quantity }}\n                  </span>\n                </span>\n                <span class=\"plus\" [ngClass]=\"(customizationData[modGroup?.$id].currentlySelected.length < modGroup?.MaximumItems) ? 'enabled' : 'disabled'\" (click)=\"addModifier(modGroup, modifier)\">+</span>\n              </div>\n            </div><!-- /.option -->\n          </div>\n        </div>\n      </div><!-- /.customization-category -->\n\n    </div><!-- /.left.customization-options -->\n    <div class=\"right\">\n      <div class=\"final-product\">\n        <div class=\"title\">{{ menuItemDetails?.item?.Name }}</div>\n        <div class=\"ingredients\" *ngIf=\"menuItemDetails?.item?.Description\">\n          <div class=\"customization-ingredients\" *ngIf=\"customizationData\">\n            <!-- <span class=\"customization\" *ngFor=\"let item of customizationData\">{{ item }}</span> -->\n          </div>\n          {{ (menuItemDetails?.item?.Description | allergens)?.description }}\n        </div>\n        <div class=\"fine-details\">\n          <span class=\"price\">{{ salesItemDetails?.Price | currency }}</span>\n          <span class=\"calories\" *ngIf=\"salesItemDetails?.CaloricValue !== null\">{{ calorieCount }} cal</span>\n          <span class=\"allergens\" *ngIf=\"(menuItemDetails?.item?.Description)\">\n            <span class=\"allergen\" *ngFor=\"let allergen of (menuItemDetails?.item?.Description | allergens).allergens\">{{ allergen }}</span>\n          </span>\n        </div>\n      </div><!-- /.final-product -->\n\n      <div class=\"special-instructions\">\n        <label for=\"special-instructions\">Add Special Instruction (optional)</label>\n        <textarea name=\"special-instructions\" id=\"\" cols=\"30\" rows=\"5\" [(ngModel)]=\"specialInstructions\"></textarea>\n      </div><!-- /.special-instructions -->\n\n      <div class=\"quantity-wrapper\">\n        <div class=\"text\">Quantity</div>\n        <div class=\"quantity-changer\">\n          <span class=\"minus\" (click)=\"decrementQuantity()\">-</span>\n          <span class=\"quantity\">{{ quantity }}</span>\n          <span class=\"plus\" (click)=\"incrementQuantity()\">+</span>\n        </div>\n      </div>\n\n      <div class=\"add-button red-button\">\n        <button *ngIf=\"totalPrice\" (click)=\"addToBag()\">Add to Bag (+{{ totalPrice | currency }})</button>\n      </div>\n    </div><!-- /.right -->\n  </div>\n</div><!-- /.page-item-detail -->"
+module.exports = "<div class=\"page-item-detail\">\n  <div class=\"menu-item-header\">\n    <h1 class=\"title\">{{ menuItemDetails?.item?.Name }}</h1>\n    <img src=\"//via.placeholder.com/1400x515\" alt=\"Image of food\">\n  </div>\n\n  <div class=\"customization-container center-1440\">\n    <div class=\"left customization-options\">\n\n      <div class=\"customization-category\" *ngFor=\"let modGroup of salesItemDetails?.ModGroups\">\n        <div class=\"content\">\n          <div class=\"header\">\n            <span class=\"title\">{{ modGroup?.DisplayName }}</span>\n            <span class=\"choices\">Choose up to {{ modGroup?.MaximumItems }} ({{ customizationData[modGroup?.$id].currentlySelected.length }}/{{ modGroup?.MaximumItems }})</span>\n          </div>\n          <div class=\"options\" *ngFor=\"let modifier of modGroup?.Mods\">\n            <div class=\"option\">\n              <div class=\"ingredient\">{{ modifier?.Name }}</div>\n              <div class=\"calories\">{{ modifier?.ItemModifiers[0]?.CaloricValue }} <span *ngIf=\"modifier?.ItemModifiers[0]?.CaloricValue !== null\">cal</span> </div>\n              <div class=\"choice-controls\">\n                <span class=\"minus\" [ngClass]=\"(customizationData[modGroup?.$id].currentlySelected.length > 0 && customizationData[modGroup?.$id].modifiers[modifier?.$id].quantity > 0) ? 'enabled' : 'disabled'\" (click)=\"removeModifier(modGroup, modifier)\">-</span>\n                <span class=\"quantity-container\" [ngClass]=\"customizationData[modGroup?.$id].modifiers[modifier?.$id]?.quantity > 0 ? 'populated' : ''\">\n                  <span class=\"quantity\" *ngIf=\"customizationData[modGroup?.$id].modifiers[modifier?.$id]?.quantity !== 0\">\n                    {{ customizationData[modGroup?.$id].modifiers[modifier?.$id]?.quantity }}\n                  </span>\n                </span>\n                <span class=\"plus\" [ngClass]=\"(customizationData[modGroup?.$id].currentlySelected.length < modGroup?.MaximumItems) ? 'enabled' : 'disabled'\" (click)=\"addModifier(modGroup, modifier)\">+</span>\n              </div>\n            </div><!-- /.option -->\n          </div>\n        </div>\n      </div><!-- /.customization-category -->\n\n    </div><!-- /.left.customization-options -->\n    <div class=\"right\">\n      <div class=\"final-product\">\n        <div class=\"title\">{{ menuItemDetails?.item?.Name }}</div>\n        <div class=\"ingredients\" *ngIf=\"menuItemDetails?.item?.Description\">\n          {{ (menuItemDetails?.item?.Description | allergens)?.description }}\n        </div>\n        <div class=\"customization-ingredients\" *ngIf=\"currentModifierArray\">\n          <span class=\"customization\" *ngFor=\"let item of currentModifierArray; let last = last;\">{{ item?.DisplayName }}<span class=\"separator\" *ngIf=\"!last\">, </span></span>\n        </div>\n        <div class=\"fine-details\">\n          <span class=\"price\">{{ salesItemDetails?.Price | currency }}</span>\n          <span class=\"calories\" *ngIf=\"salesItemDetails?.CaloricValue !== null\">{{ calorieCount }} cal</span>\n          <span class=\"allergens\" *ngIf=\"(menuItemDetails?.item?.Description)\">\n            <span class=\"allergen\" *ngFor=\"let allergen of (menuItemDetails?.item?.Description | allergens).allergens\">{{ allergen }}</span>\n          </span>\n        </div>\n      </div><!-- /.final-product -->\n\n      <div class=\"special-instructions\">\n        <label for=\"special-instructions\">Add Special Instruction (optional)</label>\n        <textarea name=\"special-instructions\" id=\"\" cols=\"30\" rows=\"5\" [(ngModel)]=\"specialInstructions\"></textarea>\n      </div><!-- /.special-instructions -->\n\n      <div class=\"quantity-wrapper\">\n        <div class=\"text\">Quantity</div>\n        <div class=\"quantity-changer\">\n          <span class=\"minus\" (click)=\"decrementQuantity()\">-</span>\n          <span class=\"quantity\">{{ quantity }}</span>\n          <span class=\"plus\" (click)=\"incrementQuantity()\">+</span>\n        </div>\n      </div>\n\n      <div class=\"add-button red-button\">\n        <button *ngIf=\"totalPrice\" (click)=\"addToBag()\">Add to Bag (+{{ totalPrice | currency }})</button>\n      </div>\n    </div><!-- /.right -->\n  </div>\n</div><!-- /.page-item-detail -->"
 
 /***/ }),
 
@@ -1792,6 +2076,7 @@ var MenuCustomizeComponent = /** @class */ (function () {
         this.router = router;
         this.quantity = 1;
         this._calorieCount = 0;
+        this.currentModifierArray = [];
     }
     MenuCustomizeComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -1809,6 +2094,8 @@ var MenuCustomizeComponent = /** @class */ (function () {
         if (currentSelectionsArray.length < maxSelectionsForGroup) {
             this.customizationData[modGroup.$id]['currentlySelected'].push(modifierClicked);
             this.customizationData[modGroup.$id].modifiers[modifierClicked.$id]['quantity'] += 1;
+            // Add to basic array for displaying near item description
+            this.currentModifierArray.push(modifierClicked);
             // If modifier item has modifier values with it
             if (modifierClicked.ItemModifiers.length > 0) {
                 // Add to total calorie count
@@ -1821,16 +2108,18 @@ var MenuCustomizeComponent = /** @class */ (function () {
         else {
             console.log('selection for current category full');
         }
-        console.log(this.customizationData);
     };
     MenuCustomizeComponent.prototype.removeModifier = function (modGroup, modifierClicked) {
         var currentSelectionsArray = this.customizationData[modGroup.$id]['currentlySelected'];
         // If max selections for the current group is not reached
         if (currentSelectionsArray.length > 0) {
             var indexToRemove = __WEBPACK_IMPORTED_MODULE_5_lodash__["findIndex"](currentSelectionsArray, { '$id': modifierClicked.$id });
+            var indexInDisplayArray = __WEBPACK_IMPORTED_MODULE_5_lodash__["findIndex"](this.currentModifierArray, { '$id': modifierClicked.$id });
+            console.log(modifierClicked.$id, indexInDisplayArray);
             var currentQuantity = this.customizationData[modGroup.$id].modifiers[modifierClicked.$id]['quantity'];
             if (indexToRemove > -1 && currentQuantity > 0) {
                 var newSelectionsArray = currentSelectionsArray.splice(indexToRemove, 1);
+                this.currentModifierArray.splice(indexInDisplayArray, 1);
                 currentSelectionsArray = newSelectionsArray;
                 this.customizationData[modGroup.$id].modifiers[modifierClicked.$id]['quantity'] -= 1;
             }
@@ -1845,7 +2134,6 @@ var MenuCustomizeComponent = /** @class */ (function () {
         else {
             console.log('selection for current category already empty');
         }
-        console.log(this.customizationData);
     };
     MenuCustomizeComponent.prototype.incrementQuantity = function () {
         this.quantity++;
@@ -3036,7 +3324,7 @@ var WordpressService = /** @class */ (function () {
 /***/ "./src/app/shared/components/bag/bag.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"checkout-overlay\" [ngClass]=\"state\">\n  <div class=\"checkout-content-wrapper\" [@hideShowBag]='state'>\n    <div class=\"checkout-inner-wrapper\">\n\n        <div class=\"checkout-step\">\n          <div class=\"checkout-top\">\n            <div class=\"checkout-header\">\n              <div class=\"back\">\n              </div>\n              <div class=\"checkout-title\">My Bag</div>\n              <div class=\"close\" (click)=\"toggleBagState()\">\n                <span class=\"close-1\"></span>\n                <span class=\"close-2\"></span>\n              </div>\n            </div><!-- /.checkout-header -->\n\n            <div class=\"items\">\n\n              <div class=\"item\" *ngFor=\"let menuItem of bagItems; let i = index;\">\n                <div class=\"item-review-wrapper\">\n                  <div class=\"left image\">\n                    <img src=\"http://via.placeholder.com/160x240\" alt=\"\" class=\"item-image\">\n                    <img src=\"/assets/svgs/delete-cross-icon.svg\" alt=\"X to remove item from cart\" class=\"remove-image\" (click)=\"removeFromBagAtIndex(i)\">\n                  </div>\n                  <div class=\"bag-detail-card\">\n                    <div class=\"title-container\">\n                        <div class=\"title\">{{ menuItem?.Name }} <span class=\"quantity\">x {{ menuItem?.Quantity }}</span></div>\n                    </div>\n                    <div class=\"ingredients\">\n                      {{ (menuItem?.ShortDescription | allergens)?.description }}\n                    </div>\n                    <div class=\"additions\" *ngIf=\"menuItem?.Modifiers\">\n                      <span class=\"modifier\" *ngFor=\"let mod of menuItem?.Modifiers\">{{ mod?.Name }}</span>\n                    </div>\n                    <div class=\"fine-details\">\n                      <span class=\"price\">{{ menuItem?.ExtendedPrice | currency }}</span>\n                      <span class=\"calories\"></span>\n                      <span class=\"allergens\" *ngIf=\"(menuItem?.ShortDescription)\">\n                        <span class=\"allergen\" *ngFor=\"let allergen of (menuItem?.ShortDescription | allergens).allergens\">{{ allergen }}</span>\n                      </span>\n                    </div>\n                  </div><!-- /.bag-detail-card -->\n                </div><!-- /.item -->\n                </div><!-- /.item-review-wrapper -->\n            </div><!-- /.checkout-items -->\n          </div><!-- /.checkout-top -->\n\n\n          <div class=\"checkout-bottom\">\n            <div class=\"cart-prices\">\n              <div class=\"price-wrapper\">\n                <div class=\"flex-between total\">\n                  <span class=\"label medium\">Total</span>\n                  <span class=\"value medium\">{{ bagTotalPrice | currency }}</span>\n                </div>\n                <div class=\"checkout-button red-button\">\n                  <a routerLink=\"/checkout/review\">Checkout</a>\n                </div>\n              </div>\n            </div><!-- /.cart-prices -->\n          </div><!-- /.checkout-bottom -->\n        </div><!-- /.checkout-step.step-1 -->\n\n    </div><!-- /.checkout-inner-wrapper -->\n  </div><!-- /.checkout-content-wrapper -->\n</div><!-- /.checkout-overlay -->"
+module.exports = "<div class=\"checkout-overlay\" [ngClass]=\"state\">\n  <div class=\"checkout-content-wrapper\" [@hideShowBag]='state'>\n    <div class=\"checkout-inner-wrapper\">\n\n        <div class=\"checkout-step\">\n          <div class=\"checkout-top\">\n            <div class=\"checkout-header\">\n              <div class=\"back\">\n              </div>\n              <div class=\"checkout-title\">My Bag</div>\n              <div class=\"close\" (click)=\"toggleBagState()\">\n                <span class=\"close-1\"></span>\n                <span class=\"close-2\"></span>\n              </div>\n            </div><!-- /.checkout-header -->\n\n            <div class=\"items\">\n\n              <div class=\"item\" *ngFor=\"let menuItem of bagItems; let i = index;\">\n                <div class=\"item-review-wrapper\">\n                  <div class=\"left image\">\n                    <img src=\"http://via.placeholder.com/160x240\" alt=\"\" class=\"item-image\">\n                    <img src=\"/assets/svgs/delete-cross-icon.svg\" alt=\"X to remove item from cart\" class=\"remove-image\" (click)=\"removeFromBagAtIndex(i)\">\n                  </div>\n                  <div class=\"bag-detail-card\">\n                    <div class=\"title-container\">\n                        <div class=\"title\">{{ menuItem?.Name }} <span class=\"quantity\">x {{ menuItem?.Quantity }}</span></div>\n                    </div>\n                    <div class=\"ingredients\">\n                      {{ (menuItem?.ShortDescription | allergens)?.description }}\n                    </div>\n                    <div class=\"additions\" *ngIf=\"menuItem?.Modifiers\">\n                      <span class=\"modifier\" *ngFor=\"let mod of menuItem?.Modifiers; let last = last;\">{{ mod?.Name }}<span class=\"separator\" *ngIf=\"!last\">,</span> </span>\n                    </div>\n                    <div class=\"fine-details\">\n                      <span class=\"price\">{{ menuItem?.ExtendedPrice | currency }}</span>\n                      <span class=\"calories\"></span>\n                      <span class=\"allergens\" *ngIf=\"(menuItem?.ShortDescription)\">\n                        <span class=\"allergen\" *ngFor=\"let allergen of (menuItem?.ShortDescription | allergens).allergens\">{{ allergen }}</span>\n                      </span>\n                    </div>\n                  </div><!-- /.bag-detail-card -->\n                </div><!-- /.item -->\n                </div><!-- /.item-review-wrapper -->\n            </div><!-- /.checkout-items -->\n          </div><!-- /.checkout-top -->\n\n\n          <div class=\"checkout-bottom\">\n            <div class=\"cart-prices\">\n              <div class=\"price-wrapper\">\n                <div class=\"flex-between total\">\n                  <span class=\"label medium\">Total</span>\n                  <span class=\"value medium\">{{ bagTotalPrice | currency }}</span>\n                </div>\n                <div class=\"checkout-button red-button\">\n                  <a routerLink=\"/checkout/review\">Checkout</a>\n                </div>\n              </div>\n            </div><!-- /.cart-prices -->\n          </div><!-- /.checkout-bottom -->\n        </div><!-- /.checkout-step.step-1 -->\n\n    </div><!-- /.checkout-inner-wrapper -->\n  </div><!-- /.checkout-content-wrapper -->\n</div><!-- /.checkout-overlay -->"
 
 /***/ }),
 
@@ -3714,13 +4002,11 @@ var MonthMaskDirective = /** @class */ (function () {
         this.rawChange = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
     }
     MonthMaskDirective.prototype.onInputChange = function (e, backspace) {
-        console.log(e);
-        // let x = e.replace(/\D/g, '').match(/(\d{0,3})(\d{0,3})(\d{0,4})/);
-        // let rawValue = !x[2] ? x[1] : '(' + x[1] + ') ' + x[2] + (x[3] ? '-' + x[3] : '');
-        // console.log( rawValue );
-        // // new value
-        // this.model.valueAccessor.writeValue( rawValue );
-        // this.rawChange.emit( rawValue );
+        var x = e.replace(/\D/g, '').match(/(\d{0,2})(\d{0,4})/);
+        var rawValue = !x[2] ? x[1] : x[1] + '/' + x[2];
+        // new value
+        this.model.valueAccessor.writeValue(rawValue);
+        this.rawChange.emit(rawValue);
     };
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Output"])(),
@@ -3824,6 +4110,7 @@ var Config = /** @class */ (function () {
         this.authenticateEndpoint = 'http://138.197.123.70/authenticate';
         this.railsOrderEndpoint = 'http://138.197.123.70/orders';
         this.railsTimeEndpoint = 'http://138.197.123.70/times/1';
+        this.allTimesEndpoint = 'http://138.197.123.70/times/1/1/0/1001';
         this.siteId = 1;
         this.menuId = 1001;
         this.paymentTypeMap = {
