@@ -9,6 +9,7 @@ export class Config {
   public authenticateEndpoint : string = 'http://138.197.123.70/authenticate';
   public railsOrderEndpoint : string = 'http://138.197.123.70/orders';
   public railsTimeEndpoint : string = 'http://138.197.123.70/times/1';
+  public allTimesEndpoint : string = 'http://138.197.123.70/times/1/1/0/1001';
   public siteId : number = 1;
   public menuId : number = 1001;
   public paymentTypeMap = {
