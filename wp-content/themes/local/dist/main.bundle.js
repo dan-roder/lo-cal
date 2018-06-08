@@ -1615,7 +1615,6 @@ var CheckoutReviewComponent = /** @class */ (function () {
     }
     CheckoutReviewComponent.prototype.ngOnInit = function () {
         var _this = this;
-        // TODO: Retrieve times on init to populate dropdown
         this.retrievePickupTimes();
         // Need to retrieve current customer so order PUT doesn't fail
         this.customerService.getCurrentCustomer().subscribe(function (customerData) {
