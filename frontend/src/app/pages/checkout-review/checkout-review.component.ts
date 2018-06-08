@@ -36,7 +36,6 @@ export class CheckoutReviewComponent implements OnInit {
     }
 
   ngOnInit() {
-    // TODO: Retrieve times on init to populate dropdown
     this.retrievePickupTimes();
 
     // Need to retrieve current customer so order PUT doesn't fail
