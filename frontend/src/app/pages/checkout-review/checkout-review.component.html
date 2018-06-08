@@ -53,7 +53,7 @@
               </div><!-- /.edit-pane -->
             </div><!-- /.item -->
             <div class="red-button small-text">
-              <button (click)="putOrder()" [disabled]="!timeForm.valid">Proceed to Checkout</button>
+              <button (click)="putOrder()" [disabled]="!timeForm.valid || !selectedTime">Proceed to Checkout</button>
               <span class="processing" *ngIf="processing">Please Wait...</span>
             </div>
           </div><!-- /.review-item-card -->
@@ -92,6 +92,8 @@
               <select name="pickup-time"  id="pickup-time" formControlName="pickup-time" class="pickup-time" [(ngModel)]="timeSelectBox" (ngModelChange)="timeSelectChanged()">
                 <option value="">-- Select --</option>
                 <option value="next">Next Available</option>
+                <option disabled>---------------</option>
+                <option [value]="time?.Time" *ngFor="let time of times">{{ time?.Time | date:"h:mma" }}</option>
               </select>
             </form>
 
@@ -101,7 +103,7 @@
             </div>
 
             <div class="red-button full-width-button small-text">
-              <button (click)="putOrder()" [disabled]="!timeForm.valid">Proceed to Checkout</button>
+              <button (click)="putOrder()" [disabled]="!timeForm.valid || !selectedTime">Proceed to Checkout</button>
               <span class="processing" *ngIf="processing">Please Wait...</span>
             </div>
           </div>
