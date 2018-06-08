@@ -37,7 +37,7 @@ export class CheckoutReviewComponent implements OnInit {
 
   ngOnInit() {
     // TODO: Retrieve times on init to populate dropdown
-    // this.retrievePickupTimes();
+    this.retrievePickupTimes();
 
     // Need to retrieve current customer so order PUT doesn't fail
     this.customerService.getCurrentCustomer().subscribe(customerData => {
@@ -110,8 +110,10 @@ export class CheckoutReviewComponent implements OnInit {
   }
 
   private retrievePickupTimes(){
-    this.orderService.retrieveTimes('4').subscribe(times => {
-      this.times = times;
+    this.orderService.retrieveTimes('1').subscribe(times => {
+      // 0 position in array indicates current day
+      this.times = times[0].Value;
+      console.log(times[0].Value);
     })
   }
 }
