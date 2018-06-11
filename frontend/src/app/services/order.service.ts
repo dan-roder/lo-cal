@@ -18,7 +18,7 @@ export class OrderService {
   private userId : string;
   private _customerInfo : Customer;
   public _currentOrder : Order;
-  private orderTime : any;
+  private _promiseDateTime : any;
 
   constructor(
     private httpClient: HttpClient,
@@ -50,7 +50,7 @@ export class OrderService {
       order : {
         SiteId : this.config.siteId,
         MenuId : this.config.menuId,
-        PromiseDateTime : this.orderTime,
+        PromiseDateTime : this._promiseDateTime,
         LineItems : bagItems,
         Customer : this.customerInfo,
         OrderMode : 'Pickup',
@@ -83,7 +83,7 @@ export class OrderService {
 
   public getNextAvailableTime(){
     return this.httpClient.get(this.config.railsTimeEndpoint + '/1').map(time => {
-      this.orderTime = time;
+      this.promiseDateTime = time;
       return time;
     })
   }
@@ -118,5 +118,13 @@ export class OrderService {
     return this.httpClient.post(this.config.railsOrderEndpoint + `/${this.config.siteId}/${orderId}`, order).map(orderResponse => {
       return orderResponse;
     })
+  }
+
+  get promiseDateTime(): any{
+    return this._promiseDateTime;
+  }
+
+  set promiseDateTime(time: any){
+    this._promiseDateTime = time;
   }
 }
