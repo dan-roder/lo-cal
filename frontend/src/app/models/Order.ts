@@ -148,3 +148,11 @@ export interface RailsOrder{
 export interface RailsInSubmitOrder{
   order_submission : InSubmitOrderInformation
 }
+
+export interface RailsSavePayment{
+  payment: {
+    AccountNumber: string;
+    ExpirationDate: string;
+    PaymentMethodType: string;
+  }
+}
