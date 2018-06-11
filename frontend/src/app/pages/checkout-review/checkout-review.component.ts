@@ -97,6 +97,7 @@ export class CheckoutReviewComponent implements OnInit {
         this.getNextAvailableTime();
       break;
       default:
+        this.orderService.promiseDateTime = this.timeSelectBox;
         this.selectedTime = this.timeSelectBox;
       break;
     }
@@ -112,7 +113,6 @@ export class CheckoutReviewComponent implements OnInit {
     this.orderService.retrieveTimes('1').subscribe(times => {
       // 0 position in array indicates current day
       this.times = times[0].Value;
-      console.log(times[0].Value);
     })
   }
 }
