@@ -98,6 +98,12 @@ export class OrderService {
     })
   }
 
+  public submitOrder(order: RailsInSubmitOrder, orderId: number): Observable<any>{
+    return this.httpClient.post(this.config.railsOrderEndpoint + `/${this.config.siteId}/${orderId}`, order).map(orderResponse => {
+      return orderResponse;
+    })
+  }
+
   get customerInfo(): Customer{
     return this._customerInfo;
   }
@@ -112,12 +118,6 @@ export class OrderService {
 
   set currentOrder(order: Order){
     this._currentOrder = order;
-  }
-
-  public submitOrder(order: RailsInSubmitOrder, orderId: number): Observable<any>{
-    return this.httpClient.post(this.config.railsOrderEndpoint + `/${this.config.siteId}/${orderId}`, order).map(orderResponse => {
-      return orderResponse;
-    })
   }
 
   get promiseDateTime(): any{
