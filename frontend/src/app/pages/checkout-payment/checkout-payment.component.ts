@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { OrderService } from '@local/services/order.service';
-import { Order, InSubmitOrderInformation, RailsInSubmitOrder } from '@local/models/Order';
+import { Order, InSubmitOrderInformation, RailsInSubmitOrder, RailsSavePayment } from '@local/models/Order';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import * as ccinfo from 'credit-card-type';
 import { Config } from '@local/utils/constants';
@@ -40,8 +40,8 @@ export class CheckoutPaymentComponent implements OnInit {
       'payment-choice' : [this.paymentChoice, Validators.required],
       'card-number' : [null, [Validators.required, Validators.pattern('^[0-9]+$')]],
       'expiration-date' : [null, [Validators.required, Validators.pattern('^[0-9]{2}\/{1}[0-9]{4}$')]],
-      'name-on-card' : [null, Validators.required],
       'cvv' : [null, [Validators.required, Validators.pattern('^[0-9]{3,4}$')]],
+      'save-payment' : [null]
     });
     this.pickupForm = fb.group({
       'pickup-selection' : ['', Validators.required],
@@ -54,6 +54,7 @@ export class CheckoutPaymentComponent implements OnInit {
   ngOnInit() {
     // Get current customer info. Patch contact form
     this.customerService.isLoggedIn().subscribe(customer => {
+      this.currentCustomer = customer;
       this.patchContactForm(customer);
     })
 
@@ -114,15 +115,32 @@ export class CheckoutPaymentComponent implements OnInit {
     // Order object with payment has been created, submit to API
     this.orderService.submitOrder(finalOrderForSubmission, this.currentOrder.OrderId).subscribe(orderResults => {
       if(orderResults.ResultCode == 0){
-        this.router.navigate(['/checkout/confirmation']);
+
+        // If Customer wishes to save payment method
+        if(this.paymentForm.get('save-payment').value){
+          let paymentInfoForSaving : RailsSavePayment = {
+            payment : {
+              AccountNumber: this.paymentForm.get('card-number').value,
+              ExpirationDate: this.formatDate(this.paymentForm.get('expiration-date').value),
+              PaymentMethodType: this.cardType
+            }
+          }
+
+          // Save payment method, then navigate to confirmation
+          this.customerService.savePaymentMethod(paymentInfoForSaving, this.currentCustomer.CustomerId).subscribe(response => {
+            this.navigateToConfirmation();
+          });
+        }
+        else{
+          this.navigateToConfirmation();
+        }
       }
     });
   }
 
   protected constructClearCreditCardPayment(): InSubmitOrderInformation{
     let expirationDate = this.paymentForm.get('expiration-date').value;
-    // let finalExpDate = expirationDate.replace('/', '-');
-    let finalExpDate = moment('01/' + expirationDate, 'DD/MM/YYYY').format('YYYY-MM-DD');
+    let finalExpDate = this.formatDate(expirationDate);
 
     let inSubmitOrderInfo : InSubmitOrderInformation = {
       PaymentMethods : [{
@@ -191,6 +209,14 @@ export class CheckoutPaymentComponent implements OnInit {
       'last-name' : customer.LastName,
       'email' : customer.EMail
     })
+  }
+
+  protected formatDate(date: string){
+    return moment('01/' + date, 'DD/MM/YYYY').format('YYYY-MM-DD');
+  }
+
+  protected navigateToConfirmation(){
+    this.router.navigate(['/checkout/confirmation']);
   }
 
 }
