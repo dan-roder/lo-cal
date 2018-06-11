@@ -153,6 +153,6 @@ export interface RailsSavePayment{
   payment: {
     AccountNumber: string;
     ExpirationDate: string;
-    PaymentMethodType: string;
+    PaymentMethodType: number;
   }
 }
