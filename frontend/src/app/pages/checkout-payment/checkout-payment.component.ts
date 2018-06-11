@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { OrderService } from '@local/services/order.service';
-import { Order, InSubmitOrderInformation, RailsInSubmitOrder, RailsSavePayment } from '@local/models/Order';
+import { Order } from '@local/models/Order';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import * as ccinfo from 'credit-card-type';
 import { Config } from '@local/utils/constants';
@@ -9,6 +9,7 @@ import { Customer } from '@local/models/Customer';
 import * as _ from 'lodash';
 import * as moment from 'moment';
 import { Router } from '@angular/router';
+import { RailsSavePayment, InSubmitOrderInformation, RailsInSubmitOrder } from '@local/models/Payment';
 
 @Component({
   selector: 'lo-cal-checkout-payment',
