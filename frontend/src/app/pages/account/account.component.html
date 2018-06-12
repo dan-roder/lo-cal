@@ -109,7 +109,7 @@
     </div> -->
 
     <div class="submit red-button full-width-button submit">
-      <input type="submit" value="Save" *ngIf="editing">
+      <input type="submit" value="Save" *ngIf="editing" [disabled]="!accountForm.valid">
     </div>
   </form>
 </div>
@@ -142,11 +142,24 @@
     </div>
 
     <div class="submit red-button full-width-button submit">
-      <input type="submit" value="Save" *ngIf="editingPassword">
+      <input type="submit" value="Save" *ngIf="editingPassword" [disabled]="!passwordForm.valid">
     </div>
   </form>
 </div>
 
 <div class="account-section">
-  <h3 class="account-heading">Saved Payments</h3>
+  <div class="account-heading">
+    <h3>Saved Payments</h3>
+    <a href="" (click)="editPayments()" role="button">{{ editingPassword ? 'Cancel' : 'Edit' }}</a>
+  </div>
+  <div class="payments" *ngIf="savedPayments">
+    <div class="payment">
+      <p class="card-details small-text">
+        {{ savedPayments?.MethodType | cardType }}: {{ savedPayments?.MaskedAccountNumber }}
+      </p>
+      <p class="delete" (click)="deletePaymentMethod(savedPayments?.AccountId)" *ngIf="editingPayments">
+        <span class="icon"></span>
+      </p>
+    </div>
+  </div>
 </div>
