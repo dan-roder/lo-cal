@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClientModule, HttpHeaders, HttpClient } from '@angular/common/http';
 import { LocalStorage } from '@ngx-pwa/local-storage';
-import { RailsOrder, InOrderLineItem, Order, OrderResults, InSubmitOrderInformation, RailsInSubmitOrder } from '@local/models/Order';
+import { RailsOrder, InOrderLineItem, Order, OrderResults } from '@local/models/Order';
 import { LineItem } from '@local/models/LineItem';
 import { Config } from '@local/utils/constants';
 import * as moment from 'moment';
@@ -10,6 +10,7 @@ import { Customer } from '@local/models/Customer';
 import { AutoUnsubscribe } from 'ngx-auto-unsubscribe';
 import { Observable } from 'rxjs/Observable';
 import * as _ from 'lodash';
+import { RailsInSubmitOrder } from '@local/models/Payment';
 
 @AutoUnsubscribe()
 
@@ -18,7 +19,7 @@ export class OrderService {
   private userId : string;
   private _customerInfo : Customer;
   public _currentOrder : Order;
-  private orderTime : any;
+  private _promiseDateTime : any;
 
   constructor(
     private httpClient: HttpClient,
@@ -50,7 +51,7 @@ export class OrderService {
       order : {
         SiteId : this.config.siteId,
         MenuId : this.config.menuId,
-        PromiseDateTime : this.orderTime,
+        PromiseDateTime : this._promiseDateTime,
         LineItems : bagItems,
         Customer : this.customerInfo,
         OrderMode : 'Pickup',
@@ -83,7 +84,7 @@ export class OrderService {
 
   public getNextAvailableTime(){
     return this.httpClient.get(this.config.railsTimeEndpoint + '/1').map(time => {
-      this.orderTime = time;
+      this.promiseDateTime = time;
       return time;
     })
   }
@@ -95,6 +96,12 @@ export class OrderService {
     //  2 - Mobile Web
     return this.httpClient.get(this.config.railsTimeEndpoint + `/${orderMode}/${orderSource}/${this.config.menuId}`).map(times => {
       return times;
+    })
+  }
+
+  public submitOrder(order: RailsInSubmitOrder, orderId: number): Observable<any>{
+    return this.httpClient.post(this.config.railsOrderEndpoint + `/${this.config.siteId}/${orderId}`, order).map(orderResponse => {
+      return orderResponse;
     })
   }
 
@@ -114,9 +121,11 @@ export class OrderService {
     this._currentOrder = order;
   }
 
-  public submitOrder(order: RailsInSubmitOrder, orderId: number): Observable<any>{
-    return this.httpClient.post(this.config.railsOrderEndpoint + `/${this.config.siteId}/${orderId}`, order).map(orderResponse => {
-      return orderResponse;
-    })
+  get promiseDateTime(): any{
+    return this._promiseDateTime;
+  }
+
+  set promiseDateTime(time: any){
+    this._promiseDateTime = time;
   }
 }

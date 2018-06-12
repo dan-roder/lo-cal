@@ -5,6 +5,7 @@ import { RailsCustomer, RailsLogin, Customer, RailsUpdate } from '@local/models/
 import { Observable } from 'rxjs/Observable';
 import { LocalStorage } from '@ngx-pwa/local-storage';
 import { Router } from '@angular/router';
+import { RailsSavePayment } from '@local/models/Payment';
 
 @Injectable()
 export class CustomerService {
@@ -55,9 +56,34 @@ export class CustomerService {
       })
   }
 
+  /**
+   *
+   * getSavedPayments function
+   *
+   * @param customerId
+   *
+   * @returns saved payment tokens
+   */
   public getSavedPayments(customerId: string): Observable<any>{
-    return this.httpClient.get(this.config.railsCustomerEndpoint + `${customerId}` + '/Payments').map(data => {
+    return this.httpClient.get(this.config.railsCustomerEndpoint + `/${customerId}` + '/payments').map(data => {
       return data;
+    })
+  }
+
+  /**
+   *
+   * @param payment RailsSavePayment: payment data
+   * @param customerId string: Aloha customer ID
+   */
+  public savePaymentMethod(payment: RailsSavePayment, customerId: string): Observable<any>{
+    return this.httpClient.post(this.config.railsCustomerEndpoint + `/${customerId}` + '/payments', payment).map(data => {
+      return data;
+    })
+  }
+
+  public deleteSavedPayment(customerId: string, paymentId: string){
+    return this.httpClient.delete(this.config.railsCustomerEndpoint + `/${customerId}/payments/${paymentId}`).map(result => {
+      return result;
     })
   }
 
