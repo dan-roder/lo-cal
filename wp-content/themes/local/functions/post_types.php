@@ -269,52 +269,6 @@ function blog_post() {
 
 }
 
-
-
-
-// function add_menu_cat_to_meta_data($postID, $post) {
-// 	$postType = get_post_type_object( $post->post_type );
-
-// 	if ( !current_user_can( $postType->cap->edit_post, $postID ) )
-// 		return $postID;
-
-// 		// Save the Job Description
-// 		$metaKey = 'menu_category';
-
-// 			/* Verify the nonce before proceeding. */
-// 			if ( verifyMetaNonce($metaKey) )
-// 				return $postID;
-
-// 			/* Get the posted data and sanitize it for use as an HTML class. */
-// 			$menu_cat = ( isset( $_POST[$metaKey] ) ? sanitize_text_field( $_POST[$metaKey] ) : '' );
-
-// 		save_meta_data($postID, $metaKey, $menu_cat);
-
-// }
-
-
-
-// function save_meta_data($postID, $metaKey, $newMetaValue) {
-//     /* Get the meta value of the custom field key. */
-//     $metaValue = get_post_meta( $postID, $metaKey, true );
-
-//     /* If a new meta value was added and there was no previous value, add it. */
-//     if ( $newMetaValue && '' == $metaValue )
-//         update_post_meta( $postID, $metaKey, $newMetaValue, true );
-
-//     /* If the new meta value does not match the old value, update it. */
-//     elseif ( $newMetaValue && $newMetaValue != $metaValue )
-//         update_post_meta( $postID, $metaKey, $newMetaValue );
-
-//     /* If there is no new meta value but an old value exists, delete it. */
-//     elseif ( '' == $newMetaValue && $metaValue )
-//         delete_post_meta( $postID, $metaKey, $metaValue );
-// }
-
-// function verifyMetaNonce($metaKey) {
-//     return  (isset($_POST[$metaKey . '_nonce']) && wp_verify_nonce( $_POST[$metaKey . '_nonce'], basename(__FILE__)));
-// }
-
 add_action( 'add_meta_boxes', 'menu_categories_meta_box' );
 function menu_categories_meta_box() {
 
@@ -361,20 +315,15 @@ add_action( 'init', function() {
 
 add_filter( 'post_type_link', function( $link, $post ) {
 	if ( 'menu_item' == get_post_type( $post ) ) {
-		//Lets go to get the parent cartoon-series name
-		// var_dump($post->post_parent); die();
-		if( $post->post_parent ) {
-			$parent = get_post( $post->post_parent );
-			if( !empty($parent->post_name) ) {
-				return str_replace( '%category-name%', $parent->post_name, $link );
-			}
+		$post_id = $post->ID;
+		$meta_key = 'menu_category';
+		$meta_data = get_post_meta( $post_id, 'menu_category' );
+		// var_dump($post, $meta_data['menu_category'][0]); die();
+		if( $meta_data ) {
+			return str_replace( '%category-name%', $meta_data[0], $link );
 		} else {
-				//This seems to not work. It is intented to build pretty permalinks
-				//when episodes has not parent, but it seems that it would need
-				//additional rewrite rules
-				//return str_replace( '/%series_name%', '', $link );
+			// Do nothing;
 		}
-
 	}
 	return $link;
 }, 10, 2 );
