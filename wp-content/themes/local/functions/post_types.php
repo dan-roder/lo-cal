@@ -311,21 +311,28 @@ function save_menu_categories_meta_box_data( $post_id ) {
 
 add_action( 'init', function() {
 	add_rewrite_rule( '^menu/(.*)/([^/]+)/?$','index.php?menu_item=$matches[2]','top' );
+
+	$object_type = 'post';
+	$options = array(
+		'type' => 'string',
+		'single' => true,
+		'show_in_rest' => true
+		);
+	register_meta( 'post', 'submenu', $options );
+
 });
 
 add_filter( 'post_type_link', function( $link, $post ) {
-	if ( 'menu_item' == get_post_type( $post ) ) {
+	// if ( 'menu_item' == get_post_type( $post ) ) {
 		$post_id = $post->ID;
 		// var_dump($post); die();
-		$meta_key = 'menu_category';
-		$meta_data = get_post_meta( $post_id, 'menu_category' );
+		$meta_key = 'submenu';
+		$meta_data = get_post_meta( $post_id, 'submenu' );
 		// var_dump($post, $meta_data); die();
 		if( $meta_data ) {
 			return str_replace( '%category-name%', $meta_data[0], $link );
-		} else {
-			// Do nothing;
 		}
-	}
+	// }
 	return $link;
 }, 10, 2 );
 
@@ -333,7 +340,7 @@ add_action( 'rest_api_init', 'create_api_posts_meta_field' );
 
 function create_api_posts_meta_field() {
 	// register_rest_field ( 'name-of-post-type', 'name-of-field-to-return', array-of-callbacks-and-schema() )
-	register_rest_field( 'menu_item', 'menu_category', array(
+	register_rest_field( 'menu_item', 'submenu', array(
 		'get_callback' => 'get_post_meta_for_api',
 		'update_callback' => 'update_post_meta_for_api',
 		'schema' => null,
@@ -345,7 +352,7 @@ function get_post_meta_for_api( $object, $field_name, $request, $object_type ) {
 		//get the id of the post object array
 		$post_id = $object['id'];
 		//return the post meta
-		return get_post_meta( $post_id )['menu_category'][0];
+		return get_post_meta( $post_id )['submenu'][0];
 	// }
 	// return true;
 }
@@ -359,14 +366,6 @@ function update_post_meta_for_api( $value, $object, $field_name, $request ) {
 	// }
 	// return true;
 }
-
-$object_type = 'post';
-$options = array(
-    'type' => 'string',
-    'single' => true,
-    // 'show_in_rest' => true
-    );
-register_meta( 'post', 'menu_category', $options );
 
 add_action( 'init', 'blog_post', 0 );
 add_action( 'init', 'menu_item', 0 );
