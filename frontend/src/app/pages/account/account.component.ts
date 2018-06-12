@@ -4,6 +4,10 @@ import { Customer, RailsUpdate, InLoginUpdate } from '@local/models/Customer';
 import { LocalStorage } from '@ngx-pwa/local-storage';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { PasswordMatch } from '@local/utils/passwordmatch';
+import { AutoUnsubscribe } from 'ngx-auto-unsubscribe';
+import { SavedPayment } from '@local/models/Payment';
+
+@AutoUnsubscribe()
 
 @Component({
   selector: 'lo-cal-account',
@@ -16,8 +20,10 @@ export class AccountComponent implements OnInit {
   public passwordForm : FormGroup;
   public editing : boolean = false;
   public editingPassword : boolean = false;
+  public editingPayments : boolean = false;
   public errorOccurred : boolean = false;
   public submittedOnce : boolean = false;
+  public savedPayments : SavedPayment;
 
   constructor(private customerService: CustomerService, private localStorage : LocalStorage, private fb: FormBuilder) {
     this.accountForm = fb.group({
@@ -48,6 +54,11 @@ export class AccountComponent implements OnInit {
       this.customer = customerData;
       this.customerId = customerData.CustomerId;
       this.patchAccountForm(customerData);
+
+      this.customerService.getSavedPayments(this.customerId).subscribe(paymentMethods => {
+        this.savedPayments = paymentMethods;
+        console.log(paymentMethods);
+      })
     })
   }
 
@@ -69,6 +80,11 @@ export class AccountComponent implements OnInit {
 
   public editPassword(){
     this.editingPassword = !this.editingPassword;
+    return false;
+  }
+
+  public editPayments(){
+    this.editingPayments = !this.editingPayments;
     return false;
   }
 
@@ -109,11 +125,21 @@ export class AccountComponent implements OnInit {
         NewPassword : formData.controls['new-password'].value
       }
 
-      // Submit password update to API
+      // TODO: Submit password update to API
 
-      // If successful, destroy login session and redirect to login page
+      // TODO: If successful, destroy login session and redirect to login page
     }
 
     this.editingPassword = false;
+  }
+
+  public deletePaymentMethod(paymentId: string){
+    let areYouSure = confirm("Are you sure? This cannot be undone");
+    if (areYouSure) {
+      this.customerService.deleteSavedPayment(this.customerId, paymentId).subscribe(result => {
+        // TODO: When saved card is successfully deleted. Remove it from DOM
+        console.log(result);
+      });
+    }
   }
 }
