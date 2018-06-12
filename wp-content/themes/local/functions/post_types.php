@@ -305,7 +305,7 @@ add_action( 'save_post', 'save_menu_categories_meta_box_data' );
 
 function save_menu_categories_meta_box_data( $post_id ) {
     $my_data = sanitize_text_field( $_POST['parent_id'] );
-    update_post_meta( $post_id, 'menu_category', $my_data );
+    add_post_meta( $post_id, 'menu_category', $my_data, true );
 }
 
 
@@ -316,9 +316,10 @@ add_action( 'init', function() {
 add_filter( 'post_type_link', function( $link, $post ) {
 	if ( 'menu_item' == get_post_type( $post ) ) {
 		$post_id = $post->ID;
+		// var_dump($post); die();
 		$meta_key = 'menu_category';
 		$meta_data = get_post_meta( $post_id, 'menu_category' );
-		// var_dump($post, $meta_data['menu_category'][0]); die();
+		// var_dump($post, $meta_data); die();
 		if( $meta_data ) {
 			return str_replace( '%category-name%', $meta_data[0], $link );
 		} else {
@@ -340,26 +341,32 @@ function create_api_posts_meta_field() {
 }
 
 function get_post_meta_for_api( $object, $field_name, $request, $object_type ) {
-	//get the id of the post object array
-	$post_id = $object['id'];
-	//return the post meta
-	return get_post_meta( $post_id )['menu_category'][0];
+	// if ( 'menu_item' == get_post_type( $post ) ) {
+		//get the id of the post object array
+		$post_id = $object['id'];
+		//return the post meta
+		return get_post_meta( $post_id )['menu_category'][0];
+	// }
+	// return true;
 }
 function update_post_meta_for_api( $value, $object, $field_name, $request ) {
-	//get the id of the post object array
-	var_dump($value, $object); die();
-	return update_post_meta($object['id'], $field_name, $value);
-	//return the post meta
-	// return get_post_meta( $post_id )['menu_category'][0];
+	// if ( 'menu_item' == get_post_type( $post ) ) {
+		//get the id of the post object array
+		// var_dump($value, $object); die();
+		return update_post_meta($object['id'], $field_name, $value, true);
+		//return the post meta
+		// return get_post_meta( $post_id )['menu_category'][0];
+	// }
+	// return true;
 }
 
 $object_type = 'post';
 $options = array(
     'type' => 'string',
-    'description' => 'Menu Category',
     'single' => true,
+    // 'show_in_rest' => true
     );
-register_meta( $object_type, 'menu_category', $options );
+register_meta( 'post', 'menu_category', $options );
 
 add_action( 'init', 'blog_post', 0 );
 add_action( 'init', 'menu_item', 0 );
