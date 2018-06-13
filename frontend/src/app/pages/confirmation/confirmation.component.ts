@@ -9,6 +9,8 @@ export class ConfirmationComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    // TODO: Destroy Bag and Order from LocalStorage
+
   }
 
 }
