@@ -39,13 +39,20 @@
     border-top: 1px solid $e1;
 
     .title{
-      padding: 0 10px 0 0;
+      margin: 0;
       text-transform: uppercase;
-      @include fontsize(18);
-      @extend %sofia-semi-bold;
-      letter-spacing: 1px;
-      @include svg-bg(svgs/right-arrow-red);
-      background-position: right center;
+
+      a{
+        @include fontsize(18);
+        @extend %sofia-semi-bold;
+        letter-spacing: 1px;
+        color: $black;
+        text-decoration: none;
+        display: block;
+        padding: 0 10px 0 0;
+        @include svg-bg(svgs/right-arrow-red);
+        background-position: right center;
+      }
     }
 
     .description{
