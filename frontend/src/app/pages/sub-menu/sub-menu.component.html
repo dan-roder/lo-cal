@@ -33,10 +33,10 @@
       <div class="menu-card" *ngFor="let item of subMenuItems?.menuItems">
         <div class="card-wrapper">
           <div class="image">
-            <img src="//via.placeholder.com/265x115" alt="">
+            <a [routerLink]="(item?.DisplayName | safeUrl)"><img src="//via.placeholder.com/265x115" alt=""></a>
           </div>
           <div class="details">
-            <div class="title">{{ item?.Name }}</div>
+            <h4 class="title"><a [routerLink]="(item?.DisplayName | safeUrl)">{{ item?.DisplayName }}</a></h4>
             <div class="description">
               <p>
                 {{ (item?.Description | allergens).description }}
