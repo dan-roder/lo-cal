@@ -26,6 +26,9 @@
   <!-- Menu Card Layout HTML -->
   <div class="section-white menu-categories center" id="featured">
     <h2 class="capitalize text-center" [innerHtml]="pageContent?.title?.rendered"></h2>
+    <p class="sub-menu-description" *ngIf="subMenuItems?.menu[0]?.Description">
+      {{ subMenuItems?.menu[0]?.Description }}
+    </p>
 
     <div class="content clearfix sub-menu-cards-wrapper">
 
