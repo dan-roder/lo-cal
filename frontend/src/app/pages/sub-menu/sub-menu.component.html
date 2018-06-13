@@ -50,7 +50,7 @@
               <span class="allergens" *ngIf="(item?.Description | allergens).allergens">
                 <span class="allergen" *ngFor="let allergen of (item?.Description | allergens).allergens">{{ allergen }}</span>
               </span>
-              <a href="#" class="add-to-cart" (click)="addToBag(item)" role="button">Add</a>
+              <button class="add-to-cart" (click)="addToBag(item)">Add</button>
             </div>
           </div>
         </div>
