@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { AutoUnsubscribe } from "ngx-auto-unsubscribe";
 import { WordpressService } from '@local/services/wp.service';
 import { IPost } from '@local/models/post';
+import { BagService } from '@local/services/bag.service';
 
 @Component({
   selector: 'lo-cal-sub-menu',
@@ -19,7 +20,7 @@ export class SubMenuComponent implements OnInit {
   public acf : any;
   public subMenuItems: any;
 
-  constructor(private menuService: MenuService, private router: ActivatedRoute, private wpService: WordpressService) { }
+  constructor(private menuService: MenuService, private router: ActivatedRoute, private wpService: WordpressService, private bagService: BagService) { }
 
   ngOnInit() {
     // Check for subMenuId
@@ -34,14 +35,15 @@ export class SubMenuComponent implements OnInit {
       this.subMenuId = this.acf.submenuid;
 
       this.menuService.getSubMenuItems(this.subMenuId).subscribe(_subMenuItems => {
+        console.log(_subMenuItems);
         this.subMenuItems = _subMenuItems;
       });
     });
   }
 
   addToBag(item){
-    console.log(item);
-    return false;
+    // Push full object to bag service
+    this.bagService.quickAddLineItem(item);
   }
 
   ngOnDestroy(){
