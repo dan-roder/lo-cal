@@ -62,6 +62,7 @@ import { BlogComponent } from './pages/blog/blog.component';
 import { BlogPostComponent } from './pages/blog-post/blog-post.component';
 import { FeaturedImagePipe } from './pipes/featured-image.pipe';
 import { CardTypePipe } from './pipes/card-type.pipe';
+import { SafeUrlPipe } from './pipes/safe-url.pipe';
 
 //Guards
 import { AuthGuard } from '@local/guards/auth.guard';
@@ -113,7 +114,8 @@ import { MonthMaskDirective } from './shared/directives/month-mask.directive';
     ConfirmationComponent,
     OrderHistoryComponent,
     AccountLayoutComponent,
-    CardTypePipe
+    CardTypePipe,
+    SafeUrlPipe
   ],
   imports: [
     BrowserModule,
