@@ -179,7 +179,7 @@ function menu_categories() {
 		'label'                 => __( 'Menu Category', 'text_domain' ),
 		'description'           => __( 'Menu Category details', 'text_domain' ),
 		'labels'                => $labels,
-		'supports'              => array( 'title', 'editor', 'thumbnail', 'custom-fields' ),
+		'supports'              => array( 'title', 'editor', 'thumbnail' ),
 		'taxonomies'            => array( 'category', 'post_tag' ),
 		'hierarchical'          => true,
 		'public'                => true,
