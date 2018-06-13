@@ -9,7 +9,7 @@ import { Customer } from '@local/models/Customer';
 import * as _ from 'lodash';
 import * as moment from 'moment';
 import { Router } from '@angular/router';
-import { RailsSavePayment, InSubmitOrderInformation, RailsInSubmitOrder } from '@local/models/Payment';
+import { RailsSavePayment, InSubmitOrderInformation, RailsInSubmitOrder, SavedPayment } from '@local/models/Payment';
 
 @Component({
   selector: 'lo-cal-checkout-payment',
@@ -28,6 +28,7 @@ export class CheckoutPaymentComponent implements OnInit {
   public activeCardClass : string = '';
   public currentCustomer : Customer;
   public orderForDisplay : Array<any>;
+  public savedPaymentMethods : SavedPayment;
 
 
   constructor(private orderService: OrderService, private fb: FormBuilder, private constants: Config, private customerService: CustomerService, private router: Router) {
@@ -57,6 +58,14 @@ export class CheckoutPaymentComponent implements OnInit {
     this.customerService.isLoggedIn().subscribe(customer => {
       this.currentCustomer = customer;
       this.patchContactForm(customer);
+
+      // If Customer has ID, look for any saved payment methods on customer's account
+      if(customer.CustomerId){
+        this.customerService.getSavedPayments(customer.CustomerId).subscribe(savedPayments => {
+          this.savedPaymentMethods = savedPayments;
+          console.log(savedPayments);
+        });
+      }
     })
 
     // Get Full Order Details from API
