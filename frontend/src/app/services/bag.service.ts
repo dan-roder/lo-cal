@@ -18,7 +18,7 @@ export class BagService {
     })
   }
 
-  public createLineItem ( passedMenuItem ){
+  public createLineItem( passedMenuItem ){
     // Send item to get Modifiers
     let modifiers = this.constructLineItemModifiers(passedMenuItem.Modifiers);
 
@@ -38,6 +38,31 @@ export class BagService {
     this._itemsInBag.push(lineItem);
     // Update pricing
     this._totalPrice += passedMenuItem.TotalPrice;
+
+    // Save to localStorage
+    this.saveToLocalStorage();
+
+    lineItem = null;
+  }
+
+  public quickAddLineItem( passedMenuItem ){
+    console.log(passedMenuItem);
+
+    let lineItem : LineItem = {
+      SalesItemId : passedMenuItem.DefaultItemId, // Not sure if this should come from the SalesItem object instead of the DefaultItemId
+      MenuItemId : passedMenuItem.MenuItemId,
+      Name : passedMenuItem.Name,
+      ShortDescription : passedMenuItem.Description,
+      SpecialInstructions : passedMenuItem.SpecialInstructions,
+      UnitPrice : passedMenuItem.defaultPrice,
+      Quantity : 1,
+      ExtendedPrice : passedMenuItem.defaultPrice
+    };
+
+    // Push menuItem and lineItem into arrays
+    this._itemsInBag.push(lineItem);
+    // Update pricing
+    this._totalPrice += passedMenuItem.defaultPrice;
 
     // Save to localStorage
     this.saveToLocalStorage();
