@@ -69,9 +69,12 @@
       display: flex;
       justify-content: space-between;
 
-      a.add-to-cart{
+      button.add-to-cart{
         text-decoration: none;
         text-transform: uppercase;
+        border: none;
+        color: $orange-red;
+        background: none;
         @extend %sofia-semi-bold;
       }
 
