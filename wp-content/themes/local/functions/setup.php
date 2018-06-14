@@ -17,7 +17,7 @@ add_theme_support( 'post-thumbnails' );
 
 
 add_image_size( 'blog-preview', '260', '180', array('center', 'center') );
-
+// add_image_size( 'menu-item-thumbnail', '265', '115', array('center', 'center') );
 
 
 function custom_excerpt_length( $length ) {
