@@ -170,4 +170,20 @@
       }
     }
   }
+
+  .saved-payment-wrapper{
+    margin: 0 0 15px;
+
+    .saved-cards{
+      select{
+        border: 1px solid $e1;
+        background: none;
+        appearance: none;
+        border-radius: 0;
+        @extend %sofia-regular;
+        height: 55px;
+        padding: 0 20px;
+      }
+    }
+  }
 }
