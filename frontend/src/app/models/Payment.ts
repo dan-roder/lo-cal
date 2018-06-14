@@ -33,7 +33,7 @@ export interface InSubmitOrderInformation{
 
 export interface Payment{
   PaymentMethod: number; // 0 - SecureCreditCardPayment (saved), 1 - ClearCreditCardPayment, 2 - PayAtSitePayment
-  AccountId?: number; // Used for SecureCreditCardPayment
+  AccountId?: string; // Used for SecureCreditCardPayment
   AccountNumber?: number; // Credit card number
   ExpirationDate?: string; // The expiration date for the credit card required for ClearCreditCardPayment
   SecurityCode?: string; // The security code for the credit card required for ClearCreditCardPayment
