@@ -5,14 +5,17 @@
   ul.menu{
     @include stagecenter();
     margin: 0 auto;
-    padding: 10px 15px;
+    padding: 0 15px;
     text-align: left;
     list-style: none;
+    display: flex;
 
     li{
       text-align: left;
-      display: inline-block;
+      display: block;
       margin: 0 0 0 5px;
+      flex-basis: 0;
+      flex-grow: 1;
 
       a{
         display: block;
