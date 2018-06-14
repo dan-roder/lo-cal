@@ -19,6 +19,7 @@ export class SubMenuComponent implements OnInit {
   public pageContent : IPost;
   public acf : any;
   public subMenuItems: any;
+  public subMenuLinks : any;
 
   constructor(private menuService: MenuService, private router: ActivatedRoute, private wpService: WordpressService, private bagService: BagService) { }
 
@@ -39,6 +40,9 @@ export class SubMenuComponent implements OnInit {
         this.subMenuItems = _subMenuItems;
       });
     });
+
+    // Get featured menu item menu
+    this.wpService.getMenu(5).subscribe(m => this.subMenuLinks = m.items);
   }
 
   addToBag(item){
