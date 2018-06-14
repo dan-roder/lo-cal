@@ -3,7 +3,9 @@
 
   <div class="menu-menu">
     <ul class="menu">
-        <li class="item-{{ i+1 }}" *ngFor="let item of subMenus; let i = index"><a href="#">{{ item?.Name }}</a></li>
+      <li *ngFor="let item of subMenuLinks" [attr.class]="item.classes ? item.classes : null">
+        <a routerLink="/{{ item.object_slug }}" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" [innerHtml]="item?.title | safeHtml"></a>
+      </li>
     </ul>
   </div>
 
