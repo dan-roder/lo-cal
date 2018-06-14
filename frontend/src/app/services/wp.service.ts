@@ -63,7 +63,7 @@ export class WordpressService {
   }
 
   getPostBySlug(_slug: string, _postType: string){
-    return this.httpClient.get(this.config.wordpressApiUrl + `/wp/v2/${_postType}?slug=${_slug}`);
+    return this.httpClient.get(this.config.wordpressApiUrl + `/wp/v2/${_postType}?slug=${_slug}&_embed`);
   }
 
   getMenus() {
