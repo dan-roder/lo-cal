@@ -29,7 +29,7 @@ export class CheckoutPaymentComponent implements OnInit {
   public currentCustomer : Customer;
   public orderForDisplay : Array<any>;
   public savedPaymentMethods : SavedPayment;
-
+  public savedPaymentChoice : string;
 
   constructor(private orderService: OrderService, private fb: FormBuilder, private constants: Config, private customerService: CustomerService, private router: Router) {
     this.contactInfoForm = fb.group({
@@ -116,6 +116,9 @@ export class CheckoutPaymentComponent implements OnInit {
       case '2' :
         orderForApi = this.constructPayAtSitePayment();
       break;
+      case '3':
+        orderForApi = this.constructSecurePayment();
+      break;
     }
 
     let finalOrderForSubmission : RailsInSubmitOrder = {
@@ -179,6 +182,20 @@ export class CheckoutPaymentComponent implements OnInit {
     return inSubmitOrderInfo;
   }
 
+  protected constructSecurePayment(): InSubmitOrderInformation{
+    let inSubmitOrderInfo : InSubmitOrderInformation = {
+      PaymentMethods : [{
+        PaymentMethod : 0,
+        AccountId : this.savedPaymentMethods.AccountId,
+        PaymentMethodType : this.savedPaymentMethods.MethodType,
+        Amount: this.currentOrder.BalanceDueAmount
+      }],
+      SendEmail: true
+    }
+
+    return inSubmitOrderInfo;
+  }
+
   protected calculateTotal(fullOrder){
     let orderArray = Array();
 
@@ -227,6 +244,10 @@ export class CheckoutPaymentComponent implements OnInit {
 
   protected navigateToConfirmation(){
     this.router.navigate(['/checkout/confirmation']);
+  }
+
+  public whichPayment(value){
+    console.log(value);
   }
 
 }
