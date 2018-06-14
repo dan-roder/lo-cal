@@ -1,7 +1,5 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Router } from '@angular/router';
-import { WordpressService } from '../../services/wp.service';
-import { WindowScrollDirective } from '../../shared/directives/window-scroll.directive';
+import { Component, OnInit, EventEmitter } from '@angular/core';
+import { WordpressService } from '@local/services/wp.service';
 import { BagService } from '@local/services/bag.service';
 import { LineItem } from '@local/models/LineItem';
 import { LocalStorage } from '@ngx-pwa/local-storage';
