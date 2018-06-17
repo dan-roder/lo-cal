@@ -99,7 +99,7 @@ export class WordpressService {
   }
 
   getSubMenuImage(postId: number){
-    return this.httpClient.get(this.config.wordpressApiUrl + `menu_item/v1/menuid/${postId}`).map(image => {
+    return this.httpClient.get(this.config.wordpressApiUrl + `/menu_item/v1/menuid/${postId}`).map(image => {
       return image;
     })
   }
