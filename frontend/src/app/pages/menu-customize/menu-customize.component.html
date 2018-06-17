@@ -1,7 +1,7 @@
 <div class="page-item-detail">
   <div class="menu-item-header">
     <h1 class="title">{{ menuItemDetails?.item?.Name }}</h1>
-    <img src="//via.placeholder.com/1400x515" alt="Image of food">
+    <img *ngIf="featuredImage" [src]="featuredImage?.media_details?.sizes?.full?.source_url" [alt]="featuredImage?.alt_text">
   </div>
 
   <div class="customization-container center-1440">

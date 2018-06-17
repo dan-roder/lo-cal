@@ -14,7 +14,7 @@ import { DefaultOption } from '@local/models/DefaultOption';
 })
 export class MenuCustomizeComponent implements OnInit {
   public quantity: number = 1;
-  public itemContent : IPost;
+  public itemContent : any;
   public menuItemDetails : any;
   public salesItemDetails : SalesItem;
   private _itemPrice : number;
@@ -24,6 +24,7 @@ export class MenuCustomizeComponent implements OnInit {
   public specialInstructions : string;
   private _calorieCount : number = 0;
   public currentModifierArray : Array<any> = [];
+  public featuredImage : any;
 
   constructor(
     private wpService: WordpressService,
@@ -36,8 +37,9 @@ export class MenuCustomizeComponent implements OnInit {
     let slug = (this.router.snapshot.paramMap.get('item'));
 
     this.wpService.getPostBySlug(slug, 'menu_item').subscribe(_item => {
+      this.itemContent = _item;
       let menuItemId = _item[0].acf.menuid;
-
+      this.featuredImage = _item[0]._embedded['wp:featuredmedia'][0];
       this.getMenuItemDetails(menuItemId);
     });
   }
