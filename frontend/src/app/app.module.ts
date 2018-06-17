@@ -115,8 +115,7 @@ import { MonthMaskDirective } from './shared/directives/month-mask.directive';
     OrderHistoryComponent,
     AccountLayoutComponent,
     CardTypePipe,
-    SafeUrlPipe,
-    SubMenuImagePipe
+    SafeUrlPipe
   ],
   imports: [
     BrowserModule,
