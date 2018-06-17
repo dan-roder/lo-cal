@@ -3568,7 +3568,7 @@ var WordpressService = /** @class */ (function () {
         return this.httpClient.get(this.config.wordpressApiUrl + ("/wp/v2/" + base + "/" + id));
     };
     WordpressService.prototype.getSubMenuImage = function (postId) {
-        return this.httpClient.get(this.config.wordpressApiUrl + ("menu_item/v1/menuid/" + postId)).map(function (image) {
+        return this.httpClient.get(this.config.wordpressApiUrl + ("/menu_item/v1/menuid/" + postId)).map(function (image) {
             return image;
         });
     };
