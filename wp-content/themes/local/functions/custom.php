@@ -41,7 +41,7 @@ function get_post_data_from_menu_id( $object ) {
 
     if(isset($posts[0]->ID)){
       $url = 'http://'.$_SERVER['HTTP_HOST'].'/wp-json/wp/v2/menu_item/' . $posts[0]->ID;
-      $body = wp_remote_get($url);
+      $body = wp_remote_retrieve_body(wp_remote_get($url));
       // $body = get_post_meta($posts[0]->ID);
       // var_dump($body); die();
     }
