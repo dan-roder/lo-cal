@@ -46,6 +46,6 @@ function get_post_data_from_menu_id( $object ) {
       // var_dump($body); die();
     }
 
-    //return the post meta
-    return new WP_REST_Response( $body, 200 );
+    //return the post
+    return new WP_REST_Response( json_decode($body), 200 );
 }
