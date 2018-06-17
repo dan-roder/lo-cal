@@ -5,6 +5,7 @@ import { AutoUnsubscribe } from "ngx-auto-unsubscribe";
 import { WordpressService } from '@local/services/wp.service';
 import { IPost } from '@local/models/post';
 import { BagService } from '@local/services/bag.service';
+import * as _ from 'lodash';
 
 @Component({
   selector: 'lo-cal-sub-menu',
@@ -20,12 +21,14 @@ export class SubMenuComponent implements OnInit {
   public acf : any;
   public subMenuItems: any;
   public subMenuLinks : any;
+  public images: Array<any>;
 
   constructor(private menuService: MenuService, private router: ActivatedRoute, private wpService: WordpressService, private bagService: BagService) { }
 
   ngOnInit() {
     // Check for subMenuId
     this.subMenuId = this.menuService.menuItemId;
+    let wp = this.wpService;
 
     let slug = (this.router.snapshot.paramMap.get('category'));
 

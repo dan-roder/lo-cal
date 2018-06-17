@@ -63,7 +63,6 @@ import { BlogPostComponent } from './pages/blog-post/blog-post.component';
 import { FeaturedImagePipe } from './pipes/featured-image.pipe';
 import { CardTypePipe } from './pipes/card-type.pipe';
 import { SafeUrlPipe } from './pipes/safe-url.pipe';
-import { SubMenuImagePipe } from './pipes/sub-menu-image.pipe';
 
 //Guards
 import { AuthGuard } from '@local/guards/auth.guard';
