@@ -47,5 +47,5 @@ function get_post_data_from_menu_id( $object ) {
     }
 
     //return the post meta
-    return new WP_REST_Response( $posts, 200 );
+    return new WP_REST_Response( $body, 200 );
 }
