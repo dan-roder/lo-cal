@@ -87,6 +87,18 @@ export class CustomerService {
     })
   }
 
+  /**
+   *
+   * @param customerId string
+   *
+   * @returns Observable of order history
+   */
+  public getOrderHistory(customerId: string): Observable<any>{
+    return this.httpClient.get(this.config.railsCustomerEndpoint + `/${customerId}/order/recent`).map(result => {
+      return result;
+    })
+  }
+
   public getCurrentCustomer(): Observable<any>{
     return this.localStorage.getItem('user').map(userInfo => {
       return userInfo;
