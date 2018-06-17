@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LocalStorage } from '@ngx-pwa/local-storage';
 
 @Component({
   selector: 'lo-cal-confirmation',
@@ -6,11 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ConfirmationComponent implements OnInit {
 
-  constructor() { }
+  constructor(private localStorage: LocalStorage) { }
 
   ngOnInit() {
     // TODO: Destroy Bag and Order from LocalStorage
-
+    this.localStorage.removeItem('order').subscribe(() => {});
+    this.localStorage.removeItem('bag').subscribe(() => {});
   }
 
 }
