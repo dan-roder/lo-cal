@@ -25,6 +25,7 @@ import { CheckoutPaymentComponent } from '@local/pages/checkout-payment/checkout
 import { OrderHistoryComponent } from '@local/pages/order-history/order-history.component';
 import { AccountLayoutComponent } from '@local/layouts/account-layout/account-layout.component';
 import { ConfirmationComponent } from '@local/pages/confirmation/confirmation.component';
+import { OrderDetailComponent } from '@local/pages/order-detail/order-detail.component';
 
 
 const routes: Routes = [
@@ -44,7 +45,8 @@ const routes: Routes = [
       { path: 'account', component: AccountLayoutComponent, canActivate: [AuthGuard],
         children: [
           { path: '', component: AccountComponent },
-          { path: 'order-history', component: OrderHistoryComponent }
+          { path: 'order-history', component: OrderHistoryComponent },
+          { path: 'order-history/:orderid', component: OrderDetailComponent }
         ]
       },
       {
