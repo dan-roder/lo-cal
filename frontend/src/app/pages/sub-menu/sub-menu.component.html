@@ -12,7 +12,8 @@
   <div class="menu-menu">
     <ul class="menu">
       <li *ngFor="let item of subMenuLinks" [attr.class]="item.classes ? item.classes : null">
-        <a routerLink="/{{ item.object_slug }}" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" [innerHtml]="item?.title | safeHtml"></a>
+        <!-- TODO: Ensure all of these routerlinks work. currently aren't properly routing -->
+        <a [routerLink]="['/menu', item.object_slug]" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" [innerHtml]="item?.title | safeHtml"></a>
       </li>
     </ul>
   </div>
@@ -29,10 +30,10 @@
       <div class="menu-card" *ngFor="let item of subMenuItems?.menuItems">
         <div class="card-wrapper">
           <div class="image">
-            <a [routerLink]="(item?.DisplayName | safeUrl)"><img [src]="//via.placeholder.com/265x115" alt=""></a>
+            <a [routerLink]="(item?.Name | safeUrl)"><img [src]="//via.placeholder.com/265x115" alt=""></a>
           </div>
           <div class="details">
-            <h4 class="title"><a [routerLink]="(item?.DisplayName | safeUrl)">{{ item?.DisplayName }}</a></h4>
+            <h4 class="title"><a [routerLink]="(item?.Name | safeUrl)">{{ item?.Name }}</a></h4>
             <div class="description">
               <p>
                 {{ (item?.Description | allergens).description }}
