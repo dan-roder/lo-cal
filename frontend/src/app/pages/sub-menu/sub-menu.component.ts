@@ -23,6 +23,7 @@ export class SubMenuComponent implements OnInit {
   public subMenuLinks : any;
   public images: Array<any>;
   public navSubscription : any;
+  public headerImage : any;
 
   constructor(private menuService: MenuService, private activatedRoute: ActivatedRoute, private wpService: WordpressService, private bagService: BagService, private router: Router) {
     this.navSubscription = this.router.events.subscribe((e: any) => {
@@ -44,9 +45,9 @@ export class SubMenuComponent implements OnInit {
   public getPostAndMenuItems(){
     let slug = (this.activatedRoute.snapshot.paramMap.get('category'));
     // Get custom post type
-    this.wpService.getPostBySlug(slug, 'menu_categories').subscribe(_post => {
-      this.pageContent = _post[0];
-      this.acf = _post[0].acf;
+    this.wpService.getPostBySlug(slug, 'menu_categories').subscribe(post => {
+      this.pageContent = post[0];
+      this.acf = post[0].acf;
       this.subMenuId = this.acf.submenuid;
 
       this.menuService.getSubMenuItems(this.subMenuId).subscribe(_subMenuItems => {
