@@ -145,18 +145,20 @@ export class MenuCustomizeComponent implements OnInit {
     this.totalPrice = this.itemPrice * this.quantity;
   }
 
-  private getMenuItemDetails( _menuItemId ){
-    this.menuService.getMenuItemDetails(_menuItemId).subscribe(_menuItemDetails => {
+  private getMenuItemDetails( menuItemId ){
+    this.menuService.getMenuItemDetails(menuItemId).subscribe(menuItemDetails => {
       // Set necessary variables for template rendering
-      this.menuItemDetails = _menuItemDetails;
+      this.menuItemDetails = menuItemDetails;
+
+      console.log(menuItemDetails);
 
       // Find default Sales Item Id
-      this.defaultItemId = _menuItemDetails['item']['DefaultItemId'];
+      this.defaultItemId = menuItemDetails['item']['DefaultItemId'];
       // Using default Sales Item Id, return object with all details of that Sales Item
-      this.salesItemDetails = _.find(_menuItemDetails['salesItems'], {'SalesItemId': this.defaultItemId});
+      this.salesItemDetails = _.find(menuItemDetails['salesItems'], {'SalesItemId': this.defaultItemId});
 
       this.itemPrice = this.salesItemDetails['Price'];
-      this.calorieCount = _menuItemDetails['item'].CaloricServingUnit;
+      this.calorieCount = this.salesItemDetails.CaloricValue;
 
       // Calculate initial cost based on initial quantity of 1
       this.recalculateCost();
@@ -181,7 +183,6 @@ export class MenuCustomizeComponent implements OnInit {
 
   private registerCustomizationVariables( allModifiers, defaultOptions : Array<DefaultOption> = [] ){
     let tempObj = new Object();
-    let defaultsArray = new Array();
 
     _.forEach(allModifiers, function(modifierGroup, modGroupKey){
       // Create new object to store values in

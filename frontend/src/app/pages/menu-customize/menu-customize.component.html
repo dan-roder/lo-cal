@@ -43,7 +43,7 @@
         </div>
         <div class="fine-details">
           <span class="price">{{ salesItemDetails?.Price | currency }}</span>
-          <span class="calories" *ngIf="salesItemDetails?.CaloricValue !== null">{{ calorieCount }} cal</span>
+          <span class="calories" *ngIf="salesItemDetails?.CaloricValue !== 0 || salesItemDetails?.CaloricValue !== null">{{ calorieCount }} cal</span>
           <span class="allergens" *ngIf="(menuItemDetails?.item?.Description)">
             <span class="allergen" *ngFor="let allergen of (menuItemDetails?.item?.Description | allergens).allergens">{{ allergen }}</span>
           </span>
