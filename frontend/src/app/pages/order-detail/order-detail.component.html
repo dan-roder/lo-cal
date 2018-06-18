@@ -1,0 +1,35 @@
+<section class="account-section">
+  <header class="account-heading">
+    <h3>Order #{{ orderDetails?.OrderId }}</h3>
+    <div class="red-button small-text">
+      <button (click)="addOrderToBag()">Order Again</button>
+    </div>
+  </header>
+  <div class="order-details-wrapper">
+    <div class="line-item" *ngFor="let item of orderDetails?.LineItems">
+      <div class="details">
+        <div class="title-and-details">
+          <h4 class="title">{{ item?.Quantity }} x {{ item?.Name }}</h4>
+          <p class="modifiers small-text" *ngIf="item?.Modifiers.length > 0">
+            <span class="modifier" *ngFor="let modifier of item?.Modifiers; let last = last">{{ modifier?.Name }}<span class="separator" *ngIf="!last">, </span></span>
+          </p>
+        </div>
+        <span class="unit-price">{{ item?.UnitPrice | currency }}</span>
+      </div>
+    </div><!-- /.line-item -->
+    <div class="pricing-details">
+      <div class="flex-between subtotal">
+        <div class="label">Subtotal</div>
+        <div class="value">{{ orderDetails?.SubTotalAmount | currency }}</div>
+      </div>
+      <div class="flex-between tax">
+        <div class="label">Tax</div>
+        <div class="value">{{ orderDetails?.TaxAmount | currency }}</div>
+      </div>
+      <div class="flex-between total">
+        <div class="label">Total</div>
+        <div class="value">{{ orderDetails?.TotalAmount | currency }}</div>
+      </div>
+    </div>
+  </div>
+</section>
