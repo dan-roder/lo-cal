@@ -397,10 +397,12 @@ var routes = [
     {
         path: 'menu/:category',
         component: __WEBPACK_IMPORTED_MODULE_2__layouts_main_layout_main_layout_component__["a" /* MainLayoutComponent */],
+        runGuardsAndResolvers: 'paramsChange',
         children: [
             {
                 path: '',
-                component: __WEBPACK_IMPORTED_MODULE_8__pages_sub_menu_sub_menu_component__["a" /* SubMenuComponent */]
+                component: __WEBPACK_IMPORTED_MODULE_8__pages_sub_menu_sub_menu_component__["a" /* SubMenuComponent */],
+                runGuardsAndResolvers: 'paramsChange'
             },
             {
                 path: ':item',
@@ -424,8 +426,8 @@ var AppRoutingModule = /** @class */ (function () {
     }
     AppRoutingModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
-            imports: [__WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* RouterModule */].forRoot(routes)],
-            exports: [__WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* RouterModule */]],
+            imports: [__WEBPACK_IMPORTED_MODULE_1__angular_router__["d" /* RouterModule */].forRoot(routes, { onSameUrlNavigation: 'reload' })],
+            exports: [__WEBPACK_IMPORTED_MODULE_1__angular_router__["d" /* RouterModule */]],
             providers: []
         })
     ], AppRoutingModule);
@@ -717,7 +719,7 @@ var AccessGuard = /** @class */ (function () {
     };
     AccessGuard = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */], __WEBPACK_IMPORTED_MODULE_2__local_services_customer_service__["a" /* CustomerService */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */], __WEBPACK_IMPORTED_MODULE_2__local_services_customer_service__["a" /* CustomerService */]])
     ], AccessGuard);
     return AccessGuard;
 }());
@@ -765,7 +767,7 @@ var AuthGuard = /** @class */ (function () {
     };
     AuthGuard = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */], __WEBPACK_IMPORTED_MODULE_2__local_services_customer_service__["a" /* CustomerService */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */], __WEBPACK_IMPORTED_MODULE_2__local_services_customer_service__["a" /* CustomerService */]])
     ], AuthGuard);
     return AuthGuard;
 }());
@@ -813,7 +815,7 @@ var OrderGuard = /** @class */ (function () {
     };
     OrderGuard = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__local_services_order_service__["a" /* OrderService */], __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__local_services_order_service__["a" /* OrderService */], __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */]])
     ], OrderGuard);
     return OrderGuard;
 }());
@@ -1373,7 +1375,7 @@ var CheckoutLoginComponent = /** @class */ (function () {
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* FormBuilder */],
             __WEBPACK_IMPORTED_MODULE_2__ngx_pwa_local_storage__["a" /* LocalStorage */],
-            __WEBPACK_IMPORTED_MODULE_3__angular_router__["b" /* Router */],
+            __WEBPACK_IMPORTED_MODULE_3__angular_router__["c" /* Router */],
             __WEBPACK_IMPORTED_MODULE_3__angular_router__["a" /* ActivatedRoute */],
             __WEBPACK_IMPORTED_MODULE_4__local_services_order_service__["a" /* OrderService */]])
     ], CheckoutLoginComponent);
@@ -1634,7 +1636,7 @@ var CheckoutPaymentComponent = /** @class */ (function () {
             selector: 'lo-cal-checkout-payment',
             template: __webpack_require__("./src/app/pages/checkout-payment/checkout-payment.component.html")
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__local_services_order_service__["a" /* OrderService */], __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormBuilder */], __WEBPACK_IMPORTED_MODULE_4__local_utils_constants__["a" /* Config */], __WEBPACK_IMPORTED_MODULE_5__local_services_customer_service__["a" /* CustomerService */], __WEBPACK_IMPORTED_MODULE_8__angular_router__["b" /* Router */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__local_services_order_service__["a" /* OrderService */], __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormBuilder */], __WEBPACK_IMPORTED_MODULE_4__local_utils_constants__["a" /* Config */], __WEBPACK_IMPORTED_MODULE_5__local_services_customer_service__["a" /* CustomerService */], __WEBPACK_IMPORTED_MODULE_8__angular_router__["c" /* Router */]])
     ], CheckoutPaymentComponent);
     return CheckoutPaymentComponent;
 }());
@@ -1778,7 +1780,7 @@ var CheckoutReviewComponent = /** @class */ (function () {
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__local_services_bag_service__["a" /* BagService */],
             __WEBPACK_IMPORTED_MODULE_2__local_utils_constants__["a" /* Config */],
             __WEBPACK_IMPORTED_MODULE_3__local_services_order_service__["a" /* OrderService */],
-            __WEBPACK_IMPORTED_MODULE_4__angular_router__["b" /* Router */],
+            __WEBPACK_IMPORTED_MODULE_4__angular_router__["c" /* Router */],
             __WEBPACK_IMPORTED_MODULE_5__angular_forms__["a" /* FormBuilder */],
             __WEBPACK_IMPORTED_MODULE_6__local_services_customer_service__["a" /* CustomerService */]])
     ], CheckoutReviewComponent);
@@ -2013,7 +2015,7 @@ var CreateAccountComponent = /** @class */ (function () {
             selector: 'lo-cal-create-account',
             template: __webpack_require__("./src/app/pages/create-account/create-account.component.html")
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* FormBuilder */], __WEBPACK_IMPORTED_MODULE_3__local_services_customer_service__["a" /* CustomerService */], __WEBPACK_IMPORTED_MODULE_4__angular_router__["a" /* ActivatedRoute */], __WEBPACK_IMPORTED_MODULE_4__angular_router__["b" /* Router */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* FormBuilder */], __WEBPACK_IMPORTED_MODULE_3__local_services_customer_service__["a" /* CustomerService */], __WEBPACK_IMPORTED_MODULE_4__angular_router__["a" /* ActivatedRoute */], __WEBPACK_IMPORTED_MODULE_4__angular_router__["c" /* Router */]])
     ], CreateAccountComponent);
     return CreateAccountComponent;
 }());
@@ -2755,19 +2757,31 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 var SubMenuComponent = /** @class */ (function () {
-    function SubMenuComponent(menuService, router, wpService, bagService) {
+    function SubMenuComponent(menuService, activatedRoute, wpService, bagService, router) {
+        var _this = this;
         this.menuService = menuService;
-        this.router = router;
+        this.activatedRoute = activatedRoute;
         this.wpService = wpService;
         this.bagService = bagService;
+        this.router = router;
         this.subMenuId = null;
+        this.navSubscription = this.router.events.subscribe(function (e) {
+            // If it is a NavigationEnd event re-initalise the component
+            if (e instanceof __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* NavigationEnd */]) {
+                _this.getPostAndMenuItems();
+            }
+        });
     }
     SubMenuComponent.prototype.ngOnInit = function () {
         var _this = this;
         // Check for subMenuId
         this.subMenuId = this.menuService.menuItemId;
-        var wp = this.wpService;
-        var slug = (this.router.snapshot.paramMap.get('category'));
+        // Get featured menu item menu
+        this.wpService.getMenu(5).subscribe(function (m) { return _this.subMenuLinks = m.items; });
+    };
+    SubMenuComponent.prototype.getPostAndMenuItems = function () {
+        var _this = this;
+        var slug = (this.activatedRoute.snapshot.paramMap.get('category'));
         // Get custom post type
         this.wpService.getPostBySlug(slug, 'menu_categories').subscribe(function (_post) {
             _this.pageContent = _post[0];
@@ -2777,14 +2791,18 @@ var SubMenuComponent = /** @class */ (function () {
                 _this.subMenuItems = _subMenuItems;
             });
         });
-        // Get featured menu item menu
-        this.wpService.getMenu(5).subscribe(function (m) { return _this.subMenuLinks = m.items; });
     };
     SubMenuComponent.prototype.addToBag = function (item) {
         // Push full object to bag service
         this.bagService.quickAddLineItem(item);
     };
     SubMenuComponent.prototype.ngOnDestroy = function () {
+        // avoid memory leaks here by cleaning up after ourselves. If we
+        // don't then we will continue to run our initialiseInvites()
+        // method on every navigationEnd event.
+        if (this.navSubscription) {
+            this.navSubscription.unsubscribe();
+        }
     };
     SubMenuComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
@@ -2793,7 +2811,7 @@ var SubMenuComponent = /** @class */ (function () {
             encapsulation: __WEBPACK_IMPORTED_MODULE_0__angular_core__["ViewEncapsulation"].None
         }),
         Object(__WEBPACK_IMPORTED_MODULE_3_ngx_auto_unsubscribe__["a" /* AutoUnsubscribe */])(),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__services_menu_service_service__["a" /* MenuService */], __WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* ActivatedRoute */], __WEBPACK_IMPORTED_MODULE_4__local_services_wp_service__["a" /* WordpressService */], __WEBPACK_IMPORTED_MODULE_5__local_services_bag_service__["a" /* BagService */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__services_menu_service_service__["a" /* MenuService */], __WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* ActivatedRoute */], __WEBPACK_IMPORTED_MODULE_4__local_services_wp_service__["a" /* WordpressService */], __WEBPACK_IMPORTED_MODULE_5__local_services_bag_service__["a" /* BagService */], __WEBPACK_IMPORTED_MODULE_2__angular_router__["c" /* Router */]])
     ], SubMenuComponent);
     return SubMenuComponent;
 }());
@@ -3302,7 +3320,7 @@ var CustomerService = /** @class */ (function () {
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__local_utils_constants__["a" /* Config */],
             __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */],
             __WEBPACK_IMPORTED_MODULE_3__ngx_pwa_local_storage__["a" /* LocalStorage */],
-            __WEBPACK_IMPORTED_MODULE_4__angular_router__["b" /* Router */]])
+            __WEBPACK_IMPORTED_MODULE_4__angular_router__["c" /* Router */]])
     ], CustomerService);
     return CustomerService;
 }());
@@ -3735,7 +3753,7 @@ var BagComponent = /** @class */ (function () {
                 ])
             ]
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__local_services_bag_service__["a" /* BagService */], __WEBPACK_IMPORTED_MODULE_3__local_services_order_service__["a" /* OrderService */], __WEBPACK_IMPORTED_MODULE_4__angular_router__["b" /* Router */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__local_services_bag_service__["a" /* BagService */], __WEBPACK_IMPORTED_MODULE_3__local_services_order_service__["a" /* OrderService */], __WEBPACK_IMPORTED_MODULE_4__angular_router__["c" /* Router */]])
     ], BagComponent);
     return BagComponent;
 }());
@@ -4081,7 +4099,7 @@ var LoginFormComponent = /** @class */ (function () {
             selector: 'lo-cal-login-form',
             template: __webpack_require__("./src/app/shared/components/login-form/login-form.component.html")
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* FormBuilder */], __WEBPACK_IMPORTED_MODULE_2__local_services_customer_service__["a" /* CustomerService */], __WEBPACK_IMPORTED_MODULE_3__ngx_pwa_local_storage__["a" /* LocalStorage */], __WEBPACK_IMPORTED_MODULE_4__angular_router__["b" /* Router */], __WEBPACK_IMPORTED_MODULE_4__angular_router__["a" /* ActivatedRoute */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* FormBuilder */], __WEBPACK_IMPORTED_MODULE_2__local_services_customer_service__["a" /* CustomerService */], __WEBPACK_IMPORTED_MODULE_3__ngx_pwa_local_storage__["a" /* LocalStorage */], __WEBPACK_IMPORTED_MODULE_4__angular_router__["c" /* Router */], __WEBPACK_IMPORTED_MODULE_4__angular_router__["a" /* ActivatedRoute */]])
     ], LoginFormComponent);
     return LoginFormComponent;
 }());
