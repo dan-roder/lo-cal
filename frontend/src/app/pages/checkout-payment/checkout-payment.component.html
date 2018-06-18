@@ -175,7 +175,7 @@
               <p class="question semi-bold">Your total: {{ currentOrder?.TotalAmount | currency }}</p>
             </div>
             <div class="red-button small-text" [ngClass]="processing ? 'loading' : ''">
-              <button [disabled]="(!pickupForm.valid || !paymentForm.valid || !contactInfoForm.valid) && !processing" (click)="submitOrder()">Place Order Now</button>
+              <button [disabled]="(!pickupForm.valid || (!paymentForm.valid && (paymentChoice !== '2' && paymentChoice !== '3')) || !contactInfoForm.valid) && !processing" (click)="submitOrder()">Place Order Now</button>
             </div>
             <p class="terms-and-conditions small-text">
               By placing your order you agree to our Terms of Conditions. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vehicula ac orci sed venenatis. Phasellus venenatis blandit nulla non pretium. Sed id metus non nisi pulvinar dictum.
@@ -214,7 +214,7 @@
             </div>
 
             <div class="red-button full-width-button small-text" [ngClass]="processing ? 'loading' : ''">
-              <button [disabled]="(!pickupForm.valid || !paymentForm.valid || !contactInfoForm.valid) && !processing" (click)="submitOrder()">Place Order Now</button>
+              <button [disabled]="(!pickupForm.valid || (!paymentForm.valid && (paymentChoice !== '2' && paymentChoice !== '3')) || !contactInfoForm.valid) && !processing" (click)="submitOrder()">Place Order Now</button>
               <span class="processing" *ngIf="processing">Please Wait...</span>
             </div>
             <p class="go-back text-center">
