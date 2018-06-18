@@ -2783,9 +2783,9 @@ var SubMenuComponent = /** @class */ (function () {
         var _this = this;
         var slug = (this.activatedRoute.snapshot.paramMap.get('category'));
         // Get custom post type
-        this.wpService.getPostBySlug(slug, 'menu_categories').subscribe(function (_post) {
-            _this.pageContent = _post[0];
-            _this.acf = _post[0].acf;
+        this.wpService.getPostBySlug(slug, 'menu_categories').subscribe(function (post) {
+            _this.pageContent = post[0];
+            _this.acf = post[0].acf;
             _this.subMenuId = _this.acf.submenuid;
             _this.menuService.getSubMenuItems(_this.subMenuId).subscribe(function (_subMenuItems) {
                 _this.subMenuItems = _subMenuItems;
