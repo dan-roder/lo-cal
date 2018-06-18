@@ -74,10 +74,12 @@ const routes: Routes = [
   {
     path: 'menu/:category',
     component: MainLayoutComponent,
+    runGuardsAndResolvers: 'paramsChange',
     children: [
       {
         path: '',
-        component: SubMenuComponent
+        component: SubMenuComponent,
+        runGuardsAndResolvers: 'paramsChange'
       },
       {
         path: ':item',
@@ -98,7 +100,7 @@ const routes: Routes = [
 ]
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {onSameUrlNavigation: 'reload'})],
   exports: [RouterModule],
   providers: []
 })
