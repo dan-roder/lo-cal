@@ -39,7 +39,7 @@ export class MenuCustomizeComponent implements OnInit {
     this.wpService.getPostBySlug(slug, 'menu_item').subscribe(_item => {
       this.itemContent = _item;
       let menuItemId = _item[0].acf.menuid;
-      this.featuredImage = _item[0]._embedded['wp:featuredmedia'][0];
+      this.featuredImage = (_item[0].featured_media !== 0) ? _item[0]._embedded['wp:featuredmedia'][0] : '';
       this.getMenuItemDetails(menuItemId);
     });
   }
