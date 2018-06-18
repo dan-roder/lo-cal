@@ -36,11 +36,11 @@ export class MenuCustomizeComponent implements OnInit {
   ngOnInit() {
     let slug = (this.router.snapshot.paramMap.get('item'));
 
-    this.wpService.getPostBySlug(slug, 'menu_item').subscribe(_item => {
-      this.itemContent = _item;
-      let menuItemId = _item[0].acf.menuid;
+    this.wpService.getPostBySlug(slug, 'menu_item').subscribe(item => {
+      this.itemContent = item;
+      let menuItemId = item[0].acf.menuid;
       // TODO: Ensure there is a fallback for if no media is found
-      this.featuredImage = (_item[0].featured_media !== 0) ? _item[0]._embedded['wp:featuredmedia'][0] : '';
+      this.featuredImage = (item[0].featured_media !== 0) ? item[0]._embedded['wp:featuredmedia'][0] : '';
       this.getMenuItemDetails(menuItemId);
     });
   }
@@ -149,13 +149,14 @@ export class MenuCustomizeComponent implements OnInit {
     this.menuService.getMenuItemDetails(_menuItemId).subscribe(_menuItemDetails => {
       // Set necessary variables for template rendering
       this.menuItemDetails = _menuItemDetails;
+
       // Find default Sales Item Id
       this.defaultItemId = _menuItemDetails['item']['DefaultItemId'];
       // Using default Sales Item Id, return object with all details of that Sales Item
       this.salesItemDetails = _.find(_menuItemDetails['salesItems'], {'SalesItemId': this.defaultItemId});
 
       this.itemPrice = this.salesItemDetails['Price'];
-      this.calorieCount = this.salesItemDetails.CaloricValue;
+      this.calorieCount = _menuItemDetails['item'].CaloricServingUnit;
 
       // Calculate initial cost based on initial quantity of 1
       this.recalculateCost();
