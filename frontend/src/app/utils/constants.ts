@@ -34,7 +34,7 @@ export class Config {
         this.wordpressApiUrl = "https://www.lo-calkitchen.com/wp-json";
       break;
       default:
-        this.wordpressApiUrl = "https://" + winRef.nativeWindow.location.hostname + "/wp-json";
+        this.wordpressApiUrl = "http://" + winRef.nativeWindow.location.hostname + "/wp-json";
       break;
     }
 
