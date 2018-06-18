@@ -317,12 +317,14 @@ webpackEmptyAsyncContext.id = "./src/$$_lazy_route_resource lazy recursive";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__local_pages_order_history_order_history_component__ = __webpack_require__("./src/app/pages/order-history/order-history.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__local_layouts_account_layout_account_layout_component__ = __webpack_require__("./src/app/layouts/account-layout/account-layout.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__local_pages_confirmation_confirmation_component__ = __webpack_require__("./src/app/pages/confirmation/confirmation.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__local_pages_order_detail_order_detail_component__ = __webpack_require__("./src/app/pages/order-detail/order-detail.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -366,7 +368,8 @@ var routes = [
             { path: 'account', component: __WEBPACK_IMPORTED_MODULE_24__local_layouts_account_layout_account_layout_component__["a" /* AccountLayoutComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_17__local_guards_auth_guard__["a" /* AuthGuard */]],
                 children: [
                     { path: '', component: __WEBPACK_IMPORTED_MODULE_16__local_pages_account_account_component__["a" /* AccountComponent */] },
-                    { path: 'order-history', component: __WEBPACK_IMPORTED_MODULE_23__local_pages_order_history_order_history_component__["a" /* OrderHistoryComponent */] }
+                    { path: 'order-history', component: __WEBPACK_IMPORTED_MODULE_23__local_pages_order_history_order_history_component__["a" /* OrderHistoryComponent */] },
+                    { path: 'order-history/:orderid', component: __WEBPACK_IMPORTED_MODULE_26__local_pages_order_detail_order_detail_component__["a" /* OrderDetailComponent */] }
                 ]
             },
             {
@@ -503,30 +506,30 @@ var AppComponent = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__pages_checkout_review_checkout_review_component__ = __webpack_require__("./src/app/pages/checkout-review/checkout-review.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__pages_confirmation_confirmation_component__ = __webpack_require__("./src/app/pages/confirmation/confirmation.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__pages_order_history_order_history_component__ = __webpack_require__("./src/app/pages/order-history/order-history.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__shared_components_header_header_component__ = __webpack_require__("./src/app/shared/components/header/header.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_29__shared_components_footer_footer_component__ = __webpack_require__("./src/app/shared/components/footer/footer.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_30__shared_components_title_body_images_title_body_images_component__ = __webpack_require__("./src/app/shared/components/title-body-images/title-body-images.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_31__shared_components_intro_section_intro_section_component__ = __webpack_require__("./src/app/shared/components/intro-section/intro-section.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_32__shared_components_image_and_text_image_and_text_component__ = __webpack_require__("./src/app/shared/components/image-and-text/image-and-text.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_33__shared_components_hamburger_hamburger_component__ = __webpack_require__("./src/app/shared/components/hamburger/hamburger.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_34__shared_components_bag_bag_component__ = __webpack_require__("./src/app/shared/components/bag/bag.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_35__shared_components_login_form_login_form_component__ = __webpack_require__("./src/app/shared/components/login-form/login-form.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_36__utils_windowref__ = __webpack_require__("./src/app/utils/windowref.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_37__services_wp_service__ = __webpack_require__("./src/app/services/wp.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_38__services_menu_service_service__ = __webpack_require__("./src/app/services/menu-service.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_39__services_bag_service__ = __webpack_require__("./src/app/services/bag.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_40__services_customer_service__ = __webpack_require__("./src/app/services/customer.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_41__local_services_order_service__ = __webpack_require__("./src/app/services/order.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_42__shared_directives_window_scroll_directive__ = __webpack_require__("./src/app/shared/directives/window-scroll.directive.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_43__shared_directives_input_switcher_directive__ = __webpack_require__("./src/app/shared/directives/input-switcher.directive.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_44__pipes_allergens_pipe__ = __webpack_require__("./src/app/pipes/allergens.pipe.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_45__pipes_safe_html_pipe__ = __webpack_require__("./src/app/pipes/safe-html.pipe.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_46__pages_blog_blog_component__ = __webpack_require__("./src/app/pages/blog/blog.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_47__pages_blog_post_blog_post_component__ = __webpack_require__("./src/app/pages/blog-post/blog-post.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_48__pipes_featured_image_pipe__ = __webpack_require__("./src/app/pipes/featured-image.pipe.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_49__pipes_card_type_pipe__ = __webpack_require__("./src/app/pipes/card-type.pipe.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_50__pipes_safe_url_pipe__ = __webpack_require__("./src/app/pipes/safe-url.pipe.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_51__pipes_sub_menu_image_pipe__ = __webpack_require__("./src/app/pipes/sub-menu-image.pipe.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__pages_order_detail_order_detail_component__ = __webpack_require__("./src/app/pages/order-detail/order-detail.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_29__shared_components_header_header_component__ = __webpack_require__("./src/app/shared/components/header/header.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_30__shared_components_footer_footer_component__ = __webpack_require__("./src/app/shared/components/footer/footer.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_31__shared_components_title_body_images_title_body_images_component__ = __webpack_require__("./src/app/shared/components/title-body-images/title-body-images.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_32__shared_components_intro_section_intro_section_component__ = __webpack_require__("./src/app/shared/components/intro-section/intro-section.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_33__shared_components_image_and_text_image_and_text_component__ = __webpack_require__("./src/app/shared/components/image-and-text/image-and-text.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_34__shared_components_hamburger_hamburger_component__ = __webpack_require__("./src/app/shared/components/hamburger/hamburger.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_35__shared_components_bag_bag_component__ = __webpack_require__("./src/app/shared/components/bag/bag.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_36__shared_components_login_form_login_form_component__ = __webpack_require__("./src/app/shared/components/login-form/login-form.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_37__utils_windowref__ = __webpack_require__("./src/app/utils/windowref.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_38__services_wp_service__ = __webpack_require__("./src/app/services/wp.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_39__services_menu_service_service__ = __webpack_require__("./src/app/services/menu-service.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_40__services_bag_service__ = __webpack_require__("./src/app/services/bag.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_41__services_customer_service__ = __webpack_require__("./src/app/services/customer.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_42__local_services_order_service__ = __webpack_require__("./src/app/services/order.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_43__shared_directives_window_scroll_directive__ = __webpack_require__("./src/app/shared/directives/window-scroll.directive.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_44__shared_directives_input_switcher_directive__ = __webpack_require__("./src/app/shared/directives/input-switcher.directive.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_45__pipes_allergens_pipe__ = __webpack_require__("./src/app/pipes/allergens.pipe.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_46__pipes_safe_html_pipe__ = __webpack_require__("./src/app/pipes/safe-html.pipe.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_47__pages_blog_blog_component__ = __webpack_require__("./src/app/pages/blog/blog.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_48__pages_blog_post_blog_post_component__ = __webpack_require__("./src/app/pages/blog-post/blog-post.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_49__pipes_featured_image_pipe__ = __webpack_require__("./src/app/pipes/featured-image.pipe.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_50__pipes_card_type_pipe__ = __webpack_require__("./src/app/pipes/card-type.pipe.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_51__pipes_safe_url_pipe__ = __webpack_require__("./src/app/pipes/safe-url.pipe.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_52__local_guards_auth_guard__ = __webpack_require__("./src/app/guards/auth.guard.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_53__local_guards_access_guard__ = __webpack_require__("./src/app/guards/access.guard.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_54__local_guards_order_guard__ = __webpack_require__("./src/app/guards/order.guard.ts");
@@ -571,6 +574,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
+
 // Shared Components
 
 
@@ -598,7 +602,6 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-
 //Guards
 
 
@@ -616,32 +619,32 @@ var AppModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_9__app_component__["a" /* AppComponent */],
                 __WEBPACK_IMPORTED_MODULE_10__layouts_main_layout_main_layout_component__["a" /* MainLayoutComponent */],
                 __WEBPACK_IMPORTED_MODULE_12__pages_home_home_component__["a" /* HomeComponent */],
-                __WEBPACK_IMPORTED_MODULE_29__shared_components_footer_footer_component__["a" /* FooterComponent */],
+                __WEBPACK_IMPORTED_MODULE_30__shared_components_footer_footer_component__["a" /* FooterComponent */],
                 __WEBPACK_IMPORTED_MODULE_13__pages_our_story_our_story_component__["a" /* OurStoryComponent */],
-                __WEBPACK_IMPORTED_MODULE_28__shared_components_header_header_component__["a" /* HeaderComponent */],
-                __WEBPACK_IMPORTED_MODULE_30__shared_components_title_body_images_title_body_images_component__["a" /* TitleBodyImagesComponent */],
-                __WEBPACK_IMPORTED_MODULE_31__shared_components_intro_section_intro_section_component__["a" /* IntroSectionComponent */],
-                __WEBPACK_IMPORTED_MODULE_32__shared_components_image_and_text_image_and_text_component__["a" /* ImageAndTextComponent */],
+                __WEBPACK_IMPORTED_MODULE_29__shared_components_header_header_component__["a" /* HeaderComponent */],
+                __WEBPACK_IMPORTED_MODULE_31__shared_components_title_body_images_title_body_images_component__["a" /* TitleBodyImagesComponent */],
+                __WEBPACK_IMPORTED_MODULE_32__shared_components_intro_section_intro_section_component__["a" /* IntroSectionComponent */],
+                __WEBPACK_IMPORTED_MODULE_33__shared_components_image_and_text_image_and_text_component__["a" /* ImageAndTextComponent */],
                 __WEBPACK_IMPORTED_MODULE_14__pages_our_food_our_food_component__["a" /* OurFoodComponent */],
-                __WEBPACK_IMPORTED_MODULE_33__shared_components_hamburger_hamburger_component__["a" /* HamburgerComponent */],
-                __WEBPACK_IMPORTED_MODULE_42__shared_directives_window_scroll_directive__["a" /* WindowScrollDirective */],
+                __WEBPACK_IMPORTED_MODULE_34__shared_components_hamburger_hamburger_component__["a" /* HamburgerComponent */],
+                __WEBPACK_IMPORTED_MODULE_43__shared_directives_window_scroll_directive__["a" /* WindowScrollDirective */],
                 __WEBPACK_IMPORTED_MODULE_15__pages_menu_menu_component__["a" /* MenuPageComponent */],
                 __WEBPACK_IMPORTED_MODULE_16__pages_menu_customize_menu_customize_component__["a" /* MenuCustomizeComponent */],
-                __WEBPACK_IMPORTED_MODULE_34__shared_components_bag_bag_component__["a" /* BagComponent */],
+                __WEBPACK_IMPORTED_MODULE_35__shared_components_bag_bag_component__["a" /* BagComponent */],
                 __WEBPACK_IMPORTED_MODULE_17__pages_sub_menu_sub_menu_component__["a" /* SubMenuComponent */],
-                __WEBPACK_IMPORTED_MODULE_44__pipes_allergens_pipe__["a" /* AllergensPipe */],
-                __WEBPACK_IMPORTED_MODULE_45__pipes_safe_html_pipe__["a" /* SafeHtml */],
+                __WEBPACK_IMPORTED_MODULE_45__pipes_allergens_pipe__["a" /* AllergensPipe */],
+                __WEBPACK_IMPORTED_MODULE_46__pipes_safe_html_pipe__["a" /* SafeHtml */],
                 __WEBPACK_IMPORTED_MODULE_18__pages_login_login_component__["a" /* LoginComponent */],
                 __WEBPACK_IMPORTED_MODULE_19__pages_post_post_component__["a" /* PostComponent */],
                 __WEBPACK_IMPORTED_MODULE_20__pages_catering_catering_component__["a" /* CateringComponent */],
                 __WEBPACK_IMPORTED_MODULE_21__pages_contact_contact_component__["a" /* ContactComponent */],
-                __WEBPACK_IMPORTED_MODULE_46__pages_blog_blog_component__["a" /* BlogComponent */],
-                __WEBPACK_IMPORTED_MODULE_47__pages_blog_post_blog_post_component__["a" /* BlogPostComponent */],
-                __WEBPACK_IMPORTED_MODULE_48__pipes_featured_image_pipe__["a" /* FeaturedImagePipe */],
+                __WEBPACK_IMPORTED_MODULE_47__pages_blog_blog_component__["a" /* BlogComponent */],
+                __WEBPACK_IMPORTED_MODULE_48__pages_blog_post_blog_post_component__["a" /* BlogPostComponent */],
+                __WEBPACK_IMPORTED_MODULE_49__pipes_featured_image_pipe__["a" /* FeaturedImagePipe */],
                 __WEBPACK_IMPORTED_MODULE_22__pages_create_account_create_account_component__["a" /* CreateAccountComponent */],
-                __WEBPACK_IMPORTED_MODULE_35__shared_components_login_form_login_form_component__["a" /* LoginFormComponent */],
+                __WEBPACK_IMPORTED_MODULE_36__shared_components_login_form_login_form_component__["a" /* LoginFormComponent */],
                 __WEBPACK_IMPORTED_MODULE_23__pages_account_account_component__["a" /* AccountComponent */],
-                __WEBPACK_IMPORTED_MODULE_43__shared_directives_input_switcher_directive__["a" /* InputSwitcherDirective */],
+                __WEBPACK_IMPORTED_MODULE_44__shared_directives_input_switcher_directive__["a" /* InputSwitcherDirective */],
                 __WEBPACK_IMPORTED_MODULE_24__pages_checkout_login_checkout_login_component__["a" /* CheckoutLoginComponent */],
                 __WEBPACK_IMPORTED_MODULE_25__pages_checkout_review_checkout_review_component__["a" /* CheckoutReviewComponent */],
                 __WEBPACK_IMPORTED_MODULE_55__pages_checkout_payment_checkout_payment_component__["a" /* CheckoutPaymentComponent */],
@@ -649,9 +652,9 @@ var AppModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_26__pages_confirmation_confirmation_component__["a" /* ConfirmationComponent */],
                 __WEBPACK_IMPORTED_MODULE_27__pages_order_history_order_history_component__["a" /* OrderHistoryComponent */],
                 __WEBPACK_IMPORTED_MODULE_11__layouts_account_layout_account_layout_component__["a" /* AccountLayoutComponent */],
-                __WEBPACK_IMPORTED_MODULE_49__pipes_card_type_pipe__["a" /* CardTypePipe */],
-                __WEBPACK_IMPORTED_MODULE_50__pipes_safe_url_pipe__["a" /* SafeUrlPipe */],
-                __WEBPACK_IMPORTED_MODULE_51__pipes_sub_menu_image_pipe__["a" /* SubMenuImagePipe */]
+                __WEBPACK_IMPORTED_MODULE_50__pipes_card_type_pipe__["a" /* CardTypePipe */],
+                __WEBPACK_IMPORTED_MODULE_51__pipes_safe_url_pipe__["a" /* SafeUrlPipe */],
+                __WEBPACK_IMPORTED_MODULE_28__pages_order_detail_order_detail_component__["a" /* OrderDetailComponent */]
             ],
             imports: [
                 __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
@@ -664,7 +667,7 @@ var AppModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_7__ngx_pwa_local_storage__["b" /* LocalStorageModule */],
                 __WEBPACK_IMPORTED_MODULE_56_ng2_responsive__["ResponsiveModule"]
             ],
-            providers: [__WEBPACK_IMPORTED_MODULE_8__utils_constants__["a" /* Config */], __WEBPACK_IMPORTED_MODULE_36__utils_windowref__["a" /* WindowRef */], __WEBPACK_IMPORTED_MODULE_37__services_wp_service__["a" /* WordpressService */], __WEBPACK_IMPORTED_MODULE_38__services_menu_service_service__["a" /* MenuService */], __WEBPACK_IMPORTED_MODULE_39__services_bag_service__["a" /* BagService */], __WEBPACK_IMPORTED_MODULE_40__services_customer_service__["a" /* CustomerService */], __WEBPACK_IMPORTED_MODULE_52__local_guards_auth_guard__["a" /* AuthGuard */], __WEBPACK_IMPORTED_MODULE_53__local_guards_access_guard__["a" /* AccessGuard */], __WEBPACK_IMPORTED_MODULE_41__local_services_order_service__["a" /* OrderService */], __WEBPACK_IMPORTED_MODULE_54__local_guards_order_guard__["a" /* OrderGuard */]],
+            providers: [__WEBPACK_IMPORTED_MODULE_8__utils_constants__["a" /* Config */], __WEBPACK_IMPORTED_MODULE_37__utils_windowref__["a" /* WindowRef */], __WEBPACK_IMPORTED_MODULE_38__services_wp_service__["a" /* WordpressService */], __WEBPACK_IMPORTED_MODULE_39__services_menu_service_service__["a" /* MenuService */], __WEBPACK_IMPORTED_MODULE_40__services_bag_service__["a" /* BagService */], __WEBPACK_IMPORTED_MODULE_41__services_customer_service__["a" /* CustomerService */], __WEBPACK_IMPORTED_MODULE_52__local_guards_auth_guard__["a" /* AuthGuard */], __WEBPACK_IMPORTED_MODULE_53__local_guards_access_guard__["a" /* AccessGuard */], __WEBPACK_IMPORTED_MODULE_42__local_services_order_service__["a" /* OrderService */], __WEBPACK_IMPORTED_MODULE_54__local_guards_order_guard__["a" /* OrderGuard */]],
             bootstrap: [__WEBPACK_IMPORTED_MODULE_9__app_component__["a" /* AppComponent */]]
         })
     ], AppModule);
@@ -1384,7 +1387,7 @@ var CheckoutLoginComponent = /** @class */ (function () {
 /***/ "./src/app/pages/checkout-payment/checkout-payment.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"basic-page-container checkout-review\">\n  <div class=\"basic-page-content center\">\n    <h1>Complete Your Order</h1>\n\n    <div class=\"checkout-wrapper\">\n      <div class=\"left-pane\">\n        <div class=\"step\">\n          <div class=\"inner-step-wrapper\">\n            <div class=\"step-heading\" (click)=\"editSection(1)\">1. Pickup</div>\n            <div class=\"step-wrapper\" [hidden]=\"sectionOpen !== 1\">\n              <form action=\"\" class=\"lo-cal-form\" [formGroup]=\"pickupForm\">\n                <div class=\"response\">\n                  <fieldset>\n                    <legend>How would you like to pickup your order?</legend>\n                    <div class=\"radio-options flex-between\">\n                      <div class=\"option\">\n                        <label for=\"in-store\">\n                          <input type=\"radio\" name=\"pickup-selection\" id=\"in-store\" value=\"1\" formControlName=\"pickup-selection\">\n                          <span class=\"semi-bold\">In Store Pick Up</span>\n                        </label>\n                      </div>\n                      <div class=\"option\">\n                        <label for=\"curbside\">\n                          <input type=\"radio\" name=\"pickup-selection\" id=\"curbside\" value=\"4\" formControlName=\"pickup-selection\">\n                          <span class=\"semi-bold\">Curbside Pickup</span>\n                        </label>\n                      </div>\n                    </div>\n                  </fieldset>\n                  <div class=\"car-options\" *ngIf=\"pickupForm.controls['pickup-selection'].value === '4'\">\n                    <div class=\"form-section half-and-half\">\n                      <div class=\"form-component form-component-text\">\n                        <label for=\"vehicle-make\" class=\"visuallyhidden\">Vehicle Make</label>\n                        <input type=\"text\" name=\"vehicle-make\" id=\"vehicle-make\" formControlName=\"vehicle-make\" placeholder=\"Vehicle Make*\">\n                      </div>\n                      <div class=\"form-component form-component-text\">\n                        <label for=\"vehicle-model\" class=\"visuallyhidden\">Vehicle Model</label>\n                        <input type=\"text\" name=\"vehicle-model\" id=\"vehicle-model\" formControlName=\"vehicle-model\" placeholder=\"Vehicle Model*\">\n                      </div>\n                    </div>\n                    <div class=\"form-section half-and-half\">\n                      <div class=\"form-component form-component-text\">\n                        <label for=\"vehicle-color\" class=\"visuallyhidden\">Vehicle Color</label>\n                        <input type=\"text\" name=\"vehicle-color\" id=\"vehicle-color\" formControlName=\"vehicle-color\" placeholder=\"Vehicle Color*\">\n                      </div>\n                    </div>\n                  </div>\n                </div>\n                <div class=\"next-step black-button\">\n                  <button [disabled]=\"!pickupForm.valid\"(click)=\"nextStep()\">Next Step</button>\n                  <span class=\"processing\" *ngIf=\"processing\">Please Wait...</span>\n                </div>\n              </form>\n            </div>\n          </div><!-- /. inner-step-wrapper -->\n        </div><!-- /.step -->\n        <div class=\"step\">\n          <div class=\"inner-step-wrapper\">\n            <div class=\"step-heading\" (click)=\"editSection(2)\">2. Contact Information</div>\n            <div class=\"step-wrapper\" [hidden]=\"sectionOpen !== 2\">\n              <form action=\"\" class=\"lo-cal-form\" [formGroup]=\"contactInfoForm\">\n                <div class=\"form-section half-and-half\">\n                  <div class=\"form-component form-component-text\">\n                    <label for=\"first-name\" class=\"visuallyhidden\">First Name</label>\n                    <input type=\"text\" name=\"first-name\" id=\"first-name\" formControlName=\"first-name\" placeholder=\"First Name*\" [ngClass]=\"{'has-error':!contactInfoForm.controls['first-name'].valid && submittedOnce}\">\n                    <div class=\"error-message\" *ngIf=\"!contactInfoForm.controls['first-name'].valid && submittedOnce\">This field is required.</div>\n                  </div>\n                  <div class=\"form-component form-component-text\">\n                    <label for=\"last-name\" class=\"visuallyhidden\">Last Name</label>\n                    <input type=\"text\" name=\"last-name\" id=\"last-name\" formControlName=\"last-name\" placeholder=\"Last Name*\" [ngClass]=\"{'has-error':!contactInfoForm.controls['last-name'].valid && submittedOnce}\">\n                    <div class=\"error-message\" *ngIf=\"!contactInfoForm.controls['last-name'].valid && submittedOnce\">This field is required.</div>\n                  </div>\n                </div>\n                <div class=\"form-section half-and-half\">\n                  <div class=\"form-component form-component-text\">\n                    <label for=\"phone\" class=\"visuallyhidden\">Phone</label>\n                    <input type=\"text\" name=\"phone\" id=\"phone\" formControlName=\"phone\" placeholder=\"Phone\" [ngClass]=\"{'has-error':!contactInfoForm.controls['phone'].valid && submittedOnce}\">\n                    <div class=\"error-message\" *ngIf=\"!contactInfoForm.controls['phone'].valid && submittedOnce\">This field is required.</div>\n                  </div>\n                  <div class=\"form-component form-component-email\">\n                    <label for=\"email\" class=\"visuallyhidden\">Email</label>\n                    <input type=\"text\" name=\"email\" id=\"email\" formControlName=\"email\" placeholder=\"Email*\" [ngClass]=\"{'has-error':!contactInfoForm.controls['email'].valid && submittedOnce}\">\n                    <div class=\"error-message\" *ngIf=\"!contactInfoForm.controls['email'].valid && submittedOnce\">This field is required.</div>\n                  </div>\n                </div>\n                <div class=\"next-step black-button\">\n                  <button [disabled]=\"!contactInfoForm.valid\" (click)=\"nextStep()\">Next Step</button>\n                </div>\n              </form>\n            </div>\n          </div><!-- /. inner-step-wrapper -->\n        </div><!-- /.step -->\n        <div class=\"step\">\n          <div class=\"inner-step-wrapper\">\n            <div class=\"step-heading\" (click)=\"editSection(3)\">3. Payment</div>\n            <div class=\"step-wrapper\" [hidden]=\"sectionOpen !== 3\">\n              <form action=\"\" class=\"lo-cal-form\" [formGroup]=\"paymentForm\">\n                <div class=\"saved-payment-wrapper\" *ngIf=\"savedPaymentMethods\">\n                  <div class=\"radio-options flex-between saved-payment-wrapper\">\n                    <div class=\"option\">\n                      <label for=\"saved-payment\">\n                        <input type=\"radio\" name=\"payment-choice\" id=\"saved-payment\" value=\"3\" formControlName=\"payment-choice\"  [(ngModel)]=\"paymentChoice\">\n                        <span class=\"semi-bold\">Pay with a saved card</span>\n                      </label>\n                    </div>\n                  </div>\n                  <div class=\"saved-cards\">\n                    <select name=\"\" id=\"\" (change)=\"whichPayment($event.target.value)\">\n                      <option value=\"something\">Some other payment</option>\n                      <option [value]=\"savedPaymentMethods.AccountId\" selected>{{ savedPaymentMethods.MaskedAccountNumber }}</option>\n                    </select>\n                  </div>\n                </div>\n                <div class=\"radio-options flex-between\">\n                  <div class=\"option\">\n                    <label for=\"cc\">\n                      <input type=\"radio\" name=\"payment-choice\" id=\"cc\" value=\"1\" formControlName=\"payment-choice\"  [(ngModel)]=\"paymentChoice\">\n                      <span class=\"semi-bold\">Pay now with a credit card</span>\n                    </label>\n                  </div>\n                  <div class=\"option\">\n                    <label for=\"pay-at-store\">\n                      <input type=\"radio\" name=\"payment-choice\" id=\"pay-at-store\" value=\"2\" formControlName=\"payment-choice\" [(ngModel)]=\"paymentChoice\">\n                      <span class=\"semi-bold\">Pay at the store</span>\n                    </label>\n                  </div>\n                </div>\n                <div class=\"new-card-section\" *ngIf=\"paymentForm.controls['payment-choice'].value === '1'\">\n                  <div class=\"form-section half-and-half\">\n                    <div class=\"form-component form-component-text\">\n                      <label for=\"card-number\" class=\"visuallyhidden\">Credit Card Number</label>\n                      <input type=\"text\" name=\"card-number\" id=\"card-number\" formControlName=\"card-number\" placeholder=\"Credit Card Number*\" [ngClass]=\"{'has-error':!paymentForm.controls['card-number'].valid && submittedOnce}\" #ccNumber ([ngModel])=\"cardType\" (ngModelChange)=\"detectCardType(ccNumber.value)\">\n                      <div class=\"card-sprite-wrapper\">\n                        <div class=\"card visa\" [ngClass]=\"activeCardClass === 'visa' ? 'active' : ''\" title=\"Visa\"></div>\n                        <div class=\"card master-card\" [ngClass]=\"activeCardClass === 'master-card' ? 'active' : ''\" title=\"MasterCard\"></div>\n                        <div class=\"card american-express\" [ngClass]=\"activeCardClass === 'american-express' ? 'active' : ''\" title=\"American Express\"></div>\n                        <div class=\"card discover\" [ngClass]=\"activeCardClass === 'discover' ? 'active' : ''\" title=\"Discover\"></div>\n                        <div class=\"card diners-club\" [ngClass]=\"activeCardClass === 'diners-club' ? 'active' : ''\" title=\"Diners Club\"></div>\n                      </div>\n                      <div class=\"error-message\" *ngIf=\"!paymentForm.controls['card-number'].valid && submittedOnce\">This field is required.</div>\n                    </div>\n                    <div class=\"form-component form-component-text\">\n                      <label for=\"last-name\" class=\"visuallyhidden\">Expiration Date</label>\n                      <input type=\"text\" name=\"expiration-date\" id=\"expiration-date\" formControlName=\"expiration-date\" placeholder=\"Expiration Date (mm/yyyy)*\" [ngClass]=\"{'has-error':!paymentForm.controls['expiration-date'].valid && submittedOnce}\" loCalMonthMask>\n                      <div class=\"error-message\" *ngIf=\"!paymentForm.controls['expiration-date'].valid && submittedOnce\">This field is required.</div>\n                    </div>\n                  </div>\n                  <div class=\"form-section half-and-half\">\n                    <div class=\"form-component form-component-email\">\n                      <label for=\"email\" class=\"visuallyhidden\">CVV</label>\n                      <input type=\"text\" name=\"cvv\" id=\"cvv\" formControlName=\"cvv\" placeholder=\"CVV*\" [ngClass]=\"{'has-error':!paymentForm.controls['cvv'].valid && submittedOnce}\">\n                      <div class=\"error-message\" *ngIf=\"!paymentForm.controls['cvv'].valid && submittedOnce\">This field is required.</div>\n                    </div>\n                    <div class=\"form-component form-component-text radio-options\" *ngIf=\"currentCustomer?.CustomerId\">\n                      <div class=\"option\">\n                        <label for=\"save-payment\">\n                          <input type=\"checkbox\" name=\"save-payment\" id=\"save-payment\" value=\"save\" formControlName=\"save-payment\">\n                          <span class=\"semi-bold\">Save payment for future use?</span>\n                        </label>\n                      </div>\n                    </div>\n                  </div>\n                </div>\n                <div class=\"next-step black-button step-4-button\">\n                  <button [disabled]=\"(!paymentForm.valid && paymentChoice !== '2' && paymentChoice !== '3')\"(click)=\"nextStep()\">Next Step</button>\n                </div>\n              </form>\n            </div>\n          </div><!-- /. inner-step-wrapper -->\n        </div><!-- /.step -->\n        <div class=\"step step-4\">\n          <div class=\"inner-step-wrapper\">\n            <div class=\"step-heading\">4. Place Your Order</div>\n            <div class=\"step-wrapper\">\n              <p class=\"question semi-bold\">Your total: {{ currentOrder?.TotalAmount | currency }}</p>\n            </div>\n            <div class=\"red-button small-text\" [ngClass]=\"processing ? 'loading' : ''\">\n              <button [disabled]=\"(!pickupForm.valid || !paymentForm.valid || !contactInfoForm.valid) && !processing\" (click)=\"submitOrder()\">Place Order Now</button>\n            </div>\n            <p class=\"terms-and-conditions small-text\">\n              By placing your order you agree to our Terms of Conditions. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vehicula ac orci sed venenatis. Phasellus venenatis blandit nulla non pretium. Sed id metus non nisi pulvinar dictum.\n            </p>\n          </div><!-- /. inner-step-wrapper -->\n        </div><!-- /.step -->\n      </div><!-- /.left-pane -->\n      <div class=\"order-summary\">\n        <div class=\"itemized-summary\">\n          <h4>Order Summary</h4>\n          <div class=\"item flex-between\" *ngFor=\"let menuItem of orderForDisplay\">\n            <div class=\"item-specifics\">\n              <div class=\"title semi-bold\"><span class=\"quantity\">{{ menuItem?.quantity }} x</span> <span class=\"item-name\">{{ menuItem?.name }}</span></div>\n              <div class=\"additions\" *ngIf=\"menuItem?.modifiers\">\n                <span class=\"modifier\" *ngFor=\"let mod of menuItem?.modifiers\">{{ mod?.name }}</span>\n              </div>\n            </div>\n            <div class=\"item-price\">\n              <span class=\"price\">{{ menuItem?.fullPrice | currency }}</span>\n            </div>\n          </div>\n        </div><!-- /.itemized-summary -->\n        <div class=\"pricing-and-location\">\n          <div class=\"pricing-details\">\n            <div class=\"flex-between subtotal\">\n              <span class=\"label\">Subtotal</span>\n              <span class=\"value\">{{ currentOrder?.SubTotalAmount | currency }}</span>\n            </div>\n            <div class=\"flex-between\">\n              <span class=\"label\">Tax</span>\n              <span class=\"value\">{{ currentOrder?.TaxAmount | currency }}</span>\n            </div>\n            <div class=\"flex-between total\">\n              <span class=\"label semi-bold\">Total</span>\n              <span class=\"value semi-bold\">{{ currentOrder?.TotalAmount | currency }}</span>\n            </div>\n\n            <div class=\"red-button full-width-button small-text\" [ngClass]=\"processing ? 'loading' : ''\">\n              <button [disabled]=\"(!pickupForm.valid || !paymentForm.valid || !contactInfoForm.valid) && !processing\" (click)=\"submitOrder()\">Place Order Now</button>\n              <span class=\"processing\" *ngIf=\"processing\">Please Wait...</span>\n            </div>\n            <p class=\"go-back text-center\">\n              <a href=\"\">or go back to edit your order</a>\n            </p>\n          </div>\n          <div class=\"location-details\">\n            <p class=\"semi-bold\">You are ordering from</p>\n            <h4>Lo·Cal Long Island</h4>\n            <p>\n              The Mall at The Source<br/>\n              1504 Old Country Rd, Westbury, NY 11590\n            </p>\n            <div class=\"map-image\">\n              <img src=\"\" alt=\"\">\n            </div>\n            <p class=\"bold\">\n              Tel: 987-012-2345\n            </p>\n          </div>\n        </div><!-- /.pricing-and-location -->\n\n      </div><!-- /.order-summary -->\n    </div>\n\n  </div><!-- /.basic-page-content -->\n</div><!-- /.checkout-review -->"
+module.exports = "<div class=\"basic-page-container checkout-review\">\n  <div class=\"basic-page-content center\">\n    <h1>Complete Your Order</h1>\n\n    <div class=\"checkout-wrapper\">\n      <div class=\"left-pane\">\n        <div class=\"step\">\n          <div class=\"inner-step-wrapper\">\n            <div class=\"step-heading\" (click)=\"editSection(1)\">1. Pickup</div>\n            <div class=\"step-wrapper\" [hidden]=\"sectionOpen !== 1\">\n              <form action=\"\" class=\"lo-cal-form\" [formGroup]=\"pickupForm\">\n                <div class=\"response\">\n                  <fieldset>\n                    <legend>How would you like to pickup your order?</legend>\n                    <div class=\"radio-options flex-between\">\n                      <div class=\"option\">\n                        <label for=\"in-store\">\n                          <input type=\"radio\" name=\"pickup-selection\" id=\"in-store\" value=\"1\" formControlName=\"pickup-selection\">\n                          <span class=\"semi-bold\">In Store Pick Up</span>\n                        </label>\n                      </div>\n                      <div class=\"option\">\n                        <label for=\"curbside\">\n                          <input type=\"radio\" name=\"pickup-selection\" id=\"curbside\" value=\"4\" formControlName=\"pickup-selection\">\n                          <span class=\"semi-bold\">Curbside Pickup</span>\n                        </label>\n                      </div>\n                    </div>\n                  </fieldset>\n                  <div class=\"car-options\" *ngIf=\"pickupForm.controls['pickup-selection'].value === '4'\">\n                    <div class=\"form-section half-and-half\">\n                      <div class=\"form-component form-component-text\">\n                        <label for=\"vehicle-make\" class=\"visuallyhidden\">Vehicle Make</label>\n                        <input type=\"text\" name=\"vehicle-make\" id=\"vehicle-make\" formControlName=\"vehicle-make\" placeholder=\"Vehicle Make*\">\n                      </div>\n                      <div class=\"form-component form-component-text\">\n                        <label for=\"vehicle-model\" class=\"visuallyhidden\">Vehicle Model</label>\n                        <input type=\"text\" name=\"vehicle-model\" id=\"vehicle-model\" formControlName=\"vehicle-model\" placeholder=\"Vehicle Model*\">\n                      </div>\n                    </div>\n                    <div class=\"form-section half-and-half\">\n                      <div class=\"form-component form-component-text\">\n                        <label for=\"vehicle-color\" class=\"visuallyhidden\">Vehicle Color</label>\n                        <input type=\"text\" name=\"vehicle-color\" id=\"vehicle-color\" formControlName=\"vehicle-color\" placeholder=\"Vehicle Color*\">\n                      </div>\n                    </div>\n                  </div>\n                </div>\n                <div class=\"next-step black-button\">\n                  <button [disabled]=\"!pickupForm.valid\"(click)=\"nextStep()\">Next Step</button>\n                  <span class=\"processing\" *ngIf=\"processing\">Please Wait...</span>\n                </div>\n              </form>\n            </div>\n          </div><!-- /. inner-step-wrapper -->\n        </div><!-- /.step -->\n        <div class=\"step\">\n          <div class=\"inner-step-wrapper\">\n            <div class=\"step-heading\" (click)=\"editSection(2)\">2. Contact Information</div>\n            <div class=\"step-wrapper\" [hidden]=\"sectionOpen !== 2\">\n              <form action=\"\" class=\"lo-cal-form\" [formGroup]=\"contactInfoForm\">\n                <div class=\"form-section half-and-half\">\n                  <div class=\"form-component form-component-text\">\n                    <label for=\"first-name\" class=\"visuallyhidden\">First Name</label>\n                    <input type=\"text\" name=\"first-name\" id=\"first-name\" formControlName=\"first-name\" placeholder=\"First Name*\" [ngClass]=\"{'has-error':!contactInfoForm.controls['first-name'].valid && submittedOnce}\">\n                    <div class=\"error-message\" *ngIf=\"!contactInfoForm.controls['first-name'].valid && submittedOnce\">This field is required.</div>\n                  </div>\n                  <div class=\"form-component form-component-text\">\n                    <label for=\"last-name\" class=\"visuallyhidden\">Last Name</label>\n                    <input type=\"text\" name=\"last-name\" id=\"last-name\" formControlName=\"last-name\" placeholder=\"Last Name*\" [ngClass]=\"{'has-error':!contactInfoForm.controls['last-name'].valid && submittedOnce}\">\n                    <div class=\"error-message\" *ngIf=\"!contactInfoForm.controls['last-name'].valid && submittedOnce\">This field is required.</div>\n                  </div>\n                </div>\n                <div class=\"form-section half-and-half\">\n                  <div class=\"form-component form-component-text\">\n                    <label for=\"phone\" class=\"visuallyhidden\">Phone</label>\n                    <input type=\"text\" name=\"phone\" id=\"phone\" formControlName=\"phone\" placeholder=\"Phone\" [ngClass]=\"{'has-error':!contactInfoForm.controls['phone'].valid && submittedOnce}\">\n                    <div class=\"error-message\" *ngIf=\"!contactInfoForm.controls['phone'].valid && submittedOnce\">This field is required.</div>\n                  </div>\n                  <div class=\"form-component form-component-email\">\n                    <label for=\"email\" class=\"visuallyhidden\">Email</label>\n                    <input type=\"text\" name=\"email\" id=\"email\" formControlName=\"email\" placeholder=\"Email*\" [ngClass]=\"{'has-error':!contactInfoForm.controls['email'].valid && submittedOnce}\">\n                    <div class=\"error-message\" *ngIf=\"!contactInfoForm.controls['email'].valid && submittedOnce\">This field is required.</div>\n                  </div>\n                </div>\n                <div class=\"next-step black-button\">\n                  <button [disabled]=\"!contactInfoForm.valid\" (click)=\"nextStep()\">Next Step</button>\n                </div>\n              </form>\n            </div>\n          </div><!-- /. inner-step-wrapper -->\n        </div><!-- /.step -->\n        <div class=\"step\">\n          <div class=\"inner-step-wrapper\">\n            <div class=\"step-heading\" (click)=\"editSection(3)\">3. Payment</div>\n            <div class=\"step-wrapper\" [hidden]=\"sectionOpen !== 3\">\n              <form action=\"\" class=\"lo-cal-form\" [formGroup]=\"paymentForm\">\n                <div class=\"saved-payment-wrapper\" *ngIf=\"savedPaymentMethods\">\n                  <div class=\"radio-options flex-between saved-payment-wrapper\">\n                    <div class=\"option\">\n                      <label for=\"saved-payment\">\n                        <input type=\"radio\" name=\"payment-choice\" id=\"saved-payment\" value=\"3\" formControlName=\"payment-choice\"  [(ngModel)]=\"paymentChoice\">\n                        <span class=\"semi-bold\">Pay with a saved card</span>\n                      </label>\n                    </div>\n                  </div>\n                  <div class=\"saved-cards\">\n                    <select name=\"\" id=\"\" (change)=\"whichPayment($event.target.value)\">\n                      <option value=\"something\">Some other payment</option>\n                      <option [value]=\"savedPaymentMethods.AccountId\" selected>{{ savedPaymentMethods.MaskedAccountNumber }}</option>\n                    </select>\n                  </div>\n                </div>\n                <div class=\"radio-options flex-between\">\n                  <div class=\"option\">\n                    <label for=\"cc\">\n                      <input type=\"radio\" name=\"payment-choice\" id=\"cc\" value=\"1\" formControlName=\"payment-choice\"  [(ngModel)]=\"paymentChoice\">\n                      <span class=\"semi-bold\">Pay now with a credit card</span>\n                    </label>\n                  </div>\n                  <div class=\"option\">\n                    <label for=\"pay-at-store\">\n                      <input type=\"radio\" name=\"payment-choice\" id=\"pay-at-store\" value=\"2\" formControlName=\"payment-choice\" [(ngModel)]=\"paymentChoice\">\n                      <span class=\"semi-bold\">Pay at the store</span>\n                    </label>\n                  </div>\n                </div>\n                <div class=\"new-card-section\" *ngIf=\"paymentForm.controls['payment-choice'].value === '1'\">\n                  <div class=\"form-section half-and-half\">\n                    <div class=\"form-component form-component-text\">\n                      <label for=\"card-number\" class=\"visuallyhidden\">Credit Card Number</label>\n                      <input type=\"text\" name=\"card-number\" id=\"card-number\" formControlName=\"card-number\" placeholder=\"Credit Card Number*\" [ngClass]=\"{'has-error':!paymentForm.controls['card-number'].valid && submittedOnce}\" #ccNumber ([ngModel])=\"cardType\" (ngModelChange)=\"detectCardType(ccNumber.value)\">\n                      <div class=\"card-sprite-wrapper\">\n                        <div class=\"card visa\" [ngClass]=\"activeCardClass === 'visa' ? 'active' : ''\" title=\"Visa\"></div>\n                        <div class=\"card master-card\" [ngClass]=\"activeCardClass === 'master-card' ? 'active' : ''\" title=\"MasterCard\"></div>\n                        <div class=\"card american-express\" [ngClass]=\"activeCardClass === 'american-express' ? 'active' : ''\" title=\"American Express\"></div>\n                        <div class=\"card discover\" [ngClass]=\"activeCardClass === 'discover' ? 'active' : ''\" title=\"Discover\"></div>\n                        <div class=\"card diners-club\" [ngClass]=\"activeCardClass === 'diners-club' ? 'active' : ''\" title=\"Diners Club\"></div>\n                      </div>\n                      <div class=\"error-message\" *ngIf=\"!paymentForm.controls['card-number'].valid && submittedOnce\">This field is required.</div>\n                    </div>\n                    <div class=\"form-component form-component-text\">\n                      <label for=\"last-name\" class=\"visuallyhidden\">Expiration Date</label>\n                      <input type=\"text\" name=\"expiration-date\" id=\"expiration-date\" formControlName=\"expiration-date\" placeholder=\"Expiration Date (mm/yyyy)*\" [ngClass]=\"{'has-error':!paymentForm.controls['expiration-date'].valid && submittedOnce}\" loCalMonthMask>\n                      <div class=\"error-message\" *ngIf=\"!paymentForm.controls['expiration-date'].valid && submittedOnce\">This field is required.</div>\n                    </div>\n                  </div>\n                  <div class=\"form-section half-and-half\">\n                    <div class=\"form-component form-component-email\">\n                      <label for=\"email\" class=\"visuallyhidden\">CVV</label>\n                      <input type=\"text\" name=\"cvv\" id=\"cvv\" formControlName=\"cvv\" placeholder=\"CVV*\" [ngClass]=\"{'has-error':!paymentForm.controls['cvv'].valid && submittedOnce}\">\n                      <div class=\"error-message\" *ngIf=\"!paymentForm.controls['cvv'].valid && submittedOnce\">This field is required.</div>\n                    </div>\n                    <div class=\"form-component form-component-text radio-options\" *ngIf=\"currentCustomer?.CustomerId\">\n                      <div class=\"option\">\n                        <label for=\"save-payment\">\n                          <input type=\"checkbox\" name=\"save-payment\" id=\"save-payment\" value=\"save\" formControlName=\"save-payment\">\n                          <span class=\"semi-bold\">Save payment for future use?</span>\n                        </label>\n                      </div>\n                    </div>\n                  </div>\n                </div>\n                <div class=\"next-step black-button step-4-button\">\n                  <button [disabled]=\"(!paymentForm.valid && paymentChoice !== '2' && paymentChoice !== '3')\"(click)=\"nextStep()\">Next Step</button>\n                </div>\n              </form>\n            </div>\n          </div><!-- /. inner-step-wrapper -->\n        </div><!-- /.step -->\n        <div class=\"step step-4\">\n          <div class=\"inner-step-wrapper\">\n            <div class=\"step-heading\">4. Place Your Order</div>\n            <div class=\"step-wrapper\">\n              <p class=\"question semi-bold\">Your total: {{ currentOrder?.TotalAmount | currency }}</p>\n            </div>\n            <div class=\"red-button small-text\" [ngClass]=\"processing ? 'loading' : ''\">\n              <button [disabled]=\"(!pickupForm.valid || (!paymentForm.valid && (paymentChoice !== '2' && paymentChoice !== '3')) || !contactInfoForm.valid) && !processing\" (click)=\"submitOrder()\">Place Order Now</button>\n            </div>\n            <p class=\"terms-and-conditions small-text\">\n              By placing your order you agree to our Terms of Conditions. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vehicula ac orci sed venenatis. Phasellus venenatis blandit nulla non pretium. Sed id metus non nisi pulvinar dictum.\n            </p>\n          </div><!-- /. inner-step-wrapper -->\n        </div><!-- /.step -->\n      </div><!-- /.left-pane -->\n      <div class=\"order-summary\">\n        <div class=\"itemized-summary\">\n          <h4>Order Summary</h4>\n          <div class=\"item flex-between\" *ngFor=\"let menuItem of orderForDisplay\">\n            <div class=\"item-specifics\">\n              <div class=\"title semi-bold\"><span class=\"quantity\">{{ menuItem?.quantity }} x</span> <span class=\"item-name\">{{ menuItem?.name }}</span></div>\n              <div class=\"additions\" *ngIf=\"menuItem?.modifiers\">\n                <span class=\"modifier\" *ngFor=\"let mod of menuItem?.modifiers\">{{ mod?.name }}</span>\n              </div>\n            </div>\n            <div class=\"item-price\">\n              <span class=\"price\">{{ menuItem?.fullPrice | currency }}</span>\n            </div>\n          </div>\n        </div><!-- /.itemized-summary -->\n        <div class=\"pricing-and-location\">\n          <div class=\"pricing-details\">\n            <div class=\"flex-between subtotal\">\n              <span class=\"label\">Subtotal</span>\n              <span class=\"value\">{{ currentOrder?.SubTotalAmount | currency }}</span>\n            </div>\n            <div class=\"flex-between\">\n              <span class=\"label\">Tax</span>\n              <span class=\"value\">{{ currentOrder?.TaxAmount | currency }}</span>\n            </div>\n            <div class=\"flex-between total\">\n              <span class=\"label semi-bold\">Total</span>\n              <span class=\"value semi-bold\">{{ currentOrder?.TotalAmount | currency }}</span>\n            </div>\n\n            <div class=\"red-button full-width-button small-text\" [ngClass]=\"processing ? 'loading' : ''\">\n              <button [disabled]=\"(!pickupForm.valid || (!paymentForm.valid && (paymentChoice !== '2' && paymentChoice !== '3')) || !contactInfoForm.valid) && !processing\" (click)=\"submitOrder()\">Place Order Now</button>\n              <span class=\"processing\" *ngIf=\"processing\">Please Wait...</span>\n            </div>\n            <p class=\"go-back text-center\">\n              <a href=\"\">or go back to edit your order</a>\n            </p>\n          </div>\n          <div class=\"location-details\">\n            <p class=\"semi-bold\">You are ordering from</p>\n            <h4>Lo·Cal Long Island</h4>\n            <p>\n              The Mall at The Source<br/>\n              1504 Old Country Rd, Westbury, NY 11590\n            </p>\n            <div class=\"map-image\">\n              <img src=\"\" alt=\"\">\n            </div>\n            <p class=\"bold\">\n              Tel: 987-012-2345\n            </p>\n          </div>\n        </div><!-- /.pricing-and-location -->\n\n      </div><!-- /.order-summary -->\n    </div>\n\n  </div><!-- /.basic-page-content -->\n</div><!-- /.checkout-review -->"
 
 /***/ }),
 
@@ -1799,6 +1802,7 @@ module.exports = "<div class=\"basic-page-container\">\n    <div class=\"basic-p
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ConfirmationComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ngx_pwa_local_storage__ = __webpack_require__("./node_modules/@ngx-pwa/local-storage/local-storage.es5.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1809,18 +1813,22 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
+
 var ConfirmationComponent = /** @class */ (function () {
-    function ConfirmationComponent() {
+    function ConfirmationComponent(localStorage) {
+        this.localStorage = localStorage;
     }
     ConfirmationComponent.prototype.ngOnInit = function () {
         // TODO: Destroy Bag and Order from LocalStorage
+        this.localStorage.removeItem('order').subscribe(function () { });
+        this.localStorage.removeItem('bag').subscribe(function () { });
     };
     ConfirmationComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: 'lo-cal-confirmation',
             template: __webpack_require__("./src/app/pages/confirmation/confirmation.component.html")
         }),
-        __metadata("design:paramtypes", [])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__ngx_pwa_local_storage__["a" /* LocalStorage */]])
     ], ConfirmationComponent);
     return ConfirmationComponent;
 }());
@@ -2161,7 +2169,8 @@ var MenuCustomizeComponent = /** @class */ (function () {
         this.wpService.getPostBySlug(slug, 'menu_item').subscribe(function (_item) {
             _this.itemContent = _item;
             var menuItemId = _item[0].acf.menuid;
-            _this.featuredImage = _item[0]._embedded['wp:featuredmedia'][0];
+            // TODO: Ensure there is a fallback for if no media is found
+            _this.featuredImage = (_item[0].featured_media !== 0) ? _item[0]._embedded['wp:featuredmedia'][0] : '';
             _this.getMenuItemDetails(menuItemId);
         });
     };
@@ -2421,19 +2430,21 @@ var MenuPageComponent = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/pages/order-history/order-history.component.html":
+/***/ "./src/app/pages/order-detail/order-detail.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<p>\n  order-history works!\n</p>\n"
+module.exports = "<section class=\"account-section\">\n  <header class=\"account-heading\">\n    <h3>Order #{{ orderDetails?.OrderId }}</h3>\n    <div class=\"red-button small-text\">\n      <button (click)=\"addOrderToBag()\">Order Again</button>\n    </div>\n  </header>\n  <div class=\"order-details-wrapper\">\n    <div class=\"line-item\" *ngFor=\"let item of orderDetails?.LineItems\">\n      <div class=\"details\">\n        <div class=\"title-and-details\">\n          <h4 class=\"title\">{{ item?.Quantity }} x {{ item?.Name }}</h4>\n          <p class=\"modifiers small-text\" *ngIf=\"item?.Modifiers.length > 0\">\n            <span class=\"modifier\" *ngFor=\"let modifier of item?.Modifiers; let last = last\">{{ modifier?.Name }}<span class=\"separator\" *ngIf=\"!last\">, </span></span>\n          </p>\n        </div>\n        <span class=\"unit-price\">{{ item?.UnitPrice | currency }}</span>\n      </div>\n    </div><!-- /.line-item -->\n    <div class=\"pricing-details\">\n      <div class=\"flex-between subtotal\">\n        <div class=\"label\">Subtotal</div>\n        <div class=\"value\">{{ orderDetails?.SubTotalAmount | currency }}</div>\n      </div>\n      <div class=\"flex-between tax\">\n        <div class=\"label\">Tax</div>\n        <div class=\"value\">{{ orderDetails?.TaxAmount | currency }}</div>\n      </div>\n      <div class=\"flex-between total\">\n        <div class=\"label\">Total</div>\n        <div class=\"value\">{{ orderDetails?.TotalAmount | currency }}</div>\n      </div>\n    </div>\n  </div>\n</section>"
 
 /***/ }),
 
-/***/ "./src/app/pages/order-history/order-history.component.ts":
+/***/ "./src/app/pages/order-detail/order-detail.component.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return OrderHistoryComponent; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return OrderDetailComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("./node_modules/@angular/router/esm5/router.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__local_services_order_service__ = __webpack_require__("./src/app/services/order.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -2444,17 +2455,86 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
+
+
+var OrderDetailComponent = /** @class */ (function () {
+    function OrderDetailComponent(route, orderService) {
+        var _this = this;
+        this.route = route;
+        this.orderService = orderService;
+        this.route.params.subscribe(function (params) { return _this.orderId = params.orderid; });
+    }
+    OrderDetailComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.orderService.getFullOrderDetails(this.orderId).subscribe(function (orderDetails) {
+            console.log(orderDetails);
+            _this.orderDetails = orderDetails;
+        });
+    };
+    OrderDetailComponent.prototype.addOrderToBag = function () {
+    };
+    OrderDetailComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+            selector: 'lo-cal-order-detail',
+            template: __webpack_require__("./src/app/pages/order-detail/order-detail.component.html")
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */], __WEBPACK_IMPORTED_MODULE_2__local_services_order_service__["a" /* OrderService */]])
+    ], OrderDetailComponent);
+    return OrderDetailComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/pages/order-history/order-history.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<section class=\"account-section\">\n  <header class=\"account-heading\">\n    <h3>Order History</h3>\n  </header>\n  <div class=\"history-wrapper\">\n    <div class=\"order\" *ngFor=\"let order of orderHistory\">\n      <div class=\"order-detail-wrapper\">\n        <div class=\"order-link\">\n          <a [routerLink]=\"order?.OrderId\">Order #{{ order?.OrderId }}</a>\n        </div>\n        <div class=\"date-time\">\n          {{ order?.PromiseDateTime | date:\"E MMM d, yyyy, h:mma\" }}\n        </div>\n      </div>\n      <div class=\"order-summary\">\n        <div class=\"order-items small-text\">\n          <span class=\"order-item\" *ngFor=\"let item of order?.LineItems; let last = last;\">{{ item?.Name }}<span class=\"separator\" *ngIf=\"!last\">, </span></span>\n        </div>\n        <p class=\"order-price small-text\">{{ order?.TotalAmount | currency }}</p>\n      </div>\n    </div>\n  </div>\n</section>"
+
+/***/ }),
+
+/***/ "./src/app/pages/order-history/order-history.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return OrderHistoryComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__local_services_customer_service__ = __webpack_require__("./src/app/services/customer.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ngx_auto_unsubscribe__ = __webpack_require__("./node_modules/ngx-auto-unsubscribe/dist/index.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
 var OrderHistoryComponent = /** @class */ (function () {
-    function OrderHistoryComponent() {
+    function OrderHistoryComponent(customerService) {
+        this.customerService = customerService;
     }
     OrderHistoryComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.customerService.isLoggedIn().subscribe(function (customer) {
+            _this.customerService.getOrderHistory(customer.CustomerId).subscribe(function (orderHistory) {
+                _this.orderHistory = orderHistory;
+            });
+        });
+    };
+    OrderHistoryComponent.prototype.ngOnDestroy = function () {
     };
     OrderHistoryComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: 'lo-cal-order-history',
             template: __webpack_require__("./src/app/pages/order-history/order-history.component.html")
         }),
-        __metadata("design:paramtypes", [])
+        Object(__WEBPACK_IMPORTED_MODULE_2_ngx_auto_unsubscribe__["a" /* AutoUnsubscribe */])(),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__local_services_customer_service__["a" /* CustomerService */]])
     ], OrderHistoryComponent);
     return OrderHistoryComponent;
 }());
@@ -2644,7 +2724,7 @@ var PostComponent = /** @class */ (function () {
 /***/ "./src/app/pages/sub-menu/sub-menu.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"page-landing-page\">\n  <header class=\"header-container\">\n    <div class=\"content\" [ngStyle]=\"{'background-image':'url(//via.placeholder.com/1440x760)'}\">\n      <div class=\"header-content text-center\">\n        <h1 [innerHtml]=\"pageContent?.title?.rendered\"></h1>\n        <h2 *ngIf=\"pageContent?.content?.rendered\" [innerHtml]=\"pageContent?.content?.rendered\"></h2>\n        <ng-content></ng-content>\n      </div>\n    </div>\n  </header>\n\n  <div class=\"menu-menu\">\n    <ul class=\"menu\">\n      <li *ngFor=\"let item of subMenuLinks\" [attr.class]=\"item.classes ? item.classes : null\">\n        <a routerLink=\"/{{ item.object_slug }}\" routerLinkActive=\"active\" [routerLinkActiveOptions]=\"{exact:true}\" [innerHtml]=\"item?.title | safeHtml\"></a>\n      </li>\n    </ul>\n  </div>\n\n  <!-- Menu Card Layout HTML -->\n  <div class=\"section-white menu-categories center\" id=\"featured\">\n    <h2 class=\"capitalize text-center\" [innerHtml]=\"pageContent?.title?.rendered\"></h2>\n    <p class=\"sub-menu-description\" *ngIf=\"subMenuItems?.menu[0]?.Description\">\n      {{ subMenuItems?.menu[0]?.Description }}\n    </p>\n\n    <div class=\"content clearfix sub-menu-cards-wrapper\">\n\n      <div class=\"menu-card\" *ngFor=\"let item of subMenuItems?.menuItems\">\n        <div class=\"card-wrapper\">\n          <div class=\"image\">\n            <a [routerLink]=\"(item?.DisplayName | safeUrl)\"><img [src]=\"item?.MenuItemId | subMenuImage\" alt=\"\"></a>\n          </div>\n          <div class=\"details\">\n            <h4 class=\"title\"><a [routerLink]=\"(item?.DisplayName | safeUrl)\">{{ item?.DisplayName }}</a></h4>\n            <div class=\"description\">\n              <p>\n                {{ (item?.Description | allergens).description }}\n              </p>\n            </div>\n            <div class=\"fine-details\">\n              <span class=\"price\">{{ item?.defaultPrice | currency }}</span>\n              <span class=\"calories\" *ngIf=\"item?.CaloricServingUnit\">{{ item?.CaloricServingUnit }} cal</span>\n              <span class=\"allergens\" *ngIf=\"(item?.Description | allergens).allergens\">\n                <span class=\"allergen\" *ngFor=\"let allergen of (item?.Description | allergens).allergens\">{{ allergen }}</span>\n              </span>\n              <button class=\"add-to-cart\" (click)=\"addToBag(item)\">Add</button>\n            </div>\n          </div>\n        </div>\n      </div><!-- /.menu-card -->\n\n    </div>\n  </div>\n  <!-- Menu Card Layout HTML -->\n</div>"
+module.exports = "<div class=\"page-landing-page\">\n  <header class=\"header-container\">\n    <div class=\"content\" [ngStyle]=\"{'background-image':'url(//via.placeholder.com/1440x760)'}\">\n      <div class=\"header-content text-center\">\n        <h1 [innerHtml]=\"pageContent?.title?.rendered\"></h1>\n        <h2 *ngIf=\"pageContent?.content?.rendered\" [innerHtml]=\"pageContent?.content?.rendered\"></h2>\n        <ng-content></ng-content>\n      </div>\n    </div>\n  </header>\n\n  <div class=\"menu-menu\">\n    <ul class=\"menu\">\n      <li *ngFor=\"let item of subMenuLinks\" [attr.class]=\"item.classes ? item.classes : null\">\n        <!-- TODO: Ensure all of these routerlinks work. currently aren't properly routing -->\n        <a [routerLink]=\"['/menu', item.object_slug]\" routerLinkActive=\"active\" [routerLinkActiveOptions]=\"{exact:true}\" [innerHtml]=\"item?.title | safeHtml\"></a>\n      </li>\n    </ul>\n  </div>\n\n  <!-- Menu Card Layout HTML -->\n  <div class=\"section-white menu-categories center\" id=\"featured\">\n    <h2 class=\"capitalize text-center\" [innerHtml]=\"pageContent?.title?.rendered\"></h2>\n    <p class=\"sub-menu-description\" *ngIf=\"subMenuItems?.menu[0]?.Description\">\n      {{ subMenuItems?.menu[0]?.Description }}\n    </p>\n\n    <div class=\"content clearfix sub-menu-cards-wrapper\">\n\n      <div class=\"menu-card\" *ngFor=\"let item of subMenuItems?.menuItems\">\n        <div class=\"card-wrapper\">\n          <div class=\"image\">\n            <a [routerLink]=\"(item?.Name | safeUrl)\"><img [src]=\"//via.placeholder.com/265x115\" alt=\"\"></a>\n          </div>\n          <div class=\"details\">\n            <h4 class=\"title\"><a [routerLink]=\"(item?.Name | safeUrl)\">{{ item?.Name }}</a></h4>\n            <div class=\"description\">\n              <p>\n                {{ (item?.Description | allergens).description }}\n              </p>\n            </div>\n            <div class=\"fine-details\">\n              <span class=\"price\">{{ item?.defaultPrice | currency }}</span>\n              <span class=\"calories\" *ngIf=\"item?.CaloricServingUnit\">{{ item?.CaloricServingUnit }} cal</span>\n              <span class=\"allergens\" *ngIf=\"(item?.Description | allergens).allergens\">\n                <span class=\"allergen\" *ngFor=\"let allergen of (item?.Description | allergens).allergens\">{{ allergen }}</span>\n              </span>\n              <button class=\"add-to-cart\" (click)=\"addToBag(item)\">Add</button>\n            </div>\n          </div>\n        </div>\n      </div><!-- /.menu-card -->\n\n    </div>\n  </div>\n  <!-- Menu Card Layout HTML -->\n</div>"
 
 /***/ }),
 
@@ -2686,6 +2766,7 @@ var SubMenuComponent = /** @class */ (function () {
         var _this = this;
         // Check for subMenuId
         this.subMenuId = this.menuService.menuItemId;
+        var wp = this.wpService;
         var slug = (this.router.snapshot.paramMap.get('category'));
         // Get custom post type
         this.wpService.getPostBySlug(slug, 'menu_categories').subscribe(function (_post) {
@@ -2922,47 +3003,6 @@ var SafeUrlPipe = /** @class */ (function () {
         })
     ], SafeUrlPipe);
     return SafeUrlPipe;
-}());
-
-
-
-/***/ }),
-
-/***/ "./src/app/pipes/sub-menu-image.pipe.ts":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SubMenuImagePipe; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__local_services_wp_service__ = __webpack_require__("./src/app/services/wp.service.ts");
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-var SubMenuImagePipe = /** @class */ (function () {
-    function SubMenuImagePipe(wpService) {
-        this.wpService = wpService;
-    }
-    SubMenuImagePipe.prototype.transform = function (value, args) {
-        this.wpService.getSubMenuImage(value).subscribe(function (imageDetails) {
-            console.log(imageDetails);
-        });
-        return null;
-    };
-    SubMenuImagePipe = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Pipe"])({
-            name: 'subMenuImage'
-        }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__local_services_wp_service__["a" /* WordpressService */]])
-    ], SubMenuImagePipe);
-    return SubMenuImagePipe;
 }());
 
 
@@ -3225,6 +3265,17 @@ var CustomerService = /** @class */ (function () {
     };
     CustomerService.prototype.deleteSavedPayment = function (customerId, paymentId) {
         return this.httpClient.delete(this.config.railsCustomerEndpoint + ("/" + customerId + "/payments/" + paymentId)).map(function (result) {
+            return result;
+        });
+    };
+    /**
+     *
+     * @param customerId string
+     *
+     * @returns Observable of order history
+     */
+    CustomerService.prototype.getOrderHistory = function (customerId) {
+        return this.httpClient.get(this.config.railsCustomerEndpoint + ("/" + customerId + "/order/recent")).map(function (result) {
             return result;
         });
     };
