@@ -1,3 +1,23 @@
-<p>
-  order-history works!
-</p>
+<section class="account-section">
+  <header class="account-heading">
+    <h3>Order History</h3>
+  </header>
+  <div class="history-wrapper">
+    <div class="order" *ngFor="let order of orderHistory">
+      <div class="order-detail-wrapper">
+        <div class="order-link">
+          <a [routerLink]="order?.OrderId">Order #{{ order?.OrderId }}</a>
+        </div>
+        <div class="date-time">
+          {{ order?.PromiseDateTime | date:"E MMM d, yyyy, h:mma" }}
+        </div>
+      </div>
+      <div class="order-summary">
+        <div class="order-items small-text">
+          <span class="order-item" *ngFor="let item of order?.LineItems; let last = last;">{{ item?.Name }}<span class="separator" *ngIf="!last">, </span></span>
+        </div>
+        <p class="order-price small-text">{{ order?.TotalAmount | currency }}</p>
+      </div>
+    </div>
+  </div>
+</section>
