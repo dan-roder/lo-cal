@@ -17,6 +17,7 @@ export class MenuCustomizeComponent implements OnInit {
   public itemContent : any;
   public menuItemDetails : any;
   public salesItemDetails : SalesItem;
+  public multipleSalesItems : Array<SalesItem> = [];
   private _itemPrice : number;
   private _totalPrice : number;
   private defaultItemId : number;
@@ -79,7 +80,6 @@ export class MenuCustomizeComponent implements OnInit {
     if(currentSelectionsArray.length > 0){
       let indexToRemove = _.findIndex(currentSelectionsArray, {'$id' : modifierClicked.$id});
       let indexInDisplayArray = _.findIndex(this.currentModifierArray, {'$id' : modifierClicked.$id});
-      console.log(modifierClicked.$id, indexInDisplayArray);
 
       let currentQuantity = this.customizationData[modGroup.$id].modifiers[modifierClicked.$id]['quantity'];
 
@@ -150,25 +150,32 @@ export class MenuCustomizeComponent implements OnInit {
       // Set necessary variables for template rendering
       this.menuItemDetails = menuItemDetails;
 
-      console.log(menuItemDetails);
-
       // Find default Sales Item Id
       this.defaultItemId = menuItemDetails['item']['DefaultItemId'];
-      // Using default Sales Item Id, return object with all details of that Sales Item
-      this.salesItemDetails = _.find(menuItemDetails['salesItems'], {'SalesItemId': this.defaultItemId});
 
-      this.itemPrice = this.salesItemDetails['Price'];
-      this.calorieCount = this.salesItemDetails.CaloricValue;
+      // Need to account for sizes if there is more than 1 sales item
+      if(menuItemDetails['salesItems'].length > 1){
+        this.salesItemDetails = menuItemDetails['salesItems'][0];
+        console.log(this.salesItemDetails);
+        this.multipleSalesItems = menuItemDetails['salesItems'];
+        this.calorieCount = this.salesItemDetails.CaloricValue;
+        this.itemPrice = this.salesItemDetails.Price;
+      }
+      else{
+        // Only 1 SalesItem
 
+        // Using default Sales Item Id, return object with all details of that Sales Item
+        this.salesItemDetails = _.find(menuItemDetails['salesItems'], {'SalesItemId': this.defaultItemId});
+
+        console.log(this.salesItemDetails);
+
+        this.itemPrice = this.salesItemDetails['Price'];
+        this.calorieCount = this.salesItemDetails.CaloricValue;
+      }
       // Calculate initial cost based on initial quantity of 1
       this.recalculateCost();
 
-      /**
-       * NEED TO SET A LOT OF VARIABLES HERE FOR CUSTOMIZATION
-       *  MOSTLY FOR CREATE YOUR OWN VARIETY OPTIONS
-       *
-       * 1) DOES ITEM HAVE MODIFIERS AT ALL. IF NOT SKIP EVERYTHING
-       * */
+      // Initialize defaults
       let defaults = [];
       if(this.salesItemDetails.ModGroups.length > 0){
         // Does the sales item have defaults?

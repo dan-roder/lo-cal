@@ -27,7 +27,7 @@
                 <span class="plus" [ngClass]="(customizationData[modGroup?.$id].currentlySelected.length < modGroup?.MaximumItems) ? 'enabled' : 'disabled'" (click)="addModifier(modGroup, modifier)">+</span>
               </div>
             </div><!-- /.option -->
-          </div>
+          </div><!-- /.options -->
         </div>
       </div><!-- /.customization-category -->
 
@@ -63,6 +63,10 @@
           <span class="plus" (click)="incrementQuantity()">+</span>
         </div>
       </div>
+
+      <select name="" id="" *ngIf="multipleSalesItems.length > 0">
+        <option value="" *ngFor="let salesItem of multipleSalesItems">{{ salesItem?.DisplayName }}</option>
+      </select>
 
       <div class="add-button red-button">
         <button *ngIf="totalPrice" (click)="addToBag()">Add to Bag (+{{ totalPrice | currency }})</button>
