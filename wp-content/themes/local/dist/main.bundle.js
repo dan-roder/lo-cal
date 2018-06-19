@@ -2124,7 +2124,7 @@ var LoginComponent = /** @class */ (function () {
 /***/ "./src/app/pages/menu-customize/menu-customize.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"page-item-detail\">\n  <div class=\"menu-item-header\">\n    <h1 class=\"title\">{{ menuItemDetails?.item?.Name }}</h1>\n    <img *ngIf=\"featuredImage\" [src]=\"featuredImage?.media_details?.sizes?.full?.source_url\" [alt]=\"featuredImage?.alt_text\">\n  </div>\n\n  <div class=\"customization-container center-1440\">\n    <div class=\"left customization-options\">\n\n      <div class=\"customization-category\" *ngFor=\"let modGroup of salesItemDetails?.ModGroups\">\n        <div class=\"content\">\n          <div class=\"header\">\n            <span class=\"title\">{{ modGroup?.DisplayName }}</span>\n            <span class=\"choices\">Choose up to {{ modGroup?.MaximumItems }} ({{ customizationData[modGroup?.$id].currentlySelected.length }}/{{ modGroup?.MaximumItems }})</span>\n          </div>\n          <div class=\"options\" *ngFor=\"let modifier of modGroup?.Mods\">\n            <div class=\"option\">\n              <div class=\"ingredient\">{{ modifier?.Name }}</div>\n              <div class=\"calories\">{{ modifier?.ItemModifiers[0]?.CaloricValue }} <span *ngIf=\"modifier?.ItemModifiers[0]?.CaloricValue !== null\">cal</span> </div>\n              <div class=\"choice-controls\">\n                <span class=\"minus\" [ngClass]=\"(customizationData[modGroup?.$id].currentlySelected.length > 0 && customizationData[modGroup?.$id].modifiers[modifier?.$id].quantity > 0) ? 'enabled' : 'disabled'\" (click)=\"removeModifier(modGroup, modifier)\">-</span>\n                <span class=\"quantity-container\" [ngClass]=\"customizationData[modGroup?.$id].modifiers[modifier?.$id]?.quantity > 0 ? 'populated' : ''\">\n                  <span class=\"quantity\" *ngIf=\"customizationData[modGroup?.$id].modifiers[modifier?.$id]?.quantity !== 0\">\n                    {{ customizationData[modGroup?.$id].modifiers[modifier?.$id]?.quantity }}\n                  </span>\n                </span>\n                <span class=\"plus\" [ngClass]=\"(customizationData[modGroup?.$id].currentlySelected.length < modGroup?.MaximumItems) ? 'enabled' : 'disabled'\" (click)=\"addModifier(modGroup, modifier)\">+</span>\n              </div>\n            </div><!-- /.option -->\n          </div>\n        </div>\n      </div><!-- /.customization-category -->\n\n    </div><!-- /.left.customization-options -->\n    <div class=\"right\">\n      <div class=\"final-product\">\n        <div class=\"title\">{{ menuItemDetails?.item?.Name }}</div>\n        <div class=\"ingredients\" *ngIf=\"menuItemDetails?.item?.Description\">\n          {{ (menuItemDetails?.item?.Description | allergens)?.description }}\n        </div>\n        <div class=\"customization-ingredients\" *ngIf=\"currentModifierArray\">\n          <span class=\"customization\" *ngFor=\"let item of currentModifierArray; let last = last;\">{{ item?.DisplayName }}<span class=\"separator\" *ngIf=\"!last\">, </span></span>\n        </div>\n        <div class=\"fine-details\">\n          <span class=\"price\">{{ salesItemDetails?.Price | currency }}</span>\n          <span class=\"calories\" *ngIf=\"salesItemDetails?.CaloricValue !== null\">{{ calorieCount }} cal</span>\n          <span class=\"allergens\" *ngIf=\"(menuItemDetails?.item?.Description)\">\n            <span class=\"allergen\" *ngFor=\"let allergen of (menuItemDetails?.item?.Description | allergens).allergens\">{{ allergen }}</span>\n          </span>\n        </div>\n      </div><!-- /.final-product -->\n\n      <div class=\"special-instructions\">\n        <label for=\"special-instructions\">Add Special Instruction (optional)</label>\n        <textarea name=\"special-instructions\" id=\"\" cols=\"30\" rows=\"5\" [(ngModel)]=\"specialInstructions\"></textarea>\n      </div><!-- /.special-instructions -->\n\n      <div class=\"quantity-wrapper\">\n        <div class=\"text\">Quantity</div>\n        <div class=\"quantity-changer\">\n          <span class=\"minus\" (click)=\"decrementQuantity()\">-</span>\n          <span class=\"quantity\">{{ quantity }}</span>\n          <span class=\"plus\" (click)=\"incrementQuantity()\">+</span>\n        </div>\n      </div>\n\n      <div class=\"add-button red-button\">\n        <button *ngIf=\"totalPrice\" (click)=\"addToBag()\">Add to Bag (+{{ totalPrice | currency }})</button>\n      </div>\n    </div><!-- /.right -->\n  </div>\n</div><!-- /.page-item-detail -->"
+module.exports = "<div class=\"page-item-detail\">\n  <div class=\"menu-item-header\">\n    <h1 class=\"title\">{{ menuItemDetails?.item?.Name }}</h1>\n    <img *ngIf=\"featuredImage\" [src]=\"featuredImage?.media_details?.sizes?.full?.source_url\" [alt]=\"featuredImage?.alt_text\">\n  </div>\n\n  <div class=\"customization-container center-1440\">\n    <div class=\"left customization-options\">\n\n      <div class=\"customization-category\" *ngFor=\"let modGroup of salesItemDetails?.ModGroups\">\n        <div class=\"content\">\n          <div class=\"header\">\n            <span class=\"title\">{{ modGroup?.DisplayName }}</span>\n            <span class=\"choices\">Choose up to {{ modGroup?.MaximumItems }} ({{ customizationData[modGroup?.$id].currentlySelected.length }}/{{ modGroup?.MaximumItems }})</span>\n          </div>\n          <div class=\"options\" *ngFor=\"let modifier of modGroup?.Mods\">\n            <div class=\"option\">\n              <div class=\"ingredient\">{{ modifier?.Name }}</div>\n              <div class=\"calories\">{{ modifier?.ItemModifiers[0]?.CaloricValue }} <span *ngIf=\"modifier?.ItemModifiers[0]?.CaloricValue !== null\">cal</span> </div>\n              <div class=\"choice-controls\">\n                <span class=\"minus\" [ngClass]=\"(customizationData[modGroup?.$id].currentlySelected.length > 0 && customizationData[modGroup?.$id].modifiers[modifier?.$id].quantity > 0) ? 'enabled' : 'disabled'\" (click)=\"removeModifier(modGroup, modifier)\">-</span>\n                <span class=\"quantity-container\" [ngClass]=\"customizationData[modGroup?.$id].modifiers[modifier?.$id]?.quantity > 0 ? 'populated' : ''\">\n                  <span class=\"quantity\" *ngIf=\"customizationData[modGroup?.$id].modifiers[modifier?.$id]?.quantity !== 0\">\n                    {{ customizationData[modGroup?.$id].modifiers[modifier?.$id]?.quantity }}\n                  </span>\n                </span>\n                <span class=\"plus\" [ngClass]=\"(customizationData[modGroup?.$id].currentlySelected.length < modGroup?.MaximumItems) ? 'enabled' : 'disabled'\" (click)=\"addModifier(modGroup, modifier)\">+</span>\n              </div>\n            </div><!-- /.option -->\n          </div><!-- /.options -->\n        </div>\n      </div><!-- /.customization-category -->\n\n    </div><!-- /.left.customization-options -->\n    <div class=\"right\">\n      <div class=\"final-product\">\n        <div class=\"title\">{{ menuItemDetails?.item?.Name }}</div>\n        <div class=\"ingredients\" *ngIf=\"menuItemDetails?.item?.Description\">\n          {{ (menuItemDetails?.item?.Description | allergens)?.description }}\n        </div>\n        <div class=\"customization-ingredients\" *ngIf=\"currentModifierArray\">\n          <span class=\"customization\" *ngFor=\"let item of currentModifierArray; let last = last;\">{{ item?.DisplayName }}<span class=\"separator\" *ngIf=\"!last\">, </span></span>\n        </div>\n        <div class=\"fine-details\">\n          <span class=\"price\">{{ salesItemDetails?.Price | currency }}</span>\n          <span class=\"calories\" *ngIf=\"salesItemDetails?.CaloricValue !== 0 || salesItemDetails?.CaloricValue !== null\">{{ calorieCount }} cal</span>\n          <span class=\"allergens\" *ngIf=\"(menuItemDetails?.item?.Description)\">\n            <span class=\"allergen\" *ngFor=\"let allergen of (menuItemDetails?.item?.Description | allergens).allergens\">{{ allergen }}</span>\n          </span>\n        </div>\n      </div><!-- /.final-product -->\n\n      <div class=\"special-instructions\">\n        <label for=\"special-instructions\">Add Special Instruction (optional)</label>\n        <textarea name=\"special-instructions\" id=\"\" cols=\"30\" rows=\"5\" [(ngModel)]=\"specialInstructions\"></textarea>\n      </div><!-- /.special-instructions -->\n\n      <div class=\"quantity-wrapper\">\n        <div class=\"text\">Quantity</div>\n        <div class=\"quantity-changer\">\n          <span class=\"minus\" (click)=\"decrementQuantity()\">-</span>\n          <span class=\"quantity\">{{ quantity }}</span>\n          <span class=\"plus\" (click)=\"incrementQuantity()\">+</span>\n        </div>\n      </div>\n\n      <select name=\"\" id=\"\" *ngIf=\"multipleSalesItems.length > 0\">\n        <option value=\"\" *ngFor=\"let salesItem of multipleSalesItems\">{{ salesItem?.DisplayName }}</option>\n      </select>\n\n      <div class=\"add-button red-button\">\n        <button *ngIf=\"totalPrice\" (click)=\"addToBag()\">Add to Bag (+{{ totalPrice | currency }})</button>\n      </div>\n    </div><!-- /.right -->\n  </div>\n</div><!-- /.page-item-detail -->"
 
 /***/ }),
 
@@ -2162,6 +2162,7 @@ var MenuCustomizeComponent = /** @class */ (function () {
         this.bagService = bagService;
         this.router = router;
         this.quantity = 1;
+        this.multipleSalesItems = [];
         this._calorieCount = 0;
         this.currentModifierArray = [];
     }
@@ -2205,7 +2206,6 @@ var MenuCustomizeComponent = /** @class */ (function () {
         if (currentSelectionsArray.length > 0) {
             var indexToRemove = __WEBPACK_IMPORTED_MODULE_5_lodash__["findIndex"](currentSelectionsArray, { '$id': modifierClicked.$id });
             var indexInDisplayArray = __WEBPACK_IMPORTED_MODULE_5_lodash__["findIndex"](this.currentModifierArray, { '$id': modifierClicked.$id });
-            console.log(modifierClicked.$id, indexInDisplayArray);
             var currentQuantity = this.customizationData[modGroup.$id].modifiers[modifierClicked.$id]['quantity'];
             if (indexToRemove > -1 && currentQuantity > 0) {
                 var newSelectionsArray = currentSelectionsArray.splice(indexToRemove, 1);
@@ -2256,25 +2256,32 @@ var MenuCustomizeComponent = /** @class */ (function () {
     MenuCustomizeComponent.prototype.recalculateCost = function () {
         this.totalPrice = this.itemPrice * this.quantity;
     };
-    MenuCustomizeComponent.prototype.getMenuItemDetails = function (_menuItemId) {
+    MenuCustomizeComponent.prototype.getMenuItemDetails = function (menuItemId) {
         var _this = this;
-        this.menuService.getMenuItemDetails(_menuItemId).subscribe(function (_menuItemDetails) {
+        this.menuService.getMenuItemDetails(menuItemId).subscribe(function (menuItemDetails) {
             // Set necessary variables for template rendering
-            _this.menuItemDetails = _menuItemDetails;
+            _this.menuItemDetails = menuItemDetails;
             // Find default Sales Item Id
-            _this.defaultItemId = _menuItemDetails['item']['DefaultItemId'];
-            // Using default Sales Item Id, return object with all details of that Sales Item
-            _this.salesItemDetails = __WEBPACK_IMPORTED_MODULE_5_lodash__["find"](_menuItemDetails['salesItems'], { 'SalesItemId': _this.defaultItemId });
-            _this.itemPrice = _this.salesItemDetails['Price'];
-            _this.calorieCount = _menuItemDetails['item'].CaloricServingUnit;
+            _this.defaultItemId = menuItemDetails['item']['DefaultItemId'];
+            // Need to account for sizes if there is more than 1 sales item
+            if (menuItemDetails['salesItems'].length > 1) {
+                _this.salesItemDetails = menuItemDetails['salesItems'][0];
+                console.log(_this.salesItemDetails);
+                _this.multipleSalesItems = menuItemDetails['salesItems'];
+                _this.calorieCount = _this.salesItemDetails.CaloricValue;
+                _this.itemPrice = _this.salesItemDetails.Price;
+            }
+            else {
+                // Only 1 SalesItem
+                // Using default Sales Item Id, return object with all details of that Sales Item
+                _this.salesItemDetails = __WEBPACK_IMPORTED_MODULE_5_lodash__["find"](menuItemDetails['salesItems'], { 'SalesItemId': _this.defaultItemId });
+                console.log(_this.salesItemDetails);
+                _this.itemPrice = _this.salesItemDetails['Price'];
+                _this.calorieCount = _this.salesItemDetails.CaloricValue;
+            }
             // Calculate initial cost based on initial quantity of 1
             _this.recalculateCost();
-            /**
-             * NEED TO SET A LOT OF VARIABLES HERE FOR CUSTOMIZATION
-             *  MOSTLY FOR CREATE YOUR OWN VARIETY OPTIONS
-             *
-             * 1) DOES ITEM HAVE MODIFIERS AT ALL. IF NOT SKIP EVERYTHING
-             * */
+            // Initialize defaults
             var defaults = [];
             if (_this.salesItemDetails.ModGroups.length > 0) {
                 // Does the sales item have defaults?
@@ -2288,7 +2295,6 @@ var MenuCustomizeComponent = /** @class */ (function () {
     MenuCustomizeComponent.prototype.registerCustomizationVariables = function (allModifiers, defaultOptions) {
         if (defaultOptions === void 0) { defaultOptions = []; }
         var tempObj = new Object();
-        var defaultsArray = new Array();
         __WEBPACK_IMPORTED_MODULE_5_lodash__["forEach"](allModifiers, function (modifierGroup, modGroupKey) {
             // Create new object to store values in
             var modObject = new Object();
