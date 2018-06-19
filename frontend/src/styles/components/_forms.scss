@@ -177,3 +177,16 @@
     }
   }
 }
+
+select.custom{
+  border: 1px solid $e1;
+  background: none;
+  appearance: none;
+  border-radius: 0;
+  @extend %sofia-regular;
+  height: 55px;
+  padding: 0 80px 0 20px;
+  @include svg-bg(svgs/down-arrow);
+  background-repeat: no-repeat;
+  background-position: 95% center;
+}
