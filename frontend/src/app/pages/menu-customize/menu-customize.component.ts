@@ -3,7 +3,6 @@ import { WordpressService } from '@local/services/wp.service';
 import { MenuService } from '@local/services/menu-service.service';
 import { BagService } from '@local/services/bag.service';
 import { ActivatedRoute } from '@angular/router';
-import { IPost } from '@local/models/post';
 import { SalesItem } from '@local/models/SalesItem';
 import * as _ from 'lodash';
 import { DefaultOption } from '@local/models/DefaultOption';
