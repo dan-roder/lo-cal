@@ -105,7 +105,7 @@
                     </div>
                   </div>
                   <div class="saved-cards">
-                    <select name="" id="" (change)="whichPayment($event.target.value)">
+                    <select name="" id="" (change)="whichPayment($event.target.value)" class="custom">
                       <option value="something">Some other payment</option>
                       <option [value]="savedPaymentMethods.AccountId" selected>{{ savedPaymentMethods.MaskedAccountNumber }}</option>
                     </select>
