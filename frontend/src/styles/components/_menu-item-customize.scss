@@ -244,6 +244,23 @@
     }
   }
 
+  .size-wrapper{
+    margin: 15px 0 0;
+
+    select{
+      width: 100%;
+    }
+
+    label{
+      display: block;
+      margin: 0 0 5px;
+    }
+
+    .text{
+      @include fontsize(18);
+    }
+  }
+
   .add-button{
     margin: 20px 0 0;
 
