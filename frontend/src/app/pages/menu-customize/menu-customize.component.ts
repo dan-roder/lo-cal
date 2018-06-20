@@ -25,6 +25,7 @@ export class MenuCustomizeComponent implements OnInit {
   private _calorieCount : number = 0;
   public currentModifierArray : Array<any> = [];
   public featuredImage : any;
+  public sizeChoice : any;
 
   constructor(
     private wpService: WordpressService,
@@ -130,6 +131,7 @@ export class MenuCustomizeComponent implements OnInit {
     menuItem['Quantity'] = quantity;
     menuItem['TotalPrice'] = totalPrice;
     menuItem['Modifiers'] = _.values(this.customizationData);
+    menuItem['SalesItemId'] = this.salesItemDetails.SalesItemId;
 
     // Push full object to bag service
     this.bagService.createLineItem(menuItem);
@@ -152,25 +154,18 @@ export class MenuCustomizeComponent implements OnInit {
       // Find default Sales Item Id
       this.defaultItemId = menuItemDetails['item']['DefaultItemId'];
 
+      // Using default Sales Item Id, return object with all details of that Sales Item
+      this.salesItemDetails = _.find(menuItemDetails['salesItems'], {'SalesItemId': this.defaultItemId});
+
       // Need to account for sizes if there is more than 1 sales item
       if(menuItemDetails['salesItems'].length > 1){
-        this.salesItemDetails = menuItemDetails['salesItems'][0];
-        console.log(this.salesItemDetails);
         this.multipleSalesItems = menuItemDetails['salesItems'];
-        this.calorieCount = this.salesItemDetails.CaloricValue;
-        this.itemPrice = this.salesItemDetails.Price;
+        this.sizeChoice = this.salesItemDetails.SalesItemId;
       }
-      else{
-        // Only 1 SalesItem
 
-        // Using default Sales Item Id, return object with all details of that Sales Item
-        this.salesItemDetails = _.find(menuItemDetails['salesItems'], {'SalesItemId': this.defaultItemId});
+      this.calorieCount = this.salesItemDetails.CaloricValue;
+      this.itemPrice = this.salesItemDetails.Price;
 
-        console.log(this.salesItemDetails);
-
-        this.itemPrice = this.salesItemDetails['Price'];
-        this.calorieCount = this.salesItemDetails.CaloricValue;
-      }
       // Calculate initial cost based on initial quantity of 1
       this.recalculateCost();
 
@@ -218,6 +213,26 @@ export class MenuCustomizeComponent implements OnInit {
     });
 
     this.customizationData = tempObj;
+  }
+
+  public updateDataPerSize(salesId: string){
+    this.salesItemDetails = _.find(this.menuItemDetails.salesItems, {'SalesItemId': +salesId});
+    this.calorieCount = this.salesItemDetails.CaloricValue;
+    this.itemPrice = this.salesItemDetails.Price;
+
+    // Initialize defaults
+    let defaults = [];
+    if(this.salesItemDetails.ModGroups.length > 0){
+      // Does the sales item have defaults?
+      if(this.salesItemDetails.DefaultOptions.length > 0){
+        defaults = this.salesItemDetails.DefaultOptions;
+      }
+
+      this.registerCustomizationVariables( this.salesItemDetails.ModGroups, defaults );
+    }
+
+    // Calculate initial cost based on initial quantity of 1
+    this.recalculateCost();
   }
 
   /**
