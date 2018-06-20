@@ -22,6 +22,8 @@ export class BagService {
     // Send item to get Modifiers
     let modifiers = this.constructLineItemModifiers(passedMenuItem.Modifiers);
 
+    // TODO: ensure correct line item and modifiers are being created
+    console.log(passedMenuItem);
     let lineItem : LineItem = {
       SalesItemId : passedMenuItem.item.DefaultItemId, // Not sure if this should come from the SalesItem object instead of the DefaultItemId
       MenuItemId : passedMenuItem.item.MenuItemId,
