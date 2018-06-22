@@ -18,11 +18,9 @@
  * @package WordPress
  */
 
-define('WP_HOME', 'http://lo-cal.local');
-define('WP_SITEURL', 'http://lo-cal.local');
 // ** MySQL settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
-define('DB_NAME', 'local');
+define('DB_NAME', 'lo-cal-kitchen');
 
 /** MySQL database username */
 define('DB_USER', 'root');
@@ -38,7 +36,6 @@ define('DB_CHARSET', 'utf8');
 
 /** The Database Collate type. Don't change this if in doubt. */
 define('DB_COLLATE', '');
-
 
 /**#@+
  * Authentication Unique Keys and Salts.
@@ -58,6 +55,8 @@ define('SECURE_AUTH_SALT', 'put your unique phrase here');
 define('LOGGED_IN_SALT',   'put your unique phrase here');
 define('NONCE_SALT',       'put your unique phrase here');
 
+define('JWT_AUTH_SECRET_KEY', 'talentechtradecraft');
+define('JWT_AUTH_CORS_ENABLE', true);
 /**#@-*/
 
 /**
