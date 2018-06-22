@@ -105,6 +105,10 @@ export class OrderService {
     })
   }
 
+  public getOrderResult(): Observable<any>{
+    return this.localStorage.getItem('orderResult').map(orderResult => {return orderResult});
+  }
+
   get customerInfo(): Customer{
     return this._customerInfo;
   }
