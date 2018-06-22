@@ -397,11 +397,11 @@ class Custom_Endpoint_REST_Controller extends WP_REST_Controller {
 			$meta = get_post_meta($post->ID);
 			$menuid = is_string($acf['menuid']) ? (int)$acf['menuid'] : (int)$acf['menuid']['menuid'][0];
 			$submenu = $meta;
-			// if ( empty($submenu['submenu'][0] ) ){
-				wp_delete_post($post->ID, true);
-			// 	$empty_submenu = [ "message" => "Submenu empty", "item"=>$post ];
-			// 	var_dump($empty_submenu);die();
-			// }
+			if ( empty($submenu['submenu'][0] ) ){
+				// wp_delete_post($post->ID, true);
+				$empty_submenu = [ "message" => "Submenu empty", "item"=>$post ];
+				var_dump($empty_submenu);die();
+			}
 			$post->acf = $acf;
 			$post->submenu = $meta;
 			$response = $this->prepare_item_for_response( $post, $request );
