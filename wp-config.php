@@ -147,10 +147,13 @@ define('WPLANG', '');
  * You may want to examine $_ENV['PANTHEON_ENVIRONMENT'] to set this to be
  * "true" in dev, but false in test and live.
  */
-if ( ! defined( 'WP_DEBUG' ) ) {
-    define('WP_DEBUG', false);
-}
-
+// if ( ! defined( 'WP_DEBUG' ) ) {
+//     define('WP_DEBUG', false);
+// }
+ini_set('display_errors','Off');
+ini_set('error_reporting', E_ALL );
+define('WP_DEBUG', false);
+define('WP_DEBUG_DISPLAY', false);
 /* That's all, stop editing! Happy Pressing. */
 
 
