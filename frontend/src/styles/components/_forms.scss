@@ -130,14 +130,6 @@
     }
   }
 
-  .form-errors{
-    p{
-      color: $orange-red;
-      @include fontsize(15);
-      text-align: center;
-    }
-  }
-
   .submit{
     margin: 40px 0 15px;
   }
@@ -175,6 +167,14 @@
         background: $white;
       }
     }
+  }
+}
+
+.form-errors{
+  p{
+    color: $orange-red;
+    @include fontsize(15);
+    text-align: center;
   }
 }
 
