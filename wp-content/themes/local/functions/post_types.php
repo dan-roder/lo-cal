@@ -439,7 +439,7 @@ class Custom_Endpoint_REST_Controller extends WP_REST_Controller {
     */
     public function prepare_item_for_response( $post, $request ) {
         $post_data = array();
-        $schema = $this->get_item_schema( $request );
+        $schema = $this->add_additional_fields_schema( $request );
 
         // We are also renaming the fields to more understandable names.
         if ( isset( $schema['properties']['id'] ) ) {
