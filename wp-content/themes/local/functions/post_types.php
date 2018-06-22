@@ -339,6 +339,11 @@ class Custom_Endpoint_REST_Controller extends WP_REST_Controller {
 
     // Here initialize our namespace and resource name.
     public function __construct($namespace, $resource_name) {
+		if( defined('WP_DEBUG') ){
+			if( false === WP_DEBUG) {
+				error_reporting(0);
+			}
+		}
         $this->namespace     = $namespace;
         $this->resource_name = $resource_name;
         $this->version = 1;
