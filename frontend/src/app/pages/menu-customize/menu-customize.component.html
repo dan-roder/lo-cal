@@ -64,9 +64,12 @@
         </div>
       </div>
 
-      <select name="" id="" *ngIf="multipleSalesItems.length > 0" class="custom white-bg">
-        <option value="" *ngFor="let salesItem of multipleSalesItems">{{ salesItem?.DisplayName }}</option>
-      </select>
+      <div class="size-wrapper" *ngIf="multipleSalesItems.length > 0">
+        <label for="size" class="text">Size</label>
+        <select name="size" id="size" class="custom white-bg" [(ngModel)]="sizeChoice" (ngModelChange)="updateDataPerSize(sizeChoice)">
+          <option [value]="salesItem?.SalesItemId" *ngFor="let salesItem of multipleSalesItems">{{ salesItem?.DisplayName }}</option>
+        </select>
+      </div>
 
       <div class="add-button red-button">
         <button *ngIf="totalPrice" (click)="addToBag()">Add to Bag (+{{ totalPrice | currency }})</button>

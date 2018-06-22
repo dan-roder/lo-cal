@@ -22,6 +22,7 @@ export class CheckoutReviewComponent implements OnInit {
   public selectedTime : any;
   public times : any;
   public processing : boolean = false;
+  public errorData : any = {};
 
   constructor(
     private bagService: BagService,
@@ -87,6 +88,8 @@ export class CheckoutReviewComponent implements OnInit {
       }
       else{
         console.log('purOrder: error', response);
+        this.processing = false;
+        this.errorData.error = "We're sorry. There was an error placing your order. Please try again."
       }
     });
   }

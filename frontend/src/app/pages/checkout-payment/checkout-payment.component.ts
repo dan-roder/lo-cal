@@ -10,6 +10,7 @@ import * as _ from 'lodash';
 import * as moment from 'moment';
 import { Router } from '@angular/router';
 import { RailsSavePayment, InSubmitOrderInformation, RailsInSubmitOrder, SavedPayment } from '@local/models/Payment';
+import { LocalStorage } from '@ngx-pwa/local-storage';
 
 @Component({
   selector: 'lo-cal-checkout-payment',
@@ -31,7 +32,7 @@ export class CheckoutPaymentComponent implements OnInit {
   public savedPaymentMethods : SavedPayment;
   public savedPaymentChoice : string;
 
-  constructor(private orderService: OrderService, private fb: FormBuilder, private constants: Config, private customerService: CustomerService, private router: Router) {
+  constructor(private orderService: OrderService, private fb: FormBuilder, private constants: Config, private customerService: CustomerService, private router: Router, private localStorage: LocalStorage) {
     this.contactInfoForm = fb.group({
       'first-name' : [null, Validators.required],
       'last-name' : [null, Validators.required],
@@ -128,25 +129,26 @@ export class CheckoutPaymentComponent implements OnInit {
     // Order object with payment has been created, submit to API
     this.orderService.submitOrder(finalOrderForSubmission, this.currentOrder.OrderId).subscribe(orderResults => {
       if(orderResults.ResultCode == 0){
-
-        // If Customer wishes to save payment method
-        if(this.paymentForm.get('save-payment').value){
-          let paymentInfoForSaving : RailsSavePayment = {
-            payment : {
-              AccountNumber: this.paymentForm.get('card-number').value,
-              ExpirationDate: this.formatDate(this.paymentForm.get('expiration-date').value),
-              PaymentMethodType: this.cardType
+        this.localStorage.setItem('orderResult', orderResults).subscribe(() => {
+          // If Customer wishes to save payment method
+          if(this.paymentForm.get('save-payment').value){
+            let paymentInfoForSaving : RailsSavePayment = {
+              payment : {
+                AccountNumber: this.paymentForm.get('card-number').value,
+                ExpirationDate: this.formatDate(this.paymentForm.get('expiration-date').value),
+                PaymentMethodType: this.cardType
+              }
             }
-          }
 
-          // Save payment method, then navigate to confirmation
-          this.customerService.savePaymentMethod(paymentInfoForSaving, this.currentCustomer.CustomerId).subscribe(response => {
+            // Save payment method, then navigate to confirmation
+            this.customerService.savePaymentMethod(paymentInfoForSaving, this.currentCustomer.CustomerId).subscribe(response => {
+              this.navigateToConfirmation();
+            });
+          }
+          else{
             this.navigateToConfirmation();
-          });
-        }
-        else{
-          this.navigateToConfirmation();
-        }
+          }
+        });
       }
     });
   }

@@ -1,13 +1,23 @@
 <div class="basic-page-container">
     <div class="basic-page-content">
       <div class="blog-details center-960 text-center">
-        <h1>Confirmation</h1>
+        <h1>Thank You For Your Order!</h1>
+        <h2 class="red-text">Here is the Lo-Down</h2>
       </div>
       <!-- <div class="featured-image center" *ngIf="featuredImage">
         <img [src]="featuredImage?.source_url" [alt]="featuredImage?.alt_text">
       </div> -->
       <div class="content center-960">
+        <div class="order-details">
+          <h3 class="title">Order Details</h3>
+          <div class="order-summary">
+            <div class="line-items" *ngIf="orderResult?.Order?.LineItems">
+              <div class="line-item" *ngFor="let lineItems of orderResult?.Order?.LineItems">
 
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
 
     </div>

@@ -22,10 +22,12 @@ export class BagService {
     // Send item to get Modifiers
     let modifiers = this.constructLineItemModifiers(passedMenuItem.Modifiers);
 
+    console.log(passedMenuItem);
+
     let lineItem : LineItem = {
-      SalesItemId : passedMenuItem.item.DefaultItemId, // Not sure if this should come from the SalesItem object instead of the DefaultItemId
+      SalesItemId : passedMenuItem.SalesItemId,
       MenuItemId : passedMenuItem.item.MenuItemId,
-      Name : passedMenuItem.item.Name,
+      Name : passedMenuItem.Name,
       ShortDescription : passedMenuItem.item.Description,
       SpecialInstructions : passedMenuItem.SpecialInstructions,
       UnitPrice : passedMenuItem.salesItems[0].Price,
@@ -77,7 +79,6 @@ export class BagService {
       let modifierGroupId = modGroup.groupDetails.ModifierGroupId;
 
       if(modGroup.currentlySelected.length > 0){
-        let previousModifierId : number = 0;
 
         _.forEach(modGroup.currentlySelected, function(modifier, key){
           // Set initial quantity for the modifier being added
