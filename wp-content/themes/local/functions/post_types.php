@@ -498,6 +498,15 @@ class Custom_Endpoint_REST_Controller extends WP_REST_Controller {
     * @param WP_REST_Request $request Current request.
     */
 	public function get_item_schema( $request ) {
+		return $this->add_additional_fields_schema( $request );
+	}
+    /**
+    * Get our sample schema for a post.
+    *
+    * @param WP_REST_Request $request Current request.
+    */
+	public function add_additional_fields_schema( $request ) {
+
 		$schema = array(
 			// This tells the spec of JSON Schema we are using which is draft 4.
 			'$schema'              => 'http://json-schema.org/draft-04/schema#',
