@@ -1,7 +1,7 @@
 <div class="basic-page-container checkout-review">
   <div class="basic-page-content center">
     <h1>Review Your Order</h1>
-
+    <div class="form-errors text-left" *ngIf="errorData?.error"><p>{{ errorData?.error }}</p></div>
     <div class="checkout-wrapper">
       <div class="left-pane">
         <div class="items">
