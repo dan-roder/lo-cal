@@ -509,7 +509,7 @@ class Custom_Endpoint_REST_Controller extends WP_REST_Controller {
 
 		$schema = array(
 			// This tells the spec of JSON Schema we are using which is draft 4.
-			'$schema'              => 'http://json-schema.org/schema#',
+			'$schema'              => 'http://json-schema.org/draft-07/schema#',
 			// The title property marks the identity of the resource.
 			'title'                => $this->resource_name,
 			'type'                 => 'object',
