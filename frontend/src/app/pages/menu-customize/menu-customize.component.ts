@@ -93,7 +93,10 @@ export class MenuCustomizeComponent implements OnInit {
       }
 
       // Subract from calorie count if the modifier has calorie changes
-      if(modifierClicked.ItemModifiers.length > 0){
+
+      // TODO: Clicking a minus button when modifiers are full triggers price to decrement
+      if(modifierClicked.ItemModifiers.length > 0 ){
+
         this.calorieCount -= modifierClicked.ItemModifiers[0].CaloricValue;
 
         // If modifier includes additional price, remove from price
@@ -132,6 +135,7 @@ export class MenuCustomizeComponent implements OnInit {
     menuItem['TotalPrice'] = totalPrice;
     menuItem['Modifiers'] = _.values(this.customizationData);
     menuItem['SalesItemId'] = this.salesItemDetails.SalesItemId;
+    menuItem['Name'] = this.salesItemDetails.Name;
 
     // Push full object to bag service
     this.bagService.createLineItem(menuItem);
