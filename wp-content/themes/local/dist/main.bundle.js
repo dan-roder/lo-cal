@@ -1410,6 +1410,7 @@ module.exports = "<div class=\"basic-page-container checkout-review\">\n  <div c
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_moment__ = __webpack_require__("./node_modules/moment/moment.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_moment__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__angular_router__ = __webpack_require__("./node_modules/@angular/router/esm5/router.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__ngx_pwa_local_storage__ = __webpack_require__("./node_modules/@ngx-pwa/local-storage/local-storage.es5.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1428,13 +1429,15 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var CheckoutPaymentComponent = /** @class */ (function () {
-    function CheckoutPaymentComponent(orderService, fb, constants, customerService, router) {
+    function CheckoutPaymentComponent(orderService, fb, constants, customerService, router, localStorage) {
         this.orderService = orderService;
         this.fb = fb;
         this.constants = constants;
         this.customerService = customerService;
         this.router = router;
+        this.localStorage = localStorage;
         this.submittedOnce = false;
         this.sectionOpen = 1;
         this.paymentChoice = '1';
@@ -1527,23 +1530,25 @@ var CheckoutPaymentComponent = /** @class */ (function () {
         // Order object with payment has been created, submit to API
         this.orderService.submitOrder(finalOrderForSubmission, this.currentOrder.OrderId).subscribe(function (orderResults) {
             if (orderResults.ResultCode == 0) {
-                // If Customer wishes to save payment method
-                if (_this.paymentForm.get('save-payment').value) {
-                    var paymentInfoForSaving = {
-                        payment: {
-                            AccountNumber: _this.paymentForm.get('card-number').value,
-                            ExpirationDate: _this.formatDate(_this.paymentForm.get('expiration-date').value),
-                            PaymentMethodType: _this.cardType
-                        }
-                    };
-                    // Save payment method, then navigate to confirmation
-                    _this.customerService.savePaymentMethod(paymentInfoForSaving, _this.currentCustomer.CustomerId).subscribe(function (response) {
+                _this.localStorage.setItem('orderResult', orderResults).subscribe(function () {
+                    // If Customer wishes to save payment method
+                    if (_this.paymentForm.get('save-payment').value) {
+                        var paymentInfoForSaving = {
+                            payment: {
+                                AccountNumber: _this.paymentForm.get('card-number').value,
+                                ExpirationDate: _this.formatDate(_this.paymentForm.get('expiration-date').value),
+                                PaymentMethodType: _this.cardType
+                            }
+                        };
+                        // Save payment method, then navigate to confirmation
+                        _this.customerService.savePaymentMethod(paymentInfoForSaving, _this.currentCustomer.CustomerId).subscribe(function (response) {
+                            _this.navigateToConfirmation();
+                        });
+                    }
+                    else {
                         _this.navigateToConfirmation();
-                    });
-                }
-                else {
-                    _this.navigateToConfirmation();
-                }
+                    }
+                });
             }
         });
     };
@@ -1636,7 +1641,7 @@ var CheckoutPaymentComponent = /** @class */ (function () {
             selector: 'lo-cal-checkout-payment',
             template: __webpack_require__("./src/app/pages/checkout-payment/checkout-payment.component.html")
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__local_services_order_service__["a" /* OrderService */], __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormBuilder */], __WEBPACK_IMPORTED_MODULE_4__local_utils_constants__["a" /* Config */], __WEBPACK_IMPORTED_MODULE_5__local_services_customer_service__["a" /* CustomerService */], __WEBPACK_IMPORTED_MODULE_8__angular_router__["c" /* Router */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__local_services_order_service__["a" /* OrderService */], __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormBuilder */], __WEBPACK_IMPORTED_MODULE_4__local_utils_constants__["a" /* Config */], __WEBPACK_IMPORTED_MODULE_5__local_services_customer_service__["a" /* CustomerService */], __WEBPACK_IMPORTED_MODULE_8__angular_router__["c" /* Router */], __WEBPACK_IMPORTED_MODULE_9__ngx_pwa_local_storage__["a" /* LocalStorage */]])
     ], CheckoutPaymentComponent);
     return CheckoutPaymentComponent;
 }());
@@ -1648,7 +1653,7 @@ var CheckoutPaymentComponent = /** @class */ (function () {
 /***/ "./src/app/pages/checkout-review/checkout-review.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"basic-page-container checkout-review\">\n  <div class=\"basic-page-content center\">\n    <h1>Review Your Order</h1>\n\n    <div class=\"checkout-wrapper\">\n      <div class=\"left-pane\">\n        <div class=\"items\">\n          <div class=\"review-item-card\">\n            <div class=\"item clearfix\" *ngFor=\"let menuItem of bagItems; let i = index;\">\n              <div class=\"item-review-wrapper\">\n                <div class=\"left image\">\n                  <img src=\"http://via.placeholder.com/200x200\" alt=\"\" class=\"item-image\">\n                  <img src=\"/wp-content/themes/local/dist/assets/svgs/delete-cross-icon.svg\" alt=\"X to remove item from cart\" class=\"remove-image\" (click)=\"removeFromBagAtIndex(i)\">\n                </div>\n                <div class=\"bag-detail-card\">\n                  <div class=\"title-container\">\n                      <div class=\"title\">{{ menuItem?.Name }} <span class=\"quantity\">x {{ menuItem?.Quantity }}</span></div>\n                  </div>\n                  <div class=\"ingredients\">\n                    {{ (menuItem?.ShortDescription | allergens)?.description }}\n                  </div>\n                  <div class=\"additions\" *ngIf=\"menuItem?.Modifiers\">\n                    <span class=\"modifier\" *ngFor=\"let mod of menuItem?.Modifiers\">{{ mod?.Name }}</span>\n                  </div>\n                  <div class=\"details-and-edit\">\n                    <div class=\"details\">\n                      <span class=\"price\">{{ menuItem?.ExtendedPrice | currency }}</span>\n                      <span class=\"calories\" *ngIf=\"menuItem?.CaloricValue\"></span>\n                      <span class=\"allergens\" *ngIf=\"(menuItem?.ShortDescription)\">\n                        <span class=\"allergen\" *ngFor=\"let allergen of (menuItem?.ShortDescription | allergens).allergens\">{{ allergen }}</span>\n                      </span>\n                    </div>\n                    <div class=\"edit\">\n                      <a tabindex=\"0\" (click)=\"editItemAtIndex(i)\" (keyup.enter)=\"editItemAtIndex(i)\" role=\"button\">EDIT</a>\n                    </div>\n                  </div><!-- /. details-and-edit -->\n                </div><!-- /.bag-detail-card -->\n              </div><!-- /.item-review-wrapper -->\n              <div class=\"edit-pane\" [hidden]=\"isOpen !== i\">\n                <div class=\"edit-pane-wrapper\">\n                  <div class=\"quantity-selector\">\n                    <div class=\"quantity-changer\">\n                      <span class=\"quantity-text\">Quantity</span>\n                      <span class=\"minus\" (click)=\"decrementQuantity(menuItem)\">-</span>\n                      <span class=\"quantity\">{{ menuItem?.Quantity }}</span>\n                      <span class=\"plus\" (click)=\"incrementQuantity(menuItem)\">+</span>\n                    </div>\n                  </div>\n                  <div class=\"customize-this\">\n                    <p><a routerLink=\"/\">Go back to customize this item</a></p>\n                  </div>\n                </div>\n              </div><!-- /.edit-pane -->\n            </div><!-- /.item -->\n            <div class=\"red-button small-text\">\n              <button (click)=\"putOrder()\" [disabled]=\"!timeForm.valid || !selectedTime\">Proceed to Checkout</button>\n              <span class=\"processing\" *ngIf=\"processing\">Please Wait...</span>\n            </div>\n          </div><!-- /.review-item-card -->\n        </div>\n      </div>\n      <div class=\"order-summary\">\n        <div class=\"itemized-summary\">\n          <h4>Order Summary</h4>\n          <div class=\"item flex-between\" *ngFor=\"let menuItem of bagItems\">\n            <div class=\"item-specifics\">\n              <div class=\"title semi-bold\"><span class=\"quantity\">{{ menuItem?.Quantity }} x</span> <span class=\"item-name\">{{ menuItem?.Name }}</span></div>\n              <div class=\"additions\" *ngIf=\"menuItem?.Modifiers\">\n                <span class=\"modifier\" *ngFor=\"let mod of menuItem?.Modifiers\">{{ mod?.Name }}</span>\n              </div>\n            </div>\n            <div class=\"item-price\">\n              <span class=\"price\">{{ menuItem?.ExtendedPrice | currency }}</span>\n            </div>\n          </div>\n          <div class=\"item flex-between\" *ngFor=\"let menuItem of allOrderDetails?.LineItems\">\n            <div class=\"item-specifics\">\n              <div class=\"title semi-bold\"><span class=\"quantity\">{{ menuItem?.Quantity }} x</span> <span class=\"item-name\">{{ menuItem?.Name }}</span></div>\n              <div class=\"additions\" *ngIf=\"menuItem?.Modifiers\">\n                <span class=\"modifier\" *ngFor=\"let mod of menuItem?.Modifiers\">{{ mod?.Name }}</span>\n              </div>\n            </div>\n            <div class=\"item-price\">\n              <span class=\"price\">{{ menuItem?.ExtendedPrice | currency }}</span>\n            </div>\n          </div>\n        </div><!-- /.itemized-summary -->\n        <div class=\"pricing-and-location\">\n          <div class=\"pricing-details\">\n            <form action=\"\" class=\"lo-cal-form\" [formGroup]=\"timeForm\">\n              <label for=\"pickup-time\" class=\"pickup-time-label\">Select a time to pickup your order?</label>\n              <select name=\"pickup-time\"  id=\"pickup-time\" formControlName=\"pickup-time\" class=\"pickup-time\" [(ngModel)]=\"timeSelectBox\" (ngModelChange)=\"timeSelectChanged()\">\n                <option value=\"\">-- Select --</option>\n                <option value=\"next\">Next Available</option>\n                <option disabled>---------------</option>\n                <option [value]=\"time?.Time\" *ngFor=\"let time of times\">{{ time?.Time | date:\"h:mma\" }}</option>\n              </select>\n            </form>\n\n            <!-- ADD Location to show next-available time before submission -->\n            <div class=\"next-available-time\" *ngIf=\"selectedTime\">\n              <p><strong>Pickup at: </strong>{{ selectedTime | date:\"E MMM d, h:mma\" }}</p>\n            </div>\n\n            <div class=\"red-button full-width-button small-text\">\n              <button (click)=\"putOrder()\" [disabled]=\"!timeForm.valid || !selectedTime\">Proceed to Checkout</button>\n              <span class=\"processing\" *ngIf=\"processing\">Please Wait...</span>\n            </div>\n          </div>\n          <div class=\"location-details\">\n            <p class=\"semi-bold\">You are ordering from</p>\n            <h4>Lo·Cal Long Island</h4>\n            <p>\n              The Mall at The Source<br/>\n              1504 Old Country Rd, Westbury, NY 11590\n            </p>\n            <div class=\"map-image\">\n              <img src=\"\" alt=\"\">\n            </div>\n            <p class=\"bold\">\n              Tel: 987-012-2345\n            </p>\n          </div>\n        </div><!-- /.pricing-and-location -->\n\n      </div>\n    </div>\n\n  </div>\n</div>"
+module.exports = "<div class=\"basic-page-container checkout-review\">\n  <div class=\"basic-page-content center\">\n    <h1>Review Your Order</h1>\n    <div class=\"form-errors text-left\" *ngIf=\"errorData?.error\"><p>{{ errorData?.error }}</p></div>\n    <div class=\"checkout-wrapper\">\n      <div class=\"left-pane\">\n        <div class=\"items\">\n          <div class=\"review-item-card\">\n            <div class=\"item clearfix\" *ngFor=\"let menuItem of bagItems; let i = index;\">\n              <div class=\"item-review-wrapper\">\n                <div class=\"left image\">\n                  <img src=\"http://via.placeholder.com/200x200\" alt=\"\" class=\"item-image\">\n                  <img src=\"/wp-content/themes/local/dist/assets/svgs/delete-cross-icon.svg\" alt=\"X to remove item from cart\" class=\"remove-image\" (click)=\"removeFromBagAtIndex(i)\">\n                </div>\n                <div class=\"bag-detail-card\">\n                  <div class=\"title-container\">\n                      <div class=\"title\">{{ menuItem?.Name }} <span class=\"quantity\">x {{ menuItem?.Quantity }}</span></div>\n                  </div>\n                  <div class=\"ingredients\">\n                    {{ (menuItem?.ShortDescription | allergens)?.description }}\n                  </div>\n                  <div class=\"additions\" *ngIf=\"menuItem?.Modifiers\">\n                    <span class=\"modifier\" *ngFor=\"let mod of menuItem?.Modifiers\">{{ mod?.Name }}</span>\n                  </div>\n                  <div class=\"details-and-edit\">\n                    <div class=\"details\">\n                      <span class=\"price\">{{ menuItem?.ExtendedPrice | currency }}</span>\n                      <span class=\"calories\" *ngIf=\"menuItem?.CaloricValue\"></span>\n                      <span class=\"allergens\" *ngIf=\"(menuItem?.ShortDescription)\">\n                        <span class=\"allergen\" *ngFor=\"let allergen of (menuItem?.ShortDescription | allergens).allergens\">{{ allergen }}</span>\n                      </span>\n                    </div>\n                    <div class=\"edit\">\n                      <a tabindex=\"0\" (click)=\"editItemAtIndex(i)\" (keyup.enter)=\"editItemAtIndex(i)\" role=\"button\">EDIT</a>\n                    </div>\n                  </div><!-- /. details-and-edit -->\n                </div><!-- /.bag-detail-card -->\n              </div><!-- /.item-review-wrapper -->\n              <div class=\"edit-pane\" [hidden]=\"isOpen !== i\">\n                <div class=\"edit-pane-wrapper\">\n                  <div class=\"quantity-selector\">\n                    <div class=\"quantity-changer\">\n                      <span class=\"quantity-text\">Quantity</span>\n                      <span class=\"minus\" (click)=\"decrementQuantity(menuItem)\">-</span>\n                      <span class=\"quantity\">{{ menuItem?.Quantity }}</span>\n                      <span class=\"plus\" (click)=\"incrementQuantity(menuItem)\">+</span>\n                    </div>\n                  </div>\n                  <div class=\"customize-this\">\n                    <p><a routerLink=\"/\">Go back to customize this item</a></p>\n                  </div>\n                </div>\n              </div><!-- /.edit-pane -->\n            </div><!-- /.item -->\n            <div class=\"red-button small-text\">\n              <button (click)=\"putOrder()\" [disabled]=\"!timeForm.valid || !selectedTime\">Proceed to Checkout</button>\n              <span class=\"processing\" *ngIf=\"processing\">Please Wait...</span>\n            </div>\n          </div><!-- /.review-item-card -->\n        </div>\n      </div>\n      <div class=\"order-summary\">\n        <div class=\"itemized-summary\">\n          <h4>Order Summary</h4>\n          <div class=\"item flex-between\" *ngFor=\"let menuItem of bagItems\">\n            <div class=\"item-specifics\">\n              <div class=\"title semi-bold\"><span class=\"quantity\">{{ menuItem?.Quantity }} x</span> <span class=\"item-name\">{{ menuItem?.Name }}</span></div>\n              <div class=\"additions\" *ngIf=\"menuItem?.Modifiers\">\n                <span class=\"modifier\" *ngFor=\"let mod of menuItem?.Modifiers\">{{ mod?.Name }}</span>\n              </div>\n            </div>\n            <div class=\"item-price\">\n              <span class=\"price\">{{ menuItem?.ExtendedPrice | currency }}</span>\n            </div>\n          </div>\n          <div class=\"item flex-between\" *ngFor=\"let menuItem of allOrderDetails?.LineItems\">\n            <div class=\"item-specifics\">\n              <div class=\"title semi-bold\"><span class=\"quantity\">{{ menuItem?.Quantity }} x</span> <span class=\"item-name\">{{ menuItem?.Name }}</span></div>\n              <div class=\"additions\" *ngIf=\"menuItem?.Modifiers\">\n                <span class=\"modifier\" *ngFor=\"let mod of menuItem?.Modifiers\">{{ mod?.Name }}</span>\n              </div>\n            </div>\n            <div class=\"item-price\">\n              <span class=\"price\">{{ menuItem?.ExtendedPrice | currency }}</span>\n            </div>\n          </div>\n        </div><!-- /.itemized-summary -->\n        <div class=\"pricing-and-location\">\n          <div class=\"pricing-details\">\n            <form action=\"\" class=\"lo-cal-form\" [formGroup]=\"timeForm\">\n              <label for=\"pickup-time\" class=\"pickup-time-label\">Select a time to pickup your order?</label>\n              <select name=\"pickup-time\"  id=\"pickup-time\" formControlName=\"pickup-time\" class=\"pickup-time\" [(ngModel)]=\"timeSelectBox\" (ngModelChange)=\"timeSelectChanged()\">\n                <option value=\"\">-- Select --</option>\n                <option value=\"next\">Next Available</option>\n                <option disabled>---------------</option>\n                <option [value]=\"time?.Time\" *ngFor=\"let time of times\">{{ time?.Time | date:\"h:mma\" }}</option>\n              </select>\n            </form>\n\n            <!-- ADD Location to show next-available time before submission -->\n            <div class=\"next-available-time\" *ngIf=\"selectedTime\">\n              <p><strong>Pickup at: </strong>{{ selectedTime | date:\"E MMM d, h:mma\" }}</p>\n            </div>\n\n            <div class=\"red-button full-width-button small-text\">\n              <button (click)=\"putOrder()\" [disabled]=\"!timeForm.valid || !selectedTime\">Proceed to Checkout</button>\n              <span class=\"processing\" *ngIf=\"processing\">Please Wait...</span>\n            </div>\n          </div>\n          <div class=\"location-details\">\n            <p class=\"semi-bold\">You are ordering from</p>\n            <h4>Lo·Cal Long Island</h4>\n            <p>\n              The Mall at The Source<br/>\n              1504 Old Country Rd, Westbury, NY 11590\n            </p>\n            <div class=\"map-image\">\n              <img src=\"\" alt=\"\">\n            </div>\n            <p class=\"bold\">\n              Tel: 987-012-2345\n            </p>\n          </div>\n        </div><!-- /.pricing-and-location -->\n\n      </div>\n    </div>\n\n  </div>\n</div>"
 
 /***/ }),
 
@@ -1691,6 +1696,7 @@ var CheckoutReviewComponent = /** @class */ (function () {
         this._bagItems = [];
         this.isOpen = -1;
         this.processing = false;
+        this.errorData = {};
         this.timeForm = fb.group({
             'pickup-time': ['', __WEBPACK_IMPORTED_MODULE_5__angular_forms__["e" /* Validators */].required]
         });
@@ -1745,6 +1751,8 @@ var CheckoutReviewComponent = /** @class */ (function () {
             }
             else {
                 console.log('purOrder: error', response);
+                _this.processing = false;
+                _this.errorData.error = "We're sorry. There was an error placing your order. Please try again.";
             }
         });
     };
@@ -1794,7 +1802,7 @@ var CheckoutReviewComponent = /** @class */ (function () {
 /***/ "./src/app/pages/confirmation/confirmation.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"basic-page-container\">\n    <div class=\"basic-page-content\">\n      <div class=\"blog-details center-960 text-center\">\n        <h1>Confirmation</h1>\n      </div>\n      <!-- <div class=\"featured-image center\" *ngIf=\"featuredImage\">\n        <img [src]=\"featuredImage?.source_url\" [alt]=\"featuredImage?.alt_text\">\n      </div> -->\n      <div class=\"content center-960\">\n\n      </div>\n\n    </div>\n  </div>"
+module.exports = "<div class=\"basic-page-container\">\n    <div class=\"basic-page-content\">\n      <div class=\"blog-details center-960 text-center\">\n        <h1>Thank You For Your Order!</h1>\n        <h2 class=\"red-text\">Here is the Lo-Down</h2>\n      </div>\n      <!-- <div class=\"featured-image center\" *ngIf=\"featuredImage\">\n        <img [src]=\"featuredImage?.source_url\" [alt]=\"featuredImage?.alt_text\">\n      </div> -->\n      <div class=\"content center-960\">\n        <div class=\"order-details\">\n          <h3 class=\"title\">Order Details</h3>\n          <div class=\"order-summary\">\n            <div class=\"line-items\" *ngIf=\"orderResult?.Order?.LineItems\">\n              <div class=\"line-item\" *ngFor=\"let lineItems of orderResult?.Order?.LineItems\">\n\n              </div>\n            </div>\n          </div>\n        </div>\n      </div>\n\n    </div>\n  </div>"
 
 /***/ }),
 
@@ -1805,6 +1813,9 @@ module.exports = "<div class=\"basic-page-container\">\n    <div class=\"basic-p
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ConfirmationComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ngx_pwa_local_storage__ = __webpack_require__("./node_modules/@ngx-pwa/local-storage/local-storage.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__local_services_bag_service__ = __webpack_require__("./src/app/services/bag.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__local_services_order_service__ = __webpack_require__("./src/app/services/order.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_ngx_auto_unsubscribe__ = __webpack_require__("./node_modules/ngx-auto-unsubscribe/dist/index.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1816,21 +1827,30 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
+
+
+
 var ConfirmationComponent = /** @class */ (function () {
-    function ConfirmationComponent(localStorage) {
+    function ConfirmationComponent(localStorage, bagService, orderService) {
         this.localStorage = localStorage;
+        this.bagService = bagService;
+        this.orderService = orderService;
     }
     ConfirmationComponent.prototype.ngOnInit = function () {
+        var _this = this;
         // TODO: Destroy Bag and Order from LocalStorage
         this.localStorage.removeItem('order').subscribe(function () { });
         this.localStorage.removeItem('bag').subscribe(function () { });
+        this.bagService.itemsInBag = [];
+        this.orderService.getOrderResult().subscribe(function (result) { _this.orderResult = result; console.log(result); });
     };
     ConfirmationComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_4_ngx_auto_unsubscribe__["a" /* AutoUnsubscribe */])(),
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: 'lo-cal-confirmation',
             template: __webpack_require__("./src/app/pages/confirmation/confirmation.component.html")
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__ngx_pwa_local_storage__["a" /* LocalStorage */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__ngx_pwa_local_storage__["a" /* LocalStorage */], __WEBPACK_IMPORTED_MODULE_2__local_services_bag_service__["a" /* BagService */], __WEBPACK_IMPORTED_MODULE_3__local_services_order_service__["a" /* OrderService */]])
     ], ConfirmationComponent);
     return ConfirmationComponent;
 }());
@@ -2124,7 +2144,7 @@ var LoginComponent = /** @class */ (function () {
 /***/ "./src/app/pages/menu-customize/menu-customize.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"page-item-detail\">\n  <div class=\"menu-item-header\">\n    <h1 class=\"title\">{{ menuItemDetails?.item?.Name }}</h1>\n    <img *ngIf=\"featuredImage\" [src]=\"featuredImage?.media_details?.sizes?.full?.source_url\" [alt]=\"featuredImage?.alt_text\">\n  </div>\n\n  <div class=\"customization-container center-1440\">\n    <div class=\"left customization-options\">\n\n      <div class=\"customization-category\" *ngFor=\"let modGroup of salesItemDetails?.ModGroups\">\n        <div class=\"content\">\n          <div class=\"header\">\n            <span class=\"title\">{{ modGroup?.DisplayName }}</span>\n            <span class=\"choices\">Choose up to {{ modGroup?.MaximumItems }} ({{ customizationData[modGroup?.$id].currentlySelected.length }}/{{ modGroup?.MaximumItems }})</span>\n          </div>\n          <div class=\"options\" *ngFor=\"let modifier of modGroup?.Mods\">\n            <div class=\"option\">\n              <div class=\"ingredient\">{{ modifier?.Name }}</div>\n              <div class=\"calories\">{{ modifier?.ItemModifiers[0]?.CaloricValue }} <span *ngIf=\"modifier?.ItemModifiers[0]?.CaloricValue !== null\">cal</span> </div>\n              <div class=\"choice-controls\">\n                <span class=\"minus\" [ngClass]=\"(customizationData[modGroup?.$id].currentlySelected.length > 0 && customizationData[modGroup?.$id].modifiers[modifier?.$id].quantity > 0) ? 'enabled' : 'disabled'\" (click)=\"removeModifier(modGroup, modifier)\">-</span>\n                <span class=\"quantity-container\" [ngClass]=\"customizationData[modGroup?.$id].modifiers[modifier?.$id]?.quantity > 0 ? 'populated' : ''\">\n                  <span class=\"quantity\" *ngIf=\"customizationData[modGroup?.$id].modifiers[modifier?.$id]?.quantity !== 0\">\n                    {{ customizationData[modGroup?.$id].modifiers[modifier?.$id]?.quantity }}\n                  </span>\n                </span>\n                <span class=\"plus\" [ngClass]=\"(customizationData[modGroup?.$id].currentlySelected.length < modGroup?.MaximumItems) ? 'enabled' : 'disabled'\" (click)=\"addModifier(modGroup, modifier)\">+</span>\n              </div>\n            </div><!-- /.option -->\n          </div><!-- /.options -->\n        </div>\n      </div><!-- /.customization-category -->\n\n    </div><!-- /.left.customization-options -->\n    <div class=\"right\">\n      <div class=\"final-product\">\n        <div class=\"title\">{{ menuItemDetails?.item?.Name }}</div>\n        <div class=\"ingredients\" *ngIf=\"menuItemDetails?.item?.Description\">\n          {{ (menuItemDetails?.item?.Description | allergens)?.description }}\n        </div>\n        <div class=\"customization-ingredients\" *ngIf=\"currentModifierArray\">\n          <span class=\"customization\" *ngFor=\"let item of currentModifierArray; let last = last;\">{{ item?.DisplayName }}<span class=\"separator\" *ngIf=\"!last\">, </span></span>\n        </div>\n        <div class=\"fine-details\">\n          <span class=\"price\">{{ salesItemDetails?.Price | currency }}</span>\n          <span class=\"calories\" *ngIf=\"salesItemDetails?.CaloricValue !== 0 || salesItemDetails?.CaloricValue !== null\">{{ calorieCount }} cal</span>\n          <span class=\"allergens\" *ngIf=\"(menuItemDetails?.item?.Description)\">\n            <span class=\"allergen\" *ngFor=\"let allergen of (menuItemDetails?.item?.Description | allergens).allergens\">{{ allergen }}</span>\n          </span>\n        </div>\n      </div><!-- /.final-product -->\n\n      <div class=\"special-instructions\">\n        <label for=\"special-instructions\">Add Special Instruction (optional)</label>\n        <textarea name=\"special-instructions\" id=\"\" cols=\"30\" rows=\"5\" [(ngModel)]=\"specialInstructions\"></textarea>\n      </div><!-- /.special-instructions -->\n\n      <div class=\"quantity-wrapper\">\n        <div class=\"text\">Quantity</div>\n        <div class=\"quantity-changer\">\n          <span class=\"minus\" (click)=\"decrementQuantity()\">-</span>\n          <span class=\"quantity\">{{ quantity }}</span>\n          <span class=\"plus\" (click)=\"incrementQuantity()\">+</span>\n        </div>\n      </div>\n\n      <select name=\"\" id=\"\" *ngIf=\"multipleSalesItems.length > 0\" class=\"custom white-bg\">\n        <option value=\"\" *ngFor=\"let salesItem of multipleSalesItems\">{{ salesItem?.DisplayName }}</option>\n      </select>\n\n      <div class=\"add-button red-button\">\n        <button *ngIf=\"totalPrice\" (click)=\"addToBag()\">Add to Bag (+{{ totalPrice | currency }})</button>\n      </div>\n    </div><!-- /.right -->\n  </div>\n</div><!-- /.page-item-detail -->"
+module.exports = "<div class=\"page-item-detail\">\n  <div class=\"menu-item-header\">\n    <h1 class=\"title\">{{ menuItemDetails?.item?.Name }}</h1>\n    <img *ngIf=\"featuredImage\" [src]=\"featuredImage?.media_details?.sizes?.full?.source_url\" [alt]=\"featuredImage?.alt_text\">\n  </div>\n\n  <div class=\"customization-container center-1440\">\n    <div class=\"left customization-options\">\n\n      <div class=\"customization-category\" *ngFor=\"let modGroup of salesItemDetails?.ModGroups\">\n        <div class=\"content\">\n          <div class=\"header\">\n            <span class=\"title\">{{ modGroup?.DisplayName }}</span>\n            <span class=\"choices\">Choose up to {{ modGroup?.MaximumItems }} ({{ customizationData[modGroup?.$id].currentlySelected.length }}/{{ modGroup?.MaximumItems }})</span>\n          </div>\n          <div class=\"options\" *ngFor=\"let modifier of modGroup?.Mods\">\n            <div class=\"option\">\n              <div class=\"ingredient\">{{ modifier?.Name }}</div>\n              <div class=\"calories\">{{ modifier?.ItemModifiers[0]?.CaloricValue }} <span *ngIf=\"modifier?.ItemModifiers[0]?.CaloricValue !== null\">cal</span> </div>\n              <div class=\"choice-controls\">\n                <span class=\"minus\" [ngClass]=\"(customizationData[modGroup?.$id].currentlySelected.length > 0 && customizationData[modGroup?.$id].modifiers[modifier?.$id].quantity > 0) ? 'enabled' : 'disabled'\" (click)=\"removeModifier(modGroup, modifier)\">-</span>\n                <span class=\"quantity-container\" [ngClass]=\"customizationData[modGroup?.$id].modifiers[modifier?.$id]?.quantity > 0 ? 'populated' : ''\">\n                  <span class=\"quantity\" *ngIf=\"customizationData[modGroup?.$id].modifiers[modifier?.$id]?.quantity !== 0\">\n                    {{ customizationData[modGroup?.$id].modifiers[modifier?.$id]?.quantity }}\n                  </span>\n                </span>\n                <span class=\"plus\" [ngClass]=\"(customizationData[modGroup?.$id].currentlySelected.length < modGroup?.MaximumItems) ? 'enabled' : 'disabled'\" (click)=\"addModifier(modGroup, modifier)\">+</span>\n              </div>\n            </div><!-- /.option -->\n          </div><!-- /.options -->\n        </div>\n      </div><!-- /.customization-category -->\n\n    </div><!-- /.left.customization-options -->\n    <div class=\"right\">\n      <div class=\"final-product\">\n        <div class=\"title\">{{ menuItemDetails?.item?.Name }}</div>\n        <div class=\"ingredients\" *ngIf=\"menuItemDetails?.item?.Description\">\n          {{ (menuItemDetails?.item?.Description | allergens)?.description }}\n        </div>\n        <div class=\"customization-ingredients\" *ngIf=\"currentModifierArray\">\n          <span class=\"customization\" *ngFor=\"let item of currentModifierArray; let last = last;\">{{ item?.DisplayName }}<span class=\"separator\" *ngIf=\"!last\">, </span></span>\n        </div>\n        <div class=\"fine-details\">\n          <span class=\"price\">{{ salesItemDetails?.Price | currency }}</span>\n          <span class=\"calories\" *ngIf=\"salesItemDetails?.CaloricValue !== 0 || salesItemDetails?.CaloricValue !== null\">{{ calorieCount }} cal</span>\n          <span class=\"allergens\" *ngIf=\"(menuItemDetails?.item?.Description)\">\n            <span class=\"allergen\" *ngFor=\"let allergen of (menuItemDetails?.item?.Description | allergens).allergens\">{{ allergen }}</span>\n          </span>\n        </div>\n      </div><!-- /.final-product -->\n\n      <div class=\"special-instructions\">\n        <label for=\"special-instructions\">Add Special Instruction (optional)</label>\n        <textarea name=\"special-instructions\" id=\"\" cols=\"30\" rows=\"5\" [(ngModel)]=\"specialInstructions\"></textarea>\n      </div><!-- /.special-instructions -->\n\n      <div class=\"quantity-wrapper\">\n        <div class=\"text\">Quantity</div>\n        <div class=\"quantity-changer\">\n          <span class=\"minus\" (click)=\"decrementQuantity()\">-</span>\n          <span class=\"quantity\">{{ quantity }}</span>\n          <span class=\"plus\" (click)=\"incrementQuantity()\">+</span>\n        </div>\n      </div>\n\n      <div class=\"size-wrapper\" *ngIf=\"multipleSalesItems.length > 0\">\n        <label for=\"size\" class=\"text\">Size</label>\n        <select name=\"size\" id=\"size\" class=\"custom white-bg\" [(ngModel)]=\"sizeChoice\" (ngModelChange)=\"updateDataPerSize(sizeChoice)\">\n          <option [value]=\"salesItem?.SalesItemId\" *ngFor=\"let salesItem of multipleSalesItems\">{{ salesItem?.DisplayName }}</option>\n        </select>\n      </div>\n\n      <div class=\"add-button red-button\">\n        <button *ngIf=\"totalPrice\" (click)=\"addToBag()\">Add to Bag (+{{ totalPrice | currency }})</button>\n      </div>\n    </div><!-- /.right -->\n  </div>\n</div><!-- /.page-item-detail -->"
 
 /***/ }),
 
@@ -2214,6 +2234,7 @@ var MenuCustomizeComponent = /** @class */ (function () {
                 this.customizationData[modGroup.$id].modifiers[modifierClicked.$id]['quantity'] -= 1;
             }
             // Subract from calorie count if the modifier has calorie changes
+            // TODO: Clicking a minus button when modifiers are full triggers price to decrement
             if (modifierClicked.ItemModifiers.length > 0) {
                 this.calorieCount -= modifierClicked.ItemModifiers[0].CaloricValue;
                 // If modifier includes additional price, remove from price
@@ -2246,6 +2267,8 @@ var MenuCustomizeComponent = /** @class */ (function () {
         menuItem['Quantity'] = quantity;
         menuItem['TotalPrice'] = totalPrice;
         menuItem['Modifiers'] = __WEBPACK_IMPORTED_MODULE_5_lodash__["values"](this.customizationData);
+        menuItem['SalesItemId'] = this.salesItemDetails.SalesItemId;
+        menuItem['Name'] = this.salesItemDetails.Name;
         // Push full object to bag service
         this.bagService.createLineItem(menuItem);
         // Wipe out local values
@@ -2263,22 +2286,15 @@ var MenuCustomizeComponent = /** @class */ (function () {
             _this.menuItemDetails = menuItemDetails;
             // Find default Sales Item Id
             _this.defaultItemId = menuItemDetails['item']['DefaultItemId'];
+            // Using default Sales Item Id, return object with all details of that Sales Item
+            _this.salesItemDetails = __WEBPACK_IMPORTED_MODULE_5_lodash__["find"](menuItemDetails['salesItems'], { 'SalesItemId': _this.defaultItemId });
             // Need to account for sizes if there is more than 1 sales item
             if (menuItemDetails['salesItems'].length > 1) {
-                _this.salesItemDetails = menuItemDetails['salesItems'][0];
-                console.log(_this.salesItemDetails);
                 _this.multipleSalesItems = menuItemDetails['salesItems'];
-                _this.calorieCount = _this.salesItemDetails.CaloricValue;
-                _this.itemPrice = _this.salesItemDetails.Price;
+                _this.sizeChoice = _this.salesItemDetails.SalesItemId;
             }
-            else {
-                // Only 1 SalesItem
-                // Using default Sales Item Id, return object with all details of that Sales Item
-                _this.salesItemDetails = __WEBPACK_IMPORTED_MODULE_5_lodash__["find"](menuItemDetails['salesItems'], { 'SalesItemId': _this.defaultItemId });
-                console.log(_this.salesItemDetails);
-                _this.itemPrice = _this.salesItemDetails['Price'];
-                _this.calorieCount = _this.salesItemDetails.CaloricValue;
-            }
+            _this.calorieCount = _this.salesItemDetails.CaloricValue;
+            _this.itemPrice = _this.salesItemDetails.Price;
             // Calculate initial cost based on initial quantity of 1
             _this.recalculateCost();
             // Initialize defaults
@@ -2319,6 +2335,22 @@ var MenuCustomizeComponent = /** @class */ (function () {
             tempObj[modifierGroup.$id] = modObject;
         });
         this.customizationData = tempObj;
+    };
+    MenuCustomizeComponent.prototype.updateDataPerSize = function (salesId) {
+        this.salesItemDetails = __WEBPACK_IMPORTED_MODULE_5_lodash__["find"](this.menuItemDetails.salesItems, { 'SalesItemId': +salesId });
+        this.calorieCount = this.salesItemDetails.CaloricValue;
+        this.itemPrice = this.salesItemDetails.Price;
+        // Initialize defaults
+        var defaults = [];
+        if (this.salesItemDetails.ModGroups.length > 0) {
+            // Does the sales item have defaults?
+            if (this.salesItemDetails.DefaultOptions.length > 0) {
+                defaults = this.salesItemDetails.DefaultOptions;
+            }
+            this.registerCustomizationVariables(this.salesItemDetails.ModGroups, defaults);
+        }
+        // Calculate initial cost based on initial quantity of 1
+        this.recalculateCost();
     };
     Object.defineProperty(MenuCustomizeComponent.prototype, "calorieCount", {
         /**
@@ -3069,10 +3101,11 @@ var BagService = /** @class */ (function () {
     BagService.prototype.createLineItem = function (passedMenuItem) {
         // Send item to get Modifiers
         var modifiers = this.constructLineItemModifiers(passedMenuItem.Modifiers);
+        console.log(passedMenuItem);
         var lineItem = {
-            SalesItemId: passedMenuItem.item.DefaultItemId,
+            SalesItemId: passedMenuItem.SalesItemId,
             MenuItemId: passedMenuItem.item.MenuItemId,
-            Name: passedMenuItem.item.Name,
+            Name: passedMenuItem.Name,
             ShortDescription: passedMenuItem.item.Description,
             SpecialInstructions: passedMenuItem.SpecialInstructions,
             UnitPrice: passedMenuItem.salesItems[0].Price,
@@ -3113,7 +3146,6 @@ var BagService = /** @class */ (function () {
         __WEBPACK_IMPORTED_MODULE_2_lodash__["forEach"](allModifiers, function (modGroup, key) {
             var modifierGroupId = modGroup.groupDetails.ModifierGroupId;
             if (modGroup.currentlySelected.length > 0) {
-                var previousModifierId = 0;
                 __WEBPACK_IMPORTED_MODULE_2_lodash__["forEach"](modGroup.currentlySelected, function (modifier, key) {
                     // Set initial quantity for the modifier being added
                     var modifierQuantity = 1;
@@ -3492,6 +3524,9 @@ var OrderService = /** @class */ (function () {
         return this.httpClient.post(this.config.railsOrderEndpoint + ("/" + this.config.siteId + "/" + orderId), order).map(function (orderResponse) {
             return orderResponse;
         });
+    };
+    OrderService.prototype.getOrderResult = function () {
+        return this.localStorage.getItem('orderResult').map(function (orderResult) { return orderResult; });
     };
     Object.defineProperty(OrderService.prototype, "customerInfo", {
         get: function () {
