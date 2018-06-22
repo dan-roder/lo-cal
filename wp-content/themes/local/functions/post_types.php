@@ -179,7 +179,7 @@ function menu_categories() {
 		'label'                 => __( 'Menu Category', 'text_domain' ),
 		'description'           => __( 'Menu Category details', 'text_domain' ),
 		'labels'                => $labels,
-		'supports'              => array( 'title', 'editor', 'thumbnail' ),
+		'supports'              => array( 'title', 'editor', 'thumbnail', 'custom-fields' ),
 		'taxonomies'            => array( 'category', 'post_tag' ),
 		'hierarchical'          => true,
 		'public'                => true,
@@ -284,10 +284,7 @@ function menu_categories_meta_box() {
 }
 
 function categories_attributes_meta_box($post) {
-
-
 	wp_nonce_field( 'menu_category_nonce', 'menu_category_nonce');
-
 	$pages = wp_dropdown_pages(array(
 		'post_type' => 'menu_categories',
 		'selected' => $post->post_parent,
@@ -301,18 +298,262 @@ function categories_attributes_meta_box($post) {
 	} // end empty pages check
 }
 
-add_action( 'save_post', 'save_menu_categories_meta_box_data' );
-
 function save_menu_categories_meta_box_data( $post_id ) {
     $my_data = sanitize_text_field( $_POST['parent_id'] );
     add_post_meta( $post_id, 'menu_category', $my_data, true );
 }
 
+add_filter( 'post_type_link', function( $link, $post ) {
+	// if ( 'menu_item' == get_post_type( $post ) ) {
+	$post_id = $post->ID;
+	// var_dump($post); die();
+	$meta_key = 'submenu';
+	$meta_data = get_post_meta( $post_id, 'submenu' );
+	// var_dump($post, $meta_data); die();
+	if( $meta_data ) {
+		return str_replace( '%category-name%', $meta_data[0], $link );
+	}
+	// }
+	return $link;
+}, 10, 2 );
+
+function create_api_posts_meta_field() {
+	register_rest_field( 'menu_item', 'submenu', array(
+		'get_callback' => 'get_post_meta_for_api',
+		'update_callback' => 'update_post_meta_for_api',
+		'schema' => null,
+	));
+}
+
+function get_post_meta_for_api( $object, $field_name, $request, $object_type ) {
+
+	$post_id = $object['id'];
+	//return the post meta
+	return get_post_meta( $post_id )['submenu'][0];
+}
+function update_post_meta_for_api( $value, $object, $field_name, $request ) {
+	return update_post_meta( $object['id'], $field_name, $value, true );
+}
+
+// class Custom_Endpoint_REST_Controller extends WP_REST_Controller {
+
+//     // Here initialize our namespace and resource name.
+//     public function __construct($namespace, $resource_name) {
+//         $this->namespace     = $namespace;
+//         $this->resource_name = $resource_name;
+//         $this->version = 1;
+
+// 	}
+
+// 	/**
+// 	 * Register the routes for the objects of the controller.
+// 	 */
+// 	public function register_routes() {
+// 		register_rest_route( $this->namespace, '/v' . $this->version . '/' . $this->resource_name, array(
+// 			array(
+// 				'methods'   => WP_REST_Server::READABLE,
+//                 'callback'  => array( $this, 'get_items' ),
+// 				// Register our schema callback.
+// 				'schema' => [ $this, 'get_item_schema' ],
+// 			),
+// 		) );
+// 		register_rest_route( $this->namespace, '/v' . $this->version . '/' . $this->resource_name . '/(?P<id>[\d]+)', array(
+//             // Notice how we are registering multiple endpoints the 'schema' equates to an OPTIONS request.
+//             array(
+//                 'methods'   => WP_REST_Server::READABLE,
+//                 'callback'  => array( $this, 'get_item' ),
+//                 // 'permission_callback' => array( $this, 'get_item_permissions_check' ),
+//             ),
+//             // Register our schema callback.
+//             'schema' => array( $this, 'get_item_schema' ),
+//         ) );
+
+// 	}
+
+// 	/**
+// 	 * Get a collection of items
+// 	 *
+// 	 * @param WP_REST_Request $request Full data about the request.
+// 	 * @return WP_Error|WP_REST_Response
+// 	 */
+// 	public function get_items( $request ) {
+
+// 		$args = array(
+// 			'post_type'=> 'menu_item',
+// 			'posts_per_page' => -1,
+// 		);
+// 		$posts = get_posts( $args );
+// 		$data = array();
+//         if ( empty( $posts ) ) {
+//             return rest_ensure_response( $data );
+// 		}
+
+// 		foreach ($posts as $post) {
+// 			$acf = get_fields($post->ID);
+// 			$menuid = is_string($acf['menuid']) ? (int)$acf['menuid'] : (int)$acf['menuid']['menuid'][0];
+// 			$submenu = isset($acf['menuid']['submenu'][0]) ? $acf['menuid']['submenu'][0] : "";
+// 			$post->acf = ['menuid' => $menuid ];
+// 			$post->submenu = $submenu;
+// 			$response = $this->prepare_item_for_response( $post, $request );
+//             $data[] = $this->prepare_response_for_collection( $response );
+// 		}
+// 		// Return all of our comment response data.
+//         return rest_ensure_response( $data );
+// 	}
+
+// 	/**
+// 	 * Get one item from the collection
+// 	 *
+// 	 * @param WP_REST_Request $request Full data about the request.
+// 	 * @return WP_Error|WP_REST_Response
+// 	 */
+// 	public function get_item( $request ) {
+
+// 		$id = (int) $request['id'];
+//         $post = get_post( $id );
+//         if ( empty( $post ) ) {
+//             return rest_ensure_response( array() );
+// 		}
+// 		$acf = get_fields($post->ID);
+// 		$menuid = is_string($acf['menuid']) ? (int)$acf['menuid'] : (int)$acf['menuid']['menuid'][0];
+// 		$submenu = isset($acf['menuid']['submenu'][0]) ? $acf['menuid']['submenu'][0] : "";
+// 		$post->acf = ['menuid' => $menuid ];
+// 		$post->submenu = $submenu;
+//         $response = $this->prepare_item_for_response( $post );
+// 		$data = $this->prepare_response_for_collection( $response );
+//         // Return all of our post response data.
+//         return rest_ensure_response( $data );
+// 	}
+
+//     /**
+//     * Matches the post data to the schema we want.
+//     *
+//     * @param WP_Post $post The comment object whose response is being prepared.
+//     */
+//     public function prepare_item_for_response( $post, $request ) {
+//         $post_data = array();
+//         $schema = $this->get_item_schema( $request );
+
+//         // We are also renaming the fields to more understandable names.
+//         if ( isset( $schema['properties']['id'] ) ) {
+//             $post_data['id'] = (int) $post->ID;
+// 		}
+// 		if ( isset( $schema['properties']['title'] ) ) {
+//             $post_data['title'] = $post->post_title;
+// 		}
+// 		if ( isset( $schema['properties']['name'] ) ) {
+//             $post_data['name'] = $post->post_name;
+//         }
+// 		if ( isset( $schema['properties']['submenu'] ) ) {
+//             $post_data['submenu'] = $post->submenu;
+// 		}
+// 		if ( isset( $schema['properties']['menuid'] ) ) {
+//             $post_data['menuid'] = $post->acf['menuid'];
+// 		}
+// 		if ( isset( $schema['properties']['status'] ) ) {
+//             $post_data['status'] = $post->post_status;
+// 		}
+//         return rest_ensure_response( $post_data );
+// 	}
+
+// 	/**
+// 	* Prepare a response for inserting into a collection of responses.
+// 	*
+// 	* This is copied from WP_REST_Controller class in the WP REST API v2 plugin.
+// 	*
+// 	* @param WP_REST_Response $response Response object.
+// 	* @return array Response data, ready for insertion into collection data.
+//     */
+// 	public function prepare_response_for_collection( $response ) {
+// 		if ( ! ( $response instanceof WP_REST_Response ) ) {
+// 			return $response;
+// 		}
+
+// 		$data = (array) $response->get_data();
+// 		$server = rest_get_server();
+
+// 		if ( method_exists( $server, 'get_compact_response_links' ) ) {
+// 			$links = call_user_func( array( $server, 'get_compact_response_links' ), $response );
+// 		} else {
+// 			$links = call_user_func( array( $server, 'get_response_links' ), $response );
+// 		}
+
+// 		if ( ! empty( $links ) ) {
+// 			$data['_links'] = $links;
+// 		}
+
+// 		return $data;
+// 	}
+
+//     /**
+//     * Get our sample schema for a post.
+//     *
+//     * @param WP_REST_Request $request Current request.
+//     */
+// 	public function get_item_schema( $request ) {
+// 		$schema = array(
+// 			// This tells the spec of JSON Schema we are using which is draft 4.
+// 			'$schema'              => 'http://json-schema.org/draft-04/schema#',
+// 			// The title property marks the identity of the resource.
+// 			'title'                => $this->resource_name,
+// 			'type'                 => 'object',
+// 			// In JSON Schema you can specify object properties in the properties attribute.
+// 			'properties'           => array(
+// 				'id' => array(
+// 					'description'  => esc_html__( 'Unique identifier for the object.', 'my-textdomain' ),
+// 					'type'         => 'integer',
+// 					'context'      => array( 'view', 'edit', 'embed' ),
+// 					'readonly'     => true,
+// 				),
+// 				'title' => array(
+// 					'description'  => esc_html__( 'Menu item title.', 'my-textdomain' ),
+// 					'type'         => 'string',
+// 				),
+// 				'name' => array(
+// 					'description'  => esc_html__( 'Menu item slug.', 'my-textdomain' ),
+// 					'type'         => 'string',
+// 				),
+// 				'submenu' => array(
+// 					'description'  => esc_html__( 'Aloha submenu.', 'my-textdomain' ),
+// 					'type'         => 'string',
+// 				),
+// 				'content' => array(
+// 					'description'  => esc_html__( 'The content for the object.', 'my-textdomain' ),
+// 					'type'         => 'string',
+// 				),
+// 				'menuid' => array(
+// 					'description'  => esc_html__( 'Aloha MenuItemId.', 'my-textdomain' ),
+// 					'type'         => 'string',
+// 				),
+// 				'status' => array(
+// 					'description'  => esc_html__( 'Menu item available.', 'my-textdomain' ),
+// 					'type'         => 'string',
+// 				),
+// 			),
+// 		);
+
+// 		return $schema;
+// 	}
+
+// 	// Sets up the proper HTTP status code for authorization.
+// 	public function authorization_status_code() {
+
+// 		$status = 401;
+
+// 		if ( is_user_logged_in() ) {
+// 			$status = 403;
+// 		}
+
+// 		return $status;
+// 	}
+
+// }
+
 
 add_action( 'init', function() {
 	add_rewrite_rule( '^menu/(.*)/([^/]+)/?$','index.php?menu_item=$matches[2]','top' );
-
 	$object_type = 'post';
+
 	$options = array(
 		'type' => 'string',
 		'single' => true,
@@ -322,53 +563,16 @@ add_action( 'init', function() {
 
 });
 
-add_filter( 'post_type_link', function( $link, $post ) {
-	// if ( 'menu_item' == get_post_type( $post ) ) {
-		$post_id = $post->ID;
-		// var_dump($post); die();
-		$meta_key = 'submenu';
-		$meta_data = get_post_meta( $post_id, 'submenu' );
-		// var_dump($post, $meta_data); die();
-		if( $meta_data ) {
-			return str_replace( '%category-name%', $meta_data[0], $link );
-		}
-	// }
-	return $link;
-}, 10, 2 );
-
-add_action( 'rest_api_init', 'create_api_posts_meta_field' );
-
-function create_api_posts_meta_field() {
-	// register_rest_field ( 'name-of-post-type', 'name-of-field-to-return', array-of-callbacks-and-schema() )
-	register_rest_field( 'menu_item', 'submenu', array(
-		'get_callback' => 'get_post_meta_for_api',
-		'update_callback' => 'update_post_meta_for_api',
-		'schema' => null,
-	));
-}
-
-function get_post_meta_for_api( $object, $field_name, $request, $object_type ) {
-	// if ( 'menu_item' == get_post_type( $post ) ) {
-		//get the id of the post object array
-		$post_id = $object['id'];
-		//return the post meta
-		return get_post_meta( $post_id )['submenu'][0];
-	// }
-	// return true;
-}
-function update_post_meta_for_api( $value, $object, $field_name, $request ) {
-	// if ( 'menu_item' == get_post_type( $post ) ) {
-		//get the id of the post object array
-		// var_dump($value, $object); die();
-		return update_post_meta($object['id'], $field_name, $value, true);
-		//return the post meta
-		// return get_post_meta( $post_id )['menu_category'][0];
-	// }
-	// return true;
-}
+// function register_custom_endpoint() {
+// 	$controller = new Custom_Endpoint_REST_Controller('local-menu', 'menu_items');
+// 	$controller->register_routes();
+// }
 
 add_action( 'init', 'blog_post', 0 );
 add_action( 'init', 'menu_item', 0 );
 add_action( 'init', 'menu_categories', 0 );
 add_action( 'init', 'landing_page', 0 );
+add_action( 'rest_api_init', 'create_api_posts_meta_field' );
+add_action( 'rest_api_init', 'register_custom_endpoint' );
+add_action( 'save_post', 'save_menu_categories_meta_box_data' );
 ?>

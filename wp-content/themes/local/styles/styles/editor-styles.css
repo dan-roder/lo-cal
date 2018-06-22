@@ -1,0 +1,33 @@
+.promotion-text{
+  font-size: 20px;
+  color: #1e1e1e;
+  margin: 10px 0;
+}
+
+.red-button a{
+  text-align: center;
+  color: #fff;
+  display: inline-block;
+  border-radius: 3px;
+  padding: 8px 40px 10px;
+  text-decoration: none;
+  text-transform: uppercase;
+  box-shadow: 1px 2px 4px 0 rgba(0, 0, 0, 0.23);
+  background: #ff0f1b;
+  letter-spacing: 1.1px;
+  font-size: 18px;
+}
+
+.black-button a{
+  text-align: center;
+  color: #e1e1e1;
+  display: inline-block;
+  border-radius: 3px;
+  padding: 8px 40px 10px;
+  text-decoration: none;
+  text-transform: uppercase;
+  box-shadow: 1px 2px 4px 0 rgba(0, 0, 0, 0.23);
+  background: #1e1e1e;
+  letter-spacing: 1.1px;
+  font-size: 18px;
+}
