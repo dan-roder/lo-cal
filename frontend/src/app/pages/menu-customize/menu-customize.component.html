@@ -64,9 +64,9 @@
         </div>
       </div>
 
-      <div class="size-wrapper">
+      <div class="size-wrapper" *ngIf="multipleSalesItems.length > 0">
         <label for="size" class="text">Size</label>
-        <select name="size" id="size" *ngIf="multipleSalesItems.length > 0" class="custom white-bg" [(ngModel)]="sizeChoice" (ngModelChange)="updateDataPerSize(sizeChoice)">
+        <select name="size" id="size" class="custom white-bg" [(ngModel)]="sizeChoice" (ngModelChange)="updateDataPerSize(sizeChoice)">
           <option [value]="salesItem?.SalesItemId" *ngFor="let salesItem of multipleSalesItems">{{ salesItem?.DisplayName }}</option>
         </select>
       </div>
