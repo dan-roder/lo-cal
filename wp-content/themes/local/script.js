@@ -6,7 +6,7 @@ jQuery(document).ready( function ($) {
         $(".loader").show();
         $.ajax({
             method: "GET",
-            url: "http://localhost:3000/menu-sync/start",
+            url: "http://138.197.123.70/menu-sync/start",
         })
         .done(function( response ) {
             console.log( response );
