@@ -1,8 +1,8 @@
 <?php
-  // Register Custom Post Type
+// Register Custom Post Type
 function landing_page() {
 
-  $labels = array(
+$labels = array(
     'name'                  => _x( 'Landing Pages', 'Post Type General Name', 'text_domain' ),
     'singular_name'         => _x( 'Landing Page', 'Post Type Singular Name', 'text_domain' ),
     'menu_name'             => __( 'Landing Pages', 'text_domain' ),
@@ -30,20 +30,20 @@ function landing_page() {
     'items_list'            => __( 'Items list', 'text_domain' ),
     'items_list_navigation' => __( 'Items list navigation', 'text_domain' ),
     'filter_items_list'     => __( 'Filter items list', 'text_domain' ),
-  );
-  $args = array(
+);
+$args = array(
     'label'                 => __( 'Landing Page', 'text_domain' ),
     'description'           => __( 'Landing Pages with multiple different options for content to be displayed on the page', 'text_domain' ),
     'labels'                => $labels,
     'supports'              => array(
-      'title',
-      'editor',
-      'thumbnail',
-      'page-attributes'
+		'title',
+		'editor',
+		'thumbnail',
+		'page-attributes'
     ),
     'rewrite'               => array(
-      'slug' => '/',
-      'with_front' => false
+		'slug' => '/',
+		'with_front' => false
     ),
     'show_in_rest'          => true,
     'rest_base'             => 'landing_page',
@@ -339,6 +339,8 @@ class Custom_Endpoint_REST_Controller extends WP_REST_Controller {
 
     // Here initialize our namespace and resource name.
     public function __construct($namespace, $resource_name) {
+
+		// There are schema warnings, turns them off
 		if( defined('WP_DEBUG') ){
 			if( false === WP_DEBUG) {
 				error_reporting(0);

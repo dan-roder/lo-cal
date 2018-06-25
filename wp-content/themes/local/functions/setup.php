@@ -106,4 +106,20 @@ add_filter( 'acf/rest_api/field_settings/show_in_rest', '__return_true' );
 
 // Enable the option edit in rest
 add_filter( 'acf/rest_api/field_settings/edit_in_rest', '__return_true' );
+
+function my_enqueue($hook) {
+  // var_dump($hook);die();
+  if ( 'menu_item_page_menu_sync_admin' != $hook ) {
+      return;
+  }
+
+  wp_enqueue_script( 'custom_script', get_template_directory_uri() . '/script.js', array( 'jquery' ) );
+}
+
+add_action( 'admin_enqueue_scripts', 'my_enqueue' );
+// Update CSS within in Admin
+function admin_style() {
+  wp_enqueue_style('admin-styles', get_template_directory_uri().'/menu-sync.css');
+}
+add_action('admin_enqueue_scripts', 'admin_style');
 ?>
