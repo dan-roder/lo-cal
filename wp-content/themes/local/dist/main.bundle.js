@@ -2222,6 +2222,7 @@ var MenuCustomizeComponent = /** @class */ (function () {
     };
     MenuCustomizeComponent.prototype.removeModifier = function (modGroup, modifierClicked) {
         var currentSelectionsArray = this.customizationData[modGroup.$id]['currentlySelected'];
+        console.log(currentSelectionsArray);
         // If max selections for the current group is not reached
         if (currentSelectionsArray.length > 0) {
             var indexToRemove = __WEBPACK_IMPORTED_MODULE_5_lodash__["findIndex"](currentSelectionsArray, { '$id': modifierClicked.$id });
@@ -2234,6 +2235,7 @@ var MenuCustomizeComponent = /** @class */ (function () {
                 this.customizationData[modGroup.$id].modifiers[modifierClicked.$id]['quantity'] -= 1;
             }
             // Subract from calorie count if the modifier has calorie changes
+            console.log(indexToRemove);
             // TODO: Clicking a minus button when modifiers are full triggers price to decrement
             if (modifierClicked.ItemModifiers.length > 0) {
                 this.calorieCount -= modifierClicked.ItemModifiers[0].CaloricValue;
@@ -2764,7 +2766,7 @@ var PostComponent = /** @class */ (function () {
 /***/ "./src/app/pages/sub-menu/sub-menu.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"page-landing-page\">\n  <header class=\"header-container\">\n    <div class=\"content\" [ngStyle]=\"{'background-image':'url(//via.placeholder.com/1440x760)'}\">\n      <div class=\"header-content text-center\">\n        <h1 [innerHtml]=\"pageContent?.title?.rendered\"></h1>\n        <h2 *ngIf=\"pageContent?.content?.rendered\" [innerHtml]=\"pageContent?.content?.rendered\"></h2>\n        <ng-content></ng-content>\n      </div>\n    </div>\n  </header>\n\n  <div class=\"menu-menu\">\n    <ul class=\"menu\">\n      <li *ngFor=\"let item of subMenuLinks\" [attr.class]=\"item.classes ? item.classes : null\">\n        <!-- TODO: Ensure all of these routerlinks work. currently aren't properly routing -->\n        <a [routerLink]=\"['/menu', item.object_slug]\" routerLinkActive=\"active\" [routerLinkActiveOptions]=\"{exact:true}\" [innerHtml]=\"item?.title | safeHtml\"></a>\n      </li>\n    </ul>\n  </div>\n\n  <!-- Menu Card Layout HTML -->\n  <div class=\"section-white menu-categories center\" id=\"featured\">\n    <h2 class=\"capitalize text-center\" [innerHtml]=\"pageContent?.title?.rendered\"></h2>\n    <p class=\"sub-menu-description\" *ngIf=\"subMenuItems?.menu[0]?.Description\">\n      {{ subMenuItems?.menu[0]?.Description }}\n    </p>\n\n    <div class=\"content clearfix sub-menu-cards-wrapper\">\n\n      <div class=\"menu-card\" *ngFor=\"let item of subMenuItems?.menuItems\">\n        <div class=\"card-wrapper\">\n          <div class=\"image\">\n            <a [routerLink]=\"(item?.DisplayName | safeUrl)\"><img [src]=\"//via.placeholder.com/265x115\" alt=\"\"></a>\n          </div>\n          <div class=\"details\">\n            <h4 class=\"title\"><a [routerLink]=\"(item?.DisplayName | safeUrl)\">{{ item?.DisplayName }}</a></h4>\n            <div class=\"description\">\n              <p>\n                {{ (item?.Description | allergens).description }}\n              </p>\n            </div>\n            <div class=\"fine-details\">\n              <span class=\"price\">{{ item?.defaultPrice | currency }}</span>\n              <span class=\"calories\" *ngIf=\"item?.CaloricServingUnit\">{{ item?.CaloricServingUnit }} cal</span>\n              <span class=\"allergens\" *ngIf=\"(item?.Description | allergens).allergens\">\n                <span class=\"allergen\" *ngFor=\"let allergen of (item?.Description | allergens).allergens\">{{ allergen }}</span>\n              </span>\n              <button class=\"add-to-cart\" (click)=\"addToBag(item)\">Add</button>\n            </div>\n          </div>\n        </div>\n      </div><!-- /.menu-card -->\n\n    </div>\n  </div>\n  <!-- Menu Card Layout HTML -->\n</div>"
+module.exports = "<div class=\"page-landing-page\">\n  <header class=\"header-container\">\n    <div class=\"content\" [ngStyle]=\"{'background-image':'url(//via.placeholder.com/1440x760)'}\">\n      <div class=\"header-content text-center\">\n        <h1 [innerHtml]=\"pageContent?.title?.rendered\"></h1>\n        <h2 *ngIf=\"pageContent?.content?.rendered\" [innerHtml]=\"pageContent?.content?.rendered\"></h2>\n        <ng-content></ng-content>\n      </div>\n    </div>\n  </header>\n\n  <div class=\"menu-menu\">\n    <ul class=\"menu\">\n      <li *ngFor=\"let item of subMenuLinks\" [attr.class]=\"item.classes ? item.classes : null\">\n        <a [routerLink]=\"['/menu', item.object_slug]\" routerLinkActive=\"active\" [routerLinkActiveOptions]=\"{exact:true}\" [innerHtml]=\"item?.title | safeHtml\"></a>\n      </li>\n    </ul>\n  </div>\n\n  <!-- Menu Card Layout HTML -->\n  <div class=\"section-white menu-categories center\" id=\"featured\">\n    <h2 class=\"capitalize text-center\" [innerHtml]=\"pageContent?.title?.rendered\"></h2>\n    <p class=\"sub-menu-description\" *ngIf=\"subMenuItems?.menu[0]?.Description\">\n      {{ subMenuItems?.menu[0]?.Description }}\n    </p>\n\n    <div class=\"content clearfix sub-menu-cards-wrapper\">\n\n      <div class=\"menu-card\" *ngFor=\"let item of subMenuItems?.menuItems\">\n        <div class=\"card-wrapper\">\n          <div class=\"image\">\n            <a [routerLink]=\"(item?.DisplayName | safeUrl)\"><img [src]=\"//via.placeholder.com/265x115\" alt=\"\"></a>\n          </div>\n          <div class=\"details\">\n            <h4 class=\"title\"><a [routerLink]=\"(item?.DisplayName | safeUrl)\">{{ item?.DisplayName }}</a></h4>\n            <div class=\"description\">\n              <p>\n                {{ (item?.Description | allergens).description }}\n              </p>\n            </div>\n            <div class=\"fine-details\">\n              <span class=\"price\">{{ item?.defaultPrice | currency }}</span>\n              <span class=\"calories\" *ngIf=\"item?.CaloricServingUnit\">{{ item?.CaloricServingUnit }} cal</span>\n              <span class=\"allergens\" *ngIf=\"(item?.Description | allergens).allergens\">\n                <span class=\"allergen\" *ngFor=\"let allergen of (item?.Description | allergens).allergens\">{{ allergen }}</span>\n              </span>\n              <button class=\"add-to-cart\" (click)=\"addToBag(item)\">Add</button>\n            </div>\n          </div>\n        </div>\n      </div><!-- /.menu-card -->\n\n    </div>\n  </div>\n  <!-- Menu Card Layout HTML -->\n</div>"
 
 /***/ }),
 
@@ -2779,6 +2781,8 @@ module.exports = "<div class=\"page-landing-page\">\n  <header class=\"header-co
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ngx_auto_unsubscribe__ = __webpack_require__("./node_modules/ngx-auto-unsubscribe/dist/index.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__local_services_wp_service__ = __webpack_require__("./src/app/services/wp.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__local_services_bag_service__ = __webpack_require__("./src/app/services/bag.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_lodash__ = __webpack_require__("./node_modules/lodash/lodash.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_lodash___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_lodash__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -2794,6 +2798,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var SubMenuComponent = /** @class */ (function () {
     function SubMenuComponent(menuService, activatedRoute, wpService, bagService, router) {
         var _this = this;
@@ -2803,6 +2808,7 @@ var SubMenuComponent = /** @class */ (function () {
         this.bagService = bagService;
         this.router = router;
         this.subMenuId = null;
+        this.menuSlug = '';
         this.navSubscription = this.router.events.subscribe(function (e) {
             // If it is a NavigationEnd event re-initalise the component
             if (e instanceof __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* NavigationEnd */]) {
@@ -2819,14 +2825,34 @@ var SubMenuComponent = /** @class */ (function () {
     };
     SubMenuComponent.prototype.getPostAndMenuItems = function () {
         var _this = this;
-        var slug = (this.activatedRoute.snapshot.paramMap.get('category'));
+        this.menuSlug = (this.activatedRoute.snapshot.paramMap.get('category'));
         // Get custom post type
-        this.wpService.getPostBySlug(slug, 'menu_categories').subscribe(function (post) {
+        this.wpService.getPostBySlug(this.menuSlug, 'menu_categories').subscribe(function (post) {
             _this.pageContent = post[0];
             _this.acf = post[0].acf;
             _this.subMenuId = _this.acf.submenuid;
-            _this.menuService.getSubMenuItems(_this.subMenuId).subscribe(function (_subMenuItems) {
-                _this.subMenuItems = _subMenuItems;
+            _this.menuService.getSubMenuItems(_this.subMenuId).subscribe(function (subMenuItems) {
+                _this.subMenuItems = subMenuItems;
+                console.log(subMenuItems);
+            });
+        });
+        if (this.menuMap === undefined) {
+            this.wpService.getMenuMapObject().subscribe(function (menuMap) {
+                _this.menuMap = menuMap;
+                _this.wpSubMenuItems = __WEBPACK_IMPORTED_MODULE_6_lodash__["filter"](menuMap, { 'submenu': _this.menuSlug });
+                console.log(_this.wpSubMenuItems);
+                _this.getImagesForItems();
+            });
+        }
+        else {
+            this.getImagesForItems();
+        }
+    };
+    SubMenuComponent.prototype.getImagesForItems = function () {
+        var wpService = this.wpService;
+        __WEBPACK_IMPORTED_MODULE_6_lodash__["forEach"](this.wpSubMenuItems, function (val, index) {
+            wpService.getCustomPostTypeById('menu_item', val.id).subscribe(function (post) {
+                console.log(post);
             });
         });
     };
@@ -3680,6 +3706,11 @@ var WordpressService = /** @class */ (function () {
     WordpressService.prototype.getSubMenuImage = function (postId) {
         return this.httpClient.get(this.config.wordpressApiUrl + ("/menu_item/v1/menuid/" + postId)).map(function (image) {
             return image;
+        });
+    };
+    WordpressService.prototype.getMenuMapObject = function () {
+        return this.httpClient.get(this.config.wordpressApiUrl + "/local-menu/v1/menu_items").map(function (result) {
+            return result;
         });
     };
     WordpressService = __decorate([

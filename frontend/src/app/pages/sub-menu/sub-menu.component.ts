@@ -24,6 +24,9 @@ export class SubMenuComponent implements OnInit {
   public images: Array<any>;
   public navSubscription : any;
   public headerImage : any;
+  public menuMap : any;
+  private menuSlug : string = '';
+  public wpSubMenuItems : any;
 
   constructor(private menuService: MenuService, private activatedRoute: ActivatedRoute, private wpService: WordpressService, private bagService: BagService, private router: Router) {
     this.navSubscription = this.router.events.subscribe((e: any) => {
@@ -43,20 +46,43 @@ export class SubMenuComponent implements OnInit {
   }
 
   public getPostAndMenuItems(){
-    let slug = (this.activatedRoute.snapshot.paramMap.get('category'));
+    this.menuSlug = (this.activatedRoute.snapshot.paramMap.get('category'));
     // Get custom post type
-    this.wpService.getPostBySlug(slug, 'menu_categories').subscribe(post => {
+    this.wpService.getPostBySlug(this.menuSlug, 'menu_categories').subscribe(post => {
       this.pageContent = post[0];
       this.acf = post[0].acf;
       this.subMenuId = this.acf.submenuid;
 
-      this.menuService.getSubMenuItems(this.subMenuId).subscribe(_subMenuItems => {
-        this.subMenuItems = _subMenuItems;
+      this.menuService.getSubMenuItems(this.subMenuId).subscribe(subMenuItems => {
+        this.subMenuItems = subMenuItems;
+        console.log(subMenuItems);
       });
     });
+
+    if(this.menuMap === undefined){
+      this.wpService.getMenuMapObject().subscribe(menuMap => {
+        this.menuMap = menuMap;
+        this.wpSubMenuItems = _.filter(menuMap, {'submenu' : this.menuSlug});
+        console.log(this.wpSubMenuItems);
+        this.getImagesForItems();
+      })
+    }
+    else{
+      this.getImagesForItems();
+    }
   }
 
-  addToBag(item){
+  public getImagesForItems(){
+    let wpService = this.wpService;
+    _.forEach(this.wpSubMenuItems, function(val, index){
+
+      wpService.getCustomPostTypeById('menu_item', val.id).subscribe(post => {
+        console.log(post);
+      })
+    })
+  }
+
+  public addToBag(item){
     // Push full object to bag service
     this.bagService.quickAddLineItem(item);
   }

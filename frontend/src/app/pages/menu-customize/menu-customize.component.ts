@@ -76,6 +76,7 @@ export class MenuCustomizeComponent implements OnInit {
   public removeModifier(modGroup, modifierClicked){
     let currentSelectionsArray = this.customizationData[modGroup.$id]['currentlySelected'];
 
+    console.log(currentSelectionsArray);
     // If max selections for the current group is not reached
     if(currentSelectionsArray.length > 0){
       let indexToRemove = _.findIndex(currentSelectionsArray, {'$id' : modifierClicked.$id});
@@ -93,7 +94,7 @@ export class MenuCustomizeComponent implements OnInit {
       }
 
       // Subract from calorie count if the modifier has calorie changes
-
+      console.log(indexToRemove);
       // TODO: Clicking a minus button when modifiers are full triggers price to decrement
       if(modifierClicked.ItemModifiers.length > 0 ){
 
