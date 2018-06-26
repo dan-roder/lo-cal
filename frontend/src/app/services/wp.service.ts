@@ -104,4 +104,10 @@ export class WordpressService {
     })
   }
 
+  getMenuMapObject(){
+    return this.httpClient.get(this.config.wordpressApiUrl + `/local-menu/v1/menu_items`).map(result => {
+      return result;
+    })
+  }
+
 }
