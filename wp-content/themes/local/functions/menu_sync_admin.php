@@ -12,7 +12,7 @@ function menu_sync_admin() {
 
 function lo_sync_admin() {
     ?>
-    <div class="wrap">
+    <div class="lo-cal-wrap">
         <h1>Sync Aloha Menu</h1>
         <p>Below are options to sync the menu items offered with your current menu on Aloha POS.<p>
         <button class="button start-sync" id="start">Start</button>
@@ -22,8 +22,12 @@ function lo_sync_admin() {
             <div id="old_items" class="item"></div>
             <div id="current_items" class="item"></div>
         </div>
-        <div class="loader"></div>
-        <div id="error"></div>
+        <div class="loader-wrap">
+            <div class="loader"></div>
+        </div>
+        <div class="error-wrap">
+            <div id="error"></div>
+        </div>
     </div>
     <?php
 }

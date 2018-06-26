@@ -1,12 +1,18 @@
 jQuery(document).ready( function ($) {
     var new_items, old_items, current_items, url;
+    BASE_URL = "http://138.197.123.70/";
+    // BASE_URL = "http://localhost:300/";
     $("#start").on('click', function(e){
         e.preventDefault();
         console.log("CLICK!");
         $(".loader").show();
+        if( $("#sync-items").is(":visible") ) {
+            $("#sync-items").hide();
+        }
+        $("#error").html('');
         $.ajax({
             method: "GET",
-            url: "http://138.197.123.70/menu-sync/start",
+            url: BASE_URL + "menu-sync/start",
         })
         .done(function( response ) {
             console.log( response );
@@ -34,15 +40,19 @@ jQuery(document).ready( function ($) {
                 $("#new_items").html(new_items_html);
                 $("#old_items").html(old_items_html);
                 $("#current_items").html(current_items_html);
+                if( $("#error").is(":visible") ) {
+                    $("#error").hide();
+                }
                 syncButtons(new_items, old_items, current_items);
 
             });
         })
         .fail( function( jqXHR, textStatus ){
+            $(".loader").hide();
             handleError( jqXHR, textStatus ).then(function( error ){
                 console.log( error );
-                error_item = '<p> There was an error</p>';
-                error_item += '<h3>' + response.stausText + '</h3><pre>' + JSON.stringify(response) + '<pre>';
+                error_item = '<p> There was an error: ' + error['status'] + '</p>';
+                error_item += '<h3>' + error['text'] + '</h3><pre>' + error['message'] + '<pre>';
                 $("#error").html(error_item);
             });
         });
@@ -54,10 +64,9 @@ jQuery(document).ready( function ($) {
             "old_items" : old_items,
             "current_items" : current_items
         };
-        $(".button.sync-items").each(function(index, value) {
+        $(".button.sync-items").each(function() {
             $this = $(this);
             console.log($this);
-            // lookupKey = $this.attr('id');
             $this.click(function(e) {
                 e.preventDefault();
                 $(".loader").show();
@@ -65,12 +74,11 @@ jQuery(document).ready( function ($) {
                 console.log(lookup[e.target.id]);
                 items = lookup[e.target.id];
                 if ( e.target.id === 'new_items' && lookup['current_items'].length === 0) {
-                    url = "http://138.197.123.70/menu-sync/init";
-                    console.log(url);
+                    // All new items, zero current items
+                    url = BASE_URL + "menu-sync/init";
                 } else {
-                    url = "http://138.197.123.70/menu-sync/" + e.target.id;
-                    console.log(url);
-                    console.log(lookup['current_items'].length === 0);
+                    // New items and current items
+                    url = BASE_URL + "/menu-sync/" + e.target.id;
                 }
                 $.ajax({
                     method: "POST",
@@ -85,10 +93,13 @@ jQuery(document).ready( function ($) {
                     successMessage = '';
                     successMessage += "<p>" + items.length + " " + e.target.id + " updated.</p>";
                     $itemSet.html(successMessage);
+                    if( $("#error").is(":visible") ) {
+                        $("#error").hide();
+                    }
                 })
                 .fail(function( jqXHR, textStatus ){
                     $(".loader").hide();
-                    console.log(jqXHR);
+                    console.log(jqXHR.error);
                     handleError( jqXHR, textStatus ).then(function( error ){
                         console.log( error );
                         error_item = '<p> There was an error: ' + error['status'] + '</p>';
@@ -102,15 +113,12 @@ jQuery(document).ready( function ($) {
 
     function handleError( response, status ){
         return new Promise( function ( resolve, reject) {
-            resp = response.responseJSON
-            console.log(resp);
-            resolve({   status: resp['status'],
-                        text: resp['error'],
-                        message: JSON.stringify(resp['exception'])});
-        });
-
-    }
-
+            resp = response.responseJSON ? response.responseJSON : response.responseText;
+            resolve({   status: resp['status'] ? resp['status'] : response.status,
+                        text: resp['error'] ? resp['error'] : status,
+                        message: resp['exception'] ? JSON.stringify(resp['exception']) : "There was an error, please try again." });
+        }
+    )};
 });
 
 
