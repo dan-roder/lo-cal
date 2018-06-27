@@ -17,6 +17,7 @@ export class CardImagePipe implements PipeTransform {
       console.log(postObj);
 
       return this.wpService.getCustomPostTypeById('menu_item', postObj.id).map(post => {
+        console.log(post);
         if(post.acf.submenu_image !== undefined){
           return post.acf.submenu_image.url;
         }

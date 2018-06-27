@@ -2951,6 +2951,7 @@ var CardImagePipe = /** @class */ (function () {
             var postObj = __WEBPACK_IMPORTED_MODULE_2_lodash__["find"](menuItemMap, { 'menuid': String(alohaMenuId) });
             console.log(postObj);
             return this.wpService.getCustomPostTypeById('menu_item', postObj.id).map(function (post) {
+                console.log(post);
                 if (post.acf.submenu_image !== undefined) {
                     return post.acf.submenu_image.url;
                 }
