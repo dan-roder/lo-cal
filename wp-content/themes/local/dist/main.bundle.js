@@ -2844,6 +2844,9 @@ var SubMenuComponent = /** @class */ (function () {
                 _this.wpSubMenuItems = __WEBPACK_IMPORTED_MODULE_6_lodash__["filter"](menuMap, { 'submenu': _this.menuSlug });
             });
         }
+        else {
+            this.wpSubMenuItems = __WEBPACK_IMPORTED_MODULE_6_lodash__["filter"](this.menuMap, { 'submenu': this.menuSlug });
+        }
     };
     SubMenuComponent.prototype.addToBag = function (item) {
         // Push full object to bag service
@@ -2929,6 +2932,8 @@ var AllergensPipe = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__local_services_wp_service__ = __webpack_require__("./src/app/services/wp.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_lodash__ = __webpack_require__("./node_modules/lodash/lodash.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_lodash___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_lodash__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs__ = __webpack_require__("./node_modules/rxjs/Rx.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -2941,26 +2946,28 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var CardImagePipe = /** @class */ (function () {
     function CardImagePipe(wpService) {
         this.wpService = wpService;
     }
     CardImagePipe.prototype.transform = function (alohaMenuId, menuItemMap) {
-        console.log(alohaMenuId);
         if (alohaMenuId) {
             var postObj = __WEBPACK_IMPORTED_MODULE_2_lodash__["find"](menuItemMap, { 'menuid': String(alohaMenuId) });
-            console.log(postObj);
-            return this.wpService.getCustomPostTypeById('menu_item', postObj.id).map(function (post) {
-                console.log(post);
-                if (post.acf.submenu_image !== undefined) {
-                    return post.acf.submenu_image.url;
-                }
-                else {
-                    return "//via.placeholder.com/265x115";
-                }
-            });
+            if (postObj !== undefined) {
+                return this.wpService.getCustomPostTypeById('menu_item', postObj.id).map(function (post) {
+                    if (post.acf.submenu_image !== undefined) {
+                        return post.acf.submenu_image.url;
+                    }
+                    else {
+                        return "//via.placeholder.com/265x115";
+                    }
+                });
+            }
+            else {
+                return __WEBPACK_IMPORTED_MODULE_3_rxjs__["Observable"].of("//via.placeholder.com/265x115");
+            }
         }
-        return "//via.placeholder.com/265x115";
     };
     CardImagePipe = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Pipe"])({
