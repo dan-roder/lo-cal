@@ -539,6 +539,7 @@ var AppComponent = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_56_ng2_responsive__ = __webpack_require__("./node_modules/ng2-responsive/index.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_56_ng2_responsive___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_56_ng2_responsive__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_57__shared_directives_month_mask_directive__ = __webpack_require__("./src/app/shared/directives/month-mask.directive.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_58__pipes_card_image_pipe__ = __webpack_require__("./src/app/pipes/card-image.pipe.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -612,6 +613,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 // Modules
 
 
+
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
@@ -656,7 +658,8 @@ var AppModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_11__layouts_account_layout_account_layout_component__["a" /* AccountLayoutComponent */],
                 __WEBPACK_IMPORTED_MODULE_50__pipes_card_type_pipe__["a" /* CardTypePipe */],
                 __WEBPACK_IMPORTED_MODULE_51__pipes_safe_url_pipe__["a" /* SafeUrlPipe */],
-                __WEBPACK_IMPORTED_MODULE_28__pages_order_detail_order_detail_component__["a" /* OrderDetailComponent */]
+                __WEBPACK_IMPORTED_MODULE_28__pages_order_detail_order_detail_component__["a" /* OrderDetailComponent */],
+                __WEBPACK_IMPORTED_MODULE_58__pipes_card_image_pipe__["a" /* CardImagePipe */]
             ],
             imports: [
                 __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
@@ -2766,7 +2769,7 @@ var PostComponent = /** @class */ (function () {
 /***/ "./src/app/pages/sub-menu/sub-menu.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"page-landing-page\">\n  <header class=\"header-container\">\n    <div class=\"content\" [ngStyle]=\"{'background-image':'url(//via.placeholder.com/1440x760)'}\">\n      <div class=\"header-content text-center\">\n        <h1 [innerHtml]=\"pageContent?.title?.rendered\"></h1>\n        <h2 *ngIf=\"pageContent?.content?.rendered\" [innerHtml]=\"pageContent?.content?.rendered\"></h2>\n        <ng-content></ng-content>\n      </div>\n    </div>\n  </header>\n\n  <div class=\"menu-menu\">\n    <ul class=\"menu\">\n      <li *ngFor=\"let item of subMenuLinks\" [attr.class]=\"item.classes ? item.classes : null\">\n        <a [routerLink]=\"['/menu', item.object_slug]\" routerLinkActive=\"active\" [routerLinkActiveOptions]=\"{exact:true}\" [innerHtml]=\"item?.title | safeHtml\"></a>\n      </li>\n    </ul>\n  </div>\n\n  <!-- Menu Card Layout HTML -->\n  <div class=\"section-white menu-categories center\" id=\"featured\">\n    <h2 class=\"capitalize text-center\" [innerHtml]=\"pageContent?.title?.rendered\"></h2>\n    <p class=\"sub-menu-description\" *ngIf=\"subMenuItems?.menu[0]?.Description\">\n      {{ subMenuItems?.menu[0]?.Description }}\n    </p>\n\n    <div class=\"content clearfix sub-menu-cards-wrapper\">\n\n      <div class=\"menu-card\" *ngFor=\"let item of subMenuItems?.menuItems\">\n        <div class=\"card-wrapper\">\n          <div class=\"image\">\n            <a [routerLink]=\"(item?.DisplayName | safeUrl)\"><img [src]=\"//via.placeholder.com/265x115\" alt=\"\"></a>\n          </div>\n          <div class=\"details\">\n            <h4 class=\"title\"><a [routerLink]=\"(item?.DisplayName | safeUrl)\">{{ item?.DisplayName }}</a></h4>\n            <div class=\"description\">\n              <p>\n                {{ (item?.Description | allergens).description }}\n              </p>\n            </div>\n            <div class=\"fine-details\">\n              <span class=\"price\">{{ item?.defaultPrice | currency }}</span>\n              <span class=\"calories\" *ngIf=\"item?.CaloricServingUnit\">{{ item?.CaloricServingUnit }} cal</span>\n              <span class=\"allergens\" *ngIf=\"(item?.Description | allergens).allergens\">\n                <span class=\"allergen\" *ngFor=\"let allergen of (item?.Description | allergens).allergens\">{{ allergen }}</span>\n              </span>\n              <button class=\"add-to-cart\" (click)=\"addToBag(item)\">Add</button>\n            </div>\n          </div>\n        </div>\n      </div><!-- /.menu-card -->\n\n    </div>\n  </div>\n  <!-- Menu Card Layout HTML -->\n</div>"
+module.exports = "<div class=\"page-landing-page\">\n  <header class=\"header-container\">\n    <div class=\"content\" [ngStyle]=\"{'background-image':'url(//via.placeholder.com/1440x760)'}\">\n      <div class=\"header-content text-center\">\n        <h1 [innerHtml]=\"pageContent?.title?.rendered\"></h1>\n        <h2 *ngIf=\"pageContent?.content?.rendered\" [innerHtml]=\"pageContent?.content?.rendered\"></h2>\n        <ng-content></ng-content>\n      </div>\n    </div>\n  </header>\n\n  <div class=\"menu-menu\">\n    <ul class=\"menu\">\n      <li *ngFor=\"let item of subMenuLinks\" [attr.class]=\"item.classes ? item.classes : null\">\n        <a [routerLink]=\"['/menu', item.object_slug]\" routerLinkActive=\"active\" [routerLinkActiveOptions]=\"{exact:true}\" [innerHtml]=\"item?.title | safeHtml\"></a>\n      </li>\n    </ul>\n  </div>\n\n  <!-- Menu Card Layout HTML -->\n  <div class=\"section-white menu-categories center\" id=\"featured\">\n    <h2 class=\"capitalize text-center\" [innerHtml]=\"pageContent?.title?.rendered\"></h2>\n    <p class=\"sub-menu-description\" *ngIf=\"subMenuItems?.menu[0]?.Description\">\n      {{ subMenuItems?.menu[0]?.Description }}\n    </p>\n\n    <div class=\"content clearfix sub-menu-cards-wrapper\">\n\n      <div class=\"menu-card\" *ngFor=\"let item of subMenuItems?.menuItems\">\n        <div class=\"card-wrapper\">\n          <div class=\"image\">\n            <a [routerLink]=\"(item?.DisplayName | safeUrl)\"><img src=\"{{ item?.MenuItemId | cardImage:wpSubMenuItems | async }}\" alt=\"\"></a>\n          </div>\n          <div class=\"details\">\n            <h4 class=\"title\"><a [routerLink]=\"(item?.DisplayName | safeUrl)\">{{ item?.DisplayName }}</a></h4>\n            <div class=\"description\">\n              <p>\n                {{ (item?.Description | allergens).description }}\n              </p>\n            </div>\n            <div class=\"fine-details\">\n              <span class=\"price\">{{ item?.defaultPrice | currency }}</span>\n              <span class=\"calories\" *ngIf=\"item?.CaloricServingUnit\">{{ item?.CaloricServingUnit }} cal</span>\n              <span class=\"allergens\" *ngIf=\"(item?.Description | allergens).allergens\">\n                <span class=\"allergen\" *ngFor=\"let allergen of (item?.Description | allergens).allergens\">{{ allergen }}</span>\n              </span>\n              <button class=\"add-to-cart\" (click)=\"addToBag(item)\">Add</button>\n            </div>\n          </div>\n        </div>\n      </div><!-- /.menu-card -->\n\n    </div>\n  </div>\n  <!-- Menu Card Layout HTML -->\n</div>"
 
 /***/ }),
 
@@ -2833,28 +2836,14 @@ var SubMenuComponent = /** @class */ (function () {
             _this.subMenuId = _this.acf.submenuid;
             _this.menuService.getSubMenuItems(_this.subMenuId).subscribe(function (subMenuItems) {
                 _this.subMenuItems = subMenuItems;
-                console.log(subMenuItems);
             });
         });
         if (this.menuMap === undefined) {
             this.wpService.getMenuMapObject().subscribe(function (menuMap) {
                 _this.menuMap = menuMap;
                 _this.wpSubMenuItems = __WEBPACK_IMPORTED_MODULE_6_lodash__["filter"](menuMap, { 'submenu': _this.menuSlug });
-                console.log(_this.wpSubMenuItems);
-                _this.getImagesForItems();
             });
         }
-        else {
-            this.getImagesForItems();
-        }
-    };
-    SubMenuComponent.prototype.getImagesForItems = function () {
-        var wpService = this.wpService;
-        __WEBPACK_IMPORTED_MODULE_6_lodash__["forEach"](this.wpSubMenuItems, function (val, index) {
-            wpService.getCustomPostTypeById('menu_item', val.id).subscribe(function (post) {
-                console.log(post);
-            });
-        });
     };
     SubMenuComponent.prototype.addToBag = function (item) {
         // Push full object to bag service
@@ -2925,6 +2914,58 @@ var AllergensPipe = /** @class */ (function () {
         })
     ], AllergensPipe);
     return AllergensPipe;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/pipes/card-image.pipe.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CardImagePipe; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__local_services_wp_service__ = __webpack_require__("./src/app/services/wp.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_lodash__ = __webpack_require__("./node_modules/lodash/lodash.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_lodash___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_lodash__);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var CardImagePipe = /** @class */ (function () {
+    function CardImagePipe(wpService) {
+        this.wpService = wpService;
+    }
+    CardImagePipe.prototype.transform = function (alohaMenuId, menuItemMap) {
+        if (alohaMenuId) {
+            var postObj = __WEBPACK_IMPORTED_MODULE_2_lodash__["find"](menuItemMap, { 'menuid': String(alohaMenuId) });
+            return this.wpService.getCustomPostTypeById('menu_item', postObj.id).map(function (post) {
+                if (post.acf.submenu_image !== undefined) {
+                    return post.acf.submenu_image.url;
+                }
+                else {
+                    return "//via.placeholder.com/265x115";
+                }
+            });
+        }
+        return "//via.placeholder.com/265x115";
+    };
+    CardImagePipe = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Pipe"])({
+            name: 'cardImage'
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__local_services_wp_service__["a" /* WordpressService */]])
+    ], CardImagePipe);
+    return CardImagePipe;
 }());
 
 
@@ -3073,9 +3114,9 @@ var SafeUrlPipe = /** @class */ (function () {
     function SafeUrlPipe() {
     }
     SafeUrlPipe.prototype.transform = function (value) {
-        value = value.toLowerCase();
-        var noChars = value.replace(/[^a-z -]/, '');
-        var doubleHyphens = noChars.replace(/[-]{2,}/, '-');
+        var lowercase = value.toLowerCase();
+        var noChars = lowercase.replace(/[^a-z -]/g, '');
+        var doubleHyphens = noChars.replace(/[-]{2,}/g, '-');
         var properUrl = doubleHyphens.replace(/\s+/g, '-');
         return properUrl;
     };
