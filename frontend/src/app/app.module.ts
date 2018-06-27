@@ -74,6 +74,7 @@ import { CheckoutPaymentComponent } from './pages/checkout-payment/checkout-paym
 // Modules
 import { ResponsiveModule } from 'ng2-responsive';
 import { MonthMaskDirective } from './shared/directives/month-mask.directive';
+import { CardImagePipe } from './pipes/card-image.pipe';
 
 
 
@@ -117,7 +118,8 @@ import { MonthMaskDirective } from './shared/directives/month-mask.directive';
     AccountLayoutComponent,
     CardTypePipe,
     SafeUrlPipe,
-    OrderDetailComponent
+    OrderDetailComponent,
+    CardImagePipe
   ],
   imports: [
     BrowserModule,
