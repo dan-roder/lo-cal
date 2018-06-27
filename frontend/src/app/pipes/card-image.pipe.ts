@@ -11,8 +11,10 @@ export class CardImagePipe implements PipeTransform {
   constructor(private wpService: WordpressService) { }
 
   transform(alohaMenuId: any, menuItemMap?: any) {
+    console.log(alohaMenuId);
     if(alohaMenuId) {
       let postObj = _.find(menuItemMap, {'menuid' : String(alohaMenuId)});
+      console.log(postObj);
 
       return this.wpService.getCustomPostTypeById('menu_item', postObj.id).map(post => {
         if(post.acf.submenu_image !== undefined){
