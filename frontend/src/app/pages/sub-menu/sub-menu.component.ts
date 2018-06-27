@@ -65,6 +65,9 @@ export class SubMenuComponent implements OnInit {
         this.wpSubMenuItems = _.filter(menuMap, {'submenu' : this.menuSlug});
       })
     }
+    else{
+      this.wpSubMenuItems = _.filter(this.menuMap, {'submenu' : this.menuSlug});
+    }
   }
 
   public addToBag(item){
