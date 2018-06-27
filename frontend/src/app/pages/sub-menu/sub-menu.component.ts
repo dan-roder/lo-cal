@@ -27,6 +27,7 @@ export class SubMenuComponent implements OnInit {
   public menuMap : any;
   private menuSlug : string = '';
   public wpSubMenuItems : any;
+  public fullPosts : any;
 
   constructor(private menuService: MenuService, private activatedRoute: ActivatedRoute, private wpService: WordpressService, private bagService: BagService, private router: Router) {
     this.navSubscription = this.router.events.subscribe((e: any) => {
@@ -55,7 +56,6 @@ export class SubMenuComponent implements OnInit {
 
       this.menuService.getSubMenuItems(this.subMenuId).subscribe(subMenuItems => {
         this.subMenuItems = subMenuItems;
-        console.log(subMenuItems);
       });
     });
 
@@ -63,23 +63,8 @@ export class SubMenuComponent implements OnInit {
       this.wpService.getMenuMapObject().subscribe(menuMap => {
         this.menuMap = menuMap;
         this.wpSubMenuItems = _.filter(menuMap, {'submenu' : this.menuSlug});
-        console.log(this.wpSubMenuItems);
-        this.getImagesForItems();
       })
     }
-    else{
-      this.getImagesForItems();
-    }
-  }
-
-  public getImagesForItems(){
-    let wpService = this.wpService;
-    _.forEach(this.wpSubMenuItems, function(val, index){
-
-      wpService.getCustomPostTypeById('menu_item', val.id).subscribe(post => {
-        console.log(post);
-      })
-    })
   }
 
   public addToBag(item){
