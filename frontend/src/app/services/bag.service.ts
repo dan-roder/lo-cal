@@ -33,7 +33,8 @@ export class BagService {
       UnitPrice : passedMenuItem.salesItems[0].Price,
       Quantity : passedMenuItem.Quantity,
       ExtendedPrice : passedMenuItem.TotalPrice * passedMenuItem.Quantity,
-      Modifiers : modifiers
+      Modifiers : modifiers,
+      cartImage : passedMenuItem.cartImage
     };
 
     // Push menuItem and lineItem into arrays
