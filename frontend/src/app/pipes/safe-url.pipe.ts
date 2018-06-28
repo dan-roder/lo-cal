@@ -7,7 +7,7 @@ export class SafeUrlPipe implements PipeTransform {
 
   transform(value: any): any {
     let lowercase = value.toLowerCase();
-    let noChars = lowercase.replace(/[^a-z -]/g, '');
+    let noChars = lowercase.replace(/[^a-z1-9 -]/g, '');
     let doubleHyphens = noChars.replace(/[-]{2,}/g, '-');
     let properUrl = doubleHyphens.replace(/\s+/g, '-');
 
