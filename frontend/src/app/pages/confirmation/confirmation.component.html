@@ -14,7 +14,7 @@
             <div class="line-items" *ngIf="orderResult?.Order?.LineItems">
               <div class="line-item flex-between" *ngFor="let lineItem of orderResult?.Order?.LineItems">
                 <div class="item-specifics">
-                  <div class="title"><span class="quantity">{{ lineItem?.Quantity }} x</span> <span class="item-name">{{ lineItem?.Name }}</span></div>
+                  <h4 class="title"><span class="quantity">{{ lineItem?.Quantity }} x</span> <span class="item-name">{{ lineItem?.Name }}</span></h4>
                   <div class="additions" *ngIf="lineItem?.Modifiers">
                     <span class="modifier" *ngFor="let mod of lineItem?.Modifiers">{{ mod?.Name }}</span>
                   </div>
