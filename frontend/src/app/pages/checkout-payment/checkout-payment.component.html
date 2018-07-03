@@ -95,34 +95,25 @@
             <div class="step-heading" (click)="editSection(3)">3. Payment</div>
             <div class="step-wrapper" [hidden]="sectionOpen !== 3">
               <form action="" class="lo-cal-form" [formGroup]="paymentForm">
-                <div class="saved-payment-wrapper" *ngIf="savedPaymentMethods">
+                <div class="saved-payment-wrapper">
                   <div class="radio-options flex-between saved-payment-wrapper">
                     <div class="option">
+                      <label for="cc">
+                        <input type="radio" name="payment-choice" id="cc" value="1" formControlName="payment-choice"  [(ngModel)]="paymentChoice">
+                        <span class="semi-bold">Pay now with a credit card</span>
+                      </label>
+                    </div>
+                    <div class="option" *ngIf="savedPaymentMethods">
                       <label for="saved-payment">
                         <input type="radio" name="payment-choice" id="saved-payment" value="3" formControlName="payment-choice"  [(ngModel)]="paymentChoice">
                         <span class="semi-bold">Pay with a saved card</span>
                       </label>
                     </div>
                   </div>
-                  <div class="saved-cards">
+                  <div class="saved-cards" *ngIf="savedPaymentMethods && paymentForm.controls['payment-choice'].value === '3'">
                     <select name="" id="" (change)="whichPayment($event.target.value)" class="custom">
-                      <option value="something">Some other payment</option>
                       <option [value]="savedPaymentMethods.AccountId" selected>{{ savedPaymentMethods.MaskedAccountNumber }}</option>
                     </select>
-                  </div>
-                </div>
-                <div class="radio-options flex-between">
-                  <div class="option">
-                    <label for="cc">
-                      <input type="radio" name="payment-choice" id="cc" value="1" formControlName="payment-choice"  [(ngModel)]="paymentChoice">
-                      <span class="semi-bold">Pay now with a credit card</span>
-                    </label>
-                  </div>
-                  <div class="option">
-                    <label for="pay-at-store">
-                      <input type="radio" name="payment-choice" id="pay-at-store" value="2" formControlName="payment-choice" [(ngModel)]="paymentChoice">
-                      <span class="semi-bold">Pay at the store</span>
-                    </label>
                   </div>
                 </div>
                 <div class="new-card-section" *ngIf="paymentForm.controls['payment-choice'].value === '1'">
@@ -162,7 +153,7 @@
                   </div>
                 </div>
                 <div class="next-step black-button step-4-button">
-                  <button [disabled]="(!paymentForm.valid && paymentChoice !== '2' && paymentChoice !== '3')"(click)="nextStep()">Next Step</button>
+                  <button [disabled]="(!paymentForm.valid && paymentChoice !== '3')"(click)="nextStep()">Next Step</button>
                 </div>
               </form>
             </div>
@@ -175,7 +166,7 @@
               <p class="question semi-bold">Your total: {{ currentOrder?.TotalAmount | currency }}</p>
             </div>
             <div class="red-button small-text" [ngClass]="processing ? 'loading' : ''">
-              <button [disabled]="(!pickupForm.valid || (!paymentForm.valid && (paymentChoice !== '2' && paymentChoice !== '3')) || !contactInfoForm.valid) && !processing" (click)="submitOrder()">Place Order Now</button>
+              <button [disabled]="(!pickupForm.valid || (!paymentForm.valid && (paymentChoice !== '3')) || !contactInfoForm.valid) && !processing" (click)="submitOrder()">Place Order Now</button>
             </div>
             <p class="terms-and-conditions small-text">
               By placing your order you agree to our Terms of Conditions. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vehicula ac orci sed venenatis. Phasellus venenatis blandit nulla non pretium. Sed id metus non nisi pulvinar dictum.
@@ -214,7 +205,7 @@
             </div>
 
             <div class="red-button full-width-button small-text" [ngClass]="processing ? 'loading' : ''">
-              <button [disabled]="(!pickupForm.valid || (!paymentForm.valid && (paymentChoice !== '2' && paymentChoice !== '3')) || !contactInfoForm.valid) && !processing" (click)="submitOrder()">Place Order Now</button>
+              <button [disabled]="(!pickupForm.valid || (!paymentForm.valid && (paymentChoice !== '3')) || !contactInfoForm.valid) && !processing" (click)="submitOrder()">Place Order Now</button>
               <span class="processing" *ngIf="processing">Please Wait...</span>
             </div>
             <p class="go-back text-center">
