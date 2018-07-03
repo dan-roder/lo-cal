@@ -4,6 +4,8 @@ import { BagService } from '@local/services/bag.service';
 import { OrderService } from '@local/services/order.service';
 import { OrderResults } from '@local/models/Order';
 import { AutoUnsubscribe } from 'ngx-auto-unsubscribe';
+import { Config } from '@local/utils/constants';
+import { WordpressService } from '@local/services/wp.service';
 
 @AutoUnsubscribe()
 
@@ -13,18 +15,26 @@ import { AutoUnsubscribe } from 'ngx-auto-unsubscribe';
 })
 export class ConfirmationComponent implements OnInit {
   public orderResult : OrderResults;
+  public activeCardClass : string = '';
+  public paidWithCardType : string = '';
+  public confirmationContent : any;
 
-  constructor(private localStorage: LocalStorage, private bagService: BagService, private orderService: OrderService) { }
+  constructor(private localStorage: LocalStorage, private bagService: BagService, private orderService: OrderService, private config: Config, private wpService: WordpressService) { }
 
   ngOnInit() {
     this.localStorage.removeItem('order').subscribe(() => {});
     this.localStorage.removeItem('bag').subscribe(() => {});
     this.bagService.itemsInBag = [];
 
-    // TODO: API treats cardType differently in results. Need to create 2nd hash map to display more detailed payment info
-    //  https://api.alohaorderonline.swenglabs.ncr.com/Help/ResourceModel?modelName=PaymentCardType
+    this.wpService.getPage(3660).subscribe(content => {
+      this.confirmationContent = content;
+    })
 
-    this.orderService.getOrderResult().subscribe(result => {this.orderResult = result; console.log(result)});
+    this.orderService.getOrderResult().subscribe(result => {
+      this.orderResult = result;
+      this.activeCardClass = this.config.cardClassMap[result.Order.Payments[0].CardType];
+      this.paidWithCardType = this.config.cardTypeMap[result.Order.Payments[0].CardType];
+    });
   }
 
 }
