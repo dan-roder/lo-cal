@@ -1,0 +1,36 @@
+.card-sprite-wrapper{
+  .card{
+    background: url("/assets/images/cc-sprite.png");
+    display: inline-block;
+    margin: 0 0 0 2px;
+    width: 21px;
+    height: 15px;
+    opacity: .7;
+    @include transition(opacity);
+
+    &:first-child{
+      margin: 0;
+    }
+
+    &.visa{
+      background-position: 0 15px;
+    }
+    &.master-card{
+      background-position: -21px 15px;
+    }
+    &.american-express{
+      background-position: -42px 15px;
+    }
+    &.discover{
+      background-position: -63px 15px;
+    }
+    &.diners-club{
+      background-position: -84px 15px;
+    }
+
+    &.active{
+      opacity: 1;
+      background-position-y: 0;
+    }
+  }
+}
