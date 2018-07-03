@@ -1,22 +1,56 @@
-<div class="basic-page-container">
+<div class="basic-page-container confirmation-page">
     <div class="basic-page-content">
       <div class="blog-details center-960 text-center">
         <h1>Thank You For Your Order!</h1>
-        <h2 class="red-text">Here is the Lo-Down</h2>
+        <h2 class="red-text">Here's the Lo-Down</h2>
       </div>
       <!-- <div class="featured-image center" *ngIf="featuredImage">
         <img [src]="featuredImage?.source_url" [alt]="featuredImage?.alt_text">
       </div> -->
-      <div class="content center-960">
+      <div class="content center-740">
         <div class="order-details">
-          <h3 class="title">Order Details</h3>
+          <h3 class="details-title">Order Details</h3>
           <div class="order-summary">
             <div class="line-items" *ngIf="orderResult?.Order?.LineItems">
-              <div class="line-item" *ngFor="let lineItems of orderResult?.Order?.LineItems">
-
+              <div class="line-item flex-between" *ngFor="let lineItem of orderResult?.Order?.LineItems">
+                <div class="item-specifics">
+                  <div class="title semi-bold"><span class="quantity">{{ lineItem?.Quantity }} x</span> <span class="item-name">{{ lineItem?.Name }}</span></div>
+                  <div class="additions" *ngIf="lineItem?.Modifiers">
+                    <span class="modifier" *ngFor="let mod of lineItem?.Modifiers">{{ mod?.Name }}</span>
+                  </div>
+                </div>
+                <div class="item-price">
+                  <span class="price">{{ lineItem?.ExtendedPrice | currency }}</span>
+                </div>
+              </div>
+            </div><!-- /.line-items -->
+            <div class="payment-information">
+              <h3 class="details-title">Payment Information</h3>
+              <div class="payment-details">
+                <div class="flex-between">
+                  <div class="label"></div>
+                  <div class="value">{{ orderResult?.Order?.Payments[0]?.MaskedCardNumber }}</div>
+                </div>
+              </div>
+            </div>
+            <div class="order-total">
+              <div class="flex-between subtotal">
+                <span class="label">Subtotal</span>
+                <span class="value">{{ orderResult?.FinancialSummary?.Subtotal | currency }}</span>
+              </div>
+              <div class="flex-between">
+                <span class="label">Tax</span>
+                <span class="value">{{ orderResult?.FinancialSummary?.Tax | currency }}</span>
+              </div>
+              <div class="flex-between total">
+                <span class="label semi-bold">Total</span>
+                <span class="value semi-bold">{{ orderResult?.FinancialSummary?.Total | currency }}</span>
               </div>
             </div>
           </div>
+          <p>Keep an eye out for your order confirmation email! Here’s your order confirmation number: #{{ orderResult?.OrderId }}</p>
+          <!-- TODO: Pull content from wordpress for confirmation page -->
+
         </div>
       </div>
 
