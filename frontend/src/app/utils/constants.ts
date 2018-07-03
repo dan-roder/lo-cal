@@ -23,6 +23,26 @@ export class Config {
     "Visa" : 7,
     "PrePaid" : 8
   }
+  public cardTypeMap = {
+    0 : 'Unknown',
+    1 : 'Visa',
+    2 : 'Mastercard',
+    3 : 'American Express',
+    4 : 'Discover',
+    5 : 'Diners Club',
+    6 : 'JCB',
+    7 : 'Paypal'
+  }
+  public cardClassMap = {
+    0 : 'unknown',
+    1 : 'visa',
+    2 : 'master-card',
+    3 : 'american-express',
+    4 : 'discover',
+    5 : 'diners-club',
+    6 : 'jcb',
+    7 : 'paypal'
+  }
 
   constructor(private winRef: WindowRef){
     // Setting API URL based on current environment
