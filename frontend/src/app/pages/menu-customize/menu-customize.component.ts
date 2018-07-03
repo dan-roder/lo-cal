@@ -40,6 +40,7 @@ export class MenuCustomizeComponent implements OnInit {
     this.wpService.getPostBySlug(slug, 'menu_item').subscribe(item => {
       this.itemContent = item;
       let menuItemId = item[0].acf.menuid;
+
       // TODO: Ensure there is a fallback for if no media is found
       this.featuredImage = (item[0].featured_media !== 0) ? item[0]._embedded['wp:featuredmedia'][0] : '';
       this.getMenuItemDetails(menuItemId);
@@ -76,7 +77,6 @@ export class MenuCustomizeComponent implements OnInit {
   public removeModifier(modGroup, modifierClicked){
     let currentSelectionsArray = this.customizationData[modGroup.$id]['currentlySelected'];
 
-    console.log(currentSelectionsArray);
     // If max selections for the current group is not reached
     if(currentSelectionsArray.length > 0){
       let indexToRemove = _.findIndex(currentSelectionsArray, {'$id' : modifierClicked.$id});
@@ -137,6 +137,8 @@ export class MenuCustomizeComponent implements OnInit {
     menuItem['Modifiers'] = _.values(this.customizationData);
     menuItem['SalesItemId'] = this.salesItemDetails.SalesItemId;
     menuItem['Name'] = this.salesItemDetails.Name;
+    // Temporarily adding cart image to object so it's visible in cart
+    menuItem['cartImage'] = (this.itemContent[0].acf !== undefined && this.itemContent[0].acf.cart_image !== undefined) ? this.itemContent[0].acf.cart_image.url : 'http://via.placeholder.com/160x240';
 
     // Push full object to bag service
     this.bagService.createLineItem(menuItem);
