@@ -75,6 +75,7 @@ export class CheckoutReviewComponent implements OnInit {
 
   public putOrder(){
     this.processing = true;
+    console.log(this.bagItems);
 
     this.orderService.putOrder(this.bagItems).subscribe(response => {
       // TODO: Error checking for other result codes
@@ -87,7 +88,7 @@ export class CheckoutReviewComponent implements OnInit {
         });
       }
       else{
-        console.log('purOrder: error', response);
+        console.log('putOrder: error', response);
         this.processing = false;
         this.errorData.error = "We're sorry. There was an error placing your order. Please try again."
       }
