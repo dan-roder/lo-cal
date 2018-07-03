@@ -532,14 +532,15 @@ var AppComponent = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_49__pipes_featured_image_pipe__ = __webpack_require__("./src/app/pipes/featured-image.pipe.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_50__pipes_card_type_pipe__ = __webpack_require__("./src/app/pipes/card-type.pipe.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_51__pipes_safe_url_pipe__ = __webpack_require__("./src/app/pipes/safe-url.pipe.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_52__local_guards_auth_guard__ = __webpack_require__("./src/app/guards/auth.guard.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_53__local_guards_access_guard__ = __webpack_require__("./src/app/guards/access.guard.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_54__local_guards_order_guard__ = __webpack_require__("./src/app/guards/order.guard.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_55__pages_checkout_payment_checkout_payment_component__ = __webpack_require__("./src/app/pages/checkout-payment/checkout-payment.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_56_ng2_responsive__ = __webpack_require__("./node_modules/ng2-responsive/index.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_56_ng2_responsive___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_56_ng2_responsive__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_57__shared_directives_month_mask_directive__ = __webpack_require__("./src/app/shared/directives/month-mask.directive.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_58__pipes_card_image_pipe__ = __webpack_require__("./src/app/pipes/card-image.pipe.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_52__pipes_no_x_pipe__ = __webpack_require__("./src/app/pipes/no-x.pipe.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_53__local_guards_auth_guard__ = __webpack_require__("./src/app/guards/auth.guard.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_54__local_guards_access_guard__ = __webpack_require__("./src/app/guards/access.guard.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_55__local_guards_order_guard__ = __webpack_require__("./src/app/guards/order.guard.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_56__pages_checkout_payment_checkout_payment_component__ = __webpack_require__("./src/app/pages/checkout-payment/checkout-payment.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_57_ng2_responsive__ = __webpack_require__("./node_modules/ng2-responsive/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_57_ng2_responsive___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_57_ng2_responsive__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_58__shared_directives_month_mask_directive__ = __webpack_require__("./src/app/shared/directives/month-mask.directive.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_59__pipes_card_image_pipe__ = __webpack_require__("./src/app/pipes/card-image.pipe.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -605,6 +606,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
+
 //Guards
 
 
@@ -651,15 +653,16 @@ var AppModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_44__shared_directives_input_switcher_directive__["a" /* InputSwitcherDirective */],
                 __WEBPACK_IMPORTED_MODULE_24__pages_checkout_login_checkout_login_component__["a" /* CheckoutLoginComponent */],
                 __WEBPACK_IMPORTED_MODULE_25__pages_checkout_review_checkout_review_component__["a" /* CheckoutReviewComponent */],
-                __WEBPACK_IMPORTED_MODULE_55__pages_checkout_payment_checkout_payment_component__["a" /* CheckoutPaymentComponent */],
-                __WEBPACK_IMPORTED_MODULE_57__shared_directives_month_mask_directive__["a" /* MonthMaskDirective */],
+                __WEBPACK_IMPORTED_MODULE_56__pages_checkout_payment_checkout_payment_component__["a" /* CheckoutPaymentComponent */],
+                __WEBPACK_IMPORTED_MODULE_58__shared_directives_month_mask_directive__["a" /* MonthMaskDirective */],
                 __WEBPACK_IMPORTED_MODULE_26__pages_confirmation_confirmation_component__["a" /* ConfirmationComponent */],
                 __WEBPACK_IMPORTED_MODULE_27__pages_order_history_order_history_component__["a" /* OrderHistoryComponent */],
                 __WEBPACK_IMPORTED_MODULE_11__layouts_account_layout_account_layout_component__["a" /* AccountLayoutComponent */],
                 __WEBPACK_IMPORTED_MODULE_50__pipes_card_type_pipe__["a" /* CardTypePipe */],
                 __WEBPACK_IMPORTED_MODULE_51__pipes_safe_url_pipe__["a" /* SafeUrlPipe */],
                 __WEBPACK_IMPORTED_MODULE_28__pages_order_detail_order_detail_component__["a" /* OrderDetailComponent */],
-                __WEBPACK_IMPORTED_MODULE_58__pipes_card_image_pipe__["a" /* CardImagePipe */]
+                __WEBPACK_IMPORTED_MODULE_59__pipes_card_image_pipe__["a" /* CardImagePipe */],
+                __WEBPACK_IMPORTED_MODULE_52__pipes_no_x_pipe__["a" /* NoXPipe */]
             ],
             imports: [
                 __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
@@ -670,9 +673,9 @@ var AppModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_6__app_routing_module__["a" /* AppRoutingModule */],
                 __WEBPACK_IMPORTED_MODULE_5__angular_platform_browser_animations__["a" /* BrowserAnimationsModule */],
                 __WEBPACK_IMPORTED_MODULE_7__ngx_pwa_local_storage__["b" /* LocalStorageModule */],
-                __WEBPACK_IMPORTED_MODULE_56_ng2_responsive__["ResponsiveModule"]
+                __WEBPACK_IMPORTED_MODULE_57_ng2_responsive__["ResponsiveModule"]
             ],
-            providers: [__WEBPACK_IMPORTED_MODULE_8__utils_constants__["a" /* Config */], __WEBPACK_IMPORTED_MODULE_37__utils_windowref__["a" /* WindowRef */], __WEBPACK_IMPORTED_MODULE_38__services_wp_service__["a" /* WordpressService */], __WEBPACK_IMPORTED_MODULE_39__services_menu_service_service__["a" /* MenuService */], __WEBPACK_IMPORTED_MODULE_40__services_bag_service__["a" /* BagService */], __WEBPACK_IMPORTED_MODULE_41__services_customer_service__["a" /* CustomerService */], __WEBPACK_IMPORTED_MODULE_52__local_guards_auth_guard__["a" /* AuthGuard */], __WEBPACK_IMPORTED_MODULE_53__local_guards_access_guard__["a" /* AccessGuard */], __WEBPACK_IMPORTED_MODULE_42__local_services_order_service__["a" /* OrderService */], __WEBPACK_IMPORTED_MODULE_54__local_guards_order_guard__["a" /* OrderGuard */]],
+            providers: [__WEBPACK_IMPORTED_MODULE_8__utils_constants__["a" /* Config */], __WEBPACK_IMPORTED_MODULE_37__utils_windowref__["a" /* WindowRef */], __WEBPACK_IMPORTED_MODULE_38__services_wp_service__["a" /* WordpressService */], __WEBPACK_IMPORTED_MODULE_39__services_menu_service_service__["a" /* MenuService */], __WEBPACK_IMPORTED_MODULE_40__services_bag_service__["a" /* BagService */], __WEBPACK_IMPORTED_MODULE_41__services_customer_service__["a" /* CustomerService */], __WEBPACK_IMPORTED_MODULE_53__local_guards_auth_guard__["a" /* AuthGuard */], __WEBPACK_IMPORTED_MODULE_54__local_guards_access_guard__["a" /* AccessGuard */], __WEBPACK_IMPORTED_MODULE_42__local_services_order_service__["a" /* OrderService */], __WEBPACK_IMPORTED_MODULE_55__local_guards_order_guard__["a" /* OrderGuard */]],
             bootstrap: [__WEBPACK_IMPORTED_MODULE_9__app_component__["a" /* AppComponent */]]
         })
     ], AppModule);
@@ -1806,7 +1809,7 @@ var CheckoutReviewComponent = /** @class */ (function () {
 /***/ "./src/app/pages/confirmation/confirmation.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"basic-page-container confirmation-page\">\n    <div class=\"basic-page-content\">\n      <div class=\"blog-details center-960 text-center\">\n        <h1>Thank You For Your Order!</h1>\n        <h2 class=\"red-text\">Here's the Lo-Down</h2>\n      </div>\n      <!-- <div class=\"featured-image center\" *ngIf=\"featuredImage\">\n        <img [src]=\"featuredImage?.source_url\" [alt]=\"featuredImage?.alt_text\">\n      </div> -->\n      <div class=\"content center-740\">\n        <div class=\"order-details\">\n          <h3 class=\"details-title\">Order Details</h3>\n          <div class=\"order-summary\">\n            <div class=\"line-items\" *ngIf=\"orderResult?.Order?.LineItems\">\n              <div class=\"line-item flex-between\" *ngFor=\"let lineItem of orderResult?.Order?.LineItems\">\n                <div class=\"item-specifics\">\n                  <div class=\"title semi-bold\"><span class=\"quantity\">{{ lineItem?.Quantity }} x</span> <span class=\"item-name\">{{ lineItem?.Name }}</span></div>\n                  <div class=\"additions\" *ngIf=\"lineItem?.Modifiers\">\n                    <span class=\"modifier\" *ngFor=\"let mod of lineItem?.Modifiers\">{{ mod?.Name }}</span>\n                  </div>\n                </div>\n                <div class=\"item-price\">\n                  <span class=\"price\">{{ lineItem?.ExtendedPrice | currency }}</span>\n                </div>\n              </div>\n            </div><!-- /.line-items -->\n            <div class=\"payment-information\">\n              <h3 class=\"details-title\">Payment Information</h3>\n              <div class=\"payment-details\">\n                <div class=\"flex-between\">\n                  <div class=\"label\"></div>\n                  <div class=\"value\">{{ orderResult?.Order?.Payments[0]?.MaskedCardNumber }}</div>\n                </div>\n              </div>\n            </div>\n            <div class=\"order-total\">\n              <div class=\"flex-between subtotal\">\n                <span class=\"label\">Subtotal</span>\n                <span class=\"value\">{{ orderResult?.FinancialSummary?.Subtotal | currency }}</span>\n              </div>\n              <div class=\"flex-between\">\n                <span class=\"label\">Tax</span>\n                <span class=\"value\">{{ orderResult?.FinancialSummary?.Tax | currency }}</span>\n              </div>\n              <div class=\"flex-between total\">\n                <span class=\"label semi-bold\">Total</span>\n                <span class=\"value semi-bold\">{{ orderResult?.FinancialSummary?.Total | currency }}</span>\n              </div>\n            </div>\n          </div>\n          <p>Keep an eye out for your order confirmation email! Here’s your order confirmation number: #{{ orderResult?.OrderId }}</p>\n          <!-- TODO: Pull content from wordpress for confirmation page -->\n\n        </div>\n      </div>\n\n    </div>\n  </div>"
+module.exports = "<div class=\"basic-page-container confirmation-page\">\n    <div class=\"basic-page-content\">\n      <div class=\"blog-details center-960 text-center\">\n        <h1>Thank You For Your Order!</h1>\n        <h2 class=\"red-text\">Here's the Lo-Down</h2>\n      </div>\n      <!-- <div class=\"featured-image center\" *ngIf=\"featuredImage\">\n        <img [src]=\"featuredImage?.source_url\" [alt]=\"featuredImage?.alt_text\">\n      </div> -->\n      <div class=\"content center-740\">\n        <div class=\"order-details\">\n          <h3 class=\"details-title\">Order #{{ orderResult?.OrderId }}</h3>\n          <div class=\"order-summary\">\n            <div class=\"line-items\" *ngIf=\"orderResult?.Order?.LineItems\">\n              <div class=\"line-item flex-between\" *ngFor=\"let lineItem of orderResult?.Order?.LineItems\">\n                <div class=\"item-specifics\">\n                  <div class=\"title\"><span class=\"quantity\">{{ lineItem?.Quantity }} x</span> <span class=\"item-name\">{{ lineItem?.Name }}</span></div>\n                  <div class=\"additions\" *ngIf=\"lineItem?.Modifiers\">\n                    <span class=\"modifier\" *ngFor=\"let mod of lineItem?.Modifiers\">{{ mod?.Name }}</span>\n                  </div>\n                </div>\n                <div class=\"item-price\">\n                  <span class=\"price\">{{ lineItem?.ExtendedPrice | currency }}</span>\n                </div>\n              </div>\n            </div><!-- /.line-items -->\n            <div class=\"payment-information\" *ngIf=\"orderResult?.Order?.Payments[0]\">\n              <h3 class=\"details-title\">Payment Information</h3>\n              <div class=\"payment-details\">\n                <div class=\"card-sprite-wrapper\">\n                  <p class=\"card active\" [ngClass]=\"activeCardClass\" [title]=\"paidWithCardType\"><span class=\"visuallyhidden\">Image of {{ paidWithCardType }}</span></p>\n                  <p class=\"card-name\">{{ paidWithCardType }} ending in {{ orderResult?.Order?.Payments[0]?.MaskedCardNumber | noX }}</p>\n                </div>\n              </div>\n            </div>\n            <div class=\"order-total\">\n              <div class=\"flex-between subtotal\">\n                <span class=\"label\">Subtotal</span>\n                <span class=\"value\">{{ orderResult?.FinancialSummary?.Subtotal | currency }}</span>\n              </div>\n              <div class=\"flex-between\">\n                <span class=\"label\">Tax</span>\n                <span class=\"value\">{{ orderResult?.FinancialSummary?.Tax | currency }}</span>\n              </div>\n              <div class=\"flex-between total\">\n                <span class=\"label semi-bold\">Total</span>\n                <span class=\"value semi-bold\">{{ orderResult?.FinancialSummary?.Total | currency }}</span>\n              </div>\n            </div>\n          </div>\n\n          <div class=\"confirmation-content\" [innerHtml]=\"confirmationContent?.content?.rendered | safeHtml\"></div>\n\n        </div>\n      </div>\n\n    </div>\n  </div>"
 
 /***/ }),
 
@@ -1820,6 +1823,8 @@ module.exports = "<div class=\"basic-page-container confirmation-page\">\n    <d
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__local_services_bag_service__ = __webpack_require__("./src/app/services/bag.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__local_services_order_service__ = __webpack_require__("./src/app/services/order.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_ngx_auto_unsubscribe__ = __webpack_require__("./node_modules/ngx-auto-unsubscribe/dist/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__local_utils_constants__ = __webpack_require__("./src/app/utils/constants.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__local_services_wp_service__ = __webpack_require__("./src/app/services/wp.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1834,20 +1839,31 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
+
 var ConfirmationComponent = /** @class */ (function () {
-    function ConfirmationComponent(localStorage, bagService, orderService) {
+    function ConfirmationComponent(localStorage, bagService, orderService, config, wpService) {
         this.localStorage = localStorage;
         this.bagService = bagService;
         this.orderService = orderService;
+        this.config = config;
+        this.wpService = wpService;
+        this.activeCardClass = '';
+        this.paidWithCardType = '';
     }
     ConfirmationComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.localStorage.removeItem('order').subscribe(function () { });
         this.localStorage.removeItem('bag').subscribe(function () { });
         this.bagService.itemsInBag = [];
-        // TODO: API treats cardType differently in results. Need to create 2nd hash map to display more detailed payment info
-        //  https://api.alohaorderonline.swenglabs.ncr.com/Help/ResourceModel?modelName=PaymentCardType
-        this.orderService.getOrderResult().subscribe(function (result) { _this.orderResult = result; console.log(result); });
+        this.wpService.getPage(3660).subscribe(function (content) {
+            _this.confirmationContent = content;
+        });
+        this.orderService.getOrderResult().subscribe(function (result) {
+            _this.orderResult = result;
+            _this.activeCardClass = _this.config.cardClassMap[result.Order.Payments[0].CardType];
+            _this.paidWithCardType = _this.config.cardTypeMap[result.Order.Payments[0].CardType];
+        });
     };
     ConfirmationComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_4_ngx_auto_unsubscribe__["a" /* AutoUnsubscribe */])(),
@@ -1855,7 +1871,7 @@ var ConfirmationComponent = /** @class */ (function () {
             selector: 'lo-cal-confirmation',
             template: __webpack_require__("./src/app/pages/confirmation/confirmation.component.html")
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__ngx_pwa_local_storage__["a" /* LocalStorage */], __WEBPACK_IMPORTED_MODULE_2__local_services_bag_service__["a" /* BagService */], __WEBPACK_IMPORTED_MODULE_3__local_services_order_service__["a" /* OrderService */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__ngx_pwa_local_storage__["a" /* LocalStorage */], __WEBPACK_IMPORTED_MODULE_2__local_services_bag_service__["a" /* BagService */], __WEBPACK_IMPORTED_MODULE_3__local_services_order_service__["a" /* OrderService */], __WEBPACK_IMPORTED_MODULE_5__local_utils_constants__["a" /* Config */], __WEBPACK_IMPORTED_MODULE_6__local_services_wp_service__["a" /* WordpressService */]])
     ], ConfirmationComponent);
     return ConfirmationComponent;
 }());
@@ -3062,6 +3078,37 @@ var FeaturedImagePipe = /** @class */ (function () {
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__local_services_wp_service__["a" /* WordpressService */]])
     ], FeaturedImagePipe);
     return FeaturedImagePipe;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/pipes/no-x.pipe.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return NoXPipe; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+var NoXPipe = /** @class */ (function () {
+    function NoXPipe() {
+    }
+    NoXPipe.prototype.transform = function (value) {
+        return value.replace(/[x\*]/g, '');
+    };
+    NoXPipe = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Pipe"])({
+            name: 'noX'
+        })
+    ], NoXPipe);
+    return NoXPipe;
 }());
 
 
@@ -4581,6 +4628,26 @@ var Config = /** @class */ (function () {
             "Mastercard": 6,
             "Visa": 7,
             "PrePaid": 8
+        };
+        this.cardTypeMap = {
+            0: 'Unknown',
+            1: 'Visa',
+            2: 'Mastercard',
+            3: 'American Express',
+            4: 'Discover',
+            5: 'Diners Club',
+            6: 'JCB',
+            7: 'Paypal'
+        };
+        this.cardClassMap = {
+            0: 'unknown',
+            1: 'visa',
+            2: 'master-card',
+            3: 'american-express',
+            4: 'discover',
+            5: 'diners-club',
+            6: 'jcb',
+            7: 'paypal'
         };
         // Setting API URL based on current environment
         switch (winRef.nativeWindow.location.hostname) {
