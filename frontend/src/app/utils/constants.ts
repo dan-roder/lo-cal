@@ -48,13 +48,13 @@ export class Config {
     // Setting API URL based on current environment
     switch(winRef.nativeWindow.location.hostname){
       case 'localhost':
-        this.wordpressApiUrl = "http://lo-cal.local/wp-json";
+        this.wordpressApiUrl = "https://lo-cal.local/wp-json";
       break;
       case 'live-lo-cal.pantheonsite.io':
         this.wordpressApiUrl = "https://www.lo-calkitchen.com/wp-json";
       break;
       default:
-        this.wordpressApiUrl = "http://" + winRef.nativeWindow.location.hostname + "/wp-json";
+        this.wordpressApiUrl = "https://" + winRef.nativeWindow.location.hostname + "/wp-json";
       break;
     }
 
