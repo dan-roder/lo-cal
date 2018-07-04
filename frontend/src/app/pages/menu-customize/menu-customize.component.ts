@@ -93,10 +93,8 @@ export class MenuCustomizeComponent implements OnInit {
         this.customizationData[modGroup.$id].modifiers[modifierClicked.$id]['quantity'] -= 1;
       }
 
-      // Subract from calorie count if the modifier has calorie changes
-      console.log(indexToRemove);
-      // TODO: Clicking a minus button when modifiers are full triggers price to decrement
-      if(modifierClicked.ItemModifiers.length > 0 ){
+      // Subract from calorie count if the modifier has calorie changes and it's a modifier already in the array
+      if(modifierClicked.ItemModifiers.length > 0 && indexToRemove !== -1){
 
         this.calorieCount -= modifierClicked.ItemModifiers[0].CaloricValue;
 
