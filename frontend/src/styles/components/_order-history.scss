@@ -47,14 +47,11 @@
   }
 
   .pricing-details{
+    margin: 20px 0 0;
     @include fontsize(14);
 
     .flex-between{
       padding: 7px 0;
-    }
-
-    .subtotal{
-      border-top: 1px solid $e1;
     }
 
     .total{
