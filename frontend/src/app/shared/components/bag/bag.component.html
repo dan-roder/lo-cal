@@ -26,7 +26,7 @@
                     <div class="title-container">
                       <div class="title">{{ menuItem?.Name }} <span class="quantity">x {{ menuItem?.Quantity }}</span></div>
                     </div>
-                    <div class="ingredients">
+                    <div class="ingredients" *ngIf="menuItem?.ShortDescription">
                       {{ (menuItem?.ShortDescription | allergens)?.description }}
                     </div>
                     <div class="additions" *ngIf="menuItem?.Modifiers">
