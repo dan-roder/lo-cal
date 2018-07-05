@@ -1,10 +1,7 @@
-import { Component, OnInit, Input, Output, EventEmitter, SimpleChanges } from '@angular/core';
-import { trigger,state,style,transition,animate,keyframes } from '@angular/animations';
-import { stagger } from '@angular/animations/src/animation_metadata';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { trigger,state,style,transition,animate } from '@angular/animations';
 import { BagService } from '@local/services/bag.service';
-import { MenuItem } from '@local/models/MenuItem';
 import { LineItem } from '@local/models/LineItem';
-import * as _ from 'lodash';
 import { OrderService } from '@local/services/order.service';
 import { Router } from '@angular/router';
 
