@@ -51,10 +51,10 @@ export class Config {
         this.wordpressApiUrl = "http://lo-cal.local/wp-json";
       break;
       case 'live-lo-cal.pantheonsite.io':
-        this.wordpressApiUrl = "https://www.lo-calkitchen.com/wp-json";
+        this.wordpressApiUrl = "http://www.lo-calkitchen.com/wp-json";
       break;
       default:
-        this.wordpressApiUrl = "https://" + winRef.nativeWindow.location.hostname + "/wp-json";
+        this.wordpressApiUrl = "http://" + winRef.nativeWindow.location.hostname + "/wp-json";
       break;
     }
 
