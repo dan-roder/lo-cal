@@ -2509,9 +2509,10 @@ module.exports = "<section class=\"account-section\">\n  <header class=\"account
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("./node_modules/@angular/router/esm5/router.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__local_services_order_service__ = __webpack_require__("./src/app/services/order.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_lodash__ = __webpack_require__("./node_modules/lodash/lodash.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_lodash___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_lodash__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__local_services_bag_service__ = __webpack_require__("./src/app/services/bag.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__local_services_bag_service__ = __webpack_require__("./src/app/services/bag.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__local_services_wp_service__ = __webpack_require__("./src/app/services/wp.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_lodash__ = __webpack_require__("./node_modules/lodash/lodash.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_lodash___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_lodash__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -2526,26 +2527,40 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var OrderDetailComponent = /** @class */ (function () {
-    function OrderDetailComponent(route, orderService, bagService) {
+    function OrderDetailComponent(route, orderService, bagService, wpService) {
         var _this = this;
         this.route = route;
         this.orderService = orderService;
         this.bagService = bagService;
+        this.wpService = wpService;
+        this.menuItemPosts = [];
         this.route.params.subscribe(function (params) { return _this.orderId = params.orderid; });
     }
     OrderDetailComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.orderService.getFullOrderDetails(this.orderId).subscribe(function (orderDetails) {
-            console.log(orderDetails);
             _this.orderDetails = orderDetails;
+            _this.wpService.getMenuMapObject().subscribe(function (map) {
+                _this.menuMap = map;
+                var wpService = _this.wpService;
+                var menuItemArray = _this.menuItemPosts;
+                __WEBPACK_IMPORTED_MODULE_5_lodash__["forEach"](orderDetails.LineItems, function (value) {
+                    var obj = __WEBPACK_IMPORTED_MODULE_5_lodash__["find"](map, { 'menuid': String(value.MenuItemId) });
+                    wpService.getCustomPostTypeById('menu_item', obj.id).subscribe(function (post) {
+                        menuItemArray.push(post);
+                    });
+                });
+            });
         });
     };
     OrderDetailComponent.prototype.addOrderToBag = function () {
         var bagService = this.bagService;
-        __WEBPACK_IMPORTED_MODULE_3_lodash__["forEach"](this.orderDetails.LineItems, function (lineItem) {
-            // TODO: Not sure where to get the cart image from for this part
-            bagService.quickAddLineItem(lineItem);
+        var menuItemPosts = this.menuItemPosts;
+        __WEBPACK_IMPORTED_MODULE_5_lodash__["forEach"](this.orderDetails.LineItems, function (lineItem, index) {
+            lineItem.cartImage = (menuItemPosts[index].acf !== undefined && menuItemPosts[index].acf.cart_image !== undefined) ? menuItemPosts[index].acf.cart_image : 'http://via.placeholder.com/160x240';
+            bagService.orderItemAgain(lineItem);
         });
     };
     OrderDetailComponent = __decorate([
@@ -2553,7 +2568,7 @@ var OrderDetailComponent = /** @class */ (function () {
             selector: 'lo-cal-order-detail',
             template: __webpack_require__("./src/app/pages/order-detail/order-detail.component.html")
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */], __WEBPACK_IMPORTED_MODULE_2__local_services_order_service__["a" /* OrderService */], __WEBPACK_IMPORTED_MODULE_4__local_services_bag_service__["a" /* BagService */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */], __WEBPACK_IMPORTED_MODULE_2__local_services_order_service__["a" /* OrderService */], __WEBPACK_IMPORTED_MODULE_3__local_services_bag_service__["a" /* BagService */], __WEBPACK_IMPORTED_MODULE_4__local_services_wp_service__["a" /* WordpressService */]])
     ], OrderDetailComponent);
     return OrderDetailComponent;
 }());
@@ -2866,7 +2881,6 @@ var SubMenuComponent = /** @class */ (function () {
             _this.subMenuId = _this.acf.submenuid;
             _this.menuService.getSubMenuItems(_this.subMenuId).subscribe(function (subMenuItems) {
                 _this.subMenuItems = subMenuItems;
-                console.log(subMenuItems);
             });
         });
         if (this.menuMap === undefined) {
@@ -3281,7 +3295,7 @@ var BagService = /** @class */ (function () {
         this.saveToLocalStorage();
         lineItem = null;
     };
-    BagService.prototype.formattedLineItemAddToBag = function (lineItem) {
+    BagService.prototype.orderItemAgain = function (lineItem) {
         this._itemsInBag.push(lineItem);
         this._totalPrice += lineItem.UnitPrice;
         this.saveToLocalStorage();
