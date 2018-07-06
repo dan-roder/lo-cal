@@ -73,6 +73,12 @@ export class BagService {
     lineItem = null;
   }
 
+  public orderItemAgain( lineItem: LineItem ){
+    this._itemsInBag.push(lineItem);
+    this._totalPrice += lineItem.UnitPrice;
+    this.saveToLocalStorage();
+  }
+
   private constructLineItemModifiers(allModifiers) : Array<LineItemModifier>{
     let formattedLineItemModifierArray : Array<LineItemModifier> = [];
 
