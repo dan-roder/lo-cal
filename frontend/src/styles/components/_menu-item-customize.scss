@@ -6,6 +6,10 @@
     position: relative;
     margin: 0 0 30px;
 
+    .overlay-container{
+      @extend %overlay;
+    }
+
     h1{
       position: absolute;
       left: 0;
@@ -17,6 +21,7 @@
       @include fontsize(60);
       text-shadow: 0 1px 10px rgba(0, 0, 0, 0.23);
       letter-spacing: 2.7px;
+      z-index: 5;
     }
 
     img{
