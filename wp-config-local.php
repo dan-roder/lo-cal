@@ -18,9 +18,11 @@
  * @package WordPress
  */
 
+define('WP_HOME', 'http://lo-cal.local');
+define('WP_SITEURL', 'http://lo-cal.local');
 // ** MySQL settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
-define('DB_NAME', 'lo-cal-kitchen');
+define('DB_NAME', 'local');
 
 /** MySQL database username */
 define('DB_USER', 'root');
