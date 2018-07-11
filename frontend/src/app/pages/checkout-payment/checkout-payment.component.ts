@@ -64,7 +64,6 @@ export class CheckoutPaymentComponent implements OnInit {
       if(customer.CustomerId){
         this.customerService.getSavedPayments(customer.CustomerId).subscribe(savedPayments => {
           this.savedPaymentMethods = savedPayments;
-          console.log(savedPayments);
         });
       }
     })
@@ -206,13 +205,13 @@ export class CheckoutPaymentComponent implements OnInit {
       let addOnPrice = 0;
       let modArray = Array();
       _.forEach(value.Modifiers, function(value, key){
-        addOnPrice += (value.ExtendedPrice > 0) ? value.ExtendedPrice : 0;
+        addOnPrice += (value.UnitPrice > 0) ? value.UnitPrice : 0;
         let modOject = {
           'name' : value.Name
         }
         modArray.push(modOject);
       });
-      let finalPrice = initialPrice + addOnPrice;
+      let finalPrice = (initialPrice + addOnPrice) * value.Quantity;
       let obj = {
         'name' : value.Name,
         'fullPrice' : finalPrice,
