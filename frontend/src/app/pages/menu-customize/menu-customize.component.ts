@@ -150,6 +150,7 @@ export class MenuCustomizeComponent implements OnInit {
     menuItem['Name'] = this.salesItemDetails.Name;
     // Temporarily adding cart image to object so it's visible in cart
     menuItem['cartImage'] = (this.itemContent[0].acf !== undefined && this.itemContent[0].acf.cart_image !== undefined) ? this.itemContent[0].acf.cart_image.url : 'http://via.placeholder.com/160x240';
+    menuItem['caloricValue'] = this.calorieCount;
 
     // Push full object to bag service
     this.bagService.createLineItem(menuItem);
@@ -166,6 +167,7 @@ export class MenuCustomizeComponent implements OnInit {
 
   private getMenuItemDetails( menuItemId ){
     this.menuService.getMenuItemDetails(menuItemId).subscribe(menuItemDetails => {
+      console.log(menuItemDetails);
       // Set necessary variables for template rendering
       this.menuItemDetails = menuItemDetails;
 
@@ -181,7 +183,7 @@ export class MenuCustomizeComponent implements OnInit {
         this.sizeChoice = this.salesItemDetails.SalesItemId;
       }
 
-      this.calorieCount = this.salesItemDetails.CaloricValue;
+      this.calorieCount = (this.salesItemDetails.CaloricValue !== null) ? this.salesItemDetails.CaloricValue : +this.menuItemDetails.item.CaloricServingUnit;
       this.itemPrice = this.salesItemDetails.Price;
 
       // Calculate initial cost based on initial quantity of 1
@@ -231,7 +233,6 @@ export class MenuCustomizeComponent implements OnInit {
     });
 
     this.customizationData = tempObj;
-    console.log(this.customizationData);
   }
 
   public updateDataPerSize(salesId: string){
