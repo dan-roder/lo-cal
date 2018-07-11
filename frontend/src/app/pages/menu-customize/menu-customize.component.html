@@ -1,7 +1,9 @@
 <div class="page-item-detail">
   <div class="menu-item-header">
-    <h1 class="title">{{ menuItemDetails?.item?.Name }}</h1>
-    <img *ngIf="featuredImage" [src]="featuredImage" [alt]="featuredImageAlt">
+    <div class="overlay-container">
+      <h1 class="title">{{ menuItemDetails?.item?.Name }}</h1>
+      <img *ngIf="featuredImage" [src]="featuredImage" [alt]="featuredImageAlt">
+    </div>
   </div>
 
   <div class="customization-container center-1440">
