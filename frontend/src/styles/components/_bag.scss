@@ -29,6 +29,7 @@
     display: grid;
     grid-auto-flow: row;
     align-items: flex-start;
+    z-index: 10;
 
     .checkout-inner-wrapper{
       position: relative;

@@ -7,11 +7,16 @@
 
     h4{
       @include fontsize(18);
+      margin: 0 0 8px;
     }
   }
 
   .line-item{
-    align-items: center;
+    align-items: baseline;
+
+    p.additions{
+      margin: 0;
+    }
   }
 
   .line-items{
