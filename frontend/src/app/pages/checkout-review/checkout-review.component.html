@@ -25,7 +25,7 @@
                   <div class="details-and-edit">
                     <div class="details">
                       <span class="price">{{ menuItem?.ExtendedPrice | currency }}</span>
-                      <span class="calories" *ngIf="menuItem?.CaloricValue"></span>
+                      <span class="calories" *ngIf="menuItem?.caloricValue">{{ menuItem?.caloricValue }} cal</span>
                       <span class="allergens" *ngIf="(menuItem?.ShortDescription)">
                         <span class="allergen" *ngFor="let allergen of (menuItem?.ShortDescription | allergens).allergens">{{ allergen }}</span>
                       </span>
