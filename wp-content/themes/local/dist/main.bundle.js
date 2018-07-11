@@ -1482,7 +1482,6 @@ var CheckoutPaymentComponent = /** @class */ (function () {
             if (customer.CustomerId) {
                 _this.customerService.getSavedPayments(customer.CustomerId).subscribe(function (savedPayments) {
                     _this.savedPaymentMethods = savedPayments;
-                    console.log(savedPayments);
                 });
             }
         });
@@ -1605,13 +1604,13 @@ var CheckoutPaymentComponent = /** @class */ (function () {
             var addOnPrice = 0;
             var modArray = Array();
             __WEBPACK_IMPORTED_MODULE_6_lodash__["forEach"](value.Modifiers, function (value, key) {
-                addOnPrice += (value.ExtendedPrice > 0) ? value.ExtendedPrice : 0;
+                addOnPrice += (value.UnitPrice > 0) ? value.UnitPrice : 0;
                 var modOject = {
                     'name': value.Name
                 };
                 modArray.push(modOject);
             });
-            var finalPrice = initialPrice + addOnPrice;
+            var finalPrice = (initialPrice + addOnPrice) * value.Quantity;
             var obj = {
                 'name': value.Name,
                 'fullPrice': finalPrice,
@@ -3277,7 +3276,7 @@ var BagService = /** @class */ (function () {
             SpecialInstructions: passedMenuItem.SpecialInstructions,
             UnitPrice: passedMenuItem.salesItems[0].Price,
             Quantity: passedMenuItem.Quantity,
-            ExtendedPrice: passedMenuItem.TotalPrice * passedMenuItem.Quantity,
+            ExtendedPrice: passedMenuItem.TotalPrice,
             Modifiers: modifiers,
             cartImage: passedMenuItem.cartImage,
             caloricValue: passedMenuItem.caloricValue
