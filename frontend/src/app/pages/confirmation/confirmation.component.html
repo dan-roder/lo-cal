@@ -15,9 +15,9 @@
               <div class="line-item flex-between" *ngFor="let lineItem of orderResult?.Order?.LineItems">
                 <div class="item-specifics">
                   <h4 class="title"><span class="quantity">{{ lineItem?.Quantity }} x</span> <span class="item-name">{{ lineItem?.Name }}</span></h4>
-                  <div class="additions" *ngIf="lineItem?.Modifiers">
-                    <span class="modifier" *ngFor="let mod of lineItem?.Modifiers">{{ mod?.Name }}</span>
-                  </div>
+                  <p class="additions small-text" *ngIf="lineItem?.Modifiers">
+                    <span class="modifier" *ngFor="let mod of lineItem?.Modifiers; let last = last;">{{ mod?.Name }}<span class="separator" *ngIf="!last">, </span></span>
+                  </p>
                 </div>
                 <div class="item-price">
                   <span class="price">{{ lineItem?.ExtendedPrice | currency }}</span>

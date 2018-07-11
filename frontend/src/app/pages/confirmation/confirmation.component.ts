@@ -28,6 +28,7 @@ export class ConfirmationComponent implements OnInit {
 
     this.wpService.getPage(3660).subscribe(content => {
       this.confirmationContent = content;
+      console.log(content);
     })
 
     this.orderService.getOrderResult().subscribe(result => {
