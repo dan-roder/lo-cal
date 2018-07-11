@@ -32,7 +32,7 @@ export class BagService {
       SpecialInstructions : passedMenuItem.SpecialInstructions,
       UnitPrice : passedMenuItem.salesItems[0].Price,
       Quantity : passedMenuItem.Quantity,
-      ExtendedPrice : passedMenuItem.TotalPrice * passedMenuItem.Quantity,
+      ExtendedPrice : passedMenuItem.TotalPrice,
       Modifiers : modifiers,
       cartImage : passedMenuItem.cartImage,
       caloricValue : passedMenuItem.caloricValue
