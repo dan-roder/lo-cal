@@ -11,7 +11,7 @@
         <div class="content">
           <div class="header">
             <span class="title">{{ modGroup?.DisplayName }}</span>
-            <span class="choices">Choose up to {{ modGroup?.MaximumItems }} ({{ customizationData[modGroup?.$id].currentlySelected.length }}/{{ modGroup?.MaximumItems }})</span>
+            <span class="choices" *ngIf="modGroup?.MaximumItems > 0">Choose up to {{ modGroup?.MaximumItems }} ({{ customizationData[modGroup?.$id].currentlySelected.length }}/{{ modGroup?.MaximumItems }})</span>
           </div>
           <div class="options" *ngFor="let modifier of modGroup?.Mods">
             <div class="option">
