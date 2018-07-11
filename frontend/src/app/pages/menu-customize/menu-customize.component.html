@@ -24,7 +24,7 @@
                     {{ customizationData[modGroup?.$id].modifiers[modifier?.$id]?.quantity }}
                   </span>
                 </span>
-                <span class="plus" [ngClass]="(customizationData[modGroup?.$id].currentlySelected.length < modGroup?.MaximumItems) ? 'enabled' : 'disabled'" (click)="addModifier(modGroup, modifier)">+</span>
+                <span class="plus" [ngClass]="((customizationData[modGroup?.$id].currentlySelected.length < modGroup?.MaximumItems) || (modGroup?.MaximumItems === 0 && customizationData[modGroup?.$id].modifiers[modifier?.$id].quantity < 1)) ? 'enabled' : 'disabled'" (click)="addModifier(modGroup, modifier)">+</span>
               </div>
             </div><!-- /.option -->
           </div><!-- /.options -->
@@ -42,7 +42,7 @@
           <span class="customization" *ngFor="let item of currentModifierArray; let last = last;">{{ item?.DisplayName }}<span class="separator" *ngIf="!last">, </span></span>
         </div>
         <div class="fine-details">
-          <span class="price">{{ salesItemDetails?.Price | currency }}</span>
+          <span class="price">{{ totalPrice | currency }}</span>
           <span class="calories" *ngIf="salesItemDetails?.CaloricValue !== 0 || salesItemDetails?.CaloricValue !== null">{{ calorieCount }} cal</span>
           <span class="allergens" *ngIf="(menuItemDetails?.item?.Description)">
             <span class="allergen" *ngFor="let allergen of (menuItemDetails?.item?.Description | allergens).allergens">{{ allergen }}</span>

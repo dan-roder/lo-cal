@@ -53,7 +53,18 @@ export class MenuCustomizeComponent implements OnInit {
     let currentSelectionsArray = this.customizationData[modGroup.$id]['currentlySelected'];
 
     // If max selections for the current group is not reached
-    if(currentSelectionsArray.length < maxSelectionsForGroup){
+    if(currentSelectionsArray.length < maxSelectionsForGroup || maxSelectionsForGroup === 0){
+
+      // If maxSelectionsForGroup is 0. only allow 1 of anything
+      if(maxSelectionsForGroup === 0){
+        let isItemAlreadySelected = _.findIndex(this.currentModifierArray, {'$id': modifierClicked.$id});
+
+        // Only allowing 1 to be selected
+        if(isItemAlreadySelected !== -1){
+          return;
+        }
+      }
+
       this.customizationData[modGroup.$id]['currentlySelected'].push(modifierClicked);
       this.customizationData[modGroup.$id].modifiers[modifierClicked.$id]['quantity'] += 1;
       // Add to basic array for displaying near item description
@@ -193,7 +204,7 @@ export class MenuCustomizeComponent implements OnInit {
     _.forEach(allModifiers, function(modifierGroup, modGroupKey){
       // Create new object to store values in
       let modObject = new Object();
-      modObject['maximumItems'] = modifierGroup.MaximumItems;
+      modObject['maximumItems'] = (modifierGroup.MaximumItems === 0) ? 'unlimited' : modifierGroup.MaximumItems;
       modObject['minimumItems'] = modifierGroup.MaximumItems;
       modObject['currentlySelected'] = new Array;
       modObject['modifiers'] = new Object();
@@ -218,6 +229,7 @@ export class MenuCustomizeComponent implements OnInit {
     });
 
     this.customizationData = tempObj;
+    console.log(this.customizationData);
   }
 
   public updateDataPerSize(salesId: string){
