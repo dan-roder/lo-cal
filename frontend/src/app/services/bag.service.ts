@@ -34,7 +34,8 @@ export class BagService {
       Quantity : passedMenuItem.Quantity,
       ExtendedPrice : passedMenuItem.TotalPrice * passedMenuItem.Quantity,
       Modifiers : modifiers,
-      cartImage : passedMenuItem.cartImage
+      cartImage : passedMenuItem.cartImage,
+      caloricValue : passedMenuItem.caloricValue
     };
 
     // Push menuItem and lineItem into arrays
