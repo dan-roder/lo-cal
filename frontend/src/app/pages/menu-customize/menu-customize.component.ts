@@ -42,7 +42,6 @@ export class MenuCustomizeComponent implements OnInit {
       this.itemContent = item;
       let menuItemId = item[0].acf.menuid;
 
-      // TODO: Ensure there is a fallback for if no media is found
       this.featuredImage = (item[0].featured_media !== 0) ? item[0]._embedded['wp:featuredmedia'][0].media_details.sizes.full.source_url : 'http://via.placeholder.com/1440x500';
       this.featuredImageAlt = (item[0].featured_media !== 0) ? item[0]._embedded['wp:featuredmedia'][0].alt_text : '';
       this.getMenuItemDetails(menuItemId);
