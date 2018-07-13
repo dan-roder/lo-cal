@@ -5,7 +5,6 @@ import { Order } from '@local/models/Order';
 import { BagService } from '@local/services/bag.service';
 import { WordpressService } from '@local/services/wp.service';
 import * as _ from 'lodash';
-import { LineItem } from '@local/models/LineItem';
 
 @Component({
   selector: 'lo-cal-order-detail',
