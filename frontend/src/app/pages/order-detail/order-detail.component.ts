@@ -48,7 +48,7 @@ export class OrderDetailComponent implements OnInit {
     let bagService = this.bagService;
     let menuItemPosts = this.menuItemPosts;
     _.forEach(this.orderDetails.LineItems, function(lineItem, index){
-      lineItem.cartImage = (menuItemPosts[index].acf !== undefined && menuItemPosts[index].acf.cart_image !== undefined) ? menuItemPosts[index].acf.cart_image : 'http://via.placeholder.com/160x240';
+      lineItem.cartImage = (menuItemPosts[index].acf !== undefined && menuItemPosts[index].acf.cart_image !== undefined) ? menuItemPosts[index].acf.cart_image : '//via.placeholder.com/160x240';
 
       bagService.orderItemAgain(lineItem);
     })

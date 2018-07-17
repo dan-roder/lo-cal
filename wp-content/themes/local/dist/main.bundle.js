@@ -2218,7 +2218,7 @@ var MenuCustomizeComponent = /** @class */ (function () {
             console.log(item);
             _this.itemContent = item;
             var menuItemId = item[0].acf.menuid;
-            _this.featuredImage = (item[0].featured_media !== 0) ? item[0]._embedded['wp:featuredmedia'][0].media_details.sizes.full.source_url : 'http://via.placeholder.com/1440x500';
+            _this.featuredImage = (item[0].featured_media !== 0) ? item[0]._embedded['wp:featuredmedia'][0].media_details.sizes.full.source_url : '//via.placeholder.com/1440x500';
             _this.featuredImageAlt = (item[0].featured_media !== 0) ? item[0]._embedded['wp:featuredmedia'][0].alt_text : '';
             _this.getMenuItemDetails(menuItemId);
         });
@@ -2303,7 +2303,7 @@ var MenuCustomizeComponent = /** @class */ (function () {
         menuItem['SalesItemId'] = this.salesItemDetails.SalesItemId;
         menuItem['Name'] = this.salesItemDetails.Name;
         // Temporarily adding cart image to object so it's visible in cart
-        menuItem['cartImage'] = (this.itemContent[0].acf !== undefined && this.itemContent[0].acf.cart_image !== undefined) ? this.itemContent[0].acf.cart_image.url : 'http://via.placeholder.com/160x240';
+        menuItem['cartImage'] = (this.itemContent[0].acf !== undefined && this.itemContent[0].acf.cart_image !== undefined) ? this.itemContent[0].acf.cart_image.url : '//via.placeholder.com/160x240';
         menuItem['caloricValue'] = this.calorieCount;
         // Push full object to bag service
         this.bagService.createLineItem(menuItem);
@@ -2577,7 +2577,7 @@ var OrderDetailComponent = /** @class */ (function () {
         var bagService = this.bagService;
         var menuItemPosts = this.menuItemPosts;
         __WEBPACK_IMPORTED_MODULE_5_lodash__["forEach"](this.orderDetails.LineItems, function (lineItem, index) {
-            lineItem.cartImage = (menuItemPosts[index].acf !== undefined && menuItemPosts[index].acf.cart_image !== undefined) ? menuItemPosts[index].acf.cart_image : 'http://via.placeholder.com/160x240';
+            lineItem.cartImage = (menuItemPosts[index].acf !== undefined && menuItemPosts[index].acf.cart_image !== undefined) ? menuItemPosts[index].acf.cart_image : '//via.placeholder.com/160x240';
             bagService.orderItemAgain(lineItem);
         });
     };
@@ -4704,7 +4704,7 @@ var Config = /** @class */ (function () {
         // Setting API URL based on current environment
         switch (winRef.nativeWindow.location.hostname) {
             case 'localhost':
-                this.wordpressApiUrl = "http://lo-cal.local/wp-json";
+                this.wordpressApiUrl = "https://local.lndo.site/wp-json";
                 break;
             case 'live-lo-cal.pantheonsite.io':
                 this.wordpressApiUrl = "https://www.lo-calkitchen.com/wp-json";
