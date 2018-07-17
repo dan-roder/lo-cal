@@ -1,0 +1,9 @@
+name: lo-cal
+recipe: pantheon
+config:
+  framework: wordpress
+  site: lo-cal
+  id: 8645f154-c3a6-4a8c-b026-286e0cb3166d
+services:
+  appserver:
+    type: php:7.2
