@@ -39,6 +39,7 @@ export class MenuCustomizeComponent implements OnInit {
     let slug = (this.router.snapshot.paramMap.get('item'));
 
     this.wpService.getPostBySlug(slug, 'menu_item').subscribe(item => {
+      console.log(item);
       this.itemContent = item;
       let menuItemId = item[0].acf.menuid;
 
