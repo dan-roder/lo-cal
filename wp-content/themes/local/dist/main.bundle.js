@@ -2215,6 +2215,7 @@ var MenuCustomizeComponent = /** @class */ (function () {
         var _this = this;
         var slug = (this.router.snapshot.paramMap.get('item'));
         this.wpService.getPostBySlug(slug, 'menu_item').subscribe(function (item) {
+            console.log(item);
             _this.itemContent = item;
             var menuItemId = item[0].acf.menuid;
             // TODO: Ensure there is a fallback for if no media is found
@@ -4655,12 +4656,12 @@ var Config = /** @class */ (function () {
     function Config(winRef) {
         this.winRef = winRef;
         this.wordpressApiUrl = '';
-        this.railsMenuApi = 'http://138.197.123.70/menus/1';
-        this.railsCustomerEndpoint = 'http://138.197.123.70/customers';
-        this.authenticateEndpoint = 'http://138.197.123.70/authenticate';
-        this.railsOrderEndpoint = 'http://138.197.123.70/orders';
-        this.railsTimeEndpoint = 'http://138.197.123.70/times/1';
-        this.allTimesEndpoint = 'http://138.197.123.70/times/1/1/0/1001';
+        this.railsMenuApi = 'https://api.lo-calkitchen.com/menus/1';
+        this.railsCustomerEndpoint = 'https://api.lo-calkitchen.com/customers';
+        this.authenticateEndpoint = 'https://api.lo-calkitchen.com/authenticate';
+        this.railsOrderEndpoint = 'https://api.lo-calkitchen.com/orders';
+        this.railsTimeEndpoint = 'https://api.lo-calkitchen.com/times/1';
+        this.allTimesEndpoint = 'https://api.lo-calkitchen.com/times/1/1/0/1001';
         this.siteId = 1;
         this.menuId = 1001;
         this.paymentTypeMap = {
@@ -4700,10 +4701,10 @@ var Config = /** @class */ (function () {
                 this.wordpressApiUrl = "http://lo-cal.local/wp-json";
                 break;
             case 'live-lo-cal.pantheonsite.io':
-                this.wordpressApiUrl = "http://www.lo-calkitchen.com/wp-json";
+                this.wordpressApiUrl = "https://www.lo-calkitchen.com/wp-json";
                 break;
             default:
-                this.wordpressApiUrl = "http://" + winRef.nativeWindow.location.hostname + "/wp-json";
+                this.wordpressApiUrl = "https://" + winRef.nativeWindow.location.hostname + "/wp-json";
                 break;
         }
     }
