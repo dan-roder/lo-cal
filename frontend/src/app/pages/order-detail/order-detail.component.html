@@ -1,11 +1,17 @@
 <section class="account-section">
-  <header class="account-heading">
+  <header class="account-heading" *ngIf="canSeeOrder">
     <h3>Order #{{ orderDetails?.OrderId }}</h3>
     <div class="red-button small-text">
       <button (click)="addOrderToBag()">Order Again</button>
     </div>
   </header>
-  <div class="order-details-wrapper">
+  <header class="account-heading" *ngIf="!canSeeOrder">
+    <h3>We're Sorry</h3>
+  </header>
+  <p *ngIf="!canSeeOrder">
+    It looks like this order wasn't placed with your account.
+  </p>
+  <div class="order-details-wrapper" *ngIf="canSeeOrder">
     <div class="line-item" *ngFor="let item of orderDetails?.LineItems">
       <div class="details">
         <div class="title-and-details">
