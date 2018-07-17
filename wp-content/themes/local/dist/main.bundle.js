@@ -2218,7 +2218,6 @@ var MenuCustomizeComponent = /** @class */ (function () {
             console.log(item);
             _this.itemContent = item;
             var menuItemId = item[0].acf.menuid;
-            // TODO: Ensure there is a fallback for if no media is found
             _this.featuredImage = (item[0].featured_media !== 0) ? item[0]._embedded['wp:featuredmedia'][0].media_details.sizes.full.source_url : 'http://via.placeholder.com/1440x500';
             _this.featuredImageAlt = (item[0].featured_media !== 0) ? item[0]._embedded['wp:featuredmedia'][0].alt_text : '';
             _this.getMenuItemDetails(menuItemId);
@@ -2511,7 +2510,7 @@ var MenuPageComponent = /** @class */ (function () {
 /***/ "./src/app/pages/order-detail/order-detail.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<section class=\"account-section\">\n  <header class=\"account-heading\">\n    <h3>Order #{{ orderDetails?.OrderId }}</h3>\n    <div class=\"red-button small-text\">\n      <button (click)=\"addOrderToBag()\">Order Again</button>\n    </div>\n  </header>\n  <div class=\"order-details-wrapper\">\n    <div class=\"line-item\" *ngFor=\"let item of orderDetails?.LineItems\">\n      <div class=\"details\">\n        <div class=\"title-and-details\">\n          <h4 class=\"title\">{{ item?.Quantity }} x {{ item?.Name }}</h4>\n          <p class=\"modifiers small-text\" *ngIf=\"item?.Modifiers.length > 0\">\n            <span class=\"modifier\" *ngFor=\"let modifier of item?.Modifiers; let last = last\">{{ modifier?.Name }}<span class=\"separator\" *ngIf=\"!last\">, </span></span>\n          </p>\n        </div>\n        <span class=\"unit-price\">{{ item?.UnitPrice | currency }}</span>\n      </div>\n    </div><!-- /.line-item -->\n    <div class=\"pricing-details\">\n      <div class=\"flex-between subtotal\">\n        <div class=\"label\">Subtotal</div>\n        <div class=\"value\">{{ orderDetails?.SubTotalAmount | currency }}</div>\n      </div>\n      <div class=\"flex-between tax\">\n        <div class=\"label\">Tax</div>\n        <div class=\"value\">{{ orderDetails?.TaxAmount | currency }}</div>\n      </div>\n      <div class=\"flex-between total\">\n        <div class=\"label\">Total</div>\n        <div class=\"value\">{{ orderDetails?.TotalAmount | currency }}</div>\n      </div>\n    </div>\n  </div>\n</section>"
+module.exports = "<section class=\"account-section\">\n  <header class=\"account-heading\" *ngIf=\"canSeeOrder\">\n    <h3>Order #{{ orderDetails?.OrderId }}</h3>\n    <div class=\"red-button small-text\">\n      <button (click)=\"addOrderToBag()\">Order Again</button>\n    </div>\n  </header>\n  <header class=\"account-heading\" *ngIf=\"!canSeeOrder\">\n    <h3>We're Sorry</h3>\n  </header>\n  <p *ngIf=\"!canSeeOrder\">\n    It looks like this order wasn't placed with your account.\n  </p>\n  <div class=\"order-details-wrapper\" *ngIf=\"canSeeOrder\">\n    <div class=\"line-item\" *ngFor=\"let item of orderDetails?.LineItems\">\n      <div class=\"details\">\n        <div class=\"title-and-details\">\n          <h4 class=\"title\">{{ item?.Quantity }} x {{ item?.Name }}</h4>\n          <p class=\"modifiers small-text\" *ngIf=\"item?.Modifiers.length > 0\">\n            <span class=\"modifier\" *ngFor=\"let modifier of item?.Modifiers; let last = last\">{{ modifier?.Name }}<span class=\"separator\" *ngIf=\"!last\">, </span></span>\n          </p>\n        </div>\n        <span class=\"unit-price\">{{ item?.UnitPrice | currency }}</span>\n      </div>\n    </div><!-- /.line-item -->\n    <div class=\"pricing-details\">\n      <div class=\"flex-between subtotal\">\n        <div class=\"label\">Subtotal</div>\n        <div class=\"value\">{{ orderDetails?.SubTotalAmount | currency }}</div>\n      </div>\n      <div class=\"flex-between tax\">\n        <div class=\"label\">Tax</div>\n        <div class=\"value\">{{ orderDetails?.TaxAmount | currency }}</div>\n      </div>\n      <div class=\"flex-between total\">\n        <div class=\"label\">Total</div>\n        <div class=\"value\">{{ orderDetails?.TotalAmount | currency }}</div>\n      </div>\n    </div>\n  </div>\n</section>"
 
 /***/ }),
 
@@ -2527,6 +2526,8 @@ module.exports = "<section class=\"account-section\">\n  <header class=\"account
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__local_services_wp_service__ = __webpack_require__("./src/app/services/wp.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_lodash__ = __webpack_require__("./node_modules/lodash/lodash.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_lodash___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_lodash__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__local_services_customer_service__ = __webpack_require__("./src/app/services/customer.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_ngx_auto_unsubscribe__ = __webpack_require__("./node_modules/ngx-auto-unsubscribe/dist/index.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -2542,31 +2543,34 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
+
 var OrderDetailComponent = /** @class */ (function () {
-    function OrderDetailComponent(route, orderService, bagService, wpService) {
+    function OrderDetailComponent(route, orderService, bagService, wpService, customerService) {
         var _this = this;
         this.route = route;
         this.orderService = orderService;
         this.bagService = bagService;
         this.wpService = wpService;
+        this.customerService = customerService;
         this.menuItemPosts = [];
+        this.canSeeOrder = false;
         this.route.params.subscribe(function (params) { return _this.orderId = params.orderid; });
     }
     OrderDetailComponent.prototype.ngOnInit = function () {
         var _this = this;
+        this.customerService.isLoggedIn().subscribe(function (user) {
+            _this.currentUser = user;
+            _this.getOrderDetails();
+        });
+    };
+    OrderDetailComponent.prototype.getOrderDetails = function () {
+        var _this = this;
         this.orderService.getFullOrderDetails(this.orderId).subscribe(function (orderDetails) {
             _this.orderDetails = orderDetails;
-            _this.wpService.getMenuMapObject().subscribe(function (map) {
-                _this.menuMap = map;
-                var wpService = _this.wpService;
-                var menuItemArray = _this.menuItemPosts;
-                __WEBPACK_IMPORTED_MODULE_5_lodash__["forEach"](orderDetails.LineItems, function (value) {
-                    var obj = __WEBPACK_IMPORTED_MODULE_5_lodash__["find"](map, { 'menuid': String(value.MenuItemId) });
-                    wpService.getCustomPostTypeById('menu_item', obj.id).subscribe(function (post) {
-                        menuItemArray.push(post);
-                    });
-                });
-            });
+            if (_this.currentUser.CustomerId === _this.orderDetails.Customer.CustomerId) {
+                _this.canSeeOrder = true;
+            }
         });
     };
     OrderDetailComponent.prototype.addOrderToBag = function () {
@@ -2577,12 +2581,14 @@ var OrderDetailComponent = /** @class */ (function () {
             bagService.orderItemAgain(lineItem);
         });
     };
+    OrderDetailComponent.prototype.ngOnDestroy = function () { };
     OrderDetailComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: 'lo-cal-order-detail',
             template: __webpack_require__("./src/app/pages/order-detail/order-detail.component.html")
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */], __WEBPACK_IMPORTED_MODULE_2__local_services_order_service__["a" /* OrderService */], __WEBPACK_IMPORTED_MODULE_3__local_services_bag_service__["a" /* BagService */], __WEBPACK_IMPORTED_MODULE_4__local_services_wp_service__["a" /* WordpressService */]])
+        Object(__WEBPACK_IMPORTED_MODULE_7_ngx_auto_unsubscribe__["a" /* AutoUnsubscribe */])(),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */], __WEBPACK_IMPORTED_MODULE_2__local_services_order_service__["a" /* OrderService */], __WEBPACK_IMPORTED_MODULE_3__local_services_bag_service__["a" /* BagService */], __WEBPACK_IMPORTED_MODULE_4__local_services_wp_service__["a" /* WordpressService */], __WEBPACK_IMPORTED_MODULE_6__local_services_customer_service__["a" /* CustomerService */]])
     ], OrderDetailComponent);
     return OrderDetailComponent;
 }());
