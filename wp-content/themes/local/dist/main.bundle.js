@@ -3827,6 +3827,7 @@ var WordpressService = /** @class */ (function () {
         return this.httpClient.get(this.config.wordpressApiUrl + ("/wp/v2/pages/" + id + "?_embed"));
     };
     WordpressService.prototype.getPostBySlug = function (_slug, _postType) {
+        console.log(this.config.wordpressApiUrl + ("/wp/v2/" + _postType + "?slug=" + _slug + "&_embed"));
         return this.httpClient.get(this.config.wordpressApiUrl + ("/wp/v2/" + _postType + "?slug=" + _slug + "&_embed"));
     };
     WordpressService.prototype.getMenus = function () {

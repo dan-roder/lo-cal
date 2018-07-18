@@ -63,6 +63,7 @@ export class WordpressService {
   }
 
   getPostBySlug(_slug: string, _postType: string){
+    console.log(this.config.wordpressApiUrl + `/wp/v2/${_postType}?slug=${_slug}&_embed`)
     return this.httpClient.get(this.config.wordpressApiUrl + `/wp/v2/${_postType}?slug=${_slug}&_embed`);
   }
 
