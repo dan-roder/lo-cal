@@ -1,7 +1,7 @@
 <div class="page-item-detail">
   <div class="menu-item-header">
     <div class="overlay-container">
-      <h1 class="title">{{ menuItemDetails?.item?.Name }}</h1>
+      <h1 class="title">{{ menuItemDetails?.item?.DisplayName }}</h1>
       <img *ngIf="featuredImage" [src]="featuredImage" [alt]="featuredImageAlt">
     </div>
   </div>
@@ -36,7 +36,7 @@
     </div><!-- /.left.customization-options -->
     <div class="right">
       <div class="final-product">
-        <div class="title">{{ menuItemDetails?.item?.Name }}</div>
+        <div class="title">{{ menuItemDetails?.item?.DisplayName }}</div>
         <div class="ingredients" *ngIf="menuItemDetails?.item?.Description">
           {{ (menuItemDetails?.item?.Description | allergens)?.description }}
         </div>
