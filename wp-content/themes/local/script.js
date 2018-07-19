@@ -4,7 +4,6 @@ jQuery(document).ready( function ($) {
     // BASE_URL = "http://localhost:300/";
     $("#start").on('click', function(e){
         e.preventDefault();
-        console.log("CLICK!");
         $(".loader").show();
         if( $("#sync-items").is(":visible") ) {
             $("#sync-items").hide();
