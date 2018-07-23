@@ -47,7 +47,10 @@
           <span class="price">{{ totalPrice | currency }}</span>
           <span class="calories" *ngIf="calorieCount !== null">{{ calorieCount }} cal</span>
           <span class="allergens" *ngIf="(menuItemDetails?.item?.Description)">
-            <span class="allergen" *ngFor="let allergen of (menuItemDetails?.item?.Description | allergens).allergens">{{ allergen }}</span>
+            <span class="allergen-wrapper" *ngFor="let allergen of (menuItemDetails?.item?.Description | allergens).allergens">
+              <span class="allergen">{{ allergen }}</span>
+              <span class="rollover">{{ allergen | allergenRollover }}</span>
+            </span>
           </span>
         </div>
       </div><!-- /.final-product -->
