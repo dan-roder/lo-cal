@@ -9,7 +9,7 @@
   z-index: 55;
   margin-top: -8px;
 
-  @include breakpoint($bp-768){
+  @include breakpoint($bp-860){
     display: none;
   }
 
