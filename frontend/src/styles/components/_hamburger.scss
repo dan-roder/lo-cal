@@ -7,7 +7,7 @@
   cursor: pointer;
   top: 50%;
   z-index: 55;
-  margin-top: -13px;
+  margin-top: -8px;
 
   @include breakpoint($bp-768){
     display: none;
