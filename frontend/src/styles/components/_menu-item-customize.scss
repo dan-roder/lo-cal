@@ -202,8 +202,10 @@
       justify-content: space-between;
       align-items: center;
 
-      .allergens{
-        span{
+      .allergen-wrapper{
+        position: relative;
+
+        span.allergen{
           background: $e1;
           border-radius: 50%;
           width: 35px;
@@ -212,6 +214,45 @@
           display: inline-block;
           text-align: center;
           margin: 0 2px;
+
+          &:after{
+            display: none;
+            content: '';
+            width: 12px;
+            height: 12px;
+            background: $devils-grey;
+            transform: rotate(45deg);
+            top: -24px;
+            left: 0;
+            right: 0;
+            margin: 0 auto;
+            position: absolute;
+          }
+        }
+
+        .rollover{
+          position: absolute;
+          width: auto;
+          white-space: nowrap;
+          right: 0;
+          top: -60px;
+          padding: 10px;
+          background: $devils-grey;
+          color: $white;
+          @include fontsize(15);
+          display: none;
+        }
+
+        &:hover{
+          .rollover{
+            display: block;
+          }
+
+          span.allergen{
+            &:after{
+              display: inline-block;
+            }
+          }
         }
       }
     }
