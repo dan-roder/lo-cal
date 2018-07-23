@@ -209,7 +209,7 @@ export class MenuCustomizeComponent implements OnInit {
       // Create new object to store values in
       let modObject = new Object();
       modObject['maximumItems'] = (modifierGroup.MaximumItems === 0) ? 'unlimited' : modifierGroup.MaximumItems;
-      modObject['minimumItems'] = modifierGroup.MaximumItems;
+      modObject['minimumItems'] = modifierGroup.MinimumItems;
       modObject['currentlySelected'] = new Array;
       modObject['modifiers'] = new Object();
       modObject['groupDetails'] = new Object();
@@ -233,6 +233,7 @@ export class MenuCustomizeComponent implements OnInit {
     });
 
     this.customizationData = tempObj;
+    console.log(this.customizationData);
   }
 
   public updateDataPerSize(salesId: string){
