@@ -20,12 +20,12 @@ export class CardImagePipe implements PipeTransform {
             return post.acf.submenu_image.url;
           }
           else{
-            return "//via.placeholder.com/265x115";
+            return "";
           }
         });
       }
       else{
-        return Observable.of("//via.placeholder.com/265x115");
+        return Observable.of('');
       }
     }
   }
