@@ -2,22 +2,30 @@
   .menu-items{
     @extend %clearfix;
     display: flex;
-    flex-wrap: wrap;
+    flex-flow: row wrap;
     justify-content: space-between;
 
+    @include breakpoint($bp-460){
+
+    }
+
     .item{
-      width: 50%;
       display: flex;
+      flex: 1 auto;
+      width: 50%;
+
+      @include breakpoint($bp-460){
+
+      }
 
       @include breakpoint($bp-768){
-        width: 33.3333%;
+        width: calc(33.3333% - 30px);
       }
 
       .item-wrapper{
         padding: 20px;
         border: 1px solid $e1;
-        margin: 15px auto;
-        max-width: 260px;
+        margin: 15px;
         width: 100%;
 
         .title{
@@ -27,12 +35,16 @@
 
         a{
           text-decoration: none;
-          @include fontsize(22);
+          @include fontsize(18);
           @extend %sofia-medium;
           color: $c-31;
           text-transform: uppercase;
           display: block;
           @include transition(color, 200ms);
+
+          @include breakpoint($bp-460){
+            @include fontsize(22);
+          }
 
           &:hover{
             color: $red-hover;
