@@ -65,6 +65,7 @@ import { FeaturedImagePipe } from './pipes/featured-image.pipe';
 import { CardTypePipe } from './pipes/card-type.pipe';
 import { SafeUrlPipe } from './pipes/safe-url.pipe';
 import { NoXPipe } from './pipes/no-x.pipe';
+import { AllergenRolloverPipe } from './pipes/allergen-rollover.pipe';
 
 //Guards
 import { AuthGuard } from '@local/guards/auth.guard';
@@ -121,7 +122,8 @@ import { CardImagePipe } from './pipes/card-image.pipe';
     SafeUrlPipe,
     OrderDetailComponent,
     CardImagePipe,
-    NoXPipe
+    NoXPipe,
+    AllergenRolloverPipe
   ],
   imports: [
     BrowserModule,
