@@ -535,14 +535,15 @@ var AppComponent = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_50__pipes_card_type_pipe__ = __webpack_require__("./src/app/pipes/card-type.pipe.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_51__pipes_safe_url_pipe__ = __webpack_require__("./src/app/pipes/safe-url.pipe.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_52__pipes_no_x_pipe__ = __webpack_require__("./src/app/pipes/no-x.pipe.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_53__local_guards_auth_guard__ = __webpack_require__("./src/app/guards/auth.guard.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_54__local_guards_access_guard__ = __webpack_require__("./src/app/guards/access.guard.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_55__local_guards_order_guard__ = __webpack_require__("./src/app/guards/order.guard.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_56__pages_checkout_payment_checkout_payment_component__ = __webpack_require__("./src/app/pages/checkout-payment/checkout-payment.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_57_ng2_responsive__ = __webpack_require__("./node_modules/ng2-responsive/index.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_57_ng2_responsive___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_57_ng2_responsive__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_58__shared_directives_month_mask_directive__ = __webpack_require__("./src/app/shared/directives/month-mask.directive.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_59__pipes_card_image_pipe__ = __webpack_require__("./src/app/pipes/card-image.pipe.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_53__pipes_allergen_rollover_pipe__ = __webpack_require__("./src/app/pipes/allergen-rollover.pipe.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_54__local_guards_auth_guard__ = __webpack_require__("./src/app/guards/auth.guard.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_55__local_guards_access_guard__ = __webpack_require__("./src/app/guards/access.guard.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_56__local_guards_order_guard__ = __webpack_require__("./src/app/guards/order.guard.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_57__pages_checkout_payment_checkout_payment_component__ = __webpack_require__("./src/app/pages/checkout-payment/checkout-payment.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_58_ng2_responsive__ = __webpack_require__("./node_modules/ng2-responsive/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_58_ng2_responsive___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_58_ng2_responsive__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_59__shared_directives_month_mask_directive__ = __webpack_require__("./src/app/shared/directives/month-mask.directive.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_60__pipes_card_image_pipe__ = __webpack_require__("./src/app/pipes/card-image.pipe.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -609,6 +610,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
+
 //Guards
 
 
@@ -655,16 +657,17 @@ var AppModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_44__shared_directives_input_switcher_directive__["a" /* InputSwitcherDirective */],
                 __WEBPACK_IMPORTED_MODULE_24__pages_checkout_login_checkout_login_component__["a" /* CheckoutLoginComponent */],
                 __WEBPACK_IMPORTED_MODULE_25__pages_checkout_review_checkout_review_component__["a" /* CheckoutReviewComponent */],
-                __WEBPACK_IMPORTED_MODULE_56__pages_checkout_payment_checkout_payment_component__["a" /* CheckoutPaymentComponent */],
-                __WEBPACK_IMPORTED_MODULE_58__shared_directives_month_mask_directive__["a" /* MonthMaskDirective */],
+                __WEBPACK_IMPORTED_MODULE_57__pages_checkout_payment_checkout_payment_component__["a" /* CheckoutPaymentComponent */],
+                __WEBPACK_IMPORTED_MODULE_59__shared_directives_month_mask_directive__["a" /* MonthMaskDirective */],
                 __WEBPACK_IMPORTED_MODULE_26__pages_confirmation_confirmation_component__["a" /* ConfirmationComponent */],
                 __WEBPACK_IMPORTED_MODULE_27__pages_order_history_order_history_component__["a" /* OrderHistoryComponent */],
                 __WEBPACK_IMPORTED_MODULE_11__layouts_account_layout_account_layout_component__["a" /* AccountLayoutComponent */],
                 __WEBPACK_IMPORTED_MODULE_50__pipes_card_type_pipe__["a" /* CardTypePipe */],
                 __WEBPACK_IMPORTED_MODULE_51__pipes_safe_url_pipe__["a" /* SafeUrlPipe */],
                 __WEBPACK_IMPORTED_MODULE_28__pages_order_detail_order_detail_component__["a" /* OrderDetailComponent */],
-                __WEBPACK_IMPORTED_MODULE_59__pipes_card_image_pipe__["a" /* CardImagePipe */],
-                __WEBPACK_IMPORTED_MODULE_52__pipes_no_x_pipe__["a" /* NoXPipe */]
+                __WEBPACK_IMPORTED_MODULE_60__pipes_card_image_pipe__["a" /* CardImagePipe */],
+                __WEBPACK_IMPORTED_MODULE_52__pipes_no_x_pipe__["a" /* NoXPipe */],
+                __WEBPACK_IMPORTED_MODULE_53__pipes_allergen_rollover_pipe__["a" /* AllergenRolloverPipe */]
             ],
             imports: [
                 __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
@@ -675,9 +678,9 @@ var AppModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_6__app_routing_module__["a" /* AppRoutingModule */],
                 __WEBPACK_IMPORTED_MODULE_5__angular_platform_browser_animations__["a" /* BrowserAnimationsModule */],
                 __WEBPACK_IMPORTED_MODULE_7__ngx_pwa_local_storage__["b" /* LocalStorageModule */],
-                __WEBPACK_IMPORTED_MODULE_57_ng2_responsive__["ResponsiveModule"]
+                __WEBPACK_IMPORTED_MODULE_58_ng2_responsive__["ResponsiveModule"]
             ],
-            providers: [__WEBPACK_IMPORTED_MODULE_8__utils_constants__["a" /* Config */], __WEBPACK_IMPORTED_MODULE_37__utils_windowref__["a" /* WindowRef */], __WEBPACK_IMPORTED_MODULE_38__services_wp_service__["a" /* WordpressService */], __WEBPACK_IMPORTED_MODULE_39__services_menu_service_service__["a" /* MenuService */], __WEBPACK_IMPORTED_MODULE_40__services_bag_service__["a" /* BagService */], __WEBPACK_IMPORTED_MODULE_41__services_customer_service__["a" /* CustomerService */], __WEBPACK_IMPORTED_MODULE_53__local_guards_auth_guard__["a" /* AuthGuard */], __WEBPACK_IMPORTED_MODULE_54__local_guards_access_guard__["a" /* AccessGuard */], __WEBPACK_IMPORTED_MODULE_42__local_services_order_service__["a" /* OrderService */], __WEBPACK_IMPORTED_MODULE_55__local_guards_order_guard__["a" /* OrderGuard */]],
+            providers: [__WEBPACK_IMPORTED_MODULE_8__utils_constants__["a" /* Config */], __WEBPACK_IMPORTED_MODULE_37__utils_windowref__["a" /* WindowRef */], __WEBPACK_IMPORTED_MODULE_38__services_wp_service__["a" /* WordpressService */], __WEBPACK_IMPORTED_MODULE_39__services_menu_service_service__["a" /* MenuService */], __WEBPACK_IMPORTED_MODULE_40__services_bag_service__["a" /* BagService */], __WEBPACK_IMPORTED_MODULE_41__services_customer_service__["a" /* CustomerService */], __WEBPACK_IMPORTED_MODULE_54__local_guards_auth_guard__["a" /* AuthGuard */], __WEBPACK_IMPORTED_MODULE_55__local_guards_access_guard__["a" /* AccessGuard */], __WEBPACK_IMPORTED_MODULE_42__local_services_order_service__["a" /* OrderService */], __WEBPACK_IMPORTED_MODULE_56__local_guards_order_guard__["a" /* OrderGuard */]],
             bootstrap: [__WEBPACK_IMPORTED_MODULE_9__app_component__["a" /* AppComponent */]]
         })
     ], AppModule);
@@ -883,7 +886,7 @@ var AccountLayoutComponent = /** @class */ (function () {
 /***/ "./src/app/layouts/main-layout/main-layout.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"mobile-menu\" *responsive=\"{ sizes: {min:300, max:768}}\" [ngClass]=\"mobileMenuState\">\n  <ul>\n    <li><a routerLink=\"/\" routerLinkActive=\"active\" [routerLinkActiveOptions]=\"{exact:true}\">Home</a></li>\n    <li *ngFor=\"let item of mainMenuLinks\" [attr.class]=\"item.classes ? item.classes : null\">\n      <a routerLink=\"/{{ item.object_slug }}\" routerLinkActive=\"active\" [routerLinkActiveOptions]=\"{exact:true}\">{{ item.title }}</a>\n    </li>\n  </ul>\n</div>\n<div class=\"site-container\" [ngClass]=\"mobileMenuState\" loCalWindowScroll>\n  <div class=\"sticky-header\">\n    <div class=\"menu-container clearfix\">\n      <lo-cal-hamburger (mobileMenuState)=\"toggleMobileMenuState()\" *responsive=\"{ sizes: {min:300, max:768}}\"></lo-cal-hamburger>\n      <ul class=\"menu main-menu\">\n        <li>\n          <h1 class=\"logo\" *ngIf=\"currentUrl?.url == '/'; else regularLink\"><a routerLink=\"/\"><span class=\"visuallyhidden\">Lo•Cal Kitchen</span></a></h1>\n          <ng-template #regularLink>\n            <div class=\"logo\"><a routerLink=\"/\"><span class=\"visuallyhidden\">Lo•Cal Kitchen</span></a></div>\n          </ng-template>\n        </li>\n        <li *ngFor=\"let item of mainMenuLinks\" [attr.class]=\"item.classes ? item.classes : null\">\n          <a routerLink=\"/{{ item.object_slug }}\" routerLinkActive=\"active\">{{ item.title }}</a>\n        </li>\n      </ul>\n      <ul class=\"cart-menu menu\">\n        <li class=\"account-link\">\n          <a routerLink=\"/account\"><span class=\"account-text\">ACCOUNT</span></a>\n        </li>\n        <li class=\"bag-link\">\n          <a tabindex=\"0\" (click)=\"toggleBagState()\" (keyup.enter)=\"toggleBagState()\" title=\"Click to view your bag\">\n            <span class=\"bag-text\">MY BAG</span>\n            <span class=\"cart-number\" [ngClass]=\"numberOfItemsInBag == 0 ? 'hidden' : 'populated'\">{{ numberOfItemsInBag }}</span>\n          </a>\n        </li>\n      </ul>\n    </div>\n  </div>\n  <div class=\"main-container\">\n    <router-outlet></router-outlet>\n  </div>\n\n  <lo-cal-footer></lo-cal-footer>\n  <lo-cal-bag [state]=\"bagState\" [bagCount]=\"numberOfItemsInBag\" [bagItems]=\"bagItems\" (bagState)=\"toggleBagState()\"></lo-cal-bag>\n</div>"
+module.exports = "<div class=\"mobile-menu\" *responsive=\"{ sizes: {min:300, max:860}}\" [ngClass]=\"mobileMenuState\">\n  <ul>\n    <li><a routerLink=\"/\" routerLinkActive=\"active\" [routerLinkActiveOptions]=\"{exact:true}\">Home</a></li>\n    <li *ngFor=\"let item of mainMenuLinks\" [attr.class]=\"item.classes ? item.classes : null\">\n      <a routerLink=\"/{{ item.object_slug }}\" routerLinkActive=\"active\" [routerLinkActiveOptions]=\"{exact:true}\">{{ item.title }}</a>\n    </li>\n  </ul>\n</div>\n<div class=\"site-container\" [ngClass]=\"mobileMenuState\" loCalWindowScroll>\n  <div class=\"sticky-header\">\n    <div class=\"menu-container clearfix\">\n      <lo-cal-hamburger (mobileMenuState)=\"toggleMobileMenuState()\" *responsive=\"{ sizes: {min:300, max:860}}\"></lo-cal-hamburger>\n      <ul class=\"menu main-menu\">\n        <li>\n          <h1 class=\"logo\" *ngIf=\"currentUrl?.url == '/'; else regularLink\"><a routerLink=\"/\"><span class=\"visuallyhidden\">Lo•Cal Kitchen</span></a></h1>\n          <ng-template #regularLink>\n            <div class=\"logo\"><a routerLink=\"/\"><span class=\"visuallyhidden\">Lo•Cal Kitchen</span></a></div>\n          </ng-template>\n        </li>\n        <li *ngFor=\"let item of mainMenuLinks\" [attr.class]=\"item.classes ? item.classes : null\">\n          <a routerLink=\"/{{ item.object_slug }}\" routerLinkActive=\"active\">{{ item.title }}</a>\n        </li>\n      </ul>\n      <ul class=\"cart-menu menu\">\n        <li class=\"account-link\">\n          <a routerLink=\"/account\"><span class=\"account-text\">ACCOUNT</span></a>\n        </li>\n        <li class=\"bag-link\">\n          <a tabindex=\"0\" (click)=\"toggleBagState()\" (keyup.enter)=\"toggleBagState()\" title=\"Click to view your bag\">\n            <span class=\"bag-text\">MY BAG</span>\n            <span class=\"cart-number\" [ngClass]=\"numberOfItemsInBag == 0 ? 'hidden' : 'populated'\">{{ numberOfItemsInBag }}</span>\n          </a>\n        </li>\n      </ul>\n    </div>\n  </div>\n  <div class=\"main-container\">\n    <router-outlet></router-outlet>\n  </div>\n\n  <lo-cal-footer></lo-cal-footer>\n  <lo-cal-bag [state]=\"bagState\" [bagCount]=\"numberOfItemsInBag\" [bagItems]=\"bagItems\" (bagState)=\"toggleBagState()\"></lo-cal-bag>\n</div>"
 
 /***/ }),
 
@@ -2070,7 +2073,7 @@ var CreateAccountComponent = /** @class */ (function () {
 /***/ "./src/app/pages/home/home.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"home page-front\">\n\n    <header class=\"header-container\">\n      <div class=\"content\" [ngStyle]=\"{'background-image':'url(' + featuredImage?.source_url + ')'}\">\n        <div class=\"header-content center-1440 clearfix\">\n          <div class=\"wysiwyg-content\">\n              <h2 [innerHtml]=\"pageContent?.title?.rendered\"></h2>\n              <div [innerHtml]=\"pageContent?.content?.rendered\"></div>\n          </div>\n        </div>\n      </div>\n    </header>\n\n  <div class=\"content-container\">\n\n    <lo-cal-intro-section [acf]=\"acf\"></lo-cal-intro-section>\n\n    <lo-cal-title-body-images [acf]=\"acf\" [color]=\"'grey'\"></lo-cal-title-body-images>\n\n    <div class=\"section section-white our-menu\">\n      <div class=\"content text-center\">\n        <h3 class=\"title\" [innerHtml]=\"acf?.menu_title\"></h3>\n        <p class=\"body center-740 text-center\" [innerHtml]=\"acf?.menu_description\"></p>\n        <div class=\"menu-items center-1440\">\n          <div class=\"item item-{{ i+1 }}\" *ngFor=\"let item of acf?.menu_items; let i = index\">\n            <div class=\"item-wrapper text-center\">\n              <div class=\"image\"><img *ngIf=\"item?.image?.url\" [src]=\"item?.image?.url\" [alt]=\"item?.image?.alt\"></div>\n              <div class=\"title\" *ngIf=\"item?.item_title\">{{ item?.item_title }}</div>\n            </div>\n          </div>\n        </div><!-- /.menu-items -->\n        <div class=\"link red-button\"><a routerLink=\"/menu\">View the Full Menu</a></div>\n      </div>\n    </div><!-- /.out-menu -->\n\n    <div class=\"section section-grey app-ad\">\n      <div class=\"content center\">\n        <div class=\"left\">\n          <div class=\"inner-content\">\n            <h4 class=\"title\" [innerHtml]=\"acf?.mobile_order_title\"></h4>\n            <div class=\"body\">\n              <p [innerHtml]=\"acf?.mobile_ordering_text\"></p>\n              <div class=\"app-downloads\" *ngIf=\"acf?.ios_app_link && acf?.android_app_link\">\n                <a [href]=\"acf?.ios_app_link\"><img *ngIf=\"acf?.ios_app_store_image?.url\" [src]=\"acf?.ios_app_store_image?.url\" [alt]=\"acf?.ios_app_store_image?.alt\" /></a>\n                <a [href]=\"acf?.android_app_link\"><img *ngIf=\"acf?.android_app_store_image?.url\" [src]=\"acf?.android_app_store_image?.url\" [alt]=\"acf?.android_app_store_image?.alt\" /></a>\n              </div>\n            </div>\n          </div>\n        </div>\n      </div>\n    </div><!-- /.app-ad -->\n\n    <lo-cal-image-and-text [acf]=\"acf\"></lo-cal-image-and-text>\n\n  </div>\n</div><!-- /.home -->"
+module.exports = "<div class=\"home page-front\">\n\n    <header class=\"header-container\">\n      <div class=\"content\" [ngStyle]=\"{'background-image':'url(' + featuredImage?.source_url + ')'}\">\n        <div class=\"header-content center-1440 clearfix\">\n          <div class=\"wysiwyg-content\">\n              <h2 [innerHtml]=\"pageContent?.title?.rendered\"></h2>\n              <div [innerHtml]=\"pageContent?.content?.rendered\"></div>\n          </div>\n        </div>\n      </div>\n    </header>\n\n  <div class=\"content-container\">\n\n    <lo-cal-intro-section [acf]=\"acf\"></lo-cal-intro-section>\n\n    <lo-cal-title-body-images [acf]=\"acf\" [color]=\"'grey'\"></lo-cal-title-body-images>\n\n    <div class=\"section section-white our-menu\">\n      <div class=\"content text-center\">\n        <h3 class=\"title\" [innerHtml]=\"acf?.menu_title\"></h3>\n        <p class=\"body center-740 text-center\" [innerHtml]=\"acf?.menu_description\"></p>\n        <div class=\"menu-items center-1440\">\n          <div class=\"item item-{{ i+1 }}\" *ngFor=\"let item of acf?.menu_items; let i = index\">\n            <div class=\"item-wrapper text-center\">\n              <div class=\"image\"><img *ngIf=\"item?.image?.url\" [src]=\"item?.image?.url\" [alt]=\"item?.image?.alt\"></div>\n              <div class=\"title\" *ngIf=\"item?.item_title\">{{ item?.item_title }}</div>\n            </div>\n          </div>\n        </div><!-- /.menu-items -->\n        <div class=\"link red-button\"><a routerLink=\"/menu\">View the Full Menu</a></div>\n      </div>\n    </div><!-- /.out-menu -->\n\n    <!-- <div class=\"section section-grey app-ad\">\n      <div class=\"content center\">\n        <div class=\"left\">\n          <div class=\"inner-content\">\n            <h4 class=\"title\" [innerHtml]=\"acf?.mobile_order_title\"></h4>\n            <div class=\"body\">\n              <p [innerHtml]=\"acf?.mobile_ordering_text\"></p>\n              <div class=\"app-downloads\" *ngIf=\"acf?.ios_app_link && acf?.android_app_link\">\n                <a [href]=\"acf?.ios_app_link\"><img *ngIf=\"acf?.ios_app_store_image?.url\" [src]=\"acf?.ios_app_store_image?.url\" [alt]=\"acf?.ios_app_store_image?.alt\" /></a>\n                <a [href]=\"acf?.android_app_link\"><img *ngIf=\"acf?.android_app_store_image?.url\" [src]=\"acf?.android_app_store_image?.url\" [alt]=\"acf?.android_app_store_image?.alt\" /></a>\n              </div>\n            </div>\n          </div>\n        </div>\n      </div>\n    </div> -->\n\n    <lo-cal-image-and-text [acf]=\"acf\"></lo-cal-image-and-text>\n\n  </div>\n</div><!-- /.home -->"
 
 /***/ }),
 
@@ -2167,7 +2170,7 @@ var LoginComponent = /** @class */ (function () {
 /***/ "./src/app/pages/menu-customize/menu-customize.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"page-item-detail\">\n  <div class=\"menu-item-header\">\n    <div class=\"overlay-container\">\n      <h1 class=\"title\">{{ menuItemDetails?.item?.DisplayName }}</h1>\n      <img *ngIf=\"featuredImage\" [src]=\"featuredImage\" [alt]=\"featuredImageAlt\">\n    </div>\n  </div>\n\n  <div class=\"customization-container center-1440\">\n    <div class=\"left customization-options\">\n\n      <div class=\"customization-category\" *ngFor=\"let modGroup of salesItemDetails?.ModGroups\">\n        <div class=\"content\">\n          <div class=\"header\">\n            <span class=\"title\">{{ modGroup?.DisplayName }}</span>\n            <span class=\"choices\" *ngIf=\"modGroup?.MaximumItems > 0\">Choose up to {{ modGroup?.MaximumItems }} ({{ customizationData[modGroup?.$id].currentlySelected.length }}/{{ modGroup?.MaximumItems }})</span>\n          </div>\n          <div class=\"options\" *ngFor=\"let modifier of modGroup?.Mods\">\n            <div class=\"option\">\n              <div class=\"ingredient\">{{ modifier?.Name }}</div>\n              <div class=\"calories\">{{ modifier?.ItemModifiers[0]?.CaloricValue }} <span *ngIf=\"modifier?.ItemModifiers[0]?.CaloricValue !== null\">cal</span> </div>\n              <div class=\"choice-controls\">\n                <span class=\"minus\" [ngClass]=\"(customizationData[modGroup?.$id].currentlySelected.length > 0 && customizationData[modGroup?.$id].modifiers[modifier?.$id].quantity > 0) ? 'enabled' : 'disabled'\" (click)=\"removeModifier(modGroup, modifier)\">-</span>\n                <span class=\"quantity-container\" [ngClass]=\"customizationData[modGroup?.$id].modifiers[modifier?.$id]?.quantity > 0 ? 'populated' : ''\">\n                  <span class=\"quantity\" *ngIf=\"customizationData[modGroup?.$id].modifiers[modifier?.$id]?.quantity !== 0\">\n                    {{ customizationData[modGroup?.$id].modifiers[modifier?.$id]?.quantity }}\n                  </span>\n                </span>\n                <span class=\"plus\" [ngClass]=\"((customizationData[modGroup?.$id].currentlySelected.length < modGroup?.MaximumItems) || (modGroup?.MaximumItems === 0 && customizationData[modGroup?.$id].modifiers[modifier?.$id].quantity < 1)) ? 'enabled' : 'disabled'\" (click)=\"addModifier(modGroup, modifier)\">+</span>\n              </div>\n            </div><!-- /.option -->\n          </div><!-- /.options -->\n        </div>\n      </div><!-- /.customization-category -->\n\n    </div><!-- /.left.customization-options -->\n    <div class=\"right\">\n      <div class=\"final-product\">\n        <div class=\"title\">{{ menuItemDetails?.item?.DisplayName }}</div>\n        <div class=\"ingredients\" *ngIf=\"menuItemDetails?.item?.Description\">\n          {{ (menuItemDetails?.item?.Description | allergens)?.description }}\n        </div>\n        <div class=\"customization-ingredients\" *ngIf=\"currentModifierArray\">\n          <span class=\"customization\" *ngFor=\"let item of currentModifierArray; let last = last;\">{{ item?.DisplayName }}<span class=\"separator\" *ngIf=\"!last\">, </span></span>\n        </div>\n        <div class=\"fine-details\">\n          <span class=\"price\">{{ totalPrice | currency }}</span>\n          <span class=\"calories\" *ngIf=\"calorieCount !== null\">{{ calorieCount }} cal</span>\n          <span class=\"allergens\" *ngIf=\"(menuItemDetails?.item?.Description)\">\n            <span class=\"allergen\" *ngFor=\"let allergen of (menuItemDetails?.item?.Description | allergens).allergens\">{{ allergen }}</span>\n          </span>\n        </div>\n      </div><!-- /.final-product -->\n\n      <div class=\"special-instructions\">\n        <label for=\"special-instructions\">Add Special Instruction (optional)</label>\n        <textarea name=\"special-instructions\" id=\"\" cols=\"30\" rows=\"5\" [(ngModel)]=\"specialInstructions\"></textarea>\n      </div><!-- /.special-instructions -->\n\n      <div class=\"quantity-wrapper\">\n        <div class=\"text\">Quantity</div>\n        <div class=\"quantity-changer\">\n          <span class=\"minus\" (click)=\"decrementQuantity()\">-</span>\n          <span class=\"quantity\">{{ quantity }}</span>\n          <span class=\"plus\" (click)=\"incrementQuantity()\">+</span>\n        </div>\n      </div>\n\n      <div class=\"size-wrapper\" *ngIf=\"multipleSalesItems.length > 0\">\n        <label for=\"size\" class=\"text\">Size</label>\n        <select name=\"size\" id=\"size\" class=\"custom white-bg\" [(ngModel)]=\"sizeChoice\" (ngModelChange)=\"updateDataPerSize(sizeChoice)\">\n          <option [value]=\"salesItem?.SalesItemId\" *ngFor=\"let salesItem of multipleSalesItems\">{{ salesItem?.DisplayName }}</option>\n        </select>\n      </div>\n\n      <div class=\"add-button red-button\">\n        <button *ngIf=\"totalPrice\" (click)=\"addToBag()\">Add to Bag (+{{ totalPrice | currency }})</button>\n      </div>\n    </div><!-- /.right -->\n  </div>\n</div><!-- /.page-item-detail -->"
+module.exports = "<div class=\"page-item-detail\">\n  <div class=\"menu-item-header\">\n    <div class=\"overlay-container\">\n      <h1 class=\"title\">{{ menuItemDetails?.item?.DisplayName }}</h1>\n      <img *ngIf=\"featuredImage\" [src]=\"featuredImage\" [alt]=\"featuredImageAlt\">\n    </div>\n  </div>\n\n  <div class=\"customization-container center-1440\">\n    <div class=\"left customization-options\">\n\n      <div class=\"customization-category\" *ngFor=\"let modGroup of salesItemDetails?.ModGroups\">\n        <div class=\"content\">\n          <div class=\"header\">\n            <span class=\"title\">{{ modGroup?.DisplayName }}</span>\n            <span class=\"choices\" *ngIf=\"modGroup?.MaximumItems > 0\">Choose up to {{ modGroup?.MaximumItems }} ({{ customizationData[modGroup?.$id].currentlySelected.length }}/{{ modGroup?.MaximumItems }})</span>\n          </div>\n          <div class=\"options\" *ngFor=\"let modifier of modGroup?.Mods\">\n            <div class=\"option\">\n              <div class=\"ingredient\">{{ modifier?.Name }}</div>\n              <div class=\"calories\">{{ modifier?.ItemModifiers[0]?.CaloricValue }} <span *ngIf=\"modifier?.ItemModifiers[0]?.CaloricValue !== null\">cal</span> </div>\n              <div class=\"choice-controls\">\n                <span class=\"minus\" [ngClass]=\"(customizationData[modGroup?.$id].currentlySelected.length > 0 && customizationData[modGroup?.$id].modifiers[modifier?.$id].quantity > 0) ? 'enabled' : 'disabled'\" (click)=\"removeModifier(modGroup, modifier)\">-</span>\n                <span class=\"quantity-container\" [ngClass]=\"customizationData[modGroup?.$id].modifiers[modifier?.$id]?.quantity > 0 ? 'populated' : ''\">\n                  <span class=\"quantity\" *ngIf=\"customizationData[modGroup?.$id].modifiers[modifier?.$id]?.quantity !== 0\">\n                    {{ customizationData[modGroup?.$id].modifiers[modifier?.$id]?.quantity }}\n                  </span>\n                </span>\n                <span class=\"plus\" [ngClass]=\"((customizationData[modGroup?.$id].currentlySelected.length < modGroup?.MaximumItems) || (modGroup?.MaximumItems === 0 && customizationData[modGroup?.$id].modifiers[modifier?.$id].quantity < 1)) ? 'enabled' : 'disabled'\" (click)=\"addModifier(modGroup, modifier)\">+</span>\n              </div>\n            </div><!-- /.option -->\n          </div><!-- /.options -->\n        </div>\n      </div><!-- /.customization-category -->\n\n    </div><!-- /.left.customization-options -->\n    <div class=\"right\">\n      <div class=\"final-product\">\n        <div class=\"title\">{{ menuItemDetails?.item?.DisplayName }}</div>\n        <div class=\"ingredients\" *ngIf=\"menuItemDetails?.item?.Description\">\n          {{ (menuItemDetails?.item?.Description | allergens)?.description }}\n        </div>\n        <div class=\"customization-ingredients\" *ngIf=\"currentModifierArray\">\n          <span class=\"customization\" *ngFor=\"let item of currentModifierArray; let last = last;\">{{ item?.DisplayName }}<span class=\"separator\" *ngIf=\"!last\">, </span></span>\n        </div>\n        <div class=\"fine-details\">\n          <span class=\"price\">{{ totalPrice | currency }}</span>\n          <span class=\"calories\" *ngIf=\"calorieCount !== null\">{{ calorieCount }} cal</span>\n          <span class=\"allergens\" *ngIf=\"(menuItemDetails?.item?.Description)\">\n            <span class=\"allergen-wrapper\" *ngFor=\"let allergen of (menuItemDetails?.item?.Description | allergens).allergens\">\n              <span class=\"allergen\">{{ allergen }}</span>\n              <span class=\"rollover\">{{ allergen | allergenRollover }}</span>\n            </span>\n          </span>\n        </div>\n      </div><!-- /.final-product -->\n\n      <div class=\"special-instructions\">\n        <label for=\"special-instructions\">Add Special Instruction (optional)</label>\n        <textarea name=\"special-instructions\" id=\"\" cols=\"30\" rows=\"5\" [(ngModel)]=\"specialInstructions\"></textarea>\n      </div><!-- /.special-instructions -->\n\n      <div class=\"quantity-wrapper\">\n        <div class=\"text\">Quantity</div>\n        <div class=\"quantity-changer\">\n          <span class=\"minus\" (click)=\"decrementQuantity()\">-</span>\n          <span class=\"quantity\">{{ quantity }}</span>\n          <span class=\"plus\" (click)=\"incrementQuantity()\">+</span>\n        </div>\n      </div>\n\n      <div class=\"size-wrapper\" *ngIf=\"multipleSalesItems.length > 0\">\n        <label for=\"size\" class=\"text\">Size</label>\n        <select name=\"size\" id=\"size\" class=\"custom white-bg\" [(ngModel)]=\"sizeChoice\" (ngModelChange)=\"updateDataPerSize(sizeChoice)\">\n          <option [value]=\"salesItem?.SalesItemId\" *ngFor=\"let salesItem of multipleSalesItems\">{{ salesItem?.DisplayName }}</option>\n        </select>\n      </div>\n\n      <div class=\"add-button red-button\">\n        <button *ngIf=\"totalPrice\" (click)=\"addToBag()\">Add to Bag (+{{ totalPrice | currency }})</button>\n      </div>\n    </div><!-- /.right -->\n  </div>\n</div><!-- /.page-item-detail -->"
 
 /***/ }),
 
@@ -2352,7 +2355,7 @@ var MenuCustomizeComponent = /** @class */ (function () {
             // Create new object to store values in
             var modObject = new Object();
             modObject['maximumItems'] = (modifierGroup.MaximumItems === 0) ? 'unlimited' : modifierGroup.MaximumItems;
-            modObject['minimumItems'] = modifierGroup.MaximumItems;
+            modObject['minimumItems'] = modifierGroup.MinimumItems;
             modObject['currentlySelected'] = new Array;
             modObject['modifiers'] = new Object();
             modObject['groupDetails'] = new Object();
@@ -2372,6 +2375,7 @@ var MenuCustomizeComponent = /** @class */ (function () {
             tempObj[modifierGroup.$id] = modObject;
         });
         this.customizationData = tempObj;
+        console.log(this.customizationData);
     };
     MenuCustomizeComponent.prototype.updateDataPerSize = function (salesId) {
         this.salesItemDetails = __WEBPACK_IMPORTED_MODULE_5_lodash__["find"](this.menuItemDetails.salesItems, { 'SalesItemId': +salesId });
@@ -2941,6 +2945,44 @@ var SubMenuComponent = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/pipes/allergen-rollover.pipe.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AllergenRolloverPipe; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__local_utils_constants__ = __webpack_require__("./src/app/utils/constants.ts");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var AllergenRolloverPipe = /** @class */ (function () {
+    function AllergenRolloverPipe(config) {
+        this.config = config;
+    }
+    AllergenRolloverPipe.prototype.transform = function (value, args) {
+        return this.config.allergenMap[value];
+    };
+    AllergenRolloverPipe = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Pipe"])({
+            name: 'allergenRollover'
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__local_utils_constants__["a" /* Config */]])
+    ], AllergenRolloverPipe);
+    return AllergenRolloverPipe;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/pipes/allergens.pipe.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -3025,12 +3067,12 @@ var CardImagePipe = /** @class */ (function () {
                         return post.acf.submenu_image.url;
                     }
                     else {
-                        return "//via.placeholder.com/265x115";
+                        return "";
                     }
                 });
             }
             else {
-                return __WEBPACK_IMPORTED_MODULE_3_rxjs__["Observable"].of("//via.placeholder.com/265x115");
+                return __WEBPACK_IMPORTED_MODULE_3_rxjs__["Observable"].of('');
             }
         }
     };
@@ -4701,6 +4743,17 @@ var Config = /** @class */ (function () {
             5: 'diners-club',
             6: 'jcb',
             7: 'paypal'
+        };
+        this.allergenMap = {
+            'M': 'This item contains Milk',
+            'SF': 'This item contains Shellfish',
+            'W': 'This item contains Wheat',
+            'V': 'This item is Vegan',
+            'VG': 'This item is Vegetarian',
+            'S': 'This item contains Soy',
+            'F': 'This item contains Fish',
+            'E': 'This item contains Eggs',
+            'TN': 'This item contains Tree Nuts'
         };
         // Setting API URL based on current environment
         switch (winRef.nativeWindow.location.hostname) {
