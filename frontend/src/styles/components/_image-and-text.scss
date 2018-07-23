@@ -4,9 +4,18 @@
   .content{
     @extend %clearfix;
     display: flex;
+    flex-direction: column-reverse;
+
+    @include breakpoint($bp-768){
+      flex-direction: row;
+    }
 
     .left{
-      width: 60%;
+      @include breakpoint($bp-768){
+        width: 60%;
+        display: flex;
+        align-items: center;
+      }
 
       img{
         display: block;
@@ -15,9 +24,14 @@
     }
 
     .right{
-      width: 40%;
-      display: flex;
       background: $light-grey;
+      text-align: center;
+
+      @include breakpoint($bp-768){
+        text-align: left;
+        width: 40%;
+        display: flex;
+      }
 
       .inner-content{
         align-self: center;
