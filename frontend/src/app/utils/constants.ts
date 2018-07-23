@@ -43,6 +43,17 @@ export class Config {
     6 : 'jcb',
     7 : 'paypal'
   }
+  public allergenMap = {
+    'M' : 'This item contains Milk',
+    'SF' : 'This item contains Shellfish',
+    'W' : 'This item contains Wheat',
+    'V' : 'This item is Vegan',
+    'VG' : 'This item is Vegetarian',
+    'S' : 'This item contains Soy',
+    'F' : 'This item contains Fish',
+    'E' : 'This item contains Eggs',
+    'TN' : 'This item contains Tree Nuts'
+  }
 
   constructor(private winRef: WindowRef){
     // Setting API URL based on current environment
