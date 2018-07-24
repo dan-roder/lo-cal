@@ -50,6 +50,7 @@ export class CheckoutReviewComponent implements OnInit {
   }
 
   get bagItems(){
+    console.log(this.bagService.itemsInBag);
     return this.bagService.itemsInBag;
   }
 

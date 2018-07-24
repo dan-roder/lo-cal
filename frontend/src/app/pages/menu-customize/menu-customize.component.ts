@@ -39,7 +39,6 @@ export class MenuCustomizeComponent implements OnInit {
     let slug = (this.router.snapshot.paramMap.get('item'));
 
     this.wpService.getPostBySlug(slug, 'menu_item').subscribe(item => {
-      console.log(item);
       this.itemContent = item;
       let menuItemId = item[0].acf.menuid;
 
@@ -67,6 +66,7 @@ export class MenuCustomizeComponent implements OnInit {
         }
       }
 
+      console.log(modGroup, modifierClicked);
       this.customizationData[modGroup.$id]['currentlySelected'].push(modifierClicked);
       this.customizationData[modGroup.$id].modifiers[modifierClicked.$id]['quantity'] += 1;
       // Add to basic array for displaying near item description
@@ -77,14 +77,20 @@ export class MenuCustomizeComponent implements OnInit {
         // Add to total calorie count
         this.calorieCount += modifierClicked.ItemModifiers[0].CaloricValue;
 
-        // If modifier includes additional price, add to itemPrice
-        this.itemPrice += modifierClicked.ItemModifiers[0].Price;
-        this.recalculateCost();
+        // If there are FreeModifiers allowed in the modGroup &&
+        //    If modGroup's currently selected items exceed the amount of free modifiers, add to price
+        if(modGroup.FreeModifiers > 0 && this.customizationData[modGroup.$id]['currentlySelected'].length > modGroup.FreeModifiers){
+          // If modifier includes additional price, add to itemPrice
+          this.itemPrice += modifierClicked.ItemModifiers[0].Price;
+          this.recalculateCost();
+        }
       }
     }
     else{
       console.log('selection for current category full');
     }
+
+    console.log(this.currentModifierArray);
   }
 
   public removeModifier(modGroup, modifierClicked){
@@ -111,14 +117,19 @@ export class MenuCustomizeComponent implements OnInit {
 
         this.calorieCount -= modifierClicked.ItemModifiers[0].CaloricValue;
 
-        // If modifier includes additional price, remove from price
-        this.itemPrice -= modifierClicked.ItemModifiers[0].Price;
-        this.recalculateCost();
+        // If there are FreeModifiers allowed in the modGroup &&
+        //    If modGroup's currently selected items exceed the amount of free modifiers, add to price
+        if(modGroup.FreeModifiers > 0 && this.customizationData[modGroup.$id]['currentlySelected'].length > modGroup.FreeModifiers){
+          // If modifier includes additional price, remove from price
+          this.itemPrice -= modifierClicked.ItemModifiers[0].Price;
+          this.recalculateCost();
+        }
       }
     }
     else{
       console.log('selection for current category already empty');
     }
+    console.log(this.currentModifierArray);
   }
 
   public incrementQuantity(){
