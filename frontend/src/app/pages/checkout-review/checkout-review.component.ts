@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { Customer } from '@local/models/Customer';
 import { CustomerService } from '@local/services/customer.service';
+import { WordpressService } from '@local/services/wp.service';
 
 @Component({
   selector: 'lo-cal-checkout-review',
@@ -23,6 +24,7 @@ export class CheckoutReviewComponent implements OnInit {
   public times : any;
   public processing : boolean = false;
   public errorData : any = {};
+  public addressData : any;
 
   constructor(
     private bagService: BagService,
@@ -30,7 +32,8 @@ export class CheckoutReviewComponent implements OnInit {
     private orderService: OrderService,
     private router: Router,
     private fb: FormBuilder,
-    private customerService: CustomerService) {
+    private customerService: CustomerService,
+    private wpService: WordpressService) {
       this.timeForm = fb.group({
         'pickup-time' : ['', Validators.required]
       })
@@ -42,7 +45,9 @@ export class CheckoutReviewComponent implements OnInit {
     // Need to retrieve current customer so order PUT doesn't fail
     this.customerService.getCurrentCustomer().subscribe(customerData => {
       this.orderService.customerInfo = customerData;
-    })
+    });
+
+    this.getOptionsAddress();
   }
 
   get bagItems(){
@@ -117,6 +122,12 @@ export class CheckoutReviewComponent implements OnInit {
     this.orderService.retrieveTimes('1').subscribe(times => {
       // 0 position in array indicates current day
       this.times = times[0].Value;
+    })
+  }
+
+  private getOptionsAddress(){
+    this.wpService.getOptionsPage().subscribe(optionsData => {
+      this.addressData = optionsData;
     })
   }
 }

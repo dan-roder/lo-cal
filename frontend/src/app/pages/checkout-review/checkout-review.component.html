@@ -107,19 +107,8 @@
               <span class="processing" *ngIf="processing">Please Wait...</span>
             </div>
           </div>
-          <div class="location-details">
-            <p class="semi-bold">You are ordering from</p>
-            <h4>Lo·Cal Long Island</h4>
-            <p>
-              The Mall at The Source<br/>
-              1504 Old Country Rd, Westbury, NY 11590
-            </p>
-            <div class="map-image">
-              <img src="" alt="">
-            </div>
-            <p class="bold">
-              Tel: 987-012-2345
-            </p>
+          <div class="location-details" [innerHtml]="addressData?.acf?.body | safeHtml">
+
           </div>
         </div><!-- /.pricing-and-location -->
 
