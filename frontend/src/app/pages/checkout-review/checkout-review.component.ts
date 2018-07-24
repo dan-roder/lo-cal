@@ -47,7 +47,7 @@ export class CheckoutReviewComponent implements OnInit {
       this.orderService.customerInfo = customerData;
     });
 
-    this.getOptionsAddress();
+    this.getAddressContent();
   }
 
   get bagItems(){
@@ -125,9 +125,10 @@ export class CheckoutReviewComponent implements OnInit {
     })
   }
 
-  private getOptionsAddress(){
-    this.wpService.getOptionsPage().subscribe(optionsData => {
-      this.addressData = optionsData;
+  private getAddressContent(){
+    this.wpService.getPost(3812).subscribe(postData => {
+      console.log(postData);
+      this.addressData = postData;
     })
   }
 }
