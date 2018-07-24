@@ -107,7 +107,7 @@
               <span class="processing" *ngIf="processing">Please Wait...</span>
             </div>
           </div>
-          <div class="location-details" [innerHtml]="addressData?.acf?.body | safeHtml">
+          <div class="location-details" [innerHtml]="addressData?.content?.rendered | safeHtml">
 
           </div>
         </div><!-- /.pricing-and-location -->
