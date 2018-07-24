@@ -127,7 +127,6 @@ export class CheckoutReviewComponent implements OnInit {
 
   private getAddressContent(){
     this.wpService.getPost(3812).subscribe(postData => {
-      console.log(postData);
       this.addressData = postData;
     })
   }
