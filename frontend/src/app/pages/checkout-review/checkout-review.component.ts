@@ -3,10 +3,9 @@ import { BagService } from '@local/services/bag.service';
 import { LineItem } from '@local/models/LineItem';
 import { Config } from '@local/utils/constants';
 import { OrderService } from '@local/services/order.service';
-import { OrderResults, Order } from '@local/models/Order';
+import { Order } from '@local/models/Order';
 import { Router } from '@angular/router';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
-import { Customer } from '@local/models/Customer';
 import { CustomerService } from '@local/services/customer.service';
 import { WordpressService } from '@local/services/wp.service';
 
