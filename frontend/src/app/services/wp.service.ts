@@ -63,7 +63,6 @@ export class WordpressService {
   }
 
   getPostBySlug(_slug: string, _postType: string){
-    console.log(this.config.wordpressApiUrl + `/wp/v2/${_postType}?slug=${_slug}&_embed`)
     return this.httpClient.get(this.config.wordpressApiUrl + `/wp/v2/${_postType}?slug=${_slug}&_embed`);
   }
 
@@ -107,6 +106,12 @@ export class WordpressService {
 
   getMenuMapObject(){
     return this.httpClient.get(this.config.wordpressApiUrl + `/local-menu/v1/menu_items`).map(result => {
+      return result;
+    })
+  }
+
+  getOptionsPage(){
+    return this.httpClient.get(this.config.wordpressApiUrl + `/acf/v3/options/options`).map(result => {
       return result;
     })
   }
