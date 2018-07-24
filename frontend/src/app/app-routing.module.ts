@@ -46,8 +46,6 @@ const routes: Routes = [
         children: [
           { path: '', component: AccountComponent },
           { path: 'order-history', component: OrderHistoryComponent },
-          // TODO: Need to protect OrderDetailComponent from allowing any ID to be placed in the URL to retrieve the details
-          //  Lock it down to the email that placed the order
           { path: 'order-history/:orderid', component: OrderDetailComponent }
         ]
       },
