@@ -29,8 +29,9 @@ export class WordpressService {
   }
 
   getPost(id): Observable<any> {
-    return this.http.get(this.config.wordpressApiUrl + `/wp/v2/posts/${id}?_embed`)
-      .map((res: Response) => res.json());
+    return this.httpClient.get(this.config.wordpressApiUrl + `/wp/v2/posts/${id}?_embed`).map(response => {
+      return response;
+    });
   }
 
   getMedia(id) {
@@ -109,11 +110,4 @@ export class WordpressService {
       return result;
     })
   }
-
-  getOptionsPage(){
-    return this.httpClient.get(this.config.wordpressApiUrl + `/acf/v3/options/options`).map(result => {
-      return result;
-    })
-  }
-
 }
