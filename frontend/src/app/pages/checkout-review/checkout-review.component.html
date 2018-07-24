@@ -16,7 +16,8 @@
                   <div class="title-container">
                       <div class="title">{{ menuItem?.Name }} <span class="quantity">x {{ menuItem?.Quantity }}</span></div>
                   </div>
-                  <div class="ingredients" *ngIf="menuItem?.ShortDescription">
+                  <!-- // TODO : This returns no description if there were no allergens, need to return description -->
+                  <div class="ingredients" *ngIf="menuItem?.ShortDescription !== undefined">
                     {{ (menuItem?.ShortDescription | allergens)?.description }}
                   </div>
                   <div class="additions" *ngIf="menuItem?.Modifiers">

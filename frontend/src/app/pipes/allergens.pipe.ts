@@ -10,6 +10,8 @@ export class AllergensPipe implements PipeTransform {
     // Create object to be returned and iterated
     let obj = {};
 
+    // TODO : This returns no description if there were no allergens, need to return description
+
     // Find instance of Allergen brackets and split the string into array
     //  Item 1 is the full description
     //  Item 2 is the allergens
