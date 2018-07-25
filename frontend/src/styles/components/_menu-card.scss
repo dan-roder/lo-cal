@@ -149,8 +149,10 @@
 .bag-detail-card{
   padding: 20px;
   background: $white;
-  display: grid;
-  grid-template-rows: repeat(3, 1fr);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  // grid-template-rows: repeat(3, 1fr);
 
   .title-container{
     display: flex;
@@ -192,7 +194,6 @@
     @include fontsize(14);
     display: flex;
     justify-content: space-between;
-    align-self: flex-end;
   }
 
   .allergens{
