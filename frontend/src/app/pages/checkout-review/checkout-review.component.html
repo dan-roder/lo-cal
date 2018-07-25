@@ -14,20 +14,19 @@
                 </div>
                 <div class="bag-detail-card">
                   <div class="title-container">
-                      <div class="title">{{ menuItem?.Name }} <span class="quantity">x {{ menuItem?.Quantity }}</span></div>
+                    <div class="title">{{ menuItem?.Name }} <span class="quantity">x {{ menuItem?.Quantity }}</span></div>
                   </div>
-                  <!-- // TODO : This returns no description if there were no allergens, need to return description -->
                   <div class="ingredients" *ngIf="menuItem?.ShortDescription !== undefined">
                     {{ (menuItem?.ShortDescription | allergens)?.description }}
                   </div>
                   <div class="additions" *ngIf="menuItem?.Modifiers">
-                    <span class="modifier" *ngFor="let mod of menuItem?.Modifiers">{{ mod?.Name }}</span>
+                    <span class="modifier" *ngFor="let mod of menuItem?.Modifiers; let last = last;">{{ mod?.Name }}<span class="separator" *ngIf="!last">,</span></span>
                   </div>
                   <div class="details-and-edit">
                     <div class="details">
                       <span class="price">{{ menuItem?.ExtendedPrice | currency }}</span>
                       <span class="calories" *ngIf="menuItem?.caloricValue">{{ menuItem?.caloricValue }} cal</span>
-                      <span class="allergens" *ngIf="(menuItem?.ShortDescription)">
+                      <span class="allergens" *ngIf="(menuItem?.ShortDescription.indexOf('[') > -1)">
                         <span class="allergen" *ngFor="let allergen of (menuItem?.ShortDescription | allergens).allergens">{{ allergen }}</span>
                       </span>
                     </div>
