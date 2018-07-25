@@ -57,7 +57,7 @@
 
       <div class="special-instructions">
         <label for="special-instructions">Add Special Instruction (optional)</label>
-        <textarea name="special-instructions" id="" cols="30" rows="5" [(ngModel)]="specialInstructions"></textarea>
+        <textarea name="special-instructions" id="special-instructions" cols="30" rows="5" [(ngModel)]="specialInstructions"></textarea>
       </div><!-- /.special-instructions -->
 
       <div class="quantity-wrapper">
@@ -77,7 +77,7 @@
       </div>
 
       <div class="add-button red-button">
-        <button *ngIf="totalPrice" (click)="addToBag()">Add to Bag (+{{ totalPrice | currency }})</button>
+        <button *ngIf="totalPrice" (click)="addToBag()" [disabled]="requiredModifierGroups.length > 0">Add to Bag (+{{ totalPrice | currency }})</button>
       </div>
     </div><!-- /.right -->
   </div>
