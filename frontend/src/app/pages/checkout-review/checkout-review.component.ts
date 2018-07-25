@@ -68,6 +68,7 @@ export class CheckoutReviewComponent implements OnInit {
     return false;
   }
 
+  // TODO: Ensure incrementing the quantity here calculates the correct price
   public incrementQuantity(menuItem){
     menuItem.Quantity++;
   }
