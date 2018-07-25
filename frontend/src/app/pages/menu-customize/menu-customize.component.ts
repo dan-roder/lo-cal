@@ -27,6 +27,7 @@ export class MenuCustomizeComponent implements OnInit {
   public featuredImage : string = '';
   public featuredImageAlt : string = '';
   public sizeChoice : any;
+  public requiredModifierGroups : Array<any> = [];
 
   constructor(
     private wpService: WordpressService,
@@ -53,6 +54,15 @@ export class MenuCustomizeComponent implements OnInit {
     let maxSelectionsForGroup = modGroup.MaximumItems;
     let currentSelectionsArray = this.customizationData[modGroup.$id]['currentlySelected'];
 
+    // Check required mods array for any required modGroups
+    if(this.requiredModifierGroups.length > 0){
+      // Check to see if modGroup added is in the requireds
+      let indexToFind = _.findIndex(this.requiredModifierGroups, {'$id' : modGroup.$id});
+      if(indexToFind > -1){
+        this.requiredModifierGroups.splice(indexToFind, 1);
+      }
+    }
+
     // If max selections for the current group is not reached
     if(currentSelectionsArray.length < maxSelectionsForGroup || maxSelectionsForGroup === 0){
 
@@ -66,7 +76,6 @@ export class MenuCustomizeComponent implements OnInit {
         }
       }
 
-      console.log(modGroup, modifierClicked);
       this.customizationData[modGroup.$id]['currentlySelected'].push(modifierClicked);
       this.customizationData[modGroup.$id].modifiers[modifierClicked.$id]['quantity'] += 1;
       // Add to basic array for displaying near item description
@@ -86,15 +95,20 @@ export class MenuCustomizeComponent implements OnInit {
         }
       }
     }
-    else{
-      console.log('selection for current category full');
-    }
-
-    console.log(this.currentModifierArray);
   }
 
   public removeModifier(modGroup, modifierClicked){
     let currentSelectionsArray = this.customizationData[modGroup.$id]['currentlySelected'];
+
+    // If the modGroup clicked has a minimum requirement
+    if(modGroup.MinimumItems > 0){
+      // Look for group id in the required mods array
+      let indexOfModGroup = _.findIndex(this.requiredModifierGroups, {'$id': modGroup.$id});
+      if(indexOfModGroup === -1){
+        // Re-add index to requirements, display error
+        this.requiredModifierGroups.push({'$id': modGroup.$id});
+      }
+    }
 
     // If max selections for the current group is not reached
     if(currentSelectionsArray.length > 0){
@@ -126,10 +140,6 @@ export class MenuCustomizeComponent implements OnInit {
         }
       }
     }
-    else{
-      console.log('selection for current category already empty');
-    }
-    console.log(this.currentModifierArray);
   }
 
   public incrementQuantity(){
@@ -158,7 +168,7 @@ export class MenuCustomizeComponent implements OnInit {
     menuItem['TotalPrice'] = totalPrice;
     menuItem['Modifiers'] = _.values(this.customizationData);
     menuItem['SalesItemId'] = this.salesItemDetails.SalesItemId;
-    menuItem['Name'] = this.salesItemDetails.Name;
+    menuItem['Name'] = this.menuItemDetails.DisplayName;
     // Temporarily adding cart image to object so it's visible in cart
     menuItem['cartImage'] = (this.itemContent[0].acf !== undefined && this.itemContent[0].acf.cart_image !== undefined) ? this.itemContent[0].acf.cart_image.url : '//via.placeholder.com/160x240';
     menuItem['caloricValue'] = this.calorieCount;
@@ -178,7 +188,6 @@ export class MenuCustomizeComponent implements OnInit {
 
   private getMenuItemDetails( menuItemId ){
     this.menuService.getMenuItemDetails(menuItemId).subscribe(menuItemDetails => {
-      console.log(menuItemDetails);
       // Set necessary variables for template rendering
       this.menuItemDetails = menuItemDetails;
 
@@ -215,6 +224,7 @@ export class MenuCustomizeComponent implements OnInit {
 
   private registerCustomizationVariables( allModifiers, defaultOptions : Array<DefaultOption> = [] ){
     let tempObj = new Object();
+    let reqMods = new Array;
 
     _.forEach(allModifiers, function(modifierGroup, modGroupKey){
       // Create new object to store values in
@@ -224,6 +234,11 @@ export class MenuCustomizeComponent implements OnInit {
       modObject['currentlySelected'] = new Array;
       modObject['modifiers'] = new Object();
       modObject['groupDetails'] = new Object();
+
+      // If the modifier group has a minimum item requirement, push to array
+      if(modifierGroup.MinimumItems > 0){
+        reqMods.push({'$id' : modifierGroup.$id});
+      }
 
       _.forEach(modifierGroup.Mods, function(modifier, key){
         modObject['groupDetails'] = modifierGroup;
@@ -244,7 +259,7 @@ export class MenuCustomizeComponent implements OnInit {
     });
 
     this.customizationData = tempObj;
-    console.log(this.customizationData);
+    this.requiredModifierGroups = reqMods;
   }
 
   public updateDataPerSize(salesId: string){
