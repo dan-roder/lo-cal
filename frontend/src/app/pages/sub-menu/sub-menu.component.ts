@@ -28,6 +28,8 @@ export class SubMenuComponent implements OnInit {
   private menuSlug : string = '';
   public wpSubMenuItems : any;
   public fullPosts : any;
+  public featuredImage : string = '';
+  public featuredImageAlt : string = '';
 
   constructor(private menuService: MenuService, private activatedRoute: ActivatedRoute, private wpService: WordpressService, private bagService: BagService, private router: Router) {
     this.navSubscription = this.router.events.subscribe((e: any) => {
@@ -50,9 +52,13 @@ export class SubMenuComponent implements OnInit {
     this.menuSlug = (this.activatedRoute.snapshot.paramMap.get('category'));
     // Get custom post type
     this.wpService.getPostBySlug(this.menuSlug, 'menu_categories').subscribe(post => {
+      console.log(post);
       this.pageContent = post[0];
       this.acf = post[0].acf;
       this.subMenuId = this.acf.submenuid;
+
+      this.featuredImage = (post[0].featured_media !== 0) ? post[0]._embedded['wp:featuredmedia'][0].media_details.sizes.full.source_url : '//via.placeholder.com/1440x500';
+      this.featuredImageAlt = (post[0].featured_media !== 0) ? post[0]._embedded['wp:featuredmedia'][0].alt_text : post[0].title.rendered;
 
       this.menuService.getSubMenuItems(this.subMenuId).subscribe(subMenuItems => {
         this.subMenuItems = subMenuItems;
