@@ -1,11 +1,10 @@
 <div class="page-landing-page">
   <header class="header-container">
     <!-- TODO: Add location for these images to be added -->
-    <div class="content" [ngStyle]="{'background-image':'url(//via.placeholder.com/1440x760)'}">
-      <div class="header-content text-center">
-        <h1 [innerHtml]="pageContent?.title?.rendered"></h1>
-        <h2 *ngIf="pageContent?.content?.rendered" [innerHtml]="pageContent?.content?.rendered"></h2>
-        <ng-content></ng-content>
+    <div class="menu-item-header">
+      <div class="overlay-container">
+        <h1 class="title" [innerHtml]="pageContent?.title?.rendered"></h1>
+        <img *ngIf="featuredImage" [src]="featuredImage" [alt]="featuredImageAlt">
       </div>
     </div>
   </header>
