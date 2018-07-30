@@ -56,6 +56,7 @@ export class SubMenuComponent implements OnInit {
       this.acf = post[0].acf;
       this.subMenuId = this.acf.submenuid;
 
+      // TODO: Find alternative placeholder image for submenu pages
       this.featuredImage = (post[0].featured_media !== 0) ? post[0]._embedded['wp:featuredmedia'][0].media_details.sizes.full.source_url : '//via.placeholder.com/1440x500';
       this.featuredImageAlt = (post[0].featured_media !== 0) ? post[0]._embedded['wp:featuredmedia'][0].alt_text : post[0].title.rendered;
 
