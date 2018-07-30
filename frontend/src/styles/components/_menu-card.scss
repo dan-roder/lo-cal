@@ -37,7 +37,6 @@
 
   .details{
     padding: 10px;
-    border-top: 1px solid $e1;
 
     .title{
       margin: 0;
@@ -91,6 +90,10 @@
       }// .allergens
     }// .fine-details
   }// .details
+
+  .image + .details{
+    border-top: 1px solid $e1;
+  }
 }// .menu-card
 
 .item-detail-card{
