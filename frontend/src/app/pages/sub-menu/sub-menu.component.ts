@@ -52,7 +52,6 @@ export class SubMenuComponent implements OnInit {
     this.menuSlug = (this.activatedRoute.snapshot.paramMap.get('category'));
     // Get custom post type
     this.wpService.getPostBySlug(this.menuSlug, 'menu_categories').subscribe(post => {
-      console.log(post);
       this.pageContent = post[0];
       this.acf = post[0].acf;
       this.subMenuId = this.acf.submenuid;
