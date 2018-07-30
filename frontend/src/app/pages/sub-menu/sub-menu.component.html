@@ -28,7 +28,7 @@
 
       <div class="menu-card" *ngFor="let item of subMenuItems?.menuItems">
         <div class="card-wrapper">
-          <div class="image">
+          <div class="image" *ngIf="(item?.MenuItemId | cardImage:wpSubMenuItems | async) !== ''">
             <a [routerLink]="(item?.DisplayName | safeUrl)"><img src="{{ item?.MenuItemId | cardImage:wpSubMenuItems | async }}" alt=""></a>
           </div>
           <div class="details">
