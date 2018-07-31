@@ -52,7 +52,8 @@ export class Config {
     'S' : 'This item contains Soy',
     'F' : 'This item contains Fish',
     'E' : 'This item contains Eggs',
-    'TN' : 'This item contains Tree Nuts'
+    'TN' : 'This item contains Tree Nuts',
+    'P' : 'This item contains Peanuts'
   }
 
   constructor(private winRef: WindowRef){
