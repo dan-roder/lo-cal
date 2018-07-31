@@ -75,6 +75,8 @@ export class CheckoutPaymentComponent implements OnInit {
       this.orderService.getFullOrderDetails(orderId).subscribe(fullOrder => {
         this.calculateTotal(fullOrder);
         this.currentOrder = fullOrder;
+        // TODO: Line Items are not correctly displaying their price. Need to look if that's an issue with how i placed the order or just a display issue
+        console.log(fullOrder);
       })
     });
   }

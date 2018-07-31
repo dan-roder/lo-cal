@@ -54,6 +54,7 @@ export class BagComponent implements OnInit {
   }
 
   get bagTotalPrice(): number{
+    // TODO: Bag price at one point after placing an order and then adding a new item to the cart was displaying a very inflated price. need to ensure this works correctly
     return this.bagService.totalPrice;
   }
 

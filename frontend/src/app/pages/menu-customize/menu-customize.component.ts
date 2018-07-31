@@ -234,7 +234,7 @@ export class MenuCustomizeComponent implements OnInit {
       modObject['currentlySelected'] = new Array;
       modObject['modifiers'] = new Object();
       modObject['groupDetails'] = new Object();
-
+      console.log(modObject);
       // If the modifier group has a minimum item requirement, push to array
       if(modifierGroup.MinimumItems > 0){
         reqMods.push({'$id' : modifierGroup.$id});
