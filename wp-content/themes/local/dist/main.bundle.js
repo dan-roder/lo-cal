@@ -2389,6 +2389,7 @@ var MenuCustomizeComponent = /** @class */ (function () {
             modObject['currentlySelected'] = new Array;
             modObject['modifiers'] = new Object();
             modObject['groupDetails'] = new Object();
+            console.log(modifierGroup);
             // If the modifier group has a minimum item requirement, push to array
             if (modifierGroup.MinimumItems > 0) {
                 reqMods.push({ '$id': modifierGroup.$id });
@@ -4795,7 +4796,8 @@ var Config = /** @class */ (function () {
             'S': 'This item contains Soy',
             'F': 'This item contains Fish',
             'E': 'This item contains Eggs',
-            'TN': 'This item contains Tree Nuts'
+            'TN': 'This item contains Tree Nuts',
+            'P': 'This item contains Peanuts'
         };
         // Setting API URL based on current environment
         switch (winRef.nativeWindow.location.hostname) {
