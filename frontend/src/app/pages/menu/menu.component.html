@@ -9,16 +9,15 @@
     </ul>
   </div>
 
-  <!-- MENU PLACEHOLDER LAYOUT HTML -->
   <div class="section menu-categories center">
     <div class="content">
       <div class="menu-items category-featured">
 
-        <div class="item item-{{ i+1 }}" *ngFor="let menuItem of subMenus; let i = index">
+        <div class="item item-{{ i+1 }}" *ngFor="let category of subMenus; let i = index">
           <div class="item-wrapper text-center">
-            <a routerLink="{{ menuItem?.slug }}" (click)="setMenuId(menuItem?.acf?.submenuid)">
-              <div class="image"><img src="//via.placeholder.com/200x200"></div>
-              <div class="title" [innerHtml]="menuItem?.title?.rendered | safeHtml"></div>
+            <a routerLink="{{ category?.slug }}" (click)="setMenuId(category?.acf?.submenuid)">
+              <div class="image" *ngIf="category?.acf?.category_image"><img [src]="category?.acf?.category_image?.url" [alt]="category?.acf?.category_image?.alt"></div>
+              <div class="title" [innerHtml]="category?.title?.rendered | safeHtml"></div>
             </a>
           </div>
         </div>
@@ -26,6 +25,5 @@
       </div><!-- /.menu-cards -->
     </div>
   </div>
-  <!-- MENU PLACEHOLDER LAYOUT HTML -->
 
 </div>
