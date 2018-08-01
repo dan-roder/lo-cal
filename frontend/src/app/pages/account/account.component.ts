@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject, Injectable } from '@angular/core';
 import { CustomerService } from '@local/services/customer.service';
 import { Customer, RailsUpdate, InLoginUpdate } from '@local/models/Customer';
 import { LocalStorage } from '@ngx-pwa/local-storage';
@@ -6,6 +6,7 @@ import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { PasswordMatch } from '@local/utils/passwordmatch';
 import { AutoUnsubscribe } from 'ngx-auto-unsubscribe';
 import { SavedPayment } from '@local/models/Payment';
+import { DOCUMENT } from '@angular/platform-browser';
 
 @AutoUnsubscribe()
 
@@ -25,18 +26,18 @@ export class AccountComponent implements OnInit {
   public submittedOnce : boolean = false;
   public savedPayments : SavedPayment;
 
-  constructor(private customerService: CustomerService, private localStorage : LocalStorage, private fb: FormBuilder) {
+  constructor(private customerService: CustomerService, private localStorage : LocalStorage, private fb: FormBuilder, @Inject(DOCUMENT) private document: any) {
     this.accountForm = fb.group({
       'first-name' : [null, Validators.required],
       'last-name' : [null, Validators.required],
-      'email' : [null, [Validators.required, Validators.email]]
-      // 'full-address' : fb.group({
-      //   'address' : [null, Validators.required],
-      //   'address2' : null,
-      //   'city' : [null, Validators.required],
-      //   'state' : ['', Validators.required],
-      //   'zip' : [null, [Validators.required, Validators.pattern('^[0-9]{5}$')]]
-      // })
+      'email' : [null, [Validators.required, Validators.email]],
+      'full-address' : fb.group({
+        'address' : [null, Validators.required],
+        'address2' : null,
+        'city' : [null, Validators.required],
+        'state' : [{value:'', disabled: true}, Validators.required],
+        'zip' : [null, [Validators.required, Validators.pattern('^[0-9]{5}$')]]
+      })
     })
 
     this.passwordForm = fb.group({
@@ -57,7 +58,6 @@ export class AccountComponent implements OnInit {
 
       this.customerService.getSavedPayments(this.customerId).subscribe(paymentMethods => {
         this.savedPayments = paymentMethods;
-        console.log(paymentMethods);
       })
     })
   }
@@ -72,6 +72,8 @@ export class AccountComponent implements OnInit {
 
   public editAccountDetails(){
     this.editing = !this.editing;
+    // Enable the select group
+    this.accountForm.controls['full-address']['controls']['state'].enable();
     // If returning to not editing, replace form with original data
     if(!this.editing) this.patchAccountForm(this.customer);
     // Return false to negate clicking an <a> tag
@@ -99,6 +101,9 @@ export class AccountComponent implements OnInit {
           Addresses : []
         }
       };
+
+      // Disable the select again
+      this.accountForm.controls['full-address']['controls']['state'].disable();
 
       this.customerService.updateCustomerInfo(updateCustomer).subscribe(data => {
         this.customerService.getCustomerInfo(this.customerId).subscribe(updatedCustomerInfo => {
@@ -135,10 +140,11 @@ export class AccountComponent implements OnInit {
 
   public deletePaymentMethod(paymentId: string){
     let areYouSure = confirm("Are you sure? This cannot be undone");
+
     if (areYouSure) {
       this.customerService.deleteSavedPayment(this.customerId, paymentId).subscribe(result => {
-        // TODO: When saved card is successfully deleted. Remove it from DOM
-        console.log(result);
+        let paymentMethodObject = this.document.getElementsByClassName('id-'+paymentId);
+        paymentMethodObject[0].parentNode.removeChild(paymentMethodObject[0]);
       });
     }
   }
