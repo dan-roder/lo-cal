@@ -258,6 +258,7 @@ export class MenuCustomizeComponent implements OnInit {
 
     this.customizationData = tempObj;
     this.requiredModifierGroups = reqMods;
+    console.log(this.requiredModifierGroups);
   }
 
   public updateDataPerSize(salesId: string){
