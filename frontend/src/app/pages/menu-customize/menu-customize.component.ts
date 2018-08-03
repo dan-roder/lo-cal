@@ -63,7 +63,6 @@ export class MenuCustomizeComponent implements OnInit {
       }
     }
 
-    // If max selections for the current group is not reached
     if(currentSelectionsArray.length < maxSelectionsForGroup || maxSelectionsForGroup === 0){
 
       // If maxSelectionsForGroup is 0. only allow 1 of anything
@@ -88,7 +87,7 @@ export class MenuCustomizeComponent implements OnInit {
 
         // If there are FreeModifiers allowed in the modGroup &&
         //    If modGroup's currently selected items exceed the amount of free modifiers, add to price
-        if(modGroup.FreeModifiers > 0 && this.customizationData[modGroup.$id]['currentlySelected'].length > modGroup.FreeModifiers){
+        if(this.customizationData[modGroup.$id]['currentlySelected'].length > modGroup.FreeModifiers){
           // If modifier includes additional price, add to itemPrice
           this.itemPrice += modifierClicked.ItemModifiers[0].Price;
           this.recalculateCost();
@@ -133,7 +132,7 @@ export class MenuCustomizeComponent implements OnInit {
 
         // If there are FreeModifiers allowed in the modGroup &&
         //    If modGroup's currently selected items exceed the amount of free modifiers, add to price
-        if(modGroup.FreeModifiers > 0 && this.customizationData[modGroup.$id]['currentlySelected'].length > modGroup.FreeModifiers){
+        if(this.customizationData[modGroup.$id]['currentlySelected'].length >= modGroup.FreeModifiers){
           // If modifier includes additional price, remove from price
           this.itemPrice -= modifierClicked.ItemModifiers[0].Price;
           this.recalculateCost();
@@ -234,7 +233,6 @@ export class MenuCustomizeComponent implements OnInit {
       modObject['currentlySelected'] = new Array;
       modObject['modifiers'] = new Object();
       modObject['groupDetails'] = new Object();
-      console.log(modObject);
       // If the modifier group has a minimum item requirement, push to array
       if(modifierGroup.MinimumItems > 0){
         reqMods.push({'$id' : modifierGroup.$id});
