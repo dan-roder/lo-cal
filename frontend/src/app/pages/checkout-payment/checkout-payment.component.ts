@@ -207,7 +207,7 @@ export class CheckoutPaymentComponent implements OnInit {
       let addOnPrice = 0;
       let modArray = Array();
       _.forEach(value.Modifiers, function(value, key){
-        addOnPrice += (value.UnitPrice > 0) ? value.UnitPrice : 0;
+        addOnPrice += (value.UnitPrice > 0 && value.FreeQuantity === 0) ? value.UnitPrice : 0;
         let modOject = {
           'name' : value.Name
         }
