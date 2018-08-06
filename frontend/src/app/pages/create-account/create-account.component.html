@@ -3,7 +3,14 @@
   <div class="login-container center-740">
     <h1 class="text-center">Create an Account</h1>
     <!-- TODO: Create a message that says your account has been created. Look for an email to finalize account creation -->
-    <form action="" [formGroup]="accountForm" class="lo-cal-form">
+    <div class="account-success" *ngIf="accountSuccess">
+      <h2 class="text-center">Success!</h2>
+      <p class="text-center">Your account has been created. Please return to the <a routerLink="/login">login</a> screen to proceed.</p>
+    </div>
+    <div class="form-errors text-left" *ngIf="existingAccount">
+      <p>It looks like an account with that email already exists. Log in <a routerLink="/login">here</a></p>
+    </div>
+    <form action="" [formGroup]="accountForm" class="lo-cal-form" *ngIf="!accountSuccess">
       <div class="form-section half-and-half">
         <div class="form-component form-component-text">
           <label for="first-name" class="visuallyhidden">First Name</label>
@@ -43,7 +50,7 @@
         <input type="text" name="confirm-password" id="security-answer" formControlName="security-answer" placeholder="Security Answer*" [ngClass]="{'has-error':!accountForm.controls['security-answer'].valid && submittedOnce}">
         <div class="error-message" *ngIf="!accountForm.controls['security-answer'].valid && submittedOnce">This field is required.</div>
       </div>
-      <!-- <div class="control-wrapper" formGroupName="full-address">
+      <div class="control-wrapper" formGroupName="full-address">
         <div class="form-component form-component-text">
           <label for="address" class="visuallyhidden">Address</label>
           <input type="text" name="address" id="address" formControlName="address" placeholder="Address*" [ngClass]="{'has-error':!accountForm.controls['full-address']['controls']['address'].valid && submittedOnce}">
@@ -123,7 +130,7 @@
             <div class="error-message" *ngIf="accountForm.controls['full-address']['controls']['zip'].errors?.pattern && accountForm.controls['full-address']['controls']['zip'].value.length > 5">Zip code must be only 5 digits.</div>
           </div>
         </div>
-      </div> -->
+      </div>
 
       <div class="submit red-button full-width-button">
         <input type="submit" value="Create Account" (click)="submitForm(accountForm)">
