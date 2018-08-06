@@ -14,31 +14,31 @@ export class CreateAccountComponent implements OnInit {
   public accountForm : FormGroup;
   public submittedOnce : boolean = false;
   private redirectUrl : string = '';
+  public errorMessage : string = '';
+  public existingAccount : boolean = false;
+  public accountSuccess : boolean = false;
 
   constructor(private fb: FormBuilder, private customerService: CustomerService, private route: ActivatedRoute, private router: Router) {
     this.accountForm = fb.group({
       'first-name' : [null, Validators.required],
       'last-name' : [null, Validators.required],
       'email' : [null, [Validators.required, Validators.email]],
+      // TODO: Implement more strict password rules from Ken's regex
       'password' : ['', [Validators.required, Validators.minLength(8)]],
       'confirm-password' : ['', Validators.required],
       'security-question' : [null, Validators.required],
-      'security-answer' : [null, Validators.required]
+      'security-answer' : [null, Validators.required],
+      'full-address' : fb.group({
+        'address' : [null, Validators.required],
+        'address2' : null,
+        'city' : [null, Validators.required],
+        'state' : ['', Validators.required],
+        'zip' : [null, [Validators.required, Validators.pattern('^[0-9]{5}$')]]
+      })
     }, {
       validator : PasswordMatch.MatchPassword
     })
   }
-
-  /**
-   * REMOVED: Address info not needed for any transactional part of the process
-   */
-  // 'full-address' : fb.group({
-  //   'address' : [null, Validators.required],
-  //   'address2' : null,
-  //   'city' : [null, Validators.required],
-  //   'state' : ['', Validators.required],
-  //   'zip' : [null, [Validators.required, Validators.pattern('^[0-9]{5}$')]]
-  // })
 
   ngOnInit() {
     this.redirectUrl = (typeof this.route.snapshot.queryParams['returnUrl'] !== undefined) ? this.route.snapshot.queryParams['returnUrl'] : '';
@@ -55,7 +55,13 @@ export class CreateAccountComponent implements OnInit {
             EMail : form.controls.email.value,
             FirstName : form.controls['first-name'].value,
             LastName : form.controls['last-name'].value,
-            Addresses : []
+            Addresses : [{
+              AddressLine1: form.controls['full-address']['controls']['address'].value,
+              AddressLine2: form.controls['full-address']['controls']['address2'].value,
+              City: form.controls['full-address']['controls']['city'].value,
+              State: form.controls['full-address']['controls']['state'].value,
+              Postal: form.controls['full-address']['controls']['zip'].value,
+            }]
           },
           Password : form.controls['password'].value,
           SecurityQuestion : form.controls['security-question'].value,
@@ -64,16 +70,32 @@ export class CreateAccountComponent implements OnInit {
       }
 
       this.customerService.createCustomer(registration).subscribe(data => {
-        // handle successful return of account created
-        // redirect to appropriate location
-        if(this.redirectUrl !== ''){
-          // Need to set logged in status
-          this.router.navigate([this.redirectUrl]);
+        console.log(data);
+        if(data['Errors'].length > 0){
+          // TODO: Errors comes as an array, loop instead of cherry picking first one
+          switch(data['Errors'][0].ErrorCode){
+            case 163:
+              this.existingAccount = true;
+            break;
+            default:
+              this.errorMessage = `We're sorry. There was an error creating your account. If this problem persists please contact us for assistance.`;
+            break;
+          }
         }
         else{
-          // Should I set logged in status immediately or no?
-          this.router.navigate(['/']);
+          this.accountSuccess = true;
         }
+
+        // handle successful return of account created
+        // redirect to appropriate location
+        // if(this.redirectUrl !== ''){
+        //   // Need to set logged in status
+        //   this.router.navigate([this.redirectUrl]);
+        // }
+        // else{
+        //   // Should I set logged in status immediately or no?
+        //   this.router.navigate(['/']);
+        // }
       });
     }
   }
