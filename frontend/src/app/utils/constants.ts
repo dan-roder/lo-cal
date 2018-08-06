@@ -55,6 +55,9 @@ export class Config {
     'TN' : 'This item contains Tree Nuts',
     'P' : 'This item contains Peanuts'
   }
+  public errorMap = {
+
+  }
 
   constructor(private winRef: WindowRef){
     // Setting API URL based on current environment
