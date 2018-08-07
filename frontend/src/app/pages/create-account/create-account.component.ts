@@ -1,14 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { RailsCustomer } from '@local/models/Customer';
 import { PasswordMatch } from '@local/utils/passwordmatch';
 import { CustomerService } from '@local/services/customer.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { SlideUpAnimation } from '@local/utils/animations';
 
 
 @Component({
   selector: 'lo-cal-create-account',
-  templateUrl: './create-account.component.html'
+  templateUrl: './create-account.component.html',
+  animations: [SlideUpAnimation]
 })
 export class CreateAccountComponent implements OnInit {
   public accountForm : FormGroup;
@@ -17,6 +19,7 @@ export class CreateAccountComponent implements OnInit {
   public errorMessage : string = '';
   public existingAccount : boolean = false;
   public accountSuccess : boolean = false;
+  public processing : boolean = false;
 
   constructor(private fb: FormBuilder, private customerService: CustomerService, private route: ActivatedRoute, private router: Router) {
     this.accountForm = fb.group({
@@ -49,6 +52,8 @@ export class CreateAccountComponent implements OnInit {
 
     // Set up customer object for submission to API
     if(form.valid) {
+      this.processing = true;
+
       let registration : RailsCustomer = {
         customer_info : {
           Customer : {
@@ -70,8 +75,7 @@ export class CreateAccountComponent implements OnInit {
       }
 
       this.customerService.createCustomer(registration).subscribe(data => {
-        console.log(data);
-        if(data['Errors'].length > 0){
+        if('Errors' in data){
           // TODO: Errors comes as an array, loop instead of cherry picking first one
           switch(data['Errors'][0].ErrorCode){
             case 163:
