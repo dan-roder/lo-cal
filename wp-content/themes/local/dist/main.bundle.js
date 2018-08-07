@@ -2372,7 +2372,7 @@ var MenuCustomizeComponent = /** @class */ (function () {
         menuItem['TotalPrice'] = totalPrice;
         menuItem['Modifiers'] = __WEBPACK_IMPORTED_MODULE_5_lodash__["values"](this.customizationData);
         menuItem['SalesItemId'] = this.salesItemDetails.SalesItemId;
-        menuItem['Name'] = this.menuItemDetails.DisplayName;
+        menuItem['Name'] = this.menuItemDetails.item.DisplayName;
         // Temporarily adding cart image to object so it's visible in cart
         menuItem['cartImage'] = (this.itemContent[0].acf !== undefined && this.itemContent[0].acf.cart_image !== undefined) ? this.itemContent[0].acf.cart_image.url : '//via.placeholder.com/160x240';
         menuItem['caloricValue'] = this.calorieCount;
@@ -2427,10 +2427,6 @@ var MenuCustomizeComponent = /** @class */ (function () {
             modObject['currentlySelected'] = new Array;
             modObject['modifiers'] = new Object();
             modObject['groupDetails'] = new Object();
-            // If the modifier group has a minimum item requirement, push to array
-            if (modifierGroup.MinimumItems > 0) {
-                reqMods.push({ '$id': modifierGroup.$id });
-            }
             __WEBPACK_IMPORTED_MODULE_5_lodash__["forEach"](modifierGroup.Mods, function (modifier, key) {
                 modObject['groupDetails'] = modifierGroup;
                 modObject['modifiers'][modifier.$id] = new Object();
@@ -2443,6 +2439,10 @@ var MenuCustomizeComponent = /** @class */ (function () {
                     modObject['modifiers'][modifier.$id]['quantity'] = 0;
                 }
             });
+            // If the modifier group has a minimum item requirement, push to array
+            if (modifierGroup.MinimumItems > 0 && modObject['currentlySelected'].length <= 0) {
+                reqMods.push({ '$id': modifierGroup.$id });
+            }
             tempObj[modifierGroup.$id] = new Object();
             tempObj[modifierGroup.$id] = modObject;
         });
