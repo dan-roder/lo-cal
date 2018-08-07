@@ -65,4 +65,12 @@
   .create-account-form{
     overflow: hidden;
   }
+
+  .loading-gif{
+    @include svg-bg(svgs/loading-eclipse);
+    background-size: 100%;
+    width: 60px;
+    height: 60px;
+    margin: 0 auto;
+  }
 }// .login-wrapper
