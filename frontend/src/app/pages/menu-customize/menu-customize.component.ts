@@ -167,7 +167,7 @@ export class MenuCustomizeComponent implements OnInit {
     menuItem['TotalPrice'] = totalPrice;
     menuItem['Modifiers'] = _.values(this.customizationData);
     menuItem['SalesItemId'] = this.salesItemDetails.SalesItemId;
-    menuItem['Name'] = this.menuItemDetails.DisplayName;
+    menuItem['Name'] = this.menuItemDetails.item.DisplayName;
     // Temporarily adding cart image to object so it's visible in cart
     menuItem['cartImage'] = (this.itemContent[0].acf !== undefined && this.itemContent[0].acf.cart_image !== undefined) ? this.itemContent[0].acf.cart_image.url : '//via.placeholder.com/160x240';
     menuItem['caloricValue'] = this.calorieCount;
@@ -233,6 +233,7 @@ export class MenuCustomizeComponent implements OnInit {
       modObject['currentlySelected'] = new Array;
       modObject['modifiers'] = new Object();
       modObject['groupDetails'] = new Object();
+      console.log(modifierGroup);
       // If the modifier group has a minimum item requirement, push to array
       if(modifierGroup.MinimumItems > 0){
         reqMods.push({'$id' : modifierGroup.$id});
