@@ -9,6 +9,7 @@ import { LocalStorageModule } from '@ngx-pwa/local-storage';
 
 // Config
 import { Config } from './utils/constants';
+import { SlideUpAnimation } from './utils/animations';
 
 // Components
 import { AppComponent } from './app.component';
