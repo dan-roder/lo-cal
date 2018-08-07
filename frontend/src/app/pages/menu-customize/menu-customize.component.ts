@@ -233,11 +233,6 @@ export class MenuCustomizeComponent implements OnInit {
       modObject['currentlySelected'] = new Array;
       modObject['modifiers'] = new Object();
       modObject['groupDetails'] = new Object();
-      console.log(modifierGroup);
-      // If the modifier group has a minimum item requirement, push to array
-      if(modifierGroup.MinimumItems > 0){
-        reqMods.push({'$id' : modifierGroup.$id});
-      }
 
       _.forEach(modifierGroup.Mods, function(modifier, key){
         modObject['groupDetails'] = modifierGroup;
@@ -252,6 +247,11 @@ export class MenuCustomizeComponent implements OnInit {
         }
 
       });
+
+      // If the modifier group has a minimum item requirement, push to array
+      if(modifierGroup.MinimumItems > 0 && modObject['currentlySelected'].length <= 0){
+        reqMods.push({'$id' : modifierGroup.$id});
+      }
 
       tempObj[modifierGroup.$id] = new Object();
       tempObj[modifierGroup.$id] = modObject;
