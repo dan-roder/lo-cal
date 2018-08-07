@@ -2,15 +2,15 @@
 <div class="login-wrapper">
   <div class="login-container center-740">
     <h1 class="text-center">Create an Account</h1>
-    <!-- TODO: Create a message that says your account has been created. Look for an email to finalize account creation -->
     <div class="account-success" *ngIf="accountSuccess">
       <h2 class="text-center">Success!</h2>
-      <p class="text-center">Your account has been created. Please return to the <a routerLink="/login">login</a> screen to proceed.</p>
+      <p class="text-center">Your account has been created. Keep an eye out for an email from us with your login information. Please return to the <a routerLink="/login">login</a> page to proceed.</p>
     </div>
     <div class="form-errors text-left" *ngIf="existingAccount">
       <p>It looks like an account with that email already exists. Log in <a routerLink="/login">here</a></p>
     </div>
-    <form action="" [formGroup]="accountForm" class="lo-cal-form" *ngIf="!accountSuccess">
+    <div [hidden]="!processing || accountSuccess" class="loading-gif"></div>
+    <form action="" [formGroup]="accountForm" class="lo-cal-form create-account-form" *ngIf="!accountSuccess" [ngClass]="{'processing': processing}" [@slideUp]="processing">
       <div class="form-section half-and-half">
         <div class="form-component form-component-text">
           <label for="first-name" class="visuallyhidden">First Name</label>
@@ -133,7 +133,7 @@
       </div>
 
       <div class="submit red-button full-width-button">
-        <input type="submit" value="Create Account" (click)="submitForm(accountForm)">
+        <input type="submit" value="Create Account" (click)="submitForm(accountForm)" [disabled]="processing || !accountForm.valid">
       </div>
       <div class="account-actions">
         <div class="action">
