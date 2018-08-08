@@ -1,10 +1,9 @@
 import { Injectable } from '@angular/core';
-import { HttpClientModule, HttpHeaders, HttpClient } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { LocalStorage } from '@ngx-pwa/local-storage';
-import { RailsOrder, InOrderLineItem, Order, OrderResults } from '@local/models/Order';
+import { RailsOrder, Order, OrderResults } from '@local/models/Order';
 import { LineItem } from '@local/models/LineItem';
 import { Config } from '@local/utils/constants';
-import * as moment from 'moment';
 import { CustomerService } from '@local/services/customer.service';
 import { Customer } from '@local/models/Customer';
 import { AutoUnsubscribe } from 'ngx-auto-unsubscribe';
@@ -107,6 +106,33 @@ export class OrderService {
 
   public getOrderResult(): Observable<any>{
     return this.localStorage.getItem('orderResult').map(orderResult => {return orderResult});
+  }
+
+  public calculateTotalWithModifiers(fullOrder: Order): Array<any>{
+    let orderArray = Array();
+
+    _.forEach(fullOrder.LineItems, function(value, key){
+      let initialPrice = value.UnitPrice;
+      let addOnPrice = 0;
+      let modArray = Array();
+      _.forEach(value.Modifiers, function(value, key){
+        addOnPrice += (value.UnitPrice > 0 && value.FreeQuantity === 0) ? value.UnitPrice : 0;
+        let modOject = {
+          'name' : value.Name
+        }
+        modArray.push(modOject);
+      });
+      let finalPrice = (initialPrice + addOnPrice) * value.Quantity;
+      let obj = {
+        'name' : value.Name,
+        'fullPrice' : finalPrice,
+        'quantity' : value.Quantity,
+        'modifiers' : modArray
+      }
+      orderArray.push(obj);
+    });
+
+    return orderArray;
   }
 
   get customerInfo(): Customer{
