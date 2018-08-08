@@ -73,10 +73,8 @@ export class CheckoutPaymentComponent implements OnInit {
       let orderId = order.OrderId;
 
       this.orderService.getFullOrderDetails(orderId).subscribe(fullOrder => {
-        this.calculateTotal(fullOrder);
+        this.orderForDisplay = this.orderService.calculateTotalWithModifiers(fullOrder);
         this.currentOrder = fullOrder;
-        // TODO: Line Items are not correctly displaying their price. Need to look if that's an issue with how i placed the order or just a display issue
-        console.log(fullOrder);
       })
     });
   }
@@ -249,6 +247,7 @@ export class CheckoutPaymentComponent implements OnInit {
     this.router.navigate(['/checkout/confirmation']);
   }
 
+  // TODO/Maybe: Only if you're able to save more than 1 card
   public whichPayment(value){
     console.log(value);
   }
