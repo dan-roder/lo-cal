@@ -18,6 +18,7 @@ export class ConfirmationComponent implements OnInit {
   public activeCardClass : string = '';
   public paidWithCardType : string = '';
   public confirmationContent : any;
+  public orderItemsForDisplay : any;
 
   constructor(private localStorage: LocalStorage, private bagService: BagService, private orderService: OrderService, private config: Config, private wpService: WordpressService) { }
 
@@ -28,14 +29,18 @@ export class ConfirmationComponent implements OnInit {
 
     this.wpService.getPage(3660).subscribe(content => {
       this.confirmationContent = content;
-      console.log(content);
     })
 
     this.orderService.getOrderResult().subscribe(result => {
+      console.log(result);
+      this.orderItemsForDisplay = this.orderService.calculateTotalWithModifiers(result.Order);
+      console.log(this.orderItemsForDisplay);
       this.orderResult = result;
       this.activeCardClass = this.config.cardClassMap[result.Order.Payments[0].CardType];
       this.paidWithCardType = this.config.cardTypeMap[result.Order.Payments[0].CardType];
     });
   }
+
+  ngOnDestroy(){}
 
 }
