@@ -11,16 +11,16 @@
         <div class="order-details">
           <h3 class="details-title">Order #{{ orderResult?.OrderId }}</h3>
           <div class="order-summary">
-            <div class="line-items" *ngIf="orderResult?.Order?.LineItems">
-              <div class="line-item flex-between" *ngFor="let lineItem of orderResult?.Order?.LineItems">
+            <div class="line-items" *ngIf="orderItemsForDisplay">
+              <div class="line-item flex-between" *ngFor="let lineItem of orderItemsForDisplay">
                 <div class="item-specifics">
-                  <h4 class="title"><span class="quantity">{{ lineItem?.Quantity }} x</span> <span class="item-name">{{ lineItem?.Name }}</span></h4>
-                  <p class="additions small-text" *ngIf="lineItem?.Modifiers">
-                    <span class="modifier" *ngFor="let mod of lineItem?.Modifiers; let last = last;">{{ mod?.Name }}<span class="separator" *ngIf="!last">, </span></span>
+                  <h4 class="title"><span class="quantity">{{ lineItem?.quantity }} x</span> <span class="item-name">{{ lineItem?.name }}</span></h4>
+                  <p class="additions small-text" *ngIf="lineItem?.modifiers">
+                    <span class="modifier" *ngFor="let mod of lineItem?.modifiers; let last = last;">{{ mod?.name }}<span class="separator" *ngIf="!last">, </span></span>
                   </p>
                 </div>
                 <div class="item-price">
-                  <span class="price">{{ lineItem?.ExtendedPrice | currency }}</span>
+                  <span class="price">{{ lineItem?.fullPrice | currency }}</span>
                 </div>
               </div>
             </div><!-- /.line-items -->
@@ -28,7 +28,7 @@
               <h3 class="details-title">Payment Information</h3>
               <div class="payment-details">
                 <div class="card-sprite-wrapper">
-                  <p class="card active" [ngClass]="activeCardClass" [title]="paidWithCardType"><span class="visuallyhidden">Image of {{ paidWithCardType }}</span></p>
+                  <p class="card active" [ngClass]="activeCardClass" [title]="paidWithCardType"><span class="visuallyhidden">Image of {{ paidWithCardType }} card.</span></p>
                   <p class="card-name">{{ paidWithCardType }} ending in {{ orderResult?.Order?.Payments[0]?.MaskedCardNumber | noX }}</p>
                 </div>
               </div>
