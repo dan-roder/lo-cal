@@ -221,9 +221,11 @@ export class MenuCustomizeComponent implements OnInit {
     });
   }
 
+  // Set up initial customization object and required modifier object to handle customization logic
   private registerCustomizationVariables( allModifiers, defaultOptions : Array<DefaultOption> = [] ){
     let tempObj = new Object();
     let reqMods = new Array;
+    console.log(allModifiers);
 
     _.forEach(allModifiers, function(modifierGroup, modGroupKey){
       // Create new object to store values in
@@ -259,7 +261,6 @@ export class MenuCustomizeComponent implements OnInit {
 
     this.customizationData = tempObj;
     this.requiredModifierGroups = reqMods;
-    console.log(this.requiredModifierGroups);
   }
 
   public updateDataPerSize(salesId: string){
