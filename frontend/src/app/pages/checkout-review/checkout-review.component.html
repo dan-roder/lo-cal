@@ -84,6 +84,10 @@
               <span class="price">{{ menuItem?.ExtendedPrice | currency }}</span>
             </div>
           </div>
+          <div class="flex-between subtotal">
+            <span class="label">Subtotal</span>
+            <span class="value">{{ totalBagPrice | currency }}</span>
+          </div>
         </div><!-- /.itemized-summary -->
         <div class="pricing-and-location">
           <div class="pricing-details">
