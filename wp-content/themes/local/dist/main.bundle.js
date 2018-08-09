@@ -1501,10 +1501,8 @@ var CheckoutPaymentComponent = /** @class */ (function () {
         this.orderService.getPreSavedOrder().subscribe(function (order) {
             var orderId = order.OrderId;
             _this.orderService.getFullOrderDetails(orderId).subscribe(function (fullOrder) {
-                _this.calculateTotal(fullOrder);
+                _this.orderForDisplay = _this.orderService.calculateTotalWithModifiers(fullOrder);
                 _this.currentOrder = fullOrder;
-                // TODO: Line Items are not correctly displaying their price. Need to look if that's an issue with how i placed the order or just a display issue
-                console.log(fullOrder);
             });
         });
     };
@@ -1654,6 +1652,7 @@ var CheckoutPaymentComponent = /** @class */ (function () {
     CheckoutPaymentComponent.prototype.navigateToConfirmation = function () {
         this.router.navigate(['/checkout/confirmation']);
     };
+    // TODO/Maybe: Only if you're able to save more than 1 card
     CheckoutPaymentComponent.prototype.whichPayment = function (value) {
         console.log(value);
     };
@@ -1674,7 +1673,7 @@ var CheckoutPaymentComponent = /** @class */ (function () {
 /***/ "./src/app/pages/checkout-review/checkout-review.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"basic-page-container checkout-review\">\n  <div class=\"basic-page-content center\">\n    <h1>Review Your Order</h1>\n    <div class=\"form-errors text-left\" *ngIf=\"errorData?.error\"><p>{{ errorData?.error }}</p></div>\n    <div class=\"checkout-wrapper\">\n      <div class=\"left-pane\">\n        <div class=\"items\">\n          <div class=\"review-item-card\">\n            <div class=\"item clearfix\" *ngFor=\"let menuItem of bagItems; let i = index;\">\n              <div class=\"item-review-wrapper\">\n                <div class=\"left image\">\n                  <img [src]=\"menuItem?.cartImage\" alt=\"\" class=\"item-image\">\n                  <img src=\"/wp-content/themes/local/dist/assets/svgs/delete-cross-icon.svg\" alt=\"X to remove item from cart\" class=\"remove-image\" (click)=\"removeFromBagAtIndex(i)\">\n                </div>\n                <div class=\"bag-detail-card\">\n                  <div class=\"title-container\">\n                    <div class=\"title\">{{ menuItem?.Name }} <span class=\"quantity\">x {{ menuItem?.Quantity }}</span></div>\n                  </div>\n                  <div class=\"ingredients\" *ngIf=\"menuItem?.ShortDescription !== undefined\">\n                    {{ (menuItem?.ShortDescription | allergens)?.description }}\n                  </div>\n                  <div class=\"additions\" *ngIf=\"menuItem?.Modifiers\">\n                    <span class=\"modifier\" *ngFor=\"let mod of menuItem?.Modifiers; let last = last;\">{{ mod?.Name }}<span class=\"separator\" *ngIf=\"!last\">,</span></span>\n                  </div>\n                  <div class=\"details-and-edit\">\n                    <div class=\"details\">\n                      <span class=\"price\">{{ menuItem?.ExtendedPrice | currency }}</span>\n                      <span class=\"calories\" *ngIf=\"menuItem?.caloricValue\">{{ menuItem?.caloricValue }} cal</span>\n                      <span class=\"allergens\" *ngIf=\"(menuItem?.ShortDescription.indexOf('[') > -1)\">\n                        <span class=\"allergen\" *ngFor=\"let allergen of (menuItem?.ShortDescription | allergens).allergens\">{{ allergen }}</span>\n                      </span>\n                    </div>\n                    <div class=\"edit\">\n                      <a tabindex=\"0\" (click)=\"editItemAtIndex(i)\" (keyup.enter)=\"editItemAtIndex(i)\" role=\"button\">EDIT</a>\n                    </div>\n                  </div><!-- /. details-and-edit -->\n                </div><!-- /.bag-detail-card -->\n              </div><!-- /.item-review-wrapper -->\n              <div class=\"edit-pane\" [hidden]=\"isOpen !== i\">\n                <div class=\"edit-pane-wrapper\">\n                  <div class=\"quantity-selector\">\n                    <div class=\"quantity-changer\">\n                      <span class=\"quantity-text\">Quantity</span>\n                      <span class=\"minus\" (click)=\"decrementQuantity(menuItem)\">-</span>\n                      <span class=\"quantity\">{{ menuItem?.Quantity }}</span>\n                      <span class=\"plus\" (click)=\"incrementQuantity(menuItem)\">+</span>\n                    </div>\n                  </div>\n                  <div class=\"customize-this\">\n                    <p><a routerLink=\"/\">Go back to customize this item</a></p>\n                  </div>\n                </div>\n              </div><!-- /.edit-pane -->\n            </div><!-- /.item -->\n            <div class=\"red-button small-text\">\n              <button (click)=\"putOrder()\" [disabled]=\"!timeForm.valid || !selectedTime\">Proceed to Checkout</button>\n              <span class=\"processing\" *ngIf=\"processing\">Please Wait...</span>\n            </div>\n          </div><!-- /.review-item-card -->\n        </div>\n      </div>\n      <div class=\"order-summary\">\n        <div class=\"itemized-summary\">\n          <h4>Order Summary</h4>\n          <div class=\"item flex-between\" *ngFor=\"let menuItem of bagItems\">\n            <div class=\"item-specifics\">\n              <div class=\"title semi-bold\"><span class=\"quantity\">{{ menuItem?.Quantity }} x</span> <span class=\"item-name\">{{ menuItem?.Name }}</span></div>\n              <div class=\"additions\" *ngIf=\"menuItem?.Modifiers\">\n                <span class=\"modifier\" *ngFor=\"let mod of menuItem?.Modifiers\">{{ mod?.Name }}</span>\n              </div>\n            </div>\n            <div class=\"item-price\">\n              <span class=\"price\">{{ menuItem?.ExtendedPrice | currency }}</span>\n            </div>\n          </div>\n          <div class=\"item flex-between\" *ngFor=\"let menuItem of allOrderDetails?.LineItems\">\n            <div class=\"item-specifics\">\n              <div class=\"title semi-bold\"><span class=\"quantity\">{{ menuItem?.Quantity }} x</span> <span class=\"item-name\">{{ menuItem?.Name }}</span></div>\n              <div class=\"additions\" *ngIf=\"menuItem?.Modifiers\">\n                <span class=\"modifier\" *ngFor=\"let mod of menuItem?.Modifiers\">{{ mod?.Name }}</span>\n              </div>\n            </div>\n            <div class=\"item-price\">\n              <span class=\"price\">{{ menuItem?.ExtendedPrice | currency }}</span>\n            </div>\n          </div>\n        </div><!-- /.itemized-summary -->\n        <div class=\"pricing-and-location\">\n          <div class=\"pricing-details\">\n            <form action=\"\" class=\"lo-cal-form\" [formGroup]=\"timeForm\">\n              <label for=\"pickup-time\" class=\"pickup-time-label\">Select a time to pickup your order?</label>\n              <select name=\"pickup-time\"  id=\"pickup-time\" formControlName=\"pickup-time\" class=\"pickup-time\" [(ngModel)]=\"timeSelectBox\" (ngModelChange)=\"timeSelectChanged()\">\n                <option value=\"\">-- Select --</option>\n                <option value=\"next\">Next Available</option>\n                <option disabled>---------------</option>\n                <option [value]=\"time?.Time\" *ngFor=\"let time of times\">{{ time?.Time | date:\"h:mma\" }}</option>\n              </select>\n            </form>\n\n            <!-- ADD Location to show next-available time before submission -->\n            <div class=\"next-available-time\" *ngIf=\"selectedTime\">\n              <p><strong>Pickup at: </strong>{{ selectedTime | date:\"E MMM d, h:mma\" }}</p>\n            </div>\n\n            <div class=\"red-button full-width-button small-text\">\n              <button (click)=\"putOrder()\" [disabled]=\"!timeForm.valid || !selectedTime\">Proceed to Checkout</button>\n              <span class=\"processing\" *ngIf=\"processing\">Please Wait...</span>\n            </div>\n          </div>\n          <div class=\"location-details\" [innerHtml]=\"addressData?.content?.rendered | safeHtml\">\n\n          </div>\n        </div><!-- /.pricing-and-location -->\n\n      </div>\n    </div>\n\n  </div>\n</div>"
+module.exports = "<div class=\"basic-page-container checkout-review\">\n  <div class=\"basic-page-content center\">\n    <h1>Review Your Order</h1>\n    <div class=\"form-errors text-left\" *ngIf=\"errorData?.error\"><p>{{ errorData?.error }}</p></div>\n    <div class=\"checkout-wrapper\">\n      <div class=\"left-pane\">\n        <div class=\"items\">\n          <div class=\"review-item-card\">\n            <div class=\"item clearfix\" *ngFor=\"let menuItem of bagItems; let i = index;\">\n              <div class=\"item-review-wrapper\">\n                <div class=\"left image\">\n                  <img [src]=\"menuItem?.cartImage\" alt=\"\" class=\"item-image\">\n                  <img src=\"/wp-content/themes/local/dist/assets/svgs/delete-cross-icon.svg\" alt=\"X to remove item from cart\" class=\"remove-image\" (click)=\"removeFromBagAtIndex(i)\">\n                </div>\n                <div class=\"bag-detail-card\">\n                  <div class=\"title-container\">\n                    <div class=\"title\">{{ menuItem?.Name }} <span class=\"quantity\">x {{ menuItem?.Quantity }}</span></div>\n                  </div>\n                  <div class=\"ingredients\" *ngIf=\"menuItem?.ShortDescription !== undefined\">\n                    {{ (menuItem?.ShortDescription | allergens)?.description }}\n                  </div>\n                  <div class=\"additions\" *ngIf=\"menuItem?.Modifiers\">\n                    <span class=\"modifier\" *ngFor=\"let mod of menuItem?.Modifiers; let last = last;\">{{ mod?.Name }}<span class=\"separator\" *ngIf=\"!last\">,</span></span>\n                  </div>\n                  <div class=\"details-and-edit\">\n                    <div class=\"details\">\n                      <span class=\"price\">{{ menuItem?.ExtendedPrice | currency }}</span>\n                      <span class=\"calories\" *ngIf=\"menuItem?.caloricValue\">{{ menuItem?.caloricValue }} cal</span>\n                      <span class=\"allergens\" *ngIf=\"(menuItem?.ShortDescription.indexOf('[') > -1)\">\n                        <span class=\"allergen\" *ngFor=\"let allergen of (menuItem?.ShortDescription | allergens).allergens\">{{ allergen }}</span>\n                      </span>\n                    </div>\n                    <div class=\"edit\">\n                      <a tabindex=\"0\" (click)=\"editItemAtIndex(i)\" (keyup.enter)=\"editItemAtIndex(i)\" role=\"button\">EDIT</a>\n                    </div>\n                  </div><!-- /. details-and-edit -->\n                </div><!-- /.bag-detail-card -->\n              </div><!-- /.item-review-wrapper -->\n              <div class=\"edit-pane\" [hidden]=\"isOpen !== i\">\n                <div class=\"edit-pane-wrapper\">\n                  <div class=\"quantity-selector\">\n                    <div class=\"quantity-changer\">\n                      <span class=\"quantity-text\">Quantity</span>\n                      <span class=\"minus\" (click)=\"decrementQuantity(menuItem)\">-</span>\n                      <span class=\"quantity\">{{ menuItem?.Quantity }}</span>\n                      <span class=\"plus\" (click)=\"incrementQuantity(menuItem)\">+</span>\n                    </div>\n                  </div>\n                  <div class=\"customize-this\">\n                    <p><a routerLink=\"/\">Go back to customize this item</a></p>\n                  </div>\n                </div>\n              </div><!-- /.edit-pane -->\n            </div><!-- /.item -->\n            <div class=\"red-button small-text\">\n              <div class=\"loading-gif button-size\" *ngIf=\"processing\"></div>\n              <button (click)=\"putOrder()\" [disabled]=\"!timeForm.valid || !selectedTime\" *ngIf=\"!processing\">Proceed to Checkout</button>\n            </div>\n          </div><!-- /.review-item-card -->\n        </div>\n      </div>\n      <div class=\"order-summary\">\n        <div class=\"itemized-summary\">\n          <h4>Order Summary</h4>\n          <div class=\"item flex-between\" *ngFor=\"let menuItem of bagItems\">\n            <div class=\"item-specifics\">\n              <div class=\"title semi-bold\"><span class=\"quantity\">{{ menuItem?.Quantity }} x</span> <span class=\"item-name\">{{ menuItem?.Name }}</span></div>\n              <div class=\"additions\" *ngIf=\"menuItem?.Modifiers\">\n                <span class=\"modifier\" *ngFor=\"let mod of menuItem?.Modifiers\">{{ mod?.Name }}</span>\n              </div>\n            </div>\n            <div class=\"item-price\">\n              <span class=\"price\">{{ menuItem?.ExtendedPrice | currency }}</span>\n            </div>\n          </div>\n          <div class=\"item flex-between\" *ngFor=\"let menuItem of allOrderDetails?.LineItems\">\n            <div class=\"item-specifics\">\n              <div class=\"title semi-bold\"><span class=\"quantity\">{{ menuItem?.Quantity }} x</span> <span class=\"item-name\">{{ menuItem?.Name }}</span></div>\n              <div class=\"additions\" *ngIf=\"menuItem?.Modifiers\">\n                <span class=\"modifier\" *ngFor=\"let mod of menuItem?.Modifiers\">{{ mod?.Name }}</span>\n              </div>\n            </div>\n            <div class=\"item-price\">\n              <span class=\"price\">{{ menuItem?.ExtendedPrice | currency }}</span>\n            </div>\n          </div>\n          <div class=\"flex-between subtotal\">\n            <span class=\"label\">Subtotal</span>\n            <span class=\"value\">{{ totalBagPrice | currency }}</span>\n          </div>\n        </div><!-- /.itemized-summary -->\n        <div class=\"pricing-and-location\">\n          <div class=\"pricing-details\">\n            <form action=\"\" class=\"lo-cal-form\" [formGroup]=\"timeForm\">\n              <label for=\"pickup-time\" class=\"pickup-time-label\">Select a time to pickup your order?</label>\n              <select name=\"pickup-time\"  id=\"pickup-time\" formControlName=\"pickup-time\" class=\"pickup-time\" [(ngModel)]=\"timeSelectBox\" (ngModelChange)=\"timeSelectChanged()\">\n                <option value=\"\">-- Select --</option>\n                <option value=\"next\">Next Available</option>\n                <option disabled>---------------</option>\n                <option [value]=\"time?.Time\" *ngFor=\"let time of times\">{{ time?.Time | date:\"h:mma\" }}</option>\n              </select>\n            </form>\n\n            <!-- ADD Location to show next-available time before submission -->\n            <div class=\"next-available-time\" *ngIf=\"selectedTime\">\n              <p><strong>Pickup at: </strong>{{ selectedTime | date:\"E MMM d, h:mma\" }}</p>\n            </div>\n\n            <div class=\"red-button full-width-button small-text\">\n              <div class=\"loading-gif button-size\" *ngIf=\"processing\"></div>\n              <button (click)=\"putOrder()\" [disabled]=\"!timeForm.valid || !selectedTime\" *ngIf=\"!processing\">Proceed to Checkout</button>\n            </div>\n          </div>\n          <div class=\"location-details\" [innerHtml]=\"addressData?.content?.rendered | safeHtml\">\n\n          </div>\n        </div><!-- /.pricing-and-location -->\n\n      </div>\n    </div>\n\n  </div>\n</div>"
 
 /***/ }),
 
@@ -1717,7 +1716,6 @@ var CheckoutReviewComponent = /** @class */ (function () {
         this.fb = fb;
         this.customerService = customerService;
         this.wpService = wpService;
-        this._bagItems = [];
         this.isOpen = -1;
         this.processing = false;
         this.errorData = {};
@@ -1754,19 +1752,19 @@ var CheckoutReviewComponent = /** @class */ (function () {
         }
         return false;
     };
-    // TODO: Ensure incrementing the quantity here calculates the correct price
     CheckoutReviewComponent.prototype.incrementQuantity = function (menuItem) {
         menuItem.Quantity++;
+        this.bagService.updatePrice();
     };
     CheckoutReviewComponent.prototype.decrementQuantity = function (menuItem) {
         if (menuItem.Quantity > 1) {
             menuItem.Quantity--;
+            this.bagService.updatePrice();
         }
     };
     CheckoutReviewComponent.prototype.putOrder = function () {
         var _this = this;
         this.processing = true;
-        console.log(this.bagItems);
         this.orderService.putOrder(this.bagItems).subscribe(function (response) {
             // TODO: Error checking for other result codes
             if (response.ResultCode === 0) {
@@ -1814,6 +1812,13 @@ var CheckoutReviewComponent = /** @class */ (function () {
             _this.addressData = postData;
         });
     };
+    Object.defineProperty(CheckoutReviewComponent.prototype, "totalBagPrice", {
+        get: function () {
+            return this.bagService.totalPrice;
+        },
+        enumerable: true,
+        configurable: true
+    });
     CheckoutReviewComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: 'lo-cal-checkout-review',
@@ -1837,7 +1842,7 @@ var CheckoutReviewComponent = /** @class */ (function () {
 /***/ "./src/app/pages/confirmation/confirmation.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"basic-page-container confirmation-page\">\n    <div class=\"basic-page-content\">\n      <div class=\"blog-details center-960 text-center\">\n        <h1>Thank You For Your Order!</h1>\n        <h2 class=\"red-text\">Here's the Lo-Down</h2>\n      </div>\n      <!-- <div class=\"featured-image center\" *ngIf=\"featuredImage\">\n        <img [src]=\"featuredImage?.source_url\" [alt]=\"featuredImage?.alt_text\">\n      </div> -->\n      <div class=\"content center-740\">\n        <div class=\"order-details\">\n          <h3 class=\"details-title\">Order #{{ orderResult?.OrderId }}</h3>\n          <div class=\"order-summary\">\n            <div class=\"line-items\" *ngIf=\"orderResult?.Order?.LineItems\">\n              <div class=\"line-item flex-between\" *ngFor=\"let lineItem of orderResult?.Order?.LineItems\">\n                <div class=\"item-specifics\">\n                  <h4 class=\"title\"><span class=\"quantity\">{{ lineItem?.Quantity }} x</span> <span class=\"item-name\">{{ lineItem?.Name }}</span></h4>\n                  <p class=\"additions small-text\" *ngIf=\"lineItem?.Modifiers\">\n                    <span class=\"modifier\" *ngFor=\"let mod of lineItem?.Modifiers; let last = last;\">{{ mod?.Name }}<span class=\"separator\" *ngIf=\"!last\">, </span></span>\n                  </p>\n                </div>\n                <div class=\"item-price\">\n                  <span class=\"price\">{{ lineItem?.ExtendedPrice | currency }}</span>\n                </div>\n              </div>\n            </div><!-- /.line-items -->\n            <div class=\"payment-information\" *ngIf=\"orderResult?.Order?.Payments[0]\">\n              <h3 class=\"details-title\">Payment Information</h3>\n              <div class=\"payment-details\">\n                <div class=\"card-sprite-wrapper\">\n                  <p class=\"card active\" [ngClass]=\"activeCardClass\" [title]=\"paidWithCardType\"><span class=\"visuallyhidden\">Image of {{ paidWithCardType }}</span></p>\n                  <p class=\"card-name\">{{ paidWithCardType }} ending in {{ orderResult?.Order?.Payments[0]?.MaskedCardNumber | noX }}</p>\n                </div>\n              </div>\n            </div>\n            <div class=\"order-total\">\n              <div class=\"flex-between subtotal\">\n                <span class=\"label\">Subtotal</span>\n                <span class=\"value\">{{ orderResult?.FinancialSummary?.Subtotal | currency }}</span>\n              </div>\n              <div class=\"flex-between\">\n                <span class=\"label\">Tax</span>\n                <span class=\"value\">{{ orderResult?.FinancialSummary?.Tax | currency }}</span>\n              </div>\n              <div class=\"flex-between total\">\n                <span class=\"label semi-bold\">Total</span>\n                <span class=\"value semi-bold\">{{ orderResult?.FinancialSummary?.Total | currency }}</span>\n              </div>\n            </div>\n          </div>\n\n          <div class=\"confirmation-content\" [innerHtml]=\"confirmationContent?.content?.rendered | safeHtml\"></div>\n\n        </div>\n      </div>\n\n    </div>\n  </div>"
+module.exports = "<div class=\"basic-page-container confirmation-page\">\n    <div class=\"basic-page-content\">\n      <div class=\"blog-details center-960 text-center\">\n        <h1>Thank You For Your Order!</h1>\n        <h2 class=\"red-text\">Here's the Lo-Down</h2>\n      </div>\n      <!-- <div class=\"featured-image center\" *ngIf=\"featuredImage\">\n        <img [src]=\"featuredImage?.source_url\" [alt]=\"featuredImage?.alt_text\">\n      </div> -->\n      <div class=\"content center-740\">\n        <div class=\"order-details\">\n          <h3 class=\"details-title\">Order #{{ orderResult?.OrderId }}</h3>\n          <div class=\"order-summary\">\n            <div class=\"line-items\" *ngIf=\"orderItemsForDisplay\">\n              <div class=\"line-item flex-between\" *ngFor=\"let lineItem of orderItemsForDisplay\">\n                <div class=\"item-specifics\">\n                  <h4 class=\"title\"><span class=\"quantity\">{{ lineItem?.quantity }} x</span> <span class=\"item-name\">{{ lineItem?.name }}</span></h4>\n                  <p class=\"additions small-text\" *ngIf=\"lineItem?.modifiers\">\n                    <span class=\"modifier\" *ngFor=\"let mod of lineItem?.modifiers; let last = last;\">{{ mod?.name }}<span class=\"separator\" *ngIf=\"!last\">, </span></span>\n                  </p>\n                </div>\n                <div class=\"item-price\">\n                  <span class=\"price\">{{ lineItem?.fullPrice | currency }}</span>\n                </div>\n              </div>\n            </div><!-- /.line-items -->\n            <div class=\"payment-information\" *ngIf=\"orderResult?.Order?.Payments[0]\">\n              <h3 class=\"details-title\">Payment Information</h3>\n              <div class=\"payment-details\">\n                <div class=\"card-sprite-wrapper\">\n                  <p class=\"card active\" [ngClass]=\"activeCardClass\" [title]=\"paidWithCardType\"><span class=\"visuallyhidden\">Image of {{ paidWithCardType }} card.</span></p>\n                  <p class=\"card-name\">{{ paidWithCardType }} ending in {{ orderResult?.Order?.Payments[0]?.MaskedCardNumber | noX }}</p>\n                </div>\n              </div>\n            </div>\n            <div class=\"order-total\">\n              <div class=\"flex-between subtotal\">\n                <span class=\"label\">Subtotal</span>\n                <span class=\"value\">{{ orderResult?.FinancialSummary?.Subtotal | currency }}</span>\n              </div>\n              <div class=\"flex-between\">\n                <span class=\"label\">Tax</span>\n                <span class=\"value\">{{ orderResult?.FinancialSummary?.Tax | currency }}</span>\n              </div>\n              <div class=\"flex-between total\">\n                <span class=\"label semi-bold\">Total</span>\n                <span class=\"value semi-bold\">{{ orderResult?.FinancialSummary?.Total | currency }}</span>\n              </div>\n            </div>\n          </div>\n\n          <div class=\"confirmation-content\" [innerHtml]=\"confirmationContent?.content?.rendered | safeHtml\"></div>\n\n        </div>\n      </div>\n\n    </div>\n  </div>"
 
 /***/ }),
 
@@ -1886,14 +1891,17 @@ var ConfirmationComponent = /** @class */ (function () {
         this.bagService.itemsInBag = [];
         this.wpService.getPage(3660).subscribe(function (content) {
             _this.confirmationContent = content;
-            console.log(content);
         });
         this.orderService.getOrderResult().subscribe(function (result) {
+            console.log(result);
+            _this.orderItemsForDisplay = _this.orderService.calculateTotalWithModifiers(result.Order);
+            console.log(_this.orderItemsForDisplay);
             _this.orderResult = result;
             _this.activeCardClass = _this.config.cardClassMap[result.Order.Payments[0].CardType];
             _this.paidWithCardType = _this.config.cardTypeMap[result.Order.Payments[0].CardType];
         });
     };
+    ConfirmationComponent.prototype.ngOnDestroy = function () { };
     ConfirmationComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_4_ngx_auto_unsubscribe__["a" /* AutoUnsubscribe */])(),
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
@@ -2220,7 +2228,7 @@ var LoginComponent = /** @class */ (function () {
 /***/ "./src/app/pages/menu-customize/menu-customize.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"page-item-detail\">\n  <div class=\"menu-item-header\">\n    <div class=\"overlay-container\">\n      <h1 class=\"title\">{{ menuItemDetails?.item?.DisplayName }}</h1>\n      <img *ngIf=\"featuredImage\" [src]=\"featuredImage\" [alt]=\"featuredImageAlt\">\n    </div>\n  </div>\n\n  <div class=\"customization-container center-1440\">\n    <div class=\"left customization-options\">\n\n      <div class=\"customization-category\" *ngFor=\"let modGroup of salesItemDetails?.ModGroups\">\n        <div class=\"content\">\n          <div class=\"header\">\n            <span class=\"title\">{{ modGroup?.DisplayName }}</span>\n            <span class=\"choices\" *ngIf=\"modGroup?.MaximumItems > 0\">Choose up to {{ modGroup?.MaximumItems }} ({{ customizationData[modGroup?.$id].currentlySelected.length }}/{{ modGroup?.MaximumItems }})</span>\n          </div>\n          <div class=\"options\" *ngFor=\"let modifier of modGroup?.Mods\">\n            <div class=\"option\">\n              <div class=\"ingredient\">{{ modifier?.Name }}</div>\n              <div class=\"calories\">{{ modifier?.ItemModifiers[0]?.CaloricValue }} <span *ngIf=\"modifier?.ItemModifiers[0]?.CaloricValue !== null\">cal</span> </div>\n              <div class=\"choice-controls\">\n                <span class=\"minus\" [ngClass]=\"(customizationData[modGroup?.$id].currentlySelected.length > 0 && customizationData[modGroup?.$id].modifiers[modifier?.$id].quantity > 0) ? 'enabled' : 'disabled'\" (click)=\"removeModifier(modGroup, modifier)\">-</span>\n                <span class=\"quantity-container\" [ngClass]=\"customizationData[modGroup?.$id].modifiers[modifier?.$id]?.quantity > 0 ? 'populated' : ''\">\n                  <span class=\"quantity\" *ngIf=\"customizationData[modGroup?.$id].modifiers[modifier?.$id]?.quantity !== 0\">\n                    {{ customizationData[modGroup?.$id].modifiers[modifier?.$id]?.quantity }}\n                  </span>\n                </span>\n                <span class=\"plus\" [ngClass]=\"((customizationData[modGroup?.$id].currentlySelected.length < modGroup?.MaximumItems) || (modGroup?.MaximumItems === 0 && customizationData[modGroup?.$id].modifiers[modifier?.$id].quantity < 1)) ? 'enabled' : 'disabled'\" (click)=\"addModifier(modGroup, modifier)\">+</span>\n              </div>\n            </div><!-- /.option -->\n          </div><!-- /.options -->\n        </div>\n      </div><!-- /.customization-category -->\n\n    </div><!-- /.left.customization-options -->\n    <div class=\"right\">\n      <div class=\"final-product\">\n        <div class=\"title\">{{ menuItemDetails?.item?.DisplayName }}</div>\n        <div class=\"ingredients\" *ngIf=\"menuItemDetails?.item?.Description\">\n          {{ (menuItemDetails?.item?.Description | allergens)?.description }}\n        </div>\n        <div class=\"customization-ingredients\" *ngIf=\"currentModifierArray\">\n          <span class=\"customization\" *ngFor=\"let item of currentModifierArray; let last = last;\">{{ item?.DisplayName }}<span class=\"separator\" *ngIf=\"!last\">, </span></span>\n        </div>\n        <div class=\"fine-details\">\n          <span class=\"price\">{{ totalPrice | currency }}</span>\n          <span class=\"calories\" *ngIf=\"calorieCount !== null\">{{ calorieCount }} cal</span>\n          <span class=\"allergens\" *ngIf=\"(menuItemDetails?.item?.Description)\">\n            <span class=\"allergen-wrapper\" *ngFor=\"let allergen of (menuItemDetails?.item?.Description | allergens).allergens\">\n              <span class=\"allergen\">{{ allergen }}</span>\n              <span class=\"rollover\">{{ allergen | allergenRollover }}</span>\n            </span>\n          </span>\n        </div>\n      </div><!-- /.final-product -->\n\n      <div class=\"special-instructions\">\n        <label for=\"special-instructions\">Add Special Instruction (optional)</label>\n        <textarea name=\"special-instructions\" id=\"special-instructions\" cols=\"30\" rows=\"5\" [(ngModel)]=\"specialInstructions\"></textarea>\n      </div><!-- /.special-instructions -->\n\n      <div class=\"quantity-wrapper\">\n        <div class=\"text\">Quantity</div>\n        <div class=\"quantity-changer\">\n          <span class=\"minus\" (click)=\"decrementQuantity()\">-</span>\n          <span class=\"quantity\">{{ quantity }}</span>\n          <span class=\"plus\" (click)=\"incrementQuantity()\">+</span>\n        </div>\n      </div>\n\n      <div class=\"size-wrapper\" *ngIf=\"multipleSalesItems.length > 0\">\n        <label for=\"size\" class=\"text\">Size</label>\n        <select name=\"size\" id=\"size\" class=\"custom white-bg\" [(ngModel)]=\"sizeChoice\" (ngModelChange)=\"updateDataPerSize(sizeChoice)\">\n          <option [value]=\"salesItem?.SalesItemId\" *ngFor=\"let salesItem of multipleSalesItems\">{{ salesItem?.DisplayName }}</option>\n        </select>\n      </div>\n\n      <div class=\"add-button red-button\">\n        <button *ngIf=\"totalPrice\" (click)=\"addToBag()\" [disabled]=\"requiredModifierGroups.length > 0\">Add to Bag (+{{ totalPrice | currency }})</button>\n      </div>\n    </div><!-- /.right -->\n  </div>\n</div><!-- /.page-item-detail -->"
+module.exports = "<div class=\"page-item-detail\">\n  <div class=\"menu-item-header\">\n    <div class=\"overlay-container\">\n      <h1 class=\"title\">{{ menuItemDetails?.item?.DisplayName }}</h1>\n      <img *ngIf=\"featuredImage\" [src]=\"featuredImage\" [alt]=\"featuredImageAlt\">\n    </div>\n  </div>\n\n  <div class=\"customization-container center-1440\">\n    <div class=\"left customization-options\">\n      <div class=\"loading-gif\" *ngIf=\"!menuItemDetails\"></div>\n      <div class=\"customization-category\" *ngFor=\"let modGroup of salesItemDetails?.ModGroups\">\n        <div class=\"content\">\n          <div class=\"header\">\n            <span class=\"title\">{{ modGroup?.DisplayName }}</span>\n            <span class=\"choices\" *ngIf=\"modGroup?.MaximumItems > 0\">Choose up to {{ modGroup?.MaximumItems }} ({{ customizationData[modGroup?.$id].currentlySelected.length }}/{{ modGroup?.MaximumItems }})</span>\n          </div>\n          <div class=\"options\" *ngFor=\"let modifier of modGroup?.Mods\">\n            <div class=\"option\">\n              <div class=\"ingredient\">{{ modifier?.Name }}</div>\n              <div class=\"calories\">{{ modifier?.ItemModifiers[0]?.CaloricValue }} <span *ngIf=\"modifier?.ItemModifiers[0]?.CaloricValue !== null\">cal</span> </div>\n              <div class=\"choice-controls\">\n                <span class=\"minus\" [ngClass]=\"(customizationData[modGroup?.$id].currentlySelected.length > 0 && customizationData[modGroup?.$id].modifiers[modifier?.$id].quantity > 0) ? 'enabled' : 'disabled'\" (click)=\"removeModifier(modGroup, modifier)\">-</span>\n                <span class=\"quantity-container\" [ngClass]=\"customizationData[modGroup?.$id].modifiers[modifier?.$id]?.quantity > 0 ? 'populated' : ''\">\n                  <span class=\"quantity\" *ngIf=\"customizationData[modGroup?.$id].modifiers[modifier?.$id]?.quantity !== 0\">\n                    {{ customizationData[modGroup?.$id].modifiers[modifier?.$id]?.quantity }}\n                  </span>\n                </span>\n                <span class=\"plus\" [ngClass]=\"((customizationData[modGroup?.$id].currentlySelected.length < modGroup?.MaximumItems) || (modGroup?.MaximumItems === 0 && customizationData[modGroup?.$id].modifiers[modifier?.$id].quantity < 1)) ? 'enabled' : 'disabled'\" (click)=\"addModifier(modGroup, modifier)\">+</span>\n              </div>\n            </div><!-- /.option -->\n          </div><!-- /.options -->\n        </div>\n      </div><!-- /.customization-category -->\n\n    </div><!-- /.left.customization-options -->\n    <div class=\"right\">\n      <div class=\"final-product\">\n        <div class=\"title\">{{ menuItemDetails?.item?.DisplayName }}</div>\n        <div class=\"ingredients\" *ngIf=\"menuItemDetails?.item?.Description\">\n          {{ (menuItemDetails?.item?.Description | allergens)?.description }}\n        </div>\n        <div class=\"customization-ingredients\" *ngIf=\"currentModifierArray\">\n          <span class=\"customization\" *ngFor=\"let item of currentModifierArray; let last = last;\">{{ item?.DisplayName }}<span class=\"separator\" *ngIf=\"!last\">, </span></span>\n        </div>\n        <div class=\"fine-details\">\n          <span class=\"price\">{{ totalPrice | currency }}</span>\n          <span class=\"calories\" *ngIf=\"calorieCount !== null\">{{ calorieCount }} cal</span>\n          <span class=\"allergens\" *ngIf=\"(menuItemDetails?.item?.Description)\">\n            <span class=\"allergen-wrapper\" *ngFor=\"let allergen of (menuItemDetails?.item?.Description | allergens).allergens\">\n              <span class=\"allergen\">{{ allergen }}</span>\n              <span class=\"rollover\">{{ allergen | allergenRollover }}</span>\n            </span>\n          </span>\n        </div>\n      </div><!-- /.final-product -->\n\n      <div class=\"special-instructions\">\n        <label for=\"special-instructions\">Add Special Instruction (optional)</label>\n        <textarea name=\"special-instructions\" id=\"special-instructions\" cols=\"30\" rows=\"5\" [(ngModel)]=\"specialInstructions\"></textarea>\n      </div><!-- /.special-instructions -->\n\n      <div class=\"quantity-wrapper\">\n        <div class=\"text\">Quantity</div>\n        <div class=\"quantity-changer\">\n          <span class=\"minus\" (click)=\"decrementQuantity()\">-</span>\n          <span class=\"quantity\">{{ quantity }}</span>\n          <span class=\"plus\" (click)=\"incrementQuantity()\">+</span>\n        </div>\n      </div>\n\n      <div class=\"size-wrapper\" *ngIf=\"multipleSalesItems.length > 0\">\n        <label for=\"size\" class=\"text\">Size</label>\n        <select name=\"size\" id=\"size\" class=\"custom white-bg\" [(ngModel)]=\"sizeChoice\" (ngModelChange)=\"updateDataPerSize(sizeChoice)\">\n          <option [value]=\"salesItem?.SalesItemId\" *ngFor=\"let salesItem of multipleSalesItems\">{{ salesItem?.DisplayName }}</option>\n        </select>\n      </div>\n\n      <div class=\"add-button red-button\">\n        <button *ngIf=\"totalPrice\" (click)=\"addToBag()\" [disabled]=\"requiredModifierGroups.length > 0\">Add to Bag (+{{ totalPrice | currency }})</button>\n      </div>\n    </div><!-- /.right -->\n  </div>\n</div><!-- /.page-item-detail -->"
 
 /***/ }),
 
@@ -2415,10 +2423,12 @@ var MenuCustomizeComponent = /** @class */ (function () {
             }
         });
     };
+    // Set up initial customization object and required modifier object to handle customization logic
     MenuCustomizeComponent.prototype.registerCustomizationVariables = function (allModifiers, defaultOptions) {
         if (defaultOptions === void 0) { defaultOptions = []; }
         var tempObj = new Object();
         var reqMods = new Array;
+        console.log(allModifiers);
         __WEBPACK_IMPORTED_MODULE_5_lodash__["forEach"](allModifiers, function (modifierGroup, modGroupKey) {
             // Create new object to store values in
             var modObject = new Object();
@@ -2448,7 +2458,6 @@ var MenuCustomizeComponent = /** @class */ (function () {
         });
         this.customizationData = tempObj;
         this.requiredModifierGroups = reqMods;
-        console.log(this.requiredModifierGroups);
     };
     MenuCustomizeComponent.prototype.updateDataPerSize = function (salesId) {
         this.salesItemDetails = __WEBPACK_IMPORTED_MODULE_5_lodash__["find"](this.menuItemDetails.salesItems, { 'SalesItemId': +salesId });
@@ -3391,13 +3400,12 @@ var BagService = /** @class */ (function () {
         this._itemCountInBag = 0;
         this.localStorage.getItem('bag').subscribe(function (bagItemsFromLocalStorage) {
             _this.itemsInBag = bagItemsFromLocalStorage || [];
-            _this.updatePrice(bagItemsFromLocalStorage);
+            _this.updatePrice();
         });
     }
     BagService.prototype.createLineItem = function (passedMenuItem) {
         // Send item to get Modifiers
         var modifiers = this.constructLineItemModifiers(passedMenuItem.Modifiers);
-        console.log(passedMenuItem);
         var lineItem = {
             SalesItemId: passedMenuItem.SalesItemId,
             MenuItemId: passedMenuItem.item.MenuItemId,
@@ -3420,7 +3428,6 @@ var BagService = /** @class */ (function () {
         lineItem = null;
     };
     BagService.prototype.quickAddLineItem = function (passedMenuItem) {
-        console.log(passedMenuItem);
         var lineItem = {
             SalesItemId: passedMenuItem.DefaultItemId,
             MenuItemId: passedMenuItem.MenuItemId,
@@ -3481,10 +3488,11 @@ var BagService = /** @class */ (function () {
         // Bag was modified, overwrite localStorage object with saved object
         this.saveToLocalStorage();
     };
-    BagService.prototype.updatePrice = function (bagItems) {
+    BagService.prototype.updatePrice = function () {
         var value = 0;
-        __WEBPACK_IMPORTED_MODULE_2_lodash__["forEach"](bagItems, function (item, key) {
-            value += item.ExtendedPrice;
+        var arr = this.itemsInBag;
+        __WEBPACK_IMPORTED_MODULE_2_lodash__["forEach"](this.itemsInBag, function (item, key) {
+            value += (item.ExtendedPrice * item.Quantity);
         });
         this._totalPrice = value;
     };
@@ -3739,6 +3747,8 @@ var MenuService = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__local_utils_constants__ = __webpack_require__("./src/app/utils/constants.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__local_services_customer_service__ = __webpack_require__("./src/app/services/customer.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_ngx_auto_unsubscribe__ = __webpack_require__("./node_modules/ngx-auto-unsubscribe/dist/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_lodash__ = __webpack_require__("./node_modules/lodash/lodash.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_lodash___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_lodash__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -3748,6 +3758,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+
 
 
 
@@ -3830,6 +3841,30 @@ var OrderService = /** @class */ (function () {
     };
     OrderService.prototype.getOrderResult = function () {
         return this.localStorage.getItem('orderResult').map(function (orderResult) { return orderResult; });
+    };
+    OrderService.prototype.calculateTotalWithModifiers = function (fullOrder) {
+        var orderArray = Array();
+        __WEBPACK_IMPORTED_MODULE_6_lodash__["forEach"](fullOrder.LineItems, function (value, key) {
+            var initialPrice = value.UnitPrice;
+            var addOnPrice = 0;
+            var modArray = Array();
+            __WEBPACK_IMPORTED_MODULE_6_lodash__["forEach"](value.Modifiers, function (value, key) {
+                addOnPrice += (value.UnitPrice > 0 && value.FreeQuantity === 0) ? value.UnitPrice : 0;
+                var modOject = {
+                    'name': value.Name
+                };
+                modArray.push(modOject);
+            });
+            var finalPrice = (initialPrice + addOnPrice) * value.Quantity;
+            var obj = {
+                'name': value.Name,
+                'fullPrice': finalPrice,
+                'quantity': value.Quantity,
+                'modifiers': modArray
+            };
+            orderArray.push(obj);
+        });
+        return orderArray;
     };
     Object.defineProperty(OrderService.prototype, "customerInfo", {
         get: function () {
@@ -4856,6 +4891,11 @@ var Config = /** @class */ (function () {
             'P': 'This item contains Peanuts'
         };
         this.errorMap = {};
+        this.orderModeMap = {
+            '1': 'Pickup',
+            '2': 'Delivery',
+            '4': 'Curbside'
+        };
         // Setting API URL based on current environment
         switch (winRef.nativeWindow.location.hostname) {
             case 'localhost':
