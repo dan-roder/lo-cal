@@ -49,11 +49,6 @@ export class CheckoutReviewComponent implements OnInit {
     this.getAddressContent();
   }
 
-  get bagItems(){
-    console.log(this.bagService.itemsInBag);
-    return this.bagService.itemsInBag;
-  }
-
   public removeFromBagAtIndex( index ){
     this.bagService.removeFromBagAtIndex(index);
   }
@@ -134,5 +129,10 @@ export class CheckoutReviewComponent implements OnInit {
 
   get totalBagPrice(){
     return this.bagService.totalPrice;
+  }
+
+  get bagItems(){
+    console.log(this.bagService.itemsInBag);
+    return this.bagService.itemsInBag;
   }
 }
