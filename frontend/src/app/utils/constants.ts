@@ -58,6 +58,11 @@ export class Config {
   public errorMap = {
 
   }
+  public orderModeMap = {
+    '1' : 'Pickup',
+    '2' : 'Delivery',
+    '4' : 'Curbside'
+  }
 
   constructor(private winRef: WindowRef){
     // Setting API URL based on current environment
