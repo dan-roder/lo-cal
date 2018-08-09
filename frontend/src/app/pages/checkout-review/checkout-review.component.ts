@@ -14,7 +14,6 @@ import { WordpressService } from '@local/services/wp.service';
   templateUrl: './checkout-review.component.html'
 })
 export class CheckoutReviewComponent implements OnInit {
-  public _bagItems : Array<LineItem> = [];
   public isOpen: number = -1;
   public allOrderDetails : Order;
   public timeForm : FormGroup;
@@ -24,6 +23,7 @@ export class CheckoutReviewComponent implements OnInit {
   public processing : boolean = false;
   public errorData : any = {};
   public addressData : any;
+  public bagTotalPrice : number;
 
   constructor(
     private bagService: BagService,
@@ -68,11 +68,12 @@ export class CheckoutReviewComponent implements OnInit {
     return false;
   }
 
-  // TODO: Ensure incrementing the quantity here calculates the correct price
+  // TODO: Need to increase the quantity on the bagService instead of locally
   public incrementQuantity(menuItem){
     menuItem.Quantity++;
   }
 
+  // TODO: Need to decrease the quantity on the bagService instead of locally
   public decrementQuantity(menuItem){
     if(menuItem.Quantity > 1){
       menuItem.Quantity--;
@@ -130,5 +131,9 @@ export class CheckoutReviewComponent implements OnInit {
     this.wpService.getPost(3812).subscribe(postData => {
       this.addressData = postData;
     })
+  }
+
+  get totalBagPrice(){
+    return this.bagService.totalPrice;
   }
 }
