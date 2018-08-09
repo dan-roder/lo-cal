@@ -9,7 +9,7 @@ import { Customer } from '@local/models/Customer';
 import * as _ from 'lodash';
 import * as moment from 'moment';
 import { Router } from '@angular/router';
-import { RailsSavePayment, InSubmitOrderInformation, RailsInSubmitOrder, SavedPayment } from '@local/models/Payment';
+import { RailsSavePayment, InSubmitOrderInformation, RailsInSubmitOrder, SavedPayment, Vehicle } from '@local/models/Payment';
 import { LocalStorage } from '@ngx-pwa/local-storage';
 
 @Component({
@@ -154,6 +154,10 @@ export class CheckoutPaymentComponent implements OnInit {
 
   protected constructClearCreditCardPayment(): InSubmitOrderInformation{
     let expirationDate = this.paymentForm.get('expiration-date').value;
+    let vehicle : Vehicle = {};
+    if(this.pickupForm.get('pickup-selection').value === '4'){
+      vehicle = this.constructVehicleObject();
+    }
     let finalExpDate = this.formatDate(expirationDate);
 
     let inSubmitOrderInfo : InSubmitOrderInformation = {
@@ -164,9 +168,10 @@ export class CheckoutPaymentComponent implements OnInit {
         ExpirationDate : finalExpDate,
         SecurityCode : this.paymentForm.get('cvv').value,
         PaymentMethodType : this.cardType,
-        ProcessingType : 0
+        ProcessingType : 0,
       }],
-      SendEmail: true
+      SendEmail: true,
+      Vehicle: vehicle
     }
 
     return inSubmitOrderInfo;
@@ -184,6 +189,11 @@ export class CheckoutPaymentComponent implements OnInit {
   }
 
   protected constructSecurePayment(): InSubmitOrderInformation{
+    let vehicle : Vehicle = {};
+
+    if(this.pickupForm.get('pickup-selection').value === '4'){
+      vehicle = this.constructVehicleObject();
+    }
     let inSubmitOrderInfo : InSubmitOrderInformation = {
       PaymentMethods : [{
         PaymentMethod : 0,
@@ -191,6 +201,7 @@ export class CheckoutPaymentComponent implements OnInit {
         PaymentMethodType : this.savedPaymentMethods.MethodType,
         Amount: this.currentOrder.BalanceDueAmount
       }],
+      Vehicle : vehicle,
       SendEmail: true
     }
 
@@ -245,6 +256,16 @@ export class CheckoutPaymentComponent implements OnInit {
 
   protected navigateToConfirmation(){
     this.router.navigate(['/checkout/confirmation']);
+  }
+
+  protected constructVehicleObject(): Vehicle{
+    let vehicleInfo: Vehicle = {
+      Make: this.pickupForm.get('vehicle-make').value,
+      Model: this.pickupForm.get('vehicle-model').value,
+      Color: this.pickupForm.get('vehicle-color').value
+    }
+
+    return vehicleInfo;
   }
 
   // TODO/Maybe: Only if you're able to save more than 1 card
