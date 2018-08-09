@@ -30,6 +30,11 @@
         }
       }
     }
+
+    .subtotal{
+      border-top: 1px dotted;
+      padding: 10px 0 0;
+    }
   }// .itemized-summary
 
   .pricing-details{
@@ -56,7 +61,6 @@
 
   .order-summary{
     form{
-      border-top: 1px dotted;
       margin: 0 0 20px;
 
       select.pickup-time{
