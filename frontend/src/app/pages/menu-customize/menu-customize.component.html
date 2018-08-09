@@ -8,7 +8,7 @@
 
   <div class="customization-container center-1440">
     <div class="left customization-options">
-
+      <div class="loading-gif" *ngIf="!menuItemDetails"></div>
       <div class="customization-category" *ngFor="let modGroup of salesItemDetails?.ModGroups">
         <div class="content">
           <div class="header">
