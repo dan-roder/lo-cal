@@ -53,8 +53,8 @@
               </div><!-- /.edit-pane -->
             </div><!-- /.item -->
             <div class="red-button small-text">
-              <button (click)="putOrder()" [disabled]="!timeForm.valid || !selectedTime">Proceed to Checkout</button>
-              <span class="processing" *ngIf="processing">Please Wait...</span>
+              <div class="loading-gif button-size" *ngIf="processing"></div>
+              <button (click)="putOrder()" [disabled]="!timeForm.valid || !selectedTime" *ngIf="!processing">Proceed to Checkout</button>
             </div>
           </div><!-- /.review-item-card -->
         </div>
@@ -107,8 +107,8 @@
             </div>
 
             <div class="red-button full-width-button small-text">
-              <button (click)="putOrder()" [disabled]="!timeForm.valid || !selectedTime">Proceed to Checkout</button>
-              <span class="processing" *ngIf="processing">Please Wait...</span>
+              <div class="loading-gif button-size" *ngIf="processing"></div>
+              <button (click)="putOrder()" [disabled]="!timeForm.valid || !selectedTime" *ngIf="!processing">Proceed to Checkout</button>
             </div>
           </div>
           <div class="location-details" [innerHtml]="addressData?.content?.rendered | safeHtml">
