@@ -14,15 +14,13 @@ export class BagService {
   constructor(protected localStorage: LocalStorage) {
     this.localStorage.getItem('bag').subscribe(bagItemsFromLocalStorage => {
       this.itemsInBag = bagItemsFromLocalStorage || [];
-      this.updatePrice(bagItemsFromLocalStorage);
+      this.updatePrice();
     })
   }
 
   public createLineItem( passedMenuItem ){
     // Send item to get Modifiers
     let modifiers = this.constructLineItemModifiers(passedMenuItem.Modifiers);
-
-    console.log(passedMenuItem);
 
     let lineItem : LineItem = {
       SalesItemId : passedMenuItem.SalesItemId,
@@ -50,8 +48,6 @@ export class BagService {
   }
 
   public quickAddLineItem( passedMenuItem ){
-    console.log(passedMenuItem);
-
     let lineItem : LineItem = {
       SalesItemId : passedMenuItem.DefaultItemId, // Not sure if this should come from the SalesItem object instead of the DefaultItemId
       MenuItemId : passedMenuItem.MenuItemId,
@@ -126,11 +122,12 @@ export class BagService {
     this.saveToLocalStorage();
   }
 
-  private updatePrice(bagItems){
+  public updatePrice(){
     let value = 0;
+    let arr = this.itemsInBag;
 
-    _.forEach(bagItems, function(item, key){
-      value += item.ExtendedPrice;
+    _.forEach(this.itemsInBag, function(item, key){
+      value += (item.ExtendedPrice * item.Quantity);
     });
 
     this._totalPrice = value;
