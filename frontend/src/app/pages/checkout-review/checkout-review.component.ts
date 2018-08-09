@@ -68,21 +68,20 @@ export class CheckoutReviewComponent implements OnInit {
     return false;
   }
 
-  // TODO: Need to increase the quantity on the bagService instead of locally
   public incrementQuantity(menuItem){
     menuItem.Quantity++;
+    this.bagService.updatePrice();
   }
 
-  // TODO: Need to decrease the quantity on the bagService instead of locally
   public decrementQuantity(menuItem){
     if(menuItem.Quantity > 1){
       menuItem.Quantity--;
+      this.bagService.updatePrice();
     }
   }
 
   public putOrder(){
     this.processing = true;
-    console.log(this.bagItems);
 
     this.orderService.putOrder(this.bagItems).subscribe(response => {
       // TODO: Error checking for other result codes
