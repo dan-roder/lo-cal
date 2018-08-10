@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { BagService } from '@local/services/bag.service';
-import { LineItem } from '@local/models/LineItem';
-import { Config } from '@local/utils/constants';
 import { OrderService } from '@local/services/order.service';
 import { Order } from '@local/models/Order';
 import { Router } from '@angular/router';
@@ -27,7 +25,6 @@ export class CheckoutReviewComponent implements OnInit {
 
   constructor(
     private bagService: BagService,
-    private constants: Config,
     private orderService: OrderService,
     private router: Router,
     private fb: FormBuilder,
