@@ -31,6 +31,7 @@ export class CheckoutPaymentComponent implements OnInit {
   public orderForDisplay : Array<any>;
   public savedPaymentMethods : SavedPayment;
   public savedPaymentChoice : string;
+  public orderResultForTesting : any;
 
   constructor(private orderService: OrderService, private fb: FormBuilder, private constants: Config, private customerService: CustomerService, private router: Router, private localStorage: LocalStorage) {
     this.contactInfoForm = fb.group({
@@ -129,6 +130,7 @@ export class CheckoutPaymentComponent implements OnInit {
     // Order object with payment has been created, submit to API
     this.orderService.submitOrder(finalOrderForSubmission, this.currentOrder.OrderId).subscribe(orderResults => {
       console.log(orderResults);
+      this.orderResultForTesting = orderResults.ResultCode;
       if(orderResults.ResultCode == 0){
         this.localStorage.setItem('orderResult', orderResults).subscribe(() => {
           // If Customer wishes to save payment method
