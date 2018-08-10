@@ -41,7 +41,7 @@ export class CheckoutPaymentComponent implements OnInit {
     });
     this.paymentForm = fb.group({
       'payment-choice' : [this.paymentChoice, Validators.required],
-      'card-number' : [null, [Validators.required, Validators.pattern('^[0-9]+$')]],
+      'card-number' : [null, [Validators.required, Validators.pattern('^(?:(4[0-9]{12}(?:[0-9]{3})?)|(5[1-5][0-9]{14})|(6(?:011|5[0-9]{2})[0-9]{12})|(3[47][0-9]{13})|(3(?:0[0-5]|[68][0-9])[0-9]{11})|((?:2131|1800|35[0-9]{3})[0-9]{11}))$')]],
       'expiration-date' : [null, [Validators.required, Validators.pattern('^[0-9]{2}\/{1}[0-9]{4}$')]],
       'cvv' : [null, [Validators.required, Validators.pattern('^[0-9]{3,4}$')]],
       'save-payment' : [null]
@@ -237,8 +237,8 @@ export class CheckoutPaymentComponent implements OnInit {
 
   public detectCardType(val){
     let cardType = ccinfo(val);
-    this.activeCardClass = (val.length > 0) ? cardType[0].type : '';
-    let cardNumber : number = (val.length > 0) ? this.constants.paymentTypeMap[cardType[0].niceType] : undefined;
+    this.activeCardClass = (val.length > 0 && cardType.length > 0) ? cardType[0].type : '';
+    let cardNumber : number = (val.length > 0 && cardType.length > 0) ? this.constants.paymentTypeMap[cardType[0].niceType] : undefined;
     this.cardType = cardNumber;
   }
 
