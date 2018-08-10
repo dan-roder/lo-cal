@@ -125,8 +125,10 @@ export class CheckoutPaymentComponent implements OnInit {
       order_submission : orderForApi
     }
 
+    // TODO: Check with Ken about passing errors back as is from API
     // Order object with payment has been created, submit to API
     this.orderService.submitOrder(finalOrderForSubmission, this.currentOrder.OrderId).subscribe(orderResults => {
+      console.log(orderResults);
       if(orderResults.ResultCode == 0){
         this.localStorage.setItem('orderResult', orderResults).subscribe(() => {
           // If Customer wishes to save payment method
