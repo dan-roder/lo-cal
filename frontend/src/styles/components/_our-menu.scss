@@ -1,22 +1,29 @@
 .our-menu{
   .menu-items{
     @extend %clearfix;
-    margin: 30px auto;
+    margin: 20px auto;
+    display: flex;
+    flex-flow: row wrap;
+    flex: 1 auto;
 
     .item{
-      width: 33.3333%;
-      float: left;
-      margin: 0 0 40px;
+      width: 50%;
+      margin: 0 0 30px;
+
+      @include breakpoint($bp-768){
+        width: 25%;
+      }
 
       .item-wrapper{
         margin: 0 15px;
         padding: 15px;
-        border: 1px solid $e1;
       }
 
-      .title{
-        @include fontsize(18);
+      a{
+        @include fontsize(24);
         @extend %sofia-medium;
+        text-decoration: none;
+        color: $c-31;
       }
     }// .item
   }// .menu-items
