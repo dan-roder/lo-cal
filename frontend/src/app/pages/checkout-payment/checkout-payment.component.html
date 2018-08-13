@@ -131,7 +131,7 @@
                     </div>
                     <div class="form-component form-component-text">
                       <label for="last-name" class="visuallyhidden">Expiration Date</label>
-                      <input type="text" name="expiration-date" id="expiration-date" formControlName="expiration-date" placeholder="Expiration Date (mm/yyyy)*" [ngClass]="{'has-error':!paymentForm.controls['expiration-date'].valid && submittedOnce}" loCalMonthMask>
+                      <input type="text" name="expiration-date" id="expiration-date" formControlName="expiration-date" placeholder="Expiration Date (mm/yyyy)*" [ngClass]="{'has-error':!paymentForm.controls['expiration-date'].valid && submittedOnce}" loCalMonthMask #box (ngModelChange)="preventTooManyDigits(7, box.value)">
                       <div class="error-message" *ngIf="!paymentForm.controls['expiration-date'].valid && submittedOnce">This field is required.</div>
                     </div>
                   </div>
