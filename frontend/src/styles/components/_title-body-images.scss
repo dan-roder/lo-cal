@@ -1,5 +1,6 @@
 .food-details{
-  background: url('/assets/images/grey-pattern-bg.jpg') no-repeat center center;
+  background: url('/assets/images/light-grey-pattern-bg.jpg') no-repeat center center !important;
+  background-size: cover;
 
   .three-column-data{
     @include stagecenter(1400);
