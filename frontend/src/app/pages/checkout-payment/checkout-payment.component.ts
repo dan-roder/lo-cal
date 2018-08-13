@@ -43,7 +43,7 @@ export class CheckoutPaymentComponent implements OnInit {
     this.paymentForm = fb.group({
       'payment-choice' : [this.paymentChoice, Validators.required],
       'card-number' : [null, [Validators.required, Validators.pattern('^(?:(4[0-9]{12}(?:[0-9]{3})?)|(5[1-5][0-9]{14})|(6(?:011|5[0-9]{2})[0-9]{12})|(3[47][0-9]{13})|(3(?:0[0-5]|[68][0-9])[0-9]{11})|((?:2131|1800|35[0-9]{3})[0-9]{11}))$')]],
-      'expiration-date' : [null, [Validators.required, Validators.pattern('^[0-9]{2}\/{1}[0-9]{4}$')]],
+      'expiration-date' : ['', [Validators.required, Validators.pattern('^[0-9]{2}\/[0-9]{4}$')]],
       'cvv' : [null, [Validators.required, Validators.pattern('^[0-9]{3,4}$')]],
       'save-payment' : [null]
     });
@@ -277,4 +277,11 @@ export class CheckoutPaymentComponent implements OnInit {
     console.log(value);
   }
 
+  // TODO: Figure out how to stop input after expression is reached
+  public preventTooManyDigits(digitCount, e){
+    console.log(digitCount, e);
+    // if(e.length === digitCount){
+    //   return;
+    // }
+  }
 }
