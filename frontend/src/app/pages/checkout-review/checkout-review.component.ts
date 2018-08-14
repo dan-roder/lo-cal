@@ -89,6 +89,7 @@ export class CheckoutReviewComponent implements OnInit {
         console.log('putOrder: error', response);
         this.processing = false;
         this.errorData.error = "We're sorry. There was an error placing your order. Please try again."
+        this.wpService.logError('Put Order Error: ' + JSON.stringify(response)).subscribe(() => {});
       }
     });
   }
