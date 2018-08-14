@@ -1,13 +1,12 @@
 .cart-menu{
   position: absolute;
-  right: 35px;
+  right: 20px;
   top: 0;
   margin: 0;
   padding: 0;
 
   @include breakpoint($bp-860){
     float: right;
-    right: 20px;
   }
 
   li{
