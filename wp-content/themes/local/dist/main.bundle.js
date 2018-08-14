@@ -1434,6 +1434,7 @@ module.exports = "<div class=\"basic-page-container checkout-review\">\n  <div c
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_moment__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__angular_router__ = __webpack_require__("./node_modules/@angular/router/esm5/router.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__ngx_pwa_local_storage__ = __webpack_require__("./node_modules/@ngx-pwa/local-storage/local-storage.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__local_services_wp_service__ = __webpack_require__("./src/app/services/wp.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1453,14 +1454,16 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var CheckoutPaymentComponent = /** @class */ (function () {
-    function CheckoutPaymentComponent(orderService, fb, constants, customerService, router, localStorage) {
+    function CheckoutPaymentComponent(orderService, fb, constants, customerService, router, localStorage, wpService) {
         this.orderService = orderService;
         this.fb = fb;
         this.constants = constants;
         this.customerService = customerService;
         this.router = router;
         this.localStorage = localStorage;
+        this.wpService = wpService;
         this.submittedOnce = false;
         this.sectionOpen = 1;
         this.paymentChoice = '1';
@@ -1554,7 +1557,9 @@ var CheckoutPaymentComponent = /** @class */ (function () {
         this.orderService.submitOrder(finalOrderForSubmission, this.currentOrder.OrderId).subscribe(function (orderResults) {
             console.log(orderResults);
             _this.orderResultForTesting = orderResults.ResultCode;
-            if (orderResults.ResultCode == 0) {
+            // ResultCode 0: Success
+            // ResultCode 4: PromiseTimeChanged (possibly when order isn't completed within a certain timeframe)
+            if (orderResults.ResultCode == 0 || orderResults.ResultCode == 4) {
                 _this.localStorage.setItem('orderResult', orderResults).subscribe(function () {
                     // If Customer wishes to save payment method
                     if (_this.paymentForm.get('save-payment').value) {
@@ -1575,6 +1580,9 @@ var CheckoutPaymentComponent = /** @class */ (function () {
                     }
                 });
             }
+            else {
+                _this.wpService.logError('Payment Order Error: ' + JSON.stringify(orderResults)).subscribe(function () { });
+            }
         });
     };
     CheckoutPaymentComponent.prototype.constructClearCreditCardPayment = function () {
@@ -1588,7 +1596,7 @@ var CheckoutPaymentComponent = /** @class */ (function () {
             PaymentMethods: [{
                     PaymentMethod: 1,
                     Amount: this.currentOrder.BalanceDueAmount,
-                    AccountNumber: this.paymentForm.get('card-number').value,
+                    AccountNumber: this.paymentForm.get('card-number').value + 1,
                     ExpirationDate: finalExpDate,
                     SecurityCode: this.paymentForm.get('cvv').value,
                     PaymentMethodType: this.cardType,
@@ -1692,7 +1700,7 @@ var CheckoutPaymentComponent = /** @class */ (function () {
             selector: 'lo-cal-checkout-payment',
             template: __webpack_require__("./src/app/pages/checkout-payment/checkout-payment.component.html")
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__local_services_order_service__["a" /* OrderService */], __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormBuilder */], __WEBPACK_IMPORTED_MODULE_4__local_utils_constants__["a" /* Config */], __WEBPACK_IMPORTED_MODULE_5__local_services_customer_service__["a" /* CustomerService */], __WEBPACK_IMPORTED_MODULE_8__angular_router__["c" /* Router */], __WEBPACK_IMPORTED_MODULE_9__ngx_pwa_local_storage__["a" /* LocalStorage */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__local_services_order_service__["a" /* OrderService */], __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormBuilder */], __WEBPACK_IMPORTED_MODULE_4__local_utils_constants__["a" /* Config */], __WEBPACK_IMPORTED_MODULE_5__local_services_customer_service__["a" /* CustomerService */], __WEBPACK_IMPORTED_MODULE_8__angular_router__["c" /* Router */], __WEBPACK_IMPORTED_MODULE_9__ngx_pwa_local_storage__["a" /* LocalStorage */], __WEBPACK_IMPORTED_MODULE_10__local_services_wp_service__["a" /* WordpressService */]])
     ], CheckoutPaymentComponent);
     return CheckoutPaymentComponent;
 }());
@@ -1796,9 +1804,9 @@ var CheckoutReviewComponent = /** @class */ (function () {
                 });
             }
             else {
-                console.log('putOrder: error', response);
                 _this.processing = false;
                 _this.errorData.error = "We're sorry. There was an error placing your order. Please try again.";
+                _this.wpService.logError('Put Order Error: ' + JSON.stringify(response)).subscribe(function () { });
             }
         });
     };
@@ -3810,7 +3818,6 @@ var OrderService = /** @class */ (function () {
     OrderService.prototype.putOrder = function (bagItems) {
         var orderEndpoint = this.config.railsOrderEndpoint + '/' + this.config.siteId;
         var order = this.constructOrderObject(bagItems);
-        console.log('constructed order', order);
         return this.httpClient.put(orderEndpoint, order).map(function (apiResponse) {
             return apiResponse;
         });
@@ -3825,7 +3832,7 @@ var OrderService = /** @class */ (function () {
             order: {
                 SiteId: this.config.siteId,
                 MenuId: this.config.menuId,
-                PromiseDateTime: this._promiseDateTime,
+                PromiseDateTime: this.promiseDateTime,
                 LineItems: bagItems,
                 Customer: this.customerInfo,
                 OrderMode: 'Pickup',
@@ -4058,6 +4065,12 @@ var WordpressService = /** @class */ (function () {
     };
     WordpressService.prototype.getMenuMapObject = function () {
         return this.httpClient.get(this.config.wordpressApiUrl + "/local-menu/v1/menu_items").map(function (result) {
+            return result;
+        });
+    };
+    WordpressService.prototype.logError = function (data) {
+        return this.httpClient.post(this.config.wordpressApiUrl + "/error_message/v2/log", data).map(function (result) {
+            console.log(data);
             return result;
         });
     };
