@@ -1,0 +1,152 @@
+.cart-menu{
+  position: absolute;
+  right: 35px;
+  top: 0;
+  margin: 0;
+  padding: 0;
+
+  @include breakpoint($bp-860){
+    float: right;
+    right: 20px;
+  }
+
+  li{
+    vertical-align: middle;
+    display: inline-block;
+    margin: 0 0 0 5px;
+
+    @include breakpoint($bp-860){
+      margin: 0 0 0 12px;
+    }
+
+    a{
+      @extend %sofia-regular;
+      @include fontsize(16);
+      color: $off-black;
+      padding: 31px 0;
+      cursor: pointer;
+      border-bottom: 3px solid transparent;
+      @include transition(padding);
+
+      @include breakpoint($bp-860){
+        padding: 35px 0;
+      }
+
+      @include breakpoint($bp-980){
+        letter-spacing: 1px;
+      }
+
+      .scrolled &{
+        padding-top: 20px;
+        padding-bottom: 20px;
+      }
+
+      &:hover,
+      &:focus,
+      &.active{
+        color: $orange-red;
+        border-bottom: 3px solid $orange-red;
+      }
+    }
+  }
+
+  li a,span{
+    border-bottom: none !important;
+  }
+
+  .bag-link{
+    display: inline-block;
+
+    a{
+      @include svg-bg(svgs/bag);
+      background-position: left center;
+      padding-left: 20px;
+      display: flex;
+      align-items: center;
+      height: 24px;
+
+      @include breakpoint($bp-860){
+        padding-left: 30px;
+      }
+    }
+
+    span{
+      display: inline-block;
+
+      &.cart-number{
+        display: inline-block;
+        border-radius: 50%;
+        width: 20px;
+        height: 16px;
+        padding: 2px;
+        @include fontsize(10);
+        background: $orange-red;
+        color: $white;
+        text-align: center;
+        margin: 0 0 0 5px;
+        @include transition(all,200ms);
+        opacity: 1;
+        position: absolute;
+        top: 20px;
+        right: -15px;
+
+        @include breakpoint($bp-860){
+          position: static;
+          width: 20px;
+          height: 20px;
+          @include fontsize(13);
+        }
+
+        &.hidden{
+          opacity: 0;
+        }
+
+        &.populated{
+          width: 18px;
+
+          @include breakpoint($bp-860){
+            width: 22px;
+          }
+        }
+      }
+    }
+
+    .bag-text{
+      display: none;
+
+      @include breakpoint($bp-860){
+        display: inline-block;
+      }
+    }
+  }// .bag-link
+
+  .account-link{
+    display: inline-block;
+
+    .account-text{
+      display: none;
+
+      @include breakpoint($bp-860){
+        display: inline-block;
+      }
+    }
+
+    a{
+      @include svg-bg(svgs/account);
+      background-position: left center;
+      padding-left: 30px;
+
+      // .scrolled &{
+      //   padding: 14px 0 14px 30px;
+      // }
+
+      // @include breakpoint($bp-860){
+      //   padding: 40px 0 40px 30px;
+
+      //   .scrolled &{
+      //     padding: 25px 0 25px 30px;
+      //   }
+      // }
+    }
+  }// .account-link
+}// .cart-menu

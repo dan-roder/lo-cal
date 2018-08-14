@@ -6,7 +6,7 @@
     padding: 0 60px;
   }
 
-  ul.menu{
+  .main-menu{
     padding: 0;
     list-style: none;
     margin: 0;
@@ -102,99 +102,4 @@
       }
     }
   }// .main-menu
-
-  .cart-menu{
-    position: absolute;
-    right: 20px;
-    top: 0;
-
-    @include breakpoint($bp-860){
-      float: right;
-    }
-
-    li a,span{
-      border-bottom: none !important;
-    }
-
-    .bag-link{
-      display: inline-block;
-
-      a{
-        @include svg-bg(svgs/bag);
-        background-position: left center;
-        padding-left: 20px;
-        display: flex;
-        align-items: center;
-
-        @include breakpoint($bp-860){
-          padding-left: 30px;
-        }
-      }
-
-      span{
-        display: inline-block;
-
-        &.cart-number{
-          display: inline-block;
-          border-radius: 50%;
-          width: 20px;
-          height: 20px;
-          padding: 2px;
-          @include fontsize(13);
-          background: $orange-red;
-          color: $white;
-          text-align: center;
-          margin: 0 0 0 5px;
-          @include transition(all,200ms);
-          opacity: 1;
-
-          &.hidden{
-            opacity: 0;
-          }
-
-          &.populated{
-            width: 22px;
-          }
-        }
-      }
-
-      .bag-text{
-        display: none;
-
-        @include breakpoint($bp-860){
-          display: inline-block;
-        }
-      }
-    }// .bag-link
-
-    .account-link{
-      display: inline-block;
-
-      .account-text{
-        display: none;
-
-        @include breakpoint($bp-860){
-          display: inline-block;
-        }
-      }
-
-      a{
-        @include svg-bg(svgs/account);
-        background-position: left center;
-        padding-left: 30px;
-
-        // .scrolled &{
-        //   padding: 14px 0 14px 30px;
-        // }
-
-        // @include breakpoint($bp-860){
-        //   padding: 40px 0 40px 30px;
-
-        //   .scrolled &{
-        //     padding: 25px 0 25px 30px;
-        //   }
-        // }
-      }
-    }// .account-link
-  }// .cart-menu
 }
