@@ -31,12 +31,9 @@ export class OrderService {
     let orderEndpoint = this.config.railsOrderEndpoint + '/' + this.config.siteId;
     let order = this.constructOrderObject(bagItems);
 
-    console.log('constructed order', order);
-
-    // return this.httpClient.put(orderEndpoint, order).map(apiResponse => {
-    //   return apiResponse;
-    // });
-    return Observable.of(true);
+    return this.httpClient.put(orderEndpoint, order).map(apiResponse => {
+      return apiResponse;
+    });
   }
 
   public saveOrderToLocalStorage(order){
@@ -53,6 +50,7 @@ export class OrderService {
         MenuId : this.config.menuId,
         PromiseDateTime : this.promiseDateTime,
         LineItems : bagItems,
+        Customer : this.customerInfo,
         OrderMode : 'Pickup',
         PaymentMode : 'Unknown'
       }
