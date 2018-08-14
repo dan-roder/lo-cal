@@ -1596,7 +1596,7 @@ var CheckoutPaymentComponent = /** @class */ (function () {
             PaymentMethods: [{
                     PaymentMethod: 1,
                     Amount: this.currentOrder.BalanceDueAmount,
-                    AccountNumber: this.paymentForm.get('card-number').value + 1,
+                    AccountNumber: this.paymentForm.get('card-number').value,
                     ExpirationDate: finalExpDate,
                     SecurityCode: this.paymentForm.get('cvv').value,
                     PaymentMethodType: this.cardType,
