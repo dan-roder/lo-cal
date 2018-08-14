@@ -33,9 +33,10 @@ export class OrderService {
 
     console.log('constructed order', order);
 
-    return this.httpClient.put(orderEndpoint, order).map(apiResponse => {
-      return apiResponse;
-    });
+    // return this.httpClient.put(orderEndpoint, order).map(apiResponse => {
+    //   return apiResponse;
+    // });
+    return Observable.of(true);
   }
 
   public saveOrderToLocalStorage(order){
@@ -50,9 +51,8 @@ export class OrderService {
       order : {
         SiteId : this.config.siteId,
         MenuId : this.config.menuId,
-        PromiseDateTime : this._promiseDateTime,
+        PromiseDateTime : this.promiseDateTime,
         LineItems : bagItems,
-        Customer : this.customerInfo,
         OrderMode : 'Pickup',
         PaymentMode : 'Unknown'
       }
