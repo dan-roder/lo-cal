@@ -2826,7 +2826,7 @@ var OurFoodComponent = /** @class */ (function () {
 /***/ "./src/app/pages/our-story/our-story.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"page-landing-page\">\n    <lo-cal-header [featuredImage]=\"featuredImage\" [pageContent]=\"pageContent\"></lo-cal-header>\n\n    <lo-cal-intro-section [acf]=\"acf\" [color]=\"'white'\"></lo-cal-intro-section>\n\n    <lo-cal-title-body-images [acf]=\"acf\" [color]=\"'grey'\"></lo-cal-title-body-images>\n\n    <div class=\"background-section section section-white eating-well\">\n      <div class=\"content center\">\n        <div class=\"body\" [innerHtml]=\"acf?.text\"></div>\n      </div>\n    </div>\n\n    <lo-cal-image-and-text [acf]=\"acf\" [color]=\"'grey'\"></lo-cal-image-and-text>\n</div>"
+module.exports = "<div class=\"page-landing-page\">\n    <lo-cal-header [featuredImage]=\"featuredImage\" [pageContent]=\"pageContent\"></lo-cal-header>\n\n    <lo-cal-intro-section [acf]=\"acf\" [color]=\"'white'\"></lo-cal-intro-section>\n\n    <lo-cal-title-body-images [acf]=\"acf\" [color]=\"'grey'\"></lo-cal-title-body-images>\n\n    <div class=\"background-section section section-white eating-well\" [style]=\"getBgImage()\">\n      <div class=\"content center\">\n        <div class=\"body\" [innerHtml]=\"acf?.text\"></div>\n      </div>\n    </div>\n\n    <lo-cal-image-and-text [acf]=\"acf\" [color]=\"'grey'\"></lo-cal-image-and-text>\n</div>"
 
 /***/ }),
 
@@ -2838,6 +2838,7 @@ module.exports = "<div class=\"page-landing-page\">\n    <lo-cal-header [feature
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_wp_service__ = __webpack_require__("./src/app/services/wp.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ngx_auto_unsubscribe__ = __webpack_require__("./node_modules/ngx-auto-unsubscribe/dist/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_platform_browser__ = __webpack_require__("./node_modules/@angular/platform-browser/esm5/platform-browser.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -2850,19 +2851,27 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var OurStoryComponent = /** @class */ (function () {
-    function OurStoryComponent(wpService) {
+    function OurStoryComponent(wpService, sanitizer) {
         this.wpService = wpService;
+        this.sanitizer = sanitizer;
+        this.bgImage = '';
     }
     OurStoryComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.wpService.getCustomPostTypeById('landing_page', 80).subscribe(function (page) {
             _this.pageContent = page;
             _this.acf = page.acf;
+            _this.bgImage = (page.acf.background_image !== undefined) ? page.acf.background_image.url : '';
             if (page.featured_media != 0) {
                 _this.wpService.getMedia(page.featured_media).subscribe(function (media) { return _this.featuredImage = media; });
             }
         });
+    };
+    OurStoryComponent.prototype.getBgImage = function () {
+        var style = "background-image: url(" + this.bgImage + ")";
+        return this.sanitizer.bypassSecurityTrustStyle(style);
     };
     OurStoryComponent.prototype.ngOnDestroy = function () {
     };
@@ -2872,7 +2881,7 @@ var OurStoryComponent = /** @class */ (function () {
             template: __webpack_require__("./src/app/pages/our-story/our-story.component.html")
         }),
         Object(__WEBPACK_IMPORTED_MODULE_2_ngx_auto_unsubscribe__["a" /* AutoUnsubscribe */])(),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__services_wp_service__["a" /* WordpressService */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__services_wp_service__["a" /* WordpressService */], __WEBPACK_IMPORTED_MODULE_3__angular_platform_browser__["c" /* DomSanitizer */]])
     ], OurStoryComponent);
     return OurStoryComponent;
 }());
