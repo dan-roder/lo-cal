@@ -16,7 +16,6 @@ function log_error_message(WP_REST_Request $request){
     $bodyContent = $request->get_body();
     $returnObj->response = 'error logged to wordpress error logs';
     log_error($bodyContent);
-    log_error('test error');
   }
   return rest_ensure_response($returnObj);
 
