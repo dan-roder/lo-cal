@@ -11,6 +11,7 @@ import * as moment from 'moment';
 import { Router } from '@angular/router';
 import { RailsSavePayment, InSubmitOrderInformation, RailsInSubmitOrder, SavedPayment, Vehicle } from '@local/models/Payment';
 import { LocalStorage } from '@ngx-pwa/local-storage';
+import { WordpressService } from '@local/services/wp.service';
 
 @Component({
   selector: 'lo-cal-checkout-payment',
@@ -33,7 +34,7 @@ export class CheckoutPaymentComponent implements OnInit {
   public savedPaymentChoice : string;
   public orderResultForTesting : any;
 
-  constructor(private orderService: OrderService, private fb: FormBuilder, private constants: Config, private customerService: CustomerService, private router: Router, private localStorage: LocalStorage) {
+  constructor(private orderService: OrderService, private fb: FormBuilder, private constants: Config, private customerService: CustomerService, private router: Router, private localStorage: LocalStorage, private wpService: WordpressService) {
     this.contactInfoForm = fb.group({
       'first-name' : [null, Validators.required],
       'last-name' : [null, Validators.required],
@@ -131,7 +132,10 @@ export class CheckoutPaymentComponent implements OnInit {
     this.orderService.submitOrder(finalOrderForSubmission, this.currentOrder.OrderId).subscribe(orderResults => {
       console.log(orderResults);
       this.orderResultForTesting = orderResults.ResultCode;
-      if(orderResults.ResultCode == 0){
+
+      // ResultCode 0: Success
+      // ResultCode 4: PromiseTimeChanged (possibly when order isn't completed within a certain timeframe)
+      if(orderResults.ResultCode == 0 || orderResults.ResultCode == 4){
         this.localStorage.setItem('orderResult', orderResults).subscribe(() => {
           // If Customer wishes to save payment method
           if(this.paymentForm.get('save-payment').value){
@@ -153,6 +157,9 @@ export class CheckoutPaymentComponent implements OnInit {
           }
         });
       }
+      else{
+        this.wpService.logError('Payment Order Error: ' + JSON.stringify(orderResults)).subscribe(() => {});
+      }
     });
   }
 
@@ -168,7 +175,7 @@ export class CheckoutPaymentComponent implements OnInit {
       PaymentMethods : [{
         PaymentMethod : 1,
         Amount : this.currentOrder.BalanceDueAmount,
-        AccountNumber : this.paymentForm.get('card-number').value,
+        AccountNumber : this.paymentForm.get('card-number').value + 1,
         ExpirationDate : finalExpDate,
         SecurityCode : this.paymentForm.get('cvv').value,
         PaymentMethodType : this.cardType,
