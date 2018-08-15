@@ -77,7 +77,7 @@ export class CheckoutReviewComponent implements OnInit {
 
     this.orderService.putOrder(this.bagItems).subscribe(response => {
       // TODO: Error checking for other result codes
-      if(response.ResultCode === 0){
+      if(response.ResultCode === 0 || response.ResultCode === 4){
         // Save to LocalStorage and route to checkout
         this.orderService.saveOrderToLocalStorage(response).subscribe(result => {
           if(result){
