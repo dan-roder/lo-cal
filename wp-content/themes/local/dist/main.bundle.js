@@ -1795,7 +1795,7 @@ var CheckoutReviewComponent = /** @class */ (function () {
         this.processing = true;
         this.orderService.putOrder(this.bagItems).subscribe(function (response) {
             // TODO: Error checking for other result codes
-            if (response.ResultCode === 0) {
+            if (response.ResultCode === 0 || response.ResultCode === 4) {
                 // Save to LocalStorage and route to checkout
                 _this.orderService.saveOrderToLocalStorage(response).subscribe(function (result) {
                     if (result) {
