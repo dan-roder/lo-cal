@@ -162,7 +162,7 @@ if (isset($_ENV['PANTHEON_ENVIRONMENT']) && php_sapi_name() != 'cli') {
   if ($_ENV['PANTHEON_ENVIRONMENT'] === 'live') {
     /** Replace www.example.com with your registered domain name */
     // $primary_domain = 'www.lo-calkitchen.com';
-    $primary_domain = 'live-lo-cal.pantheonsite.io';
+    $primary_domain = $_SERVER['HTTP_HOST'];
   }
   else {
     // Redirect to HTTPS on every Pantheon environment.
