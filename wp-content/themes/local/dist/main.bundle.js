@@ -525,24 +525,24 @@ var AppComponent = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_42__local_services_order_service__ = __webpack_require__("./src/app/services/order.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_43__shared_directives_window_scroll_directive__ = __webpack_require__("./src/app/shared/directives/window-scroll.directive.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_44__shared_directives_input_switcher_directive__ = __webpack_require__("./src/app/shared/directives/input-switcher.directive.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_45__pipes_allergens_pipe__ = __webpack_require__("./src/app/pipes/allergens.pipe.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_46__pipes_safe_html_pipe__ = __webpack_require__("./src/app/pipes/safe-html.pipe.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_47__pages_blog_blog_component__ = __webpack_require__("./src/app/pages/blog/blog.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_48__pages_blog_post_blog_post_component__ = __webpack_require__("./src/app/pages/blog-post/blog-post.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_49__pipes_featured_image_pipe__ = __webpack_require__("./src/app/pipes/featured-image.pipe.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_50__pipes_card_type_pipe__ = __webpack_require__("./src/app/pipes/card-type.pipe.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_51__pipes_safe_url_pipe__ = __webpack_require__("./src/app/pipes/safe-url.pipe.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_52__pipes_no_x_pipe__ = __webpack_require__("./src/app/pipes/no-x.pipe.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_53__pipes_allergen_rollover_pipe__ = __webpack_require__("./src/app/pipes/allergen-rollover.pipe.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_54__local_guards_auth_guard__ = __webpack_require__("./src/app/guards/auth.guard.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_55__local_guards_access_guard__ = __webpack_require__("./src/app/guards/access.guard.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_56__local_guards_order_guard__ = __webpack_require__("./src/app/guards/order.guard.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_57__pages_checkout_payment_checkout_payment_component__ = __webpack_require__("./src/app/pages/checkout-payment/checkout-payment.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_58_ng2_responsive__ = __webpack_require__("./node_modules/ng2-responsive/index.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_58_ng2_responsive___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_58_ng2_responsive__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_59__shared_directives_month_mask_directive__ = __webpack_require__("./src/app/shared/directives/month-mask.directive.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_45_angular_cc_library__ = __webpack_require__("./node_modules/angular-cc-library/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_45_angular_cc_library___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_45_angular_cc_library__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_46__pipes_allergens_pipe__ = __webpack_require__("./src/app/pipes/allergens.pipe.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_47__pipes_safe_html_pipe__ = __webpack_require__("./src/app/pipes/safe-html.pipe.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_48__pages_blog_blog_component__ = __webpack_require__("./src/app/pages/blog/blog.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_49__pages_blog_post_blog_post_component__ = __webpack_require__("./src/app/pages/blog-post/blog-post.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_50__pipes_featured_image_pipe__ = __webpack_require__("./src/app/pipes/featured-image.pipe.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_51__pipes_card_type_pipe__ = __webpack_require__("./src/app/pipes/card-type.pipe.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_52__pipes_safe_url_pipe__ = __webpack_require__("./src/app/pipes/safe-url.pipe.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_53__pipes_no_x_pipe__ = __webpack_require__("./src/app/pipes/no-x.pipe.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_54__pipes_allergen_rollover_pipe__ = __webpack_require__("./src/app/pipes/allergen-rollover.pipe.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_55__local_guards_auth_guard__ = __webpack_require__("./src/app/guards/auth.guard.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_56__local_guards_access_guard__ = __webpack_require__("./src/app/guards/access.guard.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_57__local_guards_order_guard__ = __webpack_require__("./src/app/guards/order.guard.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_58__pages_checkout_payment_checkout_payment_component__ = __webpack_require__("./src/app/pages/checkout-payment/checkout-payment.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_59_ng2_responsive__ = __webpack_require__("./node_modules/ng2-responsive/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_59_ng2_responsive___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_59_ng2_responsive__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_60__pipes_card_image_pipe__ = __webpack_require__("./src/app/pipes/card-image.pipe.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_61__shared_directives_credit_card_mask_directive__ = __webpack_require__("./src/app/shared/directives/credit-card-mask.directive.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -600,6 +600,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 // Directives
 
 
+
 //Pipes
 
 
@@ -616,8 +617,6 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 // Modules
-
-
 
 
 var AppModule = /** @class */ (function () {
@@ -642,46 +641,45 @@ var AppModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_16__pages_menu_customize_menu_customize_component__["a" /* MenuCustomizeComponent */],
                 __WEBPACK_IMPORTED_MODULE_35__shared_components_bag_bag_component__["a" /* BagComponent */],
                 __WEBPACK_IMPORTED_MODULE_17__pages_sub_menu_sub_menu_component__["a" /* SubMenuComponent */],
-                __WEBPACK_IMPORTED_MODULE_45__pipes_allergens_pipe__["a" /* AllergensPipe */],
-                __WEBPACK_IMPORTED_MODULE_46__pipes_safe_html_pipe__["a" /* SafeHtml */],
+                __WEBPACK_IMPORTED_MODULE_46__pipes_allergens_pipe__["a" /* AllergensPipe */],
+                __WEBPACK_IMPORTED_MODULE_47__pipes_safe_html_pipe__["a" /* SafeHtml */],
                 __WEBPACK_IMPORTED_MODULE_18__pages_login_login_component__["a" /* LoginComponent */],
                 __WEBPACK_IMPORTED_MODULE_19__pages_post_post_component__["a" /* PostComponent */],
                 __WEBPACK_IMPORTED_MODULE_20__pages_catering_catering_component__["a" /* CateringComponent */],
                 __WEBPACK_IMPORTED_MODULE_21__pages_contact_contact_component__["a" /* ContactComponent */],
-                __WEBPACK_IMPORTED_MODULE_47__pages_blog_blog_component__["a" /* BlogComponent */],
-                __WEBPACK_IMPORTED_MODULE_48__pages_blog_post_blog_post_component__["a" /* BlogPostComponent */],
-                __WEBPACK_IMPORTED_MODULE_49__pipes_featured_image_pipe__["a" /* FeaturedImagePipe */],
+                __WEBPACK_IMPORTED_MODULE_48__pages_blog_blog_component__["a" /* BlogComponent */],
+                __WEBPACK_IMPORTED_MODULE_49__pages_blog_post_blog_post_component__["a" /* BlogPostComponent */],
+                __WEBPACK_IMPORTED_MODULE_50__pipes_featured_image_pipe__["a" /* FeaturedImagePipe */],
                 __WEBPACK_IMPORTED_MODULE_22__pages_create_account_create_account_component__["a" /* CreateAccountComponent */],
                 __WEBPACK_IMPORTED_MODULE_36__shared_components_login_form_login_form_component__["a" /* LoginFormComponent */],
                 __WEBPACK_IMPORTED_MODULE_23__pages_account_account_component__["a" /* AccountComponent */],
                 __WEBPACK_IMPORTED_MODULE_44__shared_directives_input_switcher_directive__["a" /* InputSwitcherDirective */],
                 __WEBPACK_IMPORTED_MODULE_24__pages_checkout_login_checkout_login_component__["a" /* CheckoutLoginComponent */],
                 __WEBPACK_IMPORTED_MODULE_25__pages_checkout_review_checkout_review_component__["a" /* CheckoutReviewComponent */],
-                __WEBPACK_IMPORTED_MODULE_57__pages_checkout_payment_checkout_payment_component__["a" /* CheckoutPaymentComponent */],
-                __WEBPACK_IMPORTED_MODULE_59__shared_directives_month_mask_directive__["a" /* MonthMaskDirective */],
+                __WEBPACK_IMPORTED_MODULE_58__pages_checkout_payment_checkout_payment_component__["a" /* CheckoutPaymentComponent */],
                 __WEBPACK_IMPORTED_MODULE_26__pages_confirmation_confirmation_component__["a" /* ConfirmationComponent */],
                 __WEBPACK_IMPORTED_MODULE_27__pages_order_history_order_history_component__["a" /* OrderHistoryComponent */],
                 __WEBPACK_IMPORTED_MODULE_11__layouts_account_layout_account_layout_component__["a" /* AccountLayoutComponent */],
-                __WEBPACK_IMPORTED_MODULE_50__pipes_card_type_pipe__["a" /* CardTypePipe */],
-                __WEBPACK_IMPORTED_MODULE_51__pipes_safe_url_pipe__["a" /* SafeUrlPipe */],
+                __WEBPACK_IMPORTED_MODULE_51__pipes_card_type_pipe__["a" /* CardTypePipe */],
+                __WEBPACK_IMPORTED_MODULE_52__pipes_safe_url_pipe__["a" /* SafeUrlPipe */],
                 __WEBPACK_IMPORTED_MODULE_28__pages_order_detail_order_detail_component__["a" /* OrderDetailComponent */],
                 __WEBPACK_IMPORTED_MODULE_60__pipes_card_image_pipe__["a" /* CardImagePipe */],
-                __WEBPACK_IMPORTED_MODULE_52__pipes_no_x_pipe__["a" /* NoXPipe */],
-                __WEBPACK_IMPORTED_MODULE_53__pipes_allergen_rollover_pipe__["a" /* AllergenRolloverPipe */],
-                __WEBPACK_IMPORTED_MODULE_61__shared_directives_credit_card_mask_directive__["a" /* CreditCardMaskDirective */]
+                __WEBPACK_IMPORTED_MODULE_53__pipes_no_x_pipe__["a" /* NoXPipe */],
+                __WEBPACK_IMPORTED_MODULE_54__pipes_allergen_rollover_pipe__["a" /* AllergenRolloverPipe */]
             ],
             imports: [
                 __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
-                __WEBPACK_IMPORTED_MODULE_2__angular_forms__["b" /* FormsModule */],
-                __WEBPACK_IMPORTED_MODULE_2__angular_forms__["d" /* ReactiveFormsModule */],
+                __WEBPACK_IMPORTED_MODULE_2__angular_forms__["FormsModule"],
+                __WEBPACK_IMPORTED_MODULE_2__angular_forms__["ReactiveFormsModule"],
                 __WEBPACK_IMPORTED_MODULE_3__angular_http__["b" /* HttpModule */],
                 __WEBPACK_IMPORTED_MODULE_4__angular_common_http__["b" /* HttpClientModule */],
                 __WEBPACK_IMPORTED_MODULE_6__app_routing_module__["a" /* AppRoutingModule */],
                 __WEBPACK_IMPORTED_MODULE_5__angular_platform_browser_animations__["a" /* BrowserAnimationsModule */],
                 __WEBPACK_IMPORTED_MODULE_7__ngx_pwa_local_storage__["b" /* LocalStorageModule */],
-                __WEBPACK_IMPORTED_MODULE_58_ng2_responsive__["ResponsiveModule"]
+                __WEBPACK_IMPORTED_MODULE_59_ng2_responsive__["ResponsiveModule"],
+                __WEBPACK_IMPORTED_MODULE_45_angular_cc_library__["CreditCardDirectivesModule"]
             ],
-            providers: [__WEBPACK_IMPORTED_MODULE_8__utils_constants__["a" /* Config */], __WEBPACK_IMPORTED_MODULE_37__utils_windowref__["a" /* WindowRef */], __WEBPACK_IMPORTED_MODULE_38__services_wp_service__["a" /* WordpressService */], __WEBPACK_IMPORTED_MODULE_39__services_menu_service_service__["a" /* MenuService */], __WEBPACK_IMPORTED_MODULE_40__services_bag_service__["a" /* BagService */], __WEBPACK_IMPORTED_MODULE_41__services_customer_service__["a" /* CustomerService */], __WEBPACK_IMPORTED_MODULE_54__local_guards_auth_guard__["a" /* AuthGuard */], __WEBPACK_IMPORTED_MODULE_55__local_guards_access_guard__["a" /* AccessGuard */], __WEBPACK_IMPORTED_MODULE_42__local_services_order_service__["a" /* OrderService */], __WEBPACK_IMPORTED_MODULE_56__local_guards_order_guard__["a" /* OrderGuard */]],
+            providers: [__WEBPACK_IMPORTED_MODULE_8__utils_constants__["a" /* Config */], __WEBPACK_IMPORTED_MODULE_37__utils_windowref__["a" /* WindowRef */], __WEBPACK_IMPORTED_MODULE_38__services_wp_service__["a" /* WordpressService */], __WEBPACK_IMPORTED_MODULE_39__services_menu_service_service__["a" /* MenuService */], __WEBPACK_IMPORTED_MODULE_40__services_bag_service__["a" /* BagService */], __WEBPACK_IMPORTED_MODULE_41__services_customer_service__["a" /* CustomerService */], __WEBPACK_IMPORTED_MODULE_55__local_guards_auth_guard__["a" /* AuthGuard */], __WEBPACK_IMPORTED_MODULE_56__local_guards_access_guard__["a" /* AccessGuard */], __WEBPACK_IMPORTED_MODULE_42__local_services_order_service__["a" /* OrderService */], __WEBPACK_IMPORTED_MODULE_57__local_guards_order_guard__["a" /* OrderGuard */]],
             bootstrap: [__WEBPACK_IMPORTED_MODULE_9__app_component__["a" /* AppComponent */]]
         })
     ], AppModule);
@@ -1017,21 +1015,21 @@ var AccountComponent = /** @class */ (function () {
         this.errorOccurred = false;
         this.submittedOnce = false;
         this.accountForm = fb.group({
-            'first-name': [null, __WEBPACK_IMPORTED_MODULE_3__angular_forms__["e" /* Validators */].required],
-            'last-name': [null, __WEBPACK_IMPORTED_MODULE_3__angular_forms__["e" /* Validators */].required],
-            'email': [null, [__WEBPACK_IMPORTED_MODULE_3__angular_forms__["e" /* Validators */].required, __WEBPACK_IMPORTED_MODULE_3__angular_forms__["e" /* Validators */].email]],
+            'first-name': [null, __WEBPACK_IMPORTED_MODULE_3__angular_forms__["Validators"].required],
+            'last-name': [null, __WEBPACK_IMPORTED_MODULE_3__angular_forms__["Validators"].required],
+            'email': [null, [__WEBPACK_IMPORTED_MODULE_3__angular_forms__["Validators"].required, __WEBPACK_IMPORTED_MODULE_3__angular_forms__["Validators"].email]],
             'full-address': fb.group({
-                'address': [null, __WEBPACK_IMPORTED_MODULE_3__angular_forms__["e" /* Validators */].required],
+                'address': [null, __WEBPACK_IMPORTED_MODULE_3__angular_forms__["Validators"].required],
                 'address2': null,
-                'city': [null, __WEBPACK_IMPORTED_MODULE_3__angular_forms__["e" /* Validators */].required],
-                'state': [{ value: '', disabled: true }, __WEBPACK_IMPORTED_MODULE_3__angular_forms__["e" /* Validators */].required],
-                'zip': [null, [__WEBPACK_IMPORTED_MODULE_3__angular_forms__["e" /* Validators */].required, __WEBPACK_IMPORTED_MODULE_3__angular_forms__["e" /* Validators */].pattern('^[0-9]{5}$')]]
+                'city': [null, __WEBPACK_IMPORTED_MODULE_3__angular_forms__["Validators"].required],
+                'state': [{ value: '', disabled: true }, __WEBPACK_IMPORTED_MODULE_3__angular_forms__["Validators"].required],
+                'zip': [null, [__WEBPACK_IMPORTED_MODULE_3__angular_forms__["Validators"].required, __WEBPACK_IMPORTED_MODULE_3__angular_forms__["Validators"].pattern('^[0-9]{5}$')]]
             })
         });
         this.passwordForm = fb.group({
-            'password': ['', __WEBPACK_IMPORTED_MODULE_3__angular_forms__["e" /* Validators */].compose([__WEBPACK_IMPORTED_MODULE_3__angular_forms__["e" /* Validators */].required, __WEBPACK_IMPORTED_MODULE_3__angular_forms__["e" /* Validators */].minLength(8), __WEBPACK_IMPORTED_MODULE_3__angular_forms__["e" /* Validators */].pattern(/(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/)])],
-            'confirm-password': ['', __WEBPACK_IMPORTED_MODULE_3__angular_forms__["e" /* Validators */].required],
-            'security-answer': ['', __WEBPACK_IMPORTED_MODULE_3__angular_forms__["e" /* Validators */].required],
+            'password': ['', __WEBPACK_IMPORTED_MODULE_3__angular_forms__["Validators"].compose([__WEBPACK_IMPORTED_MODULE_3__angular_forms__["Validators"].required, __WEBPACK_IMPORTED_MODULE_3__angular_forms__["Validators"].minLength(8), __WEBPACK_IMPORTED_MODULE_3__angular_forms__["Validators"].pattern(/(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/)])],
+            'confirm-password': ['', __WEBPACK_IMPORTED_MODULE_3__angular_forms__["Validators"].required],
+            'security-answer': ['', __WEBPACK_IMPORTED_MODULE_3__angular_forms__["Validators"].required],
         }, {
             validator: __WEBPACK_IMPORTED_MODULE_4__local_utils_passwordmatch__["a" /* PasswordMatch */].MatchPassword
         });
@@ -1131,7 +1129,7 @@ var AccountComponent = /** @class */ (function () {
             template: __webpack_require__("./src/app/pages/account/account.component.html")
         }),
         __param(3, Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Inject"])(__WEBPACK_IMPORTED_MODULE_6__angular_platform_browser__["b" /* DOCUMENT */])),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__local_services_customer_service__["a" /* CustomerService */], __WEBPACK_IMPORTED_MODULE_2__ngx_pwa_local_storage__["a" /* LocalStorage */], __WEBPACK_IMPORTED_MODULE_3__angular_forms__["a" /* FormBuilder */], Object])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__local_services_customer_service__["a" /* CustomerService */], __WEBPACK_IMPORTED_MODULE_2__ngx_pwa_local_storage__["a" /* LocalStorage */], __WEBPACK_IMPORTED_MODULE_3__angular_forms__["FormBuilder"], Object])
     ], AccountComponent);
     return AccountComponent;
 }());
@@ -1289,10 +1287,10 @@ var CateringComponent = /** @class */ (function () {
         this.fb = fb;
         this.submittedOnce = false;
         this.cateringForm = fb.group({
-            'full-name': [null, __WEBPACK_IMPORTED_MODULE_3__angular_forms__["e" /* Validators */].required],
-            'phone': [null, __WEBPACK_IMPORTED_MODULE_3__angular_forms__["e" /* Validators */].required],
-            'email': [null, [__WEBPACK_IMPORTED_MODULE_3__angular_forms__["e" /* Validators */].required, __WEBPACK_IMPORTED_MODULE_3__angular_forms__["e" /* Validators */].email]],
-            'service-date': [null, __WEBPACK_IMPORTED_MODULE_3__angular_forms__["e" /* Validators */].required],
+            'full-name': [null, __WEBPACK_IMPORTED_MODULE_3__angular_forms__["Validators"].required],
+            'phone': [null, __WEBPACK_IMPORTED_MODULE_3__angular_forms__["Validators"].required],
+            'email': [null, [__WEBPACK_IMPORTED_MODULE_3__angular_forms__["Validators"].required, __WEBPACK_IMPORTED_MODULE_3__angular_forms__["Validators"].email]],
+            'service-date': [null, __WEBPACK_IMPORTED_MODULE_3__angular_forms__["Validators"].required],
             'notes': null
         });
     }
@@ -1317,7 +1315,7 @@ var CateringComponent = /** @class */ (function () {
             encapsulation: __WEBPACK_IMPORTED_MODULE_0__angular_core__["ViewEncapsulation"].None
         }),
         Object(__WEBPACK_IMPORTED_MODULE_1_ngx_auto_unsubscribe__["a" /* AutoUnsubscribe */])(),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__local_services_wp_service__["a" /* WordpressService */], __WEBPACK_IMPORTED_MODULE_3__angular_forms__["a" /* FormBuilder */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__local_services_wp_service__["a" /* WordpressService */], __WEBPACK_IMPORTED_MODULE_3__angular_forms__["FormBuilder"]])
     ], CateringComponent);
     return CateringComponent;
 }());
@@ -1367,9 +1365,9 @@ var CheckoutLoginComponent = /** @class */ (function () {
         this.returnUrl = '';
         this.submittedOnce = false;
         this.guestForm = fb.group({
-            'first-name': ['', __WEBPACK_IMPORTED_MODULE_1__angular_forms__["e" /* Validators */].required],
-            'last-name': ['', __WEBPACK_IMPORTED_MODULE_1__angular_forms__["e" /* Validators */].required],
-            'email-address': ['', [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["e" /* Validators */].required, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["e" /* Validators */].email]]
+            'first-name': ['', __WEBPACK_IMPORTED_MODULE_1__angular_forms__["Validators"].required],
+            'last-name': ['', __WEBPACK_IMPORTED_MODULE_1__angular_forms__["Validators"].required],
+            'email-address': ['', [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["Validators"].required, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["Validators"].email]]
         });
     }
     CheckoutLoginComponent.prototype.ngOnInit = function () {
@@ -1396,7 +1394,7 @@ var CheckoutLoginComponent = /** @class */ (function () {
             selector: 'lo-cal-checkout-login',
             template: __webpack_require__("./src/app/pages/checkout-login/checkout-login.component.html")
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* FormBuilder */],
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["FormBuilder"],
             __WEBPACK_IMPORTED_MODULE_2__ngx_pwa_local_storage__["a" /* LocalStorage */],
             __WEBPACK_IMPORTED_MODULE_3__angular_router__["c" /* Router */],
             __WEBPACK_IMPORTED_MODULE_3__angular_router__["a" /* ActivatedRoute */],
@@ -1412,7 +1410,7 @@ var CheckoutLoginComponent = /** @class */ (function () {
 /***/ "./src/app/pages/checkout-payment/checkout-payment.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"basic-page-container checkout-review\">\n  <div class=\"basic-page-content center\">\n    <h1>Complete Your Order</h1>\n\n    <div class=\"checkout-wrapper\">\n      <div class=\"left-pane\">\n        <div class=\"step\">\n          <div class=\"inner-step-wrapper\">\n            <div class=\"step-heading\" (click)=\"editSection(1)\">1. Pickup</div>\n            <div class=\"step-wrapper\" [hidden]=\"sectionOpen !== 1\">\n              <form action=\"\" class=\"lo-cal-form\" [formGroup]=\"pickupForm\">\n                <div class=\"response\">\n                  <fieldset>\n                    <legend>How would you like to pickup your order?</legend>\n                    <div class=\"radio-options flex-between\">\n                      <div class=\"option\">\n                        <label for=\"in-store\">\n                          <input type=\"radio\" name=\"pickup-selection\" id=\"in-store\" value=\"1\" formControlName=\"pickup-selection\">\n                          <span class=\"semi-bold\">In Store Pick Up</span>\n                        </label>\n                      </div>\n                      <div class=\"option\">\n                        <label for=\"curbside\">\n                          <input type=\"radio\" name=\"pickup-selection\" id=\"curbside\" value=\"4\" formControlName=\"pickup-selection\">\n                          <span class=\"semi-bold\">Curbside Pickup</span>\n                        </label>\n                      </div>\n                    </div>\n                  </fieldset>\n                  <div class=\"car-options\" *ngIf=\"pickupForm.controls['pickup-selection'].value === '4'\">\n                    <div class=\"form-section half-and-half\">\n                      <div class=\"form-component form-component-text\">\n                        <label for=\"vehicle-make\" class=\"visuallyhidden\">Vehicle Make</label>\n                        <input type=\"text\" name=\"vehicle-make\" id=\"vehicle-make\" formControlName=\"vehicle-make\" placeholder=\"Vehicle Make*\">\n                      </div>\n                      <div class=\"form-component form-component-text\">\n                        <label for=\"vehicle-model\" class=\"visuallyhidden\">Vehicle Model</label>\n                        <input type=\"text\" name=\"vehicle-model\" id=\"vehicle-model\" formControlName=\"vehicle-model\" placeholder=\"Vehicle Model*\">\n                      </div>\n                    </div>\n                    <div class=\"form-section half-and-half\">\n                      <div class=\"form-component form-component-text\">\n                        <label for=\"vehicle-color\" class=\"visuallyhidden\">Vehicle Color</label>\n                        <input type=\"text\" name=\"vehicle-color\" id=\"vehicle-color\" formControlName=\"vehicle-color\" placeholder=\"Vehicle Color*\">\n                      </div>\n                    </div>\n                  </div>\n                </div>\n                <div class=\"next-step black-button\">\n                  <button [disabled]=\"!pickupForm.valid\"(click)=\"nextStep()\">Next Step</button>\n                </div>\n              </form>\n            </div>\n          </div><!-- /. inner-step-wrapper -->\n        </div><!-- /.step -->\n        <div class=\"step\">\n          <div class=\"inner-step-wrapper\">\n            <div class=\"step-heading\" (click)=\"editSection(2)\">2. Contact Information</div>\n            <div class=\"step-wrapper\" [hidden]=\"sectionOpen !== 2\">\n              <form action=\"\" class=\"lo-cal-form\" [formGroup]=\"contactInfoForm\">\n                <div class=\"form-section half-and-half\">\n                  <div class=\"form-component form-component-text\">\n                    <label for=\"first-name\" class=\"visuallyhidden\">First Name</label>\n                    <input type=\"text\" name=\"first-name\" id=\"first-name\" formControlName=\"first-name\" placeholder=\"First Name*\" [ngClass]=\"{'has-error':!contactInfoForm.controls['first-name'].valid && submittedOnce}\">\n                    <div class=\"error-message\" *ngIf=\"!contactInfoForm.controls['first-name'].valid && submittedOnce\">This field is required.</div>\n                  </div>\n                  <div class=\"form-component form-component-text\">\n                    <label for=\"last-name\" class=\"visuallyhidden\">Last Name</label>\n                    <input type=\"text\" name=\"last-name\" id=\"last-name\" formControlName=\"last-name\" placeholder=\"Last Name*\" [ngClass]=\"{'has-error':!contactInfoForm.controls['last-name'].valid && submittedOnce}\">\n                    <div class=\"error-message\" *ngIf=\"!contactInfoForm.controls['last-name'].valid && submittedOnce\">This field is required.</div>\n                  </div>\n                </div>\n                <div class=\"form-component form-component-email\">\n                  <label for=\"email\" class=\"visuallyhidden\">Email</label>\n                  <input type=\"text\" name=\"email\" id=\"email\" formControlName=\"email\" placeholder=\"Email*\" [ngClass]=\"{'has-error':!contactInfoForm.controls['email'].valid && submittedOnce}\">\n                  <div class=\"error-message\" *ngIf=\"!contactInfoForm.controls['email'].valid && submittedOnce\">This field is required.</div>\n                </div>\n                <div class=\"form-section half-and-half\">\n                  <div class=\"form-component form-component-text\">\n                    <label for=\"phone\" class=\"visuallyhidden\">Phone</label>\n                    <input type=\"text\" name=\"phone\" id=\"phone\" formControlName=\"phone\" placeholder=\"Phone\" [ngClass]=\"{'has-error':!contactInfoForm.controls['phone'].valid && submittedOnce}\">\n                    <div class=\"error-message\" *ngIf=\"!contactInfoForm.controls['phone'].valid && submittedOnce\">This field is required.</div>\n                  </div>\n                </div>\n                <div class=\"next-step black-button\">\n                  <button [disabled]=\"!contactInfoForm.valid\" (click)=\"nextStep()\">Next Step</button>\n                </div>\n              </form>\n            </div>\n          </div><!-- /. inner-step-wrapper -->\n        </div><!-- /.step -->\n        <div class=\"step\">\n          <div class=\"inner-step-wrapper\">\n            <div class=\"step-heading\" (click)=\"editSection(3)\">3. Payment</div>\n            <div class=\"step-wrapper\" [hidden]=\"sectionOpen !== 3\">\n              <form action=\"\" class=\"lo-cal-form\" [formGroup]=\"paymentForm\">\n                <div class=\"saved-payment-wrapper\">\n                  <div class=\"radio-options flex-between saved-payment-wrapper\">\n                    <div class=\"option\">\n                      <label for=\"cc\">\n                        <input type=\"radio\" name=\"payment-choice\" id=\"cc\" value=\"1\" formControlName=\"payment-choice\"  [(ngModel)]=\"paymentChoice\">\n                        <span class=\"semi-bold\">Pay now with a credit card</span>\n                      </label>\n                    </div>\n                    <div class=\"option\" *ngIf=\"savedPaymentMethods\">\n                      <label for=\"saved-payment\">\n                        <input type=\"radio\" name=\"payment-choice\" id=\"saved-payment\" value=\"3\" formControlName=\"payment-choice\" [(ngModel)]=\"paymentChoice\">\n                        <span class=\"semi-bold\">Pay with a saved card</span>\n                      </label>\n                    </div>\n                  </div>\n                  <div class=\"saved-cards\" *ngIf=\"savedPaymentMethods && paymentForm.controls['payment-choice'].value === '3'\">\n                    <select name=\"\" id=\"\" (change)=\"whichPayment($event.target.value)\" class=\"custom\">\n                      <option [value]=\"savedPaymentMethods.AccountId\" selected>{{ savedPaymentMethods.MaskedAccountNumber }}</option>\n                    </select>\n                  </div>\n                </div>\n                <div class=\"new-card-section\" *ngIf=\"paymentForm.controls['payment-choice'].value === '1'\">\n                  <div class=\"form-section half-and-half\">\n                    <div class=\"form-component form-component-text\">\n                      <label for=\"card-number\" class=\"visuallyhidden\">Credit Card Number</label>\n                      <input type=\"text\" name=\"card-number\" id=\"card-number\" formControlName=\"card-number\" placeholder=\"Credit Card Number*\" [ngClass]=\"{'has-error':!paymentForm.controls['card-number'].valid && submittedOnce}\" #ccNumber ([ngModel])=\"cardType\" (ngModelChange)=\"detectCardType(ccNumber.value)\" loCalCreditCardMask>\n                      <div class=\"card-sprite-wrapper\">\n                        <div class=\"card visa\" [ngClass]=\"activeCardClass === 'visa' ? 'active' : ''\" title=\"Visa\"></div>\n                        <div class=\"card master-card\" [ngClass]=\"activeCardClass === 'master-card' ? 'active' : ''\" title=\"MasterCard\"></div>\n                        <div class=\"card american-express\" [ngClass]=\"activeCardClass === 'american-express' ? 'active' : ''\" title=\"American Express\"></div>\n                        <div class=\"card discover\" [ngClass]=\"activeCardClass === 'discover' ? 'active' : ''\" title=\"Discover\"></div>\n                        <div class=\"card diners-club\" [ngClass]=\"activeCardClass === 'diners-club' ? 'active' : ''\" title=\"Diners Club\"></div>\n                      </div>\n                      <div class=\"error-message\" *ngIf=\"!paymentForm.controls['card-number'].valid && submittedOnce\">This field is required.</div>\n                    </div>\n                    <div class=\"form-component form-component-text\">\n                      <label for=\"last-name\" class=\"visuallyhidden\">Expiration Date</label>\n                      <input type=\"text\" name=\"expiration-date\" id=\"expiration-date\" formControlName=\"expiration-date\" placeholder=\"Expiration Date (mm/yyyy)*\" [ngClass]=\"{'has-error':!paymentForm.controls['expiration-date'].valid && submittedOnce}\" loCalMonthMask #box (ngModelChange)=\"preventTooManyDigits(7, box.value)\">\n                      <div class=\"error-message\" *ngIf=\"!paymentForm.controls['expiration-date'].valid && submittedOnce\">This field is required.</div>\n                    </div>\n                  </div>\n                  <div class=\"form-section half-and-half\">\n                    <div class=\"form-component form-component-email\">\n                      <label for=\"email\" class=\"visuallyhidden\">CVV</label>\n                      <input type=\"text\" name=\"cvv\" id=\"cvv\" formControlName=\"cvv\" placeholder=\"CVV*\" [ngClass]=\"{'has-error':!paymentForm.controls['cvv'].valid && submittedOnce}\">\n                      <div class=\"error-message\" *ngIf=\"!paymentForm.controls['cvv'].valid && submittedOnce\">This field is required.</div>\n                    </div>\n                    <div class=\"form-component form-component-text radio-options\" *ngIf=\"currentCustomer?.CustomerId\">\n                      <div class=\"option\">\n                        <label for=\"save-payment\">\n                          <input type=\"checkbox\" name=\"save-payment\" id=\"save-payment\" value=\"save\" formControlName=\"save-payment\">\n                          <span class=\"semi-bold\">Save payment for future use?</span>\n                        </label>\n                      </div>\n                    </div>\n                  </div>\n                </div>\n                <div class=\"next-step black-button step-4-button\">\n                  <button [disabled]=\"(!paymentForm.valid && paymentChoice !== '3')\"(click)=\"nextStep()\">Next Step</button>\n                </div>\n              </form>\n            </div>\n          </div><!-- /. inner-step-wrapper -->\n        </div><!-- /.step -->\n        <div class=\"step step-4\">\n          <div class=\"inner-step-wrapper\">\n            <div class=\"step-heading\">4. Place Your Order</div>\n            <div class=\"step-wrapper\">\n              <p class=\"question semi-bold\">Your total: {{ currentOrder?.TotalAmount | currency }}</p>\n            </div>\n            <div class=\"red-button small-text\" [ngClass]=\"processing ? 'loading' : ''\">\n              <div class=\"loading-gif button-size\" *ngIf=\"processing\"></div>\n              <p>{{ orderResultForTesting }}</p>\n              <button [disabled]=\"(!pickupForm.valid || (!paymentForm.valid && (paymentChoice !== '3')) || !contactInfoForm.valid) && !processing\" *ngIf=\"!processing\" (click)=\"submitOrder()\">Place Order Now</button>\n            </div>\n            <p class=\"terms-and-conditions small-text\">\n              By placing your order you agree to our Terms of Conditions. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vehicula ac orci sed venenatis. Phasellus venenatis blandit nulla non pretium. Sed id metus non nisi pulvinar dictum.\n            </p>\n          </div><!-- /. inner-step-wrapper -->\n        </div><!-- /.step -->\n      </div><!-- /.left-pane -->\n      <div class=\"order-summary\">\n        <div class=\"itemized-summary\">\n          <h4>Order Summary</h4>\n          <div class=\"item flex-between\" *ngFor=\"let menuItem of orderForDisplay\">\n            <div class=\"item-specifics\">\n              <div class=\"title semi-bold\"><span class=\"quantity\">{{ menuItem?.quantity }} x</span> <span class=\"item-name\">{{ menuItem?.name }}</span></div>\n              <div class=\"additions\" *ngIf=\"menuItem?.modifiers\">\n                <span class=\"modifier\" *ngFor=\"let mod of menuItem?.modifiers\">{{ mod?.name }}</span>\n              </div>\n            </div>\n            <div class=\"item-price\">\n              <span class=\"price\">{{ menuItem?.fullPrice | currency }}</span>\n            </div>\n          </div>\n        </div><!-- /.itemized-summary -->\n        <div class=\"pricing-and-location\">\n          <div class=\"pricing-details\">\n            <div class=\"flex-between subtotal\">\n              <span class=\"label\">Subtotal</span>\n              <span class=\"value\">{{ currentOrder?.SubTotalAmount | currency }}</span>\n            </div>\n            <div class=\"flex-between\">\n              <span class=\"label\">Tax</span>\n              <span class=\"value\">{{ currentOrder?.TaxAmount | currency }}</span>\n            </div>\n            <div class=\"flex-between total\">\n              <span class=\"label semi-bold\">Total</span>\n              <span class=\"value semi-bold\">{{ currentOrder?.TotalAmount | currency }}</span>\n            </div>\n\n            <div class=\"red-button full-width-button small-text\" [ngClass]=\"processing ? 'loading' : ''\">\n              <div class=\"loading-gif button-size\" *ngIf=\"processing\"></div>\n              <p>{{ orderResultForTesting }}</p>\n              <button [disabled]=\"(!pickupForm.valid || (!paymentForm.valid && (paymentChoice !== '3')) || !contactInfoForm.valid) && !processing\" *ngIf=\"!processing\" (click)=\"submitOrder()\">Place Order Now</button>\n            </div>\n            <p class=\"go-back text-center\">\n              <a href=\"\">or go back to edit your order</a>\n            </p>\n          </div>\n          <div class=\"location-details\">\n            <p class=\"semi-bold\">You are ordering from</p>\n            <h4>Lo·Cal Long Island</h4>\n            <p>\n              The Mall at The Source<br/>\n              1504 Old Country Rd, Westbury, NY 11590\n            </p>\n            <div class=\"map-image\">\n              <img src=\"\" alt=\"\">\n            </div>\n            <p class=\"bold\">\n              Tel: 987-012-2345\n            </p>\n          </div>\n        </div><!-- /.pricing-and-location -->\n\n      </div><!-- /.order-summary -->\n    </div>\n\n  </div><!-- /.basic-page-content -->\n</div><!-- /.checkout-review -->"
+module.exports = "<div class=\"basic-page-container checkout-review\">\n  <div class=\"basic-page-content center\">\n    <h1>Complete Your Order</h1>\n\n    <div class=\"checkout-wrapper\">\n      <div class=\"left-pane\">\n        <div class=\"step\">\n          <div class=\"inner-step-wrapper\">\n            <div class=\"step-heading\" (click)=\"editSection(1)\">1. Pickup</div>\n            <div class=\"step-wrapper\" [hidden]=\"sectionOpen !== 1\">\n              <form action=\"\" class=\"lo-cal-form\" [formGroup]=\"pickupForm\">\n                <div class=\"response\">\n                  <fieldset>\n                    <legend>How would you like to pickup your order?</legend>\n                    <div class=\"radio-options flex-between\">\n                      <div class=\"option\">\n                        <label for=\"in-store\">\n                          <input type=\"radio\" name=\"pickup-selection\" id=\"in-store\" value=\"1\" formControlName=\"pickup-selection\">\n                          <span class=\"semi-bold\">In Store Pick Up</span>\n                        </label>\n                      </div>\n                      <div class=\"option\">\n                        <label for=\"curbside\">\n                          <input type=\"radio\" name=\"pickup-selection\" id=\"curbside\" value=\"4\" formControlName=\"pickup-selection\">\n                          <span class=\"semi-bold\">Curbside Pickup</span>\n                        </label>\n                      </div>\n                    </div>\n                  </fieldset>\n                  <div class=\"car-options\" *ngIf=\"pickupForm.controls['pickup-selection'].value === '4'\">\n                    <div class=\"form-section half-and-half\">\n                      <div class=\"form-component form-component-text\">\n                        <label for=\"vehicle-make\" class=\"visuallyhidden\">Vehicle Make</label>\n                        <input type=\"text\" name=\"vehicle-make\" id=\"vehicle-make\" formControlName=\"vehicle-make\" placeholder=\"Vehicle Make*\">\n                      </div>\n                      <div class=\"form-component form-component-text\">\n                        <label for=\"vehicle-model\" class=\"visuallyhidden\">Vehicle Model</label>\n                        <input type=\"text\" name=\"vehicle-model\" id=\"vehicle-model\" formControlName=\"vehicle-model\" placeholder=\"Vehicle Model*\">\n                      </div>\n                    </div>\n                    <div class=\"form-section half-and-half\">\n                      <div class=\"form-component form-component-text\">\n                        <label for=\"vehicle-color\" class=\"visuallyhidden\">Vehicle Color</label>\n                        <input type=\"text\" name=\"vehicle-color\" id=\"vehicle-color\" formControlName=\"vehicle-color\" placeholder=\"Vehicle Color*\">\n                      </div>\n                    </div>\n                  </div>\n                </div>\n                <div class=\"next-step black-button\">\n                  <button [disabled]=\"!pickupForm.valid\"(click)=\"nextStep()\">Next Step</button>\n                </div>\n              </form>\n            </div>\n          </div><!-- /. inner-step-wrapper -->\n        </div><!-- /.step -->\n        <div class=\"step\">\n          <div class=\"inner-step-wrapper\">\n            <div class=\"step-heading\" (click)=\"editSection(2)\">2. Contact Information</div>\n            <div class=\"step-wrapper\" [hidden]=\"sectionOpen !== 2\">\n              <form action=\"\" class=\"lo-cal-form\" [formGroup]=\"contactInfoForm\">\n                <div class=\"form-section half-and-half\">\n                  <div class=\"form-component form-component-text\">\n                    <label for=\"first-name\" class=\"visuallyhidden\">First Name</label>\n                    <input type=\"text\" name=\"first-name\" id=\"first-name\" formControlName=\"first-name\" placeholder=\"First Name*\" [ngClass]=\"{'has-error':!contactInfoForm.controls['first-name'].valid && submittedOnce}\">\n                    <div class=\"error-message\" *ngIf=\"!contactInfoForm.controls['first-name'].valid && submittedOnce\">This field is required.</div>\n                  </div>\n                  <div class=\"form-component form-component-text\">\n                    <label for=\"last-name\" class=\"visuallyhidden\">Last Name</label>\n                    <input type=\"text\" name=\"last-name\" id=\"last-name\" formControlName=\"last-name\" placeholder=\"Last Name*\" [ngClass]=\"{'has-error':!contactInfoForm.controls['last-name'].valid && submittedOnce}\">\n                    <div class=\"error-message\" *ngIf=\"!contactInfoForm.controls['last-name'].valid && submittedOnce\">This field is required.</div>\n                  </div>\n                </div>\n                <div class=\"form-section half-and-half\">\n                  <div class=\"form-component form-component-email\">\n                    <label for=\"email\" class=\"visuallyhidden\">Email</label>\n                    <input type=\"text\" name=\"email\" id=\"email\" formControlName=\"email\" placeholder=\"Email*\" [ngClass]=\"{'has-error':!contactInfoForm.controls['email'].valid && submittedOnce}\">\n                    <div class=\"error-message\" *ngIf=\"!contactInfoForm.controls['email'].valid && submittedOnce\">This field is required.</div>\n                  </div>\n                  <div class=\"form-component form-component-text\">\n                    <label for=\"phone\" class=\"visuallyhidden\">Phone</label>\n                    <input type=\"text\" name=\"phone\" id=\"phone\" formControlName=\"phone\" placeholder=\"Phone\" [ngClass]=\"{'has-error':!contactInfoForm.controls['phone'].valid && submittedOnce}\">\n                    <div class=\"error-message\" *ngIf=\"!contactInfoForm.controls['phone'].valid && submittedOnce\">This field is required.</div>\n                  </div>\n                </div>\n                <div class=\"next-step black-button\">\n                  <button [disabled]=\"!contactInfoForm.valid\" (click)=\"nextStep()\">Next Step</button>\n                </div>\n              </form>\n            </div>\n          </div><!-- /. inner-step-wrapper -->\n        </div><!-- /.step -->\n        <div class=\"step\">\n          <div class=\"inner-step-wrapper\">\n            <div class=\"step-heading\" (click)=\"editSection(3)\">3. Payment</div>\n            <div class=\"step-wrapper\" [hidden]=\"sectionOpen !== 3\">\n              <form action=\"\" class=\"lo-cal-form\" [formGroup]=\"paymentForm\">\n                <div class=\"saved-payment-wrapper\">\n                  <div class=\"radio-options flex-between saved-payment-wrapper\">\n                    <div class=\"option\">\n                      <label for=\"cc\">\n                        <input type=\"radio\" name=\"payment-choice\" id=\"cc\" value=\"1\" formControlName=\"payment-choice\"  [(ngModel)]=\"paymentChoice\">\n                        <span class=\"semi-bold\">Pay now with a credit card</span>\n                      </label>\n                    </div>\n                    <div class=\"option\" *ngIf=\"savedPaymentMethods\">\n                      <label for=\"saved-payment\">\n                        <input type=\"radio\" name=\"payment-choice\" id=\"saved-payment\" value=\"3\" formControlName=\"payment-choice\" [(ngModel)]=\"paymentChoice\">\n                        <span class=\"semi-bold\">Pay with a saved card</span>\n                      </label>\n                    </div>\n                  </div>\n                  <div class=\"saved-cards\" *ngIf=\"savedPaymentMethods && paymentForm.controls['payment-choice'].value === '3'\">\n                    <select name=\"\" id=\"\" (change)=\"whichPayment($event.target.value)\" class=\"custom\">\n                      <option [value]=\"savedPaymentMethods.AccountId\" selected>{{ savedPaymentMethods.MaskedAccountNumber }}</option>\n                    </select>\n                  </div>\n                </div>\n                <div class=\"new-card-section\" *ngIf=\"paymentForm.controls['payment-choice'].value === '1'\">\n                  <div class=\"form-section half-and-half\">\n                    <div class=\"form-component form-component-text\">\n                      <label for=\"card-number\" class=\"visuallyhidden\">Credit Card Number</label>\n                      <input id=\"card-number\" type=\"tel\" autocomplete=\"cc-number\" formControlName=\"card-number\" placeholder=\"Credit Card Number*\" [ngClass]=\"{'has-error':!paymentForm.controls['card-number'].valid && submittedOnce}\" ccNumber #ccNumber (ngModelChange)=\"detectCardType(ccNumber.value)\">\n                      <div class=\"card-sprite-wrapper\">\n                        <div class=\"card visa\" title=\"Visa\"></div>\n                        <div class=\"card mastercard\" title=\"MasterCard\"></div>\n                        <div class=\"card american-express\" title=\"American Express\"></div>\n                        <div class=\"card discover\" title=\"Discover\"></div>\n                        <div class=\"card diners-club\" title=\"Diners Club\"></div>\n                      </div>\n                      <div class=\"error-message\" *ngIf=\"!paymentForm.controls['card-number'].valid && submittedOnce\">This field is required.</div>\n                    </div>\n                    <div class=\"form-component form-component-text\">\n                      <label for=\"last-name\" class=\"visuallyhidden\">Expiration Date</label>\n                      <input id=\"cc-exp-date\" name=\"expiration-date\" id=\"expiration-date\" formControlName=\"expiration-date\" placeholder=\"Expiration Date (mm/yyyy)*\" [ngClass]=\"{'has-error':!paymentForm.controls['expiration-date'].valid && submittedOnce}\" type=\"tel\" autocomplete=\"cc-exp\" ccExp>\n                      <div class=\"error-message\" *ngIf=\"!paymentForm.controls['expiration-date'].valid && submittedOnce\">This field is required.</div>\n                    </div>\n                  </div>\n                  <div class=\"form-section half-and-half\">\n                    <div class=\"form-component form-component-email\">\n                      <label for=\"email\" class=\"visuallyhidden\">CVV</label>\n                      <input type=\"text\" name=\"cvv\" id=\"cvv\" formControlName=\"cvv\" placeholder=\"CVV*\" [ngClass]=\"{'has-error':!paymentForm.controls['cvv'].valid && submittedOnce}\">\n                      <div class=\"error-message\" *ngIf=\"!paymentForm.controls['cvv'].valid && submittedOnce\">This field is required.</div>\n                    </div>\n                    <div class=\"form-component form-component-text radio-options\" *ngIf=\"currentCustomer?.CustomerId\">\n                      <div class=\"option\">\n                        <label for=\"save-payment\">\n                          <input type=\"checkbox\" name=\"save-payment\" id=\"save-payment\" value=\"save\" formControlName=\"save-payment\">\n                          <span class=\"semi-bold\">Save payment for future use?</span>\n                        </label>\n                      </div>\n                    </div>\n                  </div>\n                </div>\n                <div class=\"next-step black-button step-4-button\">\n                  <button [disabled]=\"(!paymentForm.valid && paymentChoice !== '3')\"(click)=\"nextStep()\">Next Step</button>\n                </div>\n              </form>\n            </div>\n          </div><!-- /. inner-step-wrapper -->\n        </div><!-- /.step -->\n        <div class=\"step step-4\">\n          <div class=\"inner-step-wrapper\">\n            <div class=\"step-heading\">4. Place Your Order</div>\n            <div class=\"step-wrapper\">\n              <p class=\"question semi-bold\">Your total: {{ currentOrder?.TotalAmount | currency }}</p>\n            </div>\n            <div class=\"red-button small-text\" [ngClass]=\"processing ? 'loading' : ''\">\n              <div class=\"loading-gif button-size\" *ngIf=\"processing\"></div>\n              <p>{{ orderResultForTesting }}</p>\n              <button [disabled]=\"(!pickupForm.valid || (!paymentForm.valid && (paymentChoice !== '3')) || !contactInfoForm.valid) && !processing\" *ngIf=\"!processing\" (click)=\"submitOrder()\">Place Order Now</button>\n            </div>\n            <p class=\"terms-and-conditions small-text\">\n              By placing your order you agree to our Terms of Conditions. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vehicula ac orci sed venenatis. Phasellus venenatis blandit nulla non pretium. Sed id metus non nisi pulvinar dictum.\n            </p>\n          </div><!-- /. inner-step-wrapper -->\n        </div><!-- /.step -->\n      </div><!-- /.left-pane -->\n      <div class=\"order-summary\">\n        <div class=\"itemized-summary\">\n          <h4>Order Summary</h4>\n          <div class=\"item flex-between\" *ngFor=\"let menuItem of orderForDisplay\">\n            <div class=\"item-specifics\">\n              <div class=\"title semi-bold\"><span class=\"quantity\">{{ menuItem?.quantity }} x</span> <span class=\"item-name\">{{ menuItem?.name }}</span></div>\n              <div class=\"additions\" *ngIf=\"menuItem?.modifiers\">\n                <span class=\"modifier\" *ngFor=\"let mod of menuItem?.modifiers\">{{ mod?.name }}</span>\n              </div>\n            </div>\n            <div class=\"item-price\">\n              <span class=\"price\">{{ menuItem?.fullPrice | currency }}</span>\n            </div>\n          </div>\n        </div><!-- /.itemized-summary -->\n        <div class=\"pricing-and-location\">\n          <div class=\"pricing-details\">\n            <div class=\"flex-between subtotal\">\n              <span class=\"label\">Subtotal</span>\n              <span class=\"value\">{{ currentOrder?.SubTotalAmount | currency }}</span>\n            </div>\n            <div class=\"flex-between\">\n              <span class=\"label\">Tax</span>\n              <span class=\"value\">{{ currentOrder?.TaxAmount | currency }}</span>\n            </div>\n            <div class=\"flex-between total\">\n              <span class=\"label semi-bold\">Total</span>\n              <span class=\"value semi-bold\">{{ currentOrder?.TotalAmount | currency }}</span>\n            </div>\n\n            <div class=\"red-button full-width-button small-text\" [ngClass]=\"processing ? 'loading' : ''\">\n              <div class=\"loading-gif button-size\" *ngIf=\"processing\"></div>\n              <p>{{ orderResultForTesting }}</p>\n              <button [disabled]=\"(!pickupForm.valid || (!paymentForm.valid && (paymentChoice !== '3')) || !contactInfoForm.valid) && !processing\" *ngIf=\"!processing\" (click)=\"submitOrder()\">Place Order Now</button>\n            </div>\n            <p class=\"go-back text-center\">\n              <a href=\"\">or go back to edit your order</a>\n            </p>\n          </div>\n          <div class=\"location-details\">\n            <p class=\"semi-bold\">You are ordering from</p>\n            <h4>Lo·Cal Long Island</h4>\n            <p>\n              The Mall at The Source<br/>\n              1504 Old Country Rd, Westbury, NY 11590\n            </p>\n            <div class=\"map-image\">\n              <img src=\"\" alt=\"\">\n            </div>\n            <p class=\"bold\">\n              Tel: 987-012-2345\n            </p>\n          </div>\n        </div><!-- /.pricing-and-location -->\n\n      </div><!-- /.order-summary -->\n    </div>\n\n  </div><!-- /.basic-page-content -->\n</div><!-- /.checkout-review -->"
 
 /***/ }),
 
@@ -1424,17 +1422,17 @@ module.exports = "<div class=\"basic-page-container checkout-review\">\n  <div c
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__local_services_order_service__ = __webpack_require__("./src/app/services/order.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__("./node_modules/@angular/forms/esm5/forms.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_credit_card_type__ = __webpack_require__("./node_modules/credit-card-type/index.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_credit_card_type___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_credit_card_type__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__local_utils_constants__ = __webpack_require__("./src/app/utils/constants.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__local_services_customer_service__ = __webpack_require__("./src/app/services/customer.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_lodash__ = __webpack_require__("./node_modules/lodash/lodash.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_lodash___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_lodash__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_moment__ = __webpack_require__("./node_modules/moment/moment.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_moment__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__angular_router__ = __webpack_require__("./node_modules/@angular/router/esm5/router.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__ngx_pwa_local_storage__ = __webpack_require__("./node_modules/@ngx-pwa/local-storage/local-storage.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__local_services_wp_service__ = __webpack_require__("./src/app/services/wp.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__local_utils_constants__ = __webpack_require__("./src/app/utils/constants.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__local_services_customer_service__ = __webpack_require__("./src/app/services/customer.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_lodash__ = __webpack_require__("./node_modules/lodash/lodash.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_lodash___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_lodash__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_moment__ = __webpack_require__("./node_modules/moment/moment.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_moment__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__angular_router__ = __webpack_require__("./node_modules/@angular/router/esm5/router.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__ngx_pwa_local_storage__ = __webpack_require__("./node_modules/@ngx-pwa/local-storage/local-storage.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__local_services_wp_service__ = __webpack_require__("./src/app/services/wp.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_angular_cc_library__ = __webpack_require__("./node_modules/angular-cc-library/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_angular_cc_library___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_10_angular_cc_library__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1469,22 +1467,21 @@ var CheckoutPaymentComponent = /** @class */ (function () {
         this.paymentChoice = '1';
         this.processing = false;
         this.cardType = undefined;
-        this.activeCardClass = '';
         this.contactInfoForm = fb.group({
-            'first-name': [null, __WEBPACK_IMPORTED_MODULE_2__angular_forms__["e" /* Validators */].required],
-            'last-name': [null, __WEBPACK_IMPORTED_MODULE_2__angular_forms__["e" /* Validators */].required],
-            'email': [null, [__WEBPACK_IMPORTED_MODULE_2__angular_forms__["e" /* Validators */].required, __WEBPACK_IMPORTED_MODULE_2__angular_forms__["e" /* Validators */].email]],
-            'phone': null
+            'first-name': [null, __WEBPACK_IMPORTED_MODULE_2__angular_forms__["Validators"].required],
+            'last-name': [null, __WEBPACK_IMPORTED_MODULE_2__angular_forms__["Validators"].required],
+            'email': [null, [__WEBPACK_IMPORTED_MODULE_2__angular_forms__["Validators"].required, __WEBPACK_IMPORTED_MODULE_2__angular_forms__["Validators"].email]],
+            'phone': [null, [__WEBPACK_IMPORTED_MODULE_2__angular_forms__["Validators"].required]]
         });
         this.paymentForm = fb.group({
-            'payment-choice': [this.paymentChoice, __WEBPACK_IMPORTED_MODULE_2__angular_forms__["e" /* Validators */].required],
-            'card-number': [null, [__WEBPACK_IMPORTED_MODULE_2__angular_forms__["e" /* Validators */].required, __WEBPACK_IMPORTED_MODULE_2__angular_forms__["e" /* Validators */].pattern('^(?:(4[0-9]{12}(?:[0-9]{3})?)|(5[1-5][0-9]{14})|(6(?:011|5[0-9]{2})[0-9]{12})|(3[47][0-9]{13})|(3(?:0[0-5]|[68][0-9])[0-9]{11})|((?:2131|1800|35[0-9]{3})[0-9]{11}))$')]],
-            'expiration-date': ['', [__WEBPACK_IMPORTED_MODULE_2__angular_forms__["e" /* Validators */].required, __WEBPACK_IMPORTED_MODULE_2__angular_forms__["e" /* Validators */].pattern('^[0-9]{2}\/[0-9]{4}$')]],
-            'cvv': [null, [__WEBPACK_IMPORTED_MODULE_2__angular_forms__["e" /* Validators */].required, __WEBPACK_IMPORTED_MODULE_2__angular_forms__["e" /* Validators */].pattern('^[0-9]{3,4}$')]],
+            'payment-choice': [this.paymentChoice, __WEBPACK_IMPORTED_MODULE_2__angular_forms__["Validators"].required],
+            'card-number': [null, [__WEBPACK_IMPORTED_MODULE_2__angular_forms__["Validators"].required, __WEBPACK_IMPORTED_MODULE_10_angular_cc_library__["CreditCardValidator"].validateCCNumber]],
+            'expiration-date': ['', [__WEBPACK_IMPORTED_MODULE_2__angular_forms__["Validators"].required, __WEBPACK_IMPORTED_MODULE_2__angular_forms__["Validators"].pattern('^[0-9]{2} \/ [0-9]{4}$'), __WEBPACK_IMPORTED_MODULE_10_angular_cc_library__["CreditCardValidator"].validateExpDate]],
+            'cvv': [null, [__WEBPACK_IMPORTED_MODULE_2__angular_forms__["Validators"].required, __WEBPACK_IMPORTED_MODULE_2__angular_forms__["Validators"].pattern('^[0-9]{3,4}$')]],
             'save-payment': [null]
         });
         this.pickupForm = fb.group({
-            'pickup-selection': ['', __WEBPACK_IMPORTED_MODULE_2__angular_forms__["e" /* Validators */].required],
+            'pickup-selection': ['', __WEBPACK_IMPORTED_MODULE_2__angular_forms__["Validators"].required],
             'vehicle-make': [null],
             'vehicle-model': [null],
             'vehicle-color': [null]
@@ -1557,31 +1554,21 @@ var CheckoutPaymentComponent = /** @class */ (function () {
         this.orderService.submitOrder(finalOrderForSubmission, this.currentOrder.OrderId).subscribe(function (orderResults) {
             console.log(orderResults);
             _this.orderResultForTesting = orderResults.ResultCode;
-            // ResultCode 0: Success
-            // ResultCode 4: PromiseTimeChanged (possibly when order isn't completed within a certain timeframe)
+            switch (orderResults.ResultCode) {
+                // ResultCode 0: Success
+                // ResultCode 4: PromiseTimeChanged (possibly when order isn't completed within a certain timeframe)
+                case 0 | 4:
+                    break;
+                // Error 150: Promise Time Exceeded
+                case 150:
+                    break;
+            }
+            // TODO: At the current point in time this is only reached if we get a successful API response
             if (orderResults.ResultCode == 0 || orderResults.ResultCode == 4) {
-                _this.localStorage.setItem('orderResult', orderResults).subscribe(function () {
-                    // If Customer wishes to save payment method
-                    if (_this.paymentForm.get('save-payment').value) {
-                        var paymentInfoForSaving = {
-                            payment: {
-                                AccountNumber: _this.paymentForm.get('card-number').value,
-                                ExpirationDate: _this.formatDate(_this.paymentForm.get('expiration-date').value),
-                                PaymentMethodType: _this.cardType
-                            }
-                        };
-                        // Save payment method, then navigate to confirmation
-                        _this.customerService.savePaymentMethod(paymentInfoForSaving, _this.currentCustomer.CustomerId).subscribe(function (response) {
-                            _this.navigateToConfirmation();
-                        });
-                    }
-                    else {
-                        _this.navigateToConfirmation();
-                    }
-                });
+                _this.saveOrderAndRedirect(orderResults);
             }
             else {
-                _this.wpService.logError('Payment Order Error: ' + JSON.stringify(orderResults)).subscribe(function () { });
+                _this.wpService.logError('Payment Order Error: ' + JSON.stringify(orderResults)).subscribe(function (result) { console.log('error:' + result); });
             }
         });
     };
@@ -1635,11 +1622,11 @@ var CheckoutPaymentComponent = /** @class */ (function () {
     };
     CheckoutPaymentComponent.prototype.calculateTotal = function (fullOrder) {
         var orderArray = Array();
-        __WEBPACK_IMPORTED_MODULE_6_lodash__["forEach"](fullOrder.LineItems, function (value, key) {
+        __WEBPACK_IMPORTED_MODULE_5_lodash__["forEach"](fullOrder.LineItems, function (value, key) {
             var initialPrice = value.UnitPrice;
             var addOnPrice = 0;
             var modArray = Array();
-            __WEBPACK_IMPORTED_MODULE_6_lodash__["forEach"](value.Modifiers, function (value, key) {
+            __WEBPACK_IMPORTED_MODULE_5_lodash__["forEach"](value.Modifiers, function (value, key) {
                 addOnPrice += (value.UnitPrice > 0 && value.FreeQuantity === 0) ? value.UnitPrice : 0;
                 var modOject = {
                     'name': value.Name
@@ -1657,11 +1644,31 @@ var CheckoutPaymentComponent = /** @class */ (function () {
         });
         this.orderForDisplay = orderArray;
     };
+    CheckoutPaymentComponent.prototype.saveOrderAndRedirect = function (orderResults) {
+        var _this = this;
+        this.localStorage.setItem('orderResult', orderResults).subscribe(function () {
+            // If Customer wishes to save payment method
+            if (_this.paymentForm.get('save-payment').value) {
+                var paymentInfoForSaving = {
+                    payment: {
+                        AccountNumber: _this.paymentForm.get('card-number').value,
+                        ExpirationDate: _this.formatDate(_this.paymentForm.get('expiration-date').value),
+                        PaymentMethodType: _this.cardType
+                    }
+                };
+                // Save payment method, then navigate to confirmation
+                _this.customerService.savePaymentMethod(paymentInfoForSaving, _this.currentCustomer.CustomerId).subscribe(function () {
+                    _this.navigateToConfirmation();
+                });
+            }
+            else {
+                _this.navigateToConfirmation();
+            }
+        });
+    };
     CheckoutPaymentComponent.prototype.detectCardType = function (val) {
-        var cardType = __WEBPACK_IMPORTED_MODULE_3_credit_card_type__(val);
-        this.activeCardClass = (val.length > 0 && cardType.length > 0) ? cardType[0].type : '';
-        var cardNumber = (val.length > 0 && cardType.length > 0) ? this.constants.paymentTypeMap[cardType[0].niceType] : undefined;
-        this.cardType = cardNumber;
+        var cardType = __WEBPACK_IMPORTED_MODULE_10_angular_cc_library__["CreditCard"].cardFromNumber(val);
+        this.cardType = (val.length > 0 && cardType !== undefined) ? this.constants.paymentTypeMap[cardType.type] : undefined;
     };
     CheckoutPaymentComponent.prototype.patchContactForm = function (customer) {
         this.contactInfoForm.patchValue({
@@ -1671,7 +1678,7 @@ var CheckoutPaymentComponent = /** @class */ (function () {
         });
     };
     CheckoutPaymentComponent.prototype.formatDate = function (date) {
-        return __WEBPACK_IMPORTED_MODULE_7_moment__('01/' + date, 'DD/MM/YYYY').format('YYYY-MM-DD');
+        return __WEBPACK_IMPORTED_MODULE_6_moment__('01/' + date, 'DD/MM/YYYY').format('YYYY-MM-DD');
     };
     CheckoutPaymentComponent.prototype.navigateToConfirmation = function () {
         this.router.navigate(['/checkout/confirmation']);
@@ -1688,19 +1695,12 @@ var CheckoutPaymentComponent = /** @class */ (function () {
     CheckoutPaymentComponent.prototype.whichPayment = function (value) {
         console.log(value);
     };
-    // TODO: Figure out how to stop input after expression is reached
-    CheckoutPaymentComponent.prototype.preventTooManyDigits = function (digitCount, e) {
-        console.log(digitCount, e);
-        // if(e.length === digitCount){
-        //   return;
-        // }
-    };
     CheckoutPaymentComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: 'lo-cal-checkout-payment',
             template: __webpack_require__("./src/app/pages/checkout-payment/checkout-payment.component.html")
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__local_services_order_service__["a" /* OrderService */], __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormBuilder */], __WEBPACK_IMPORTED_MODULE_4__local_utils_constants__["a" /* Config */], __WEBPACK_IMPORTED_MODULE_5__local_services_customer_service__["a" /* CustomerService */], __WEBPACK_IMPORTED_MODULE_8__angular_router__["c" /* Router */], __WEBPACK_IMPORTED_MODULE_9__ngx_pwa_local_storage__["a" /* LocalStorage */], __WEBPACK_IMPORTED_MODULE_10__local_services_wp_service__["a" /* WordpressService */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__local_services_order_service__["a" /* OrderService */], __WEBPACK_IMPORTED_MODULE_2__angular_forms__["FormBuilder"], __WEBPACK_IMPORTED_MODULE_3__local_utils_constants__["a" /* Config */], __WEBPACK_IMPORTED_MODULE_4__local_services_customer_service__["a" /* CustomerService */], __WEBPACK_IMPORTED_MODULE_7__angular_router__["c" /* Router */], __WEBPACK_IMPORTED_MODULE_8__ngx_pwa_local_storage__["a" /* LocalStorage */], __WEBPACK_IMPORTED_MODULE_9__local_services_wp_service__["a" /* WordpressService */]])
     ], CheckoutPaymentComponent);
     return CheckoutPaymentComponent;
 }());
@@ -1756,7 +1756,7 @@ var CheckoutReviewComponent = /** @class */ (function () {
         this.processing = false;
         this.errorData = {};
         this.timeForm = fb.group({
-            'pickup-time': ['', __WEBPACK_IMPORTED_MODULE_4__angular_forms__["e" /* Validators */].required]
+            'pickup-time': ['', __WEBPACK_IMPORTED_MODULE_4__angular_forms__["Validators"].required]
         });
     }
     CheckoutReviewComponent.prototype.ngOnInit = function () {
@@ -1862,7 +1862,7 @@ var CheckoutReviewComponent = /** @class */ (function () {
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__local_services_bag_service__["a" /* BagService */],
             __WEBPACK_IMPORTED_MODULE_2__local_services_order_service__["a" /* OrderService */],
             __WEBPACK_IMPORTED_MODULE_3__angular_router__["c" /* Router */],
-            __WEBPACK_IMPORTED_MODULE_4__angular_forms__["a" /* FormBuilder */],
+            __WEBPACK_IMPORTED_MODULE_4__angular_forms__["FormBuilder"],
             __WEBPACK_IMPORTED_MODULE_5__local_services_customer_service__["a" /* CustomerService */],
             __WEBPACK_IMPORTED_MODULE_6__local_services_wp_service__["a" /* WordpressService */]])
     ], CheckoutReviewComponent);
@@ -1986,10 +1986,10 @@ var ContactComponent = /** @class */ (function () {
         this.fb = fb;
         this.submittedOnce = false;
         this.contactForm = fb.group({
-            'contact-reason': [null, __WEBPACK_IMPORTED_MODULE_2__angular_forms__["e" /* Validators */].required],
-            'first-name': [null, __WEBPACK_IMPORTED_MODULE_2__angular_forms__["e" /* Validators */].required],
-            'last-name': [null, __WEBPACK_IMPORTED_MODULE_2__angular_forms__["e" /* Validators */].required],
-            'email': [null, [__WEBPACK_IMPORTED_MODULE_2__angular_forms__["e" /* Validators */].required, __WEBPACK_IMPORTED_MODULE_2__angular_forms__["e" /* Validators */].email]],
+            'contact-reason': [null, __WEBPACK_IMPORTED_MODULE_2__angular_forms__["Validators"].required],
+            'first-name': [null, __WEBPACK_IMPORTED_MODULE_2__angular_forms__["Validators"].required],
+            'last-name': [null, __WEBPACK_IMPORTED_MODULE_2__angular_forms__["Validators"].required],
+            'email': [null, [__WEBPACK_IMPORTED_MODULE_2__angular_forms__["Validators"].required, __WEBPACK_IMPORTED_MODULE_2__angular_forms__["Validators"].email]],
             'comments': null
         });
     }
@@ -2014,7 +2014,7 @@ var ContactComponent = /** @class */ (function () {
             selector: 'lo-cal-contact',
             template: __webpack_require__("./src/app/pages/contact/contact.component.html")
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_3__local_services_wp_service__["a" /* WordpressService */], __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormBuilder */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_3__local_services_wp_service__["a" /* WordpressService */], __WEBPACK_IMPORTED_MODULE_2__angular_forms__["FormBuilder"]])
     ], ContactComponent);
     return ContactComponent;
 }());
@@ -2069,20 +2069,20 @@ var CreateAccountComponent = /** @class */ (function () {
         this.accountSuccess = false;
         this.processing = false;
         this.accountForm = fb.group({
-            'first-name': [null, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["e" /* Validators */].required],
-            'last-name': [null, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["e" /* Validators */].required],
-            'email': [null, [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["e" /* Validators */].required, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["e" /* Validators */].email]],
+            'first-name': [null, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["Validators"].required],
+            'last-name': [null, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["Validators"].required],
+            'email': [null, [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["Validators"].required, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["Validators"].email]],
             // TODO: Implement more strict password rules from Ken's regex
-            'password': ['', [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["e" /* Validators */].required, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["e" /* Validators */].minLength(8)]],
-            'confirm-password': ['', __WEBPACK_IMPORTED_MODULE_1__angular_forms__["e" /* Validators */].required],
-            'security-question': [null, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["e" /* Validators */].required],
-            'security-answer': [null, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["e" /* Validators */].required],
+            'password': ['', [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["Validators"].required, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["Validators"].minLength(8)]],
+            'confirm-password': ['', __WEBPACK_IMPORTED_MODULE_1__angular_forms__["Validators"].required],
+            'security-question': [null, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["Validators"].required],
+            'security-answer': [null, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["Validators"].required],
             'full-address': fb.group({
-                'address': [null, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["e" /* Validators */].required],
+                'address': [null, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["Validators"].required],
                 'address2': null,
-                'city': [null, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["e" /* Validators */].required],
-                'state': ['', __WEBPACK_IMPORTED_MODULE_1__angular_forms__["e" /* Validators */].required],
-                'zip': [null, [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["e" /* Validators */].required, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["e" /* Validators */].pattern('^[0-9]{5}$')]]
+                'city': [null, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["Validators"].required],
+                'state': ['', __WEBPACK_IMPORTED_MODULE_1__angular_forms__["Validators"].required],
+                'zip': [null, [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["Validators"].required, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["Validators"].pattern('^[0-9]{5}$')]]
             })
         }, {
             validator: __WEBPACK_IMPORTED_MODULE_2__local_utils_passwordmatch__["a" /* PasswordMatch */].MatchPassword
@@ -2153,7 +2153,7 @@ var CreateAccountComponent = /** @class */ (function () {
             template: __webpack_require__("./src/app/pages/create-account/create-account.component.html"),
             animations: [__WEBPACK_IMPORTED_MODULE_5__local_utils_animations__["a" /* SlideUpAnimation */]]
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* FormBuilder */], __WEBPACK_IMPORTED_MODULE_3__local_services_customer_service__["a" /* CustomerService */], __WEBPACK_IMPORTED_MODULE_4__angular_router__["a" /* ActivatedRoute */], __WEBPACK_IMPORTED_MODULE_4__angular_router__["c" /* Router */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["FormBuilder"], __WEBPACK_IMPORTED_MODULE_3__local_services_customer_service__["a" /* CustomerService */], __WEBPACK_IMPORTED_MODULE_4__angular_router__["a" /* ActivatedRoute */], __WEBPACK_IMPORTED_MODULE_4__angular_router__["c" /* Router */]])
     ], CreateAccountComponent);
     return CreateAccountComponent;
 }());
@@ -2495,12 +2495,12 @@ var MenuCustomizeComponent = /** @class */ (function () {
         this.requiredModifierGroups = reqMods;
     };
     MenuCustomizeComponent.prototype.updateDataPerSize = function (salesId) {
-        // TODO: Clear out modifier selections based on size changing
         this.salesItemDetails = __WEBPACK_IMPORTED_MODULE_5_lodash__["find"](this.menuItemDetails.salesItems, { 'SalesItemId': +salesId });
         this.calorieCount = this.salesItemDetails.CaloricValue;
         this.itemPrice = this.salesItemDetails.Price;
         // Initialize defaults
         var defaults = [];
+        this.currentModifierArray = [];
         if (this.salesItemDetails.ModGroups.length > 0) {
             // Does the sales item have defaults?
             if (this.salesItemDetails.DefaultOptions.length > 0) {
@@ -4072,7 +4072,6 @@ var WordpressService = /** @class */ (function () {
     };
     WordpressService.prototype.logError = function (data) {
         return this.httpClient.post(this.config.wordpressApiUrl + "/error_message/v2/log", data).map(function (result) {
-            console.log(data);
             return result;
         });
     };
@@ -4495,8 +4494,8 @@ var LoginFormComponent = /** @class */ (function () {
         this.returnUrl = '';
         this.simpleForm = false;
         this.loginForm = fb.group({
-            'email': ['', [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["e" /* Validators */].required, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["e" /* Validators */].email]],
-            'password': ['', __WEBPACK_IMPORTED_MODULE_1__angular_forms__["e" /* Validators */].required]
+            'email': ['', [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["Validators"].required, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["Validators"].email]],
+            'password': ['', __WEBPACK_IMPORTED_MODULE_1__angular_forms__["Validators"].required]
         });
     }
     LoginFormComponent.prototype.ngOnInit = function () {
@@ -4535,7 +4534,7 @@ var LoginFormComponent = /** @class */ (function () {
             selector: 'lo-cal-login-form',
             template: __webpack_require__("./src/app/shared/components/login-form/login-form.component.html")
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* FormBuilder */], __WEBPACK_IMPORTED_MODULE_2__local_services_customer_service__["a" /* CustomerService */], __WEBPACK_IMPORTED_MODULE_3__ngx_pwa_local_storage__["a" /* LocalStorage */], __WEBPACK_IMPORTED_MODULE_4__angular_router__["c" /* Router */], __WEBPACK_IMPORTED_MODULE_4__angular_router__["a" /* ActivatedRoute */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["FormBuilder"], __WEBPACK_IMPORTED_MODULE_2__local_services_customer_service__["a" /* CustomerService */], __WEBPACK_IMPORTED_MODULE_3__ngx_pwa_local_storage__["a" /* LocalStorage */], __WEBPACK_IMPORTED_MODULE_4__angular_router__["c" /* Router */], __WEBPACK_IMPORTED_MODULE_4__angular_router__["a" /* ActivatedRoute */]])
     ], LoginFormComponent);
     return LoginFormComponent;
 }());
@@ -4589,55 +4588,6 @@ var TitleBodyImagesComponent = /** @class */ (function () {
         __metadata("design:paramtypes", [])
     ], TitleBodyImagesComponent);
     return TitleBodyImagesComponent;
-}());
-
-
-
-/***/ }),
-
-/***/ "./src/app/shared/directives/credit-card-mask.directive.ts":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CreditCardMaskDirective; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_forms__ = __webpack_require__("./node_modules/@angular/forms/esm5/forms.js");
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-var CreditCardMaskDirective = /** @class */ (function () {
-    function CreditCardMaskDirective(model) {
-        this.model = model;
-        this.rawChange = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
-    }
-    CreditCardMaskDirective.prototype.onInputChange = function (e) {
-        var rawValue = e.replace(/\D/g, '').match(/\d{0,16}/);
-        // new value
-        this.model.valueAccessor.writeValue(rawValue);
-        this.rawChange.emit(rawValue);
-    };
-    __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Output"])(),
-        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"])
-    ], CreditCardMaskDirective.prototype, "rawChange", void 0);
-    CreditCardMaskDirective = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Directive"])({
-            selector: '[loCalCreditCardMask]',
-            host: {
-                '(ngModelChange)': 'onInputChange($event)'
-            }
-        }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["c" /* NgControl */]])
-    ], CreditCardMaskDirective);
-    return CreditCardMaskDirective;
 }());
 
 
@@ -4794,53 +4744,6 @@ var InputSwitcherDirective = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/shared/directives/month-mask.directive.ts":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MonthMaskDirective; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_forms__ = __webpack_require__("./node_modules/@angular/forms/esm5/forms.js");
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-var MonthMaskDirective = /** @class */ (function () {
-    // @Output() rawChange: EventEmitter<string> = new EventEmitter<string>();
-    function MonthMaskDirective(model) {
-        this.model = model;
-    }
-    MonthMaskDirective.prototype.onInputChange = function (e, backspace) {
-        var x = e.replace(/[^0-9]/g, '').match(/([0-9]{0,2})([0-9]{0,4})/);
-        var rawValue = !x[2] ? x[1] : x[1] + '/' + x[2];
-        console.log(rawValue);
-        // new value
-        this.model.valueAccessor.writeValue(rawValue);
-        // this.rawChange.emit( rawValue );
-    };
-    MonthMaskDirective = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Directive"])({
-            selector: '[loCalMonthMask]',
-            host: {
-                '(ngModelChange)': 'onInputChange($event)'
-            }
-        }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["c" /* NgControl */]])
-    ], MonthMaskDirective);
-    return MonthMaskDirective;
-}());
-
-
-
-/***/ }),
-
 /***/ "./src/app/shared/directives/window-scroll.directive.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -4944,14 +4847,14 @@ var Config = /** @class */ (function () {
         this.siteId = 1;
         this.menuId = 1001;
         this.paymentTypeMap = {
-            "American Express": 0,
+            "amex": 0,
             "Credit": 1,
-            "Diners Club": 2,
-            "Discover": 3,
+            "dinersclub": 2,
+            "discover": 3,
             "GiftCard": 4,
-            "JCB": 5,
-            "Mastercard": 6,
-            "Visa": 7,
+            "jcb": 5,
+            "mastercard": 6,
+            "visa": 7,
             "PrePaid": 8
         };
         this.cardTypeMap = {
