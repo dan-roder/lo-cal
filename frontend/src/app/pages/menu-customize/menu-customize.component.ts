@@ -265,13 +265,13 @@ export class MenuCustomizeComponent implements OnInit {
   }
 
   public updateDataPerSize(salesId: string){
-    // TODO: Clear out modifier selections based on size changing
     this.salesItemDetails = _.find(this.menuItemDetails.salesItems, {'SalesItemId': +salesId});
     this.calorieCount = this.salesItemDetails.CaloricValue;
     this.itemPrice = this.salesItemDetails.Price;
 
     // Initialize defaults
     let defaults = [];
+    this.currentModifierArray = [];
     if(this.salesItemDetails.ModGroups.length > 0){
       // Does the sales item have defaults?
       if(this.salesItemDetails.DefaultOptions.length > 0){
