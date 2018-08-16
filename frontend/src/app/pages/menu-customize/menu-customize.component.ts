@@ -187,6 +187,7 @@ export class MenuCustomizeComponent implements OnInit {
 
   private getMenuItemDetails( menuItemId ){
     this.menuService.getMenuItemDetails(menuItemId).subscribe(menuItemDetails => {
+      console.log(menuItemDetails);
       // Set necessary variables for template rendering
       this.menuItemDetails = menuItemDetails;
 
@@ -202,6 +203,7 @@ export class MenuCustomizeComponent implements OnInit {
         this.sizeChoice = this.salesItemDetails.SalesItemId;
       }
 
+      // TODO: If this is not a number in the case of prepared food items, treat differently
       this.calorieCount = (this.salesItemDetails.CaloricValue !== null) ? this.salesItemDetails.CaloricValue : +this.menuItemDetails.item.CaloricServingUnit;
       this.itemPrice = this.salesItemDetails.Price;
 
@@ -225,7 +227,6 @@ export class MenuCustomizeComponent implements OnInit {
   private registerCustomizationVariables( allModifiers, defaultOptions : Array<DefaultOption> = [] ){
     let tempObj = new Object();
     let reqMods = new Array;
-    console.log(allModifiers);
 
     _.forEach(allModifiers, function(modifierGroup, modGroupKey){
       // Create new object to store values in
@@ -264,6 +265,7 @@ export class MenuCustomizeComponent implements OnInit {
   }
 
   public updateDataPerSize(salesId: string){
+    // TODO: Clear out modifier selections based on size changing
     this.salesItemDetails = _.find(this.menuItemDetails.salesItems, {'SalesItemId': +salesId});
     this.calorieCount = this.salesItemDetails.CaloricValue;
     this.itemPrice = this.salesItemDetails.Price;
