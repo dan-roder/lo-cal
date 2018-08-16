@@ -15,7 +15,7 @@
     &.visa{
       background-position: 0 15px;
     }
-    &.master-card{
+    &.mastercard{
       background-position: -21px 15px;
     }
     &.american-express{
@@ -32,5 +32,32 @@
       opacity: 1;
       background-position-y: 0;
     }
+  }
+}
+
+#card-number{
+  &.mastercard + .card-sprite-wrapper .mastercard{
+    opacity: 1;
+    background-position-y: 0;
+  }
+
+  &.dinersclub + .card-sprite-wrapper .diners-club{
+    opacity: 1;
+    background-position-y: 0;
+  }
+
+  &.visa + .card-sprite-wrapper .visa{
+    opacity: 1;
+    background-position-y: 0;
+  }
+
+  &.discover + .card-sprite-wrapper .discover{
+    opacity: 1;
+    background-position-y: 0;
+  }
+
+  &.amex + .card-sprite-wrapper .american-express{
+    opacity: 1;
+    background-position-y: 0;
   }
 }
