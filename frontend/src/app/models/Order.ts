@@ -67,6 +67,7 @@ export interface OrderResults{
   ErrorMessage: string; // (string , optional) : The error message receivied from the AppDomain ,
   ErrorCode: number; // (integer , optional) : The site communication error code ,
   AmountDueAtSite: number; // (number , optional) : The payment amount due at the site upon pickup
+  FinancialSummary: any;
 }
 
 export interface InOrderLineItem{
