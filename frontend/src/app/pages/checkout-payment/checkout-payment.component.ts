@@ -44,7 +44,7 @@ export class CheckoutPaymentComponent implements OnInit {
     this.paymentForm = fb.group({
       'payment-choice' : [this.paymentChoice, Validators.required],
       'card-number' : [null, [Validators.required, <any>CreditCardValidator.validateCCNumber]],
-      'expiration-date' : ['', [Validators.required, Validators.pattern('^[0-9]{2} \/ [0-9]{4}$'), <any>CreditCardValidator.validateExpDate]],
+      'expiration-date' : ['', [Validators.required, <any>CreditCardValidator.validateExpDate]],
       'cvv' : [null, [Validators.required, Validators.pattern('^[0-9]{3,4}$')]],
       'save-payment' : [null]
     });
