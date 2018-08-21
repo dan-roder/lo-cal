@@ -93,7 +93,7 @@ export class CheckoutPaymentComponent implements OnInit {
     // 1. Start spinner
     this.processing = true;
     // 2. Retrieve order
-    // TEMPORARY
+    // TODO: Why did I write this -> TEMPORARY
     this.orderService.getPreSavedOrder().subscribe(order => {
       let orderId = order.OrderId;
 
