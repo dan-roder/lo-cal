@@ -13,14 +13,14 @@ export class Config {
   public siteId : number = 1;
   public menuId : number = 1001;
   public paymentTypeMap = {
-    "American Express" : 0,
+    "amex" : 0,
     "Credit" : 1,
-    "Diners Club" : 2,
-    "Discover" : 3,
+    "dinersclub" : 2,
+    "discover" : 3,
     "GiftCard" : 4,
-    "JCB" : 5,
-    "Mastercard" : 6,
-    "Visa" : 7,
+    "jcb" : 5,
+    "mastercard" : 6,
+    "visa" : 7,
     "PrePaid" : 8
   }
   public cardTypeMap = {

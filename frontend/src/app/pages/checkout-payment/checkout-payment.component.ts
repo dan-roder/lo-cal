@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
 import { RailsSavePayment, InSubmitOrderInformation, RailsInSubmitOrder, SavedPayment, Vehicle } from '@local/models/Payment';
 import { LocalStorage } from '@ngx-pwa/local-storage';
 import { WordpressService } from '@local/services/wp.service';
+import { CreditCardValidator, CreditCard } from 'angular-cc-library';
 
 @Component({
   selector: 'lo-cal-checkout-payment',
@@ -27,7 +28,6 @@ export class CheckoutPaymentComponent implements OnInit {
   public paymentChoice : string = '1';
   public processing : boolean = false;
   public cardType : number = undefined;
-  public activeCardClass : string = '';
   public currentCustomer : Customer;
   public orderForDisplay : Array<any>;
   public savedPaymentMethods : SavedPayment;
@@ -39,12 +39,12 @@ export class CheckoutPaymentComponent implements OnInit {
       'first-name' : [null, Validators.required],
       'last-name' : [null, Validators.required],
       'email' : [null, [Validators.required, Validators.email]],
-      'phone' : null
+      'phone' : [null, [Validators.required]]
     });
     this.paymentForm = fb.group({
       'payment-choice' : [this.paymentChoice, Validators.required],
-      'card-number' : [null, [Validators.required, Validators.pattern('^(?:(4[0-9]{12}(?:[0-9]{3})?)|(5[1-5][0-9]{14})|(6(?:011|5[0-9]{2})[0-9]{12})|(3[47][0-9]{13})|(3(?:0[0-5]|[68][0-9])[0-9]{11})|((?:2131|1800|35[0-9]{3})[0-9]{11}))$')]],
-      'expiration-date' : ['', [Validators.required, Validators.pattern('^[0-9]{2}\/[0-9]{4}$')]],
+      'card-number' : [null, [Validators.required, <any>CreditCardValidator.validateCCNumber]],
+      'expiration-date' : ['', [Validators.required, Validators.pattern('^[0-9]{2} \/ [0-9]{4}$'), <any>CreditCardValidator.validateExpDate]],
       'cvv' : [null, [Validators.required, Validators.pattern('^[0-9]{3,4}$')]],
       'save-payment' : [null]
     });
@@ -133,32 +133,23 @@ export class CheckoutPaymentComponent implements OnInit {
       console.log(orderResults);
       this.orderResultForTesting = orderResults.ResultCode;
 
-      // ResultCode 0: Success
-      // ResultCode 4: PromiseTimeChanged (possibly when order isn't completed within a certain timeframe)
-      if(orderResults.ResultCode == 0 || orderResults.ResultCode == 4){
-        this.localStorage.setItem('orderResult', orderResults).subscribe(() => {
-          // If Customer wishes to save payment method
-          if(this.paymentForm.get('save-payment').value){
-            let paymentInfoForSaving : RailsSavePayment = {
-              payment : {
-                AccountNumber: this.paymentForm.get('card-number').value,
-                ExpirationDate: this.formatDate(this.paymentForm.get('expiration-date').value),
-                PaymentMethodType: this.cardType
-              }
-            }
+      switch(orderResults.ResultCode){
+        // ResultCode 0: Success
+        // ResultCode 4: PromiseTimeChanged (possibly when order isn't completed within a certain timeframe)
+        case 0 | 4:
+        break;
+        // Error 150: Promise Time Exceeded
+        case 150:
 
-            // Save payment method, then navigate to confirmation
-            this.customerService.savePaymentMethod(paymentInfoForSaving, this.currentCustomer.CustomerId).subscribe(response => {
-              this.navigateToConfirmation();
-            });
-          }
-          else{
-            this.navigateToConfirmation();
-          }
-        });
+        break;
+      }
+
+      // TODO: At the current point in time this is only reached if we get a successful API response
+      if(orderResults.ResultCode == 0 || orderResults.ResultCode == 4){
+        this.saveOrderAndRedirect(orderResults);
       }
       else{
-        this.wpService.logError('Payment Order Error: ' + JSON.stringify(orderResults)).subscribe(() => {});
+        this.wpService.logError('Payment Order Error: ' + JSON.stringify(orderResults)).subscribe((result) => {console.log('error:' + result)});
       }
     });
   }
@@ -246,11 +237,32 @@ export class CheckoutPaymentComponent implements OnInit {
     this.orderForDisplay = orderArray;
   }
 
+  protected saveOrderAndRedirect(orderResults: any){
+    this.localStorage.setItem('orderResult', orderResults).subscribe(() => {
+      // If Customer wishes to save payment method
+      if(this.paymentForm.get('save-payment').value){
+        let paymentInfoForSaving : RailsSavePayment = {
+          payment : {
+            AccountNumber: this.paymentForm.get('card-number').value,
+            ExpirationDate: this.formatDate(this.paymentForm.get('expiration-date').value),
+            PaymentMethodType: this.cardType
+          }
+        }
+
+        // Save payment method, then navigate to confirmation
+        this.customerService.savePaymentMethod(paymentInfoForSaving, this.currentCustomer.CustomerId).subscribe(() => {
+          this.navigateToConfirmation();
+        });
+      }
+      else{
+        this.navigateToConfirmation();
+      }
+    });
+  }
+
   public detectCardType(val){
-    let cardType = ccinfo(val);
-    this.activeCardClass = (val.length > 0 && cardType.length > 0) ? cardType[0].type : '';
-    let cardNumber : number = (val.length > 0 && cardType.length > 0) ? this.constants.paymentTypeMap[cardType[0].niceType] : undefined;
-    this.cardType = cardNumber;
+    let cardType = CreditCard.cardFromNumber(val);
+    this.cardType = (val.length > 0 && cardType !== undefined) ? this.constants.paymentTypeMap[cardType.type] : undefined;
   }
 
   private patchContactForm(customer: Customer){
@@ -282,13 +294,5 @@ export class CheckoutPaymentComponent implements OnInit {
   // TODO/Maybe: Only if you're able to save more than 1 card
   public whichPayment(value){
     console.log(value);
-  }
-
-  // TODO: Figure out how to stop input after expression is reached
-  public preventTooManyDigits(digitCount, e){
-    console.log(digitCount, e);
-    // if(e.length === digitCount){
-    //   return;
-    // }
   }
 }

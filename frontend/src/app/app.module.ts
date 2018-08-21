@@ -56,6 +56,7 @@ import { OrderService } from '@local/services/order.service';
 // Directives
 import { WindowScrollDirective } from './shared/directives/window-scroll.directive';
 import { InputSwitcherDirective } from './shared/directives/input-switcher.directive';
+import { CreditCardDirectivesModule } from 'angular-cc-library';
 
 //Pipes
 import { AllergensPipe } from './pipes/allergens.pipe';
@@ -76,9 +77,8 @@ import { CheckoutPaymentComponent } from './pages/checkout-payment/checkout-paym
 
 // Modules
 import { ResponsiveModule } from 'ng2-responsive';
-import { MonthMaskDirective } from './shared/directives/month-mask.directive';
 import { CardImagePipe } from './pipes/card-image.pipe';
-import { CreditCardMaskDirective } from './shared/directives/credit-card-mask.directive';
+
 
 
 
@@ -116,7 +116,6 @@ import { CreditCardMaskDirective } from './shared/directives/credit-card-mask.di
     CheckoutLoginComponent,
     CheckoutReviewComponent,
     CheckoutPaymentComponent,
-    MonthMaskDirective,
     ConfirmationComponent,
     OrderHistoryComponent,
     AccountLayoutComponent,
@@ -125,8 +124,7 @@ import { CreditCardMaskDirective } from './shared/directives/credit-card-mask.di
     OrderDetailComponent,
     CardImagePipe,
     NoXPipe,
-    AllergenRolloverPipe,
-    CreditCardMaskDirective
+    AllergenRolloverPipe
   ],
   imports: [
     BrowserModule,
@@ -137,7 +135,8 @@ import { CreditCardMaskDirective } from './shared/directives/credit-card-mask.di
     AppRoutingModule,
     BrowserAnimationsModule,
     LocalStorageModule,
-    ResponsiveModule
+    ResponsiveModule,
+    CreditCardDirectivesModule
   ],
   providers: [ Config, WindowRef, WordpressService, MenuService, BagService, CustomerService, AuthGuard, AccessGuard, OrderService, OrderGuard ],
   bootstrap: [AppComponent]

@@ -70,12 +70,12 @@
                     <div class="error-message" *ngIf="!contactInfoForm.controls['last-name'].valid && submittedOnce">This field is required.</div>
                   </div>
                 </div>
-                <div class="form-component form-component-email">
-                  <label for="email" class="visuallyhidden">Email</label>
-                  <input type="text" name="email" id="email" formControlName="email" placeholder="Email*" [ngClass]="{'has-error':!contactInfoForm.controls['email'].valid && submittedOnce}">
-                  <div class="error-message" *ngIf="!contactInfoForm.controls['email'].valid && submittedOnce">This field is required.</div>
-                </div>
                 <div class="form-section half-and-half">
+                  <div class="form-component form-component-email">
+                    <label for="email" class="visuallyhidden">Email</label>
+                    <input type="text" name="email" id="email" formControlName="email" placeholder="Email*" [ngClass]="{'has-error':!contactInfoForm.controls['email'].valid && submittedOnce}">
+                    <div class="error-message" *ngIf="!contactInfoForm.controls['email'].valid && submittedOnce">This field is required.</div>
+                  </div>
                   <div class="form-component form-component-text">
                     <label for="phone" class="visuallyhidden">Phone</label>
                     <input type="text" name="phone" id="phone" formControlName="phone" placeholder="Phone" [ngClass]="{'has-error':!contactInfoForm.controls['phone'].valid && submittedOnce}">
@@ -119,19 +119,19 @@
                   <div class="form-section half-and-half">
                     <div class="form-component form-component-text">
                       <label for="card-number" class="visuallyhidden">Credit Card Number</label>
-                      <input type="text" name="card-number" id="card-number" formControlName="card-number" placeholder="Credit Card Number*" [ngClass]="{'has-error':!paymentForm.controls['card-number'].valid && submittedOnce}" #ccNumber ([ngModel])="cardType" (ngModelChange)="detectCardType(ccNumber.value)" loCalCreditCardMask>
+                      <input id="card-number" type="tel" autocomplete="cc-number" formControlName="card-number" placeholder="Credit Card Number*" [ngClass]="{'has-error':!paymentForm.controls['card-number'].valid && submittedOnce}" ccNumber #ccNumber (ngModelChange)="detectCardType(ccNumber.value)">
                       <div class="card-sprite-wrapper">
-                        <div class="card visa" [ngClass]="activeCardClass === 'visa' ? 'active' : ''" title="Visa"></div>
-                        <div class="card master-card" [ngClass]="activeCardClass === 'master-card' ? 'active' : ''" title="MasterCard"></div>
-                        <div class="card american-express" [ngClass]="activeCardClass === 'american-express' ? 'active' : ''" title="American Express"></div>
-                        <div class="card discover" [ngClass]="activeCardClass === 'discover' ? 'active' : ''" title="Discover"></div>
-                        <div class="card diners-club" [ngClass]="activeCardClass === 'diners-club' ? 'active' : ''" title="Diners Club"></div>
+                        <div class="card visa" title="Visa"></div>
+                        <div class="card mastercard" title="MasterCard"></div>
+                        <div class="card american-express" title="American Express"></div>
+                        <div class="card discover" title="Discover"></div>
+                        <div class="card diners-club" title="Diners Club"></div>
                       </div>
                       <div class="error-message" *ngIf="!paymentForm.controls['card-number'].valid && submittedOnce">This field is required.</div>
                     </div>
                     <div class="form-component form-component-text">
                       <label for="last-name" class="visuallyhidden">Expiration Date</label>
-                      <input type="text" name="expiration-date" id="expiration-date" formControlName="expiration-date" placeholder="Expiration Date (mm/yyyy)*" [ngClass]="{'has-error':!paymentForm.controls['expiration-date'].valid && submittedOnce}" loCalMonthMask #box (ngModelChange)="preventTooManyDigits(7, box.value)">
+                      <input id="cc-exp-date" name="expiration-date" id="expiration-date" formControlName="expiration-date" placeholder="Expiration Date (mm/yyyy)*" [ngClass]="{'has-error':!paymentForm.controls['expiration-date'].valid && submittedOnce}" type="tel" autocomplete="cc-exp" ccExp>
                       <div class="error-message" *ngIf="!paymentForm.controls['expiration-date'].valid && submittedOnce">This field is required.</div>
                     </div>
                   </div>

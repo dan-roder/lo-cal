@@ -113,7 +113,6 @@ export class WordpressService {
 
   public logError(data: String){
     return this.httpClient.post(this.config.wordpressApiUrl + `/error_message/v2/log`, data).map(result => {
-      console.log(data);
       return result;
     })
   }
