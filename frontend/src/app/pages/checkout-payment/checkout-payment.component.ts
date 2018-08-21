@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { OrderService } from '@local/services/order.service';
 import { Order } from '@local/models/Order';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import * as ccinfo from 'credit-card-type';
 import { Config } from '@local/utils/constants';
 import { CustomerService } from '@local/services/customer.service';
 import { Customer } from '@local/models/Customer';
@@ -122,6 +121,9 @@ export class CheckoutPaymentComponent implements OnInit {
         orderForApi = this.constructSecurePayment();
       break;
     }
+
+    console.log(orderForApi);
+    return;
 
     let finalOrderForSubmission : RailsInSubmitOrder = {
       order_submission : orderForApi
@@ -261,6 +263,8 @@ export class CheckoutPaymentComponent implements OnInit {
   }
 
   public detectCardType(val){
+    console.log(this.paymentForm.get('card-number'));
+    return;
     let cardType = CreditCard.cardFromNumber(val);
     this.cardType = (val.length > 0 && cardType !== undefined) ? this.constants.paymentTypeMap[cardType.type] : undefined;
   }
