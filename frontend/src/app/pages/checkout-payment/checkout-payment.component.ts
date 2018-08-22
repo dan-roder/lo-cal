@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { OrderService } from '@local/services/order.service';
 import { Order } from '@local/models/Order';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import * as ccinfo from 'credit-card-type';
 import { Config } from '@local/utils/constants';
 import { CustomerService } from '@local/services/customer.service';
 import { Customer } from '@local/models/Customer';
@@ -44,7 +43,7 @@ export class CheckoutPaymentComponent implements OnInit {
     this.paymentForm = fb.group({
       'payment-choice' : [this.paymentChoice, Validators.required],
       'card-number' : [null, [Validators.required, <any>CreditCardValidator.validateCCNumber]],
-      'expiration-date' : ['', [Validators.required, Validators.pattern('^[0-9]{2} \/ [0-9]{4}$'), <any>CreditCardValidator.validateExpDate]],
+      'expiration-date' : ['', [Validators.required, <any>CreditCardValidator.validateExpDate]],
       'cvv' : [null, [Validators.required, Validators.pattern('^[0-9]{3,4}$')]],
       'save-payment' : [null]
     });
@@ -93,7 +92,7 @@ export class CheckoutPaymentComponent implements OnInit {
     // 1. Start spinner
     this.processing = true;
     // 2. Retrieve order
-    // TEMPORARY
+    // TODO: Why did I write this -> TEMPORARY
     this.orderService.getPreSavedOrder().subscribe(order => {
       let orderId = order.OrderId;
 
@@ -122,6 +121,9 @@ export class CheckoutPaymentComponent implements OnInit {
         orderForApi = this.constructSecurePayment();
       break;
     }
+
+    console.log(orderForApi);
+    return;
 
     let finalOrderForSubmission : RailsInSubmitOrder = {
       order_submission : orderForApi
@@ -261,6 +263,8 @@ export class CheckoutPaymentComponent implements OnInit {
   }
 
   public detectCardType(val){
+    console.log(this.paymentForm.get('card-number'));
+    return;
     let cardType = CreditCard.cardFromNumber(val);
     this.cardType = (val.length > 0 && cardType !== undefined) ? this.constants.paymentTypeMap[cardType.type] : undefined;
   }

@@ -24,7 +24,7 @@
         <div class="menu-items center-1440">
           <div class="item item-{{ i+1 }}" *ngFor="let item of acf?.menu_items; let i = index">
             <div class="item-wrapper text-center">
-              <a routerLink="{{ category?.slug }}" (click)="setMenuId(category?.acf?.submenuid)">
+              <a [href]="item?.item_link">
                 <div class="image" *ngIf="item?.item_image?.url"><img [src]="item?.item_image?.url" [alt]="item?.item_image?.alt"></div>
                 <div class="title" *ngIf="item?.item_title">{{ item?.item_title }}</div>
               </a>
@@ -33,7 +33,7 @@
         </div><!-- /.menu-items -->
         <div class="link red-button"><a routerLink="/menu">View the Full Menu</a></div>
       </div>
-    </div><!-- /.out-menu -->
+    </div><!-- /.our-menu -->
 
     <!-- <div class="section section-grey app-ad">
       <div class="content center">
