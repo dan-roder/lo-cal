@@ -79,7 +79,7 @@ jQuery(document).ready( function ($) {
                     url = BASE_URL + "menu-sync/init";
                 } else {
                     // New items and current items
-                    url = BASE_URL + "/menu-sync/" + e.target.id;
+                    url = BASE_URL + "menu-sync/" + e.target.id;
                 }
                 $.ajax({
                     method: "POST",
