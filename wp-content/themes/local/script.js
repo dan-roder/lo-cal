@@ -3,6 +3,7 @@ jQuery(document).ready( function ($) {
     BASE_URL = "https://api.lo-calkitchen.com/";
     // BASE_URL = "http://localhost:300/";
     $("#start").on('click', function(e){
+        // console.log(window.process.env);
         e.preventDefault();
         $(".loader").show();
         if( $("#sync-items").is(":visible") ) {
