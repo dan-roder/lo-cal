@@ -119,7 +119,7 @@
                   <div class="form-section half-and-half">
                     <div class="form-component form-component-text">
                       <label for="card-number" class="visuallyhidden">Credit Card Number</label>
-                      <input id="card-number" type="tel" autocomplete="cc-number" formControlName="card-number" placeholder="Credit Card Number*" [ngClass]="{'has-error':!paymentForm.controls['card-number'].valid && submittedOnce}" ccNumber #ccNumber (ngModelChange)="detectCardType(ccNumber.value)">
+                      <input id="card-number" type="tel" autocomplete="cc-number" formControlName="card-number" placeholder="Credit Card Number*" [ngClass]="{'has-error':!paymentForm.controls['card-number'].valid && submittedOnce}" ccNumber #ccNumber (ngModelChange)="detectCardType(ccNumber.value)" [(ngModel)]="cardNumber">
                       <div class="card-sprite-wrapper">
                         <div class="card visa" title="Visa"></div>
                         <div class="card mastercard" title="MasterCard"></div>
