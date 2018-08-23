@@ -103,7 +103,7 @@ function menu_item() {
 		'filter_items_list'     => __( 'Filter items list', 'text_domain' ),
 	);
 	$rewrite = array(
-		'slug'                  => 'menu/%category-name%',
+		'slug'                  => 'menu',
 		'with_front'            => true,
 		'pages'                 => true,
 		'feeds'                 => true,
@@ -269,53 +269,53 @@ function blog_post() {
 
 }
 
-add_action( 'add_meta_boxes', 'menu_categories_meta_box' );
-function menu_categories_meta_box() {
+// add_action( 'add_meta_boxes', 'menu_categories_meta_box' );
+// function menu_categories_meta_box() {
 
-	add_meta_box(
-		'menu-item-parent',
-		'Menu Categories',
-		'categories_attributes_meta_box',
-		'menu_item',
-		'side',
-		'default'
-	);
+// 	add_meta_box(
+// 		'menu-item-parent',
+// 		'Menu Categories',
+// 		'categories_attributes_meta_box',
+// 		'menu_item',
+// 		'side',
+// 		'default'
+// 	);
 
-}
+// }
 
-function categories_attributes_meta_box($post) {
-	wp_nonce_field( 'menu_category_nonce', 'menu_category_nonce');
-	$pages = wp_dropdown_pages(array(
-		'post_type' => 'menu_categories',
-		'selected' => $post->post_parent,
-		'name' => 'parent_id',
-		'show_option_none' => __('(no parent)'),
-		'sort_column'=> 'menu_order, post_title',
-		'echo' => 0
-	));
-	if ( ! empty($pages) ) {
-		echo $pages;
-	} // end empty pages check
-}
+// function categories_attributes_meta_box($post) {
+// 	wp_nonce_field( 'menu_category_nonce', 'menu_category_nonce');
+// 	$pages = wp_dropdown_pages(array(
+// 		'post_type' => 'menu_categories',
+// 		'selected' => $post->post_parent,
+// 		'name' => 'parent_id',
+// 		'show_option_none' => __('(no parent)'),
+// 		'sort_column'=> 'menu_order, post_title',
+// 		'echo' => 0
+// 	));
+// 	if ( ! empty($pages) ) {
+// 		echo $pages;
+// 	} // end empty pages check
+// }
 
-function save_menu_categories_meta_box_data( $post_id ) {
-    $my_data = sanitize_text_field( $_POST['parent_id'] );
-    add_post_meta( $post_id, 'menu_category', $my_data, true );
-}
+// function save_menu_categories_meta_box_data( $post_id ) {
+//     $my_data = sanitize_text_field( $_POST['parent_id'] );
+//     add_post_meta( $post_id, 'menu_category', $my_data, true );
+// }
 
-add_filter( 'post_type_link', function( $link, $post ) {
-	// if ( 'menu_item' == get_post_type( $post ) ) {
-	$post_id = $post->ID;
-	// var_dump($post); die();
-	$meta_key = 'submenu';
-	$meta_data = get_post_meta( $post_id, 'submenu' );
-	// var_dump($post, $meta_data); die();
-	if( $meta_data ) {
-		return str_replace( '%category-name%', $meta_data[0], $link );
-	}
-	// }
-	return $link;
-}, 10, 2 );
+// add_filter( 'post_type_link', function( $link, $post ) {
+// 	// if ( 'menu_item' == get_post_type( $post ) ) {
+// 	$post_id = $post->ID;
+// 	// var_dump($post); die();
+// 	$meta_key = 'submenu';
+// 	$meta_data = get_post_meta( $post_id, 'submenu' );
+// 	// var_dump($post, $meta_data); die();
+// 	if( $meta_data ) {
+// 		return str_replace( '%category-name%', $meta_data[0], $link );
+// 	}
+// 	// }
+// 	return $link;
+// }, 10, 2 );
 
 function create_api_posts_meta_field() {
 	register_rest_field( 'menu_item', 'submenu', array(
