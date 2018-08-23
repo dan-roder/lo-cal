@@ -39,7 +39,7 @@ export class CheckoutPaymentComponent implements OnInit {
       'first-name' : [null, Validators.required],
       'last-name' : [null, Validators.required],
       'email' : [null, [Validators.required, Validators.email]],
-      'phone' : [null, [Validators.required]]
+      'phone' : [null]
     });
     this.paymentForm = fb.group({
       'payment-choice' : [this.paymentChoice, Validators.required],
@@ -152,7 +152,6 @@ export class CheckoutPaymentComponent implements OnInit {
       }
     }, error => {
       this.wpService.logError('Payment Order Error: ' + JSON.stringify(error)).subscribe((result) => {console.log('error:' + result)});
-      console.log('submitOrder error', error);
     });
   }
 
