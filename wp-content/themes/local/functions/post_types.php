@@ -103,7 +103,7 @@ function menu_item() {
 		'filter_items_list'     => __( 'Filter items list', 'text_domain' ),
 	);
 	$rewrite = array(
-		'slug'                  => 'menu',
+		'slug'                  => 'menu/%category-name%',
 		'with_front'            => true,
 		'pages'                 => true,
 		'feeds'                 => true,
@@ -303,19 +303,19 @@ function blog_post() {
 //     add_post_meta( $post_id, 'menu_category', $my_data, true );
 // }
 
-// add_filter( 'post_type_link', function( $link, $post ) {
-// 	// if ( 'menu_item' == get_post_type( $post ) ) {
-// 	$post_id = $post->ID;
-// 	// var_dump($post); die();
-// 	$meta_key = 'submenu';
-// 	$meta_data = get_post_meta( $post_id, 'submenu' );
-// 	// var_dump($post, $meta_data); die();
-// 	if( $meta_data ) {
-// 		return str_replace( '%category-name%', $meta_data[0], $link );
-// 	}
-// 	// }
-// 	return $link;
-// }, 10, 2 );
+add_filter( 'post_type_link', function( $link, $post ) {
+	// if ( 'menu_item' == get_post_type( $post ) ) {
+	$post_id = $post->ID;
+	// var_dump($post); die();
+	$meta_key = 'submenu';
+	$meta_data = get_post_meta( $post_id, 'submenu' );
+	// var_dump($post, $meta_data); die();
+	if( $meta_data ) {
+		return str_replace( '%category-name%', $meta_data[0], $link );
+	}
+	// }
+	return $link;
+}, 10, 2 );
 
 function create_api_posts_meta_field() {
 	register_rest_field( 'menu_item', 'submenu', array(
