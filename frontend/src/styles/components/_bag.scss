@@ -23,7 +23,7 @@
     background: $light-grey;
     height: 100%;
     position: absolute;
-    width: 500px;
+    width: 100%;
     right: 0;
     bottom: 0;
     box-sizing: border-box;
@@ -31,6 +31,10 @@
     grid-auto-flow: row;
     align-items: flex-start;
     z-index: 10;
+
+    @include breakpoint($bp-500){
+      width: 500px;
+    }
 
     .checkout-inner-wrapper{
       position: relative;
