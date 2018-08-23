@@ -95,17 +95,25 @@ export class AccountComponent implements OnInit {
       let updateCustomer : RailsUpdate = {
         customer_info : {
           CustomerId : this.customerId,
-          EMail : formData.controls.email.value,
-          FirstName : formData.controls['first-name'].value,
-          LastName : formData.controls['last-name'].value,
-          Addresses : []
+          EMail : formData.get('email').value,
+          FirstName : formData.get('first-name').value,
+          LastName : formData.get('last-name').value,
+          Addresses : [{
+            AddressLine1 : formData.controls['full-address'].get('address').value,
+            AddressLine2 : formData.controls['full-address'].get('address2').value,
+            City : formData.controls['full-address'].get('city').value,
+            State : formData.controls['full-address'].get('state').value,
+            Postal : formData.controls['full-address'].get('zip').value,
+          }]
         }
       };
 
       // Disable the select again
       this.accountForm.controls['full-address']['controls']['state'].disable();
 
+      // TODO: Customer Address does not save to lo-cal api
       this.customerService.updateCustomerInfo(updateCustomer).subscribe(data => {
+        console.log(data);
         this.customerService.getCustomerInfo(this.customerId).subscribe(updatedCustomerInfo => {
           this.patchAccountForm(updatedCustomerInfo);
           this.localStorage.setItem('user', updatedCustomerInfo).subscribe(() => {});
