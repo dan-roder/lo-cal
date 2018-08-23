@@ -126,10 +126,8 @@ export class CheckoutPaymentComponent implements OnInit {
       order_submission : orderForApi
     }
 
-    // TODO: Check with Ken about passing errors back as is from API
     // Order object with payment has been created, submit to API
     this.orderService.submitOrder(finalOrderForSubmission, this.currentOrder.OrderId).subscribe(orderResults => {
-      console.log(orderResults);
       this.orderResultForTesting = orderResults.ResultCode;
 
       switch(orderResults.ResultCode){
@@ -151,6 +149,7 @@ export class CheckoutPaymentComponent implements OnInit {
         this.wpService.logError('Payment Order Error: ' + JSON.stringify(orderResults)).subscribe((result) => {console.log('error:' + result)});
       }
     }, error => {
+      console.log(error);
       this.wpService.logError('Payment Order Error: ' + JSON.stringify(error)).subscribe((result) => {console.log('error:' + result)});
     });
   }
