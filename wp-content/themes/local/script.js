@@ -1,7 +1,7 @@
 jQuery(document).ready( function ($) {
     var new_items, old_items, current_items, url;
     BASE_URL = "https://api.lo-calkitchen.com/";
-    // BASE_URL = "http://localhost:300/";
+    // BASE_URL = "http://localhost:3000/";
     $("#start").on('click', function(e){
         // console.log(window.process.env);
         e.preventDefault();
