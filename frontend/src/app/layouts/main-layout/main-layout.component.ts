@@ -34,7 +34,14 @@ export class MainLayoutComponent implements OnInit {
     }
   }
 
-  public toggleMobileMenuState(){
+  public toggleMobileMenuState(target){
+    // Keep mobile menu open if menu is scrolled/clicked, otherwise close
+    if(target !== undefined){
+      if(target.className.indexOf('mobile-menu-content') === -1){
+        this.mobileMenuState = (this.mobileMenuState === 'mobileMenuClosed') ? 'mobileMenuOpen' : 'mobileMenuClosed';
+      }
+      return;
+    }
     this.mobileMenuState = (this.mobileMenuState === 'mobileMenuClosed') ? 'mobileMenuOpen' : 'mobileMenuClosed';
   }
 
