@@ -1,6 +1,6 @@
 .checkout-overlay{
   position: fixed;
-  top: 96px;
+  top: 86px;
   right: 0;
   left: 0;
   bottom: 0;
@@ -10,13 +10,21 @@
   z-index: 5;
   @include transition();
 
+  @include breakpoint($bp-860){
+    top: 96px;
+  }
+
   &.visible{
     opacity: 1;
     pointer-events: auto;
   }
 
   .scrolled &{
-    top: 68px;
+    top: 58px;
+
+    @include breakpoint($bp-860){
+      top: 68px;
+    }
   }
 
   .checkout-content-wrapper{
