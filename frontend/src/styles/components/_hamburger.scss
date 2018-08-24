@@ -38,29 +38,29 @@
     top: 12px;
   }
 
-  &.mobileMenuOpen span:nth-child(1) {
-    top: 18px;
-    width: 0%;
-    left: 50%;
-  }
+  // &.mobileMenuOpen span:nth-child(1) {
+  //   top: 18px;
+  //   width: 0%;
+  //   left: 50%;
+  // }
 
-  &.mobileMenuOpen span:nth-child(2) {
-    -webkit-transform: rotate(45deg);
-    -moz-transform: rotate(45deg);
-    -o-transform: rotate(45deg);
-    transform: rotate(45deg);
-  }
+  // &.mobileMenuOpen span:nth-child(2) {
+  //   -webkit-transform: rotate(45deg);
+  //   -moz-transform: rotate(45deg);
+  //   -o-transform: rotate(45deg);
+  //   transform: rotate(45deg);
+  // }
 
-  &.mobileMenuOpen span:nth-child(3) {
-    -webkit-transform: rotate(-45deg);
-    -moz-transform: rotate(-45deg);
-    -o-transform: rotate(-45deg);
-    transform: rotate(-45deg);
-  }
+  // &.mobileMenuOpen span:nth-child(3) {
+  //   -webkit-transform: rotate(-45deg);
+  //   -moz-transform: rotate(-45deg);
+  //   -o-transform: rotate(-45deg);
+  //   transform: rotate(-45deg);
+  // }
 
-  &.mobileMenuOpen span:nth-child(4) {
-    top: 18px;
-    width: 0%;
-    left: 50%;
-  }
+  // &.mobileMenuOpen span:nth-child(4) {
+  //   top: 18px;
+  //   width: 0%;
+  //   left: 50%;
+  // }
 }// .hamburger
