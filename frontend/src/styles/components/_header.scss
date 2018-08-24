@@ -7,7 +7,11 @@ header{
   }
 
   .header-content{
-    padding: 350px 0 200px;
+    padding: 180px 0 100px;
+
+    @include breakpoint($bp-768){
+      padding: 350px 0 200px;
+    }
 
     h1{
       @include fontsize(60);
@@ -25,19 +29,28 @@ header{
         background: rgba(255, 255, 255, .6);
         padding: 45px 30px;
         float: right;
+        margin: 0 15px;
       }
 
       h2{
-        @include fontsize(60);
+        @include fontsize(46);
         @extend %sofia-medium;
         line-height: 1.2;
         margin: 0 0 .5em;
         color: $orange-red;
+
+        @include breakpoint($bp-768){
+          @include fontsize(60);
+        }
       }
 
       h3{
-        @include fontsize(24);
+        @include fontsize(20);
         @extend %sofia-light;
+
+        @include breakpoint($bp-768){
+          @include fontsize(24);
+        }
       }
     }
   }
