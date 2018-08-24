@@ -89,6 +89,10 @@
         top: 20px;
         right: -15px;
 
+        .scrolled & {
+          top: 10px;
+        }
+
         @include breakpoint($bp-860){
           position: static;
           width: 20px;
