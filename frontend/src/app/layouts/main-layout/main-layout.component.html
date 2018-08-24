@@ -1,10 +1,12 @@
-<div class="mobile-menu" *responsive="{ sizes: {min:300, max:860}}" [ngClass]="mobileMenuState">
-  <ul>
-    <li><a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Home</a></li>
-    <li *ngFor="let item of mainMenuLinks" [attr.class]="item.classes ? item.classes : null">
-      <a routerLink="/{{ item.object_slug }}" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">{{ item.title }}</a>
-    </li>
-  </ul>
+<div class="mobile-menu" *responsive="{ sizes: {min:300, max:860}}" [ngClass]="mobileMenuState" (click)="toggleMobileMenuState($event.target)">
+  <div class="mobile-menu-content">
+    <ul>
+      <li><a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Home</a></li>
+      <li *ngFor="let item of mainMenuLinks" [attr.class]="item.classes ? item.classes : null">
+        <a routerLink="/{{ item.object_slug }}" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">{{ item.title }}</a>
+      </li>
+    </ul>
+  </div>
 </div>
 <div class="site-container" [ngClass]="mobileMenuState" loCalWindowScroll>
   <div class="sticky-header">
