@@ -54,8 +54,15 @@ export interface InLoginUpdate{
   NewAnswer?: string; // (string , optional)
 }
 
-export interface OrderCustomer{
+export interface InPasswordReset{
+  Email: string;
+  SecurityAnswer: string;
+  NewPassword: string;
+}
 
+export interface InPasswordEmailReset{
+  Email: string;
+  SecurityAnswer: string;
 }
 
 export interface RailsUpdate{
