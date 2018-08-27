@@ -2336,6 +2336,8 @@ var MenuCustomizeComponent = /** @class */ (function () {
         this.wpService.getPostBySlug(slug, 'menu_item').subscribe(function (item) {
             _this.itemContent = item;
             var menuItemId = item[0].acf.menuid;
+            // TODO: Investigate why gluten free bread is not returning sizes
+            console.log(item[0]);
             _this.featuredImage = (item[0].featured_media !== 0) ? item[0]._embedded['wp:featuredmedia'][0].media_details.sizes.full.source_url : '//via.placeholder.com/1440x500';
             _this.featuredImageAlt = (item[0].featured_media !== 0) ? item[0]._embedded['wp:featuredmedia'][0].alt_text : '';
             _this.getMenuItemDetails(menuItemId);
@@ -2466,8 +2468,7 @@ var MenuCustomizeComponent = /** @class */ (function () {
                 _this.multipleSalesItems = menuItemDetails['salesItems'];
                 _this.sizeChoice = _this.salesItemDetails.SalesItemId;
             }
-            // TODO: If this is not a number in the case of prepared food items, treat differently
-            _this.calorieCount = (_this.salesItemDetails.CaloricValue !== null) ? _this.salesItemDetails.CaloricValue : +_this.menuItemDetails.item.CaloricServingUnit;
+            _this.calorieCount = (_this.salesItemDetails.CaloricValue !== null) ? _this.salesItemDetails.CaloricValue : ((typeof _this.menuItemDetails.item.CaloricServingUnit !== 'string') ? +_this.menuItemDetails.item.CaloricServingUnit : _this.menuItemDetails.item.CaloricServingUnit);
             _this.itemPrice = _this.salesItemDetails.Price;
             // Calculate initial cost based on initial quantity of 1
             _this.recalculateCost();
