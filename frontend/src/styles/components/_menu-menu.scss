@@ -9,6 +9,14 @@
     text-align: left;
     list-style: none;
     display: flex;
+    align-items: center;
+    overflow-x: scroll;
+    -webkit-overflow-scrolling: touch;
+
+    @include breakpoint($bp-860){
+      overflow-x: auto;
+      align-items: flex-start;
+    }
 
     li{
       text-align: left;
@@ -24,6 +32,11 @@
         color: $c-31;
         text-transform: uppercase;
         @include transition(color, 200ms);
+        @include fontsize(14);
+
+        @include breakpoint($bp-860){
+          @include fontsize(16);
+        }
 
         &:hover{
           color: $red-hover;
