@@ -32,7 +32,8 @@ export class CustomerService {
   }
 
   public logOut(){
-    this.localStorage.removeItem('user').subscribe(() => {
+    // Destroy all IndexedDB data and redirect to homepage
+    this.localStorage.clear().subscribe(() => {
       this.router.navigateByUrl('/');
     });
   }
@@ -81,6 +82,15 @@ export class CustomerService {
     })
   }
 
+  /**
+   *
+   * deleteSavedPayment
+   *
+   * @param customerId
+   * @param paymentId
+   *
+   * @returns Observable of result from Aloha API
+   */
   public deleteSavedPayment(customerId: string, paymentId: string){
     return this.httpClient.delete(this.config.railsCustomerEndpoint + `/${customerId}/payments/${paymentId}`).map(result => {
       return result;
@@ -99,6 +109,11 @@ export class CustomerService {
     })
   }
 
+  /**
+   * getCurrentCustomer function
+   *
+   * @returns Observable of UserInfo
+   */
   public getCurrentCustomer(): Observable<any>{
     return this.localStorage.getItem('user').map(userInfo => {
       return userInfo;
