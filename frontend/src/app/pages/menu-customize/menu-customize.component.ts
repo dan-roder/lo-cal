@@ -43,6 +43,8 @@ export class MenuCustomizeComponent implements OnInit {
       this.itemContent = item;
       let menuItemId = item[0].acf.menuid;
 
+      // TODO: Investigate why gluten free bread is not returning sizes
+      console.log(item[0]);
       this.featuredImage = (item[0].featured_media !== 0) ? item[0]._embedded['wp:featuredmedia'][0].media_details.sizes.full.source_url : '//via.placeholder.com/1440x500';
       this.featuredImageAlt = (item[0].featured_media !== 0) ? item[0]._embedded['wp:featuredmedia'][0].alt_text : '';
       this.getMenuItemDetails(menuItemId);
@@ -203,8 +205,7 @@ export class MenuCustomizeComponent implements OnInit {
         this.sizeChoice = this.salesItemDetails.SalesItemId;
       }
 
-      // TODO: If this is not a number in the case of prepared food items, treat differently
-      this.calorieCount = (this.salesItemDetails.CaloricValue !== null) ? this.salesItemDetails.CaloricValue : +this.menuItemDetails.item.CaloricServingUnit;
+      this.calorieCount = (this.salesItemDetails.CaloricValue !== null) ? this.salesItemDetails.CaloricValue : ((typeof this.menuItemDetails.item.CaloricServingUnit !== 'string') ? +this.menuItemDetails.item.CaloricServingUnit : this.menuItemDetails.item.CaloricServingUnit);
       this.itemPrice = this.salesItemDetails.Price;
 
       // Calculate initial cost based on initial quantity of 1
