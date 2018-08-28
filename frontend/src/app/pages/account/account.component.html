@@ -133,11 +133,11 @@
       <div class="error-message" *ngIf="passwordForm.controls['confirm-password'].errors?.MatchPassword">Password does not match.</div>
     </div>
     <div class="form-component form-component-text" *ngIf="editingPassword">
-      <p></p>
+      <p>{{ securityQuestion }}</p>
     </div>
-    <div class="form-component form-component-text">
+    <div class="form-component form-component-text" [hidden]="!editingPassword">
       <label for="password" class="visuallyhidden">Security Answer</label>
-      <input type="password" [readonly]="!editingPassword" name="security-answer" id="security-answer" formControlName="security-answer" placeholder="Old Password*" [ngClass]="{'has-error':!passwordForm.controls['security-answer'].valid && submittedOnce}">
+      <input type="text" [readonly]="!editingPassword" name="security-answer" id="security-answer" formControlName="security-answer" placeholder="Security Answer*" [ngClass]="{'has-error':!passwordForm.controls['security-answer'].valid && submittedOnce}">
       <div class="error-message" *ngIf="!passwordForm.controls['security-answer'].valid && submittedOnce">This field is required.</div>
     </div>
 
