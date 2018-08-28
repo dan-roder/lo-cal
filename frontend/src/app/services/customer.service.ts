@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Config } from '@local/utils/constants';
 import { HttpClient } from '@angular/common/http';
-import { RailsCustomer, RailsLogin, Customer, RailsUpdate } from '@local/models/Customer';
+import { RailsCustomer, RailsLogin, Customer, RailsUpdate, InPasswordReset } from '@local/models/Customer';
 import { Observable } from 'rxjs/Observable';
 import { LocalStorage } from '@ngx-pwa/local-storage';
 import { Router } from '@angular/router';
@@ -120,8 +120,30 @@ export class CustomerService {
     });
   }
 
-  public updatePassword(){
+  /**
+   *
+   * @param email string
+   *
+   * @returns Observable of User Security Question
+   */
+  public getSecurityQuestion(email: string): Observable<any>{
+    return this.httpClient.get(this.config.securityQuestionEndpoint + `${email}`).map((question) => {
+      return question;
+    })
+  }
 
+  /**
+   *
+   * updatePassword function
+   *
+   * @param passwordResetData InPasswordReset
+   *
+   * @returns Observable of PasswordReset result from Aloha API
+   */
+  public updatePassword(passwordResetData: InPasswordReset): Observable<any>{
+    return this.httpClient.post(this.config.railsCustomerEndpoint + `/passwordreset`, passwordResetData).map((result) => {
+      return result;
+    });
   }
 
   get customer(): Customer{
