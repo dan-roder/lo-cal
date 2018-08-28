@@ -1,6 +1,6 @@
 import { Component, OnInit, Inject, Injectable } from '@angular/core';
 import { CustomerService } from '@local/services/customer.service';
-import { Customer, RailsUpdate, InLoginUpdate } from '@local/models/Customer';
+import { Customer, RailsUpdate, InPasswordReset } from '@local/models/Customer';
 import { LocalStorage } from '@ngx-pwa/local-storage';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { PasswordMatch } from '@local/utils/passwordmatch';
@@ -25,6 +25,7 @@ export class AccountComponent implements OnInit {
   public errorOccurred : boolean = false;
   public submittedOnce : boolean = false;
   public savedPayments : SavedPayment;
+  public securityQuestion : string = '';
 
   constructor(private customerService: CustomerService, private localStorage : LocalStorage, private fb: FormBuilder, @Inject(DOCUMENT) private document: any) {
     this.accountForm = fb.group({
@@ -58,8 +59,8 @@ export class AccountComponent implements OnInit {
 
       this.customerService.getSavedPayments(this.customerId).subscribe(paymentMethods => {
         this.savedPayments = paymentMethods;
-      })
-    })
+      });
+    });
   }
 
   private patchAccountForm(customerData){
@@ -82,6 +83,15 @@ export class AccountComponent implements OnInit {
 
   public editPassword(){
     this.editingPassword = !this.editingPassword;
+
+    // Retrieve security question when editing if it hasn't been fetched before
+    if(this.securityQuestion === ''){
+      this.customerService.getSecurityQuestion(this.customer.EMail).subscribe((question) => {
+        this.securityQuestion = question;
+      }, (error) => {
+        console.log(error);
+      })
+    }
     return false;
   }
 
@@ -132,13 +142,18 @@ export class AccountComponent implements OnInit {
     console.log(formData);
 
     if(formData.valid){
-      let inLoginUpdate : InLoginUpdate = {
+      let inPasswordReset : InPasswordReset = {
         Email : this.customer.EMail,
-        OldPassword : formData.controls['old-password'].value,
-        NewPassword : formData.controls['new-password'].value
+        NewPassword : formData.controls['password'].value,
+        SecurityAnswer : formData.controls['security-answer'].value
       }
 
-      // TODO: Submit password update to API
+      // TODO: Check that this is posting correctly
+      this.customerService.updatePassword(inPasswordReset).subscribe((result) => {
+        console.log(result);
+      }, (error) => {
+        console.log(error);
+      })
 
       // TODO: If successful, destroy login session and redirect to login page
     }
