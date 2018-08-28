@@ -49,6 +49,11 @@ p{
     @include fontsize(14);
   }
 
+  &.sub-menu-description{
+    @include fontsize(22);
+    line-height: 1.5;
+  }
+
   strong{
     @extend %sofia-semi-bold;
   }
