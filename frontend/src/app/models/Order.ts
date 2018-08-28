@@ -1,5 +1,5 @@
 import { LineItem, LineItemModifier } from "@local/models/LineItem";
-import { Customer, CustomerAddress, OrderCustomer } from "@local/models/Customer";
+import { Customer, CustomerAddress } from "@local/models/Customer";
 
 export interface Order{
   SiteId?: number; //  (integer , optional) : Get or set the SiteId property ,
