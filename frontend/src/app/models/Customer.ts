@@ -1,5 +1,3 @@
-import { CustomerService } from "@local/services/customer.service";
-
 export interface Customer{
   CustomerId?: string; //  (Guid , optional) : Nullable The unique identifier for a customer. PUT - CustomerId will be ignored ,
   EMail: string; //  (integer , Required) : The customer's email address ,
