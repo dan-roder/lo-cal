@@ -39,7 +39,6 @@
         .description{
           p{
             margin: 0 auto;
-            @include fontsize(14);
             max-width: 90%;
           }
         }
