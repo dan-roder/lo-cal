@@ -48,7 +48,6 @@
 
 .mobile-menu{
   background: rgba(0,0,0,.6);
-  @include transition();
   pointer-events: auto;
   opacity: 1;
   position: fixed;
