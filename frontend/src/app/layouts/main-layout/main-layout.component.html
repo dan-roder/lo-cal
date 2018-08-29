@@ -1,4 +1,8 @@
 <div class="mobile-menu" *responsive="{ sizes: {min:300, max:860}}" [ngClass]="mobileMenuState" (click)="toggleMobileMenuState($event.target)">
+  <div class="close white">
+    <span></span>
+    <span></span>
+  </div>
   <div class="mobile-menu-content">
     <ul>
       <li><a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Home</a></li>
