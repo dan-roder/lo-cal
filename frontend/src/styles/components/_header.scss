@@ -8,6 +8,7 @@ header{
 
   .header-content{
     padding: 180px 0 100px;
+    @extend %overlay;
 
     @include breakpoint($bp-768){
       padding: 350px 0 200px;
@@ -21,6 +22,8 @@ header{
       text-transform: uppercase;
       text-shadow: 0 1px 10px rgba(0, 0, 0, 0.23);
       color: $white;
+      position: relative;
+      z-index: 4;
     }
 
     .home &{
