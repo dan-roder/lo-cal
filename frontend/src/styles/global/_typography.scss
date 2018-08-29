@@ -66,9 +66,13 @@ a{
 
 h1{
   @extend %sofia-semi-bold;
-  @include fontsize(50);
+  @include fontsize(42);
   margin-top: 15px;
   margin-bottom: 15px;
+
+  @include breakpoint($bp-500){
+    @include fontsize(50);
+  }
 
   @include breakpoint($bp-680){
     @include fontsize(60);
