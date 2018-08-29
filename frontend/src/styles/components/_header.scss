@@ -15,7 +15,6 @@ header{
     }
 
     h1{
-      @include fontsize(60);
       @extend %sofia-semi-bold;
       letter-spacing: 2.7px;
       margin-top: 0;
@@ -24,6 +23,7 @@ header{
       color: $white;
       position: relative;
       z-index: 4;
+      padding: 0 10px;
     }
 
     .home &{
