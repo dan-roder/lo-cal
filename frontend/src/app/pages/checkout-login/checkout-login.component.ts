@@ -21,9 +21,9 @@ export class CheckoutLoginComponent implements OnInit {
     private route: ActivatedRoute,
     private orderService: OrderService) {
     this.guestForm = fb.group({
-      'first-name' : ['', Validators.required],
-      'last-name' : ['', Validators.required],
-      'email-address' : ['', [Validators.required, Validators.email]]
+      'first-name' : ['', Validators.required, Validators.maxLength(28)],
+      'last-name' : ['', Validators.required, Validators.maxLength(28)],
+      'email-address' : ['', [Validators.required, Validators.email, Validators.maxLength(45)]]
     })
   }
 
