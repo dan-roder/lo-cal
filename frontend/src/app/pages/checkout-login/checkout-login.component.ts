@@ -37,7 +37,8 @@ export class CheckoutLoginComponent implements OnInit {
       let customer: Customer = {
         FirstName : formData.controls['first-name'].value,
         LastName : formData.controls['last-name'].value,
-        EMail : formData.controls['email-address'].value
+        EMail : formData.controls['email-address'].value,
+        IsGuest : true
       }
 
       // Redirect to checkout review
