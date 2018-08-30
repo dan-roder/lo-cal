@@ -23,9 +23,9 @@ export class CreateAccountComponent implements OnInit {
 
   constructor(private fb: FormBuilder, private customerService: CustomerService, private route: ActivatedRoute, private router: Router) {
     this.accountForm = fb.group({
-      'first-name' : [null, Validators.required],
-      'last-name' : [null, Validators.required],
-      'email' : [null, [Validators.required, Validators.email]],
+      'first-name' : [null, Validators.required, Validators.maxLength(28)],
+      'last-name' : [null, Validators.required, Validators.maxLength(28)],
+      'email' : [null, [Validators.required, Validators.email, Validators.maxLength(45)]],
       // TODO: Implement more strict password rules from Ken's regex
       'password' : ['', [Validators.required, Validators.minLength(8)]],
       'confirm-password' : ['', Validators.required],
