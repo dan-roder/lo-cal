@@ -3,6 +3,12 @@
   background-repeat: no-repeat;
   background-size: cover;
   background-position: right;
+  position: relative;
+  @extend %overlay;
+
+  .content{
+    position: relative;
+  }
 
   .body{
     max-width: 50%;
