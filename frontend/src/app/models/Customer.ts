@@ -16,6 +16,7 @@ export interface Customer{
   Birthday?: string; //  (string , optional) : Get or set the Birthday property ,
   LoyaltyZipCode?: string; //  (string , optional) : Get or set the LoyaltyZipCode property ,
   FacebookId?: number; //  (integer , optional) : Get or sets facebookid property
+  IsGuest?: boolean;
 }
 
 export interface CustomerAddress{
