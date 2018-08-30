@@ -1,6 +1,5 @@
 .menu-categories{
   .menu-items{
-    @extend %clearfix;
     display: flex;
     flex-flow: row wrap;
     justify-content: space-between;
@@ -15,23 +14,23 @@
     }
 
     .item{
-      display: flex;
-      flex: 1 auto;
       width: 50%;
+      margin: 0 0 20px;
 
       @include breakpoint($bp-460){
 
       }
 
       @include breakpoint($bp-768){
-        width: calc(33.3333% - 30px);
+        width: 33.3333%;
       }
 
       .item-wrapper{
         padding: 20px;
         border: 1px solid $e1;
-        margin: 15px;
-        width: 100%;
+        margin: 0 15px;
+        box-sizing: border-box;
+        height: 100%;
 
         .title{
           max-width: 200px;
