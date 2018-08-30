@@ -40,9 +40,23 @@
         <div class="error-message" *ngIf="!accountForm.controls['confirm-password'].valid && submittedOnce">This field is required.</div>
         <div class="error-message" *ngIf="accountForm.controls['confirm-password'].errors?.MatchPassword">Password does not match.</div>
       </div>
-      <div class="form-component form-component-text">
+      <div class="form-component form-component-select">
         <label for="security-question" class="visuallyhidden">Security Question</label>
-        <input type="text" name="security-question" id="security-question" formControlName="security-question" placeholder="Security Question*" [ngClass]="{'has-error':!accountForm.controls['security-question'].valid && submittedOnce}">
+        <select name="security-question" id="security-question" formControlName="security-question"  [ngClass]="{'has-error':!accountForm.controls['security-question'].valid && submittedOnce}">
+          <option value="">- Select -</option>
+          <option value="What was your childhood nickname?">What was your childhood nickname?</option>
+          <option value="What is the name of your favorite childhood friend?">What is the name of your favorite childhood friend?</option>
+          <option value="In what city or town did your mother and father meet?">In what city or town did your mother and father meet?</option>
+          <option value="What is your favorite team?">What is your favorite team?</option>
+          <option value="What is your favorite movie?">What is your favorite movie?</option>
+          <option value="What was your favorite sport in high school?">What was your favorite sport in high school?</option>
+          <option value="What was your favorite food as a child?">What was your favorite food as a child?</option>
+          <option value="What was the make and model of your first car?">What was the make and model of your first car?</option>
+          <option value="What was the name of the hospital where you were born?">What was the name of the hospital where you were born?</option>
+          <option value="What school did you attend for sixth grade?">What school did you attend for sixth grade?</option>
+          <option value="In what town was your first job?">In what town was your first job?</option>
+          <option value="What was the name of the company where you had your first job?">What was the name of the company where you had your first job?</option>
+        </select>
         <div class="error-message" *ngIf="!accountForm.controls['security-question'].valid && submittedOnce">This field is required.</div>
       </div>
       <div class="form-component form-component-text">
