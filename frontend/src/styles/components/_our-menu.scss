@@ -25,6 +25,11 @@
         @extend %sofia-medium;
         text-decoration: none;
         color: $c-31;
+        @include transition(color);
+
+        &:hover{
+          color: $orange-red;
+        }
       }
     }// .item
   }// .menu-items
