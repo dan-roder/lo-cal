@@ -35,7 +35,15 @@ export class BagComponent implements OnInit {
     this.bagCount = this.bagService.itemCountInBag;
   }
 
-  toggleBagState(){
+  toggleBagState(target){
+    if(target !== undefined){
+      if(target.className !== undefined && target.className.indexOf('checkout-overlay') !== -1){
+        this.state = (this.state === 'invisible') ? 'visible' : 'invisible';
+        this.bagState.emit(this.state);
+      }
+
+      return;
+    }
     this.state = (this.state === 'invisible') ? 'visible' : 'invisible';
     this.bagState.emit(this.state);
   }
