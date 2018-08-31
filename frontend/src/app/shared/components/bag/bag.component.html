@@ -1,4 +1,4 @@
-<div class="checkout-overlay" [ngClass]="state">
+<div class="checkout-overlay" [ngClass]="state" (click)="toggleBagState($event.target)">
   <div class="checkout-content-wrapper" [@hideShowBag]='state'>
     <div class="checkout-inner-wrapper">
 
