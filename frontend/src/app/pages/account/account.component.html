@@ -119,10 +119,17 @@
     <h3>Change Password</h3>
     <a href="" (click)="editPassword()" role="button">{{ editingPassword ? 'Cancel' : 'Edit' }}</a>
   </div>
-  <form action="" [formGroup]="passwordForm" class="lo-cal-form" [ngClass]="editingPassword ? 'editing' : 'static'" (submit)="saveNewPassword(passwordForm)">
+  <form action="" [formGroup]="passwordForm" class="lo-cal-form" [ngClass]="editingPassword ? 'editing' : 'static'" (submit)="updatePassword(passwordForm)">
+    <div class="form-errors" *ngIf="passwordError"><p>{{ passwordError }}</p></div>
+    <div class="form-success"><p>{{ passwordSuccess }}</p></div>
     <div class="form-component form-component-text">
-      <label for="password" class="visuallyhidden">New Password</label>
-      <input type="password" [readonly]="!editingPassword" name="password" id="password" formControlName="password" placeholder="New Password* (8 or more characters)" [ngClass]="{'has-error':!passwordForm.controls['password'].valid && submittedOnce}">
+      <label for="old-password" class="visuallyhidden">Old Password</label>
+      <input type="password" [readonly]="!editingPassword" name="old-password" id="old-password" formControlName="old-password" placeholder="Old Password" [ngClass]="{'has-error':!passwordForm.controls['old-password'].valid && submittedOnce}">
+      <div class="error-message" *ngIf="!passwordForm.controls['old-password'].valid && submittedOnce">This field is required.</div>
+    </div>
+    <div class="form-component form-component-text">
+      <label for="new-password" class="visuallyhidden">New Password</label>
+      <input type="password" [readonly]="!editingPassword" name="password" id="new-password" formControlName="password" placeholder="New Password* (8 or more characters)" [ngClass]="{'has-error':!passwordForm.controls['password'].valid && submittedOnce}">
       <div class="error-message" *ngIf="!passwordForm.controls['password'].valid && submittedOnce">This field is required.</div>
       <div class="error-message" *ngIf="passwordForm.controls['password'].value.length > 2 && passwordForm.controls['password'].errors?.minlength">Password must be at least 8 characters, contain at least 1 number, and 1 uppercase character.</div>
     </div>
@@ -132,17 +139,49 @@
       <div class="error-message" *ngIf="!passwordForm.controls['confirm-password'].valid && submittedOnce">This field is required.</div>
       <div class="error-message" *ngIf="passwordForm.controls['confirm-password'].errors?.MatchPassword">Password does not match.</div>
     </div>
-    <div class="form-component form-component-text" *ngIf="editingPassword">
-      <p>{{ securityQuestion }}</p>
-    </div>
-    <div class="form-component form-component-text" [hidden]="!editingPassword">
-      <label for="password" class="visuallyhidden">Security Answer</label>
-      <input type="text" [readonly]="!editingPassword" name="security-answer" id="security-answer" formControlName="security-answer" placeholder="Security Answer*" [ngClass]="{'has-error':!passwordForm.controls['security-answer'].valid && submittedOnce}">
-      <div class="error-message" *ngIf="!passwordForm.controls['security-answer'].valid && submittedOnce">This field is required.</div>
-    </div>
 
     <div class="submit red-button full-width-button submit">
       <input type="submit" value="Save" *ngIf="editingPassword" [disabled]="!passwordForm.valid">
+    </div>
+  </form>
+</div>
+
+<div class="account-section">
+  <div class="account-heading">
+    <h3>Change Security Question</h3>
+    <a href="" (click)="editQuestion()" role="button">{{ editingQuestion ? 'Cancel' : 'Edit' }}</a>
+  </div>
+  <form action="" [formGroup]="questionForm" class="lo-cal-form" [ngClass]="editingQuestion ? 'editing' : 'static'" (submit)="updateSecurityQuestion(questionForm)">
+    <div class="form-component form-component-text">
+      <label for="current-password" class="visuallyhidden">Current Password</label>
+      <input type="password" [readonly]="!editingQuestion" name="current-password" id="current-password" formControlName="current-password" placeholder="Current Password" [ngClass]="{'has-error':!questionForm.controls['current-password'].valid && submittedOnce}">
+      <div class="error-message" *ngIf="!questionForm.controls['current-password'].valid && submittedOnce">This field is required.</div>
+    </div>
+    <div class="form-component form-component-select">
+      <label for="security-question" class="visuallyhidden">Security Question</label>
+      <select name="security-question" id="security-question" formControlName="security-question"  [ngClass]="{'has-error':!questionForm.controls['security-question'].valid && submittedOnce}">
+        <option value="">- Select -</option>
+        <option value="What was your childhood nickname?">What was your childhood nickname?</option>
+        <option value="What is the name of your favorite childhood friend?">What is the name of your favorite childhood friend?</option>
+        <option value="In what city or town did your mother and father meet?">In what city or town did your mother and father meet?</option>
+        <option value="What is your favorite team?">What is your favorite team?</option>
+        <option value="What is your favorite movie?">What is your favorite movie?</option>
+        <option value="What was your favorite sport in high school?">What was your favorite sport in high school?</option>
+        <option value="What was your favorite food as a child?">What was your favorite food as a child?</option>
+        <option value="What was the make and model of your first car?">What was the make and model of your first car?</option>
+        <option value="What was the name of the hospital where you were born?">What was the name of the hospital where you were born?</option>
+        <option value="What school did you attend for sixth grade?">What school did you attend for sixth grade?</option>
+        <option value="In what town was your first job?">In what town was your first job?</option>
+        <option value="What was the name of the company where you had your first job?">What was the name of the company where you had your first job?</option>
+      </select>
+      <div class="error-message" *ngIf="!questionForm.controls['security-question'].valid && submittedOnce">This field is required.</div>
+    </div>
+    <div class="form-component form-component-text">
+      <label for="security-answer" class="visuallyhidden">Security Answer</label>
+      <input type="text" [readonly]="!editingQuestion" name="security-answer" id="security-answer" formControlName="security-answer" placeholder="Security Answer" [ngClass]="{'has-error':!questionForm.controls['security-answer'].valid && submittedOnce}">
+    </div>
+    <div class="submit red-button full-width-button submit">
+      <input type="submit" value="Save" *ngIf="editingQuestion" [disabled]="!questionForm.valid">
     </div>
   </form>
 </div>
