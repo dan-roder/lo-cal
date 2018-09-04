@@ -45,6 +45,14 @@ export interface InLogin{
   Password : string;
 }
 
+export interface InLoginUpdate{
+  Email: string;
+  OldPassword: string;
+  NewPassword?: string;
+  NewSecurityQuestion?: string;
+  NewAnswer?: string;
+}
+
 export interface InPasswordReset{
   Email: string;
   SecurityAnswer: string;
