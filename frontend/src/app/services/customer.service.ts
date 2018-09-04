@@ -127,7 +127,7 @@ export class CustomerService {
    * @returns Observable of User Security Question
    */
   public getSecurityQuestion(email: string): Observable<any>{
-    return this.httpClient.get(this.config.securityQuestionEndpoint + `${email}`).map((question) => {
+    return this.httpClient.get(this.config.railsCustomerEndpoint + `/securityquestions?Email=${email}`, {responseType: 'text'}).map((question) => {
       return question;
     })
   }
@@ -151,7 +151,6 @@ export class CustomerService {
   }
 
   set customer(customer: Customer){
-    console.log('set customer', customer);
     this._customer = customer;
   }
 
