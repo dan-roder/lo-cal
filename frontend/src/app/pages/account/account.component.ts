@@ -1,12 +1,13 @@
 import { Component, OnInit, Inject, Injectable } from '@angular/core';
 import { CustomerService } from '@local/services/customer.service';
-import { Customer, RailsUpdate, InPasswordReset } from '@local/models/Customer';
+import { Customer, RailsUpdate, InLoginUpdate,  } from '@local/models/Customer';
 import { LocalStorage } from '@ngx-pwa/local-storage';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { PasswordMatch } from '@local/utils/passwordmatch';
 import { AutoUnsubscribe } from 'ngx-auto-unsubscribe';
 import { SavedPayment } from '@local/models/Payment';
 import { DOCUMENT } from '@angular/platform-browser';
+import { Router } from '@angular/router';
 
 @AutoUnsubscribe()
 
@@ -19,15 +20,20 @@ export class AccountComponent implements OnInit {
   private customerId : string = '';
   public accountForm : FormGroup;
   public passwordForm : FormGroup;
+  public questionForm : FormGroup;
   public editing : boolean = false;
   public editingPassword : boolean = false;
   public editingPayments : boolean = false;
+  public editingQuestion : boolean = false;
   public errorOccurred : boolean = false;
   public submittedOnce : boolean = false;
   public savedPayments : SavedPayment;
   public securityQuestion : string = '';
+  public passwordError : string = '';
+  public passwordSuccess : string = '';
 
-  constructor(private customerService: CustomerService, private localStorage : LocalStorage, private fb: FormBuilder, @Inject(DOCUMENT) private document: any) {
+
+  constructor(private customerService: CustomerService, private localStorage : LocalStorage, private fb: FormBuilder, @Inject(DOCUMENT) private document: any, private router: Router) {
     this.accountForm = fb.group({
       'first-name' : [null, Validators.required],
       'last-name' : [null, Validators.required],
@@ -39,15 +45,21 @@ export class AccountComponent implements OnInit {
         'state' : [{value:'', disabled: true}, Validators.required],
         'zip' : [null, [Validators.required, Validators.pattern('^[0-9]{5}$')]]
       })
-    })
+    });
 
     this.passwordForm = fb.group({
+      'old-password' : ['', Validators.required],
       'password' : ['', Validators.compose([Validators.required, Validators.minLength(8), Validators.pattern(/(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/)])],
-      'confirm-password' : ['', Validators.required],
-      'security-answer' : ['', Validators.required],
+      'confirm-password' : ['', Validators.required]
     }, {
       validator : PasswordMatch.MatchPassword
-    })
+    });
+
+    this.questionForm = fb.group({
+      'current-password' : ['', Validators.required],
+      'security-question' : ['', Validators.required],
+      'security-answer' : ['', Validators.required]
+    });
   }
 
   ngOnInit() {
@@ -56,6 +68,9 @@ export class AccountComponent implements OnInit {
       this.customer = customerData;
       this.customerId = customerData.CustomerId;
       this.patchAccountForm(customerData);
+
+      // Retrieve security question
+      this.getSecurityQuestion();
 
       this.customerService.getSavedPayments(this.customerId).subscribe(paymentMethods => {
         this.savedPayments = paymentMethods;
@@ -83,20 +98,16 @@ export class AccountComponent implements OnInit {
 
   public editPassword(){
     this.editingPassword = !this.editingPassword;
-
-    // Retrieve security question when editing if it hasn't been fetched before
-    if(this.securityQuestion === ''){
-      this.customerService.getSecurityQuestion(this.customer.EMail).subscribe((question) => {
-        this.securityQuestion = question;
-      }, (error) => {
-        console.log(error);
-      })
-    }
     return false;
   }
 
   public editPayments(){
     this.editingPayments = !this.editingPayments;
+    return false;
+  }
+
+  public editQuestion(){
+    this.editingQuestion = !this.editingQuestion;
     return false;
   }
 
@@ -138,27 +149,45 @@ export class AccountComponent implements OnInit {
     }
   }
 
-  public saveNewPassword(formData){
-    console.log(formData);
-
+  public updatePassword(formData){
     if(formData.valid){
-      let inPasswordReset : InPasswordReset = {
+      let loginInfo : InLoginUpdate = {
         Email : this.customer.EMail,
-        NewPassword : formData.controls['password'].value,
-        SecurityAnswer : formData.controls['security-answer'].value
+        OldPassword : formData.get('old-password').value,
+        NewPassword : formData.get('password').value
       }
 
-      // TODO: Check that this is posting correctly
-      this.customerService.updatePassword(inPasswordReset).subscribe((result) => {
-        console.log(result);
+      this.customerService.updateLoginInfo(loginInfo).subscribe((result) => {
+        if(result === null){
+          this.passwordSuccess = 'Password successfully changed. You will now be logged out and need to log in again.';
+          this.destroyAndLogout();
+        }
       }, (error) => {
-        console.log(error);
-      })
-
-      // TODO: If successful, destroy login session and redirect to login page
+        this.passwordError = error.error.message;
+      });
     }
 
     this.editingPassword = false;
+  }
+
+  public updateSecurityQuestion(formData){
+    if(formData.valid){
+      let loginInfo : InLoginUpdate = {
+        Email : this.customer.EMail,
+        OldPassword : formData.get('password').value,
+        NewSecurityQuestion : formData.get('security-question').value,
+        NewAnswer : formData.get('security-answer').value
+      }
+
+      this.customerService.updateLoginInfo(loginInfo).subscribe((result) => {
+        // TODO: Display success message if successful
+        // TODO: Patch question form to show new message temporarily
+        console.log(result);
+      }, (error) => {
+        // TODO: Display error messages
+        console.log(error);
+      });
+    }
   }
 
   public deletePaymentMethod(paymentId: string){
@@ -169,6 +198,29 @@ export class AccountComponent implements OnInit {
         let paymentMethodObject = this.document.getElementsByClassName('id-'+paymentId);
         paymentMethodObject[0].parentNode.removeChild(paymentMethodObject[0]);
       });
+    }
+  }
+
+  private destroyAndLogout(){
+    setTimeout(() => {
+      this.localStorage.removeItem('user').subscribe(() => {
+        this.router.navigateByUrl('/login');
+      });
+    }, 4000);
+  }
+
+  public getSecurityQuestion(){
+    // Retrieve security question if it hasn't been fetched before
+    if(this.securityQuestion === ''){
+      this.customerService.getSecurityQuestion(this.customer.EMail).subscribe((question) => {
+        this.securityQuestion = question;
+
+        this.questionForm.patchValue({
+          'security-question' : question
+        });
+      }, (error) => {
+        console.log(error);
+      })
     }
   }
 }
