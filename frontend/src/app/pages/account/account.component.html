@@ -152,10 +152,11 @@
     <a href="" (click)="editQuestion()" role="button">{{ editingQuestion ? 'Cancel' : 'Edit' }}</a>
   </div>
   <form action="" [formGroup]="questionForm" class="lo-cal-form" [ngClass]="editingQuestion ? 'editing' : 'static'" (submit)="updateSecurityQuestion(questionForm)">
-    <div class="form-component form-component-text">
-      <label for="current-password" class="visuallyhidden">Current Password</label>
-      <input type="password" [readonly]="!editingQuestion" name="current-password" id="current-password" formControlName="current-password" placeholder="Current Password" [ngClass]="{'has-error':!questionForm.controls['current-password'].valid && submittedOnce}">
-      <div class="error-message" *ngIf="!questionForm.controls['current-password'].valid && submittedOnce">This field is required.</div>
+    <div class="form-errors" *ngIf="questionError">
+      <p>{{ questionError }}</p>
+    </div>
+    <div class="form-success" *ngIf="questionSuccess">
+      <p>{{ questionSuccess }}</p>
     </div>
     <div class="form-component form-component-select">
       <label for="security-question" class="visuallyhidden">Security Question</label>
@@ -176,9 +177,14 @@
       </select>
       <div class="error-message" *ngIf="!questionForm.controls['security-question'].valid && submittedOnce">This field is required.</div>
     </div>
-    <div class="form-component form-component-text">
+    <div class="form-component form-component-text" [hidden]="!editingQuestion">
       <label for="security-answer" class="visuallyhidden">Security Answer</label>
       <input type="text" [readonly]="!editingQuestion" name="security-answer" id="security-answer" formControlName="security-answer" placeholder="Security Answer" [ngClass]="{'has-error':!questionForm.controls['security-answer'].valid && submittedOnce}">
+    </div>
+    <div class="form-component form-component-text" [hidden]="!editingQuestion">
+      <label for="current-password" class="visuallyhidden">Current Password</label>
+      <input type="password" [readonly]="!editingQuestion" name="current-password" id="current-password" formControlName="current-password" placeholder="Current Password" [ngClass]="{'has-error':!questionForm.controls['current-password'].valid && submittedOnce}">
+      <div class="error-message" *ngIf="!questionForm.controls['current-password'].valid && submittedOnce">This field is required.</div>
     </div>
     <div class="submit red-button full-width-button submit">
       <input type="submit" value="Save" *ngIf="editingQuestion" [disabled]="!questionForm.valid">
