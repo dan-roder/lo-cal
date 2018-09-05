@@ -31,6 +31,8 @@ export class AccountComponent implements OnInit {
   public securityQuestion : string = '';
   public passwordError : string = '';
   public passwordSuccess : string = '';
+  public questionError : string = '';
+  public questionSuccess : string = '';
 
 
   constructor(private customerService: CustomerService, private localStorage : LocalStorage, private fb: FormBuilder, @Inject(DOCUMENT) private document: any, private router: Router) {
@@ -174,18 +176,16 @@ export class AccountComponent implements OnInit {
     if(formData.valid){
       let loginInfo : InLoginUpdate = {
         Email : this.customer.EMail,
-        OldPassword : formData.get('password').value,
+        OldPassword : formData.get('current-password').value,
         NewSecurityQuestion : formData.get('security-question').value,
         NewAnswer : formData.get('security-answer').value
       }
 
       this.customerService.updateLoginInfo(loginInfo).subscribe((result) => {
-        // TODO: Display success message if successful
-        // TODO: Patch question form to show new message temporarily
-        console.log(result);
+        this.questionSuccess = 'Your security question has been succesfully updated';
+        this.editingQuestion = !this.editingQuestion;
       }, (error) => {
-        // TODO: Display error messages
-        console.log(error);
+        this.questionError = error.error.message;
       });
     }
   }
