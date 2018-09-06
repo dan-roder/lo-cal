@@ -22,6 +22,10 @@
       @include fontsize(14);
       @extend %sofia-medium;
     }
+
+    &.single-link{
+      display: block;
+    }
   }
 
   .simple{
