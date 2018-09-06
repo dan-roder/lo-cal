@@ -146,6 +146,18 @@ export class CustomerService {
     });
   }
 
+  /**
+   *
+   * @param email
+   *
+   * @returns Observable of whether or not request was successful
+   */
+  public forcePasswordReset(email: any): Observable<any>{
+    return this.httpClient.post(this.config.railsCustomerEndpoint + `/passwordreset/email`, email).map((result) => {
+      return result;
+    })
+  }
+
   get customer(): Customer{
     return this._customer;
   }
