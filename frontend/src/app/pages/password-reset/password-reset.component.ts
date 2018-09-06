@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AutoUnsubscribe } from 'ngx-auto-unsubscribe';
 import { CustomerService } from '@local/services/customer.service';
+import { PasswordMatch } from '@local/utils/passwordmatch';
 
 @AutoUnsubscribe()
 
@@ -15,11 +16,17 @@ export class PasswordResetComponent implements OnInit {
   public foundSecurityQuestion: boolean = false;
   public errorData: any = {};
   public securityQuestion: string = '';
+  public switchForms: boolean = false;
+  public submittedOnce: boolean = false;
 
   constructor(private fb: FormBuilder, private customerService: CustomerService) {
     this.passwordResetForm = fb.group({
       'email' : [null, [Validators.required, Validators.email]],
-      'security-answer' : [null, Validators.required]
+      'security-answer' : [null, Validators.required],
+      'password' : [null, [Validators.required, Validators.minLength(8)]],
+      'confirm-password' : [null, Validators.required]
+    }, {
+      validator : PasswordMatch.MatchPassword
     });
 
     this.forcePasswordResetForm = fb.group({
@@ -46,11 +53,22 @@ export class PasswordResetComponent implements OnInit {
     }
   }
 
-  public resetPassword(formData){
-
+  public forcePasswordReset(formData){
     if(formData.valid){
-
+      let psReset = {
+        Email : formData.get('email').value
+      }
+      this.customerService.forcePasswordReset(psReset).subscribe(result => {
+        console.log(result);
+      }, error => {
+        console.log(error);
+      })
     }
+  }
+
+  public swapForms(): boolean{
+    this.switchForms = !this.switchForms;
+    return false;
   }
 
   ngOnInit() {
