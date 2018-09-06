@@ -100,6 +100,8 @@ export class AccountComponent implements OnInit {
 
   public editPassword(){
     this.editingPassword = !this.editingPassword;
+    this.passwordError = '';
+    this.passwordSuccess = '';
     return false;
   }
 
@@ -110,6 +112,8 @@ export class AccountComponent implements OnInit {
 
   public editQuestion(){
     this.editingQuestion = !this.editingQuestion;
+    this.questionError = '';
+    this.questionSuccess = '';
     return false;
   }
 
