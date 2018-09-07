@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AutoUnsubscribe } from 'ngx-auto-unsubscribe';
 import { CustomerService } from '@local/services/customer.service';
 import { PasswordMatch } from '@local/utils/passwordmatch';
+import { InPasswordReset } from '@local/models/Customer';
 
 @AutoUnsubscribe()
 
@@ -18,13 +19,16 @@ export class PasswordResetComponent implements OnInit {
   public securityQuestion: string = '';
   public switchForms: boolean = false;
   public submittedOnce: boolean = false;
+  public passwordResetError: string = '';
+  public passwordSuccess: boolean = false;
+  public processing: boolean = false;
 
   constructor(private fb: FormBuilder, private customerService: CustomerService) {
     this.passwordResetForm = fb.group({
       'email' : [null, [Validators.required, Validators.email]],
       'security-answer' : [null, Validators.required],
-      'password' : [null, [Validators.required, Validators.minLength(8)]],
-      'confirm-password' : [null, Validators.required]
+      'password' : ['', [Validators.required, Validators.minLength(8)]],
+      'confirm-password' : ['', Validators.required]
     }, {
       validator : PasswordMatch.MatchPassword
     });
@@ -49,7 +53,23 @@ export class PasswordResetComponent implements OnInit {
   public resetPasswordWithAnswer(formData){
 
     if(formData.valid){
+      this.processing = true;
+      let newPassData: InPasswordReset = {
+        Email : formData.get('email').value,
+        SecurityAnswer : formData.get('security-answer').value,
+        NewPassword : formData.get('password').value
+      }
 
+      this.customerService.passwordResetWithAnswer(newPassData).subscribe(result => {
+        if(result){
+          this.processing = false;
+          this.passwordResetError = '';
+          this.passwordSuccess = true;
+        }
+      }, error => {
+        this.processing = false;
+        this.passwordResetError = error.error.message;
+      })
     }
   }
 
