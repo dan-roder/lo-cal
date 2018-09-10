@@ -1,5 +1,6 @@
 .food-details{
   background-color: $d;
+  text-align: center;
 
   @include breakpoint($bp-768){
     background: url('/assets/images/light-grey-pattern-bg.jpg');
