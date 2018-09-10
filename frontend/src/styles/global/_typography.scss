@@ -39,7 +39,7 @@ p{
   @include fontsize(16);
 
   &.promotion-text{
-    @include fontsize(24);
+    @include fontsize(20);
     @extend %sofia-regular;
     letter-spacing: 0.8px;
     color: $off-black;
