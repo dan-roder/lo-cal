@@ -41,7 +41,6 @@ header{
         @extend %sofia-medium;
         line-height: 1.2;
         margin: 0 0 .5em;
-        color: $orange-red;
 
         @include breakpoint($bp-768){
           @include fontsize(60);
