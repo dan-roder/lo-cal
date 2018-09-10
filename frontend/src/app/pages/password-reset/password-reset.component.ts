@@ -21,7 +21,11 @@ export class PasswordResetComponent implements OnInit {
   public submittedOnce: boolean = false;
   public passwordResetError: string = '';
   public passwordSuccess: boolean = false;
+  public forcePasswordSuccess: boolean = false;
+  public forceProcessing: boolean = false;
   public processing: boolean = false;
+  public securityQuestionError: string = '';
+  public forcePasswordError: string = '';
 
   constructor(private fb: FormBuilder, private customerService: CustomerService) {
     this.passwordResetForm = fb.group({
@@ -39,12 +43,19 @@ export class PasswordResetComponent implements OnInit {
   }
 
   public retrieveSecurityQuestion(email){
+    // Start spinner
+    this.processing = true;
+    this.securityQuestionError = '';
+
+    // Call API to get security question for user's email
     this.customerService.getSecurityQuestion(email).subscribe(question => {
-      console.log(question);
+      this.processing = false;
       this.foundSecurityQuestion = true;
       this.securityQuestion = question;
     }, error => {
-      console.log(error);
+      this.processing = false;
+      let errorMessage = JSON.parse(error.error).message;
+      this.securityQuestionError = errorMessage;
     });
 
     return false;
@@ -74,14 +85,19 @@ export class PasswordResetComponent implements OnInit {
   }
 
   public forcePasswordReset(formData){
+    this.forceProcessing = true;
+    this.forcePasswordError = '';
+
     if(formData.valid){
       let psReset = {
         Email : formData.get('email').value
       }
       this.customerService.forcePasswordReset(psReset).subscribe(result => {
-        console.log(result);
+        this.forcePasswordSuccess = true;
+        this.forceProcessing = false;
       }, error => {
-        console.log(error);
+        this.forcePasswordError = error.error.message;
+        this.forceProcessing = false;
       })
     }
   }
