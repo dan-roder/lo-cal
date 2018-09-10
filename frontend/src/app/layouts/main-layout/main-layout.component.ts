@@ -3,6 +3,7 @@ import { WordpressService } from '@local/services/wp.service';
 import { BagService } from '@local/services/bag.service';
 import { LineItem } from '@local/models/LineItem';
 import { LocalStorage } from '@ngx-pwa/local-storage';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -21,10 +22,13 @@ export class MainLayoutComponent implements OnInit {
   constructor(
     private wpService: WordpressService,
     private bagService: BagService,
-    private localStorage: LocalStorage
+    private localStorage: LocalStorage,
+    private router: Router
   ) { }
 
   ngOnInit() {
+    console.log(this.router.url);
+    this.currentUrl = this.router.url;
     this.wpService.getMenu(2).subscribe(m => this.mainMenuLinks = m.items);
   }
 
