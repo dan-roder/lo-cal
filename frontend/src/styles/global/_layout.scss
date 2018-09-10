@@ -96,6 +96,14 @@
     width: 38px;
     height: 38px;
   }
+
+  &.menu-loading{
+    margin: 150px auto 0;
+
+    @include breakpoint($bp-768){
+      margin: 0 auto;
+    }
+  }
 }
 
 .button-wrapper{
