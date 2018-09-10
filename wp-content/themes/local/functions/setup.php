@@ -67,6 +67,12 @@ function my_mce_before_init_insert_formats( $init_array ) {
       'block' => 'p',
       'classes' => 'promotion-text',
       'wrapper' => false
+    ),
+    array(
+      'title' => 'Red Text',
+      'block' => 'span',
+      'classes' => 'red-text',
+      'wrapper' => false
     )
 
 	);
