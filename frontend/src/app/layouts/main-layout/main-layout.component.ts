@@ -27,7 +27,6 @@ export class MainLayoutComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    console.log(this.router.url);
     this.currentUrl = this.router.url;
     this.wpService.getMenu(2).subscribe(m => this.mainMenuLinks = m.items);
   }
