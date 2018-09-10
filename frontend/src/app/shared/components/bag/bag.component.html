@@ -2,64 +2,62 @@
   <div class="checkout-content-wrapper" [@hideShowBag]='state'>
     <div class="checkout-inner-wrapper">
 
-        <div class="checkout-step">
-          <div class="checkout-top">
-            <div class="checkout-header">
-              <div class="back">
-              </div>
-              <div class="checkout-title">My Bag</div>
-              <div class="close" (click)="toggleBagState()">
-                <span class="close-1"></span>
-                <span class="close-2"></span>
-              </div>
-            </div><!-- /.checkout-header -->
+        <div class="checkout-top">
+          <div class="checkout-header">
+            <div class="back">
+            </div>
+            <div class="checkout-title">My Bag</div>
+            <div class="close" (click)="toggleBagState()">
+              <span class="close-1"></span>
+              <span class="close-2"></span>
+            </div>
+          </div><!-- /.checkout-header -->
 
-            <div class="items">
+          <div class="items">
 
-              <div class="item" *ngFor="let menuItem of bagItems; let i = index;">
-                <div class="item-review-wrapper">
-                  <div class="left image">
-                    <img [src]="menuItem?.cartImage" alt="" class="item-image">
-                    <img src="/wp-content/themes/local/dist/assets/svgs/delete-cross-icon.svg" alt="X to remove item from cart" class="remove-image" (click)="removeFromBagAtIndex(i)">
+            <div class="item" *ngFor="let menuItem of bagItems; let i = index;">
+              <div class="item-review-wrapper">
+                <div class="left image">
+                  <img [src]="menuItem?.cartImage" alt="" class="item-image">
+                  <img src="/wp-content/themes/local/dist/assets/svgs/delete-cross-icon.svg" alt="X to remove item from cart" class="remove-image" (click)="removeFromBagAtIndex(i)">
+                </div>
+                <div class="bag-detail-card">
+                  <div class="title-container">
+                    <div class="title">{{ menuItem?.Name }} <span class="quantity">x {{ menuItem?.Quantity }}</span></div>
                   </div>
-                  <div class="bag-detail-card">
-                    <div class="title-container">
-                      <div class="title">{{ menuItem?.Name }} <span class="quantity">x {{ menuItem?.Quantity }}</span></div>
-                    </div>
-                    <div class="ingredients" *ngIf="menuItem?.ShortDescription">
-                      {{ (menuItem?.ShortDescription | allergens)?.description }}
-                    </div>
-                    <div class="additions" *ngIf="menuItem?.Modifiers">
-                      <span class="modifier" *ngFor="let mod of menuItem?.Modifiers; let last = last;">{{ mod?.Name }}<span class="separator" *ngIf="!last">,</span> </span>
-                    </div>
-                    <div class="fine-details">
-                      <span class="price">{{ menuItem?.ExtendedPrice | currency }}</span>
-                      <span class="calories" *ngIf="menuItem?.caloricValue">{{ menuItem?.caloricValue }} cal</span>
-                      <span class="allergens" *ngIf="(menuItem?.ShortDescription.indexOf('[') > -1)">
-                        <span class="allergen" *ngFor="let allergen of (menuItem?.ShortDescription | allergens).allergens">{{ allergen }}</span>
-                      </span>
-                    </div>
-                  </div><!-- /.bag-detail-card -->
-                </div><!-- /.item -->
-                </div><!-- /.item-review-wrapper -->
-            </div><!-- /.checkout-items -->
-          </div><!-- /.checkout-top -->
+                  <div class="ingredients" *ngIf="menuItem?.ShortDescription">
+                    {{ (menuItem?.ShortDescription | allergens)?.description }}
+                  </div>
+                  <div class="additions" *ngIf="menuItem?.Modifiers">
+                    <span class="modifier" *ngFor="let mod of menuItem?.Modifiers; let last = last;">{{ mod?.Name }}<span class="separator" *ngIf="!last">,</span> </span>
+                  </div>
+                  <div class="fine-details">
+                    <span class="price">{{ menuItem?.ExtendedPrice | currency }}</span>
+                    <span class="calories" *ngIf="menuItem?.caloricValue">{{ menuItem?.caloricValue }} cal</span>
+                    <span class="allergens" *ngIf="(menuItem?.ShortDescription.indexOf('[') > -1)">
+                      <span class="allergen" *ngFor="let allergen of (menuItem?.ShortDescription | allergens).allergens">{{ allergen }}</span>
+                    </span>
+                  </div>
+                </div><!-- /.bag-detail-card -->
+              </div><!-- /.item -->
+              </div><!-- /.item-review-wrapper -->
+          </div><!-- /.checkout-items -->
+        </div><!-- /.checkout-top -->
 
 
-          <div class="checkout-bottom">
-            <div class="cart-prices">
-              <div class="price-wrapper">
-                <div class="flex-between total">
-                  <span class="label medium">Total</span>
-                  <span class="value medium">{{ bagTotalPrice | currency }}</span>
-                </div>
-                <div class="checkout-button red-button">
-                  <a routerLink="/checkout/review">Checkout</a>
-                </div>
+        <div class="checkout-bottom">
+          <div class="cart-prices">
+            <div class="price-wrapper">
+              <div class="flex-between total">
+                <span class="label medium">Total</span>
+                <span class="value medium">{{ bagTotalPrice | currency }}</span>
               </div>
-            </div><!-- /.cart-prices -->
-          </div><!-- /.checkout-bottom -->
-        </div><!-- /.checkout-step.step-1 -->
+              <div class="checkout-button red-button">
+                <a routerLink="/checkout/review">Checkout</a>
+              </div>
+            </div>
+          </div><!-- /.cart-prices -->
+        </div><!-- /.checkout-bottom -->
 
     </div><!-- /.checkout-inner-wrapper -->
   </div><!-- /.checkout-content-wrapper -->
