@@ -18,10 +18,8 @@
       <lo-cal-hamburger (mobileMenuState)="toggleMobileMenuState()" *responsive="{ sizes: {min:300, max:860}}"></lo-cal-hamburger>
       <ul class="menu main-menu">
         <li>
-          <h1 class="logo" *ngIf="currentUrl?.url == '/'; else regularLink"><a routerLink="/"><span class="visuallyhidden">Lo•Cal Kitchen</span></a></h1>
-          <ng-template #regularLink>
-            <div class="logo"><a routerLink="/"><span class="visuallyhidden">Lo•Cal Kitchen</span></a></div>
-          </ng-template>
+          <h1 class="logo" *ngIf="currentUrl == '/'"><a routerLink="/"><span class="visuallyhidden">Lo•Cal Kitchen</span></a></h1>
+          <div class="logo" *ngIf="currentUrl != '/'"><a routerLink="/"><span class="visuallyhidden">Lo•Cal Kitchen</span></a></div>
         </li>
         <li *ngFor="let item of mainMenuLinks" [attr.class]="item.classes ? item.classes : null">
           <a routerLink="/{{ item.object_slug }}" routerLinkActive="active">{{ item.title }}</a>
