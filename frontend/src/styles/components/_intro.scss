@@ -1,6 +1,27 @@
 .intro-section{
-  p{
+  .body p{
     @include stagecenter(800);
     line-height: 30px;
+  }
+
+  .bullet-points{
+    @include stagecenter();
+
+    @include breakpoint($bp-600){
+      display: flex;
+      flex-flow: row wrap;
+    }
+
+    p{
+      @include svg-bg(svgs/selected-mark-icon);
+      background-repeat: no-repeat;
+      background-position: left 25%;
+      box-sizing: border-box;
+      padding: 0 10px 0 40px;
+
+      @include breakpoint($bp-600){
+        width: 45%;
+      }
+    }
   }
 }
