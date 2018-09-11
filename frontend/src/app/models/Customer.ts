@@ -21,7 +21,7 @@ export interface Customer{
 
 export interface CustomerAddress{
   AddressId?: number; //  (integer , optional) : Nullable The Id of the address ,
-  AddressType?: string; // (enum , optional) = ['Billing' or 'NonBilling'] : Nullable Get or set the AddressType property ,
+  AddressType?: number; // (enum , optional) = ['Billing' or 'NonBilling'] : Nullable Get or set the AddressType property ,
   IsDefault?: boolean; // (boolean , optional) : True if this is the default address for a customer ,
   Description?: string; //  (string , optional) : A descriptive name for the address (e.g. Home, Office, Girl Friends House) ,
   DepartmentName?: string; //  (string , optional) : The department name if the address is a business ,
