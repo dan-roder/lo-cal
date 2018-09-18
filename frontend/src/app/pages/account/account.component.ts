@@ -33,6 +33,8 @@ export class AccountComponent implements OnInit {
   public passwordSuccess : string = '';
   public questionError : string = '';
   public questionSuccess : string = '';
+  public accountProcessing : boolean = false;
+  public passwordProcessing : boolean = false;
 
 
   constructor(private customerService: CustomerService, private localStorage : LocalStorage, private fb: FormBuilder, @Inject(DOCUMENT) private document: any, private router: Router) {
@@ -84,8 +86,16 @@ export class AccountComponent implements OnInit {
     this.accountForm.patchValue({
       'first-name' : customerData.FirstName,
       'last-name' : customerData.LastName,
-      'email' : customerData.EMail
-    })
+      'email' : customerData.EMail,
+      'full-address' : {
+        'address' : customerData.Addresses[0].AddressLine1,
+        'address2' : customerData.Addresses[0].AddressLine2,
+        'city' : customerData.Addresses[0].City,
+        'state' : customerData.Addresses[0].State,
+        'zip' : customerData.Addresses[0].Postal
+      }
+    });
+    this.accountForm.controls['full-address']['controls']['state'].disable();
   }
 
   public editAccountDetails(){
@@ -119,6 +129,7 @@ export class AccountComponent implements OnInit {
 
   public saveAccountDetails(formData){
     if(formData.valid){
+      this.accountProcessing = true;
       let updateCustomer : RailsUpdate = {
         customer_info : {
           CustomerId : this.customerId,
@@ -126,11 +137,14 @@ export class AccountComponent implements OnInit {
           FirstName : formData.get('first-name').value,
           LastName : formData.get('last-name').value,
           Addresses : [{
+            AddressType : 1,
+            AddressId : 1,
             AddressLine1 : formData.controls['full-address'].get('address').value,
             AddressLine2 : formData.controls['full-address'].get('address2').value,
             City : formData.controls['full-address'].get('city').value,
             State : formData.controls['full-address'].get('state').value,
             Postal : formData.controls['full-address'].get('zip').value,
+            IsDefault : true
           }]
         }
       };
@@ -140,11 +154,11 @@ export class AccountComponent implements OnInit {
 
       // TODO: Customer Address does not save to lo-cal api
       this.customerService.updateCustomerInfo(updateCustomer).subscribe(data => {
-        console.log(data);
         this.customerService.getCustomerInfo(this.customerId).subscribe(updatedCustomerInfo => {
           this.patchAccountForm(updatedCustomerInfo);
           this.localStorage.setItem('user', updatedCustomerInfo).subscribe(() => {});
           this.editing = false;
+          this.accountProcessing = false;
         })
       }, error => {
         // Update failed for some reason. Show error, return form to initial state
