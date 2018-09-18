@@ -43,8 +43,6 @@ export class MenuCustomizeComponent implements OnInit {
       this.itemContent = item;
       let menuItemId = item[0].acf.menuid;
 
-      // TODO: Investigate why gluten free bread is not returning sizes
-      console.log(item[0]);
       this.featuredImage = (item[0].featured_media !== 0) ? item[0]._embedded['wp:featuredmedia'][0].media_details.sizes.full.source_url : '//via.placeholder.com/1440x500';
       this.featuredImageAlt = (item[0].featured_media !== 0) ? item[0]._embedded['wp:featuredmedia'][0].alt_text : '';
       this.getMenuItemDetails(menuItemId);
