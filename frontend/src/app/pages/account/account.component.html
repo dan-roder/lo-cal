@@ -108,8 +108,9 @@
       </div>
     </div>
 
+    <div class="loading-gif button-size" *ngIf="accountProcessing"></div>
     <div class="submit red-button full-width-button submit">
-      <input type="submit" value="Save" *ngIf="editing" [disabled]="!accountForm.valid">
+      <input type="submit" value="Save" *ngIf="editing && !accountProcessing" [disabled]="!accountForm.valid">
     </div>
   </form>
 </div>
@@ -141,7 +142,8 @@
     </div>
 
     <div class="submit red-button full-width-button submit">
-      <input type="submit" value="Save" *ngIf="editingPassword" [disabled]="!passwordForm.valid">
+      <div class="loading-gif button-size" *ngIf="passwordProcessing"></div>
+      <input type="submit" value="Save" *ngIf="editingPassword && !passwordProcessing" [disabled]="!passwordForm.valid">
     </div>
   </form>
 </div>
