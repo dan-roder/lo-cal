@@ -116,4 +116,10 @@ export class WordpressService {
       return result;
     })
   }
+
+  public submitContactForm(data: any){
+    return this.httpClient.post(this.config.wordpressApiUrl + `/contact_form/v2/submit`, data).map(result => {
+      return result;
+    })
+  }
 }
