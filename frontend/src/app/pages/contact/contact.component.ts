@@ -39,7 +39,21 @@ export class ContactComponent implements OnInit {
 
   submitForm(formData){
     this.submittedOnce = true;
-    console.log(formData);
+
+    if(formData.valid){
+      let data = {
+        'contactReason' : formData.get('contact-reason').value,
+        'firstName' : formData.get('first-name').value,
+        'lastName' : formData.get('last-name').value,
+        'email' : formData.get('email').value,
+        'comments' : formData.get('comments').value
+      }
+      this.wpService.submitContactForm(data).subscribe((response) => {
+        console.log(response);
+      }, (error) => {
+        console.log(error);
+      });
+    }
   }
 
   ngOnDestroy(){}
