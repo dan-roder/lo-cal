@@ -31,7 +31,43 @@ function submit_contact_form(){
 }
 
 function handle_contact_submission(WP_REST_Request $request){
-  $return = $request->get_body();
-  wp_mail('droder@req.co', 'test', 'test');
-  return rest_ensure_response($return);
+  $json = $request->get_body();
+
+  if($json){
+    $jsonBody = json_decode($json, true);
+
+
+    $firstName = $jsonBody['firstName'];
+    $lastName = $jsonBody['lastName'];
+    $reason = $jsonBody['contactReason'];
+    $email = $jsonBody['email'];
+    $comments = $jsonBody['comments'];
+
+    $postArr = array(
+      'post_type' => 'contact_submission',
+      'post_title' => $firstName . ' ' . $lastName . ': ' . $reason
+    );
+    // First do wp_insert to get post_id
+    $postId = wp_insert_post($postArr);
+
+    // Update ACF Fields
+    if($postId){
+      update_field('contact_reason', $reason, $postId);
+      update_field('first_name', $firstName, $postId);
+      update_field('last_name', $lastName, $postId);
+      update_field('email', $email, $postId);
+      update_field('comments', $comments, $postId);
+      // Construct object to insert into WP Post
+
+      $link = '<a href="' . $_SERVER['REQUEST_URI'] . '">click here</a>';
+      $message = 'You have a new contact form submission. Please ' . $link . ' to view the submission';
+
+      wp_mail('droder@req.co', 'Contact Submission From: ' . $firstName . ' ' . $lastName, $message);
+    }
+
+    return 'success';
+  }
+  else{
+    return 'Error';
+  }
 }
