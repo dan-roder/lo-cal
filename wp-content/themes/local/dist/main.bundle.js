@@ -4404,7 +4404,8 @@ var WordpressService = /** @class */ (function () {
         });
     };
     WordpressService.prototype.submitContactForm = function (data) {
-        return this.httpClient.post(this.config.wordpressApiUrl + "/contact_form/v2/submit", data).map(function (result) {
+        var finalData = JSON.stringify(data);
+        return this.httpClient.post(this.config.wordpressApiUrl + "/contact_form/v2/submit", finalData).map(function (result) {
             return result;
         });
     };
