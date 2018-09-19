@@ -305,7 +305,7 @@ function contact_submission() {
 		'label'                 => __( 'Contact Submission', 'text_domain' ),
 		'description'           => __( 'Contact Form Submissions', 'text_domain' ),
 		'labels'                => $labels,
-		'supports'              => array( 'title', 'editor' ),
+		'supports'              => array( 'title' ),
 		'taxonomies'            => array( 'category', 'post_tag' ),
 		'hierarchical'          => false,
 		'public'                => true,
