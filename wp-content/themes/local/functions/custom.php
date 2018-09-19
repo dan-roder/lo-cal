@@ -1,5 +1,5 @@
 <?php
-
+var_dump($_SERVER); die();
 add_action( 'rest_api_init', 'post_error_message' );
 
 function post_error_message() {
@@ -59,10 +59,12 @@ function handle_contact_submission(WP_REST_Request $request){
       update_field('comments', $comments, $postId);
       // Construct object to insert into WP Post
 
-      $link = '<a href="' . $_SERVER['REQUEST_URI'] . '">click here</a>';
+      $link = '<a href="https://' . $_SERVER['HTTP_HOST'] . 'wp-admin/post.php?post=' . $postId . '&action=edit">click here</a>';
       $message = 'You have a new contact form submission. Please ' . $link . ' to view the submission';
 
-      wp_mail('droder@req.co', 'Contact Submission From: ' . $firstName . ' ' . $lastName, $message);
+      $headers = array('Content-Type: text/html; charset=UTF-8');
+
+      wp_mail('droder@req.co', 'Contact Submission From: ' . $firstName . ' ' . $lastName, $message, $headers);
     }
 
     return 'success';
