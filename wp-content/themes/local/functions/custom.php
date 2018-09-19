@@ -20,3 +20,18 @@ function log_error_message(WP_REST_Request $request){
   return rest_ensure_response($returnObj);
 
 }
+
+add_action( 'rest_api_init', 'submit_contact_form' );
+
+function submit_contact_form(){
+  register_rest_route( 'contact_form/v2', 'submit', array(
+    'methods' => 'POST',
+    'callback' => 'handle_contact_submission'
+  ));
+}
+
+function handle_contact_submission(WP_REST_Request $request){
+  $return = $request->get_body();
+  wp_mail('droder@req.co', 'test', 'test');
+  return rest_ensure_response($return);
+}
