@@ -15,6 +15,8 @@ export class ContactComponent implements OnInit {
   public acf : any;
   public contactForm : FormGroup;
   public submittedOnce : boolean = false;
+  public processing : boolean = false;
+  public formSuccess : boolean = false;
 
   constructor(private wpService: WordpressService, private fb: FormBuilder) {
     this.contactForm = fb.group({
@@ -41,6 +43,7 @@ export class ContactComponent implements OnInit {
     this.submittedOnce = true;
 
     if(formData.valid){
+      this.processing = true;
       let data = {
         'contactReason' : formData.get('contact-reason').value,
         'firstName' : formData.get('first-name').value,
@@ -49,7 +52,8 @@ export class ContactComponent implements OnInit {
         'comments' : formData.get('comments').value
       }
       this.wpService.submitContactForm(data).subscribe((response) => {
-        console.log(response);
+        this.processing = false;
+        this.formSuccess = true;
       }, (error) => {
         console.log(error);
       });
