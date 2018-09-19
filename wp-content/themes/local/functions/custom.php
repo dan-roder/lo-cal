@@ -59,7 +59,7 @@ function handle_contact_submission(WP_REST_Request $request){
       update_field('comments', $comments, $postId);
       // Construct object to insert into WP Post
 
-      $link = '<a href="https://' . $_SERVER['HTTP_HOST'] . 'wp-admin/post.php?post=' . $postId . '&action=edit">click here</a>';
+      $link = '<a href="https://' . $_SERVER['HTTP_HOST'] . '/wp-admin/post.php?post=' . $postId . '&action=edit">click here</a>';
       $message = 'You have a new contact form submission. Please ' . $link . ' to view the submission';
 
       $headers = array('Content-Type: text/html; charset=UTF-8');
