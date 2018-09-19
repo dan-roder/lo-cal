@@ -1,5 +1,5 @@
 <?php
-var_dump($_SERVER); die();
+
 add_action( 'rest_api_init', 'post_error_message' );
 
 function post_error_message() {
