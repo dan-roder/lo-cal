@@ -17,6 +17,7 @@ export class ContactComponent implements OnInit {
   public submittedOnce : boolean = false;
   public processing : boolean = false;
   public formSuccess : boolean = false;
+  public formError : string = '';
 
   constructor(private wpService: WordpressService, private fb: FormBuilder) {
     this.contactForm = fb.group({
@@ -51,11 +52,14 @@ export class ContactComponent implements OnInit {
         'email' : formData.get('email').value,
         'comments' : formData.get('comments').value
       }
-      this.wpService.submitContactForm(data).subscribe((response) => {
+
+      this.wpService.submitContactForm(data).subscribe(() => {
         this.processing = false;
         this.formSuccess = true;
       }, (error) => {
-        console.log(error);
+        this.formError = "We're sorry. There was a problem processing your submission. Please try again.";
+        this.wpService.logError('Payment Order Error: ' + JSON.stringify(error)).subscribe(() => {})
+        this.processing = false;
       });
     }
   }
