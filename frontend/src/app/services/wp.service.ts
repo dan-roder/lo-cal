@@ -111,7 +111,7 @@ export class WordpressService {
     })
   }
 
-  public logError(data: String){
+  public logError(data: any){
     return this.httpClient.post(this.config.wordpressApiUrl + `/error_message/v2/log`, data).map(result => {
       return result;
     })
