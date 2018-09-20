@@ -79,7 +79,8 @@ import { CheckoutPaymentComponent } from './pages/checkout-payment/checkout-paym
 // Modules
 import { ResponsiveModule } from 'ng2-responsive';
 import { CardImagePipe } from './pipes/card-image.pipe';
-
+import { RECAPTCHA_SETTINGS, RecaptchaSettings, RecaptchaModule } from 'ng-recaptcha';
+import { RecaptchaFormsModule } from 'ng-recaptcha/forms';
 
 @NgModule({
   declarations: [
@@ -136,9 +137,14 @@ import { CardImagePipe } from './pipes/card-image.pipe';
     BrowserAnimationsModule,
     LocalStorageModule,
     ResponsiveModule,
-    CreditCardDirectivesModule
+    CreditCardDirectivesModule,
+    RecaptchaModule.forRoot(),
+    RecaptchaFormsModule
   ],
-  providers: [ Config, WindowRef, WordpressService, MenuService, BagService, CustomerService, AuthGuard, AccessGuard, OrderService, OrderGuard ],
+  providers: [ Config, WindowRef, WordpressService, MenuService, BagService, CustomerService, AuthGuard, AccessGuard, OrderService, OrderGuard, {
+    provide: RECAPTCHA_SETTINGS,
+    useValue: { siteKey: '6LefV3EUAAAAAH7Xzi3J1jRu4y-W3usgOdOu9xlr' } as RecaptchaSettings,
+  } ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
