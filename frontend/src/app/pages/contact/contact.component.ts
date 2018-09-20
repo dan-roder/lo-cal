@@ -58,7 +58,7 @@ export class ContactComponent implements OnInit {
         this.formSuccess = true;
       }, (error) => {
         this.formError = "We're sorry. There was a problem processing your submission. Please try again.";
-        this.wpService.logError('Payment Order Error: ' + JSON.stringify(error)).subscribe(() => {})
+        this.wpService.logError('Contact Form Error: ' + JSON.stringify(error)).subscribe(() => {})
         this.processing = false;
       });
     }
