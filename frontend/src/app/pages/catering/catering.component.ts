@@ -20,13 +20,13 @@ export class CateringComponent implements OnInit {
   public submittedOnce : boolean = false;
 
   constructor(private wpService: WordpressService, public fb: FormBuilder) {
-    this.cateringForm = fb.group({
-      'full-name' : [null, Validators.required],
-      'phone' : [null, Validators.required],
-      'email' : [null, [Validators.required, Validators.email]],
-      'service-date' : [null, Validators.required],
-      'notes' : null
-    })
+    // this.cateringForm = fb.group({
+    //   'full-name' : [null, Validators.required],
+    //   'phone' : [null, Validators.required],
+    //   'email' : [null, [Validators.required, Validators.email]],
+    //   'service-date' : [null, Validators.required],
+    //   'notes' : null
+    // })
   }
 
   submitForm(formData){
