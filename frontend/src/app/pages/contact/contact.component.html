@@ -16,6 +16,7 @@
   <div class="section section-white">
     <div class="content center">
       <form action="" [formGroup]="contactForm" class="lo-cal-form contact-form" *ngIf="!formSuccess">
+        <div class="form-errors" *ngIf="formError"><p>{{ formError }}</p></div>
         <div class="form-section">
           <div class="form-component form-component-text">
             <label for="contact-reason" class="visuallyhidden">What are you interested in sharing/asking?</label>
@@ -47,15 +48,13 @@
           </div>
         </div>
         <div class="form-actions">
-          <!-- TODO: Ensure loading appears in the right location -->
-          <div class="loading-gif button-size" *ngIf="processing"></div>
-          <div class="form-submit red-button submit">
+          <div class="loading-gif button-size non-full-width" *ngIf="processing"></div>
+          <div class="form-submit red-button submit" *ngIf="!processing && !formSuccess">
             <input type="submit" value="Send" (click)="submitForm(contactForm)">
           </div>
         </div>
       </form>
-      <div class="success-message" *ngIf="formSuccess" [innerHtml]="acf?.contact_message | safeHtml">
-      </div>
+      <div class="success-message" *ngIf="formSuccess" [innerHtml]="acf?.contact_message | safeHtml"></div>
     </div>
   </div>
 
