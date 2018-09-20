@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { AutoUnsubscribe } from 'ngx-auto-unsubscribe/dist/ngx-auto-unsubscribe';
-import { FormControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { WordpressService } from '@local/services/wp.service';
 
 @AutoUnsubscribe()
@@ -25,7 +25,8 @@ export class ContactComponent implements OnInit {
       'first-name' : [null, Validators.required],
       'last-name' : [null, Validators.required],
       'email' : [null, [Validators.required, Validators.email]],
-      'comments' : null
+      'comments' : null,
+      'recaptchaReactive' : [null, Validators.required]
     })
   }
 
