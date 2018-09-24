@@ -27,6 +27,7 @@
         <label for="email" class="visuallyhidden">Email</label>
         <input type="text" name="email" id="email" formControlName="email" placeholder="Email*" [ngClass]="{'has-error':!accountForm.controls['email'].valid && submittedOnce}">
         <div class="error-message" *ngIf="!accountForm.controls['email'].valid && submittedOnce">This field is required.</div>
+        <div class="error-message" *ngIf="accountForm.controls['email'].value.length > 45">Max length for email is 45 characters.</div>
       </div>
       <div class="form-component form-component-text">
         <label for="password" class="visuallyhidden">Password</label>
