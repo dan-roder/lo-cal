@@ -30,6 +30,13 @@ footer{
   }
 
   .newsletter-signup{
+    p{
+      color: $white;
+      margin: 0;
+      @include fontsize(14);
+      @extend %sofia-regular;
+    }
+
     form{
       position: relative;
       margin: 0 auto 20px;
@@ -49,7 +56,7 @@ footer{
 
     input[type=image]{
       position: absolute;
-      right: 0;
+      right: 6px;
       bottom: 6px;
 
       @include breakpoint($bp-460){
