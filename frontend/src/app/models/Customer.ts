@@ -75,3 +75,8 @@ export interface RailsCustomer{
 export interface RailsLogin{
   credentials : InLogin;
 }
+
+export interface MailchimpSignup{
+  email_address : string;
+  status : string;
+}
