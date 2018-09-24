@@ -7,7 +7,8 @@
         </li>
       </ul>
       <div class="newsletter-signup">
-        <form action="" [formGroup]="newsletterForm" (submit)="signUp(newsletterForm)">
+        <p *ngIf="signUpResponse">{{ signUpResponse }}</p>
+        <form action="" [formGroup]="newsletterForm" (submit)="signUp(newsletterForm)" *ngIf="!signUpSuccess">
           <label for="email-newsletter"><span class="visuallyhidden">Enter your Email Address and</span> Stay in Touch</label>
           <input type="email" name="newsletter" id="email-newsletter" placeholder="Enter your Email" formControlName="email">
           <input type="image" src="/wp-content/themes/local/dist/assets/svgs/right-arrow-red.svg" alt="Click to sign up for our newsletter">
