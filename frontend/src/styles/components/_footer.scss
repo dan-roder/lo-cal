@@ -30,19 +30,21 @@ footer{
   }
 
   .newsletter-signup{
-    position: relative;
-    margin: 0 auto 20px;
-    width: 280px;
-
-    @include breakpoint($bp-460){
-      display: flex;
-      align-items: flex-end;
+    form{
+      position: relative;
       margin: 0 auto 20px;
-      width: 410px;
-    }
+      width: 280px;
 
-    @include breakpoint($bp-768){
-      margin: 0;
+      @include breakpoint($bp-460){
+        display: flex;
+        align-items: flex-end;
+        margin: 0 auto 20px;
+        width: 410px;
+      }
+
+      @include breakpoint($bp-768){
+        margin: 0;
+      }
     }
 
     input[type=image]{
