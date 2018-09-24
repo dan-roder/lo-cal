@@ -11,6 +11,7 @@ export class Config {
   public railsTimeEndpoint : string = 'https://api.lo-calkitchen.com/times/1';
   public allTimesEndpoint : string = 'https://api.lo-calkitchen.com/times/1/1/0/1001';
   public securityQuestionEndpoint : string = 'https://api.lo-calkitchen.com/securityquestions?Email='
+  public mailchimpEndpoint : string = 'https://us14.api.mailchimp.com/3.0/lists/1ab7655e84/members';
   public siteId : number = 1;
   public menuId : number = 1001;
   public paymentTypeMap = {
