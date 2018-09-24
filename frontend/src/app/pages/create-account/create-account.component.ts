@@ -25,7 +25,7 @@ export class CreateAccountComponent implements OnInit {
     this.accountForm = fb.group({
       'first-name' : [null, [Validators.required, Validators.maxLength(28)]],
       'last-name' : [null, [Validators.required, Validators.maxLength(28)]],
-      'email' : [null, [Validators.required, Validators.email, Validators.maxLength(45)]],
+      'email' : ['', [Validators.required, Validators.email, Validators.maxLength(45)]],
       // TODO: Implement more strict password rules from Ken's regex
       'password' : ['', [Validators.required, Validators.minLength(8)]],
       'confirm-password' : ['', Validators.required],
@@ -89,17 +89,18 @@ export class CreateAccountComponent implements OnInit {
         else{
           this.accountSuccess = true;
         }
+        console.log(data);
 
         // handle successful return of account created
         // redirect to appropriate location
-        // if(this.redirectUrl !== ''){
-        //   // Need to set logged in status
-        //   this.router.navigate([this.redirectUrl]);
-        // }
-        // else{
-        //   // Should I set logged in status immediately or no?
-        //   this.router.navigate(['/']);
-        // }
+        if(this.redirectUrl !== ''){
+          // Need to set logged in status
+          this.router.navigate([this.redirectUrl]);
+        }
+        else{
+          // Should I set logged in status immediately or no?
+          this.router.navigate(['/']);
+        }
       });
     }
   }
