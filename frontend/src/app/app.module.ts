@@ -53,6 +53,7 @@ import { MenuService } from './services/menu-service.service';
 import { BagService } from './services/bag.service';
 import { CustomerService } from './services/customer.service';
 import { OrderService } from '@local/services/order.service';
+import { MailchimpService } from '@local/services/mailchimp.service';
 
 // Directives
 import { WindowScrollDirective } from './shared/directives/window-scroll.directive';
@@ -141,7 +142,7 @@ import { RecaptchaFormsModule } from 'ng-recaptcha/forms';
     RecaptchaModule.forRoot(),
     RecaptchaFormsModule
   ],
-  providers: [ Config, WindowRef, WordpressService, MenuService, BagService, CustomerService, AuthGuard, AccessGuard, OrderService, OrderGuard, {
+  providers: [ Config, WindowRef, WordpressService, MenuService, BagService, CustomerService, MailchimpService, AuthGuard, AccessGuard, OrderService, OrderGuard, {
     provide: RECAPTCHA_SETTINGS,
     useValue: { siteKey: '6LefV3EUAAAAAH7Xzi3J1jRu4y-W3usgOdOu9xlr' } as RecaptchaSettings,
   } ],
