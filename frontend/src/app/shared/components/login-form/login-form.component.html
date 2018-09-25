@@ -15,8 +15,10 @@
   </div>
   <div class="account-actions">
     <div class="action" *ngIf="!simpleForm">
-      <a routerLink="/create-account" *ngIf="returnUrl === '/'">New Account</a>
-      <a [routerLink]="['/create-account']" [queryParams]="{returnUrl: returnUrl }" *ngIf="returnUrl !== '/'">New Account</a>
+      <a [routerLink]="['/create-account']" [queryParams]="{returnUrl: returnUrl }" *ngIf="returnUrl !== '/' && returnUrl !== '/account'; else regularLink">New Account</a>
+      <ng-template #regularLink>
+        <a routerLink="/create-account">New Account</a>
+      </ng-template>
     </div>
     <div class="action">
       <a routerLink="/password-reset">Forgot Password</a>
