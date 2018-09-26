@@ -22,7 +22,7 @@ export class OrderDetailComponent implements OnInit {
   public menuMap : any;
   public menuItemPosts : Array<any> = [];
   private currentUser : Customer;
-  private canSeeOrder : boolean = false;
+  public canSeeOrder : boolean = false;
 
   constructor(private route: ActivatedRoute, private orderService: OrderService, private bagService: BagService, private wpService: WordpressService, private customerService: CustomerService) {
     this.route.params.subscribe( params => this.orderId = params.orderid );

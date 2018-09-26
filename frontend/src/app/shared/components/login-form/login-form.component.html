@@ -11,7 +11,8 @@
     <div class="error-message" *ngIf="!loginForm.controls['password'].valid && submittedOnce">This field is required.</div>
   </div>
   <div class="submit red-button full-width-button">
-    <input type="submit" value="Log In" [disabled]="!loginForm.valid">
+    <div class="loading-gif button-size" *ngIf="processing"></div>
+    <input type="submit" value="Log In" *ngIf="!processing" [disabled]="!loginForm.valid">
   </div>
   <div class="account-actions">
     <div class="action" *ngIf="!simpleForm">

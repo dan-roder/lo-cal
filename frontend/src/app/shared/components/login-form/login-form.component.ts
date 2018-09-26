@@ -14,6 +14,7 @@ export class LoginFormComponent implements OnInit {
   public submittedOnce : boolean = false;
   public errorData : any = {};
   private returnUrl : string = '';
+  public processing : boolean = false;
   @Input() simpleForm : boolean = false;
 
   constructor(private fb: FormBuilder, private customerService: CustomerService, private localStorage: LocalStorage, private router: Router, private route: ActivatedRoute) {
@@ -31,6 +32,7 @@ export class LoginFormComponent implements OnInit {
     this.submittedOnce = true;
 
     if(loginFormData.valid){
+      this.processing = true;
       let loginDetails : RailsLogin = {
         credentials : {
           Email : loginFormData.controls['email'].value,
@@ -49,6 +51,7 @@ export class LoginFormComponent implements OnInit {
         })
       }, error => {
         this.errorData = error;
+        this.processing = false;
       })
     }
   }
