@@ -11,9 +11,12 @@
       <div class="loading-gif menu-loading" *ngIf="!menuItemDetails"></div>
       <div class="customization-category" *ngFor="let modGroup of salesItemDetails?.ModGroups">
         <div class="content">
+          <div class="required-message" *ngIf="modGroup.MinimumItems > 0 && isGroupRequired(modGroup.$id) && submitAttempted">
+            <p>A selection from this group is required.</p>
+          </div>
           <div class="header">
             <span class="title">{{ modGroup?.DisplayName }}</span>
-            <span class="choices" *ngIf="modGroup?.MaximumItems > 0">Choose up to {{ modGroup?.MaximumItems }} ({{ customizationData[modGroup?.$id].currentlySelected.length }}/{{ modGroup?.MaximumItems }})</span>
+            <span class="choices" *ngIf="modGroup?.MaximumItems > 0">{{ modGroup?.FreeModifiers }} Included. ({{ customizationData[modGroup?.$id].currentlySelected.length }}/{{ modGroup?.MaximumItems }})</span>
           </div>
           <div class="options" *ngFor="let modifier of modGroup?.Mods">
             <div class="option">
@@ -77,7 +80,8 @@
       </div>
 
       <div class="add-button red-button">
-        <button *ngIf="totalPrice" (click)="addToBag()" [disabled]="requiredModifierGroups.length > 0">Add to Bag (+{{ totalPrice | currency }})</button>
+        <button *ngIf="totalPrice" (click)="addToBag()" [ngClass]="{ 'disabled': requiredModifierGroups.length }">Add to Bag (+{{ totalPrice | currency }})</button>
+        <p class="customization-errors text-center" *ngIf="requiredModifierGroups.length && submitAttempted">Please select an item from the required modifier groups.</p>
       </div>
     </div><!-- /.right -->
   </div>
