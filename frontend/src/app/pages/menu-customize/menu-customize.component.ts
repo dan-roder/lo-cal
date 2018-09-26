@@ -83,7 +83,7 @@ export class MenuCustomizeComponent implements OnInit {
       // If modifier item has modifier values with it
       if(modifierClicked.ItemModifiers.length > 0){
         // Add to total calorie count
-        this.calorieCount += modifierClicked.ItemModifiers[0].CaloricValue;
+        this.calorieCount += (+modifierClicked.ItemModifiers[0].CaloricValue);
 
         // If there are FreeModifiers allowed in the modGroup &&
         //    If modGroup's currently selected items exceed the amount of free modifiers, add to price
@@ -203,7 +203,7 @@ export class MenuCustomizeComponent implements OnInit {
         this.sizeChoice = this.salesItemDetails.SalesItemId;
       }
 
-      this.calorieCount = (this.salesItemDetails.CaloricValue !== null) ? this.salesItemDetails.CaloricValue : ((typeof this.menuItemDetails.item.CaloricServingUnit !== 'string') ? +this.menuItemDetails.item.CaloricServingUnit : this.menuItemDetails.item.CaloricServingUnit);
+      this.calorieCount = (this.salesItemDetails.CaloricValue !== null) ? +this.salesItemDetails.CaloricValue : ((typeof this.menuItemDetails.item.CaloricServingUnit !== 'string') ? +this.menuItemDetails.item.CaloricServingUnit : +this.menuItemDetails.item.CaloricServingUnit);
       this.itemPrice = this.salesItemDetails.Price;
 
       // Calculate initial cost based on initial quantity of 1
@@ -265,7 +265,7 @@ export class MenuCustomizeComponent implements OnInit {
 
   public updateDataPerSize(salesId: string){
     this.salesItemDetails = _.find(this.menuItemDetails.salesItems, {'SalesItemId': +salesId});
-    this.calorieCount = this.salesItemDetails.CaloricValue;
+    this.calorieCount = +this.salesItemDetails.CaloricValue;
     this.itemPrice = this.salesItemDetails.Price;
 
     // Initialize defaults
