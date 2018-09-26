@@ -28,6 +28,7 @@ export class MenuCustomizeComponent implements OnInit {
   public featuredImageAlt : string = '';
   public sizeChoice : any;
   public requiredModifierGroups : Array<any> = [];
+  public submitAttempted : boolean = false;
 
   constructor(
     private wpService: WordpressService,
@@ -154,6 +155,12 @@ export class MenuCustomizeComponent implements OnInit {
   }
 
   public addToBag(){
+    // if the array of required mods is not empty, don't add to bag
+    if(this.requiredModifierGroups.length > 0){
+      this.submitAttempted = true; // triggers showing of error messages
+      return; // disallow adding to bag
+    }
+
     // Adding to bag needs to have all details of modifications
     //  Start simple. Add just the item itself
     let menuItem = {};
@@ -282,6 +289,11 @@ export class MenuCustomizeComponent implements OnInit {
 
     // Calculate initial cost based on initial quantity of 1
     this.recalculateCost();
+  }
+
+  public isGroupRequired(groupId): boolean{
+    let isRequired = _.find(this.requiredModifierGroups, {'$id': groupId});
+    return (isRequired !== undefined) ? true : false;
   }
 
   /**
