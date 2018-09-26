@@ -6,11 +6,15 @@
       <h2 class="text-center">Success!</h2>
       <p class="text-center">Your account has been created. Keep an eye out for an email from us with your login information. Please return to the <a routerLink="/login">login</a> page to proceed.</p>
     </div>
+    <div class="account-success" *ngIf="checkoutAccountSuccess">
+      <h2 class="text-center">Success!</h2>
+      <p class="text-center">Your account has been created. Keep an eye out for an email from us with your login information. You will now be redirected to continue the checkout process. Please do not refresh.</p>
+    </div>
     <div class="form-errors text-left" *ngIf="existingAccount">
       <p>It looks like an account with that email already exists. Log in <a routerLink="/login">here</a></p>
     </div>
-    <div [hidden]="!processing || accountSuccess" class="loading-gif"></div>
-    <form action="" [formGroup]="accountForm" class="lo-cal-form create-account-form" *ngIf="!accountSuccess" [ngClass]="{'processing': processing}" [@slideUp]="processing">
+    <div [hidden]="!processing || accountSuccess || checkoutAccountSuccess" class="loading-gif"></div>
+    <form action="" [formGroup]="accountForm" class="lo-cal-form create-account-form" *ngIf="!accountSuccess || !checkoutAccountSuccess" [ngClass]="{'processing': processing}" [@slideUp]="processing">
       <div class="form-section half-and-half">
         <div class="form-component form-component-text">
           <label for="first-name" class="visuallyhidden">First Name</label>
