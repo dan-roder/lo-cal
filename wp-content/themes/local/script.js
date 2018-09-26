@@ -1,8 +1,9 @@
 jQuery(document).ready( function ($) {
     var new_items, old_items, current_items, url;
     BASE_URL = "https://api.lo-calkitchen.com/";
-    // BASE_URL = "http://localhost:300/";
+    // BASE_URL = "http://localhost:3000/";
     $("#start").on('click', function(e){
+        // console.log(window.process.env);
         e.preventDefault();
         $(".loader").show();
         if( $("#sync-items").is(":visible") ) {
@@ -77,7 +78,7 @@ jQuery(document).ready( function ($) {
                     url = BASE_URL + "menu-sync/init";
                 } else {
                     // New items and current items
-                    url = BASE_URL + "/menu-sync/" + e.target.id;
+                    url = BASE_URL + "menu-sync/" + e.target.id;
                 }
                 $.ajax({
                     method: "POST",

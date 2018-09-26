@@ -1,8 +1,13 @@
 .food-details{
-  background: url('/assets/images/light-grey-pattern-bg.jpg') !important;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center center;
+  background-color: $d;
+  text-align: center;
+
+  @include breakpoint($bp-768){
+    background: url('/assets/images/light-grey-pattern-bg.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+  }
 
   .three-column-data{
     @include stagecenter(1400);
@@ -39,7 +44,6 @@
         .description{
           p{
             margin: 0 auto;
-            @include fontsize(14);
             max-width: 90%;
           }
         }

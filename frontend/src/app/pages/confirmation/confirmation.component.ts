@@ -6,6 +6,8 @@ import { OrderResults } from '@local/models/Order';
 import { AutoUnsubscribe } from 'ngx-auto-unsubscribe';
 import { Config } from '@local/utils/constants';
 import { WordpressService } from '@local/services/wp.service';
+import { CustomerService } from '@local/services/customer.service';
+import { Customer } from '@local/models/Customer';
 
 @AutoUnsubscribe()
 
@@ -20,11 +22,19 @@ export class ConfirmationComponent implements OnInit {
   public confirmationContent : any;
   public orderItemsForDisplay : any;
 
-  constructor(private localStorage: LocalStorage, private bagService: BagService, private orderService: OrderService, private config: Config, private wpService: WordpressService) { }
+  constructor(private localStorage: LocalStorage, private bagService: BagService, private orderService: OrderService, private config: Config, private wpService: WordpressService, private customerService: CustomerService) { }
 
   ngOnInit() {
     this.localStorage.removeItem('order').subscribe(() => {});
     this.localStorage.removeItem('bag').subscribe(() => {});
+    // Get current customer to check if they were a guest customer
+    this.customerService.getCurrentCustomer().subscribe((customer: Customer) => {
+      if(customer.IsGuest){
+        // If they were a guest customer, remove the user from localStorage
+        this.localStorage.removeItem('user').subscribe(() => {});
+      }
+    })
+
     this.bagService.itemsInBag = [];
 
     this.wpService.getPage(3660).subscribe(content => {

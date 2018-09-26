@@ -4,7 +4,8 @@
     margin: 20px auto;
     display: flex;
     flex-flow: row wrap;
-    flex: 1 auto;
+    // flex: 1 auto;
+    justify-content: space-between;
 
     .item{
       width: 50%;
@@ -24,6 +25,11 @@
         @extend %sofia-medium;
         text-decoration: none;
         color: $c-31;
+        @include transition(color);
+
+        &:hover{
+          color: $orange-red;
+        }
       }
     }// .item
   }// .menu-items

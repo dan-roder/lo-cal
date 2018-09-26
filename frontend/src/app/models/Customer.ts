@@ -1,5 +1,3 @@
-import { CustomerService } from "@local/services/customer.service";
-
 export interface Customer{
   CustomerId?: string; //  (Guid , optional) : Nullable The unique identifier for a customer. PUT - CustomerId will be ignored ,
   EMail: string; //  (integer , Required) : The customer's email address ,
@@ -18,11 +16,12 @@ export interface Customer{
   Birthday?: string; //  (string , optional) : Get or set the Birthday property ,
   LoyaltyZipCode?: string; //  (string , optional) : Get or set the LoyaltyZipCode property ,
   FacebookId?: number; //  (integer , optional) : Get or sets facebookid property
+  IsGuest?: boolean;
 }
 
 export interface CustomerAddress{
   AddressId?: number; //  (integer , optional) : Nullable The Id of the address ,
-  AddressType?: string; // (enum , optional) = ['Billing' or 'NonBilling'] : Nullable Get or set the AddressType property ,
+  AddressType?: number; // (enum , optional) = ['Billing' or 'NonBilling'] : Nullable Get or set the AddressType property ,
   IsDefault?: boolean; // (boolean , optional) : True if this is the default address for a customer ,
   Description?: string; //  (string , optional) : A descriptive name for the address (e.g. Home, Office, Girl Friends House) ,
   DepartmentName?: string; //  (string , optional) : The department name if the address is a business ,
@@ -47,15 +46,22 @@ export interface InLogin{
 }
 
 export interface InLoginUpdate{
-  Email: string; // (string Required) ,
-  OldPassword: string; // (string Required) ,
-  NewPassword: string; // (string , optional) ,
-  NewSecurityQuestion?: string; // (string , optional) ,
-  NewAnswer?: string; // (string , optional)
+  Email: string;
+  OldPassword: string;
+  NewPassword?: string;
+  NewSecurityQuestion?: string;
+  NewAnswer?: string;
 }
 
-export interface OrderCustomer{
+export interface InPasswordReset{
+  Email: string;
+  SecurityAnswer: string;
+  NewPassword: string;
+}
 
+export interface InPasswordEmailReset{
+  Email: string;
+  SecurityAnswer: string;
 }
 
 export interface RailsUpdate{

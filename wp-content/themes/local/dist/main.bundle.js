@@ -318,12 +318,14 @@ webpackEmptyAsyncContext.id = "./src/$$_lazy_route_resource lazy recursive";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__local_layouts_account_layout_account_layout_component__ = __webpack_require__("./src/app/layouts/account-layout/account-layout.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__local_pages_confirmation_confirmation_component__ = __webpack_require__("./src/app/pages/confirmation/confirmation.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__local_pages_order_detail_order_detail_component__ = __webpack_require__("./src/app/pages/order-detail/order-detail.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__local_pages_password_reset_password_reset_component__ = __webpack_require__("./src/app/pages/password-reset/password-reset.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -361,6 +363,7 @@ var routes = [
             { path: 'our-food', component: __WEBPACK_IMPORTED_MODULE_5__pages_our_food_our_food_component__["a" /* OurFoodComponent */] },
             { path: 'catering', component: __WEBPACK_IMPORTED_MODULE_11__local_pages_catering_catering_component__["a" /* CateringComponent */] },
             { path: 'login', component: __WEBPACK_IMPORTED_MODULE_9__local_pages_login_login_component__["a" /* LoginComponent */] },
+            { path: 'password-reset', component: __WEBPACK_IMPORTED_MODULE_27__local_pages_password_reset_password_reset_component__["a" /* PasswordResetComponent */] },
             { path: 'create-account', component: __WEBPACK_IMPORTED_MODULE_15__local_pages_create_account_create_account_component__["a" /* CreateAccountComponent */] },
             { path: 'contact', component: __WEBPACK_IMPORTED_MODULE_12__local_pages_contact_contact_component__["a" /* ContactComponent */] },
             { path: 'blog', component: __WEBPACK_IMPORTED_MODULE_13__local_pages_blog_blog_component__["a" /* BlogComponent */] },
@@ -509,40 +512,41 @@ var AppComponent = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__pages_confirmation_confirmation_component__ = __webpack_require__("./src/app/pages/confirmation/confirmation.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__pages_order_history_order_history_component__ = __webpack_require__("./src/app/pages/order-history/order-history.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__pages_order_detail_order_detail_component__ = __webpack_require__("./src/app/pages/order-detail/order-detail.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_29__shared_components_header_header_component__ = __webpack_require__("./src/app/shared/components/header/header.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_30__shared_components_footer_footer_component__ = __webpack_require__("./src/app/shared/components/footer/footer.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_31__shared_components_title_body_images_title_body_images_component__ = __webpack_require__("./src/app/shared/components/title-body-images/title-body-images.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_32__shared_components_intro_section_intro_section_component__ = __webpack_require__("./src/app/shared/components/intro-section/intro-section.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_33__shared_components_image_and_text_image_and_text_component__ = __webpack_require__("./src/app/shared/components/image-and-text/image-and-text.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_34__shared_components_hamburger_hamburger_component__ = __webpack_require__("./src/app/shared/components/hamburger/hamburger.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_35__shared_components_bag_bag_component__ = __webpack_require__("./src/app/shared/components/bag/bag.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_36__shared_components_login_form_login_form_component__ = __webpack_require__("./src/app/shared/components/login-form/login-form.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_37__utils_windowref__ = __webpack_require__("./src/app/utils/windowref.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_38__services_wp_service__ = __webpack_require__("./src/app/services/wp.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_39__services_menu_service_service__ = __webpack_require__("./src/app/services/menu-service.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_40__services_bag_service__ = __webpack_require__("./src/app/services/bag.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_41__services_customer_service__ = __webpack_require__("./src/app/services/customer.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_42__local_services_order_service__ = __webpack_require__("./src/app/services/order.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_43__shared_directives_window_scroll_directive__ = __webpack_require__("./src/app/shared/directives/window-scroll.directive.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_44__shared_directives_input_switcher_directive__ = __webpack_require__("./src/app/shared/directives/input-switcher.directive.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_45_angular_cc_library__ = __webpack_require__("./node_modules/angular-cc-library/index.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_45_angular_cc_library___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_45_angular_cc_library__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_46__pipes_allergens_pipe__ = __webpack_require__("./src/app/pipes/allergens.pipe.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_47__pipes_safe_html_pipe__ = __webpack_require__("./src/app/pipes/safe-html.pipe.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_48__pages_blog_blog_component__ = __webpack_require__("./src/app/pages/blog/blog.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_49__pages_blog_post_blog_post_component__ = __webpack_require__("./src/app/pages/blog-post/blog-post.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_50__pipes_featured_image_pipe__ = __webpack_require__("./src/app/pipes/featured-image.pipe.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_51__pipes_card_type_pipe__ = __webpack_require__("./src/app/pipes/card-type.pipe.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_52__pipes_safe_url_pipe__ = __webpack_require__("./src/app/pipes/safe-url.pipe.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_53__pipes_no_x_pipe__ = __webpack_require__("./src/app/pipes/no-x.pipe.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_54__pipes_allergen_rollover_pipe__ = __webpack_require__("./src/app/pipes/allergen-rollover.pipe.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_55__local_guards_auth_guard__ = __webpack_require__("./src/app/guards/auth.guard.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_56__local_guards_access_guard__ = __webpack_require__("./src/app/guards/access.guard.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_57__local_guards_order_guard__ = __webpack_require__("./src/app/guards/order.guard.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_58__pages_checkout_payment_checkout_payment_component__ = __webpack_require__("./src/app/pages/checkout-payment/checkout-payment.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_59_ng2_responsive__ = __webpack_require__("./node_modules/ng2-responsive/index.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_59_ng2_responsive___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_59_ng2_responsive__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_60__pipes_card_image_pipe__ = __webpack_require__("./src/app/pipes/card-image.pipe.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_29__pages_password_reset_password_reset_component__ = __webpack_require__("./src/app/pages/password-reset/password-reset.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_30__shared_components_header_header_component__ = __webpack_require__("./src/app/shared/components/header/header.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_31__shared_components_footer_footer_component__ = __webpack_require__("./src/app/shared/components/footer/footer.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_32__shared_components_title_body_images_title_body_images_component__ = __webpack_require__("./src/app/shared/components/title-body-images/title-body-images.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_33__shared_components_intro_section_intro_section_component__ = __webpack_require__("./src/app/shared/components/intro-section/intro-section.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_34__shared_components_image_and_text_image_and_text_component__ = __webpack_require__("./src/app/shared/components/image-and-text/image-and-text.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_35__shared_components_hamburger_hamburger_component__ = __webpack_require__("./src/app/shared/components/hamburger/hamburger.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_36__shared_components_bag_bag_component__ = __webpack_require__("./src/app/shared/components/bag/bag.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_37__shared_components_login_form_login_form_component__ = __webpack_require__("./src/app/shared/components/login-form/login-form.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_38__utils_windowref__ = __webpack_require__("./src/app/utils/windowref.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_39__services_wp_service__ = __webpack_require__("./src/app/services/wp.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_40__services_menu_service_service__ = __webpack_require__("./src/app/services/menu-service.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_41__services_bag_service__ = __webpack_require__("./src/app/services/bag.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_42__services_customer_service__ = __webpack_require__("./src/app/services/customer.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_43__local_services_order_service__ = __webpack_require__("./src/app/services/order.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_44__shared_directives_window_scroll_directive__ = __webpack_require__("./src/app/shared/directives/window-scroll.directive.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_45__shared_directives_input_switcher_directive__ = __webpack_require__("./src/app/shared/directives/input-switcher.directive.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_46_angular_cc_library__ = __webpack_require__("./node_modules/angular-cc-library/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_46_angular_cc_library___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_46_angular_cc_library__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_47__pipes_allergens_pipe__ = __webpack_require__("./src/app/pipes/allergens.pipe.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_48__pipes_safe_html_pipe__ = __webpack_require__("./src/app/pipes/safe-html.pipe.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_49__pages_blog_blog_component__ = __webpack_require__("./src/app/pages/blog/blog.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_50__pages_blog_post_blog_post_component__ = __webpack_require__("./src/app/pages/blog-post/blog-post.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_51__pipes_featured_image_pipe__ = __webpack_require__("./src/app/pipes/featured-image.pipe.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_52__pipes_card_type_pipe__ = __webpack_require__("./src/app/pipes/card-type.pipe.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_53__pipes_safe_url_pipe__ = __webpack_require__("./src/app/pipes/safe-url.pipe.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_54__pipes_no_x_pipe__ = __webpack_require__("./src/app/pipes/no-x.pipe.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_55__pipes_allergen_rollover_pipe__ = __webpack_require__("./src/app/pipes/allergen-rollover.pipe.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_56__local_guards_auth_guard__ = __webpack_require__("./src/app/guards/auth.guard.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_57__local_guards_access_guard__ = __webpack_require__("./src/app/guards/access.guard.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_58__local_guards_order_guard__ = __webpack_require__("./src/app/guards/order.guard.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_59__pages_checkout_payment_checkout_payment_component__ = __webpack_require__("./src/app/pages/checkout-payment/checkout-payment.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_60_ng2_responsive__ = __webpack_require__("./node_modules/ng2-responsive/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_60_ng2_responsive___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_60_ng2_responsive__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_61__pipes_card_image_pipe__ = __webpack_require__("./src/app/pipes/card-image.pipe.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -564,6 +568,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 // Pages
+
 
 
 
@@ -628,44 +633,45 @@ var AppModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_9__app_component__["a" /* AppComponent */],
                 __WEBPACK_IMPORTED_MODULE_10__layouts_main_layout_main_layout_component__["a" /* MainLayoutComponent */],
                 __WEBPACK_IMPORTED_MODULE_12__pages_home_home_component__["a" /* HomeComponent */],
-                __WEBPACK_IMPORTED_MODULE_30__shared_components_footer_footer_component__["a" /* FooterComponent */],
+                __WEBPACK_IMPORTED_MODULE_31__shared_components_footer_footer_component__["a" /* FooterComponent */],
                 __WEBPACK_IMPORTED_MODULE_13__pages_our_story_our_story_component__["a" /* OurStoryComponent */],
-                __WEBPACK_IMPORTED_MODULE_29__shared_components_header_header_component__["a" /* HeaderComponent */],
-                __WEBPACK_IMPORTED_MODULE_31__shared_components_title_body_images_title_body_images_component__["a" /* TitleBodyImagesComponent */],
-                __WEBPACK_IMPORTED_MODULE_32__shared_components_intro_section_intro_section_component__["a" /* IntroSectionComponent */],
-                __WEBPACK_IMPORTED_MODULE_33__shared_components_image_and_text_image_and_text_component__["a" /* ImageAndTextComponent */],
+                __WEBPACK_IMPORTED_MODULE_30__shared_components_header_header_component__["a" /* HeaderComponent */],
+                __WEBPACK_IMPORTED_MODULE_32__shared_components_title_body_images_title_body_images_component__["a" /* TitleBodyImagesComponent */],
+                __WEBPACK_IMPORTED_MODULE_33__shared_components_intro_section_intro_section_component__["a" /* IntroSectionComponent */],
+                __WEBPACK_IMPORTED_MODULE_34__shared_components_image_and_text_image_and_text_component__["a" /* ImageAndTextComponent */],
                 __WEBPACK_IMPORTED_MODULE_14__pages_our_food_our_food_component__["a" /* OurFoodComponent */],
-                __WEBPACK_IMPORTED_MODULE_34__shared_components_hamburger_hamburger_component__["a" /* HamburgerComponent */],
-                __WEBPACK_IMPORTED_MODULE_43__shared_directives_window_scroll_directive__["a" /* WindowScrollDirective */],
+                __WEBPACK_IMPORTED_MODULE_35__shared_components_hamburger_hamburger_component__["a" /* HamburgerComponent */],
+                __WEBPACK_IMPORTED_MODULE_44__shared_directives_window_scroll_directive__["a" /* WindowScrollDirective */],
                 __WEBPACK_IMPORTED_MODULE_15__pages_menu_menu_component__["a" /* MenuPageComponent */],
                 __WEBPACK_IMPORTED_MODULE_16__pages_menu_customize_menu_customize_component__["a" /* MenuCustomizeComponent */],
-                __WEBPACK_IMPORTED_MODULE_35__shared_components_bag_bag_component__["a" /* BagComponent */],
+                __WEBPACK_IMPORTED_MODULE_36__shared_components_bag_bag_component__["a" /* BagComponent */],
                 __WEBPACK_IMPORTED_MODULE_17__pages_sub_menu_sub_menu_component__["a" /* SubMenuComponent */],
-                __WEBPACK_IMPORTED_MODULE_46__pipes_allergens_pipe__["a" /* AllergensPipe */],
-                __WEBPACK_IMPORTED_MODULE_47__pipes_safe_html_pipe__["a" /* SafeHtml */],
+                __WEBPACK_IMPORTED_MODULE_47__pipes_allergens_pipe__["a" /* AllergensPipe */],
+                __WEBPACK_IMPORTED_MODULE_48__pipes_safe_html_pipe__["a" /* SafeHtml */],
                 __WEBPACK_IMPORTED_MODULE_18__pages_login_login_component__["a" /* LoginComponent */],
                 __WEBPACK_IMPORTED_MODULE_19__pages_post_post_component__["a" /* PostComponent */],
                 __WEBPACK_IMPORTED_MODULE_20__pages_catering_catering_component__["a" /* CateringComponent */],
                 __WEBPACK_IMPORTED_MODULE_21__pages_contact_contact_component__["a" /* ContactComponent */],
-                __WEBPACK_IMPORTED_MODULE_48__pages_blog_blog_component__["a" /* BlogComponent */],
-                __WEBPACK_IMPORTED_MODULE_49__pages_blog_post_blog_post_component__["a" /* BlogPostComponent */],
-                __WEBPACK_IMPORTED_MODULE_50__pipes_featured_image_pipe__["a" /* FeaturedImagePipe */],
+                __WEBPACK_IMPORTED_MODULE_49__pages_blog_blog_component__["a" /* BlogComponent */],
+                __WEBPACK_IMPORTED_MODULE_50__pages_blog_post_blog_post_component__["a" /* BlogPostComponent */],
+                __WEBPACK_IMPORTED_MODULE_51__pipes_featured_image_pipe__["a" /* FeaturedImagePipe */],
                 __WEBPACK_IMPORTED_MODULE_22__pages_create_account_create_account_component__["a" /* CreateAccountComponent */],
-                __WEBPACK_IMPORTED_MODULE_36__shared_components_login_form_login_form_component__["a" /* LoginFormComponent */],
+                __WEBPACK_IMPORTED_MODULE_37__shared_components_login_form_login_form_component__["a" /* LoginFormComponent */],
                 __WEBPACK_IMPORTED_MODULE_23__pages_account_account_component__["a" /* AccountComponent */],
-                __WEBPACK_IMPORTED_MODULE_44__shared_directives_input_switcher_directive__["a" /* InputSwitcherDirective */],
+                __WEBPACK_IMPORTED_MODULE_45__shared_directives_input_switcher_directive__["a" /* InputSwitcherDirective */],
                 __WEBPACK_IMPORTED_MODULE_24__pages_checkout_login_checkout_login_component__["a" /* CheckoutLoginComponent */],
                 __WEBPACK_IMPORTED_MODULE_25__pages_checkout_review_checkout_review_component__["a" /* CheckoutReviewComponent */],
-                __WEBPACK_IMPORTED_MODULE_58__pages_checkout_payment_checkout_payment_component__["a" /* CheckoutPaymentComponent */],
+                __WEBPACK_IMPORTED_MODULE_59__pages_checkout_payment_checkout_payment_component__["a" /* CheckoutPaymentComponent */],
                 __WEBPACK_IMPORTED_MODULE_26__pages_confirmation_confirmation_component__["a" /* ConfirmationComponent */],
                 __WEBPACK_IMPORTED_MODULE_27__pages_order_history_order_history_component__["a" /* OrderHistoryComponent */],
                 __WEBPACK_IMPORTED_MODULE_11__layouts_account_layout_account_layout_component__["a" /* AccountLayoutComponent */],
-                __WEBPACK_IMPORTED_MODULE_51__pipes_card_type_pipe__["a" /* CardTypePipe */],
-                __WEBPACK_IMPORTED_MODULE_52__pipes_safe_url_pipe__["a" /* SafeUrlPipe */],
+                __WEBPACK_IMPORTED_MODULE_52__pipes_card_type_pipe__["a" /* CardTypePipe */],
+                __WEBPACK_IMPORTED_MODULE_53__pipes_safe_url_pipe__["a" /* SafeUrlPipe */],
                 __WEBPACK_IMPORTED_MODULE_28__pages_order_detail_order_detail_component__["a" /* OrderDetailComponent */],
-                __WEBPACK_IMPORTED_MODULE_60__pipes_card_image_pipe__["a" /* CardImagePipe */],
-                __WEBPACK_IMPORTED_MODULE_53__pipes_no_x_pipe__["a" /* NoXPipe */],
-                __WEBPACK_IMPORTED_MODULE_54__pipes_allergen_rollover_pipe__["a" /* AllergenRolloverPipe */]
+                __WEBPACK_IMPORTED_MODULE_61__pipes_card_image_pipe__["a" /* CardImagePipe */],
+                __WEBPACK_IMPORTED_MODULE_54__pipes_no_x_pipe__["a" /* NoXPipe */],
+                __WEBPACK_IMPORTED_MODULE_55__pipes_allergen_rollover_pipe__["a" /* AllergenRolloverPipe */],
+                __WEBPACK_IMPORTED_MODULE_29__pages_password_reset_password_reset_component__["a" /* PasswordResetComponent */]
             ],
             imports: [
                 __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
@@ -676,10 +682,10 @@ var AppModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_6__app_routing_module__["a" /* AppRoutingModule */],
                 __WEBPACK_IMPORTED_MODULE_5__angular_platform_browser_animations__["a" /* BrowserAnimationsModule */],
                 __WEBPACK_IMPORTED_MODULE_7__ngx_pwa_local_storage__["b" /* LocalStorageModule */],
-                __WEBPACK_IMPORTED_MODULE_59_ng2_responsive__["ResponsiveModule"],
-                __WEBPACK_IMPORTED_MODULE_45_angular_cc_library__["CreditCardDirectivesModule"]
+                __WEBPACK_IMPORTED_MODULE_60_ng2_responsive__["ResponsiveModule"],
+                __WEBPACK_IMPORTED_MODULE_46_angular_cc_library__["CreditCardDirectivesModule"]
             ],
-            providers: [__WEBPACK_IMPORTED_MODULE_8__utils_constants__["a" /* Config */], __WEBPACK_IMPORTED_MODULE_37__utils_windowref__["a" /* WindowRef */], __WEBPACK_IMPORTED_MODULE_38__services_wp_service__["a" /* WordpressService */], __WEBPACK_IMPORTED_MODULE_39__services_menu_service_service__["a" /* MenuService */], __WEBPACK_IMPORTED_MODULE_40__services_bag_service__["a" /* BagService */], __WEBPACK_IMPORTED_MODULE_41__services_customer_service__["a" /* CustomerService */], __WEBPACK_IMPORTED_MODULE_55__local_guards_auth_guard__["a" /* AuthGuard */], __WEBPACK_IMPORTED_MODULE_56__local_guards_access_guard__["a" /* AccessGuard */], __WEBPACK_IMPORTED_MODULE_42__local_services_order_service__["a" /* OrderService */], __WEBPACK_IMPORTED_MODULE_57__local_guards_order_guard__["a" /* OrderGuard */]],
+            providers: [__WEBPACK_IMPORTED_MODULE_8__utils_constants__["a" /* Config */], __WEBPACK_IMPORTED_MODULE_38__utils_windowref__["a" /* WindowRef */], __WEBPACK_IMPORTED_MODULE_39__services_wp_service__["a" /* WordpressService */], __WEBPACK_IMPORTED_MODULE_40__services_menu_service_service__["a" /* MenuService */], __WEBPACK_IMPORTED_MODULE_41__services_bag_service__["a" /* BagService */], __WEBPACK_IMPORTED_MODULE_42__services_customer_service__["a" /* CustomerService */], __WEBPACK_IMPORTED_MODULE_56__local_guards_auth_guard__["a" /* AuthGuard */], __WEBPACK_IMPORTED_MODULE_57__local_guards_access_guard__["a" /* AccessGuard */], __WEBPACK_IMPORTED_MODULE_43__local_services_order_service__["a" /* OrderService */], __WEBPACK_IMPORTED_MODULE_58__local_guards_order_guard__["a" /* OrderGuard */]],
             bootstrap: [__WEBPACK_IMPORTED_MODULE_9__app_component__["a" /* AppComponent */]]
         })
     ], AppModule);
@@ -885,7 +891,7 @@ var AccountLayoutComponent = /** @class */ (function () {
 /***/ "./src/app/layouts/main-layout/main-layout.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"mobile-menu\" *responsive=\"{ sizes: {min:300, max:860}}\" [ngClass]=\"mobileMenuState\">\n  <ul>\n    <li><a routerLink=\"/\" routerLinkActive=\"active\" [routerLinkActiveOptions]=\"{exact:true}\">Home</a></li>\n    <li *ngFor=\"let item of mainMenuLinks\" [attr.class]=\"item.classes ? item.classes : null\">\n      <a routerLink=\"/{{ item.object_slug }}\" routerLinkActive=\"active\" [routerLinkActiveOptions]=\"{exact:true}\">{{ item.title }}</a>\n    </li>\n  </ul>\n</div>\n<div class=\"site-container\" [ngClass]=\"mobileMenuState\" loCalWindowScroll>\n  <div class=\"sticky-header\">\n    <div class=\"menu-container clearfix\">\n      <lo-cal-hamburger (mobileMenuState)=\"toggleMobileMenuState()\" *responsive=\"{ sizes: {min:300, max:860}}\"></lo-cal-hamburger>\n      <ul class=\"menu main-menu\">\n        <li>\n          <h1 class=\"logo\" *ngIf=\"currentUrl?.url == '/'; else regularLink\"><a routerLink=\"/\"><span class=\"visuallyhidden\">Lo•Cal Kitchen</span></a></h1>\n          <ng-template #regularLink>\n            <div class=\"logo\"><a routerLink=\"/\"><span class=\"visuallyhidden\">Lo•Cal Kitchen</span></a></div>\n          </ng-template>\n        </li>\n        <li *ngFor=\"let item of mainMenuLinks\" [attr.class]=\"item.classes ? item.classes : null\">\n          <a routerLink=\"/{{ item.object_slug }}\" routerLinkActive=\"active\">{{ item.title }}</a>\n        </li>\n      </ul>\n      <ul class=\"cart-menu menu\">\n        <li class=\"account-link\">\n          <a routerLink=\"/account\"><span class=\"account-text\">ACCOUNT</span></a>\n        </li>\n        <li class=\"bag-link\">\n          <a tabindex=\"0\" (click)=\"toggleBagState()\" (keyup.enter)=\"toggleBagState()\" title=\"Click to view your bag\">\n            <span class=\"bag-text\">MY BAG</span>\n            <span class=\"cart-number\" [ngClass]=\"numberOfItemsInBag == 0 ? 'hidden' : 'populated'\">{{ numberOfItemsInBag }}</span>\n          </a>\n        </li>\n      </ul>\n    </div>\n  </div>\n  <div class=\"main-container\">\n    <router-outlet></router-outlet>\n  </div>\n\n  <lo-cal-footer></lo-cal-footer>\n  <lo-cal-bag [state]=\"bagState\" [bagCount]=\"numberOfItemsInBag\" [bagItems]=\"bagItems\" (bagState)=\"toggleBagState()\"></lo-cal-bag>\n</div>"
+module.exports = "<div class=\"mobile-menu\" *responsive=\"{ sizes: {min:300, max:860}}\" [ngClass]=\"mobileMenuState\" (click)=\"toggleMobileMenuState($event.target)\">\n  <div class=\"close white\">\n    <span></span>\n    <span></span>\n  </div>\n  <div class=\"mobile-menu-content\">\n    <ul>\n      <li><a routerLink=\"/\" routerLinkActive=\"active\" [routerLinkActiveOptions]=\"{exact:true}\">Home</a></li>\n      <li *ngFor=\"let item of mainMenuLinks\" [attr.class]=\"item.classes ? item.classes : null\">\n        <a routerLink=\"/{{ item.object_slug }}\" routerLinkActive=\"active\" [routerLinkActiveOptions]=\"{exact:true}\">{{ item.title }}</a>\n      </li>\n    </ul>\n  </div>\n</div>\n<div class=\"site-container\" [ngClass]=\"mobileMenuState\" loCalWindowScroll>\n  <div class=\"sticky-header\">\n    <div class=\"menu-container clearfix\">\n      <lo-cal-hamburger (mobileMenuState)=\"toggleMobileMenuState()\" *responsive=\"{ sizes: {min:300, max:860}}\"></lo-cal-hamburger>\n      <ul class=\"menu main-menu\">\n        <li>\n          <h1 class=\"logo\" *ngIf=\"currentUrl == '/'\"><a routerLink=\"/\"><span class=\"visuallyhidden\">Lo•Cal Kitchen</span></a></h1>\n          <div class=\"logo\" *ngIf=\"currentUrl != '/'\"><a routerLink=\"/\"><span class=\"visuallyhidden\">Lo•Cal Kitchen</span></a></div>\n        </li>\n        <li *ngFor=\"let item of mainMenuLinks\" [attr.class]=\"item.classes ? item.classes : null\">\n          <a routerLink=\"/{{ item.object_slug }}\" routerLinkActive=\"active\">{{ item.title }}</a>\n        </li>\n      </ul>\n      <ul class=\"cart-menu menu\">\n        <li class=\"account-link\">\n          <a routerLink=\"/account\"><span class=\"account-text\">ACCOUNT</span></a>\n        </li>\n        <li class=\"bag-link\">\n          <a tabindex=\"0\" (click)=\"toggleBagState()\" (keyup.enter)=\"toggleBagState()\" title=\"Click to view your bag\">\n            <span class=\"bag-text\">MY BAG</span>\n            <span class=\"cart-number\" [ngClass]=\"numberOfItemsInBag == 0 ? 'hidden' : 'populated'\">{{ numberOfItemsInBag }}</span>\n          </a>\n        </li>\n      </ul>\n    </div>\n  </div>\n  <div class=\"main-container\">\n    <router-outlet></router-outlet>\n  </div>\n\n  <lo-cal-footer></lo-cal-footer>\n  <lo-cal-bag [state]=\"bagState\" [bagCount]=\"numberOfItemsInBag\" [bagItems]=\"bagItems\" (bagState)=\"toggleBagState()\"></lo-cal-bag>\n</div>"
 
 /***/ }),
 
@@ -898,6 +904,7 @@ module.exports = "<div class=\"mobile-menu\" *responsive=\"{ sizes: {min:300, ma
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__local_services_wp_service__ = __webpack_require__("./src/app/services/wp.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__local_services_bag_service__ = __webpack_require__("./src/app/services/bag.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ngx_pwa_local_storage__ = __webpack_require__("./node_modules/@ngx-pwa/local-storage/local-storage.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_router__ = __webpack_require__("./node_modules/@angular/router/esm5/router.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -911,11 +918,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var MainLayoutComponent = /** @class */ (function () {
-    function MainLayoutComponent(wpService, bagService, localStorage) {
+    function MainLayoutComponent(wpService, bagService, localStorage, router) {
         this.wpService = wpService;
         this.bagService = bagService;
         this.localStorage = localStorage;
+        this.router = router;
         this.openBag = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
         this.bagState = 'invisible';
         this._numberOfItemsInBag = 0;
@@ -924,6 +933,7 @@ var MainLayoutComponent = /** @class */ (function () {
     }
     MainLayoutComponent.prototype.ngOnInit = function () {
         var _this = this;
+        this.currentUrl = this.router.url;
         this.wpService.getMenu(2).subscribe(function (m) { return _this.mainMenuLinks = m.items; });
     };
     MainLayoutComponent.prototype.toggleBagState = function () {
@@ -931,7 +941,14 @@ var MainLayoutComponent = /** @class */ (function () {
             this.bagState = (this.bagState === 'invisible') ? 'visible' : 'invisible';
         }
     };
-    MainLayoutComponent.prototype.toggleMobileMenuState = function () {
+    MainLayoutComponent.prototype.toggleMobileMenuState = function (target) {
+        // Keep mobile menu open if menu is scrolled/clicked, otherwise close
+        if (target !== undefined) {
+            if (target.className.indexOf('mobile-menu-content') === -1) {
+                this.mobileMenuState = (this.mobileMenuState === 'mobileMenuClosed') ? 'mobileMenuOpen' : 'mobileMenuClosed';
+            }
+            return;
+        }
         this.mobileMenuState = (this.mobileMenuState === 'mobileMenuClosed') ? 'mobileMenuOpen' : 'mobileMenuClosed';
     };
     Object.defineProperty(MainLayoutComponent.prototype, "bagItems", {
@@ -955,7 +972,8 @@ var MainLayoutComponent = /** @class */ (function () {
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__local_services_wp_service__["a" /* WordpressService */],
             __WEBPACK_IMPORTED_MODULE_2__local_services_bag_service__["a" /* BagService */],
-            __WEBPACK_IMPORTED_MODULE_3__ngx_pwa_local_storage__["a" /* LocalStorage */]])
+            __WEBPACK_IMPORTED_MODULE_3__ngx_pwa_local_storage__["a" /* LocalStorage */],
+            __WEBPACK_IMPORTED_MODULE_4__angular_router__["c" /* Router */]])
     ], MainLayoutComponent);
     return MainLayoutComponent;
 }());
@@ -967,7 +985,7 @@ var MainLayoutComponent = /** @class */ (function () {
 /***/ "./src/app/pages/account/account.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"account-section\">\n  <div class=\"account-heading\">\n    <h3>Account Details</h3>\n    <a href=\"\" (click)=\"editAccountDetails()\" role=\"button\">{{ editing ? 'Cancel' : 'Edit' }}</a>\n  </div>\n  <form action=\"\" [formGroup]=\"accountForm\" class=\"lo-cal-form\" [ngClass]=\"editing ? 'editing' : 'static'\" (submit)=\"saveAccountDetails(accountForm)\">\n    <div class=\"error-message\" *ngIf=\"errorOccurred\">\n      <p>\n        Something went wrong. Please try again.\n      </p>\n    </div>\n    <div class=\"form-section half-and-half\">\n      <div class=\"form-component form-component-text\">\n        <label for=\"first-name\" class=\"visuallyhidden\">First Name</label>\n        <input type=\"text\" [readonly]=\"!editing\" name=\"first-name\" id=\"first-name\" formControlName=\"first-name\" placeholder=\"First Name*\" [ngClass]=\"{'has-error':!accountForm.controls['first-name'].valid}\">\n        <div class=\"error-message\" *ngIf=\"!accountForm.controls['first-name'].valid\">This field is required.</div>\n      </div>\n      <div class=\"form-component form-component-text\">\n        <label for=\"last-name\" class=\"visuallyhidden\">Last Name</label>\n        <input type=\"text\" [readonly]=\"!editing\" name=\"last-name\" id=\"last-name\" formControlName=\"last-name\" placeholder=\"Last Name*\" [ngClass]=\"{'has-error':!accountForm.controls['last-name'].valid}\">\n        <div class=\"error-message\" *ngIf=\"!accountForm.controls['last-name'].valid\">This field is required.</div>\n      </div>\n    </div>\n    <div class=\"form-component form-component-email\">\n      <label for=\"email\" class=\"visuallyhidden\">Email</label>\n      <input type=\"text\" [readonly]=\"!editing\" name=\"email\" id=\"email\" formControlName=\"email\" placeholder=\"Email*\" [ngClass]=\"{'has-error':!accountForm.controls['email'].valid}\">\n      <div class=\"error-message\" *ngIf=\"!accountForm.controls['email'].valid\">This field is required.</div>\n    </div>\n    <div class=\"control-wrapper\" formGroupName=\"full-address\">\n      <div class=\"form-component form-component-text\">\n        <label for=\"address\" class=\"visuallyhidden\">Address</label>\n        <input type=\"text\" [readonly]=\"!editing\" name=\"address\" id=\"address\" formControlName=\"address\" placeholder=\"Address*\" [ngClass]=\"{'has-error':!accountForm.controls['full-address']['controls']['address'].valid && submittedOnce}\">\n        <div class=\"error-message\" *ngIf=\"!accountForm.controls['full-address']['controls']['address'].valid && submittedOnce\">This field is required.</div>\n      </div>\n      <div class=\"form-component form-component-text\">\n        <label for=\"address2\" class=\"visuallyhidden\">Address 2</label>\n        <input type=\"text\" [readonly]=\"!editing\" name=\"address2\" id=\"address2\" formControlName=\"address2\" placeholder=\"Apartment/Suite/Unit/Building (optional)\">\n      </div>\n      <div class=\"form-section thirds\">\n        <div class=\"form-component form-component-text\">\n          <label for=\"city\" class=\"visuallyhidden\">City</label>\n          <input type=\"text\" [readonly]=\"!editing\" name=\"city\" id=\"city\" formControlName=\"city\" placeholder=\"City*\" [ngClass]=\"{'has-error':!accountForm.controls['full-address']['controls']['city'].valid && submittedOnce}\">\n          <div class=\"error-message\" *ngIf=\"!accountForm.controls['full-address']['controls']['city'].valid && submittedOnce\">This field is required.</div>\n        </div>\n        <div class=\"form-component form-component-select\">\n          <label for=\"state\" class=\"visuallyhidden\">State</label>\n          <select name=\"state\" id=\"state\" formControlName=\"state\" [ngClass]=\"{'has-error':!accountForm.controls['full-address']['controls']['state'].valid && submittedOnce}\">\n            <option value=\"\">-- Select --</option>\n            <option value=\"AL\">Alabama</option>\n            <option value=\"AK\">Alaska</option>\n            <option value=\"AZ\">Arizona</option>\n            <option value=\"AR\">Arkansas</option>\n            <option value=\"CA\">California</option>\n            <option value=\"CO\">Colorado</option>\n            <option value=\"CT\">Connecticut</option>\n            <option value=\"DE\">Delaware</option>\n            <option value=\"DC\">District Of Columbia</option>\n            <option value=\"FL\">Florida</option>\n            <option value=\"GA\">Georgia</option>\n            <option value=\"HI\">Hawaii</option>\n            <option value=\"ID\">Idaho</option>\n            <option value=\"IL\">Illinois</option>\n            <option value=\"IN\">Indiana</option>\n            <option value=\"IA\">Iowa</option>\n            <option value=\"KS\">Kansas</option>\n            <option value=\"KY\">Kentucky</option>\n            <option value=\"LA\">Louisiana</option>\n            <option value=\"ME\">Maine</option>\n            <option value=\"MD\">Maryland</option>\n            <option value=\"MA\">Massachusetts</option>\n            <option value=\"MI\">Michigan</option>\n            <option value=\"MN\">Minnesota</option>\n            <option value=\"MS\">Mississippi</option>\n            <option value=\"MO\">Missouri</option>\n            <option value=\"MT\">Montana</option>\n            <option value=\"NE\">Nebraska</option>\n            <option value=\"NV\">Nevada</option>\n            <option value=\"NH\">New Hampshire</option>\n            <option value=\"NJ\">New Jersey</option>\n            <option value=\"NM\">New Mexico</option>\n            <option value=\"NY\">New York</option>\n            <option value=\"NC\">North Carolina</option>\n            <option value=\"ND\">North Dakota</option>\n            <option value=\"OH\">Ohio</option>\n            <option value=\"OK\">Oklahoma</option>\n            <option value=\"OR\">Oregon</option>\n            <option value=\"PA\">Pennsylvania</option>\n            <option value=\"RI\">Rhode Island</option>\n            <option value=\"SC\">South Carolina</option>\n            <option value=\"SD\">South Dakota</option>\n            <option value=\"TN\">Tennessee</option>\n            <option value=\"TX\">Texas</option>\n            <option value=\"UT\">Utah</option>\n            <option value=\"VT\">Vermont</option>\n            <option value=\"VA\">Virginia</option>\n            <option value=\"WA\">Washington</option>\n            <option value=\"WV\">West Virginia</option>\n            <option value=\"WI\">Wisconsin</option>\n            <option value=\"WY\">Wyoming</option>\n          </select>\n        </div>\n        <div class=\"form-component form-component-text\">\n          <label for=\"zip\" class=\"visuallyhidden\">Zip Code</label>\n          <input type=\"text\" [readonly]=\"!editing\" name=\"zip\" id=\"zip\" formControlName=\"zip\" placeholder=\"Zip*\" [ngClass]=\"{'has-error':!accountForm.controls['full-address']['controls']['zip'].valid && submittedOnce}\">\n          <div class=\"error-message\" *ngIf=\"!accountForm.controls['full-address']['controls']['zip'].valid && submittedOnce\">This field is required.</div>\n          <div class=\"error-message\" *ngIf=\"accountForm.controls['full-address']['controls']['zip'].errors?.pattern && accountForm.controls['full-address']['controls']['zip'].value.length > 5\">Zip code must be only 5 digits.</div>\n        </div>\n      </div>\n    </div>\n\n    <div class=\"submit red-button full-width-button submit\">\n      <input type=\"submit\" value=\"Save\" *ngIf=\"editing\" [disabled]=\"!accountForm.valid\">\n    </div>\n  </form>\n</div>\n\n<div class=\"account-section\">\n  <div class=\"account-heading\">\n    <h3>Change Password</h3>\n    <a href=\"\" (click)=\"editPassword()\" role=\"button\">{{ editingPassword ? 'Cancel' : 'Edit' }}</a>\n  </div>\n  <form action=\"\" [formGroup]=\"passwordForm\" class=\"lo-cal-form\" [ngClass]=\"editingPassword ? 'editing' : 'static'\" (submit)=\"saveNewPassword(passwordForm)\">\n    <div class=\"form-component form-component-text\">\n      <label for=\"password\" class=\"visuallyhidden\">New Password</label>\n      <input type=\"password\" [readonly]=\"!editingPassword\" name=\"password\" id=\"password\" formControlName=\"password\" placeholder=\"New Password* (8 or more characters)\" [ngClass]=\"{'has-error':!passwordForm.controls['password'].valid && submittedOnce}\">\n      <div class=\"error-message\" *ngIf=\"!passwordForm.controls['password'].valid && submittedOnce\">This field is required.</div>\n      <div class=\"error-message\" *ngIf=\"passwordForm.controls['password'].value.length > 2 && passwordForm.controls['password'].errors?.minlength\">Password must be at least 8 characters, contain at least 1 number, and 1 uppercase character.</div>\n    </div>\n    <div class=\"form-component form-component-text\">\n      <label for=\"confirm-password\" class=\"visuallyhidden\">Confirm Password</label>\n      <input type=\"password\" [readonly]=\"!editingPassword\" name=\"confirm-password\" id=\"confirm-password\" formControlName=\"confirm-password\" placeholder=\"Confirm Password*\" [ngClass]=\"{'has-error':!passwordForm.controls['confirm-password'].valid && submittedOnce}\">\n      <div class=\"error-message\" *ngIf=\"!passwordForm.controls['confirm-password'].valid && submittedOnce\">This field is required.</div>\n      <div class=\"error-message\" *ngIf=\"passwordForm.controls['confirm-password'].errors?.MatchPassword\">Password does not match.</div>\n    </div>\n    <div class=\"form-component form-component-text\" *ngIf=\"editingPassword\">\n      <p></p>\n    </div>\n    <div class=\"form-component form-component-text\">\n      <label for=\"password\" class=\"visuallyhidden\">Security Answer</label>\n      <input type=\"password\" [readonly]=\"!editingPassword\" name=\"security-answer\" id=\"security-answer\" formControlName=\"security-answer\" placeholder=\"Old Password*\" [ngClass]=\"{'has-error':!passwordForm.controls['security-answer'].valid && submittedOnce}\">\n      <div class=\"error-message\" *ngIf=\"!passwordForm.controls['security-answer'].valid && submittedOnce\">This field is required.</div>\n    </div>\n\n    <div class=\"submit red-button full-width-button submit\">\n      <input type=\"submit\" value=\"Save\" *ngIf=\"editingPassword\" [disabled]=\"!passwordForm.valid\">\n    </div>\n  </form>\n</div>\n\n<div class=\"account-section\">\n  <div class=\"account-heading\">\n    <h3>Saved Payments</h3>\n    <a href=\"\" (click)=\"editPayments()\" role=\"button\">{{ editingPassword ? 'Cancel' : 'Edit' }}</a>\n  </div>\n  <div class=\"payments\" *ngIf=\"savedPayments\">\n    <div class=\"payment id-{{ savedPayments?.AccountId }}\">\n      <p class=\"card-details small-text\">\n        {{ savedPayments?.MethodType | cardType }}: {{ savedPayments?.MaskedAccountNumber }}\n      </p>\n      <p class=\"delete\" (click)=\"deletePaymentMethod(savedPayments?.AccountId)\" *ngIf=\"editingPayments\">\n        <span class=\"icon\"></span>\n      </p>\n    </div>\n  </div>\n</div>"
+module.exports = "<div class=\"account-section\">\n  <div class=\"account-heading\">\n    <h3>Account Details</h3>\n    <a href=\"\" (click)=\"editAccountDetails()\" role=\"button\">{{ editing ? 'Cancel' : 'Edit' }}</a>\n  </div>\n  <form action=\"\" [formGroup]=\"accountForm\" class=\"lo-cal-form\" [ngClass]=\"editing ? 'editing' : 'static'\" (submit)=\"saveAccountDetails(accountForm)\">\n    <div class=\"error-message\" *ngIf=\"errorOccurred\">\n      <p>\n        Something went wrong. Please try again.\n      </p>\n    </div>\n    <div class=\"form-section half-and-half\">\n      <div class=\"form-component form-component-text\">\n        <label for=\"first-name\" class=\"visuallyhidden\">First Name</label>\n        <input type=\"text\" [readonly]=\"!editing\" name=\"first-name\" id=\"first-name\" formControlName=\"first-name\" placeholder=\"First Name*\" [ngClass]=\"{'has-error':!accountForm.controls['first-name'].valid}\">\n        <div class=\"error-message\" *ngIf=\"!accountForm.controls['first-name'].valid\">This field is required.</div>\n      </div>\n      <div class=\"form-component form-component-text\">\n        <label for=\"last-name\" class=\"visuallyhidden\">Last Name</label>\n        <input type=\"text\" [readonly]=\"!editing\" name=\"last-name\" id=\"last-name\" formControlName=\"last-name\" placeholder=\"Last Name*\" [ngClass]=\"{'has-error':!accountForm.controls['last-name'].valid}\">\n        <div class=\"error-message\" *ngIf=\"!accountForm.controls['last-name'].valid\">This field is required.</div>\n      </div>\n    </div>\n    <div class=\"form-component form-component-email\">\n      <label for=\"email\" class=\"visuallyhidden\">Email</label>\n      <input type=\"text\" [readonly]=\"!editing\" name=\"email\" id=\"email\" formControlName=\"email\" placeholder=\"Email*\" [ngClass]=\"{'has-error':!accountForm.controls['email'].valid}\">\n      <div class=\"error-message\" *ngIf=\"!accountForm.controls['email'].valid\">This field is required.</div>\n    </div>\n    <div class=\"control-wrapper\" formGroupName=\"full-address\">\n      <div class=\"form-component form-component-text\">\n        <label for=\"address\" class=\"visuallyhidden\">Address</label>\n        <input type=\"text\" [readonly]=\"!editing\" name=\"address\" id=\"address\" formControlName=\"address\" placeholder=\"Address*\" [ngClass]=\"{'has-error':!accountForm.controls['full-address']['controls']['address'].valid && submittedOnce}\">\n        <div class=\"error-message\" *ngIf=\"!accountForm.controls['full-address']['controls']['address'].valid && submittedOnce\">This field is required.</div>\n      </div>\n      <div class=\"form-component form-component-text\">\n        <label for=\"address2\" class=\"visuallyhidden\">Address 2</label>\n        <input type=\"text\" [readonly]=\"!editing\" name=\"address2\" id=\"address2\" formControlName=\"address2\" placeholder=\"Apartment/Suite/Unit/Building (optional)\">\n      </div>\n      <div class=\"form-section thirds\">\n        <div class=\"form-component form-component-text\">\n          <label for=\"city\" class=\"visuallyhidden\">City</label>\n          <input type=\"text\" [readonly]=\"!editing\" name=\"city\" id=\"city\" formControlName=\"city\" placeholder=\"City*\" [ngClass]=\"{'has-error':!accountForm.controls['full-address']['controls']['city'].valid && submittedOnce}\">\n          <div class=\"error-message\" *ngIf=\"!accountForm.controls['full-address']['controls']['city'].valid && submittedOnce\">This field is required.</div>\n        </div>\n        <div class=\"form-component form-component-select\">\n          <label for=\"state\" class=\"visuallyhidden\">State</label>\n          <select name=\"state\" id=\"state\" formControlName=\"state\" [ngClass]=\"{'has-error':!accountForm.controls['full-address']['controls']['state'].valid && submittedOnce}\">\n            <option value=\"\">-- Select --</option>\n            <option value=\"AL\">Alabama</option>\n            <option value=\"AK\">Alaska</option>\n            <option value=\"AZ\">Arizona</option>\n            <option value=\"AR\">Arkansas</option>\n            <option value=\"CA\">California</option>\n            <option value=\"CO\">Colorado</option>\n            <option value=\"CT\">Connecticut</option>\n            <option value=\"DE\">Delaware</option>\n            <option value=\"DC\">District Of Columbia</option>\n            <option value=\"FL\">Florida</option>\n            <option value=\"GA\">Georgia</option>\n            <option value=\"HI\">Hawaii</option>\n            <option value=\"ID\">Idaho</option>\n            <option value=\"IL\">Illinois</option>\n            <option value=\"IN\">Indiana</option>\n            <option value=\"IA\">Iowa</option>\n            <option value=\"KS\">Kansas</option>\n            <option value=\"KY\">Kentucky</option>\n            <option value=\"LA\">Louisiana</option>\n            <option value=\"ME\">Maine</option>\n            <option value=\"MD\">Maryland</option>\n            <option value=\"MA\">Massachusetts</option>\n            <option value=\"MI\">Michigan</option>\n            <option value=\"MN\">Minnesota</option>\n            <option value=\"MS\">Mississippi</option>\n            <option value=\"MO\">Missouri</option>\n            <option value=\"MT\">Montana</option>\n            <option value=\"NE\">Nebraska</option>\n            <option value=\"NV\">Nevada</option>\n            <option value=\"NH\">New Hampshire</option>\n            <option value=\"NJ\">New Jersey</option>\n            <option value=\"NM\">New Mexico</option>\n            <option value=\"NY\">New York</option>\n            <option value=\"NC\">North Carolina</option>\n            <option value=\"ND\">North Dakota</option>\n            <option value=\"OH\">Ohio</option>\n            <option value=\"OK\">Oklahoma</option>\n            <option value=\"OR\">Oregon</option>\n            <option value=\"PA\">Pennsylvania</option>\n            <option value=\"RI\">Rhode Island</option>\n            <option value=\"SC\">South Carolina</option>\n            <option value=\"SD\">South Dakota</option>\n            <option value=\"TN\">Tennessee</option>\n            <option value=\"TX\">Texas</option>\n            <option value=\"UT\">Utah</option>\n            <option value=\"VT\">Vermont</option>\n            <option value=\"VA\">Virginia</option>\n            <option value=\"WA\">Washington</option>\n            <option value=\"WV\">West Virginia</option>\n            <option value=\"WI\">Wisconsin</option>\n            <option value=\"WY\">Wyoming</option>\n          </select>\n        </div>\n        <div class=\"form-component form-component-text\">\n          <label for=\"zip\" class=\"visuallyhidden\">Zip Code</label>\n          <input type=\"text\" [readonly]=\"!editing\" name=\"zip\" id=\"zip\" formControlName=\"zip\" placeholder=\"Zip*\" [ngClass]=\"{'has-error':!accountForm.controls['full-address']['controls']['zip'].valid && submittedOnce}\">\n          <div class=\"error-message\" *ngIf=\"!accountForm.controls['full-address']['controls']['zip'].valid && submittedOnce\">This field is required.</div>\n          <div class=\"error-message\" *ngIf=\"accountForm.controls['full-address']['controls']['zip'].errors?.pattern && accountForm.controls['full-address']['controls']['zip'].value.length > 5\">Zip code must be only 5 digits.</div>\n        </div>\n      </div>\n    </div>\n\n    <div class=\"loading-gif button-size\" *ngIf=\"accountProcessing\"></div>\n    <div class=\"submit red-button full-width-button submit\">\n      <input type=\"submit\" value=\"Save\" *ngIf=\"editing && !accountProcessing\" [disabled]=\"!accountForm.valid\">\n    </div>\n  </form>\n</div>\n\n<div class=\"account-section\">\n  <div class=\"account-heading\">\n    <h3>Change Password</h3>\n    <a href=\"\" (click)=\"editPassword()\" role=\"button\">{{ editingPassword ? 'Cancel' : 'Edit' }}</a>\n  </div>\n  <form action=\"\" [formGroup]=\"passwordForm\" class=\"lo-cal-form\" [ngClass]=\"editingPassword ? 'editing' : 'static'\" (submit)=\"updatePassword(passwordForm)\">\n    <div class=\"form-errors\" *ngIf=\"passwordError\"><p>{{ passwordError }}</p></div>\n    <div class=\"form-success\"><p>{{ passwordSuccess }}</p></div>\n    <div class=\"form-component form-component-text\">\n      <label for=\"old-password\" class=\"visuallyhidden\">Old Password</label>\n      <input type=\"password\" [readonly]=\"!editingPassword\" name=\"old-password\" id=\"old-password\" formControlName=\"old-password\" placeholder=\"Old Password\" [ngClass]=\"{'has-error':!passwordForm.controls['old-password'].valid && submittedOnce}\">\n      <div class=\"error-message\" *ngIf=\"!passwordForm.controls['old-password'].valid && submittedOnce\">This field is required.</div>\n    </div>\n    <div class=\"form-component form-component-text\">\n      <label for=\"new-password\" class=\"visuallyhidden\">New Password</label>\n      <input type=\"password\" [readonly]=\"!editingPassword\" name=\"password\" id=\"new-password\" formControlName=\"password\" placeholder=\"New Password* (8 or more characters)\" [ngClass]=\"{'has-error':!passwordForm.controls['password'].valid && submittedOnce}\">\n      <div class=\"error-message\" *ngIf=\"!passwordForm.controls['password'].valid && submittedOnce\">This field is required.</div>\n      <div class=\"error-message\" *ngIf=\"passwordForm.controls['password'].value.length > 2 && passwordForm.controls['password'].errors?.minlength\">Password must be at least 8 characters, contain at least 1 number, and 1 uppercase character.</div>\n    </div>\n    <div class=\"form-component form-component-text\">\n      <label for=\"confirm-password\" class=\"visuallyhidden\">Confirm Password</label>\n      <input type=\"password\" [readonly]=\"!editingPassword\" name=\"confirm-password\" id=\"confirm-password\" formControlName=\"confirm-password\" placeholder=\"Confirm Password*\" [ngClass]=\"{'has-error':!passwordForm.controls['confirm-password'].valid && submittedOnce}\">\n      <div class=\"error-message\" *ngIf=\"!passwordForm.controls['confirm-password'].valid && submittedOnce\">This field is required.</div>\n      <div class=\"error-message\" *ngIf=\"passwordForm.controls['confirm-password'].errors?.MatchPassword\">Password does not match.</div>\n    </div>\n\n    <div class=\"submit red-button full-width-button submit\">\n      <div class=\"loading-gif button-size\" *ngIf=\"passwordProcessing\"></div>\n      <input type=\"submit\" value=\"Save\" *ngIf=\"editingPassword && !passwordProcessing\" [disabled]=\"!passwordForm.valid\">\n    </div>\n  </form>\n</div>\n\n<div class=\"account-section\">\n  <div class=\"account-heading\">\n    <h3>Change Security Question</h3>\n    <a href=\"\" (click)=\"editQuestion()\" role=\"button\">{{ editingQuestion ? 'Cancel' : 'Edit' }}</a>\n  </div>\n  <form action=\"\" [formGroup]=\"questionForm\" class=\"lo-cal-form\" [ngClass]=\"editingQuestion ? 'editing' : 'static'\" (submit)=\"updateSecurityQuestion(questionForm)\">\n    <div class=\"form-errors\" *ngIf=\"questionError\">\n      <p>{{ questionError }}</p>\n    </div>\n    <div class=\"form-success\" *ngIf=\"questionSuccess\">\n      <p>{{ questionSuccess }}</p>\n    </div>\n    <div class=\"form-component form-component-select\">\n      <label for=\"security-question\" class=\"visuallyhidden\">Security Question</label>\n      <select name=\"security-question\" id=\"security-question\" formControlName=\"security-question\"  [ngClass]=\"{'has-error':!questionForm.controls['security-question'].valid && submittedOnce}\">\n        <option value=\"\">- Select -</option>\n        <option value=\"What was your childhood nickname?\">What was your childhood nickname?</option>\n        <option value=\"What is the name of your favorite childhood friend?\">What is the name of your favorite childhood friend?</option>\n        <option value=\"In what city or town did your mother and father meet?\">In what city or town did your mother and father meet?</option>\n        <option value=\"What is your favorite sports team?\">What is your favorite sports team?</option>\n        <option value=\"What is your favorite movie?\">What is your favorite movie?</option>\n        <option value=\"What was your favorite sport in high school?\">What was your favorite sport in high school?</option>\n        <option value=\"What was your favorite food as a child?\">What was your favorite food as a child?</option>\n        <option value=\"What was the make and model of your first car?\">What was the make and model of your first car?</option>\n        <option value=\"What was the name of the hospital where you were born?\">What was the name of the hospital where you were born?</option>\n        <option value=\"What school did you attend for sixth grade?\">What school did you attend for sixth grade?</option>\n        <option value=\"In what town was your first job?\">In what town was your first job?</option>\n        <option value=\"What was the name of the company where you had your first job?\">What was the name of the company where you had your first job?</option>\n      </select>\n      <div class=\"error-message\" *ngIf=\"!questionForm.controls['security-question'].valid && submittedOnce\">This field is required.</div>\n    </div>\n    <div class=\"form-component form-component-text\" [hidden]=\"!editingQuestion\">\n      <label for=\"security-answer\" class=\"visuallyhidden\">Security Answer</label>\n      <input type=\"text\" [readonly]=\"!editingQuestion\" name=\"security-answer\" id=\"security-answer\" formControlName=\"security-answer\" placeholder=\"Security Answer\" [ngClass]=\"{'has-error':!questionForm.controls['security-answer'].valid && submittedOnce}\">\n    </div>\n    <div class=\"form-component form-component-text\" [hidden]=\"!editingQuestion\">\n      <label for=\"current-password\" class=\"visuallyhidden\">Current Password</label>\n      <input type=\"password\" [readonly]=\"!editingQuestion\" name=\"current-password\" id=\"current-password\" formControlName=\"current-password\" placeholder=\"Current Password\" [ngClass]=\"{'has-error':!questionForm.controls['current-password'].valid && submittedOnce}\">\n      <div class=\"error-message\" *ngIf=\"!questionForm.controls['current-password'].valid && submittedOnce\">This field is required.</div>\n    </div>\n    <div class=\"submit red-button full-width-button submit\">\n      <input type=\"submit\" value=\"Save\" *ngIf=\"editingQuestion\" [disabled]=\"!questionForm.valid\">\n    </div>\n  </form>\n</div>\n\n<div class=\"account-section\">\n  <div class=\"account-heading\">\n    <h3>Saved Payments</h3>\n    <a href=\"\" (click)=\"editPayments()\" role=\"button\">{{ editingPassword ? 'Cancel' : 'Edit' }}</a>\n  </div>\n  <div class=\"payments\" *ngIf=\"savedPayments\">\n    <div class=\"payment id-{{ savedPayments?.AccountId }}\">\n      <p class=\"card-details small-text\">\n        {{ savedPayments?.MethodType | cardType }}: {{ savedPayments?.MaskedAccountNumber }}\n      </p>\n      <p class=\"delete\" (click)=\"deletePaymentMethod(savedPayments?.AccountId)\" *ngIf=\"editingPayments\">\n        <span class=\"icon\"></span>\n      </p>\n    </div>\n  </div>\n</div>"
 
 /***/ }),
 
@@ -983,6 +1001,7 @@ module.exports = "<div class=\"account-section\">\n  <div class=\"account-headin
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__local_utils_passwordmatch__ = __webpack_require__("./src/app/utils/passwordmatch.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_ngx_auto_unsubscribe__ = __webpack_require__("./node_modules/ngx-auto-unsubscribe/dist/index.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__angular_platform_browser__ = __webpack_require__("./node_modules/@angular/platform-browser/esm5/platform-browser.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__angular_router__ = __webpack_require__("./node_modules/@angular/router/esm5/router.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1002,18 +1021,28 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 
 
 
+
 var AccountComponent = /** @class */ (function () {
-    function AccountComponent(customerService, localStorage, fb, document) {
+    function AccountComponent(customerService, localStorage, fb, document, router) {
         this.customerService = customerService;
         this.localStorage = localStorage;
         this.fb = fb;
         this.document = document;
+        this.router = router;
         this.customerId = '';
         this.editing = false;
         this.editingPassword = false;
         this.editingPayments = false;
+        this.editingQuestion = false;
         this.errorOccurred = false;
         this.submittedOnce = false;
+        this.securityQuestion = '';
+        this.passwordError = '';
+        this.passwordSuccess = '';
+        this.questionError = '';
+        this.questionSuccess = '';
+        this.accountProcessing = false;
+        this.passwordProcessing = false;
         this.accountForm = fb.group({
             'first-name': [null, __WEBPACK_IMPORTED_MODULE_3__angular_forms__["Validators"].required],
             'last-name': [null, __WEBPACK_IMPORTED_MODULE_3__angular_forms__["Validators"].required],
@@ -1027,11 +1056,16 @@ var AccountComponent = /** @class */ (function () {
             })
         });
         this.passwordForm = fb.group({
+            'old-password': ['', __WEBPACK_IMPORTED_MODULE_3__angular_forms__["Validators"].required],
             'password': ['', __WEBPACK_IMPORTED_MODULE_3__angular_forms__["Validators"].compose([__WEBPACK_IMPORTED_MODULE_3__angular_forms__["Validators"].required, __WEBPACK_IMPORTED_MODULE_3__angular_forms__["Validators"].minLength(8), __WEBPACK_IMPORTED_MODULE_3__angular_forms__["Validators"].pattern(/(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/)])],
-            'confirm-password': ['', __WEBPACK_IMPORTED_MODULE_3__angular_forms__["Validators"].required],
-            'security-answer': ['', __WEBPACK_IMPORTED_MODULE_3__angular_forms__["Validators"].required],
+            'confirm-password': ['', __WEBPACK_IMPORTED_MODULE_3__angular_forms__["Validators"].required]
         }, {
             validator: __WEBPACK_IMPORTED_MODULE_4__local_utils_passwordmatch__["a" /* PasswordMatch */].MatchPassword
+        });
+        this.questionForm = fb.group({
+            'current-password': ['', __WEBPACK_IMPORTED_MODULE_3__angular_forms__["Validators"].required],
+            'security-question': ['', __WEBPACK_IMPORTED_MODULE_3__angular_forms__["Validators"].required],
+            'security-answer': ['', __WEBPACK_IMPORTED_MODULE_3__angular_forms__["Validators"].required]
         });
     }
     AccountComponent.prototype.ngOnInit = function () {
@@ -1041,6 +1075,8 @@ var AccountComponent = /** @class */ (function () {
             _this.customer = customerData;
             _this.customerId = customerData.CustomerId;
             _this.patchAccountForm(customerData);
+            // Retrieve security question
+            _this.getSecurityQuestion();
             _this.customerService.getSavedPayments(_this.customerId).subscribe(function (paymentMethods) {
                 _this.savedPayments = paymentMethods;
             });
@@ -1050,8 +1086,16 @@ var AccountComponent = /** @class */ (function () {
         this.accountForm.patchValue({
             'first-name': customerData.FirstName,
             'last-name': customerData.LastName,
-            'email': customerData.EMail
+            'email': customerData.EMail,
+            'full-address': {
+                'address': customerData.Addresses[0].AddressLine1,
+                'address2': customerData.Addresses[0].AddressLine2,
+                'city': customerData.Addresses[0].City,
+                'state': customerData.Addresses[0].State,
+                'zip': customerData.Addresses[0].Postal
+            }
         });
+        this.accountForm.controls['full-address']['controls']['state'].disable();
     };
     AccountComponent.prototype.editAccountDetails = function () {
         this.editing = !this.editing;
@@ -1065,52 +1109,94 @@ var AccountComponent = /** @class */ (function () {
     };
     AccountComponent.prototype.editPassword = function () {
         this.editingPassword = !this.editingPassword;
+        this.passwordError = '';
+        this.passwordSuccess = '';
         return false;
     };
     AccountComponent.prototype.editPayments = function () {
         this.editingPayments = !this.editingPayments;
         return false;
     };
+    AccountComponent.prototype.editQuestion = function () {
+        this.editingQuestion = !this.editingQuestion;
+        this.questionError = '';
+        this.questionSuccess = '';
+        return false;
+    };
     AccountComponent.prototype.saveAccountDetails = function (formData) {
         var _this = this;
         if (formData.valid) {
+            this.accountProcessing = true;
             var updateCustomer = {
                 customer_info: {
                     CustomerId: this.customerId,
-                    EMail: formData.controls.email.value,
-                    FirstName: formData.controls['first-name'].value,
-                    LastName: formData.controls['last-name'].value,
-                    Addresses: []
+                    EMail: formData.get('email').value,
+                    FirstName: formData.get('first-name').value,
+                    LastName: formData.get('last-name').value,
+                    Addresses: [{
+                            AddressType: 1,
+                            AddressId: 1,
+                            AddressLine1: formData.controls['full-address'].get('address').value,
+                            AddressLine2: formData.controls['full-address'].get('address2').value,
+                            City: formData.controls['full-address'].get('city').value,
+                            State: formData.controls['full-address'].get('state').value,
+                            Postal: formData.controls['full-address'].get('zip').value,
+                            IsDefault: true
+                        }]
                 }
             };
             // Disable the select again
             this.accountForm.controls['full-address']['controls']['state'].disable();
+            // TODO: Customer Address does not save to lo-cal api
             this.customerService.updateCustomerInfo(updateCustomer).subscribe(function (data) {
                 _this.customerService.getCustomerInfo(_this.customerId).subscribe(function (updatedCustomerInfo) {
                     _this.patchAccountForm(updatedCustomerInfo);
                     _this.localStorage.setItem('user', updatedCustomerInfo).subscribe(function () { });
                     _this.editing = false;
+                    _this.accountProcessing = false;
                 });
             }, function (error) {
                 // Update failed for some reason. Show error, return form to initial state
-                console.log(error);
                 _this.errorOccurred = true;
                 _this.patchAccountForm(_this.customer);
             });
         }
     };
-    AccountComponent.prototype.saveNewPassword = function (formData) {
-        console.log(formData);
+    AccountComponent.prototype.updatePassword = function (formData) {
+        var _this = this;
         if (formData.valid) {
-            var inLoginUpdate = {
+            var loginInfo = {
                 Email: this.customer.EMail,
-                OldPassword: formData.controls['old-password'].value,
-                NewPassword: formData.controls['new-password'].value
+                OldPassword: formData.get('old-password').value,
+                NewPassword: formData.get('password').value
             };
-            // TODO: Submit password update to API
-            // TODO: If successful, destroy login session and redirect to login page
+            this.customerService.updateLoginInfo(loginInfo).subscribe(function (result) {
+                if (result === null) {
+                    _this.passwordSuccess = 'Password successfully changed. You will now be logged out and need to log in again.';
+                    _this.destroyAndLogout();
+                }
+            }, function (error) {
+                _this.passwordError = error.error.message;
+            });
         }
         this.editingPassword = false;
+    };
+    AccountComponent.prototype.updateSecurityQuestion = function (formData) {
+        var _this = this;
+        if (formData.valid) {
+            var loginInfo = {
+                Email: this.customer.EMail,
+                OldPassword: formData.get('current-password').value,
+                NewSecurityQuestion: formData.get('security-question').value,
+                NewAnswer: formData.get('security-answer').value
+            };
+            this.customerService.updateLoginInfo(loginInfo).subscribe(function (result) {
+                _this.questionSuccess = 'Your security question has been succesfully updated';
+                _this.editingQuestion = !_this.editingQuestion;
+            }, function (error) {
+                _this.questionError = error.error.message;
+            });
+        }
     };
     AccountComponent.prototype.deletePaymentMethod = function (paymentId) {
         var _this = this;
@@ -1122,6 +1208,28 @@ var AccountComponent = /** @class */ (function () {
             });
         }
     };
+    AccountComponent.prototype.destroyAndLogout = function () {
+        var _this = this;
+        setTimeout(function () {
+            _this.localStorage.removeItem('user').subscribe(function () {
+                _this.router.navigateByUrl('/login');
+            });
+        }, 4000);
+    };
+    AccountComponent.prototype.getSecurityQuestion = function () {
+        var _this = this;
+        // Retrieve security question if it hasn't been fetched before
+        if (this.securityQuestion === '') {
+            this.customerService.getSecurityQuestion(this.customer.EMail).subscribe(function (question) {
+                _this.securityQuestion = question;
+                _this.questionForm.patchValue({
+                    'security-question': question
+                });
+            }, function (error) {
+                console.log(error);
+            });
+        }
+    };
     AccountComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_5_ngx_auto_unsubscribe__["a" /* AutoUnsubscribe */])(),
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
@@ -1129,7 +1237,7 @@ var AccountComponent = /** @class */ (function () {
             template: __webpack_require__("./src/app/pages/account/account.component.html")
         }),
         __param(3, Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Inject"])(__WEBPACK_IMPORTED_MODULE_6__angular_platform_browser__["b" /* DOCUMENT */])),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__local_services_customer_service__["a" /* CustomerService */], __WEBPACK_IMPORTED_MODULE_2__ngx_pwa_local_storage__["a" /* LocalStorage */], __WEBPACK_IMPORTED_MODULE_3__angular_forms__["FormBuilder"], Object])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__local_services_customer_service__["a" /* CustomerService */], __WEBPACK_IMPORTED_MODULE_2__ngx_pwa_local_storage__["a" /* LocalStorage */], __WEBPACK_IMPORTED_MODULE_3__angular_forms__["FormBuilder"], Object, __WEBPACK_IMPORTED_MODULE_7__angular_router__["c" /* Router */]])
     ], AccountComponent);
     return AccountComponent;
 }());
@@ -1365,9 +1473,9 @@ var CheckoutLoginComponent = /** @class */ (function () {
         this.returnUrl = '';
         this.submittedOnce = false;
         this.guestForm = fb.group({
-            'first-name': ['', __WEBPACK_IMPORTED_MODULE_1__angular_forms__["Validators"].required],
-            'last-name': ['', __WEBPACK_IMPORTED_MODULE_1__angular_forms__["Validators"].required],
-            'email-address': ['', [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["Validators"].required, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["Validators"].email]]
+            'first-name': ['', [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["Validators"].required, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["Validators"].maxLength(28)]],
+            'last-name': ['', [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["Validators"].required, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["Validators"].maxLength(28)]],
+            'email-address': ['', [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["Validators"].required, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["Validators"].email, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["Validators"].maxLength(45)]]
         });
     }
     CheckoutLoginComponent.prototype.ngOnInit = function () {
@@ -1380,7 +1488,8 @@ var CheckoutLoginComponent = /** @class */ (function () {
             var customer_1 = {
                 FirstName: formData.controls['first-name'].value,
                 LastName: formData.controls['last-name'].value,
-                EMail: formData.controls['email-address'].value
+                EMail: formData.controls['email-address'].value,
+                IsGuest: true
             };
             // Redirect to checkout review
             this.localStorage.setItem('user', customer_1).subscribe(function () {
@@ -1410,7 +1519,7 @@ var CheckoutLoginComponent = /** @class */ (function () {
 /***/ "./src/app/pages/checkout-payment/checkout-payment.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"basic-page-container checkout-review\">\n  <div class=\"basic-page-content center\">\n    <h1>Complete Your Order</h1>\n\n    <div class=\"checkout-wrapper\">\n      <div class=\"left-pane\">\n        <div class=\"step\">\n          <div class=\"inner-step-wrapper\">\n            <div class=\"step-heading\" (click)=\"editSection(1)\">1. Pickup</div>\n            <div class=\"step-wrapper\" [hidden]=\"sectionOpen !== 1\">\n              <form action=\"\" class=\"lo-cal-form\" [formGroup]=\"pickupForm\">\n                <div class=\"response\">\n                  <fieldset>\n                    <legend>How would you like to pickup your order?</legend>\n                    <div class=\"radio-options flex-between\">\n                      <div class=\"option\">\n                        <label for=\"in-store\">\n                          <input type=\"radio\" name=\"pickup-selection\" id=\"in-store\" value=\"1\" formControlName=\"pickup-selection\">\n                          <span class=\"semi-bold\">In Store Pick Up</span>\n                        </label>\n                      </div>\n                      <div class=\"option\">\n                        <label for=\"curbside\">\n                          <input type=\"radio\" name=\"pickup-selection\" id=\"curbside\" value=\"4\" formControlName=\"pickup-selection\">\n                          <span class=\"semi-bold\">Curbside Pickup</span>\n                        </label>\n                      </div>\n                    </div>\n                  </fieldset>\n                  <div class=\"car-options\" *ngIf=\"pickupForm.controls['pickup-selection'].value === '4'\">\n                    <div class=\"form-section half-and-half\">\n                      <div class=\"form-component form-component-text\">\n                        <label for=\"vehicle-make\" class=\"visuallyhidden\">Vehicle Make</label>\n                        <input type=\"text\" name=\"vehicle-make\" id=\"vehicle-make\" formControlName=\"vehicle-make\" placeholder=\"Vehicle Make*\">\n                      </div>\n                      <div class=\"form-component form-component-text\">\n                        <label for=\"vehicle-model\" class=\"visuallyhidden\">Vehicle Model</label>\n                        <input type=\"text\" name=\"vehicle-model\" id=\"vehicle-model\" formControlName=\"vehicle-model\" placeholder=\"Vehicle Model*\">\n                      </div>\n                    </div>\n                    <div class=\"form-section half-and-half\">\n                      <div class=\"form-component form-component-text\">\n                        <label for=\"vehicle-color\" class=\"visuallyhidden\">Vehicle Color</label>\n                        <input type=\"text\" name=\"vehicle-color\" id=\"vehicle-color\" formControlName=\"vehicle-color\" placeholder=\"Vehicle Color*\">\n                      </div>\n                    </div>\n                  </div>\n                </div>\n                <div class=\"next-step black-button\">\n                  <button [disabled]=\"!pickupForm.valid\"(click)=\"nextStep()\">Next Step</button>\n                </div>\n              </form>\n            </div>\n          </div><!-- /. inner-step-wrapper -->\n        </div><!-- /.step -->\n        <div class=\"step\">\n          <div class=\"inner-step-wrapper\">\n            <div class=\"step-heading\" (click)=\"editSection(2)\">2. Contact Information</div>\n            <div class=\"step-wrapper\" [hidden]=\"sectionOpen !== 2\">\n              <form action=\"\" class=\"lo-cal-form\" [formGroup]=\"contactInfoForm\">\n                <div class=\"form-section half-and-half\">\n                  <div class=\"form-component form-component-text\">\n                    <label for=\"first-name\" class=\"visuallyhidden\">First Name</label>\n                    <input type=\"text\" name=\"first-name\" id=\"first-name\" formControlName=\"first-name\" placeholder=\"First Name*\" [ngClass]=\"{'has-error':!contactInfoForm.controls['first-name'].valid && submittedOnce}\">\n                    <div class=\"error-message\" *ngIf=\"!contactInfoForm.controls['first-name'].valid && submittedOnce\">This field is required.</div>\n                  </div>\n                  <div class=\"form-component form-component-text\">\n                    <label for=\"last-name\" class=\"visuallyhidden\">Last Name</label>\n                    <input type=\"text\" name=\"last-name\" id=\"last-name\" formControlName=\"last-name\" placeholder=\"Last Name*\" [ngClass]=\"{'has-error':!contactInfoForm.controls['last-name'].valid && submittedOnce}\">\n                    <div class=\"error-message\" *ngIf=\"!contactInfoForm.controls['last-name'].valid && submittedOnce\">This field is required.</div>\n                  </div>\n                </div>\n                <div class=\"form-section half-and-half\">\n                  <div class=\"form-component form-component-email\">\n                    <label for=\"email\" class=\"visuallyhidden\">Email</label>\n                    <input type=\"text\" name=\"email\" id=\"email\" formControlName=\"email\" placeholder=\"Email*\" [ngClass]=\"{'has-error':!contactInfoForm.controls['email'].valid && submittedOnce}\">\n                    <div class=\"error-message\" *ngIf=\"!contactInfoForm.controls['email'].valid && submittedOnce\">This field is required.</div>\n                  </div>\n                  <div class=\"form-component form-component-text\">\n                    <label for=\"phone\" class=\"visuallyhidden\">Phone</label>\n                    <input type=\"text\" name=\"phone\" id=\"phone\" formControlName=\"phone\" placeholder=\"Phone\" [ngClass]=\"{'has-error':!contactInfoForm.controls['phone'].valid && submittedOnce}\">\n                    <div class=\"error-message\" *ngIf=\"!contactInfoForm.controls['phone'].valid && submittedOnce\">This field is required.</div>\n                  </div>\n                </div>\n                <div class=\"next-step black-button\">\n                  <button [disabled]=\"!contactInfoForm.valid\" (click)=\"nextStep()\">Next Step</button>\n                </div>\n              </form>\n            </div>\n          </div><!-- /. inner-step-wrapper -->\n        </div><!-- /.step -->\n        <div class=\"step\">\n          <div class=\"inner-step-wrapper\">\n            <div class=\"step-heading\" (click)=\"editSection(3)\">3. Payment</div>\n            <div class=\"step-wrapper\" [hidden]=\"sectionOpen !== 3\">\n              <form action=\"\" class=\"lo-cal-form\" [formGroup]=\"paymentForm\">\n                <div class=\"saved-payment-wrapper\">\n                  <div class=\"radio-options flex-between saved-payment-wrapper\">\n                    <div class=\"option\">\n                      <label for=\"cc\">\n                        <input type=\"radio\" name=\"payment-choice\" id=\"cc\" value=\"1\" formControlName=\"payment-choice\"  [(ngModel)]=\"paymentChoice\">\n                        <span class=\"semi-bold\">Pay now with a credit card</span>\n                      </label>\n                    </div>\n                    <div class=\"option\" *ngIf=\"savedPaymentMethods\">\n                      <label for=\"saved-payment\">\n                        <input type=\"radio\" name=\"payment-choice\" id=\"saved-payment\" value=\"3\" formControlName=\"payment-choice\" [(ngModel)]=\"paymentChoice\">\n                        <span class=\"semi-bold\">Pay with a saved card</span>\n                      </label>\n                    </div>\n                  </div>\n                  <div class=\"saved-cards\" *ngIf=\"savedPaymentMethods && paymentForm.controls['payment-choice'].value === '3'\">\n                    <select name=\"\" id=\"\" (change)=\"whichPayment($event.target.value)\" class=\"custom\">\n                      <option [value]=\"savedPaymentMethods.AccountId\" selected>{{ savedPaymentMethods.MaskedAccountNumber }}</option>\n                    </select>\n                  </div>\n                </div>\n                <div class=\"new-card-section\" *ngIf=\"paymentForm.controls['payment-choice'].value === '1'\">\n                  <div class=\"form-section half-and-half\">\n                    <div class=\"form-component form-component-text\">\n                      <label for=\"card-number\" class=\"visuallyhidden\">Credit Card Number</label>\n                      <input id=\"card-number\" type=\"tel\" autocomplete=\"cc-number\" formControlName=\"card-number\" placeholder=\"Credit Card Number*\" [ngClass]=\"{'has-error':!paymentForm.controls['card-number'].valid && submittedOnce}\" ccNumber #ccNumber (ngModelChange)=\"detectCardType(ccNumber.value)\">\n                      <div class=\"card-sprite-wrapper\">\n                        <div class=\"card visa\" title=\"Visa\"></div>\n                        <div class=\"card mastercard\" title=\"MasterCard\"></div>\n                        <div class=\"card american-express\" title=\"American Express\"></div>\n                        <div class=\"card discover\" title=\"Discover\"></div>\n                        <div class=\"card diners-club\" title=\"Diners Club\"></div>\n                      </div>\n                      <div class=\"error-message\" *ngIf=\"!paymentForm.controls['card-number'].valid && submittedOnce\">This field is required.</div>\n                    </div>\n                    <div class=\"form-component form-component-text\">\n                      <label for=\"last-name\" class=\"visuallyhidden\">Expiration Date</label>\n                      <input id=\"cc-exp-date\" name=\"expiration-date\" id=\"expiration-date\" formControlName=\"expiration-date\" placeholder=\"Expiration Date (mm/yyyy)*\" [ngClass]=\"{'has-error':!paymentForm.controls['expiration-date'].valid && submittedOnce}\" type=\"tel\" autocomplete=\"cc-exp\" ccExp>\n                      <div class=\"error-message\" *ngIf=\"!paymentForm.controls['expiration-date'].valid && submittedOnce\">This field is required.</div>\n                    </div>\n                  </div>\n                  <div class=\"form-section half-and-half\">\n                    <div class=\"form-component form-component-email\">\n                      <label for=\"email\" class=\"visuallyhidden\">CVV</label>\n                      <input type=\"text\" name=\"cvv\" id=\"cvv\" formControlName=\"cvv\" placeholder=\"CVV*\" [ngClass]=\"{'has-error':!paymentForm.controls['cvv'].valid && submittedOnce}\">\n                      <div class=\"error-message\" *ngIf=\"!paymentForm.controls['cvv'].valid && submittedOnce\">This field is required.</div>\n                    </div>\n                    <div class=\"form-component form-component-text radio-options\" *ngIf=\"currentCustomer?.CustomerId\">\n                      <div class=\"option\">\n                        <label for=\"save-payment\">\n                          <input type=\"checkbox\" name=\"save-payment\" id=\"save-payment\" value=\"save\" formControlName=\"save-payment\">\n                          <span class=\"semi-bold\">Save payment for future use?</span>\n                        </label>\n                      </div>\n                    </div>\n                  </div>\n                </div>\n                <div class=\"next-step black-button step-4-button\">\n                  <button [disabled]=\"(!paymentForm.valid && paymentChoice !== '3')\"(click)=\"nextStep()\">Next Step</button>\n                </div>\n              </form>\n            </div>\n          </div><!-- /. inner-step-wrapper -->\n        </div><!-- /.step -->\n        <div class=\"step step-4\">\n          <div class=\"inner-step-wrapper\">\n            <div class=\"step-heading\">4. Place Your Order</div>\n            <div class=\"step-wrapper\">\n              <p class=\"question semi-bold\">Your total: {{ currentOrder?.TotalAmount | currency }}</p>\n            </div>\n            <div class=\"red-button small-text\" [ngClass]=\"processing ? 'loading' : ''\">\n              <div class=\"loading-gif button-size\" *ngIf=\"processing\"></div>\n              <p>{{ orderResultForTesting }}</p>\n              <button [disabled]=\"(!pickupForm.valid || (!paymentForm.valid && (paymentChoice !== '3')) || !contactInfoForm.valid) && !processing\" *ngIf=\"!processing\" (click)=\"submitOrder()\">Place Order Now</button>\n            </div>\n            <p class=\"terms-and-conditions small-text\">\n              By placing your order you agree to our Terms of Conditions. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vehicula ac orci sed venenatis. Phasellus venenatis blandit nulla non pretium. Sed id metus non nisi pulvinar dictum.\n            </p>\n          </div><!-- /. inner-step-wrapper -->\n        </div><!-- /.step -->\n      </div><!-- /.left-pane -->\n      <div class=\"order-summary\">\n        <div class=\"itemized-summary\">\n          <h4>Order Summary</h4>\n          <div class=\"item flex-between\" *ngFor=\"let menuItem of orderForDisplay\">\n            <div class=\"item-specifics\">\n              <div class=\"title semi-bold\"><span class=\"quantity\">{{ menuItem?.quantity }} x</span> <span class=\"item-name\">{{ menuItem?.name }}</span></div>\n              <div class=\"additions\" *ngIf=\"menuItem?.modifiers\">\n                <span class=\"modifier\" *ngFor=\"let mod of menuItem?.modifiers\">{{ mod?.name }}</span>\n              </div>\n            </div>\n            <div class=\"item-price\">\n              <span class=\"price\">{{ menuItem?.fullPrice | currency }}</span>\n            </div>\n          </div>\n        </div><!-- /.itemized-summary -->\n        <div class=\"pricing-and-location\">\n          <div class=\"pricing-details\">\n            <div class=\"flex-between subtotal\">\n              <span class=\"label\">Subtotal</span>\n              <span class=\"value\">{{ currentOrder?.SubTotalAmount | currency }}</span>\n            </div>\n            <div class=\"flex-between\">\n              <span class=\"label\">Tax</span>\n              <span class=\"value\">{{ currentOrder?.TaxAmount | currency }}</span>\n            </div>\n            <div class=\"flex-between total\">\n              <span class=\"label semi-bold\">Total</span>\n              <span class=\"value semi-bold\">{{ currentOrder?.TotalAmount | currency }}</span>\n            </div>\n\n            <div class=\"red-button full-width-button small-text\" [ngClass]=\"processing ? 'loading' : ''\">\n              <div class=\"loading-gif button-size\" *ngIf=\"processing\"></div>\n              <p>{{ orderResultForTesting }}</p>\n              <button [disabled]=\"(!pickupForm.valid || (!paymentForm.valid && (paymentChoice !== '3')) || !contactInfoForm.valid) && !processing\" *ngIf=\"!processing\" (click)=\"submitOrder()\">Place Order Now</button>\n            </div>\n            <p class=\"go-back text-center\">\n              <a href=\"\">or go back to edit your order</a>\n            </p>\n          </div>\n          <div class=\"location-details\">\n            <p class=\"semi-bold\">You are ordering from</p>\n            <h4>Lo·Cal Long Island</h4>\n            <p>\n              The Mall at The Source<br/>\n              1504 Old Country Rd, Westbury, NY 11590\n            </p>\n            <div class=\"map-image\">\n              <img src=\"\" alt=\"\">\n            </div>\n            <p class=\"bold\">\n              Tel: 987-012-2345\n            </p>\n          </div>\n        </div><!-- /.pricing-and-location -->\n\n      </div><!-- /.order-summary -->\n    </div>\n\n  </div><!-- /.basic-page-content -->\n</div><!-- /.checkout-review -->"
+module.exports = "<div class=\"basic-page-container checkout-review\">\n  <div class=\"basic-page-content center\">\n    <h1>Complete Your Order</h1>\n\n    <div class=\"checkout-wrapper\">\n      <div class=\"left-pane\">\n        <div class=\"step\">\n          <div class=\"inner-step-wrapper\">\n            <div class=\"step-heading\" (click)=\"editSection(1)\">1. Pickup</div>\n            <div class=\"step-wrapper\" [hidden]=\"sectionOpen !== 1\">\n              <form action=\"\" class=\"lo-cal-form\" [formGroup]=\"pickupForm\">\n                <div class=\"response\">\n                  <fieldset>\n                    <legend>How would you like to pickup your order?</legend>\n                    <div class=\"radio-options flex-between\">\n                      <div class=\"option\">\n                        <label for=\"in-store\">\n                          <input type=\"radio\" name=\"pickup-selection\" id=\"in-store\" value=\"1\" formControlName=\"pickup-selection\">\n                          <span class=\"semi-bold\">In Store Pick Up</span>\n                        </label>\n                      </div>\n                      <div class=\"option\">\n                        <label for=\"curbside\">\n                          <input type=\"radio\" name=\"pickup-selection\" id=\"curbside\" value=\"4\" formControlName=\"pickup-selection\">\n                          <span class=\"semi-bold\">Curbside Pickup</span>\n                        </label>\n                      </div>\n                    </div>\n                  </fieldset>\n                  <div class=\"car-options\" *ngIf=\"pickupForm.controls['pickup-selection'].value === '4'\">\n                    <div class=\"form-section half-and-half\">\n                      <div class=\"form-component form-component-text\">\n                        <label for=\"vehicle-make\" class=\"visuallyhidden\">Vehicle Make</label>\n                        <input type=\"text\" name=\"vehicle-make\" id=\"vehicle-make\" formControlName=\"vehicle-make\" placeholder=\"Vehicle Make*\">\n                      </div>\n                      <div class=\"form-component form-component-text\">\n                        <label for=\"vehicle-model\" class=\"visuallyhidden\">Vehicle Model</label>\n                        <input type=\"text\" name=\"vehicle-model\" id=\"vehicle-model\" formControlName=\"vehicle-model\" placeholder=\"Vehicle Model*\">\n                      </div>\n                    </div>\n                    <div class=\"form-section half-and-half\">\n                      <div class=\"form-component form-component-text\">\n                        <label for=\"vehicle-color\" class=\"visuallyhidden\">Vehicle Color</label>\n                        <input type=\"text\" name=\"vehicle-color\" id=\"vehicle-color\" formControlName=\"vehicle-color\" placeholder=\"Vehicle Color*\">\n                      </div>\n                    </div>\n                  </div>\n                </div>\n                <div class=\"next-step black-button\">\n                  <button [disabled]=\"!pickupForm.valid\"(click)=\"nextStep()\">Next Step</button>\n                </div>\n              </form>\n            </div>\n          </div><!-- /. inner-step-wrapper -->\n        </div><!-- /.step -->\n        <div class=\"step\">\n          <div class=\"inner-step-wrapper\">\n            <div class=\"step-heading\" (click)=\"editSection(2)\">2. Contact Information</div>\n            <div class=\"step-wrapper\" [hidden]=\"sectionOpen !== 2\">\n              <form action=\"\" class=\"lo-cal-form\" [formGroup]=\"contactInfoForm\">\n                <div class=\"form-section half-and-half\">\n                  <div class=\"form-component form-component-text\">\n                    <label for=\"first-name\" class=\"visuallyhidden\">First Name</label>\n                    <input type=\"text\" name=\"first-name\" id=\"first-name\" formControlName=\"first-name\" placeholder=\"First Name*\" [ngClass]=\"{'has-error':!contactInfoForm.controls['first-name'].valid && submittedOnce}\">\n                    <div class=\"error-message\" *ngIf=\"!contactInfoForm.controls['first-name'].valid && submittedOnce\">This field is required.</div>\n                  </div>\n                  <div class=\"form-component form-component-text\">\n                    <label for=\"last-name\" class=\"visuallyhidden\">Last Name</label>\n                    <input type=\"text\" name=\"last-name\" id=\"last-name\" formControlName=\"last-name\" placeholder=\"Last Name*\" [ngClass]=\"{'has-error':!contactInfoForm.controls['last-name'].valid && submittedOnce}\">\n                    <div class=\"error-message\" *ngIf=\"!contactInfoForm.controls['last-name'].valid && submittedOnce\">This field is required.</div>\n                  </div>\n                </div>\n                <div class=\"form-section half-and-half\">\n                  <div class=\"form-component form-component-email\">\n                    <label for=\"email\" class=\"visuallyhidden\">Email</label>\n                    <input type=\"text\" name=\"email\" id=\"email\" formControlName=\"email\" placeholder=\"Email*\" [ngClass]=\"{'has-error':!contactInfoForm.controls['email'].valid && submittedOnce}\">\n                    <div class=\"error-message\" *ngIf=\"!contactInfoForm.controls['email'].valid && submittedOnce\">This field is required.</div>\n                  </div>\n                  <div class=\"form-component form-component-text\">\n                    <label for=\"phone\" class=\"visuallyhidden\">Phone</label>\n                    <input type=\"text\" name=\"phone\" id=\"phone\" formControlName=\"phone\" placeholder=\"Phone\">\n                  </div>\n                </div>\n                <div class=\"next-step black-button\">\n                  <button [disabled]=\"!contactInfoForm.valid\" (click)=\"nextStep()\">Next Step</button>\n                </div>\n              </form>\n            </div>\n          </div><!-- /. inner-step-wrapper -->\n        </div><!-- /.step -->\n        <div class=\"step\">\n          <div class=\"inner-step-wrapper\">\n            <div class=\"step-heading\" (click)=\"editSection(3)\">3. Payment</div>\n            <div class=\"step-wrapper\" [hidden]=\"sectionOpen !== 3\">\n              <form action=\"\" class=\"lo-cal-form\" [formGroup]=\"paymentForm\">\n                <div class=\"saved-payment-wrapper\">\n                  <div class=\"radio-options flex-between saved-payment-wrapper\">\n                    <div class=\"option\">\n                      <label for=\"cc\">\n                        <input type=\"radio\" name=\"payment-choice\" id=\"cc\" value=\"1\" formControlName=\"payment-choice\"  [(ngModel)]=\"paymentChoice\">\n                        <span class=\"semi-bold\">Pay now with a credit card</span>\n                      </label>\n                    </div>\n                    <div class=\"option\" *ngIf=\"savedPaymentMethods\">\n                      <label for=\"saved-payment\">\n                        <input type=\"radio\" name=\"payment-choice\" id=\"saved-payment\" value=\"3\" formControlName=\"payment-choice\" [(ngModel)]=\"paymentChoice\">\n                        <span class=\"semi-bold\">Pay with a saved card</span>\n                      </label>\n                    </div>\n                  </div>\n                  <div class=\"saved-cards\" *ngIf=\"savedPaymentMethods && paymentForm.controls['payment-choice'].value === '3'\">\n                    <select name=\"\" id=\"\" (change)=\"whichPayment($event.target.value)\" class=\"custom\">\n                      <option [value]=\"savedPaymentMethods.AccountId\" selected>{{ savedPaymentMethods.MaskedAccountNumber }}</option>\n                    </select>\n                  </div>\n                </div>\n                <div class=\"new-card-section\" *ngIf=\"paymentForm.controls['payment-choice'].value === '1'\">\n                  <div class=\"form-section half-and-half\">\n                    <div class=\"form-component form-component-text\">\n                      <label for=\"card-number\" class=\"visuallyhidden\">Credit Card Number</label>\n                      <input id=\"card-number\" type=\"tel\" autocomplete=\"cc-number\" formControlName=\"card-number\" placeholder=\"Credit Card Number*\" [ngClass]=\"{'has-error':!paymentForm.controls['card-number'].valid && submittedOnce}\" ccNumber #ccNumber (ngModelChange)=\"detectCardType(ccNumber.value)\" [(ngModel)]=\"cardNumber\">\n                      <div class=\"card-sprite-wrapper\">\n                        <div class=\"card visa\" title=\"Visa\"></div>\n                        <div class=\"card mastercard\" title=\"MasterCard\"></div>\n                        <div class=\"card american-express\" title=\"American Express\"></div>\n                        <div class=\"card discover\" title=\"Discover\"></div>\n                        <div class=\"card diners-club\" title=\"Diners Club\"></div>\n                      </div>\n                      <div class=\"error-message\" *ngIf=\"!paymentForm.controls['card-number'].valid && submittedOnce\">This field is required.</div>\n                    </div>\n                    <div class=\"form-component form-component-text\">\n                      <label for=\"last-name\" class=\"visuallyhidden\">Expiration Date</label>\n                      <input id=\"cc-exp-date\" name=\"expiration-date\" id=\"expiration-date\" formControlName=\"expiration-date\" placeholder=\"Expiration Date (mm/yyyy)*\" [ngClass]=\"{'has-error':!paymentForm.controls['expiration-date'].valid && submittedOnce}\" type=\"tel\" autocomplete=\"cc-exp\" ccExp>\n                      <div class=\"error-message\" *ngIf=\"!paymentForm.controls['expiration-date'].valid && submittedOnce\">This field is required.</div>\n                    </div>\n                  </div>\n                  <div class=\"form-section half-and-half\">\n                    <div class=\"form-component form-component-email\">\n                      <label for=\"email\" class=\"visuallyhidden\">CVV</label>\n                      <input type=\"text\" name=\"cvv\" id=\"cvv\" formControlName=\"cvv\" placeholder=\"CVV*\" [ngClass]=\"{'has-error':!paymentForm.controls['cvv'].valid && submittedOnce}\">\n                      <div class=\"error-message\" *ngIf=\"!paymentForm.controls['cvv'].valid && submittedOnce\">This field is required.</div>\n                    </div>\n                    <div class=\"form-component form-component-text radio-options\" *ngIf=\"currentCustomer?.CustomerId\">\n                      <div class=\"option\">\n                        <label for=\"save-payment\">\n                          <input type=\"checkbox\" name=\"save-payment\" id=\"save-payment\" value=\"save\" formControlName=\"save-payment\">\n                          <span class=\"semi-bold\">Save payment for future use?</span>\n                        </label>\n                      </div>\n                    </div>\n                  </div>\n                </div>\n                <div class=\"next-step black-button step-4-button\">\n                  <button [disabled]=\"(!paymentForm.valid && paymentChoice !== '3')\"(click)=\"nextStep()\">Next Step</button>\n                </div>\n              </form>\n            </div>\n          </div><!-- /. inner-step-wrapper -->\n        </div><!-- /.step -->\n        <div class=\"step step-4\">\n          <div class=\"inner-step-wrapper\">\n            <div class=\"step-heading\">4. Place Your Order</div>\n            <div class=\"step-wrapper\">\n              <p class=\"question semi-bold\">Your total: {{ currentOrder?.TotalAmount | currency }}</p>\n            </div>\n            <div class=\"red-button small-text\" [ngClass]=\"processing ? 'loading' : ''\">\n              <div class=\"loading-gif button-size\" *ngIf=\"processing\"></div>\n              <p>{{ orderResultForTesting }}</p>\n              <button [disabled]=\"(!pickupForm.valid || (!paymentForm.valid && (paymentChoice !== '3')) || !contactInfoForm.valid) && !processing\" *ngIf=\"!processing\" (click)=\"submitOrder()\">Place Order Now</button>\n            </div>\n            <p class=\"terms-and-conditions small-text\">\n              By placing your order you agree to our Terms of Conditions. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vehicula ac orci sed venenatis. Phasellus venenatis blandit nulla non pretium. Sed id metus non nisi pulvinar dictum.\n            </p>\n          </div><!-- /. inner-step-wrapper -->\n        </div><!-- /.step -->\n      </div><!-- /.left-pane -->\n      <div class=\"order-summary\">\n        <div class=\"itemized-summary\">\n          <h4>Order Summary</h4>\n          <div class=\"item flex-between\" *ngFor=\"let menuItem of orderForDisplay\">\n            <div class=\"item-specifics\">\n              <div class=\"title semi-bold\"><span class=\"quantity\">{{ menuItem?.quantity }} x</span> <span class=\"item-name\">{{ menuItem?.name }}</span></div>\n              <div class=\"additions\" *ngIf=\"menuItem?.modifiers\">\n                <span class=\"modifier\" *ngFor=\"let mod of menuItem?.modifiers\">{{ mod?.name }}</span>\n              </div>\n            </div>\n            <div class=\"item-price\">\n              <span class=\"price\">{{ menuItem?.fullPrice | currency }}</span>\n            </div>\n          </div>\n        </div><!-- /.itemized-summary -->\n        <div class=\"pricing-and-location\">\n          <div class=\"pricing-details\">\n            <div class=\"flex-between subtotal\">\n              <span class=\"label\">Subtotal</span>\n              <span class=\"value\">{{ currentOrder?.SubTotalAmount | currency }}</span>\n            </div>\n            <div class=\"flex-between\">\n              <span class=\"label\">Tax</span>\n              <span class=\"value\">{{ currentOrder?.TaxAmount | currency }}</span>\n            </div>\n            <div class=\"flex-between total\">\n              <span class=\"label semi-bold\">Total</span>\n              <span class=\"value semi-bold\">{{ currentOrder?.TotalAmount | currency }}</span>\n            </div>\n\n            <div class=\"red-button full-width-button small-text\" [ngClass]=\"processing ? 'loading' : ''\">\n              <div class=\"loading-gif button-size\" *ngIf=\"processing\"></div>\n              <p>{{ orderResultForTesting }}</p>\n              <button [disabled]=\"(!pickupForm.valid || (!paymentForm.valid && (paymentChoice !== '3')) || !contactInfoForm.valid) && !processing\" *ngIf=\"!processing\" (click)=\"submitOrder()\">Place Order Now</button>\n            </div>\n            <p class=\"go-back text-center\">\n              <a href=\"\">or go back to edit your order</a>\n            </p>\n          </div>\n          <div class=\"location-details\">\n            <p class=\"semi-bold\">You are ordering from</p>\n            <h4>Lo·Cal Long Island</h4>\n            <p>\n              The Mall at The Source<br/>\n              1504 Old Country Rd, Westbury, NY 11590\n            </p>\n            <div class=\"map-image\">\n              <img src=\"\" alt=\"\">\n            </div>\n            <p class=\"bold\">\n              Tel: 987-012-2345\n            </p>\n          </div>\n        </div><!-- /.pricing-and-location -->\n\n      </div><!-- /.order-summary -->\n    </div>\n\n  </div><!-- /.basic-page-content -->\n</div><!-- /.checkout-review -->"
 
 /***/ }),
 
@@ -1467,11 +1576,12 @@ var CheckoutPaymentComponent = /** @class */ (function () {
         this.paymentChoice = '1';
         this.processing = false;
         this.cardType = undefined;
+        this.cardNumber = '';
         this.contactInfoForm = fb.group({
             'first-name': [null, __WEBPACK_IMPORTED_MODULE_2__angular_forms__["Validators"].required],
             'last-name': [null, __WEBPACK_IMPORTED_MODULE_2__angular_forms__["Validators"].required],
             'email': [null, [__WEBPACK_IMPORTED_MODULE_2__angular_forms__["Validators"].required, __WEBPACK_IMPORTED_MODULE_2__angular_forms__["Validators"].email]],
-            'phone': [null, [__WEBPACK_IMPORTED_MODULE_2__angular_forms__["Validators"].required]]
+            'phone': [null]
         });
         this.paymentForm = fb.group({
             'payment-choice': [this.paymentChoice, __WEBPACK_IMPORTED_MODULE_2__angular_forms__["Validators"].required],
@@ -1520,7 +1630,6 @@ var CheckoutPaymentComponent = /** @class */ (function () {
         // 1. Start spinner
         this.processing = true;
         // 2. Retrieve order
-        // TODO: Why did I write this -> TEMPORARY
         this.orderService.getPreSavedOrder().subscribe(function (order) {
             var orderId = order.OrderId;
             // Retrieve order again to ensure local storage order wasn't manipulated
@@ -1549,10 +1658,8 @@ var CheckoutPaymentComponent = /** @class */ (function () {
         var finalOrderForSubmission = {
             order_submission: orderForApi
         };
-        // TODO: Check with Ken about passing errors back as is from API
         // Order object with payment has been created, submit to API
         this.orderService.submitOrder(finalOrderForSubmission, this.currentOrder.OrderId).subscribe(function (orderResults) {
-            console.log(orderResults);
             _this.orderResultForTesting = orderResults.ResultCode;
             switch (orderResults.ResultCode) {
                 // ResultCode 0: Success
@@ -1570,6 +1677,9 @@ var CheckoutPaymentComponent = /** @class */ (function () {
             else {
                 _this.wpService.logError('Payment Order Error: ' + JSON.stringify(orderResults)).subscribe(function (result) { console.log('error:' + result); });
             }
+        }, function (error) {
+            console.log(error);
+            _this.wpService.logError('Payment Order Error: ' + JSON.stringify(error)).subscribe(function (result) { console.log('error:' + result); });
         });
     };
     CheckoutPaymentComponent.prototype.constructClearCreditCardPayment = function () {
@@ -1579,11 +1689,13 @@ var CheckoutPaymentComponent = /** @class */ (function () {
             vehicle = this.constructVehicleObject();
         }
         var finalExpDate = this.formatDate(expirationDate);
+        // Set final CC number: resolves view value vs model value discrepancy
+        var finalCreditCardNumber = this.finalCardFormat(this.cardNumber);
         var inSubmitOrderInfo = {
             PaymentMethods: [{
                     PaymentMethod: 1,
                     Amount: this.currentOrder.BalanceDueAmount,
-                    AccountNumber: this.paymentForm.get('card-number').value,
+                    AccountNumber: finalCreditCardNumber,
                     ExpirationDate: finalExpDate,
                     SecurityCode: this.paymentForm.get('cvv').value,
                     PaymentMethodType: this.cardType,
@@ -1649,10 +1761,12 @@ var CheckoutPaymentComponent = /** @class */ (function () {
         this.localStorage.setItem('orderResult', orderResults).subscribe(function () {
             // If Customer wishes to save payment method
             if (_this.paymentForm.get('save-payment').value) {
+                // Ensure we have the correctly formatted credit card number
+                var finalCreditCardNumber = _this.finalCardFormat(_this.cardNumber);
                 var paymentInfoForSaving = {
                     payment: {
                         AccountNumber: _this.paymentForm.get('card-number').value,
-                        ExpirationDate: _this.formatDate(_this.paymentForm.get('expiration-date').value),
+                        ExpirationDate: finalCreditCardNumber,
                         PaymentMethodType: _this.cardType
                     }
                 };
@@ -1676,6 +1790,9 @@ var CheckoutPaymentComponent = /** @class */ (function () {
             'last-name': customer.LastName,
             'email': customer.EMail
         });
+    };
+    CheckoutPaymentComponent.prototype.finalCardFormat = function (cardNumber) {
+        return __WEBPACK_IMPORTED_MODULE_10_angular_cc_library__["CreditCard"].formatCardNumber(cardNumber).replace(/\D/g, '');
     };
     CheckoutPaymentComponent.prototype.formatDate = function (date) {
         return __WEBPACK_IMPORTED_MODULE_6_moment__('01/' + date, 'DD/MM/YYYY').format('YYYY-MM-DD');
@@ -1892,6 +2009,7 @@ module.exports = "<div class=\"basic-page-container confirmation-page\">\n    <d
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_ngx_auto_unsubscribe__ = __webpack_require__("./node_modules/ngx-auto-unsubscribe/dist/index.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__local_utils_constants__ = __webpack_require__("./src/app/utils/constants.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__local_services_wp_service__ = __webpack_require__("./src/app/services/wp.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__local_services_customer_service__ = __webpack_require__("./src/app/services/customer.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1908,13 +2026,15 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var ConfirmationComponent = /** @class */ (function () {
-    function ConfirmationComponent(localStorage, bagService, orderService, config, wpService) {
+    function ConfirmationComponent(localStorage, bagService, orderService, config, wpService, customerService) {
         this.localStorage = localStorage;
         this.bagService = bagService;
         this.orderService = orderService;
         this.config = config;
         this.wpService = wpService;
+        this.customerService = customerService;
         this.activeCardClass = '';
         this.paidWithCardType = '';
     }
@@ -1922,6 +2042,13 @@ var ConfirmationComponent = /** @class */ (function () {
         var _this = this;
         this.localStorage.removeItem('order').subscribe(function () { });
         this.localStorage.removeItem('bag').subscribe(function () { });
+        // Get current customer to check if they were a guest customer
+        this.customerService.getCurrentCustomer().subscribe(function (customer) {
+            if (customer.IsGuest) {
+                // If they were a guest customer, remove the user from localStorage
+                _this.localStorage.removeItem('user').subscribe(function () { });
+            }
+        });
         this.bagService.itemsInBag = [];
         this.wpService.getPage(3660).subscribe(function (content) {
             _this.confirmationContent = content;
@@ -1942,7 +2069,7 @@ var ConfirmationComponent = /** @class */ (function () {
             selector: 'lo-cal-confirmation',
             template: __webpack_require__("./src/app/pages/confirmation/confirmation.component.html")
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__ngx_pwa_local_storage__["a" /* LocalStorage */], __WEBPACK_IMPORTED_MODULE_2__local_services_bag_service__["a" /* BagService */], __WEBPACK_IMPORTED_MODULE_3__local_services_order_service__["a" /* OrderService */], __WEBPACK_IMPORTED_MODULE_5__local_utils_constants__["a" /* Config */], __WEBPACK_IMPORTED_MODULE_6__local_services_wp_service__["a" /* WordpressService */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__ngx_pwa_local_storage__["a" /* LocalStorage */], __WEBPACK_IMPORTED_MODULE_2__local_services_bag_service__["a" /* BagService */], __WEBPACK_IMPORTED_MODULE_3__local_services_order_service__["a" /* OrderService */], __WEBPACK_IMPORTED_MODULE_5__local_utils_constants__["a" /* Config */], __WEBPACK_IMPORTED_MODULE_6__local_services_wp_service__["a" /* WordpressService */], __WEBPACK_IMPORTED_MODULE_7__local_services_customer_service__["a" /* CustomerService */]])
     ], ConfirmationComponent);
     return ConfirmationComponent;
 }());
@@ -1954,7 +2081,7 @@ var ConfirmationComponent = /** @class */ (function () {
 /***/ "./src/app/pages/contact/contact.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"page-landing-page\">\n  <lo-cal-header [featuredImage]=\"featuredImage\" [pageContent]=\"pageContent\"></lo-cal-header>\n  <div class=\"section section-white\">\n    <div class=\"content center\">\n      <div class=\"body center-960\" [innerHtml]=\"pageContent?.content?.rendered | safeHtml\"></div>\n    </div>\n  </div>\n\n  <div class=\"section section-grey intro-section\" *ngIf=\"acf?.body\">\n    <div class=\"content\">\n      <h3 class=\"title\" *ngIf=\"acf?.title\" [innerHtml]=\"acf?.title\"></h3>\n      <div class=\"body\" *ngIf=\"acf?.body\" [innerHtml]=\"acf?.body | safeHtml\"></div>\n    </div>\n  </div>\n\n  <div class=\"section section-white\">\n    <div class=\"content center\">\n      <form action=\"\" [formGroup]=\"contactForm\" class=\"lo-cal-form contact-form\">\n        <div class=\"form-section\">\n          <div class=\"form-component form-component-text\">\n            <label for=\"contact-reason\" class=\"visuallyhidden\">What are you interested in sharing/asking?</label>\n            <input type=\"text\" name=\"contact-reason\" id=\"contact-reason\" formControlName=\"contact-reason\" placeholder=\"What are you interested in sharing/asking?\" [ngClass]=\"{'has-error':!contactForm.controls['contact-reason'].valid && submittedOnce}\">\n            <div class=\"error-message\" *ngIf=\"!contactForm.controls['contact-reason'].valid && submittedOnce\">This field is required.</div>\n          </div>\n        </div>\n        <div class=\"form-section thirds\">\n          <div class=\"form-component form-component-text\">\n            <label for=\"first-name\" class=\"visuallyhidden\">First Name *</label>\n            <input type=\"text\" name=\"first-name\" id=\"first-name\" placeholder=\"First Name *\" formControlName=\"first-name\" [ngClass]=\"{'has-error':!contactForm.controls['first-name'].valid && submittedOnce}\">\n            <div class=\"error-message\" *ngIf=\"!contactForm.controls['first-name'].valid && submittedOnce\">This field is required.</div>\n          </div>\n          <div class=\"form-component form-component-text\">\n            <label for=\"last-name\" class=\"visuallyhidden\">Last Name *</label>\n            <input type=\"text\" name=\"last-name\" id=\"last-name\" placeholder=\"Last Name *\" formControlName=\"last-name\" [ngClass]=\"{'has-error':!contactForm.controls['last-name'].valid && submittedOnce}\">\n            <div class=\"error-message\" *ngIf=\"!contactForm.controls['last-name'].valid && submittedOnce\">This field is required.</div>\n          </div>\n          <div class=\"form-component form-component-email\">\n            <label for=\"email\" class=\"visuallyhidden\">Email *</label>\n            <input type=\"email\" name=\"email\" id=\"email\" placeholder=\"Email *\" formControlName=\"email\" [ngClass]=\"{'has-error':!contactForm.controls['email'].valid && submittedOnce}\">\n            <div class=\"error-message\" *ngIf=\"!contactForm.controls['email'].valid && submittedOnce\">This field is required.</div>\n          </div>\n        </div>\n        <div class=\"form-section\">\n          <div class=\"form-component form-component-textarea\">\n            <label for=\"comments\">Comments</label>\n            <textarea name=\"comments\" id=\"comments\" rows=\"4\" formControlName=\"comments\"></textarea>\n          </div>\n        </div>\n        <div class=\"form-actions\">\n          <div class=\"form-submit red-button submit\">\n            <input type=\"submit\" value=\"Send\" (click)=\"submitForm(contactForm)\">\n          </div>\n        </div>\n      </form>\n    </div>\n  </div>\n\n    <lo-cal-image-and-text [acf]=\"acf\" [color]=\"'grey'\"></lo-cal-image-and-text>\n  </div>"
+module.exports = "<div class=\"page-landing-page\">\n  <lo-cal-header [featuredImage]=\"featuredImage\" [pageContent]=\"pageContent\"></lo-cal-header>\n  <div class=\"section section-white\">\n    <div class=\"content center\">\n      <div class=\"body center-960\" [innerHtml]=\"pageContent?.content?.rendered | safeHtml\"></div>\n    </div>\n  </div>\n\n  <div class=\"section section-grey intro-section\" *ngIf=\"acf?.body\">\n    <div class=\"content\">\n      <h3 class=\"title\" *ngIf=\"acf?.title\" [innerHtml]=\"acf?.title\"></h3>\n      <div class=\"body\" *ngIf=\"acf?.body\" [innerHtml]=\"acf?.body | safeHtml\"></div>\n    </div>\n  </div>\n\n  <div class=\"section section-white\">\n    <div class=\"content center\">\n      <form action=\"\" [formGroup]=\"contactForm\" class=\"lo-cal-form contact-form\" *ngIf=\"!formSuccess\">\n        <div class=\"form-section\">\n          <div class=\"form-component form-component-text\">\n            <label for=\"contact-reason\" class=\"visuallyhidden\">What are you interested in sharing/asking?</label>\n            <input type=\"text\" name=\"contact-reason\" id=\"contact-reason\" formControlName=\"contact-reason\" placeholder=\"What are you interested in sharing/asking?\" [ngClass]=\"{'has-error':!contactForm.controls['contact-reason'].valid && submittedOnce}\">\n            <div class=\"error-message\" *ngIf=\"!contactForm.controls['contact-reason'].valid && submittedOnce\">This field is required.</div>\n          </div>\n        </div>\n        <div class=\"form-section thirds\">\n          <div class=\"form-component form-component-text\">\n            <label for=\"first-name\" class=\"visuallyhidden\">First Name *</label>\n            <input type=\"text\" name=\"first-name\" id=\"first-name\" placeholder=\"First Name *\" formControlName=\"first-name\" [ngClass]=\"{'has-error':!contactForm.controls['first-name'].valid && submittedOnce}\">\n            <div class=\"error-message\" *ngIf=\"!contactForm.controls['first-name'].valid && submittedOnce\">This field is required.</div>\n          </div>\n          <div class=\"form-component form-component-text\">\n            <label for=\"last-name\" class=\"visuallyhidden\">Last Name *</label>\n            <input type=\"text\" name=\"last-name\" id=\"last-name\" placeholder=\"Last Name *\" formControlName=\"last-name\" [ngClass]=\"{'has-error':!contactForm.controls['last-name'].valid && submittedOnce}\">\n            <div class=\"error-message\" *ngIf=\"!contactForm.controls['last-name'].valid && submittedOnce\">This field is required.</div>\n          </div>\n          <div class=\"form-component form-component-email\">\n            <label for=\"email\" class=\"visuallyhidden\">Email *</label>\n            <input type=\"email\" name=\"email\" id=\"email\" placeholder=\"Email *\" formControlName=\"email\" [ngClass]=\"{'has-error':!contactForm.controls['email'].valid && submittedOnce}\">\n            <div class=\"error-message\" *ngIf=\"!contactForm.controls['email'].valid && submittedOnce\">This field is required.</div>\n          </div>\n        </div>\n        <div class=\"form-section\">\n          <div class=\"form-component form-component-textarea\">\n            <label for=\"comments\">Comments</label>\n            <textarea name=\"comments\" id=\"comments\" rows=\"4\" formControlName=\"comments\"></textarea>\n          </div>\n        </div>\n        <div class=\"form-actions\">\n          <!-- TODO: Ensure loading appears in the right location -->\n          <div class=\"loading-gif button-size\" *ngIf=\"processing\"></div>\n          <div class=\"form-submit red-button submit\">\n            <input type=\"submit\" value=\"Send\" (click)=\"submitForm(contactForm)\">\n          </div>\n        </div>\n      </form>\n      <div class=\"success-message\" *ngIf=\"formSuccess\" [innerHtml]=\"acf?.contact_message | safeHtml\">\n      </div>\n    </div>\n  </div>\n\n  <lo-cal-image-and-text [acf]=\"acf\" [color]=\"'grey'\"></lo-cal-image-and-text>\n</div>"
 
 /***/ }),
 
@@ -1985,6 +2112,8 @@ var ContactComponent = /** @class */ (function () {
         this.wpService = wpService;
         this.fb = fb;
         this.submittedOnce = false;
+        this.processing = false;
+        this.formSuccess = false;
         this.contactForm = fb.group({
             'contact-reason': [null, __WEBPACK_IMPORTED_MODULE_2__angular_forms__["Validators"].required],
             'first-name': [null, __WEBPACK_IMPORTED_MODULE_2__angular_forms__["Validators"].required],
@@ -2004,8 +2133,24 @@ var ContactComponent = /** @class */ (function () {
         });
     };
     ContactComponent.prototype.submitForm = function (formData) {
+        var _this = this;
         this.submittedOnce = true;
-        console.log(formData);
+        if (formData.valid) {
+            this.processing = true;
+            var data = {
+                'contactReason': formData.get('contact-reason').value,
+                'firstName': formData.get('first-name').value,
+                'lastName': formData.get('last-name').value,
+                'email': formData.get('email').value,
+                'comments': formData.get('comments').value
+            };
+            this.wpService.submitContactForm(data).subscribe(function (response) {
+                _this.processing = false;
+                _this.formSuccess = true;
+            }, function (error) {
+                console.log(error);
+            });
+        }
     };
     ContactComponent.prototype.ngOnDestroy = function () { };
     ContactComponent = __decorate([
@@ -2026,7 +2171,7 @@ var ContactComponent = /** @class */ (function () {
 /***/ "./src/app/pages/create-account/create-account.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "\n<div class=\"login-wrapper\">\n  <div class=\"login-container center-740\">\n    <h1 class=\"text-center\">Create an Account</h1>\n    <div class=\"account-success\" *ngIf=\"accountSuccess\">\n      <h2 class=\"text-center\">Success!</h2>\n      <p class=\"text-center\">Your account has been created. Keep an eye out for an email from us with your login information. Please return to the <a routerLink=\"/login\">login</a> page to proceed.</p>\n    </div>\n    <div class=\"form-errors text-left\" *ngIf=\"existingAccount\">\n      <p>It looks like an account with that email already exists. Log in <a routerLink=\"/login\">here</a></p>\n    </div>\n    <div [hidden]=\"!processing || accountSuccess\" class=\"loading-gif\"></div>\n    <form action=\"\" [formGroup]=\"accountForm\" class=\"lo-cal-form create-account-form\" *ngIf=\"!accountSuccess\" [ngClass]=\"{'processing': processing}\" [@slideUp]=\"processing\">\n      <div class=\"form-section half-and-half\">\n        <div class=\"form-component form-component-text\">\n          <label for=\"first-name\" class=\"visuallyhidden\">First Name</label>\n          <input type=\"text\" name=\"first-name\" id=\"first-name\" formControlName=\"first-name\" placeholder=\"First Name*\" [ngClass]=\"{'has-error':!accountForm.controls['first-name'].valid && submittedOnce}\">\n          <div class=\"error-message\" *ngIf=\"!accountForm.controls['first-name'].valid && submittedOnce\">This field is required.</div>\n        </div>\n        <div class=\"form-component form-component-text\">\n          <label for=\"last-name\" class=\"visuallyhidden\">Last Name</label>\n          <input type=\"text\" name=\"last-name\" id=\"last-name\" formControlName=\"last-name\" placeholder=\"Last Name*\" [ngClass]=\"{'has-error':!accountForm.controls['last-name'].valid && submittedOnce}\">\n          <div class=\"error-message\" *ngIf=\"!accountForm.controls['last-name'].valid && submittedOnce\">This field is required.</div>\n        </div>\n      </div>\n      <div class=\"form-component form-component-email\">\n        <label for=\"email\" class=\"visuallyhidden\">Email</label>\n        <input type=\"text\" name=\"email\" id=\"email\" formControlName=\"email\" placeholder=\"Email*\" [ngClass]=\"{'has-error':!accountForm.controls['email'].valid && submittedOnce}\">\n        <div class=\"error-message\" *ngIf=\"!accountForm.controls['email'].valid && submittedOnce\">This field is required.</div>\n      </div>\n      <div class=\"form-component form-component-text\">\n        <label for=\"password\" class=\"visuallyhidden\">Password</label>\n        <input type=\"password\" name=\"password\" id=\"password\" formControlName=\"password\" placeholder=\"Password* (8 or more characters)\" [ngClass]=\"{'has-error':!accountForm.controls['password'].valid && submittedOnce}\">\n        <div class=\"error-message\" *ngIf=\"!accountForm.controls['password'].valid && submittedOnce\">This field is required.</div>\n        <div class=\"error-message\" *ngIf=\"accountForm.controls['password'].value.length > 2 && accountForm.controls['password'].errors?.minlength\">Password must be at least 8 characters.</div>\n      </div>\n      <div class=\"form-component form-component-text\">\n        <label for=\"confirm-password\" class=\"visuallyhidden\">Confirm Password</label>\n        <input type=\"password\" name=\"confirm-password\" id=\"confirm-password\" formControlName=\"confirm-password\" placeholder=\"Confirm Password*\" [ngClass]=\"{'has-error':!accountForm.controls['confirm-password'].valid && submittedOnce}\">\n        <div class=\"error-message\" *ngIf=\"!accountForm.controls['confirm-password'].valid && submittedOnce\">This field is required.</div>\n        <div class=\"error-message\" *ngIf=\"accountForm.controls['confirm-password'].errors?.MatchPassword\">Password does not match.</div>\n      </div>\n      <div class=\"form-component form-component-text\">\n        <label for=\"security-question\" class=\"visuallyhidden\">Security Question</label>\n        <input type=\"text\" name=\"security-question\" id=\"security-question\" formControlName=\"security-question\" placeholder=\"Security Question*\" [ngClass]=\"{'has-error':!accountForm.controls['security-question'].valid && submittedOnce}\">\n        <div class=\"error-message\" *ngIf=\"!accountForm.controls['security-question'].valid && submittedOnce\">This field is required.</div>\n      </div>\n      <div class=\"form-component form-component-text\">\n        <label for=\"security-answer\" class=\"visuallyhidden\">Security Answer</label>\n        <input type=\"text\" name=\"confirm-password\" id=\"security-answer\" formControlName=\"security-answer\" placeholder=\"Security Answer*\" [ngClass]=\"{'has-error':!accountForm.controls['security-answer'].valid && submittedOnce}\">\n        <div class=\"error-message\" *ngIf=\"!accountForm.controls['security-answer'].valid && submittedOnce\">This field is required.</div>\n      </div>\n      <div class=\"control-wrapper\" formGroupName=\"full-address\">\n        <div class=\"form-component form-component-text\">\n          <label for=\"address\" class=\"visuallyhidden\">Address</label>\n          <input type=\"text\" name=\"address\" id=\"address\" formControlName=\"address\" placeholder=\"Address*\" [ngClass]=\"{'has-error':!accountForm.controls['full-address']['controls']['address'].valid && submittedOnce}\">\n          <div class=\"error-message\" *ngIf=\"!accountForm.controls['full-address']['controls']['address'].valid && submittedOnce\">This field is required.</div>\n        </div>\n        <div class=\"form-component form-component-text\">\n          <label for=\"address2\" class=\"visuallyhidden\">Address 2</label>\n          <input type=\"text\" name=\"address2\" id=\"address2\" formControlName=\"address2\" placeholder=\"Apartment/Suite/Unit/Building (optional)\">\n        </div>\n        <div class=\"form-section thirds\">\n          <div class=\"form-component form-component-text\">\n            <label for=\"city\" class=\"visuallyhidden\">City</label>\n            <input type=\"text\" name=\"city\" id=\"city\" formControlName=\"city\" placeholder=\"City*\" [ngClass]=\"{'has-error':!accountForm.controls['full-address']['controls']['city'].valid && submittedOnce}\">\n            <div class=\"error-message\" *ngIf=\"!accountForm.controls['full-address']['controls']['city'].valid && submittedOnce\">This field is required.</div>\n          </div>\n          <div class=\"form-component form-component-select\">\n            <label for=\"state\" class=\"visuallyhidden\">State</label>\n            <select name=\"state\" id=\"state\" formControlName=\"state\" [ngClass]=\"{'has-error':!accountForm.controls['full-address']['controls']['state'].valid && submittedOnce}\">\n              <option value=\"\" selected=\"selected\">-- Select --</option>\n              <option value=\"AL\">Alabama</option>\n              <option value=\"AK\">Alaska</option>\n              <option value=\"AZ\">Arizona</option>\n              <option value=\"AR\">Arkansas</option>\n              <option value=\"CA\">California</option>\n              <option value=\"CO\">Colorado</option>\n              <option value=\"CT\">Connecticut</option>\n              <option value=\"DE\">Delaware</option>\n              <option value=\"DC\">District Of Columbia</option>\n              <option value=\"FL\">Florida</option>\n              <option value=\"GA\">Georgia</option>\n              <option value=\"HI\">Hawaii</option>\n              <option value=\"ID\">Idaho</option>\n              <option value=\"IL\">Illinois</option>\n              <option value=\"IN\">Indiana</option>\n              <option value=\"IA\">Iowa</option>\n              <option value=\"KS\">Kansas</option>\n              <option value=\"KY\">Kentucky</option>\n              <option value=\"LA\">Louisiana</option>\n              <option value=\"ME\">Maine</option>\n              <option value=\"MD\">Maryland</option>\n              <option value=\"MA\">Massachusetts</option>\n              <option value=\"MI\">Michigan</option>\n              <option value=\"MN\">Minnesota</option>\n              <option value=\"MS\">Mississippi</option>\n              <option value=\"MO\">Missouri</option>\n              <option value=\"MT\">Montana</option>\n              <option value=\"NE\">Nebraska</option>\n              <option value=\"NV\">Nevada</option>\n              <option value=\"NH\">New Hampshire</option>\n              <option value=\"NJ\">New Jersey</option>\n              <option value=\"NM\">New Mexico</option>\n              <option value=\"NY\">New York</option>\n              <option value=\"NC\">North Carolina</option>\n              <option value=\"ND\">North Dakota</option>\n              <option value=\"OH\">Ohio</option>\n              <option value=\"OK\">Oklahoma</option>\n              <option value=\"OR\">Oregon</option>\n              <option value=\"PA\">Pennsylvania</option>\n              <option value=\"RI\">Rhode Island</option>\n              <option value=\"SC\">South Carolina</option>\n              <option value=\"SD\">South Dakota</option>\n              <option value=\"TN\">Tennessee</option>\n              <option value=\"TX\">Texas</option>\n              <option value=\"UT\">Utah</option>\n              <option value=\"VT\">Vermont</option>\n              <option value=\"VA\">Virginia</option>\n              <option value=\"WA\">Washington</option>\n              <option value=\"WV\">West Virginia</option>\n              <option value=\"WI\">Wisconsin</option>\n              <option value=\"WY\">Wyoming</option>\n            </select>\n          </div>\n          <div class=\"form-component form-component-text\">\n            <label for=\"zip\" class=\"visuallyhidden\">Zip Code</label>\n            <input type=\"text\" name=\"zip\" id=\"zip\" formControlName=\"zip\" placeholder=\"Zip*\" [ngClass]=\"{'has-error':!accountForm.controls['full-address']['controls']['zip'].valid && submittedOnce}\">\n            <div class=\"error-message\" *ngIf=\"!accountForm.controls['full-address']['controls']['zip'].valid && submittedOnce\">This field is required.</div>\n            <div class=\"error-message\" *ngIf=\"accountForm.controls['full-address']['controls']['zip'].errors?.pattern && accountForm.controls['full-address']['controls']['zip'].value.length > 5\">Zip code must be only 5 digits.</div>\n          </div>\n        </div>\n      </div>\n\n      <div class=\"submit red-button full-width-button\">\n        <input type=\"submit\" value=\"Create Account\" (click)=\"submitForm(accountForm)\" [disabled]=\"processing || !accountForm.valid\">\n      </div>\n      <div class=\"account-actions\">\n        <div class=\"action\">\n          <a routerLink=\"/login\">Already have an account? Sign In.</a>\n        </div>\n        <div class=\"action\">\n          <a routerLink=\"/password-reset\">Forgot Password</a>\n        </div>\n      </div>\n    </form>\n  </div>\n</div>"
+module.exports = "\n<div class=\"login-wrapper\">\n  <div class=\"login-container center-740\">\n    <h1 class=\"text-center\">Create an Account</h1>\n    <div class=\"account-success\" *ngIf=\"accountSuccess\">\n      <h2 class=\"text-center\">Success!</h2>\n      <p class=\"text-center\">Your account has been created. Keep an eye out for an email from us with your login information. Please return to the <a routerLink=\"/login\">login</a> page to proceed.</p>\n    </div>\n    <div class=\"form-errors text-left\" *ngIf=\"existingAccount\">\n      <p>It looks like an account with that email already exists. Log in <a routerLink=\"/login\">here</a></p>\n    </div>\n    <div [hidden]=\"!processing || accountSuccess\" class=\"loading-gif\"></div>\n    <form action=\"\" [formGroup]=\"accountForm\" class=\"lo-cal-form create-account-form\" *ngIf=\"!accountSuccess\" [ngClass]=\"{'processing': processing}\" [@slideUp]=\"processing\">\n      <div class=\"form-section half-and-half\">\n        <div class=\"form-component form-component-text\">\n          <label for=\"first-name\" class=\"visuallyhidden\">First Name</label>\n          <input type=\"text\" name=\"first-name\" id=\"first-name\" formControlName=\"first-name\" placeholder=\"First Name*\" [ngClass]=\"{'has-error':!accountForm.controls['first-name'].valid && submittedOnce}\">\n          <div class=\"error-message\" *ngIf=\"!accountForm.controls['first-name'].valid && submittedOnce\">This field is required.</div>\n        </div>\n        <div class=\"form-component form-component-text\">\n          <label for=\"last-name\" class=\"visuallyhidden\">Last Name</label>\n          <input type=\"text\" name=\"last-name\" id=\"last-name\" formControlName=\"last-name\" placeholder=\"Last Name*\" [ngClass]=\"{'has-error':!accountForm.controls['last-name'].valid && submittedOnce}\">\n          <div class=\"error-message\" *ngIf=\"!accountForm.controls['last-name'].valid && submittedOnce\">This field is required.</div>\n        </div>\n      </div>\n      <div class=\"form-component form-component-email\">\n        <label for=\"email\" class=\"visuallyhidden\">Email</label>\n        <input type=\"text\" name=\"email\" id=\"email\" formControlName=\"email\" placeholder=\"Email*\" [ngClass]=\"{'has-error':!accountForm.controls['email'].valid && submittedOnce}\">\n        <div class=\"error-message\" *ngIf=\"!accountForm.controls['email'].valid && submittedOnce\">This field is required.</div>\n      </div>\n      <div class=\"form-component form-component-text\">\n        <label for=\"password\" class=\"visuallyhidden\">Password</label>\n        <input type=\"password\" name=\"password\" id=\"password\" formControlName=\"password\" placeholder=\"Password* (8 or more characters)\" [ngClass]=\"{'has-error':!accountForm.controls['password'].valid && submittedOnce}\">\n        <div class=\"error-message\" *ngIf=\"!accountForm.controls['password'].valid && submittedOnce\">This field is required.</div>\n        <div class=\"error-message\" *ngIf=\"accountForm.controls['password'].value.length > 2 && accountForm.controls['password'].errors?.minlength\">Password must be at least 8 characters.</div>\n      </div>\n      <div class=\"form-component form-component-text\">\n        <label for=\"confirm-password\" class=\"visuallyhidden\">Confirm Password</label>\n        <input type=\"password\" name=\"confirm-password\" id=\"confirm-password\" formControlName=\"confirm-password\" placeholder=\"Confirm Password*\" [ngClass]=\"{'has-error':!accountForm.controls['confirm-password'].valid && submittedOnce}\">\n        <div class=\"error-message\" *ngIf=\"!accountForm.controls['confirm-password'].valid && submittedOnce\">This field is required.</div>\n        <div class=\"error-message\" *ngIf=\"accountForm.controls['confirm-password'].errors?.MatchPassword\">Password does not match.</div>\n      </div>\n      <div class=\"form-component form-component-select\">\n        <label for=\"security-question\" class=\"visuallyhidden\">Security Question</label>\n        <select name=\"security-question\" id=\"security-question\" formControlName=\"security-question\"  [ngClass]=\"{'has-error':!accountForm.controls['security-question'].valid && submittedOnce}\">\n          <option value=\"\">- Select -</option>\n          <option value=\"What was your childhood nickname?\">What was your childhood nickname?</option>\n          <option value=\"What is the name of your favorite childhood friend?\">What is the name of your favorite childhood friend?</option>\n          <option value=\"In what city or town did your mother and father meet?\">In what city or town did your mother and father meet?</option>\n          <option value=\"What is your favorite sports team?\">What is your favorite sports team?</option>\n          <option value=\"What is your favorite movie?\">What is your favorite movie?</option>\n          <option value=\"What was your favorite sport in high school?\">What was your favorite sport in high school?</option>\n          <option value=\"What was your favorite food as a child?\">What was your favorite food as a child?</option>\n          <option value=\"What was the make and model of your first car?\">What was the make and model of your first car?</option>\n          <option value=\"What was the name of the hospital where you were born?\">What was the name of the hospital where you were born?</option>\n          <option value=\"What school did you attend for sixth grade?\">What school did you attend for sixth grade?</option>\n          <option value=\"In what town was your first job?\">In what town was your first job?</option>\n          <option value=\"What was the name of the company where you had your first job?\">What was the name of the company where you had your first job?</option>\n        </select>\n        <div class=\"error-message\" *ngIf=\"!accountForm.controls['security-question'].valid && submittedOnce\">This field is required.</div>\n      </div>\n      <div class=\"form-component form-component-text\">\n        <label for=\"security-answer\" class=\"visuallyhidden\">Security Answer</label>\n        <input type=\"text\" name=\"security-answer\" id=\"security-answer\" formControlName=\"security-answer\" placeholder=\"Security Answer*\" [ngClass]=\"{'has-error':!accountForm.controls['security-answer'].valid && submittedOnce}\">\n        <div class=\"error-message\" *ngIf=\"!accountForm.controls['security-answer'].valid && submittedOnce\">This field is required.</div>\n      </div>\n      <div class=\"control-wrapper\" formGroupName=\"full-address\">\n        <div class=\"form-component form-component-text\">\n          <label for=\"address\" class=\"visuallyhidden\">Address</label>\n          <input type=\"text\" name=\"address\" id=\"address\" formControlName=\"address\" placeholder=\"Address*\" [ngClass]=\"{'has-error':!accountForm.controls['full-address']['controls']['address'].valid && submittedOnce}\">\n          <div class=\"error-message\" *ngIf=\"!accountForm.controls['full-address']['controls']['address'].valid && submittedOnce\">This field is required.</div>\n        </div>\n        <div class=\"form-component form-component-text\">\n          <label for=\"address2\" class=\"visuallyhidden\">Address 2</label>\n          <input type=\"text\" name=\"address2\" id=\"address2\" formControlName=\"address2\" placeholder=\"Apartment/Suite/Unit/Building (optional)\">\n        </div>\n        <div class=\"form-section thirds\">\n          <div class=\"form-component form-component-text\">\n            <label for=\"city\" class=\"visuallyhidden\">City</label>\n            <input type=\"text\" name=\"city\" id=\"city\" formControlName=\"city\" placeholder=\"City*\" [ngClass]=\"{'has-error':!accountForm.controls['full-address']['controls']['city'].valid && submittedOnce}\">\n            <div class=\"error-message\" *ngIf=\"!accountForm.controls['full-address']['controls']['city'].valid && submittedOnce\">This field is required.</div>\n          </div>\n          <div class=\"form-component form-component-select\">\n            <label for=\"state\" class=\"visuallyhidden\">State</label>\n            <select name=\"state\" id=\"state\" formControlName=\"state\" [ngClass]=\"{'has-error':!accountForm.controls['full-address']['controls']['state'].valid && submittedOnce}\">\n              <option value=\"\" selected=\"selected\">-- Select --</option>\n              <option value=\"AL\">Alabama</option>\n              <option value=\"AK\">Alaska</option>\n              <option value=\"AZ\">Arizona</option>\n              <option value=\"AR\">Arkansas</option>\n              <option value=\"CA\">California</option>\n              <option value=\"CO\">Colorado</option>\n              <option value=\"CT\">Connecticut</option>\n              <option value=\"DE\">Delaware</option>\n              <option value=\"DC\">District Of Columbia</option>\n              <option value=\"FL\">Florida</option>\n              <option value=\"GA\">Georgia</option>\n              <option value=\"HI\">Hawaii</option>\n              <option value=\"ID\">Idaho</option>\n              <option value=\"IL\">Illinois</option>\n              <option value=\"IN\">Indiana</option>\n              <option value=\"IA\">Iowa</option>\n              <option value=\"KS\">Kansas</option>\n              <option value=\"KY\">Kentucky</option>\n              <option value=\"LA\">Louisiana</option>\n              <option value=\"ME\">Maine</option>\n              <option value=\"MD\">Maryland</option>\n              <option value=\"MA\">Massachusetts</option>\n              <option value=\"MI\">Michigan</option>\n              <option value=\"MN\">Minnesota</option>\n              <option value=\"MS\">Mississippi</option>\n              <option value=\"MO\">Missouri</option>\n              <option value=\"MT\">Montana</option>\n              <option value=\"NE\">Nebraska</option>\n              <option value=\"NV\">Nevada</option>\n              <option value=\"NH\">New Hampshire</option>\n              <option value=\"NJ\">New Jersey</option>\n              <option value=\"NM\">New Mexico</option>\n              <option value=\"NY\">New York</option>\n              <option value=\"NC\">North Carolina</option>\n              <option value=\"ND\">North Dakota</option>\n              <option value=\"OH\">Ohio</option>\n              <option value=\"OK\">Oklahoma</option>\n              <option value=\"OR\">Oregon</option>\n              <option value=\"PA\">Pennsylvania</option>\n              <option value=\"RI\">Rhode Island</option>\n              <option value=\"SC\">South Carolina</option>\n              <option value=\"SD\">South Dakota</option>\n              <option value=\"TN\">Tennessee</option>\n              <option value=\"TX\">Texas</option>\n              <option value=\"UT\">Utah</option>\n              <option value=\"VT\">Vermont</option>\n              <option value=\"VA\">Virginia</option>\n              <option value=\"WA\">Washington</option>\n              <option value=\"WV\">West Virginia</option>\n              <option value=\"WI\">Wisconsin</option>\n              <option value=\"WY\">Wyoming</option>\n            </select>\n          </div>\n          <div class=\"form-component form-component-text\">\n            <label for=\"zip\" class=\"visuallyhidden\">Zip Code</label>\n            <input type=\"text\" name=\"zip\" id=\"zip\" formControlName=\"zip\" placeholder=\"Zip*\" [ngClass]=\"{'has-error':!accountForm.controls['full-address']['controls']['zip'].valid && submittedOnce}\">\n            <div class=\"error-message\" *ngIf=\"!accountForm.controls['full-address']['controls']['zip'].valid && submittedOnce\">This field is required.</div>\n            <div class=\"error-message\" *ngIf=\"accountForm.controls['full-address']['controls']['zip'].errors?.pattern && accountForm.controls['full-address']['controls']['zip'].value.length > 5\">Zip code must be only 5 digits.</div>\n          </div>\n        </div>\n      </div>\n\n      <div class=\"submit red-button full-width-button\">\n        <input type=\"submit\" value=\"Create Account\" (click)=\"submitForm(accountForm)\" [disabled]=\"processing || !accountForm.valid\">\n      </div>\n      <div class=\"account-actions\">\n        <div class=\"action\">\n          <a routerLink=\"/login\">Already have an account? Sign In.</a>\n        </div>\n        <div class=\"action\">\n          <a routerLink=\"/password-reset\">Forgot Password</a>\n        </div>\n      </div>\n    </form>\n  </div>\n</div>"
 
 /***/ }),
 
@@ -2069,13 +2214,13 @@ var CreateAccountComponent = /** @class */ (function () {
         this.accountSuccess = false;
         this.processing = false;
         this.accountForm = fb.group({
-            'first-name': [null, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["Validators"].required],
-            'last-name': [null, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["Validators"].required],
-            'email': [null, [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["Validators"].required, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["Validators"].email]],
+            'first-name': [null, [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["Validators"].required, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["Validators"].maxLength(28)]],
+            'last-name': [null, [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["Validators"].required, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["Validators"].maxLength(28)]],
+            'email': [null, [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["Validators"].required, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["Validators"].email, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["Validators"].maxLength(45)]],
             // TODO: Implement more strict password rules from Ken's regex
             'password': ['', [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["Validators"].required, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["Validators"].minLength(8)]],
             'confirm-password': ['', __WEBPACK_IMPORTED_MODULE_1__angular_forms__["Validators"].required],
-            'security-question': [null, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["Validators"].required],
+            'security-question': ['', __WEBPACK_IMPORTED_MODULE_1__angular_forms__["Validators"].required],
             'security-answer': [null, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["Validators"].required],
             'full-address': fb.group({
                 'address': [null, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["Validators"].required],
@@ -2165,7 +2310,7 @@ var CreateAccountComponent = /** @class */ (function () {
 /***/ "./src/app/pages/home/home.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"home page-front\">\n\n    <header class=\"header-container\">\n      <div class=\"content\" [ngStyle]=\"{'background-image':'url(' + featuredImage?.source_url + ')'}\">\n        <div class=\"header-content center-1440 clearfix\">\n          <div class=\"wysiwyg-content\">\n              <h2 [innerHtml]=\"pageContent?.title?.rendered\"></h2>\n              <div [innerHtml]=\"pageContent?.content?.rendered\"></div>\n          </div>\n        </div>\n      </div>\n    </header>\n\n  <div class=\"content-container\">\n\n    <lo-cal-intro-section [acf]=\"acf\"></lo-cal-intro-section>\n\n    <lo-cal-title-body-images [acf]=\"acf\" [color]=\"'grey'\"></lo-cal-title-body-images>\n\n    <div class=\"section section-white our-menu\">\n      <div class=\"content text-center\">\n        <h3 class=\"title\" [innerHtml]=\"acf?.menu_title\"></h3>\n        <p class=\"body center-740 text-center\" [innerHtml]=\"acf?.menu_description\"></p>\n        <div class=\"menu-items center-1440\">\n          <div class=\"item item-{{ i+1 }}\" *ngFor=\"let item of acf?.menu_items; let i = index\">\n            <div class=\"item-wrapper text-center\">\n              <a [href]=\"item?.item_link\">\n                <div class=\"image\" *ngIf=\"item?.item_image?.url\"><img [src]=\"item?.item_image?.url\" [alt]=\"item?.item_image?.alt\"></div>\n                <div class=\"title\" *ngIf=\"item?.item_title\">{{ item?.item_title }}</div>\n              </a>\n            </div>\n          </div>\n        </div><!-- /.menu-items -->\n        <div class=\"link red-button\"><a routerLink=\"/menu\">View the Full Menu</a></div>\n      </div>\n    </div><!-- /.our-menu -->\n\n    <!-- <div class=\"section section-grey app-ad\">\n      <div class=\"content center\">\n        <div class=\"left\">\n          <div class=\"inner-content\">\n            <h4 class=\"title\" [innerHtml]=\"acf?.mobile_order_title\"></h4>\n            <div class=\"body\">\n              <p [innerHtml]=\"acf?.mobile_ordering_text\"></p>\n              <div class=\"app-downloads\" *ngIf=\"acf?.ios_app_link && acf?.android_app_link\">\n                <a [href]=\"acf?.ios_app_link\"><img *ngIf=\"acf?.ios_app_store_image?.url\" [src]=\"acf?.ios_app_store_image?.url\" [alt]=\"acf?.ios_app_store_image?.alt\" /></a>\n                <a [href]=\"acf?.android_app_link\"><img *ngIf=\"acf?.android_app_store_image?.url\" [src]=\"acf?.android_app_store_image?.url\" [alt]=\"acf?.android_app_store_image?.alt\" /></a>\n              </div>\n            </div>\n          </div>\n        </div>\n      </div>\n    </div> -->\n\n    <lo-cal-image-and-text [acf]=\"acf\"></lo-cal-image-and-text>\n\n  </div>\n</div><!-- /.home -->"
+module.exports = "<div class=\"home page-front\">\n\n    <header class=\"header-container\">\n      <div class=\"content\" [ngStyle]=\"{'background-image':'url(' + featuredImage?.source_url + ')'}\">\n        <div class=\"header-content center-1440 clearfix\">\n          <div class=\"wysiwyg-content\">\n            <div [innerHtml]=\"pageContent?.content?.rendered\"></div>\n          </div>\n        </div>\n      </div>\n    </header>\n\n  <div class=\"content-container\">\n\n    <lo-cal-intro-section [acf]=\"acf\"></lo-cal-intro-section>\n\n    <lo-cal-title-body-images [acf]=\"acf\" [color]=\"'grey'\"></lo-cal-title-body-images>\n\n    <div class=\"section section-white our-menu\">\n      <div class=\"content text-center\">\n        <h3 class=\"title\" [innerHtml]=\"acf?.menu_title\"></h3>\n        <p class=\"body center-740 text-center\" [innerHtml]=\"acf?.menu_description\"></p>\n        <div class=\"menu-items center-1440\">\n          <div class=\"item item-{{ i+1 }}\" *ngFor=\"let item of acf?.menu_items; let i = index\">\n            <div class=\"item-wrapper text-center\">\n              <a [href]=\"item?.item_link\">\n                <div class=\"image\" *ngIf=\"item?.item_image?.url\"><img [src]=\"item?.item_image?.url\" [alt]=\"item?.item_image?.alt\"></div>\n                <div class=\"title\" *ngIf=\"item?.item_title\">{{ item?.item_title }}</div>\n              </a>\n            </div>\n          </div>\n        </div><!-- /.menu-items -->\n        <div class=\"link red-button\"><a routerLink=\"/menu\">View the Full Menu</a></div>\n      </div>\n    </div><!-- /.our-menu -->\n\n    <!-- <div class=\"section section-grey app-ad\">\n      <div class=\"content center\">\n        <div class=\"left\">\n          <div class=\"inner-content\">\n            <h4 class=\"title\" [innerHtml]=\"acf?.mobile_order_title\"></h4>\n            <div class=\"body\">\n              <p [innerHtml]=\"acf?.mobile_ordering_text\"></p>\n              <div class=\"app-downloads\" *ngIf=\"acf?.ios_app_link && acf?.android_app_link\">\n                <a [href]=\"acf?.ios_app_link\"><img *ngIf=\"acf?.ios_app_store_image?.url\" [src]=\"acf?.ios_app_store_image?.url\" [alt]=\"acf?.ios_app_store_image?.alt\" /></a>\n                <a [href]=\"acf?.android_app_link\"><img *ngIf=\"acf?.android_app_store_image?.url\" [src]=\"acf?.android_app_store_image?.url\" [alt]=\"acf?.android_app_store_image?.alt\" /></a>\n              </div>\n            </div>\n          </div>\n        </div>\n      </div>\n    </div> -->\n\n    <lo-cal-image-and-text [acf]=\"acf\"></lo-cal-image-and-text>\n\n  </div>\n</div><!-- /.home -->"
 
 /***/ }),
 
@@ -2262,7 +2407,7 @@ var LoginComponent = /** @class */ (function () {
 /***/ "./src/app/pages/menu-customize/menu-customize.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"page-item-detail\">\n  <div class=\"menu-item-header\">\n    <div class=\"overlay-container\">\n      <h1 class=\"title\">{{ menuItemDetails?.item?.DisplayName }}</h1>\n      <img *ngIf=\"featuredImage\" [src]=\"featuredImage\" [alt]=\"featuredImageAlt\">\n    </div>\n  </div>\n\n  <div class=\"customization-container center-1440\">\n    <div class=\"left customization-options\">\n      <div class=\"loading-gif\" *ngIf=\"!menuItemDetails\"></div>\n      <div class=\"customization-category\" *ngFor=\"let modGroup of salesItemDetails?.ModGroups\">\n        <div class=\"content\">\n          <div class=\"header\">\n            <span class=\"title\">{{ modGroup?.DisplayName }}</span>\n            <span class=\"choices\" *ngIf=\"modGroup?.MaximumItems > 0\">Choose up to {{ modGroup?.MaximumItems }} ({{ customizationData[modGroup?.$id].currentlySelected.length }}/{{ modGroup?.MaximumItems }})</span>\n          </div>\n          <div class=\"options\" *ngFor=\"let modifier of modGroup?.Mods\">\n            <div class=\"option\">\n              <div class=\"ingredient\">{{ modifier?.Name }}</div>\n              <div class=\"calories\">{{ modifier?.ItemModifiers[0]?.CaloricValue }} <span *ngIf=\"modifier?.ItemModifiers[0]?.CaloricValue !== null\">cal</span> </div>\n              <div class=\"choice-controls\">\n                <span class=\"minus\" [ngClass]=\"(customizationData[modGroup?.$id].currentlySelected.length > 0 && customizationData[modGroup?.$id].modifiers[modifier?.$id].quantity > 0) ? 'enabled' : 'disabled'\" (click)=\"removeModifier(modGroup, modifier)\">-</span>\n                <span class=\"quantity-container\" [ngClass]=\"customizationData[modGroup?.$id].modifiers[modifier?.$id]?.quantity > 0 ? 'populated' : ''\">\n                  <span class=\"quantity\" *ngIf=\"customizationData[modGroup?.$id].modifiers[modifier?.$id]?.quantity !== 0\">\n                    {{ customizationData[modGroup?.$id].modifiers[modifier?.$id]?.quantity }}\n                  </span>\n                </span>\n                <span class=\"plus\" [ngClass]=\"((customizationData[modGroup?.$id].currentlySelected.length < modGroup?.MaximumItems) || (modGroup?.MaximumItems === 0 && customizationData[modGroup?.$id].modifiers[modifier?.$id].quantity < 1)) ? 'enabled' : 'disabled'\" (click)=\"addModifier(modGroup, modifier)\">+</span>\n              </div>\n            </div><!-- /.option -->\n          </div><!-- /.options -->\n        </div>\n      </div><!-- /.customization-category -->\n\n    </div><!-- /.left.customization-options -->\n    <div class=\"right\">\n      <div class=\"final-product\">\n        <div class=\"title\">{{ menuItemDetails?.item?.DisplayName }}</div>\n        <div class=\"ingredients\" *ngIf=\"menuItemDetails?.item?.Description\">\n          {{ (menuItemDetails?.item?.Description | allergens)?.description }}\n        </div>\n        <div class=\"customization-ingredients\" *ngIf=\"currentModifierArray\">\n          <span class=\"customization\" *ngFor=\"let item of currentModifierArray; let last = last;\">{{ item?.DisplayName }}<span class=\"separator\" *ngIf=\"!last\">, </span></span>\n        </div>\n        <div class=\"fine-details\">\n          <span class=\"price\">{{ totalPrice | currency }}</span>\n          <span class=\"calories\" *ngIf=\"calorieCount !== null\">{{ calorieCount }} cal</span>\n          <span class=\"allergens\" *ngIf=\"(menuItemDetails?.item?.Description)\">\n            <span class=\"allergen-wrapper\" *ngFor=\"let allergen of (menuItemDetails?.item?.Description | allergens).allergens\">\n              <span class=\"allergen\">{{ allergen }}</span>\n              <span class=\"rollover\">{{ allergen | allergenRollover }}</span>\n            </span>\n          </span>\n        </div>\n      </div><!-- /.final-product -->\n\n      <div class=\"special-instructions\">\n        <label for=\"special-instructions\">Add Special Instruction (optional)</label>\n        <textarea name=\"special-instructions\" id=\"special-instructions\" cols=\"30\" rows=\"5\" [(ngModel)]=\"specialInstructions\"></textarea>\n      </div><!-- /.special-instructions -->\n\n      <div class=\"quantity-wrapper\">\n        <div class=\"text\">Quantity</div>\n        <div class=\"quantity-changer\">\n          <span class=\"minus\" (click)=\"decrementQuantity()\">-</span>\n          <span class=\"quantity\">{{ quantity }}</span>\n          <span class=\"plus\" (click)=\"incrementQuantity()\">+</span>\n        </div>\n      </div>\n\n      <div class=\"size-wrapper\" *ngIf=\"multipleSalesItems.length > 0\">\n        <label for=\"size\" class=\"text\">Size</label>\n        <select name=\"size\" id=\"size\" class=\"custom white-bg\" [(ngModel)]=\"sizeChoice\" (ngModelChange)=\"updateDataPerSize(sizeChoice)\">\n          <option [value]=\"salesItem?.SalesItemId\" *ngFor=\"let salesItem of multipleSalesItems\">{{ salesItem?.DisplayName }}</option>\n        </select>\n      </div>\n\n      <div class=\"add-button red-button\">\n        <button *ngIf=\"totalPrice\" (click)=\"addToBag()\" [disabled]=\"requiredModifierGroups.length > 0\">Add to Bag (+{{ totalPrice | currency }})</button>\n      </div>\n    </div><!-- /.right -->\n  </div>\n</div><!-- /.page-item-detail -->"
+module.exports = "<div class=\"page-item-detail\">\n  <div class=\"menu-item-header\">\n    <div class=\"overlay-container\">\n      <h1 class=\"title\">{{ menuItemDetails?.item?.DisplayName }}</h1>\n      <img *ngIf=\"featuredImage\" [src]=\"featuredImage\" [alt]=\"featuredImageAlt\">\n    </div>\n  </div>\n\n  <div class=\"customization-container center-1440\">\n    <div class=\"left customization-options\">\n      <div class=\"loading-gif menu-loading\" *ngIf=\"!menuItemDetails\"></div>\n      <div class=\"customization-category\" *ngFor=\"let modGroup of salesItemDetails?.ModGroups\">\n        <div class=\"content\">\n          <div class=\"header\">\n            <span class=\"title\">{{ modGroup?.DisplayName }}</span>\n            <span class=\"choices\" *ngIf=\"modGroup?.MaximumItems > 0\">Choose up to {{ modGroup?.MaximumItems }} ({{ customizationData[modGroup?.$id].currentlySelected.length }}/{{ modGroup?.MaximumItems }})</span>\n          </div>\n          <div class=\"options\" *ngFor=\"let modifier of modGroup?.Mods\">\n            <div class=\"option\">\n              <div class=\"ingredient\">{{ modifier?.Name }}</div>\n              <div class=\"calories\">{{ modifier?.ItemModifiers[0]?.CaloricValue }} <span *ngIf=\"modifier?.ItemModifiers[0]?.CaloricValue !== null\">cal</span> </div>\n              <div class=\"choice-controls\">\n                <span class=\"minus\" [ngClass]=\"(customizationData[modGroup?.$id].currentlySelected.length > 0 && customizationData[modGroup?.$id].modifiers[modifier?.$id].quantity > 0) ? 'enabled' : 'disabled'\" (click)=\"removeModifier(modGroup, modifier)\">-</span>\n                <span class=\"quantity-container\" [ngClass]=\"customizationData[modGroup?.$id].modifiers[modifier?.$id]?.quantity > 0 ? 'populated' : ''\">\n                  <span class=\"quantity\" *ngIf=\"customizationData[modGroup?.$id].modifiers[modifier?.$id]?.quantity !== 0\">\n                    {{ customizationData[modGroup?.$id].modifiers[modifier?.$id]?.quantity }}\n                  </span>\n                </span>\n                <span class=\"plus\" [ngClass]=\"((customizationData[modGroup?.$id].currentlySelected.length < modGroup?.MaximumItems) || (modGroup?.MaximumItems === 0 && customizationData[modGroup?.$id].modifiers[modifier?.$id].quantity < 1)) ? 'enabled' : 'disabled'\" (click)=\"addModifier(modGroup, modifier)\">+</span>\n              </div>\n            </div><!-- /.option -->\n          </div><!-- /.options -->\n        </div>\n      </div><!-- /.customization-category -->\n\n    </div><!-- /.left.customization-options -->\n    <div class=\"right\">\n      <div class=\"final-product\">\n        <div class=\"title\">{{ menuItemDetails?.item?.DisplayName }}</div>\n        <div class=\"ingredients\" *ngIf=\"menuItemDetails?.item?.Description\">\n          {{ (menuItemDetails?.item?.Description | allergens)?.description }}\n        </div>\n        <div class=\"customization-ingredients\" *ngIf=\"currentModifierArray\">\n          <span class=\"customization\" *ngFor=\"let item of currentModifierArray; let last = last;\">{{ item?.DisplayName }}<span class=\"separator\" *ngIf=\"!last\">, </span></span>\n        </div>\n        <div class=\"fine-details\">\n          <span class=\"price\">{{ totalPrice | currency }}</span>\n          <span class=\"calories\" *ngIf=\"calorieCount !== null\">{{ calorieCount }} cal</span>\n          <span class=\"allergens\" *ngIf=\"(menuItemDetails?.item?.Description)\">\n            <span class=\"allergen-wrapper\" *ngFor=\"let allergen of (menuItemDetails?.item?.Description | allergens).allergens\">\n              <span class=\"allergen\">{{ allergen }}</span>\n              <span class=\"rollover\">{{ allergen | allergenRollover }}</span>\n            </span>\n          </span>\n        </div>\n      </div><!-- /.final-product -->\n\n      <div class=\"special-instructions\">\n        <label for=\"special-instructions\">Add Special Instruction (optional)</label>\n        <textarea name=\"special-instructions\" id=\"special-instructions\" cols=\"30\" rows=\"5\" [(ngModel)]=\"specialInstructions\"></textarea>\n      </div><!-- /.special-instructions -->\n\n      <div class=\"quantity-wrapper\">\n        <div class=\"text\">Quantity</div>\n        <div class=\"quantity-changer\">\n          <span class=\"minus\" (click)=\"decrementQuantity()\">-</span>\n          <span class=\"quantity\">{{ quantity }}</span>\n          <span class=\"plus\" (click)=\"incrementQuantity()\">+</span>\n        </div>\n      </div>\n\n      <div class=\"size-wrapper\" *ngIf=\"multipleSalesItems.length > 0\">\n        <label for=\"size\" class=\"text\">Size</label>\n        <select name=\"size\" id=\"size\" class=\"custom white-bg\" [(ngModel)]=\"sizeChoice\" (ngModelChange)=\"updateDataPerSize(sizeChoice)\">\n          <option [value]=\"salesItem?.SalesItemId\" *ngFor=\"let salesItem of multipleSalesItems\">{{ salesItem?.DisplayName }}</option>\n        </select>\n      </div>\n\n      <div class=\"add-button red-button\">\n        <button *ngIf=\"totalPrice\" (click)=\"addToBag()\" [disabled]=\"requiredModifierGroups.length > 0\">Add to Bag (+{{ totalPrice | currency }})</button>\n      </div>\n    </div><!-- /.right -->\n  </div>\n</div><!-- /.page-item-detail -->"
 
 /***/ }),
 
@@ -2443,8 +2588,7 @@ var MenuCustomizeComponent = /** @class */ (function () {
                 _this.multipleSalesItems = menuItemDetails['salesItems'];
                 _this.sizeChoice = _this.salesItemDetails.SalesItemId;
             }
-            // TODO: If this is not a number in the case of prepared food items, treat differently
-            _this.calorieCount = (_this.salesItemDetails.CaloricValue !== null) ? _this.salesItemDetails.CaloricValue : +_this.menuItemDetails.item.CaloricServingUnit;
+            _this.calorieCount = (_this.salesItemDetails.CaloricValue !== null) ? _this.salesItemDetails.CaloricValue : ((typeof _this.menuItemDetails.item.CaloricServingUnit !== 'string') ? +_this.menuItemDetails.item.CaloricServingUnit : _this.menuItemDetails.item.CaloricServingUnit);
             _this.itemPrice = _this.salesItemDetails.Price;
             // Calculate initial cost based on initial quantity of 1
             _this.recalculateCost();
@@ -2900,6 +3044,143 @@ var OurStoryComponent = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/pages/password-reset/password-reset.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "\n<div class=\"login-wrapper\">\n  <div class=\"login-container center-740\">\n    <h1 class=\"text-center\">Reset Your Password</h1>\n    <div *ngIf=\"passwordSuccess\" class=\"text-center\"><p>Password successfully changed. <a routerLink=\"/login\">Click here</a> to return to the login form.</p></div>\n    <form action=\"\" class=\"lo-cal-form\" [formGroup]=\"passwordResetForm\" (submit)=\"resetPasswordWithAnswer(passwordResetForm)\" *ngIf=\"!switchForms && !passwordSuccess\">\n      <div class=\"form-errors\" *ngIf=\"errorData?.error\"><p>Sorry. We did not find a valid account for that username and password.</p></div>\n      <div class=\"form-errors\" *ngIf=\"passwordResetError\"><p>{{ passwordResetError }}</p></div>\n      <div class=\"form-errors\" *ngIf=\"securityQuestionError\"><p class=\"form-errors\">{{ securityQuestionError }}</p></div>\n      <div class=\"form-component form-component-text\">\n        <label for=\"password\" class=\"visuallyhidden\">Email</label>\n        <input type=\"text\" name=\"email\" id=\"email\" placeholder=\"Email\" formControlName=\"email\" [ngClass]=\"{'has-error':!passwordResetForm.controls['email'].valid && submittedOnce}\">\n        <div class=\"error-message\" *ngIf=\"!passwordResetForm.controls['email'].valid && submittedOnce\">This field is required.</div>\n      </div>\n      <div class=\"password-reset-wrapper\" *ngIf=\"foundSecurityQuestion\">\n        <div class=\"form-component form-component-text\">\n          <p>{{ securityQuestion }}</p>\n          <label for=\"security-answer\" class=\"visuallyhidden\">Security Answer</label>\n          <input type=\"text\" name=\"security-answer\" id=\"security-answer\" placeholder=\"Security Answer\" formControlName=\"security-answer\" [ngClass]=\"{'has-error':!passwordResetForm.controls['security-answer'].valid && submittedOnce}\">\n          <div class=\"error-message\" *ngIf=\"!passwordResetForm.controls['security-answer'].valid && submittedOnce\">This field is required.</div>\n        </div>\n        <div class=\"form-component form-component-text\">\n          <label for=\"password\" class=\"visuallyhidden\">Password</label>\n          <input type=\"password\" name=\"password\" id=\"password\" formControlName=\"password\" placeholder=\"Password* (8 or more characters)\" [ngClass]=\"{'has-error':!passwordResetForm.controls['password'].valid && submittedOnce}\">\n          <div class=\"error-message\" *ngIf=\"!passwordResetForm.controls['password'].valid && submittedOnce\">This field is required.</div>\n          <div class=\"error-message\" *ngIf=\"passwordResetForm.controls['password'].value.length > 2 && passwordResetForm.controls['password'].errors?.minlength\">Password must be at least 8 characters.</div>\n        </div>\n        <div class=\"form-component form-component-text\">\n          <label for=\"confirm-password\" class=\"visuallyhidden\">Confirm Password</label>\n          <input type=\"password\" name=\"confirm-password\" id=\"confirm-password\" formControlName=\"confirm-password\" placeholder=\"Confirm Password*\" [ngClass]=\"{'has-error':!passwordResetForm.controls['confirm-password'].valid && submittedOnce}\">\n          <div class=\"error-message\" *ngIf=\"!passwordResetForm.controls['confirm-password'].valid && submittedOnce\">This field is required.</div>\n          <div class=\"error-message\" *ngIf=\"passwordResetForm.controls['confirm-password'].errors?.MatchPassword\">Password does not match.</div>\n        </div>\n      </div>\n      <div class=\"loading-gif button-size\" *ngIf=\"processing\"></div>\n      <div class=\"submit red-button full-width-button\" *ngIf=\"!foundSecurityQuestion && !processing\">\n        <button type=\"submit\" class=\"red-button\" [disabled]=\"!passwordResetForm.controls['email'].valid\" (click)=\"retrieveSecurityQuestion(passwordResetForm.controls['email'].value)\">Send</button>\n      </div>\n      <div class=\"submit red-button full-width-button\" *ngIf=\"foundSecurityQuestion && !processing\">\n        <input type=\"submit\" value=\"Send\" [disabled]=\"!passwordResetForm.valid\">\n      </div>\n      <div class=\"account-actions single-link text-center\">\n        <a href=\"#\" (click)=\"swapForms()\">I don't know my security answer.</a>\n      </div>\n    </form>\n\n    <p class=\"text-center\" *ngIf=\"forcePasswordSuccess\">Password reset submitted successfully. Check your email for your new password then <a routerLink=\"/login\">click here</a> to login.</p>\n    <form action=\"\" class=\"lo-cal-form\" [formGroup]=\"forcePasswordResetForm\" (submit)=\"forcePasswordReset(forcePasswordResetForm)\" *ngIf=\"switchForms && !forcePasswordSuccess\">\n      <p class=\"text-center\">Submitting this form will email you a new password.</p>\n      <div class=\"form-errors\" *ngIf=\"forcePasswordError\"><p>{{ forcePasswordError }}</p></div>\n      <div class=\"form-component form-component-text\">\n        <label for=\"password\" class=\"visuallyhidden\">Email</label>\n        <input type=\"text\" name=\"email\" id=\"email\" placeholder=\"Email\" formControlName=\"email\" [ngClass]=\"{'has-error':!forcePasswordResetForm.controls['email'].valid && submittedOnce}\">\n        <div class=\"error-message\" *ngIf=\"!forcePasswordResetForm.controls['email'].valid && submittedOnce\">This field is required.</div>\n      </div>\n      <div class=\"loading-gif button-size\" *ngIf=\"forceProcessing\"></div>\n      <div class=\"submit red-button full-width-button\" *ngIf=\"!forceProcessing\">\n        <input type=\"submit\" value=\"Send\" [disabled]=\"!forcePasswordResetForm.valid\">\n      </div>\n    </form>\n  </div>\n</div>"
+
+/***/ }),
+
+/***/ "./src/app/pages/password-reset/password-reset.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PasswordResetComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_forms__ = __webpack_require__("./node_modules/@angular/forms/esm5/forms.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ngx_auto_unsubscribe__ = __webpack_require__("./node_modules/ngx-auto-unsubscribe/dist/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__local_services_customer_service__ = __webpack_require__("./src/app/services/customer.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__local_utils_passwordmatch__ = __webpack_require__("./src/app/utils/passwordmatch.ts");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+var PasswordResetComponent = /** @class */ (function () {
+    function PasswordResetComponent(fb, customerService) {
+        this.fb = fb;
+        this.customerService = customerService;
+        this.foundSecurityQuestion = false;
+        this.errorData = {};
+        this.securityQuestion = '';
+        this.switchForms = false;
+        this.submittedOnce = false;
+        this.passwordResetError = '';
+        this.passwordSuccess = false;
+        this.forcePasswordSuccess = false;
+        this.forceProcessing = false;
+        this.processing = false;
+        this.securityQuestionError = '';
+        this.forcePasswordError = '';
+        this.passwordResetForm = fb.group({
+            'email': [null, [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["Validators"].required, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["Validators"].email]],
+            'security-answer': [null, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["Validators"].required],
+            'password': ['', [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["Validators"].required, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["Validators"].minLength(8)]],
+            'confirm-password': ['', __WEBPACK_IMPORTED_MODULE_1__angular_forms__["Validators"].required]
+        }, {
+            validator: __WEBPACK_IMPORTED_MODULE_4__local_utils_passwordmatch__["a" /* PasswordMatch */].MatchPassword
+        });
+        this.forcePasswordResetForm = fb.group({
+            'email': [null, [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["Validators"].required, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["Validators"].email]]
+        });
+    }
+    PasswordResetComponent.prototype.retrieveSecurityQuestion = function (email) {
+        var _this = this;
+        // Start spinner
+        this.processing = true;
+        this.securityQuestionError = '';
+        // Call API to get security question for user's email
+        this.customerService.getSecurityQuestion(email).subscribe(function (question) {
+            _this.processing = false;
+            _this.foundSecurityQuestion = true;
+            _this.securityQuestion = question;
+        }, function (error) {
+            _this.processing = false;
+            var errorMessage = JSON.parse(error.error).message;
+            _this.securityQuestionError = errorMessage;
+        });
+        return false;
+    };
+    PasswordResetComponent.prototype.resetPasswordWithAnswer = function (formData) {
+        var _this = this;
+        if (formData.valid) {
+            this.processing = true;
+            var newPassData = {
+                Email: formData.get('email').value,
+                SecurityAnswer: formData.get('security-answer').value,
+                NewPassword: formData.get('password').value
+            };
+            this.customerService.passwordResetWithAnswer(newPassData).subscribe(function (result) {
+                if (result) {
+                    _this.processing = false;
+                    _this.passwordResetError = '';
+                    _this.passwordSuccess = true;
+                }
+            }, function (error) {
+                _this.processing = false;
+                _this.passwordResetError = error.error.message;
+            });
+        }
+    };
+    PasswordResetComponent.prototype.forcePasswordReset = function (formData) {
+        var _this = this;
+        this.forceProcessing = true;
+        this.forcePasswordError = '';
+        if (formData.valid) {
+            var psReset = {
+                Email: formData.get('email').value
+            };
+            this.customerService.forcePasswordReset(psReset).subscribe(function (result) {
+                _this.forcePasswordSuccess = true;
+                _this.forceProcessing = false;
+            }, function (error) {
+                _this.forcePasswordError = error.error.message;
+                _this.forceProcessing = false;
+            });
+        }
+    };
+    PasswordResetComponent.prototype.swapForms = function () {
+        this.switchForms = !this.switchForms;
+        return false;
+    };
+    PasswordResetComponent.prototype.ngOnInit = function () {
+    };
+    PasswordResetComponent.prototype.ngOnDestroy = function () {
+    };
+    PasswordResetComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_2_ngx_auto_unsubscribe__["a" /* AutoUnsubscribe */])(),
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+            selector: 'lo-cal-password-reset',
+            template: __webpack_require__("./src/app/pages/password-reset/password-reset.component.html")
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["FormBuilder"], __WEBPACK_IMPORTED_MODULE_3__local_services_customer_service__["a" /* CustomerService */]])
+    ], PasswordResetComponent);
+    return PasswordResetComponent;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/pages/post/post.component.html":
 /***/ (function(module, exports) {
 
@@ -2965,7 +3246,7 @@ var PostComponent = /** @class */ (function () {
 /***/ "./src/app/pages/sub-menu/sub-menu.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"page-landing-page\">\n  <header class=\"header-container\">\n    <div class=\"menu-item-header\">\n      <div class=\"overlay-container\">\n        <h1 class=\"title\" [innerHtml]=\"pageContent?.title?.rendered\"></h1>\n        <img *ngIf=\"featuredImage\" [src]=\"featuredImage\" [alt]=\"featuredImageAlt\">\n      </div>\n    </div>\n  </header>\n\n  <div class=\"menu-menu\">\n    <ul class=\"menu\">\n      <li *ngFor=\"let item of subMenuLinks\" [attr.class]=\"item.classes ? item.classes : null\">\n        <a [routerLink]=\"['/menu', item.object_slug]\" routerLinkActive=\"active\" [routerLinkActiveOptions]=\"{exact:true}\" [innerHtml]=\"item?.title | safeHtml\"></a>\n      </li>\n    </ul>\n  </div>\n\n  <!-- Menu Card Layout HTML -->\n  <div class=\"section-white menu-categories center\" id=\"featured\">\n    <h2 class=\"capitalize text-center\" [innerHtml]=\"pageContent?.title?.rendered\"></h2>\n    <p class=\"sub-menu-description\" *ngIf=\"subMenuItems?.menu[0]?.Description\">\n      {{ subMenuItems?.menu[0]?.Description }}\n    </p>\n\n    <div class=\"content clearfix sub-menu-cards-wrapper\">\n\n      <div class=\"menu-card\" *ngFor=\"let item of subMenuItems?.menuItems\">\n        <div class=\"card-wrapper\">\n          <div class=\"image\" *ngIf=\"(item?.MenuItemId | cardImage:wpSubMenuItems | async) !== ''\">\n            <a [routerLink]=\"(item?.DisplayName | safeUrl)\"><img src=\"{{ item?.MenuItemId | cardImage:wpSubMenuItems | async }}\" alt=\"\"></a>\n          </div>\n          <div class=\"details\">\n            <h4 class=\"title\"><a [routerLink]=\"(item?.DisplayName | safeUrl)\">{{ item?.DisplayName }}</a></h4>\n            <div class=\"description\">\n              <p>\n                {{ (item?.Description | allergens).description }}\n              </p>\n            </div>\n            <div class=\"fine-details\">\n              <span class=\"price\">{{ item?.defaultPrice | currency }}</span>\n              <span class=\"calories\" *ngIf=\"item?.CaloricServingUnit\">{{ item?.CaloricServingUnit }} cal</span>\n              <span class=\"allergens\" *ngIf=\"(item?.Description | allergens).allergens\">\n                <span class=\"allergen\" *ngFor=\"let allergen of (item?.Description | allergens).allergens\">{{ allergen }}</span>\n              </span>\n              <button class=\"add-to-cart\" (click)=\"addToBag(item)\" *ngIf=\"item?.SalesItemIds.length <= 1\">Add</button>\n            </div>\n          </div>\n        </div>\n      </div><!-- /.menu-card -->\n\n    </div>\n  </div>\n  <!-- Menu Card Layout HTML -->\n</div>"
+module.exports = "<div class=\"page-landing-page\">\n  <header class=\"header-container\">\n    <div class=\"content\" [ngStyle]=\"{'background-image':'url(' + featuredImage + ')'}\">\n      <div class=\"header-content text-center\">\n        <h1 [innerHtml]=\"pageContent?.title?.rendered\"></h1>\n      </div>\n    </div>\n  </header>\n\n  <div class=\"menu-menu\">\n    <ul class=\"menu\">\n      <li *ngFor=\"let item of subMenuLinks\" [attr.class]=\"item.classes ? item.classes : null\">\n        <a [routerLink]=\"['/menu', item.object_slug]\" routerLinkActive=\"active\" [routerLinkActiveOptions]=\"{exact:true}\" [innerHtml]=\"item?.title | safeHtml\"></a>\n      </li>\n    </ul>\n  </div>\n\n  <!-- Menu Card Layout HTML -->\n  <div class=\"section-white menu-categories center\" id=\"featured\">\n    <h2 class=\"capitalize text-center\" [innerHtml]=\"pageContent?.title?.rendered\"></h2>\n    <p class=\"sub-menu-description\" *ngIf=\"subMenuItems?.menu[0]?.Description\">\n      {{ subMenuItems?.menu[0]?.Description }}\n    </p>\n\n    <div class=\"content clearfix sub-menu-cards-wrapper\">\n\n      <div class=\"menu-card\" *ngFor=\"let item of subMenuItems?.menuItems\">\n        <div class=\"card-wrapper\">\n          <div class=\"image\" *ngIf=\"(item?.MenuItemId | cardImage:wpSubMenuItems | async) !== ''\">\n            <a [routerLink]=\"(item?.DisplayName | safeUrl)\"><img src=\"{{ item?.MenuItemId | cardImage:wpSubMenuItems | async }}\" alt=\"\"></a>\n          </div>\n          <div class=\"details\">\n            <h4 class=\"title\"><a [routerLink]=\"(item?.DisplayName | safeUrl)\">{{ item?.DisplayName }}</a></h4>\n            <div class=\"description\">\n              <p>\n                {{ (item?.Description | allergens).description }}\n              </p>\n            </div>\n            <div class=\"fine-details\">\n              <span class=\"price\">{{ item?.defaultPrice | currency }}</span>\n              <span class=\"calories\" *ngIf=\"item?.CaloricServingUnit\">{{ item?.CaloricServingUnit }} cal</span>\n              <span class=\"allergens\" *ngIf=\"(item?.Description | allergens).allergens\">\n                <span class=\"allergen\" *ngFor=\"let allergen of (item?.Description | allergens).allergens\">{{ allergen }}</span>\n              </span>\n              <button class=\"add-to-cart\" (click)=\"addToBag(item)\" *ngIf=\"item?.SalesItemIds.length <= 1\">Add</button>\n            </div>\n          </div>\n        </div>\n      </div><!-- /.menu-card -->\n\n    </div>\n  </div>\n  <!-- Menu Card Layout HTML -->\n</div>"
 
 /***/ }),
 
@@ -3632,7 +3913,8 @@ var CustomerService = /** @class */ (function () {
     };
     CustomerService.prototype.logOut = function () {
         var _this = this;
-        this.localStorage.removeItem('user').subscribe(function () {
+        // Destroy all IndexedDB data and redirect to homepage
+        this.localStorage.clear().subscribe(function () {
             _this.router.navigateByUrl('/');
         });
     };
@@ -3675,6 +3957,15 @@ var CustomerService = /** @class */ (function () {
             return data;
         });
     };
+    /**
+     *
+     * deleteSavedPayment
+     *
+     * @param customerId
+     * @param paymentId
+     *
+     * @returns Observable of result from Aloha API
+     */
     CustomerService.prototype.deleteSavedPayment = function (customerId, paymentId) {
         return this.httpClient.delete(this.config.railsCustomerEndpoint + ("/" + customerId + "/payments/" + paymentId)).map(function (result) {
             return result;
@@ -3691,19 +3982,61 @@ var CustomerService = /** @class */ (function () {
             return result;
         });
     };
+    /**
+     * getCurrentCustomer function
+     *
+     * @returns Observable of UserInfo
+     */
     CustomerService.prototype.getCurrentCustomer = function () {
         return this.localStorage.getItem('user').map(function (userInfo) {
             return userInfo;
         });
     };
-    CustomerService.prototype.updatePassword = function () {
+    /**
+     *
+     * @param email string
+     *
+     * @returns Observable of User Security Question
+     */
+    CustomerService.prototype.getSecurityQuestion = function (email) {
+        return this.httpClient.get(this.config.railsCustomerEndpoint + ("/securityquestions?Email=" + email), { responseType: 'text' }).map(function (question) {
+            return question;
+        });
+    };
+    /**
+     *
+     * updateLoginInfo function
+     *
+     * @param updateLoginInfo InLoginUpdate
+     *
+     * @returns Observable of PasswordReset result from Aloha API
+     */
+    CustomerService.prototype.updateLoginInfo = function (loginInfo) {
+        return this.httpClient.post(this.config.railsCustomerEndpoint + "/loginupdate", loginInfo).map(function (result) {
+            return result;
+        });
+    };
+    /**
+     *
+     * @param email
+     *
+     * @returns Observable of whether or not request was successful
+     */
+    CustomerService.prototype.forcePasswordReset = function (email) {
+        return this.httpClient.post(this.config.railsCustomerEndpoint + "/passwordreset/email", email).map(function (result) {
+            return result;
+        });
+    };
+    CustomerService.prototype.passwordResetWithAnswer = function (data) {
+        return this.httpClient.post(this.config.railsCustomerEndpoint + "/passwordreset", data).map(function (result) {
+            return result;
+        });
     };
     Object.defineProperty(CustomerService.prototype, "customer", {
         get: function () {
             return this._customer;
         },
         set: function (customer) {
-            console.log('set customer', customer);
             this._customer = customer;
         },
         enumerable: true,
@@ -4075,6 +4408,12 @@ var WordpressService = /** @class */ (function () {
             return result;
         });
     };
+    WordpressService.prototype.submitContactForm = function (data) {
+        var finalData = JSON.stringify(data);
+        return this.httpClient.post(this.config.wordpressApiUrl + "/contact_form/v2/submit", finalData).map(function (result) {
+            return result;
+        });
+    };
     WordpressService = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Http */], __WEBPACK_IMPORTED_MODULE_3__utils_constants__["a" /* Config */], __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */]])
@@ -4089,7 +4428,7 @@ var WordpressService = /** @class */ (function () {
 /***/ "./src/app/shared/components/bag/bag.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"checkout-overlay\" [ngClass]=\"state\">\n  <div class=\"checkout-content-wrapper\" [@hideShowBag]='state'>\n    <div class=\"checkout-inner-wrapper\">\n\n        <div class=\"checkout-step\">\n          <div class=\"checkout-top\">\n            <div class=\"checkout-header\">\n              <div class=\"back\">\n              </div>\n              <div class=\"checkout-title\">My Bag</div>\n              <div class=\"close\" (click)=\"toggleBagState()\">\n                <span class=\"close-1\"></span>\n                <span class=\"close-2\"></span>\n              </div>\n            </div><!-- /.checkout-header -->\n\n            <div class=\"items\">\n\n              <div class=\"item\" *ngFor=\"let menuItem of bagItems; let i = index;\">\n                <div class=\"item-review-wrapper\">\n                  <div class=\"left image\">\n                    <img [src]=\"menuItem?.cartImage\" alt=\"\" class=\"item-image\">\n                    <img src=\"/wp-content/themes/local/dist/assets/svgs/delete-cross-icon.svg\" alt=\"X to remove item from cart\" class=\"remove-image\" (click)=\"removeFromBagAtIndex(i)\">\n                  </div>\n                  <div class=\"bag-detail-card\">\n                    <div class=\"title-container\">\n                      <div class=\"title\">{{ menuItem?.Name }} <span class=\"quantity\">x {{ menuItem?.Quantity }}</span></div>\n                    </div>\n                    <div class=\"ingredients\" *ngIf=\"menuItem?.ShortDescription\">\n                      {{ (menuItem?.ShortDescription | allergens)?.description }}\n                    </div>\n                    <div class=\"additions\" *ngIf=\"menuItem?.Modifiers\">\n                      <span class=\"modifier\" *ngFor=\"let mod of menuItem?.Modifiers; let last = last;\">{{ mod?.Name }}<span class=\"separator\" *ngIf=\"!last\">,</span> </span>\n                    </div>\n                    <div class=\"fine-details\">\n                      <span class=\"price\">{{ menuItem?.ExtendedPrice | currency }}</span>\n                      <span class=\"calories\" *ngIf=\"menuItem?.caloricValue\">{{ menuItem?.caloricValue }} cal</span>\n                      <span class=\"allergens\" *ngIf=\"(menuItem?.ShortDescription.indexOf('[') > -1)\">\n                        <span class=\"allergen\" *ngFor=\"let allergen of (menuItem?.ShortDescription | allergens).allergens\">{{ allergen }}</span>\n                      </span>\n                    </div>\n                  </div><!-- /.bag-detail-card -->\n                </div><!-- /.item -->\n                </div><!-- /.item-review-wrapper -->\n            </div><!-- /.checkout-items -->\n          </div><!-- /.checkout-top -->\n\n\n          <div class=\"checkout-bottom\">\n            <div class=\"cart-prices\">\n              <div class=\"price-wrapper\">\n                <div class=\"flex-between total\">\n                  <span class=\"label medium\">Total</span>\n                  <span class=\"value medium\">{{ bagTotalPrice | currency }}</span>\n                </div>\n                <div class=\"checkout-button red-button\">\n                  <a routerLink=\"/checkout/review\">Checkout</a>\n                </div>\n              </div>\n            </div><!-- /.cart-prices -->\n          </div><!-- /.checkout-bottom -->\n        </div><!-- /.checkout-step.step-1 -->\n\n    </div><!-- /.checkout-inner-wrapper -->\n  </div><!-- /.checkout-content-wrapper -->\n</div><!-- /.checkout-overlay -->"
+module.exports = "<div class=\"checkout-overlay\" [ngClass]=\"state\" (click)=\"toggleBagState($event.target)\">\n  <div class=\"checkout-content-wrapper\" [@hideShowBag]='state'>\n    <div class=\"checkout-inner-wrapper\">\n\n        <div class=\"checkout-top\">\n          <div class=\"checkout-header\">\n            <div class=\"back\">\n            </div>\n            <div class=\"checkout-title\">My Bag</div>\n            <div class=\"close\" (click)=\"toggleBagState()\">\n              <span class=\"close-1\"></span>\n              <span class=\"close-2\"></span>\n            </div>\n          </div><!-- /.checkout-header -->\n\n          <div class=\"items\">\n\n            <div class=\"item\" *ngFor=\"let menuItem of bagItems; let i = index;\">\n              <div class=\"item-review-wrapper\">\n                <div class=\"left image\">\n                  <img [src]=\"menuItem?.cartImage\" alt=\"\" class=\"item-image\">\n                  <img src=\"/wp-content/themes/local/dist/assets/svgs/delete-cross-icon.svg\" alt=\"X to remove item from cart\" class=\"remove-image\" (click)=\"removeFromBagAtIndex(i)\">\n                </div>\n                <div class=\"bag-detail-card\">\n                  <div class=\"title-container\">\n                    <div class=\"title\">{{ menuItem?.Name }} <span class=\"quantity\">x {{ menuItem?.Quantity }}</span></div>\n                  </div>\n                  <div class=\"ingredients\" *ngIf=\"menuItem?.ShortDescription\">\n                    {{ (menuItem?.ShortDescription | allergens)?.description }}\n                  </div>\n                  <div class=\"additions\" *ngIf=\"menuItem?.Modifiers\">\n                    <span class=\"modifier\" *ngFor=\"let mod of menuItem?.Modifiers; let last = last;\">{{ mod?.Name }}<span class=\"separator\" *ngIf=\"!last\">,</span> </span>\n                  </div>\n                  <div class=\"fine-details\">\n                    <span class=\"price\">{{ menuItem?.ExtendedPrice | currency }}</span>\n                    <span class=\"calories\" *ngIf=\"menuItem?.caloricValue\">{{ menuItem?.caloricValue }} cal</span>\n                    <span class=\"allergens\" *ngIf=\"(menuItem?.ShortDescription.indexOf('[') > -1)\">\n                      <span class=\"allergen\" *ngFor=\"let allergen of (menuItem?.ShortDescription | allergens).allergens\">{{ allergen }}</span>\n                    </span>\n                  </div>\n                </div><!-- /.bag-detail-card -->\n              </div><!-- /.item -->\n              </div><!-- /.item-review-wrapper -->\n          </div><!-- /.checkout-items -->\n        </div><!-- /.checkout-top -->\n\n\n        <div class=\"checkout-bottom\">\n          <div class=\"cart-prices\">\n            <div class=\"price-wrapper\">\n              <div class=\"flex-between total\">\n                <span class=\"label medium\">Total</span>\n                <span class=\"value medium\">{{ bagTotalPrice | currency }}</span>\n              </div>\n              <div class=\"checkout-button red-button\">\n                <a routerLink=\"/checkout/review\">Checkout</a>\n              </div>\n            </div>\n          </div><!-- /.cart-prices -->\n        </div><!-- /.checkout-bottom -->\n\n    </div><!-- /.checkout-inner-wrapper -->\n  </div><!-- /.checkout-content-wrapper -->\n</div><!-- /.checkout-overlay -->"
 
 /***/ }),
 
@@ -4130,7 +4469,14 @@ var BagComponent = /** @class */ (function () {
     BagComponent.prototype.ngOnInit = function () {
         this.bagCount = this.bagService.itemCountInBag;
     };
-    BagComponent.prototype.toggleBagState = function () {
+    BagComponent.prototype.toggleBagState = function (target) {
+        if (target !== undefined) {
+            if (target.className !== undefined && target.className.indexOf('checkout-overlay') !== -1) {
+                this.state = (this.state === 'invisible') ? 'visible' : 'invisible';
+                this.bagState.emit(this.state);
+            }
+            return;
+        }
         this.state = (this.state === 'invisible') ? 'visible' : 'invisible';
         this.bagState.emit(this.state);
     };
@@ -4302,7 +4648,7 @@ var HamburgerComponent = /** @class */ (function () {
 /***/ "./src/app/shared/components/header/header.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<header class=\"header-container\">\n  <div class=\"content\" [ngStyle]=\"{'background-image':'url(' + featuredImage?.source_url + ')'}\">\n    <div class=\"header-content text-center\">\n      <h1 [innerHtml]=\"pageContent?.title?.rendered\"></h1>\n      <!-- <h2 *ngIf=\"pageContent?.content?.rendered\" [innerHtml]=\"pageContent?.content?.rendered\"></h2> -->\n      <ng-content></ng-content>\n    </div>\n  </div>\n</header>"
+module.exports = "<header class=\"header-container\">\n  <div class=\"content\" [ngStyle]=\"{'background-image':'url(' + featuredImage?.source_url + ')'}\">\n    <div class=\"header-content text-center\">\n      <h1 [innerHtml]=\"pageContent?.title?.rendered\"></h1>\n      <ng-content></ng-content>\n    </div>\n  </div>\n</header>"
 
 /***/ }),
 
@@ -4403,7 +4749,7 @@ var ImageAndTextComponent = /** @class */ (function () {
 /***/ "./src/app/shared/components/intro-section/intro-section.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"section section-{{ color }} intro-section\" *ngIf=\"acf?.body\">\n  <div class=\"content\">\n    <h3 class=\"title\" *ngIf=\"acf?.title\" [innerHtml]=\"acf?.title\"></h3>\n    <div class=\"body\" *ngIf=\"acf?.body\" [innerHtml]=\"acf?.body | safeHtml\"></div>\n    <div class=\"button-wrapper text-center cta-link\" *ngIf=\"acf?.link\">\n      <a [href]=\"acf?.link\">Get the Full Story</a>\n    </div>\n  </div>\n</div>"
+module.exports = "<div class=\"section section-{{ color }} intro-section\" *ngIf=\"acf?.body\">\n  <div class=\"content\">\n    <h3 class=\"title\" *ngIf=\"acf?.title\" [innerHtml]=\"acf?.title\"></h3>\n    <div class=\"body\" *ngIf=\"acf?.body\" [innerHtml]=\"acf?.body | safeHtml\"></div>\n    <div class=\"bullet-points\" *ngIf=\"acf?.bullet_points\">\n      <p class=\"bullet\" *ngFor=\"let item of acf?.bullet_points\">{{ item?.bullet }}</p>\n    </div>\n    <div class=\"button-wrapper text-center cta-link\" *ngIf=\"acf?.link\">\n      <a [href]=\"acf?.link\">Get the Full Story</a>\n    </div>\n  </div>\n</div>"
 
 /***/ }),
 
@@ -4454,7 +4800,7 @@ var IntroSectionComponent = /** @class */ (function () {
 /***/ "./src/app/shared/components/login-form/login-form.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<form action=\"\" class=\"lo-cal-form\" [formGroup]=\"loginForm\" (submit)=\"login(loginForm)\" [ngClass]=\"simpleForm ? 'simple' : ''\">\n  <div class=\"form-errors\" *ngIf=\"errorData?.error\"><p>Sorry. We did not find a valid account for that username and password.</p></div>\n  <div class=\"form-component form-component-text\">\n    <label for=\"password\" class=\"visuallyhidden\">Email</label>\n    <input type=\"text\" name=\"email\" id=\"email\" placeholder=\"Email\" formControlName=\"email\" [ngClass]=\"{'has-error':!loginForm.controls['email'].valid && submittedOnce}\">\n    <div class=\"error-message\" *ngIf=\"!loginForm.controls['email'].valid && submittedOnce\">This field is required.</div>\n  </div>\n  <div class=\"form-component form-component-text\">\n    <label for=\"password\" class=\"visuallyhidden\">Password</label>\n    <input type=\"password\" name=\"password\" id=\"password\" placeholder=\"Password\" formControlName=\"password\" [ngClass]=\"{'has-error':!loginForm.controls['password'].valid && submittedOnce}\">\n    <div class=\"error-message\" *ngIf=\"!loginForm.controls['password'].valid && submittedOnce\">This field is required.</div>\n  </div>\n  <div class=\"submit red-button full-width-button\">\n    <input type=\"submit\" value=\"Log In\">\n  </div>\n  <div class=\"account-actions\">\n    <div class=\"action\" *ngIf=\"!simpleForm\">\n      <a routerLink=\"/create-account\">New Account</a>\n    </div>\n    <div class=\"action\">\n      <a routerLink=\"/password-reset\">Forgot Password</a>\n    </div>\n  </div>\n</form>"
+module.exports = "<form action=\"\" class=\"lo-cal-form\" [formGroup]=\"loginForm\" (submit)=\"login(loginForm)\" [ngClass]=\"simpleForm ? 'simple' : ''\">\n  <div class=\"form-errors\" *ngIf=\"errorData?.error\"><p>Sorry. We did not find a valid account for that username and password.</p></div>\n  <div class=\"form-component form-component-text\">\n    <label for=\"password\" class=\"visuallyhidden\">Email</label>\n    <input type=\"text\" name=\"email\" id=\"email\" placeholder=\"Email\" formControlName=\"email\" [ngClass]=\"{'has-error':!loginForm.controls['email'].valid && submittedOnce}\">\n    <div class=\"error-message\" *ngIf=\"!loginForm.controls['email'].valid && submittedOnce\">This field is required.</div>\n  </div>\n  <div class=\"form-component form-component-text\">\n    <label for=\"password\" class=\"visuallyhidden\">Password</label>\n    <input type=\"password\" name=\"password\" id=\"password\" placeholder=\"Password\" formControlName=\"password\" [ngClass]=\"{'has-error':!loginForm.controls['password'].valid && submittedOnce}\">\n    <div class=\"error-message\" *ngIf=\"!loginForm.controls['password'].valid && submittedOnce\">This field is required.</div>\n  </div>\n  <div class=\"submit red-button full-width-button\">\n    <input type=\"submit\" value=\"Log In\" [disabled]=\"!loginForm.valid\">\n  </div>\n  <div class=\"account-actions\">\n    <div class=\"action\" *ngIf=\"!simpleForm\">\n      <a routerLink=\"/create-account\">New Account</a>\n    </div>\n    <div class=\"action\">\n      <a routerLink=\"/password-reset\">Forgot Password</a>\n    </div>\n  </div>\n</form>"
 
 /***/ }),
 
@@ -4546,7 +4892,7 @@ var LoginFormComponent = /** @class */ (function () {
 /***/ "./src/app/shared/components/title-body-images/title-body-images.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"section section-{{ color }} food-details\">\n  <div class=\"content center-740\">\n    <h3 class=\"title\" [innerHtml]=\"acf?.tbi_title\"></h3>\n    <div class=\"body\" [innerHtml]=\"acf?.tbi_body | safeHtml\"></div>\n  </div>\n  <div class=\"three-column-data\">\n    <div class=\"data item-{{ i+1 }}\" *ngFor=\"let item of acf?.tbi_images; let i = index\">\n      <div class=\"content-wrapper text-center\">\n        <div class=\"image\" *ngIf=\"item?.image?.url\"><img [src]=\"item?.image?.url\" [alt]=\"item?.image?.alt\"></div>\n        <div class=\"title\" *ngIf=\"item?.title\">{{ item?.title }}</div>\n        <div class=\"description\" *ngIf=\"item?.description\"><p>{{ item?.description }}</p></div>\n      </div>\n    </div>\n  </div>\n  <div class=\"button-wrapper text-center cta-link\" *ngIf=\"acf?.tile_link\">\n    <a [href]=\"acf?.tile_link\">Learn More</a>\n  </div>\n</div><!-- /.food-details -->"
+module.exports = "<div class=\"section food-details\">\n  <div class=\"content center-740\">\n    <h3 class=\"title\" [innerHtml]=\"acf?.tbi_title\"></h3>\n    <div class=\"body\" [innerHtml]=\"acf?.tbi_body | safeHtml\"></div>\n  </div>\n  <div class=\"three-column-data\">\n    <div class=\"data item-{{ i+1 }}\" *ngFor=\"let item of acf?.tbi_images; let i = index\">\n      <div class=\"content-wrapper text-center\">\n        <div class=\"image\" *ngIf=\"item?.image?.url\"><img [src]=\"item?.image?.url\" [alt]=\"item?.image?.alt\"></div>\n        <div class=\"title\" *ngIf=\"item?.title\">{{ item?.title }}</div>\n        <div class=\"description\" *ngIf=\"item?.description\"><p [innerHtml]=\"item?.description | safeHtml\"></p></div>\n      </div>\n    </div>\n  </div>\n  <div class=\"button-wrapper text-center cta-link\" *ngIf=\"acf?.tile_link\">\n    <a [href]=\"acf?.tile_link\">Learn More</a>\n  </div>\n</div><!-- /.food-details -->"
 
 /***/ }),
 
@@ -4844,6 +5190,7 @@ var Config = /** @class */ (function () {
         this.railsOrderEndpoint = 'https://api.lo-calkitchen.com/orders';
         this.railsTimeEndpoint = 'https://api.lo-calkitchen.com/times/1';
         this.allTimesEndpoint = 'https://api.lo-calkitchen.com/times/1/1/0/1001';
+        this.securityQuestionEndpoint = 'https://api.lo-calkitchen.com/securityquestions?Email=';
         this.siteId = 1;
         this.menuId = 1001;
         this.paymentTypeMap = {

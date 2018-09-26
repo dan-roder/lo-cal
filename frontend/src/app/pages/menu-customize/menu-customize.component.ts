@@ -203,8 +203,7 @@ export class MenuCustomizeComponent implements OnInit {
         this.sizeChoice = this.salesItemDetails.SalesItemId;
       }
 
-      // TODO: If this is not a number in the case of prepared food items, treat differently
-      this.calorieCount = (this.salesItemDetails.CaloricValue !== null) ? this.salesItemDetails.CaloricValue : +this.menuItemDetails.item.CaloricServingUnit;
+      this.calorieCount = (this.salesItemDetails.CaloricValue !== null) ? this.salesItemDetails.CaloricValue : ((typeof this.menuItemDetails.item.CaloricServingUnit !== 'string') ? +this.menuItemDetails.item.CaloricServingUnit : this.menuItemDetails.item.CaloricServingUnit);
       this.itemPrice = this.salesItemDetails.Price;
 
       // Calculate initial cost based on initial quantity of 1

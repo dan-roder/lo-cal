@@ -32,13 +32,14 @@ export class CheckoutPaymentComponent implements OnInit {
   public savedPaymentMethods : SavedPayment;
   public savedPaymentChoice : string;
   public orderResultForTesting : any;
+  public cardNumber: string = '';
 
   constructor(private orderService: OrderService, private fb: FormBuilder, private constants: Config, private customerService: CustomerService, private router: Router, private localStorage: LocalStorage, private wpService: WordpressService) {
     this.contactInfoForm = fb.group({
       'first-name' : [null, Validators.required],
       'last-name' : [null, Validators.required],
       'email' : [null, [Validators.required, Validators.email]],
-      'phone' : [null, [Validators.required]]
+      'phone' : [null]
     });
     this.paymentForm = fb.group({
       'payment-choice' : [this.paymentChoice, Validators.required],
@@ -92,7 +93,6 @@ export class CheckoutPaymentComponent implements OnInit {
     // 1. Start spinner
     this.processing = true;
     // 2. Retrieve order
-    // TODO: Why did I write this -> TEMPORARY
     this.orderService.getPreSavedOrder().subscribe(order => {
       let orderId = order.OrderId;
 
@@ -122,17 +122,12 @@ export class CheckoutPaymentComponent implements OnInit {
       break;
     }
 
-    console.log(orderForApi);
-    return;
-
     let finalOrderForSubmission : RailsInSubmitOrder = {
       order_submission : orderForApi
     }
 
-    // TODO: Check with Ken about passing errors back as is from API
     // Order object with payment has been created, submit to API
     this.orderService.submitOrder(finalOrderForSubmission, this.currentOrder.OrderId).subscribe(orderResults => {
-      console.log(orderResults);
       this.orderResultForTesting = orderResults.ResultCode;
 
       switch(orderResults.ResultCode){
@@ -153,6 +148,9 @@ export class CheckoutPaymentComponent implements OnInit {
       else{
         this.wpService.logError('Payment Order Error: ' + JSON.stringify(orderResults)).subscribe((result) => {console.log('error:' + result)});
       }
+    }, error => {
+      console.log(error);
+      this.wpService.logError('Payment Order Error: ' + JSON.stringify(error)).subscribe((result) => {console.log('error:' + result)});
     });
   }
 
@@ -164,11 +162,14 @@ export class CheckoutPaymentComponent implements OnInit {
     }
     let finalExpDate = this.formatDate(expirationDate);
 
+    // Set final CC number: resolves view value vs model value discrepancy
+    let finalCreditCardNumber = this.finalCardFormat(this.cardNumber);
+
     let inSubmitOrderInfo : InSubmitOrderInformation = {
       PaymentMethods : [{
         PaymentMethod : 1,
         Amount : this.currentOrder.BalanceDueAmount,
-        AccountNumber : this.paymentForm.get('card-number').value,
+        AccountNumber : finalCreditCardNumber,
         ExpirationDate : finalExpDate,
         SecurityCode : this.paymentForm.get('cvv').value,
         PaymentMethodType : this.cardType,
@@ -243,10 +244,13 @@ export class CheckoutPaymentComponent implements OnInit {
     this.localStorage.setItem('orderResult', orderResults).subscribe(() => {
       // If Customer wishes to save payment method
       if(this.paymentForm.get('save-payment').value){
+        // Ensure we have the correctly formatted credit card number
+        let finalCreditCardNumber = this.finalCardFormat(this.cardNumber);
+
         let paymentInfoForSaving : RailsSavePayment = {
           payment : {
             AccountNumber: this.paymentForm.get('card-number').value,
-            ExpirationDate: this.formatDate(this.paymentForm.get('expiration-date').value),
+            ExpirationDate: finalCreditCardNumber,
             PaymentMethodType: this.cardType
           }
         }
@@ -263,8 +267,6 @@ export class CheckoutPaymentComponent implements OnInit {
   }
 
   public detectCardType(val){
-    console.log(this.paymentForm.get('card-number'));
-    return;
     let cardType = CreditCard.cardFromNumber(val);
     this.cardType = (val.length > 0 && cardType !== undefined) ? this.constants.paymentTypeMap[cardType.type] : undefined;
   }
@@ -275,6 +277,10 @@ export class CheckoutPaymentComponent implements OnInit {
       'last-name' : customer.LastName,
       'email' : customer.EMail
     })
+  }
+
+  protected finalCardFormat(cardNumber){
+    return CreditCard.formatCardNumber(cardNumber).replace(/\D/g, '');
   }
 
   protected formatDate(date: string){

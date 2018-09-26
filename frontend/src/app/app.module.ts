@@ -34,6 +34,7 @@ import { CheckoutReviewComponent } from './pages/checkout-review/checkout-review
 import { ConfirmationComponent } from './pages/confirmation/confirmation.component';
 import { OrderHistoryComponent } from './pages/order-history/order-history.component';
 import { OrderDetailComponent } from './pages/order-detail/order-detail.component';
+import { PasswordResetComponent } from './pages/password-reset/password-reset.component';
 
 // Shared Components
 import { HeaderComponent } from './shared/components/header/header.component';
@@ -80,8 +81,6 @@ import { ResponsiveModule } from 'ng2-responsive';
 import { CardImagePipe } from './pipes/card-image.pipe';
 
 
-
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -124,7 +123,8 @@ import { CardImagePipe } from './pipes/card-image.pipe';
     OrderDetailComponent,
     CardImagePipe,
     NoXPipe,
-    AllergenRolloverPipe
+    AllergenRolloverPipe,
+    PasswordResetComponent
   ],
   imports: [
     BrowserModule,

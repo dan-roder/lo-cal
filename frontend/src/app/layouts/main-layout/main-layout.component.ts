@@ -3,6 +3,7 @@ import { WordpressService } from '@local/services/wp.service';
 import { BagService } from '@local/services/bag.service';
 import { LineItem } from '@local/models/LineItem';
 import { LocalStorage } from '@ngx-pwa/local-storage';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -21,10 +22,12 @@ export class MainLayoutComponent implements OnInit {
   constructor(
     private wpService: WordpressService,
     private bagService: BagService,
-    private localStorage: LocalStorage
+    private localStorage: LocalStorage,
+    private router: Router
   ) { }
 
   ngOnInit() {
+    this.currentUrl = this.router.url;
     this.wpService.getMenu(2).subscribe(m => this.mainMenuLinks = m.items);
   }
 
@@ -34,7 +37,14 @@ export class MainLayoutComponent implements OnInit {
     }
   }
 
-  public toggleMobileMenuState(){
+  public toggleMobileMenuState(target){
+    // Keep mobile menu open if menu is scrolled/clicked, otherwise close
+    if(target !== undefined){
+      if(target.className.indexOf('mobile-menu-content') === -1){
+        this.mobileMenuState = (this.mobileMenuState === 'mobileMenuClosed') ? 'mobileMenuOpen' : 'mobileMenuClosed';
+      }
+      return;
+    }
     this.mobileMenuState = (this.mobileMenuState === 'mobileMenuClosed') ? 'mobileMenuOpen' : 'mobileMenuClosed';
   }
 

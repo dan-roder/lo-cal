@@ -1,4 +1,4 @@
-<div class="section section-{{ color }} food-details">
+<div class="section food-details">
   <div class="content center-740">
     <h3 class="title" [innerHtml]="acf?.tbi_title"></h3>
     <div class="body" [innerHtml]="acf?.tbi_body | safeHtml"></div>
@@ -8,7 +8,7 @@
       <div class="content-wrapper text-center">
         <div class="image" *ngIf="item?.image?.url"><img [src]="item?.image?.url" [alt]="item?.image?.alt"></div>
         <div class="title" *ngIf="item?.title">{{ item?.title }}</div>
-        <div class="description" *ngIf="item?.description"><p>{{ item?.description }}</p></div>
+        <div class="description" *ngIf="item?.description"><p [innerHtml]="item?.description | safeHtml"></p></div>
       </div>
     </div>
   </div>

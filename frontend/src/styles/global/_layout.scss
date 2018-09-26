@@ -25,17 +25,17 @@
 
 .site-container{
   background: $light-grey;
-  @include transition();
+  // @include transition();
   // transform: translateX(0);
-  left: 0;
-  position: relative;
+  // left: 0;
+  // position: relative;
 
-  &.mobileMenuOpen{
-    // transform: translateX(260px);
-    overflow-x: hidden;
-    box-shadow: -3px 0 10px 0 rgba(0,0,0,.6);
-    left: 260px;
-  }
+  // &.mobileMenuOpen{
+  //   // transform: translateX(260px);
+  //   overflow-x: hidden;
+  //   box-shadow: -3px 0 10px 0 rgba(0,0,0,.6);
+  //   left: 260px;
+  // }
 }
 
 .sticky-header{
@@ -47,20 +47,41 @@
 }
 
 .mobile-menu{
-  background: $off-black;
+  background: rgba(0,0,0,.8);
+  pointer-events: none;
+  opacity: 0;
   position: fixed;
   top: 0;
-  width: 260px;
-  left: -260px;
-  overflow-y: auto;
-  min-height: 100%;
-  -webkit-overflow-scrolling: touch;
-  z-index: 100;
-  @include transition();
+  right: 0;
+  bottom: 0;
+  left: 0;
+  @include transition(opacity);
+
+  .mobile-menu-content{
+    @include transition();
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 260px;
+    left: -260px;
+    overflow-y: auto;
+    min-height: 100%;
+    -webkit-overflow-scrolling: touch;
+    z-index: 100;
+    background: $off-black;
+    opacity: 1;
+    transform: translateX(-260px);
+  }
+
 
   &.mobileMenuOpen{
-    // transform: translateX(260px);
-    left: 0;
+    opacity: 1;
+    z-index: 98;
+    pointer-events: auto;
+
+    .mobile-menu-content{
+      transform: translateX(260px);
+    }
   }
 }
 
@@ -74,6 +95,14 @@
   &.button-size{
     width: 38px;
     height: 38px;
+  }
+
+  &.menu-loading{
+    margin: 150px auto 0;
+
+    @include breakpoint($bp-768){
+      margin: 0 auto;
+    }
   }
 }
 

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Config } from '@local/utils/constants';
 import { HttpClient } from '@angular/common/http';
-import { RailsCustomer, RailsLogin, Customer, RailsUpdate } from '@local/models/Customer';
+import { RailsCustomer, RailsLogin, Customer, RailsUpdate, InLoginUpdate, InPasswordReset } from '@local/models/Customer';
 import { Observable } from 'rxjs/Observable';
 import { LocalStorage } from '@ngx-pwa/local-storage';
 import { Router } from '@angular/router';
@@ -32,7 +32,8 @@ export class CustomerService {
   }
 
   public logOut(){
-    this.localStorage.removeItem('user').subscribe(() => {
+    // Destroy all IndexedDB data and redirect to homepage
+    this.localStorage.clear().subscribe(() => {
       this.router.navigateByUrl('/');
     });
   }
@@ -81,6 +82,15 @@ export class CustomerService {
     })
   }
 
+  /**
+   *
+   * deleteSavedPayment
+   *
+   * @param customerId
+   * @param paymentId
+   *
+   * @returns Observable of result from Aloha API
+   */
   public deleteSavedPayment(customerId: string, paymentId: string){
     return this.httpClient.delete(this.config.railsCustomerEndpoint + `/${customerId}/payments/${paymentId}`).map(result => {
       return result;
@@ -99,14 +109,59 @@ export class CustomerService {
     })
   }
 
+  /**
+   * getCurrentCustomer function
+   *
+   * @returns Observable of UserInfo
+   */
   public getCurrentCustomer(): Observable<any>{
     return this.localStorage.getItem('user').map(userInfo => {
       return userInfo;
     });
   }
 
-  public updatePassword(){
+  /**
+   *
+   * @param email string
+   *
+   * @returns Observable of User Security Question
+   */
+  public getSecurityQuestion(email: string): Observable<any>{
+    return this.httpClient.get(this.config.railsCustomerEndpoint + `/securityquestions?Email=${email}`, {responseType: 'text'}).map((question) => {
+      return question;
+    })
+  }
 
+  /**
+   *
+   * updateLoginInfo function
+   *
+   * @param updateLoginInfo InLoginUpdate
+   *
+   * @returns Observable of PasswordReset result from Aloha API
+   */
+  public updateLoginInfo(loginInfo: InLoginUpdate): Observable<any>{
+    return this.httpClient.post(this.config.railsCustomerEndpoint + `/loginupdate`, loginInfo).map((result) => {
+      return result;
+    });
+  }
+
+  /**
+   *
+   * @param email
+   *
+   * @returns Observable of whether or not request was successful
+   */
+  public forcePasswordReset(email: any): Observable<any>{
+    return this.httpClient.post(this.config.railsCustomerEndpoint + `/passwordreset/email`, email).map((result) => {
+      return result;
+    })
+  }
+
+  public passwordResetWithAnswer(data: InPasswordReset): Observable<any>{
+    return this.httpClient.post(this.config.railsCustomerEndpoint + `/passwordreset`, data).map(result => {
+      return result;
+    })
   }
 
   get customer(): Customer{
@@ -114,7 +169,6 @@ export class CustomerService {
   }
 
   set customer(customer: Customer){
-    console.log('set customer', customer);
     this._customer = customer;
   }
 

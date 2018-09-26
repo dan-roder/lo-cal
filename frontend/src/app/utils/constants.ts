@@ -10,6 +10,7 @@ export class Config {
   public railsOrderEndpoint : string = 'https://api.lo-calkitchen.com/orders';
   public railsTimeEndpoint : string = 'https://api.lo-calkitchen.com/times/1';
   public allTimesEndpoint : string = 'https://api.lo-calkitchen.com/times/1/1/0/1001';
+  public securityQuestionEndpoint : string = 'https://api.lo-calkitchen.com/securityquestions?Email='
   public siteId : number = 1;
   public menuId : number = 1001;
   public paymentTypeMap = {

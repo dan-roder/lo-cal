@@ -1,6 +1,6 @@
 .checkout-overlay{
   position: fixed;
-  top: 96px;
+  top: 86px;
   right: 0;
   left: 0;
   bottom: 0;
@@ -10,52 +10,91 @@
   z-index: 5;
   @include transition();
 
+  @include breakpoint($bp-860){
+    top: 96px;
+  }
+
   &.visible{
     opacity: 1;
     pointer-events: auto;
   }
 
   .scrolled &{
-    top: 68px;
+    top: 58px;
+
+    @include breakpoint($bp-860){
+      top: 68px;
+    }
   }
 
+  // .checkout-content-wrapper{
+  //   background: $light-grey;
+  //   height: 100%;
+  //   position: absolute;
+  //   width: 100%;
+  //   right: 0;
+  //   bottom: 0;
+  //   box-sizing: border-box;
+  //   display: grid;
+  //   grid-auto-flow: row;
+  //   align-items: flex-start;
+  //   z-index: 10;
+
+  //   @include breakpoint($bp-500){
+  //     width: 500px;
+  //   }
+
+  //   .checkout-inner-wrapper{
+  //     position: relative;
+  //     overflow: hidden;
+  //     width: 100%;
+  //     height: 100%;
+  //   }
+
+  //   .checkout-step{
+  //     position: absolute;
+  //     overflow-y: scroll;
+  //     height: 100%;
+  //     transition: all 300ms ease-in-out;
+  //     padding: 0 20px;
+  //     display: grid;
+  //     box-sizing: border-box;
+  //     width: 100%;
+  //   }
+
+  //   .checkout-top{
+  //     align-self: flex-start;
+  //   }
+
+  //   .checkout-bottom{
+  //     align-self: flex-end;
+  //   }
+  // }// .checkout-content-wrapper
   .checkout-content-wrapper{
     background: $light-grey;
     height: 100%;
     position: absolute;
-    width: 500px;
+    width: 100%;
     right: 0;
     bottom: 0;
     box-sizing: border-box;
-    display: grid;
-    grid-auto-flow: row;
     align-items: flex-start;
     z-index: 10;
 
+    @include breakpoint($bp-500){
+      width: 500px;
+    }
+
     .checkout-inner-wrapper{
       position: relative;
-      overflow: hidden;
       width: 100%;
       height: 100%;
-    }
-
-    .checkout-step{
-      position: absolute;
       overflow-y: scroll;
-      height: 100%;
-      transition: all 300ms ease-in-out;
       padding: 0 20px;
-      display: grid;
       box-sizing: border-box;
-      width: 100%;
-    }
-
-    .checkout-top{
-      align-self: flex-start;
-    }
-
-    .checkout-bottom{
-      align-self: flex-end;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
   }// .checkout-content-wrapper
 
@@ -70,33 +109,6 @@
       @include fontsize(24);
       @extend %sofia-semi-bold;
     }
-
-    .close{
-      position: relative;
-      width: 25px;
-      height: 25px;
-      cursor: pointer;
-
-      span{
-        display: block;
-        position: absolute;
-        top: 12px;
-        right: 0;
-        height: 2px;
-        width: 24px;
-        background: $black;
-        border-radius: 10px;
-        transform: rotate(0deg);
-
-        &:nth-child(1){
-          transform: rotate(-45deg);
-        }
-
-        &:nth-child(2){
-          transform: rotate(45deg);
-        }
-      }// span
-    }// .close
 
     .back{
       cursor: pointer;

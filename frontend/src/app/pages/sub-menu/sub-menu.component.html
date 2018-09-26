@@ -1,9 +1,8 @@
 <div class="page-landing-page">
   <header class="header-container">
-    <div class="menu-item-header">
-      <div class="overlay-container">
-        <h1 class="title" [innerHtml]="pageContent?.title?.rendered"></h1>
-        <img *ngIf="featuredImage" [src]="featuredImage" [alt]="featuredImageAlt">
+    <div class="content" [ngStyle]="{'background-image':'url(' + featuredImage + ')'}">
+      <div class="header-content text-center">
+        <h1 [innerHtml]="pageContent?.title?.rendered"></h1>
       </div>
     </div>
   </header>

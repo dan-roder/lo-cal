@@ -26,6 +26,7 @@ import { OrderHistoryComponent } from '@local/pages/order-history/order-history.
 import { AccountLayoutComponent } from '@local/layouts/account-layout/account-layout.component';
 import { ConfirmationComponent } from '@local/pages/confirmation/confirmation.component';
 import { OrderDetailComponent } from '@local/pages/order-detail/order-detail.component';
+import { PasswordResetComponent } from '@local/pages/password-reset/password-reset.component';
 
 
 const routes: Routes = [
@@ -38,6 +39,7 @@ const routes: Routes = [
       { path: 'our-food', component: OurFoodComponent },
       { path: 'catering', component: CateringComponent },
       { path: 'login', component: LoginComponent },
+      { path: 'password-reset', component: PasswordResetComponent },
       { path: 'create-account', component: CreateAccountComponent },
       { path: 'contact', component: ContactComponent },
       { path: 'blog', component: BlogComponent },

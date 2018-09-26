@@ -115,10 +115,6 @@
       &.has-error{
         border-bottom: 1px solid $orange-red;
       }
-
-      &:focus{
-        outline: 0;
-      }
     }
   }
 
@@ -173,6 +169,14 @@
 .form-errors{
   p{
     color: $orange-red;
+    @include fontsize(15);
+    text-align: center;
+  }
+}
+
+.form-success{
+  p{
+    color: $green;
     @include fontsize(15);
     text-align: center;
   }
