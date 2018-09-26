@@ -5,6 +5,7 @@ import { PasswordMatch } from '@local/utils/passwordmatch';
 import { CustomerService } from '@local/services/customer.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { SlideUpAnimation } from '@local/utils/animations';
+import { LocalStorage } from '@ngx-pwa/local-storage';
 
 
 @Component({
@@ -19,9 +20,10 @@ export class CreateAccountComponent implements OnInit {
   public errorMessage : string = '';
   public existingAccount : boolean = false;
   public accountSuccess : boolean = false;
+  public checkoutAccountSuccess : boolean = false;
   public processing : boolean = false;
 
-  constructor(private fb: FormBuilder, private customerService: CustomerService, private route: ActivatedRoute, private router: Router) {
+  constructor(private fb: FormBuilder, private customerService: CustomerService, private route: ActivatedRoute, private router: Router, private localStorage: LocalStorage) {
     this.accountForm = fb.group({
       'first-name' : [null, [Validators.required, Validators.maxLength(28)]],
       'last-name' : [null, [Validators.required, Validators.maxLength(28)]],
@@ -44,7 +46,7 @@ export class CreateAccountComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.redirectUrl = (typeof this.route.snapshot.queryParams['returnUrl'] !== undefined) ? this.route.snapshot.queryParams['returnUrl'] : '';
+    this.redirectUrl = (this.route.snapshot.queryParams['returnUrl'] !== undefined) ? this.route.snapshot.queryParams['returnUrl'] : undefined;
   }
 
   public submitForm(form){
@@ -61,6 +63,8 @@ export class CreateAccountComponent implements OnInit {
             FirstName : form.controls['first-name'].value,
             LastName : form.controls['last-name'].value,
             Addresses : [{
+              AddressType : 1,
+              AddressId : 1,
               AddressLine1: form.controls['full-address']['controls']['address'].value,
               AddressLine2: form.controls['full-address']['controls']['address2'].value,
               City: form.controls['full-address']['controls']['city'].value,
@@ -87,25 +91,39 @@ export class CreateAccountComponent implements OnInit {
           }
         }
         else{
-          this.accountSuccess = true;
-        }
-        console.log(data);
-
-        // handle successful return of account created
-        // redirect to appropriate location
-        if(this.redirectUrl !== ''){
-          // Need to set logged in status
-          this.router.navigate([this.redirectUrl]);
-        }
-        else{
-          // Should I set logged in status immediately or no?
-          this.router.navigate(['/']);
+          // handle successful return of account created
+          // redirect to appropriate location
+          if(this.redirectUrl !== undefined){
+            // Need to set logged in status
+            this.handleRedirection(data);
+          }
+          else{
+            // Account successfully created, show generic success message
+            this.accountSuccess = true;
+          }
         }
       });
     }
   }
 
-  protected trimString(str : string){
-    return str.trim();
+  private handleRedirection(newCustomerInfo){
+    // Show success message
+    this.checkoutAccountSuccess = true;
+    // Get user's data using new customer ID
+    this.customerService.getCustomerInfo(newCustomerInfo.CustomerId).subscribe((customer) => {
+      // Set full user details to localStorage
+      this.localStorage.setItem('user', customer).subscribe(() => {
+        this.startRedirect();
+      });
+    }, error => {
+      console.log(error);
+    });
+  }
+
+  private startRedirect(){
+    // Start timeout to redirect to checkout review
+    setTimeout(() => {
+      this.router.navigate([this.redirectUrl]);
+    }, 4000);
   }
 }
