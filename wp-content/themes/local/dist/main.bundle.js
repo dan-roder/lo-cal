@@ -527,26 +527,31 @@ var AppComponent = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_41__services_bag_service__ = __webpack_require__("./src/app/services/bag.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_42__services_customer_service__ = __webpack_require__("./src/app/services/customer.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_43__local_services_order_service__ = __webpack_require__("./src/app/services/order.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_44__shared_directives_window_scroll_directive__ = __webpack_require__("./src/app/shared/directives/window-scroll.directive.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_45__shared_directives_input_switcher_directive__ = __webpack_require__("./src/app/shared/directives/input-switcher.directive.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_46_angular_cc_library__ = __webpack_require__("./node_modules/angular-cc-library/index.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_46_angular_cc_library___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_46_angular_cc_library__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_47__pipes_allergens_pipe__ = __webpack_require__("./src/app/pipes/allergens.pipe.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_48__pipes_safe_html_pipe__ = __webpack_require__("./src/app/pipes/safe-html.pipe.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_49__pages_blog_blog_component__ = __webpack_require__("./src/app/pages/blog/blog.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_50__pages_blog_post_blog_post_component__ = __webpack_require__("./src/app/pages/blog-post/blog-post.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_51__pipes_featured_image_pipe__ = __webpack_require__("./src/app/pipes/featured-image.pipe.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_52__pipes_card_type_pipe__ = __webpack_require__("./src/app/pipes/card-type.pipe.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_53__pipes_safe_url_pipe__ = __webpack_require__("./src/app/pipes/safe-url.pipe.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_54__pipes_no_x_pipe__ = __webpack_require__("./src/app/pipes/no-x.pipe.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_55__pipes_allergen_rollover_pipe__ = __webpack_require__("./src/app/pipes/allergen-rollover.pipe.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_56__local_guards_auth_guard__ = __webpack_require__("./src/app/guards/auth.guard.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_57__local_guards_access_guard__ = __webpack_require__("./src/app/guards/access.guard.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_58__local_guards_order_guard__ = __webpack_require__("./src/app/guards/order.guard.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_59__pages_checkout_payment_checkout_payment_component__ = __webpack_require__("./src/app/pages/checkout-payment/checkout-payment.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_60_ng2_responsive__ = __webpack_require__("./node_modules/ng2-responsive/index.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_60_ng2_responsive___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_60_ng2_responsive__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_61__pipes_card_image_pipe__ = __webpack_require__("./src/app/pipes/card-image.pipe.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_44__local_services_mailchimp_service__ = __webpack_require__("./src/app/services/mailchimp.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_45__shared_directives_window_scroll_directive__ = __webpack_require__("./src/app/shared/directives/window-scroll.directive.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_46__shared_directives_input_switcher_directive__ = __webpack_require__("./src/app/shared/directives/input-switcher.directive.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_47_angular_cc_library__ = __webpack_require__("./node_modules/angular-cc-library/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_47_angular_cc_library___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_47_angular_cc_library__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_48__pipes_allergens_pipe__ = __webpack_require__("./src/app/pipes/allergens.pipe.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_49__pipes_safe_html_pipe__ = __webpack_require__("./src/app/pipes/safe-html.pipe.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_50__pages_blog_blog_component__ = __webpack_require__("./src/app/pages/blog/blog.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_51__pages_blog_post_blog_post_component__ = __webpack_require__("./src/app/pages/blog-post/blog-post.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_52__pipes_featured_image_pipe__ = __webpack_require__("./src/app/pipes/featured-image.pipe.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_53__pipes_card_type_pipe__ = __webpack_require__("./src/app/pipes/card-type.pipe.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_54__pipes_safe_url_pipe__ = __webpack_require__("./src/app/pipes/safe-url.pipe.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_55__pipes_no_x_pipe__ = __webpack_require__("./src/app/pipes/no-x.pipe.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_56__pipes_allergen_rollover_pipe__ = __webpack_require__("./src/app/pipes/allergen-rollover.pipe.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_57__local_guards_auth_guard__ = __webpack_require__("./src/app/guards/auth.guard.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_58__local_guards_access_guard__ = __webpack_require__("./src/app/guards/access.guard.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_59__local_guards_order_guard__ = __webpack_require__("./src/app/guards/order.guard.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_60__pages_checkout_payment_checkout_payment_component__ = __webpack_require__("./src/app/pages/checkout-payment/checkout-payment.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_61_ng2_responsive__ = __webpack_require__("./node_modules/ng2-responsive/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_61_ng2_responsive___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_61_ng2_responsive__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_62__pipes_card_image_pipe__ = __webpack_require__("./src/app/pipes/card-image.pipe.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_63_ng_recaptcha__ = __webpack_require__("./node_modules/ng-recaptcha/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_63_ng_recaptcha___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_63_ng_recaptcha__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_64_ng_recaptcha_forms__ = __webpack_require__("./node_modules/ng-recaptcha/forms.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_64_ng_recaptcha_forms___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_64_ng_recaptcha_forms__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -602,6 +607,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
+
 // Directives
 
 
@@ -624,6 +630,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 // Modules
 
 
+
+
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
@@ -641,36 +649,36 @@ var AppModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_34__shared_components_image_and_text_image_and_text_component__["a" /* ImageAndTextComponent */],
                 __WEBPACK_IMPORTED_MODULE_14__pages_our_food_our_food_component__["a" /* OurFoodComponent */],
                 __WEBPACK_IMPORTED_MODULE_35__shared_components_hamburger_hamburger_component__["a" /* HamburgerComponent */],
-                __WEBPACK_IMPORTED_MODULE_44__shared_directives_window_scroll_directive__["a" /* WindowScrollDirective */],
+                __WEBPACK_IMPORTED_MODULE_45__shared_directives_window_scroll_directive__["a" /* WindowScrollDirective */],
                 __WEBPACK_IMPORTED_MODULE_15__pages_menu_menu_component__["a" /* MenuPageComponent */],
                 __WEBPACK_IMPORTED_MODULE_16__pages_menu_customize_menu_customize_component__["a" /* MenuCustomizeComponent */],
                 __WEBPACK_IMPORTED_MODULE_36__shared_components_bag_bag_component__["a" /* BagComponent */],
                 __WEBPACK_IMPORTED_MODULE_17__pages_sub_menu_sub_menu_component__["a" /* SubMenuComponent */],
-                __WEBPACK_IMPORTED_MODULE_47__pipes_allergens_pipe__["a" /* AllergensPipe */],
-                __WEBPACK_IMPORTED_MODULE_48__pipes_safe_html_pipe__["a" /* SafeHtml */],
+                __WEBPACK_IMPORTED_MODULE_48__pipes_allergens_pipe__["a" /* AllergensPipe */],
+                __WEBPACK_IMPORTED_MODULE_49__pipes_safe_html_pipe__["a" /* SafeHtml */],
                 __WEBPACK_IMPORTED_MODULE_18__pages_login_login_component__["a" /* LoginComponent */],
                 __WEBPACK_IMPORTED_MODULE_19__pages_post_post_component__["a" /* PostComponent */],
                 __WEBPACK_IMPORTED_MODULE_20__pages_catering_catering_component__["a" /* CateringComponent */],
                 __WEBPACK_IMPORTED_MODULE_21__pages_contact_contact_component__["a" /* ContactComponent */],
-                __WEBPACK_IMPORTED_MODULE_49__pages_blog_blog_component__["a" /* BlogComponent */],
-                __WEBPACK_IMPORTED_MODULE_50__pages_blog_post_blog_post_component__["a" /* BlogPostComponent */],
-                __WEBPACK_IMPORTED_MODULE_51__pipes_featured_image_pipe__["a" /* FeaturedImagePipe */],
+                __WEBPACK_IMPORTED_MODULE_50__pages_blog_blog_component__["a" /* BlogComponent */],
+                __WEBPACK_IMPORTED_MODULE_51__pages_blog_post_blog_post_component__["a" /* BlogPostComponent */],
+                __WEBPACK_IMPORTED_MODULE_52__pipes_featured_image_pipe__["a" /* FeaturedImagePipe */],
                 __WEBPACK_IMPORTED_MODULE_22__pages_create_account_create_account_component__["a" /* CreateAccountComponent */],
                 __WEBPACK_IMPORTED_MODULE_37__shared_components_login_form_login_form_component__["a" /* LoginFormComponent */],
                 __WEBPACK_IMPORTED_MODULE_23__pages_account_account_component__["a" /* AccountComponent */],
-                __WEBPACK_IMPORTED_MODULE_45__shared_directives_input_switcher_directive__["a" /* InputSwitcherDirective */],
+                __WEBPACK_IMPORTED_MODULE_46__shared_directives_input_switcher_directive__["a" /* InputSwitcherDirective */],
                 __WEBPACK_IMPORTED_MODULE_24__pages_checkout_login_checkout_login_component__["a" /* CheckoutLoginComponent */],
                 __WEBPACK_IMPORTED_MODULE_25__pages_checkout_review_checkout_review_component__["a" /* CheckoutReviewComponent */],
-                __WEBPACK_IMPORTED_MODULE_59__pages_checkout_payment_checkout_payment_component__["a" /* CheckoutPaymentComponent */],
+                __WEBPACK_IMPORTED_MODULE_60__pages_checkout_payment_checkout_payment_component__["a" /* CheckoutPaymentComponent */],
                 __WEBPACK_IMPORTED_MODULE_26__pages_confirmation_confirmation_component__["a" /* ConfirmationComponent */],
                 __WEBPACK_IMPORTED_MODULE_27__pages_order_history_order_history_component__["a" /* OrderHistoryComponent */],
                 __WEBPACK_IMPORTED_MODULE_11__layouts_account_layout_account_layout_component__["a" /* AccountLayoutComponent */],
-                __WEBPACK_IMPORTED_MODULE_52__pipes_card_type_pipe__["a" /* CardTypePipe */],
-                __WEBPACK_IMPORTED_MODULE_53__pipes_safe_url_pipe__["a" /* SafeUrlPipe */],
+                __WEBPACK_IMPORTED_MODULE_53__pipes_card_type_pipe__["a" /* CardTypePipe */],
+                __WEBPACK_IMPORTED_MODULE_54__pipes_safe_url_pipe__["a" /* SafeUrlPipe */],
                 __WEBPACK_IMPORTED_MODULE_28__pages_order_detail_order_detail_component__["a" /* OrderDetailComponent */],
-                __WEBPACK_IMPORTED_MODULE_61__pipes_card_image_pipe__["a" /* CardImagePipe */],
-                __WEBPACK_IMPORTED_MODULE_54__pipes_no_x_pipe__["a" /* NoXPipe */],
-                __WEBPACK_IMPORTED_MODULE_55__pipes_allergen_rollover_pipe__["a" /* AllergenRolloverPipe */],
+                __WEBPACK_IMPORTED_MODULE_62__pipes_card_image_pipe__["a" /* CardImagePipe */],
+                __WEBPACK_IMPORTED_MODULE_55__pipes_no_x_pipe__["a" /* NoXPipe */],
+                __WEBPACK_IMPORTED_MODULE_56__pipes_allergen_rollover_pipe__["a" /* AllergenRolloverPipe */],
                 __WEBPACK_IMPORTED_MODULE_29__pages_password_reset_password_reset_component__["a" /* PasswordResetComponent */]
             ],
             imports: [
@@ -682,10 +690,15 @@ var AppModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_6__app_routing_module__["a" /* AppRoutingModule */],
                 __WEBPACK_IMPORTED_MODULE_5__angular_platform_browser_animations__["a" /* BrowserAnimationsModule */],
                 __WEBPACK_IMPORTED_MODULE_7__ngx_pwa_local_storage__["b" /* LocalStorageModule */],
-                __WEBPACK_IMPORTED_MODULE_60_ng2_responsive__["ResponsiveModule"],
-                __WEBPACK_IMPORTED_MODULE_46_angular_cc_library__["CreditCardDirectivesModule"]
+                __WEBPACK_IMPORTED_MODULE_61_ng2_responsive__["ResponsiveModule"],
+                __WEBPACK_IMPORTED_MODULE_47_angular_cc_library__["CreditCardDirectivesModule"],
+                __WEBPACK_IMPORTED_MODULE_63_ng_recaptcha__["RecaptchaModule"].forRoot(),
+                __WEBPACK_IMPORTED_MODULE_64_ng_recaptcha_forms__["RecaptchaFormsModule"]
             ],
-            providers: [__WEBPACK_IMPORTED_MODULE_8__utils_constants__["a" /* Config */], __WEBPACK_IMPORTED_MODULE_38__utils_windowref__["a" /* WindowRef */], __WEBPACK_IMPORTED_MODULE_39__services_wp_service__["a" /* WordpressService */], __WEBPACK_IMPORTED_MODULE_40__services_menu_service_service__["a" /* MenuService */], __WEBPACK_IMPORTED_MODULE_41__services_bag_service__["a" /* BagService */], __WEBPACK_IMPORTED_MODULE_42__services_customer_service__["a" /* CustomerService */], __WEBPACK_IMPORTED_MODULE_56__local_guards_auth_guard__["a" /* AuthGuard */], __WEBPACK_IMPORTED_MODULE_57__local_guards_access_guard__["a" /* AccessGuard */], __WEBPACK_IMPORTED_MODULE_43__local_services_order_service__["a" /* OrderService */], __WEBPACK_IMPORTED_MODULE_58__local_guards_order_guard__["a" /* OrderGuard */]],
+            providers: [__WEBPACK_IMPORTED_MODULE_8__utils_constants__["a" /* Config */], __WEBPACK_IMPORTED_MODULE_38__utils_windowref__["a" /* WindowRef */], __WEBPACK_IMPORTED_MODULE_39__services_wp_service__["a" /* WordpressService */], __WEBPACK_IMPORTED_MODULE_40__services_menu_service_service__["a" /* MenuService */], __WEBPACK_IMPORTED_MODULE_41__services_bag_service__["a" /* BagService */], __WEBPACK_IMPORTED_MODULE_42__services_customer_service__["a" /* CustomerService */], __WEBPACK_IMPORTED_MODULE_44__local_services_mailchimp_service__["a" /* MailchimpService */], __WEBPACK_IMPORTED_MODULE_57__local_guards_auth_guard__["a" /* AuthGuard */], __WEBPACK_IMPORTED_MODULE_58__local_guards_access_guard__["a" /* AccessGuard */], __WEBPACK_IMPORTED_MODULE_43__local_services_order_service__["a" /* OrderService */], __WEBPACK_IMPORTED_MODULE_59__local_guards_order_guard__["a" /* OrderGuard */], {
+                    provide: __WEBPACK_IMPORTED_MODULE_63_ng_recaptcha__["RECAPTCHA_SETTINGS"],
+                    useValue: { siteKey: '6LefV3EUAAAAAH7Xzi3J1jRu4y-W3usgOdOu9xlr' },
+                }],
             bootstrap: [__WEBPACK_IMPORTED_MODULE_9__app_component__["a" /* AppComponent */]]
         })
     ], AppModule);
@@ -2081,7 +2094,7 @@ var ConfirmationComponent = /** @class */ (function () {
 /***/ "./src/app/pages/contact/contact.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"page-landing-page\">\n  <lo-cal-header [featuredImage]=\"featuredImage\" [pageContent]=\"pageContent\"></lo-cal-header>\n  <div class=\"section section-white\">\n    <div class=\"content center\">\n      <div class=\"body center-960\" [innerHtml]=\"pageContent?.content?.rendered | safeHtml\"></div>\n    </div>\n  </div>\n\n  <div class=\"section section-grey intro-section\" *ngIf=\"acf?.body\">\n    <div class=\"content\">\n      <h3 class=\"title\" *ngIf=\"acf?.title\" [innerHtml]=\"acf?.title\"></h3>\n      <div class=\"body\" *ngIf=\"acf?.body\" [innerHtml]=\"acf?.body | safeHtml\"></div>\n    </div>\n  </div>\n\n  <div class=\"section section-white\">\n    <div class=\"content center\">\n      <form action=\"\" [formGroup]=\"contactForm\" class=\"lo-cal-form contact-form\" *ngIf=\"!formSuccess\">\n        <div class=\"form-errors\" *ngIf=\"formError\"><p>{{ formError }}</p></div>\n        <div class=\"form-section\">\n          <div class=\"form-component form-component-text\">\n            <label for=\"contact-reason\" class=\"visuallyhidden\">What are you interested in sharing/asking?</label>\n            <input type=\"text\" name=\"contact-reason\" id=\"contact-reason\" formControlName=\"contact-reason\" placeholder=\"What are you interested in sharing/asking?\" [ngClass]=\"{'has-error':!contactForm.controls['contact-reason'].valid && submittedOnce}\">\n            <div class=\"error-message\" *ngIf=\"!contactForm.controls['contact-reason'].valid && submittedOnce\">This field is required.</div>\n          </div>\n        </div>\n        <div class=\"form-section thirds\">\n          <div class=\"form-component form-component-text\">\n            <label for=\"first-name\" class=\"visuallyhidden\">First Name *</label>\n            <input type=\"text\" name=\"first-name\" id=\"first-name\" placeholder=\"First Name *\" formControlName=\"first-name\" [ngClass]=\"{'has-error':!contactForm.controls['first-name'].valid && submittedOnce}\">\n            <div class=\"error-message\" *ngIf=\"!contactForm.controls['first-name'].valid && submittedOnce\">This field is required.</div>\n          </div>\n          <div class=\"form-component form-component-text\">\n            <label for=\"last-name\" class=\"visuallyhidden\">Last Name *</label>\n            <input type=\"text\" name=\"last-name\" id=\"last-name\" placeholder=\"Last Name *\" formControlName=\"last-name\" [ngClass]=\"{'has-error':!contactForm.controls['last-name'].valid && submittedOnce}\">\n            <div class=\"error-message\" *ngIf=\"!contactForm.controls['last-name'].valid && submittedOnce\">This field is required.</div>\n          </div>\n          <div class=\"form-component form-component-email\">\n            <label for=\"email\" class=\"visuallyhidden\">Email *</label>\n            <input type=\"email\" name=\"email\" id=\"email\" placeholder=\"Email *\" formControlName=\"email\" [ngClass]=\"{'has-error':!contactForm.controls['email'].valid && submittedOnce}\">\n            <div class=\"error-message\" *ngIf=\"!contactForm.controls['email'].valid && submittedOnce\">This field is required.</div>\n          </div>\n        </div>\n        <div class=\"form-section\">\n          <div class=\"form-component form-component-textarea\">\n            <label for=\"comments\">Comments</label>\n            <textarea name=\"comments\" id=\"comments\" rows=\"4\" formControlName=\"comments\"></textarea>\n          </div>\n        </div>\n        <div class=\"form-actions\">\n          <div class=\"loading-gif button-size non-full-width\" *ngIf=\"processing\"></div>\n          <div class=\"form-submit red-button submit\" *ngIf=\"!processing && !formSuccess\">\n            <input type=\"submit\" value=\"Send\" (click)=\"submitForm(contactForm)\">\n          </div>\n        </div>\n      </form>\n      <div class=\"success-message\" *ngIf=\"formSuccess\" [innerHtml]=\"acf?.contact_message | safeHtml\"></div>\n    </div>\n  </div>\n\n  <lo-cal-image-and-text [acf]=\"acf\" [color]=\"'grey'\"></lo-cal-image-and-text>\n</div>"
+module.exports = "<div class=\"page-landing-page\">\n  <lo-cal-header [featuredImage]=\"featuredImage\" [pageContent]=\"pageContent\"></lo-cal-header>\n  <div class=\"section section-white\">\n    <div class=\"content center\">\n      <div class=\"body center-960\" [innerHtml]=\"pageContent?.content?.rendered | safeHtml\"></div>\n    </div>\n  </div>\n\n  <div class=\"section section-grey intro-section\" *ngIf=\"acf?.body\">\n    <div class=\"content\">\n      <h3 class=\"title\" *ngIf=\"acf?.title\" [innerHtml]=\"acf?.title\"></h3>\n      <div class=\"body\" *ngIf=\"acf?.body\" [innerHtml]=\"acf?.body | safeHtml\"></div>\n    </div>\n  </div>\n\n  <div class=\"section section-white\">\n    <div class=\"content center\">\n      <form action=\"\" [formGroup]=\"contactForm\" class=\"lo-cal-form contact-form\" *ngIf=\"!formSuccess\">\n        <div class=\"form-errors\" *ngIf=\"formError\"><p>{{ formError }}</p></div>\n        <div class=\"form-section\">\n          <div class=\"form-component form-component-text\">\n            <label for=\"contact-reason\" class=\"visuallyhidden\">What are you interested in sharing/asking?</label>\n            <input type=\"text\" name=\"contact-reason\" id=\"contact-reason\" formControlName=\"contact-reason\" placeholder=\"What are you interested in sharing/asking?\" [ngClass]=\"{'has-error':!contactForm.controls['contact-reason'].valid && submittedOnce}\">\n            <div class=\"error-message\" *ngIf=\"!contactForm.controls['contact-reason'].valid && submittedOnce\">This field is required.</div>\n          </div>\n        </div>\n        <div class=\"form-section thirds\">\n          <div class=\"form-component form-component-text\">\n            <label for=\"first-name\" class=\"visuallyhidden\">First Name *</label>\n            <input type=\"text\" name=\"first-name\" id=\"first-name\" placeholder=\"First Name *\" formControlName=\"first-name\" [ngClass]=\"{'has-error':!contactForm.controls['first-name'].valid && submittedOnce}\">\n            <div class=\"error-message\" *ngIf=\"!contactForm.controls['first-name'].valid && submittedOnce\">This field is required.</div>\n          </div>\n          <div class=\"form-component form-component-text\">\n            <label for=\"last-name\" class=\"visuallyhidden\">Last Name *</label>\n            <input type=\"text\" name=\"last-name\" id=\"last-name\" placeholder=\"Last Name *\" formControlName=\"last-name\" [ngClass]=\"{'has-error':!contactForm.controls['last-name'].valid && submittedOnce}\">\n            <div class=\"error-message\" *ngIf=\"!contactForm.controls['last-name'].valid && submittedOnce\">This field is required.</div>\n          </div>\n          <div class=\"form-component form-component-email\">\n            <label for=\"email\" class=\"visuallyhidden\">Email *</label>\n            <input type=\"email\" name=\"email\" id=\"email\" placeholder=\"Email *\" formControlName=\"email\" [ngClass]=\"{'has-error':!contactForm.controls['email'].valid && submittedOnce}\">\n            <div class=\"error-message\" *ngIf=\"!contactForm.controls['email'].valid && submittedOnce\">This field is required.</div>\n          </div>\n        </div>\n        <div class=\"form-section\">\n          <div class=\"form-component form-component-textarea\">\n            <label for=\"comments\">Comments</label>\n            <textarea name=\"comments\" id=\"comments\" rows=\"4\" formControlName=\"comments\"></textarea>\n          </div>\n        </div>\n        <div class=\"form-section captcha\">\n          <re-captcha formControlName=\"recaptchaReactive\"></re-captcha>\n          <div class=\"error-message\" *ngIf=\"!contactForm.controls['recaptchaReactive'].valid && submittedOnce\">This field is required.</div>\n        </div>\n        <div class=\"form-actions\">\n          <div class=\"loading-gif button-size non-full-width\" *ngIf=\"processing\"></div>\n          <div class=\"form-submit red-button submit\" *ngIf=\"!processing && !formSuccess\">\n            <input type=\"submit\" value=\"Send\" (click)=\"submitForm(contactForm)\">\n          </div>\n        </div>\n      </form>\n      <div class=\"success-message\" *ngIf=\"formSuccess\" [innerHtml]=\"acf?.contact_message | safeHtml\"></div>\n    </div>\n  </div>\n\n  <lo-cal-image-and-text [acf]=\"acf\" [color]=\"'grey'\"></lo-cal-image-and-text>\n</div>"
 
 /***/ }),
 
@@ -2120,7 +2133,8 @@ var ContactComponent = /** @class */ (function () {
             'first-name': [null, __WEBPACK_IMPORTED_MODULE_2__angular_forms__["Validators"].required],
             'last-name': [null, __WEBPACK_IMPORTED_MODULE_2__angular_forms__["Validators"].required],
             'email': [null, [__WEBPACK_IMPORTED_MODULE_2__angular_forms__["Validators"].required, __WEBPACK_IMPORTED_MODULE_2__angular_forms__["Validators"].email]],
-            'comments': null
+            'comments': null,
+            'recaptchaReactive': [null, __WEBPACK_IMPORTED_MODULE_2__angular_forms__["Validators"].required]
         });
     }
     ContactComponent.prototype.ngOnInit = function () {
@@ -2174,7 +2188,7 @@ var ContactComponent = /** @class */ (function () {
 /***/ "./src/app/pages/create-account/create-account.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "\n<div class=\"login-wrapper\">\n  <div class=\"login-container center-740\">\n    <h1 class=\"text-center\">Create an Account</h1>\n    <div class=\"account-success\" *ngIf=\"accountSuccess\">\n      <h2 class=\"text-center\">Success!</h2>\n      <p class=\"text-center\">Your account has been created. Keep an eye out for an email from us with your login information. Please return to the <a routerLink=\"/login\">login</a> page to proceed.</p>\n    </div>\n    <div class=\"form-errors text-left\" *ngIf=\"existingAccount\">\n      <p>It looks like an account with that email already exists. Log in <a routerLink=\"/login\">here</a></p>\n    </div>\n    <div [hidden]=\"!processing || accountSuccess\" class=\"loading-gif\"></div>\n    <form action=\"\" [formGroup]=\"accountForm\" class=\"lo-cal-form create-account-form\" *ngIf=\"!accountSuccess\" [ngClass]=\"{'processing': processing}\" [@slideUp]=\"processing\">\n      <div class=\"form-section half-and-half\">\n        <div class=\"form-component form-component-text\">\n          <label for=\"first-name\" class=\"visuallyhidden\">First Name</label>\n          <input type=\"text\" name=\"first-name\" id=\"first-name\" formControlName=\"first-name\" placeholder=\"First Name*\" [ngClass]=\"{'has-error':!accountForm.controls['first-name'].valid && submittedOnce}\">\n          <div class=\"error-message\" *ngIf=\"!accountForm.controls['first-name'].valid && submittedOnce\">This field is required.</div>\n        </div>\n        <div class=\"form-component form-component-text\">\n          <label for=\"last-name\" class=\"visuallyhidden\">Last Name</label>\n          <input type=\"text\" name=\"last-name\" id=\"last-name\" formControlName=\"last-name\" placeholder=\"Last Name*\" [ngClass]=\"{'has-error':!accountForm.controls['last-name'].valid && submittedOnce}\">\n          <div class=\"error-message\" *ngIf=\"!accountForm.controls['last-name'].valid && submittedOnce\">This field is required.</div>\n        </div>\n      </div>\n      <div class=\"form-component form-component-email\">\n        <label for=\"email\" class=\"visuallyhidden\">Email</label>\n        <input type=\"text\" name=\"email\" id=\"email\" formControlName=\"email\" placeholder=\"Email*\" [ngClass]=\"{'has-error':!accountForm.controls['email'].valid && submittedOnce}\">\n        <div class=\"error-message\" *ngIf=\"!accountForm.controls['email'].valid && submittedOnce\">This field is required.</div>\n      </div>\n      <div class=\"form-component form-component-text\">\n        <label for=\"password\" class=\"visuallyhidden\">Password</label>\n        <input type=\"password\" name=\"password\" id=\"password\" formControlName=\"password\" placeholder=\"Password* (8 or more characters)\" [ngClass]=\"{'has-error':!accountForm.controls['password'].valid && submittedOnce}\">\n        <div class=\"error-message\" *ngIf=\"!accountForm.controls['password'].valid && submittedOnce\">This field is required.</div>\n        <div class=\"error-message\" *ngIf=\"accountForm.controls['password'].value.length > 2 && accountForm.controls['password'].errors?.minlength\">Password must be at least 8 characters.</div>\n      </div>\n      <div class=\"form-component form-component-text\">\n        <label for=\"confirm-password\" class=\"visuallyhidden\">Confirm Password</label>\n        <input type=\"password\" name=\"confirm-password\" id=\"confirm-password\" formControlName=\"confirm-password\" placeholder=\"Confirm Password*\" [ngClass]=\"{'has-error':!accountForm.controls['confirm-password'].valid && submittedOnce}\">\n        <div class=\"error-message\" *ngIf=\"!accountForm.controls['confirm-password'].valid && submittedOnce\">This field is required.</div>\n        <div class=\"error-message\" *ngIf=\"accountForm.controls['confirm-password'].errors?.MatchPassword\">Password does not match.</div>\n      </div>\n      <div class=\"form-component form-component-select\">\n        <label for=\"security-question\" class=\"visuallyhidden\">Security Question</label>\n        <select name=\"security-question\" id=\"security-question\" formControlName=\"security-question\"  [ngClass]=\"{'has-error':!accountForm.controls['security-question'].valid && submittedOnce}\">\n          <option value=\"\">- Select -</option>\n          <option value=\"What was your childhood nickname?\">What was your childhood nickname?</option>\n          <option value=\"What is the name of your favorite childhood friend?\">What is the name of your favorite childhood friend?</option>\n          <option value=\"In what city or town did your mother and father meet?\">In what city or town did your mother and father meet?</option>\n          <option value=\"What is your favorite sports team?\">What is your favorite sports team?</option>\n          <option value=\"What is your favorite movie?\">What is your favorite movie?</option>\n          <option value=\"What was your favorite sport in high school?\">What was your favorite sport in high school?</option>\n          <option value=\"What was your favorite food as a child?\">What was your favorite food as a child?</option>\n          <option value=\"What was the make and model of your first car?\">What was the make and model of your first car?</option>\n          <option value=\"What was the name of the hospital where you were born?\">What was the name of the hospital where you were born?</option>\n          <option value=\"What school did you attend for sixth grade?\">What school did you attend for sixth grade?</option>\n          <option value=\"In what town was your first job?\">In what town was your first job?</option>\n          <option value=\"What was the name of the company where you had your first job?\">What was the name of the company where you had your first job?</option>\n        </select>\n        <div class=\"error-message\" *ngIf=\"!accountForm.controls['security-question'].valid && submittedOnce\">This field is required.</div>\n      </div>\n      <div class=\"form-component form-component-text\">\n        <label for=\"security-answer\" class=\"visuallyhidden\">Security Answer</label>\n        <input type=\"text\" name=\"security-answer\" id=\"security-answer\" formControlName=\"security-answer\" placeholder=\"Security Answer*\" [ngClass]=\"{'has-error':!accountForm.controls['security-answer'].valid && submittedOnce}\">\n        <div class=\"error-message\" *ngIf=\"!accountForm.controls['security-answer'].valid && submittedOnce\">This field is required.</div>\n      </div>\n      <div class=\"control-wrapper\" formGroupName=\"full-address\">\n        <div class=\"form-component form-component-text\">\n          <label for=\"address\" class=\"visuallyhidden\">Address</label>\n          <input type=\"text\" name=\"address\" id=\"address\" formControlName=\"address\" placeholder=\"Address*\" [ngClass]=\"{'has-error':!accountForm.controls['full-address']['controls']['address'].valid && submittedOnce}\">\n          <div class=\"error-message\" *ngIf=\"!accountForm.controls['full-address']['controls']['address'].valid && submittedOnce\">This field is required.</div>\n        </div>\n        <div class=\"form-component form-component-text\">\n          <label for=\"address2\" class=\"visuallyhidden\">Address 2</label>\n          <input type=\"text\" name=\"address2\" id=\"address2\" formControlName=\"address2\" placeholder=\"Apartment/Suite/Unit/Building (optional)\">\n        </div>\n        <div class=\"form-section thirds\">\n          <div class=\"form-component form-component-text\">\n            <label for=\"city\" class=\"visuallyhidden\">City</label>\n            <input type=\"text\" name=\"city\" id=\"city\" formControlName=\"city\" placeholder=\"City*\" [ngClass]=\"{'has-error':!accountForm.controls['full-address']['controls']['city'].valid && submittedOnce}\">\n            <div class=\"error-message\" *ngIf=\"!accountForm.controls['full-address']['controls']['city'].valid && submittedOnce\">This field is required.</div>\n          </div>\n          <div class=\"form-component form-component-select\">\n            <label for=\"state\" class=\"visuallyhidden\">State</label>\n            <select name=\"state\" id=\"state\" formControlName=\"state\" [ngClass]=\"{'has-error':!accountForm.controls['full-address']['controls']['state'].valid && submittedOnce}\">\n              <option value=\"\" selected=\"selected\">-- Select --</option>\n              <option value=\"AL\">Alabama</option>\n              <option value=\"AK\">Alaska</option>\n              <option value=\"AZ\">Arizona</option>\n              <option value=\"AR\">Arkansas</option>\n              <option value=\"CA\">California</option>\n              <option value=\"CO\">Colorado</option>\n              <option value=\"CT\">Connecticut</option>\n              <option value=\"DE\">Delaware</option>\n              <option value=\"DC\">District Of Columbia</option>\n              <option value=\"FL\">Florida</option>\n              <option value=\"GA\">Georgia</option>\n              <option value=\"HI\">Hawaii</option>\n              <option value=\"ID\">Idaho</option>\n              <option value=\"IL\">Illinois</option>\n              <option value=\"IN\">Indiana</option>\n              <option value=\"IA\">Iowa</option>\n              <option value=\"KS\">Kansas</option>\n              <option value=\"KY\">Kentucky</option>\n              <option value=\"LA\">Louisiana</option>\n              <option value=\"ME\">Maine</option>\n              <option value=\"MD\">Maryland</option>\n              <option value=\"MA\">Massachusetts</option>\n              <option value=\"MI\">Michigan</option>\n              <option value=\"MN\">Minnesota</option>\n              <option value=\"MS\">Mississippi</option>\n              <option value=\"MO\">Missouri</option>\n              <option value=\"MT\">Montana</option>\n              <option value=\"NE\">Nebraska</option>\n              <option value=\"NV\">Nevada</option>\n              <option value=\"NH\">New Hampshire</option>\n              <option value=\"NJ\">New Jersey</option>\n              <option value=\"NM\">New Mexico</option>\n              <option value=\"NY\">New York</option>\n              <option value=\"NC\">North Carolina</option>\n              <option value=\"ND\">North Dakota</option>\n              <option value=\"OH\">Ohio</option>\n              <option value=\"OK\">Oklahoma</option>\n              <option value=\"OR\">Oregon</option>\n              <option value=\"PA\">Pennsylvania</option>\n              <option value=\"RI\">Rhode Island</option>\n              <option value=\"SC\">South Carolina</option>\n              <option value=\"SD\">South Dakota</option>\n              <option value=\"TN\">Tennessee</option>\n              <option value=\"TX\">Texas</option>\n              <option value=\"UT\">Utah</option>\n              <option value=\"VT\">Vermont</option>\n              <option value=\"VA\">Virginia</option>\n              <option value=\"WA\">Washington</option>\n              <option value=\"WV\">West Virginia</option>\n              <option value=\"WI\">Wisconsin</option>\n              <option value=\"WY\">Wyoming</option>\n            </select>\n          </div>\n          <div class=\"form-component form-component-text\">\n            <label for=\"zip\" class=\"visuallyhidden\">Zip Code</label>\n            <input type=\"text\" name=\"zip\" id=\"zip\" formControlName=\"zip\" placeholder=\"Zip*\" [ngClass]=\"{'has-error':!accountForm.controls['full-address']['controls']['zip'].valid && submittedOnce}\">\n            <div class=\"error-message\" *ngIf=\"!accountForm.controls['full-address']['controls']['zip'].valid && submittedOnce\">This field is required.</div>\n            <div class=\"error-message\" *ngIf=\"accountForm.controls['full-address']['controls']['zip'].errors?.pattern && accountForm.controls['full-address']['controls']['zip'].value.length > 5\">Zip code must be only 5 digits.</div>\n          </div>\n        </div>\n      </div>\n\n      <div class=\"submit red-button full-width-button\">\n        <input type=\"submit\" value=\"Create Account\" (click)=\"submitForm(accountForm)\" [disabled]=\"processing || !accountForm.valid\">\n      </div>\n      <div class=\"account-actions\">\n        <div class=\"action\">\n          <a routerLink=\"/login\">Already have an account? Sign In.</a>\n        </div>\n        <div class=\"action\">\n          <a routerLink=\"/password-reset\">Forgot Password</a>\n        </div>\n      </div>\n    </form>\n  </div>\n</div>"
+module.exports = "\n<div class=\"login-wrapper\">\n  <div class=\"login-container center-740\">\n    <h1 class=\"text-center\">Create an Account</h1>\n    <div class=\"account-success\" *ngIf=\"accountSuccess\">\n      <h2 class=\"text-center\">Success!</h2>\n      <p class=\"text-center\">Your account has been created. Keep an eye out for an email from us with your login information. Please return to the <a routerLink=\"/login\">login</a> page to proceed.</p>\n    </div>\n    <div class=\"account-success\" *ngIf=\"checkoutAccountSuccess\">\n      <h2 class=\"text-center\">Success!</h2>\n      <p class=\"text-center\">Your account has been created. Keep an eye out for an email from us with your login information. You will now be redirected to continue the checkout process. Please do not refresh.</p>\n    </div>\n    <div class=\"form-errors text-left\" *ngIf=\"existingAccount\">\n      <p>It looks like an account with that email already exists. Log in <a routerLink=\"/login\">here</a></p>\n    </div>\n    <div [hidden]=\"!processing || accountSuccess || checkoutAccountSuccess\" class=\"loading-gif\"></div>\n    <form action=\"\" [formGroup]=\"accountForm\" class=\"lo-cal-form create-account-form\" *ngIf=\"!accountSuccess || !checkoutAccountSuccess\" [ngClass]=\"{'processing': processing}\" [@slideUp]=\"processing\">\n      <div class=\"form-section half-and-half\">\n        <div class=\"form-component form-component-text\">\n          <label for=\"first-name\" class=\"visuallyhidden\">First Name</label>\n          <input type=\"text\" name=\"first-name\" id=\"first-name\" formControlName=\"first-name\" placeholder=\"First Name*\" [ngClass]=\"{'has-error':!accountForm.controls['first-name'].valid && submittedOnce}\">\n          <div class=\"error-message\" *ngIf=\"!accountForm.controls['first-name'].valid && submittedOnce\">This field is required.</div>\n        </div>\n        <div class=\"form-component form-component-text\">\n          <label for=\"last-name\" class=\"visuallyhidden\">Last Name</label>\n          <input type=\"text\" name=\"last-name\" id=\"last-name\" formControlName=\"last-name\" placeholder=\"Last Name*\" [ngClass]=\"{'has-error':!accountForm.controls['last-name'].valid && submittedOnce}\">\n          <div class=\"error-message\" *ngIf=\"!accountForm.controls['last-name'].valid && submittedOnce\">This field is required.</div>\n        </div>\n      </div>\n      <div class=\"form-component form-component-email\">\n        <label for=\"email\" class=\"visuallyhidden\">Email</label>\n        <input type=\"text\" name=\"email\" id=\"email\" formControlName=\"email\" placeholder=\"Email*\" [ngClass]=\"{'has-error':!accountForm.controls['email'].valid && submittedOnce}\">\n        <div class=\"error-message\" *ngIf=\"!accountForm.controls['email'].valid && submittedOnce\">This field is required.</div>\n        <div class=\"error-message\" *ngIf=\"accountForm.controls['email'].value.length > 45\">Max length for email is 45 characters.</div>\n      </div>\n      <div class=\"form-component form-component-text\">\n        <label for=\"password\" class=\"visuallyhidden\">Password</label>\n        <input type=\"password\" name=\"password\" id=\"password\" formControlName=\"password\" placeholder=\"Password* (8 or more characters)\" [ngClass]=\"{'has-error':!accountForm.controls['password'].valid && submittedOnce}\">\n        <div class=\"error-message\" *ngIf=\"!accountForm.controls['password'].valid && submittedOnce\">This field is required.</div>\n        <div class=\"error-message\" *ngIf=\"accountForm.controls['password'].value.length > 2 && accountForm.controls['password'].errors?.minlength\">Password must be at least 8 characters.</div>\n      </div>\n      <div class=\"form-component form-component-text\">\n        <label for=\"confirm-password\" class=\"visuallyhidden\">Confirm Password</label>\n        <input type=\"password\" name=\"confirm-password\" id=\"confirm-password\" formControlName=\"confirm-password\" placeholder=\"Confirm Password*\" [ngClass]=\"{'has-error':!accountForm.controls['confirm-password'].valid && submittedOnce}\">\n        <div class=\"error-message\" *ngIf=\"!accountForm.controls['confirm-password'].valid && submittedOnce\">This field is required.</div>\n        <div class=\"error-message\" *ngIf=\"accountForm.controls['confirm-password'].errors?.MatchPassword\">Password does not match.</div>\n      </div>\n      <div class=\"form-component form-component-select\">\n        <label for=\"security-question\" class=\"visuallyhidden\">Security Question</label>\n        <select name=\"security-question\" id=\"security-question\" formControlName=\"security-question\"  [ngClass]=\"{'has-error':!accountForm.controls['security-question'].valid && submittedOnce}\">\n          <option value=\"\">- Select -</option>\n          <option value=\"What was your childhood nickname?\">What was your childhood nickname?</option>\n          <option value=\"What is the name of your favorite childhood friend?\">What is the name of your favorite childhood friend?</option>\n          <option value=\"In what city or town did your mother and father meet?\">In what city or town did your mother and father meet?</option>\n          <option value=\"What is your favorite sports team?\">What is your favorite sports team?</option>\n          <option value=\"What is your favorite movie?\">What is your favorite movie?</option>\n          <option value=\"What was your favorite sport in high school?\">What was your favorite sport in high school?</option>\n          <option value=\"What was your favorite food as a child?\">What was your favorite food as a child?</option>\n          <option value=\"What was the make and model of your first car?\">What was the make and model of your first car?</option>\n          <option value=\"What was the name of the hospital where you were born?\">What was the name of the hospital where you were born?</option>\n          <option value=\"What school did you attend for sixth grade?\">What school did you attend for sixth grade?</option>\n          <option value=\"In what town was your first job?\">In what town was your first job?</option>\n          <option value=\"What was the name of the company where you had your first job?\">What was the name of the company where you had your first job?</option>\n        </select>\n        <div class=\"error-message\" *ngIf=\"!accountForm.controls['security-question'].valid && submittedOnce\">This field is required.</div>\n      </div>\n      <div class=\"form-component form-component-text\">\n        <label for=\"security-answer\" class=\"visuallyhidden\">Security Answer</label>\n        <input type=\"text\" name=\"security-answer\" id=\"security-answer\" formControlName=\"security-answer\" placeholder=\"Security Answer*\" [ngClass]=\"{'has-error':!accountForm.controls['security-answer'].valid && submittedOnce}\">\n        <div class=\"error-message\" *ngIf=\"!accountForm.controls['security-answer'].valid && submittedOnce\">This field is required.</div>\n      </div>\n      <div class=\"control-wrapper\" formGroupName=\"full-address\">\n        <div class=\"form-component form-component-text\">\n          <label for=\"address\" class=\"visuallyhidden\">Address</label>\n          <input type=\"text\" name=\"address\" id=\"address\" formControlName=\"address\" placeholder=\"Address*\" [ngClass]=\"{'has-error':!accountForm.controls['full-address']['controls']['address'].valid && submittedOnce}\">\n          <div class=\"error-message\" *ngIf=\"!accountForm.controls['full-address']['controls']['address'].valid && submittedOnce\">This field is required.</div>\n        </div>\n        <div class=\"form-component form-component-text\">\n          <label for=\"address2\" class=\"visuallyhidden\">Address 2</label>\n          <input type=\"text\" name=\"address2\" id=\"address2\" formControlName=\"address2\" placeholder=\"Apartment/Suite/Unit/Building (optional)\">\n        </div>\n        <div class=\"form-section thirds\">\n          <div class=\"form-component form-component-text\">\n            <label for=\"city\" class=\"visuallyhidden\">City</label>\n            <input type=\"text\" name=\"city\" id=\"city\" formControlName=\"city\" placeholder=\"City*\" [ngClass]=\"{'has-error':!accountForm.controls['full-address']['controls']['city'].valid && submittedOnce}\">\n            <div class=\"error-message\" *ngIf=\"!accountForm.controls['full-address']['controls']['city'].valid && submittedOnce\">This field is required.</div>\n          </div>\n          <div class=\"form-component form-component-select\">\n            <label for=\"state\" class=\"visuallyhidden\">State</label>\n            <select name=\"state\" id=\"state\" formControlName=\"state\" [ngClass]=\"{'has-error':!accountForm.controls['full-address']['controls']['state'].valid && submittedOnce}\">\n              <option value=\"\" selected=\"selected\">-- Select --</option>\n              <option value=\"AL\">Alabama</option>\n              <option value=\"AK\">Alaska</option>\n              <option value=\"AZ\">Arizona</option>\n              <option value=\"AR\">Arkansas</option>\n              <option value=\"CA\">California</option>\n              <option value=\"CO\">Colorado</option>\n              <option value=\"CT\">Connecticut</option>\n              <option value=\"DE\">Delaware</option>\n              <option value=\"DC\">District Of Columbia</option>\n              <option value=\"FL\">Florida</option>\n              <option value=\"GA\">Georgia</option>\n              <option value=\"HI\">Hawaii</option>\n              <option value=\"ID\">Idaho</option>\n              <option value=\"IL\">Illinois</option>\n              <option value=\"IN\">Indiana</option>\n              <option value=\"IA\">Iowa</option>\n              <option value=\"KS\">Kansas</option>\n              <option value=\"KY\">Kentucky</option>\n              <option value=\"LA\">Louisiana</option>\n              <option value=\"ME\">Maine</option>\n              <option value=\"MD\">Maryland</option>\n              <option value=\"MA\">Massachusetts</option>\n              <option value=\"MI\">Michigan</option>\n              <option value=\"MN\">Minnesota</option>\n              <option value=\"MS\">Mississippi</option>\n              <option value=\"MO\">Missouri</option>\n              <option value=\"MT\">Montana</option>\n              <option value=\"NE\">Nebraska</option>\n              <option value=\"NV\">Nevada</option>\n              <option value=\"NH\">New Hampshire</option>\n              <option value=\"NJ\">New Jersey</option>\n              <option value=\"NM\">New Mexico</option>\n              <option value=\"NY\">New York</option>\n              <option value=\"NC\">North Carolina</option>\n              <option value=\"ND\">North Dakota</option>\n              <option value=\"OH\">Ohio</option>\n              <option value=\"OK\">Oklahoma</option>\n              <option value=\"OR\">Oregon</option>\n              <option value=\"PA\">Pennsylvania</option>\n              <option value=\"RI\">Rhode Island</option>\n              <option value=\"SC\">South Carolina</option>\n              <option value=\"SD\">South Dakota</option>\n              <option value=\"TN\">Tennessee</option>\n              <option value=\"TX\">Texas</option>\n              <option value=\"UT\">Utah</option>\n              <option value=\"VT\">Vermont</option>\n              <option value=\"VA\">Virginia</option>\n              <option value=\"WA\">Washington</option>\n              <option value=\"WV\">West Virginia</option>\n              <option value=\"WI\">Wisconsin</option>\n              <option value=\"WY\">Wyoming</option>\n            </select>\n          </div>\n          <div class=\"form-component form-component-text\">\n            <label for=\"zip\" class=\"visuallyhidden\">Zip Code</label>\n            <input type=\"text\" name=\"zip\" id=\"zip\" formControlName=\"zip\" placeholder=\"Zip*\" [ngClass]=\"{'has-error':!accountForm.controls['full-address']['controls']['zip'].valid && submittedOnce}\">\n            <div class=\"error-message\" *ngIf=\"!accountForm.controls['full-address']['controls']['zip'].valid && submittedOnce\">This field is required.</div>\n            <div class=\"error-message\" *ngIf=\"accountForm.controls['full-address']['controls']['zip'].errors?.pattern && accountForm.controls['full-address']['controls']['zip'].value.length > 5\">Zip code must be only 5 digits.</div>\n          </div>\n        </div>\n      </div>\n\n      <div class=\"submit red-button full-width-button\">\n        <input type=\"submit\" value=\"Create Account\" (click)=\"submitForm(accountForm)\" [disabled]=\"processing || !accountForm.valid\">\n      </div>\n      <div class=\"account-actions\">\n        <div class=\"action\">\n          <a routerLink=\"/login\">Already have an account? Sign In.</a>\n        </div>\n        <div class=\"action\">\n          <a routerLink=\"/password-reset\">Forgot Password</a>\n        </div>\n      </div>\n    </form>\n  </div>\n</div>"
 
 /***/ }),
 
@@ -2189,6 +2203,7 @@ module.exports = "\n<div class=\"login-wrapper\">\n  <div class=\"login-containe
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__local_services_customer_service__ = __webpack_require__("./src/app/services/customer.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_router__ = __webpack_require__("./node_modules/@angular/router/esm5/router.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__local_utils_animations__ = __webpack_require__("./src/app/utils/animations.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__ngx_pwa_local_storage__ = __webpack_require__("./node_modules/@ngx-pwa/local-storage/local-storage.es5.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -2204,22 +2219,25 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var CreateAccountComponent = /** @class */ (function () {
-    function CreateAccountComponent(fb, customerService, route, router) {
+    function CreateAccountComponent(fb, customerService, route, router, localStorage) {
         this.fb = fb;
         this.customerService = customerService;
         this.route = route;
         this.router = router;
+        this.localStorage = localStorage;
         this.submittedOnce = false;
         this.redirectUrl = '';
         this.errorMessage = '';
         this.existingAccount = false;
         this.accountSuccess = false;
+        this.checkoutAccountSuccess = false;
         this.processing = false;
         this.accountForm = fb.group({
             'first-name': [null, [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["Validators"].required, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["Validators"].maxLength(28)]],
             'last-name': [null, [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["Validators"].required, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["Validators"].maxLength(28)]],
-            'email': [null, [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["Validators"].required, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["Validators"].email, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["Validators"].maxLength(45)]],
+            'email': ['', [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["Validators"].required, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["Validators"].email, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["Validators"].maxLength(45)]],
             // TODO: Implement more strict password rules from Ken's regex
             'password': ['', [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["Validators"].required, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["Validators"].minLength(8)]],
             'confirm-password': ['', __WEBPACK_IMPORTED_MODULE_1__angular_forms__["Validators"].required],
@@ -2237,7 +2255,7 @@ var CreateAccountComponent = /** @class */ (function () {
         });
     }
     CreateAccountComponent.prototype.ngOnInit = function () {
-        this.redirectUrl = (typeof this.route.snapshot.queryParams['returnUrl'] !== undefined) ? this.route.snapshot.queryParams['returnUrl'] : '';
+        this.redirectUrl = (this.route.snapshot.queryParams['returnUrl'] !== undefined) ? this.route.snapshot.queryParams['returnUrl'] : undefined;
     };
     CreateAccountComponent.prototype.submitForm = function (form) {
         var _this = this;
@@ -2252,6 +2270,8 @@ var CreateAccountComponent = /** @class */ (function () {
                         FirstName: form.controls['first-name'].value,
                         LastName: form.controls['last-name'].value,
                         Addresses: [{
+                                AddressType: 1,
+                                AddressId: 1,
                                 AddressLine1: form.controls['full-address']['controls']['address'].value,
                                 AddressLine2: form.controls['full-address']['controls']['address2'].value,
                                 City: form.controls['full-address']['controls']['city'].value,
@@ -2277,23 +2297,40 @@ var CreateAccountComponent = /** @class */ (function () {
                     }
                 }
                 else {
-                    _this.accountSuccess = true;
+                    // handle successful return of account created
+                    // redirect to appropriate location
+                    if (_this.redirectUrl !== undefined) {
+                        // Need to set logged in status
+                        _this.handleRedirection(data);
+                    }
+                    else {
+                        // Account successfully created, show generic success message
+                        _this.accountSuccess = true;
+                    }
                 }
-                // handle successful return of account created
-                // redirect to appropriate location
-                // if(this.redirectUrl !== ''){
-                //   // Need to set logged in status
-                //   this.router.navigate([this.redirectUrl]);
-                // }
-                // else{
-                //   // Should I set logged in status immediately or no?
-                //   this.router.navigate(['/']);
-                // }
             });
         }
     };
-    CreateAccountComponent.prototype.trimString = function (str) {
-        return str.trim();
+    CreateAccountComponent.prototype.handleRedirection = function (newCustomerInfo) {
+        var _this = this;
+        // Show success message
+        this.checkoutAccountSuccess = true;
+        // Get user's data using new customer ID
+        this.customerService.getCustomerInfo(newCustomerInfo.CustomerId).subscribe(function (customer) {
+            // Set full user details to localStorage
+            _this.localStorage.setItem('user', customer).subscribe(function () {
+                _this.startRedirect();
+            });
+        }, function (error) {
+            console.log(error);
+        });
+    };
+    CreateAccountComponent.prototype.startRedirect = function () {
+        var _this = this;
+        // Start timeout to redirect to checkout review
+        setTimeout(function () {
+            _this.router.navigate([_this.redirectUrl]);
+        }, 4000);
     };
     CreateAccountComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
@@ -2301,7 +2338,7 @@ var CreateAccountComponent = /** @class */ (function () {
             template: __webpack_require__("./src/app/pages/create-account/create-account.component.html"),
             animations: [__WEBPACK_IMPORTED_MODULE_5__local_utils_animations__["a" /* SlideUpAnimation */]]
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["FormBuilder"], __WEBPACK_IMPORTED_MODULE_3__local_services_customer_service__["a" /* CustomerService */], __WEBPACK_IMPORTED_MODULE_4__angular_router__["a" /* ActivatedRoute */], __WEBPACK_IMPORTED_MODULE_4__angular_router__["c" /* Router */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["FormBuilder"], __WEBPACK_IMPORTED_MODULE_3__local_services_customer_service__["a" /* CustomerService */], __WEBPACK_IMPORTED_MODULE_4__angular_router__["a" /* ActivatedRoute */], __WEBPACK_IMPORTED_MODULE_4__angular_router__["c" /* Router */], __WEBPACK_IMPORTED_MODULE_6__ngx_pwa_local_storage__["a" /* LocalStorage */]])
     ], CreateAccountComponent);
     return CreateAccountComponent;
 }());
@@ -2494,7 +2531,7 @@ var MenuCustomizeComponent = /** @class */ (function () {
             // If modifier item has modifier values with it
             if (modifierClicked.ItemModifiers.length > 0) {
                 // Add to total calorie count
-                this.calorieCount += modifierClicked.ItemModifiers[0].CaloricValue;
+                this.calorieCount += (+modifierClicked.ItemModifiers[0].CaloricValue);
                 // If there are FreeModifiers allowed in the modGroup &&
                 //    If modGroup's currently selected items exceed the amount of free modifiers, add to price
                 if (this.customizationData[modGroup.$id]['currentlySelected'].length > modGroup.FreeModifiers) {
@@ -2591,7 +2628,7 @@ var MenuCustomizeComponent = /** @class */ (function () {
                 _this.multipleSalesItems = menuItemDetails['salesItems'];
                 _this.sizeChoice = _this.salesItemDetails.SalesItemId;
             }
-            _this.calorieCount = (_this.salesItemDetails.CaloricValue !== null) ? _this.salesItemDetails.CaloricValue : ((typeof _this.menuItemDetails.item.CaloricServingUnit !== 'string') ? +_this.menuItemDetails.item.CaloricServingUnit : _this.menuItemDetails.item.CaloricServingUnit);
+            _this.calorieCount = (_this.salesItemDetails.CaloricValue !== null) ? +_this.salesItemDetails.CaloricValue : ((typeof _this.menuItemDetails.item.CaloricServingUnit !== 'string') ? +_this.menuItemDetails.item.CaloricServingUnit : +_this.menuItemDetails.item.CaloricServingUnit);
             _this.itemPrice = _this.salesItemDetails.Price;
             // Calculate initial cost based on initial quantity of 1
             _this.recalculateCost();
@@ -2643,7 +2680,7 @@ var MenuCustomizeComponent = /** @class */ (function () {
     };
     MenuCustomizeComponent.prototype.updateDataPerSize = function (salesId) {
         this.salesItemDetails = __WEBPACK_IMPORTED_MODULE_5_lodash__["find"](this.menuItemDetails.salesItems, { 'SalesItemId': +salesId });
-        this.calorieCount = this.salesItemDetails.CaloricValue;
+        this.calorieCount = +this.salesItemDetails.CaloricValue;
         this.itemPrice = this.salesItemDetails.Price;
         // Initialize defaults
         var defaults = [];
@@ -4059,6 +4096,52 @@ var CustomerService = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/services/mailchimp.service.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MailchimpService; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__local_utils_constants__ = __webpack_require__("./src/app/utils/constants.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common_http__ = __webpack_require__("./node_modules/@angular/common/esm5/http.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var MailchimpService = /** @class */ (function () {
+    function MailchimpService(constants, http) {
+        this.constants = constants;
+        this.http = http;
+    }
+    MailchimpService.prototype.signUpForNewsletter = function (email) {
+        var payload = {
+            email_address: email,
+            status: "subscribed"
+        };
+        var json = JSON.stringify(payload);
+        return this.http.post(this.constants.wordpressApiUrl + "/mailchimp/v2/signup", json).map(function (result) {
+            return result;
+        });
+    };
+    MailchimpService = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__local_utils_constants__["a" /* Config */], __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */]])
+    ], MailchimpService);
+    return MailchimpService;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/services/menu-service.service.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -4549,7 +4632,7 @@ var BagComponent = /** @class */ (function () {
 /***/ "./src/app/shared/components/footer/footer.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<footer>\n  <div class=\"content\">\n    <div class=\"left\">\n      <ul class=\"menu footer-menu\">\n        <li *ngFor=\"let item of footerMenu\" [attr.class]=\"item.classes ? item.classes : null\">\n            <a href=\"{{ item.url }}\">{{ item.title }}</a>\n        </li>\n      </ul>\n      <div class=\"newsletter-signup\">\n        <label for=\"email-newsletter\"><span class=\"visuallyhidden\">Enter your Email Address and</span> Stay in Touch</label>\n        <input type=\"email\" name=\"newsletter\" id=\"email-newsletter\" placeholder=\"Enter your Email\">\n        <input type=\"image\" src=\"/wp-content/themes/local/dist/assets/svgs/right-arrow-red.svg\" alt=\"Click to sign up for our newsletter\">\n      </div>\n    </div>\n    <div class=\"right clearfix\">\n      <ul class=\"menu social-menu\" *ngIf=\"footerLinks\">\n        <li *ngFor=\"let item of footerLinks\">\n          <a href=\"{{ item?.url }}\" target=\"_blank\">\n            <span class=\"visuallyhidden\">{{ item.title }}</span>\n            <i [attr.class]=\"item.classes ? item.classes : null\"></i>\n          </a>\n        </li>\n      </ul>\n    </div>\n  </div>\n</footer>"
+module.exports = "<footer>\n  <div class=\"content\">\n    <div class=\"left\">\n      <ul class=\"menu footer-menu\">\n        <li *ngFor=\"let item of footerMenu\" [attr.class]=\"item.classes ? item.classes : null\">\n            <a href=\"{{ item.url }}\">{{ item.title }}</a>\n        </li>\n      </ul>\n      <div class=\"newsletter-signup\">\n        <p *ngIf=\"signUpResponse\">{{ signUpResponse }}</p>\n        <form action=\"\" [formGroup]=\"newsletterForm\" (submit)=\"signUp(newsletterForm)\" *ngIf=\"!signUpSuccess\">\n          <label for=\"email-newsletter\"><span class=\"visuallyhidden\">Enter your Email Address and</span> Stay in Touch</label>\n          <input type=\"email\" name=\"newsletter\" id=\"email-newsletter\" placeholder=\"Enter your Email\" formControlName=\"email\">\n          <input type=\"image\" src=\"/wp-content/themes/local/dist/assets/svgs/right-arrow-red.svg\" alt=\"Click to sign up for our newsletter\">\n        </form>\n      </div>\n    </div>\n    <div class=\"right clearfix\">\n      <ul class=\"menu social-menu\" *ngIf=\"footerLinks\">\n        <li *ngFor=\"let item of footerLinks\">\n          <a href=\"{{ item?.url }}\" target=\"_blank\">\n            <span class=\"visuallyhidden\">{{ item.title }}</span>\n            <i [attr.class]=\"item.classes ? item.classes : null\"></i>\n          </a>\n        </li>\n      </ul>\n    </div>\n  </div>\n</footer>"
 
 /***/ }),
 
@@ -4559,7 +4642,9 @@ module.exports = "<footer>\n  <div class=\"content\">\n    <div class=\"left\">\
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return FooterComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_wp_service__ = __webpack_require__("./src/app/services/wp.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__local_services_wp_service__ = __webpack_require__("./src/app/services/wp.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__local_services_mailchimp_service__ = __webpack_require__("./src/app/services/mailchimp.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_forms__ = __webpack_require__("./node_modules/@angular/forms/esm5/forms.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -4571,9 +4656,18 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
+
+
 var FooterComponent = /** @class */ (function () {
-    function FooterComponent(wpService) {
+    function FooterComponent(wpService, fb, mailchimpService) {
         this.wpService = wpService;
+        this.fb = fb;
+        this.mailchimpService = mailchimpService;
+        this.signUpResponse = '';
+        this.signUpSuccess = false;
+        this.newsletterForm = fb.group({
+            'email': ['', [__WEBPACK_IMPORTED_MODULE_3__angular_forms__["Validators"].required, __WEBPACK_IMPORTED_MODULE_3__angular_forms__["Validators"].email]]
+        });
     }
     FooterComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -4582,12 +4676,39 @@ var FooterComponent = /** @class */ (function () {
             _this.footerLinks = m.items;
         });
     };
+    FooterComponent.prototype.signUp = function (formData) {
+        var _this = this;
+        if (formData.valid) {
+            var email = formData.get('email').value;
+            this.mailchimpService.signUpForNewsletter(email).subscribe(function (result) {
+                var resp = JSON.parse(result);
+                switch (resp.title) {
+                    case 'Member Exists':
+                        _this.signUpResponse = "Looks like you're already signed up!";
+                        _this.signUpSuccess = true;
+                        break;
+                    default:
+                        if (resp.id != undefined || resp.id != null) {
+                            _this.signUpSuccess = true;
+                            _this.signUpResponse = "Thank you for signing up!";
+                        }
+                        else {
+                            _this.signUpResponse = "There was an unexpected error. Try again.";
+                        }
+                        break;
+                }
+            }, function (error) {
+                _this.wpService.logError('Newsletter Error: ' + JSON.stringify(error)).subscribe(function () { });
+            });
+        }
+        return false;
+    };
     FooterComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: 'lo-cal-footer',
             template: __webpack_require__("./src/app/shared/components/footer/footer.component.html")
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__services_wp_service__["a" /* WordpressService */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__local_services_wp_service__["a" /* WordpressService */], __WEBPACK_IMPORTED_MODULE_3__angular_forms__["FormBuilder"], __WEBPACK_IMPORTED_MODULE_2__local_services_mailchimp_service__["a" /* MailchimpService */]])
     ], FooterComponent);
     return FooterComponent;
 }());
@@ -4803,7 +4924,7 @@ var IntroSectionComponent = /** @class */ (function () {
 /***/ "./src/app/shared/components/login-form/login-form.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<form action=\"\" class=\"lo-cal-form\" [formGroup]=\"loginForm\" (submit)=\"login(loginForm)\" [ngClass]=\"simpleForm ? 'simple' : ''\">\n  <div class=\"form-errors\" *ngIf=\"errorData?.error\"><p>Sorry. We did not find a valid account for that username and password.</p></div>\n  <div class=\"form-component form-component-text\">\n    <label for=\"password\" class=\"visuallyhidden\">Email</label>\n    <input type=\"text\" name=\"email\" id=\"email\" placeholder=\"Email\" formControlName=\"email\" [ngClass]=\"{'has-error':!loginForm.controls['email'].valid && submittedOnce}\">\n    <div class=\"error-message\" *ngIf=\"!loginForm.controls['email'].valid && submittedOnce\">This field is required.</div>\n  </div>\n  <div class=\"form-component form-component-text\">\n    <label for=\"password\" class=\"visuallyhidden\">Password</label>\n    <input type=\"password\" name=\"password\" id=\"password\" placeholder=\"Password\" formControlName=\"password\" [ngClass]=\"{'has-error':!loginForm.controls['password'].valid && submittedOnce}\">\n    <div class=\"error-message\" *ngIf=\"!loginForm.controls['password'].valid && submittedOnce\">This field is required.</div>\n  </div>\n  <div class=\"submit red-button full-width-button\">\n    <input type=\"submit\" value=\"Log In\" [disabled]=\"!loginForm.valid\">\n  </div>\n  <div class=\"account-actions\">\n    <div class=\"action\" *ngIf=\"!simpleForm\">\n      <a routerLink=\"/create-account\">New Account</a>\n    </div>\n    <div class=\"action\">\n      <a routerLink=\"/password-reset\">Forgot Password</a>\n    </div>\n  </div>\n</form>"
+module.exports = "<form action=\"\" class=\"lo-cal-form\" [formGroup]=\"loginForm\" (submit)=\"login(loginForm)\" [ngClass]=\"simpleForm ? 'simple' : ''\">\n  <div class=\"form-errors\" *ngIf=\"errorData?.error\"><p>Sorry. We did not find a valid account for that username and password.</p></div>\n  <div class=\"form-component form-component-text\">\n    <label for=\"password\" class=\"visuallyhidden\">Email</label>\n    <input type=\"text\" name=\"email\" id=\"email\" placeholder=\"Email\" formControlName=\"email\" [ngClass]=\"{'has-error':!loginForm.controls['email'].valid && submittedOnce}\">\n    <div class=\"error-message\" *ngIf=\"!loginForm.controls['email'].valid && submittedOnce\">This field is required.</div>\n  </div>\n  <div class=\"form-component form-component-text\">\n    <label for=\"password\" class=\"visuallyhidden\">Password</label>\n    <input type=\"password\" name=\"password\" id=\"password\" placeholder=\"Password\" formControlName=\"password\" [ngClass]=\"{'has-error':!loginForm.controls['password'].valid && submittedOnce}\">\n    <div class=\"error-message\" *ngIf=\"!loginForm.controls['password'].valid && submittedOnce\">This field is required.</div>\n  </div>\n  <div class=\"submit red-button full-width-button\">\n    <div class=\"loading-gif button-size\" *ngIf=\"processing\"></div>\n    <input type=\"submit\" value=\"Log In\" *ngIf=\"!processing\" [disabled]=\"!loginForm.valid\">\n  </div>\n  <div class=\"account-actions\">\n    <div class=\"action\" *ngIf=\"!simpleForm\">\n      <a [routerLink]=\"['/create-account']\" [queryParams]=\"{returnUrl: returnUrl }\" *ngIf=\"returnUrl !== '/' && returnUrl !== '/account'; else regularLink\">New Account</a>\n      <ng-template #regularLink>\n        <a routerLink=\"/create-account\">New Account</a>\n      </ng-template>\n    </div>\n    <div class=\"action\">\n      <a routerLink=\"/password-reset\">Forgot Password</a>\n    </div>\n  </div>\n</form>"
 
 /***/ }),
 
@@ -4841,6 +4962,7 @@ var LoginFormComponent = /** @class */ (function () {
         this.submittedOnce = false;
         this.errorData = {};
         this.returnUrl = '';
+        this.processing = false;
         this.simpleForm = false;
         this.loginForm = fb.group({
             'email': ['', [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["Validators"].required, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["Validators"].email]],
@@ -4854,6 +4976,7 @@ var LoginFormComponent = /** @class */ (function () {
         var _this = this;
         this.submittedOnce = true;
         if (loginFormData.valid) {
+            this.processing = true;
             var loginDetails = {
                 credentials: {
                     Email: loginFormData.controls['email'].value,
@@ -4871,6 +4994,7 @@ var LoginFormComponent = /** @class */ (function () {
                 });
             }, function (error) {
                 _this.errorData = error;
+                _this.processing = false;
             });
         }
     };
@@ -5194,6 +5318,7 @@ var Config = /** @class */ (function () {
         this.railsTimeEndpoint = 'https://api.lo-calkitchen.com/times/1';
         this.allTimesEndpoint = 'https://api.lo-calkitchen.com/times/1/1/0/1001';
         this.securityQuestionEndpoint = 'https://api.lo-calkitchen.com/securityquestions?Email=';
+        this.mailchimpEndpoint = 'https://us14.api.mailchimp.com/3.0/lists/1ab7655e84/members';
         this.siteId = 1;
         this.menuId = 1001;
         this.paymentTypeMap = {
