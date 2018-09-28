@@ -22,6 +22,7 @@ export class CheckoutReviewComponent implements OnInit {
   public errorData : any = {};
   public addressData : any;
   public bagTotalPrice : number;
+  public submitAttempted : boolean = false;
 
   constructor(
     private bagService: BagService,
@@ -73,7 +74,14 @@ export class CheckoutReviewComponent implements OnInit {
   }
 
   public putOrder(){
+    // Ensure time was selected
+    if(!this.selectedTime){
+      this.submitAttempted = true;
+      return;
+    }
+
     this.processing = true;
+
 
     this.orderService.putOrder(this.bagItems).subscribe(response => {
       // TODO: Error checking for other result codes
