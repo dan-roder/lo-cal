@@ -194,6 +194,21 @@ img{
   }
 }
 
+.required-message{
+  padding: 10px 20px 5px;
+
+  p{
+    margin: 0;
+    padding: 0;
+    @include fontsize(15);
+    color: $orange-red;
+  }
+
+  + .header{
+    padding: 10px 20px 30px;
+  }
+}
+
 .close{
   position: relative;
   width: 25px;
