@@ -54,7 +54,10 @@
             </div><!-- /.item -->
             <div class="red-button small-text">
               <div class="loading-gif button-size" *ngIf="processing"></div>
-              <button (click)="putOrder()" [disabled]="!timeForm.valid || !selectedTime" *ngIf="!processing">Proceed to Checkout</button>
+              <button (click)="putOrder()" [ngClass]="{'disabled' : !timeForm.valid || !selectedTime}" *ngIf="!processing">Proceed to Checkout</button>
+              <div class="required-message" *ngIf="submitAttempted && !selectedTime">
+                <p>Please select a pickup time.</p>
+              </div>
             </div>
           </div><!-- /.review-item-card -->
         </div>
@@ -66,7 +69,7 @@
             <div class="item-specifics">
               <div class="title semi-bold"><span class="quantity">{{ menuItem?.Quantity }} x</span> <span class="item-name">{{ menuItem?.Name }}</span></div>
               <div class="additions" *ngIf="menuItem?.Modifiers">
-                <span class="modifier" *ngFor="let mod of menuItem?.Modifiers">{{ mod?.Name }}</span>
+                <span class="modifier" *ngFor="let mod of menuItem?.Modifiers; let last = last;">{{ mod?.Name }}<span class="separator" *ngIf="!last">,</span></span>
               </div>
             </div>
             <div class="item-price">
@@ -77,7 +80,7 @@
             <div class="item-specifics">
               <div class="title semi-bold"><span class="quantity">{{ menuItem?.Quantity }} x</span> <span class="item-name">{{ menuItem?.Name }}</span></div>
               <div class="additions" *ngIf="menuItem?.Modifiers">
-                <span class="modifier" *ngFor="let mod of menuItem?.Modifiers">{{ mod?.Name }}</span>
+                <span class="modifier" *ngFor="let mod of menuItem?.Modifiers; let last = last;">{{ mod?.Name }}<span class="separator" *ngIf="!last">,</span></span>
               </div>
             </div>
             <div class="item-price">
@@ -108,7 +111,10 @@
 
             <div class="red-button full-width-button small-text">
               <div class="loading-gif button-size" *ngIf="processing"></div>
-              <button (click)="putOrder()" [disabled]="!timeForm.valid || !selectedTime" *ngIf="!processing">Proceed to Checkout</button>
+              <button (click)="putOrder()" [ngClass]="{'disabled' : !timeForm.valid || !selectedTime}" *ngIf="!processing">Proceed to Checkout</button>
+              <div class="required-message" *ngIf="submitAttempted && !selectedTime">
+                <p>Please select a pickup time.</p>
+              </div>
             </div>
           </div>
           <div class="location-details" [innerHtml]="addressData?.content?.rendered | safeHtml">
