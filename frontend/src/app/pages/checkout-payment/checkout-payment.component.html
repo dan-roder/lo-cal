@@ -181,7 +181,7 @@
             <div class="item-specifics">
               <div class="title semi-bold"><span class="quantity">{{ menuItem?.quantity }} x</span> <span class="item-name">{{ menuItem?.name }}</span></div>
               <div class="additions" *ngIf="menuItem?.modifiers">
-                <span class="modifier" *ngFor="let mod of menuItem?.modifiers">{{ mod?.name }}</span>
+                <span class="modifier" *ngFor="let mod of menuItem?.modifiers; let last = last;">{{ mod?.name }}<span class="separator" *ngIf="!last">,</span></span>
               </div>
             </div>
             <div class="item-price">
