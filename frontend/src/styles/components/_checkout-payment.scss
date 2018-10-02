@@ -106,12 +106,9 @@
             @include svg-bg(svgs/checkmark);
           }
 
-          // &:focus + span::after{
-          //   content: '\0020\2190';
-          //   font-size: 1.5em;
-          //   line-height: 1;
-          //   vertical-align: -0.125em;
-          // }
+          &:focus + span::before{
+            box-shadow: 0 0 2px 2px #86BFFD;
+          }
         }
 
         span{
