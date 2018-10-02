@@ -6,7 +6,7 @@
       <div class="left-pane">
         <div class="step">
           <div class="inner-step-wrapper">
-            <div class="step-heading" (click)="editSection(1)">1. Pickup</div>
+            <div class="step-heading" (click)="editSection(1, $event.type)" (focus)="editSection(1, $event.type)" tabindex="0">1. Pickup</div>
             <div class="step-wrapper" [hidden]="sectionOpen !== 1">
               <form action="" class="lo-cal-form" [formGroup]="pickupForm">
                 <div class="response">
@@ -55,7 +55,7 @@
         </div><!-- /.step -->
         <div class="step">
           <div class="inner-step-wrapper">
-            <div class="step-heading" (click)="editSection(2)">2. Contact Information</div>
+            <div class="step-heading" (click)="editSection(2, $event.type)" (focus)="editSection(2, $event.type)" tabindex="0">2. Contact Information</div>
             <div class="step-wrapper" [hidden]="sectionOpen !== 2">
               <form action="" class="lo-cal-form" [formGroup]="contactInfoForm">
                 <div class="form-section half-and-half">
@@ -90,7 +90,7 @@
         </div><!-- /.step -->
         <div class="step">
           <div class="inner-step-wrapper">
-            <div class="step-heading" (click)="editSection(3)">3. Payment</div>
+            <div class="step-heading" (click)="editSection(3, $event.type)" (focus)="editSection(3, $event.type)" tabindex="0">3. Payment</div>
             <div class="step-wrapper" [hidden]="sectionOpen !== 3">
               <form action="" class="lo-cal-form" [formGroup]="paymentForm">
                 <div class="saved-payment-wrapper">
@@ -159,14 +159,14 @@
         </div><!-- /.step -->
         <div class="step step-4">
           <div class="inner-step-wrapper">
-            <div class="step-heading">4. Place Your Order</div>
+            <div class="step-heading" tabindex="0">4. Place Your Order</div>
             <div class="step-wrapper">
               <p class="question semi-bold">Your total: {{ currentOrder?.TotalAmount | currency }}</p>
             </div>
             <div class="red-button small-text" [ngClass]="processing ? 'loading' : ''">
               <div class="loading-gif button-size" *ngIf="processing"></div>
               <p>{{ orderResultForTesting }}</p>
-              <button [disabled]="(!pickupForm.valid || (!paymentForm.valid && (paymentChoice !== '3')) || !contactInfoForm.valid) && !processing" *ngIf="!processing" (click)="submitOrder()">Place Order Now</button>
+              <button [disabled]="(!pickupForm.valid || (!paymentForm.valid && (paymentChoice !== '3')) || !contactInfoForm.valid) && !processing" *ngIf="!processing" (click)="submitOrder()" tabindex="0">Place Order Now</button>
             </div>
             <p class="terms-and-conditions small-text">
               By placing your order you agree to our Terms of Conditions. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vehicula ac orci sed venenatis. Phasellus venenatis blandit nulla non pretium. Sed id metus non nisi pulvinar dictum.
