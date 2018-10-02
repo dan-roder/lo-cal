@@ -194,9 +194,19 @@
     }
 
     .ingredients{
-      @include fontsize(18);
-      @extend %sofia-light;
-      margin: 15px 0;
+      p{
+        @include fontsize(18);
+        @extend %sofia-light;
+        margin: 15px 0;
+      }
+    }
+
+    .item-additions{
+      p{
+        @include fontsize(15);
+        @extend %sofia-light;
+        margin: 10px 0;
+      }
     }
 
     .fine-details{
