@@ -62,6 +62,7 @@ export class SubMenuComponent implements OnInit {
 
       this.menuService.getSubMenuItems(this.subMenuId).subscribe(subMenuItems => {
         this.subMenuItems = subMenuItems;
+        console.log(subMenuItems);
       });
     });
 
