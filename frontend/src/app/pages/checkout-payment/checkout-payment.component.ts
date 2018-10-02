@@ -66,6 +66,8 @@ export class CheckoutPaymentComponent implements OnInit {
       if(customer.CustomerId){
         this.customerService.getSavedPayments(customer.CustomerId).subscribe(savedPayments => {
           this.savedPaymentMethods = savedPayments;
+        }, error => {
+          console.log(error);
         });
       }
     })
@@ -81,8 +83,13 @@ export class CheckoutPaymentComponent implements OnInit {
     });
   }
 
-  public editSection(num: number){
-    this.sectionOpen = (this.sectionOpen === num) ? -1 : num;
+  public editSection(num: number, $event: string){
+    if($event === 'focus' && this.sectionOpen === num){
+      return
+    }
+    else{
+      this.sectionOpen = (this.sectionOpen === num) ? -1 : num;
+    }
   }
 
   public nextStep(){
