@@ -76,7 +76,6 @@ export class MenuCustomizeComponent implements OnInit {
         }
       }
 
-      // TODO: If item's add on price is 0, don't include as part of maximum selections (this could be a pain)
       this.customizationData[modGroup.$id]['currentlySelected'].push(modifierClicked);
       this.customizationData[modGroup.$id].modifiers[modifierClicked.$id]['quantity'] += 1;
       // Add to basic array for displaying near item description
