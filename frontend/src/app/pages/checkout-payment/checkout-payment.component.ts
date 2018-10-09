@@ -33,6 +33,8 @@ export class CheckoutPaymentComponent implements OnInit {
   public savedPaymentChoice : string;
   public orderResultForTesting : any;
   public cardNumber: string = '';
+  public pickupTimeError: boolean = false;
+  public genericOrderError: boolean = false;
 
   constructor(private orderService: OrderService, private fb: FormBuilder, private constants: Config, private customerService: CustomerService, private router: Router, private localStorage: LocalStorage, private wpService: WordpressService) {
     this.contactInfoForm = fb.group({
@@ -137,17 +139,6 @@ export class CheckoutPaymentComponent implements OnInit {
     this.orderService.submitOrder(finalOrderForSubmission, this.currentOrder.OrderId).subscribe(orderResults => {
       this.orderResultForTesting = orderResults.ResultCode;
 
-      switch(orderResults.ResultCode){
-        // ResultCode 0: Success
-        // ResultCode 4: PromiseTimeChanged (possibly when order isn't completed within a certain timeframe)
-        case 0 | 4:
-        break;
-        // Error 150: Promise Time Exceeded
-        case 150:
-
-        break;
-      }
-
       // TODO: At the current point in time this is only reached if we get a successful API response
       if(orderResults.ResultCode == 0 || orderResults.ResultCode == 4){
         this.saveOrderAndRedirect(orderResults);
@@ -156,7 +147,18 @@ export class CheckoutPaymentComponent implements OnInit {
         this.wpService.logError('Payment Order Error: ' + JSON.stringify(orderResults)).subscribe((result) => {console.log('error:' + result)});
       }
     }, error => {
-      console.log(error);
+      this.processing = false;
+      console.log(error.error);
+
+      switch(+error.error.error_code){
+        case 150:
+          this.pickupTimeError = true;
+        break;
+        default:
+          this.genericOrderError = true;
+        break;
+      }
+
       this.wpService.logError('Payment Order Error: ' + JSON.stringify(error)).subscribe((result) => {console.log('error:' + result)});
     });
   }
