@@ -2,7 +2,10 @@
   <div class="basic-page-content center">
     <h1>Complete Your Order</h1>
 
-    <div class="checkout-wrapper">
+    <div class="form-errors" *ngIf="pickupTimeError"><p>Your scheduled pickup time is no longer valid. Please <a routerLink="/checkout/review">go back</a> to choose a new time.</p></div>
+
+    <div class="checkout-wrapper" *ngIf="!pickupTimeError">
+      <div class="form-errors" *ngIf="genericOrderError"><p>We're sorry. An unknown error occurred. Please try again and if this error persists please contact us at </p></div>
       <div class="left-pane">
         <div class="step">
           <div class="inner-step-wrapper">
@@ -166,11 +169,11 @@
             <div class="red-button small-text" [ngClass]="processing ? 'loading' : ''">
               <div class="loading-gif button-size" *ngIf="processing"></div>
               <p>{{ orderResultForTesting }}</p>
-              <button [disabled]="(!pickupForm.valid || (!paymentForm.valid && (paymentChoice !== '3')) || !contactInfoForm.valid) && !processing" *ngIf="!processing" (click)="submitOrder()" tabindex="0">Place Order Now</button>
+              <button [disabled]="(!pickupForm.valid || (!paymentForm.valid && (paymentChoice !== '3')) || !contactInfoForm.valid) && !processing && !pickupTimeError" *ngIf="!processing" (click)="submitOrder()" tabindex="0">Place Order Now</button>
             </div>
-            <p class="terms-and-conditions small-text">
+            <!-- <p class="terms-and-conditions small-text">
               By placing your order you agree to our Terms of Conditions. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vehicula ac orci sed venenatis. Phasellus venenatis blandit nulla non pretium. Sed id metus non nisi pulvinar dictum.
-            </p>
+            </p> -->
           </div><!-- /. inner-step-wrapper -->
         </div><!-- /.step -->
       </div><!-- /.left-pane -->
