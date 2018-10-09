@@ -1,0 +1,71 @@
+.allergen-wrapper{
+  position: relative;
+
+  span.allergen{
+    background: $e1;
+    border-radius: 50%;
+    width: 35px;
+    height: 30px;
+    padding: 5px 0 0;
+    display: inline-block;
+    text-align: center;
+    margin: 0 2px;
+
+    .customization-category &{
+      @include fontsize(12);
+      width: 20px;
+      height: 20px;
+      padding: 0;
+    }
+
+    &:after{
+      display: none;
+      content: '';
+      width: 12px;
+      height: 12px;
+      background: $devils-grey;
+      transform: rotate(45deg);
+      top: -24px;
+      left: 0;
+      right: 0;
+      margin: 0 auto;
+      position: absolute;
+
+      .customization-category &{
+        top: -15px;
+      }
+    }
+  }
+
+  .rollover{
+    position: absolute;
+    width: auto;
+    white-space: nowrap;
+    right: 0;
+    top: -60px;
+    padding: 10px;
+    background: $devils-grey;
+    color: $white;
+    @include fontsize(15);
+    display: none;
+
+    .customization-category &{
+      @include fontsize(13);
+      left: 0;
+      right: auto;
+      top: -48px;
+    }
+  }
+
+  &:hover{
+    .rollover{
+      display: block;
+    }
+
+    span.allergen{
+      &:after{
+        display: inline-block;
+      }
+    }
+  }
+}
