@@ -31,6 +31,9 @@
                   <div class="additions" *ngIf="menuItem?.Modifiers">
                     <span class="modifier" *ngFor="let mod of menuItem?.Modifiers; let last = last;">{{ mod?.Name }}<span class="separator" *ngIf="!last">,</span> </span>
                   </div>
+                  <div class="special-instructions" *ngIf="menuItem?.SpecialInstructions">
+                    <p>{{ menuItem?.SpecialInstructions }}</p>
+                  </div>
                   <div class="fine-details">
                     <span class="price">{{ menuItem?.ExtendedPrice | currency }}</span>
                     <span class="calories" *ngIf="menuItem?.caloricValue">{{ menuItem?.caloricValue }} cal</span>
