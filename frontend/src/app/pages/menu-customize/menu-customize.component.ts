@@ -178,6 +178,7 @@ export class MenuCustomizeComponent implements OnInit {
     // Temporarily adding cart image to object so it's visible in cart
     menuItem['cartImage'] = (this.itemContent[0].acf !== undefined && this.itemContent[0].acf.cart_image !== undefined) ? this.itemContent[0].acf.cart_image.url : '//via.placeholder.com/160x240';
     menuItem['caloricValue'] = this.calorieCount;
+    menuItem['SpecialInstructions'] = this.specialInstructions;
 
     // Push full object to bag service
     this.bagService.createLineItem(menuItem);
