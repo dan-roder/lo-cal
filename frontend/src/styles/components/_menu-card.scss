@@ -162,7 +162,7 @@
     justify-content: space-between;
 
     .quantity{
-      @include fontsize(16);
+      @include fontsize(14);
     }
 
     .edit{
@@ -176,6 +176,14 @@
   .title{
     @extend %sofia-semi-bold;
     text-transform: uppercase;
+    @include fontsize(14);
+  }
+
+  .special-instructions{
+    p{
+      @include fontsize(13);
+      margin: 0;
+    }
   }
 
   .ingredients{
@@ -207,6 +215,7 @@
       height: 20px;
       display: inline-block;
       text-align: center;
+      margin: 0 1px;
     }
   }
 
