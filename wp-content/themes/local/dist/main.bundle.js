@@ -3382,10 +3382,17 @@ var SubMenuComponent = /** @class */ (function () {
             // TODO: Find alternative placeholder image for submenu pages
             _this.featuredImage = (post[0].featured_media !== 0) ? post[0]._embedded['wp:featuredmedia'][0].media_details.sizes.full.source_url : '//via.placeholder.com/1440x500';
             _this.featuredImageAlt = (post[0].featured_media !== 0) ? post[0]._embedded['wp:featuredmedia'][0].alt_text : post[0].title.rendered;
-            _this.menuService.getSubMenuItems(_this.subMenuId).subscribe(function (subMenuItems) {
-                _this.subMenuItems = subMenuItems;
-                console.log(subMenuItems);
-            });
+            // If the menu service is still holding onto the same submenu items, don't call for them again
+            if (_this.menuService.subMenuId !== _this.subMenuId) {
+                _this.menuService.getSubMenuItems(_this.subMenuId).subscribe(function (subMenuItems) {
+                    _this.menuService.subMenuItems = subMenuItems;
+                    _this.menuService.subMenuId = _this.subMenuId;
+                    _this.subMenuItems = subMenuItems;
+                });
+            }
+            else {
+                _this.subMenuItems = _this.menuService.subMenuItems;
+            }
         });
         if (this.menuMap === undefined) {
             this.wpService.getMenuMapObject().subscribe(function (menuMap) {
@@ -4207,6 +4214,8 @@ var MenuService = /** @class */ (function () {
             return menu;
         });
     };
+    MenuService.prototype.saveSubMenuItems = function () {
+    };
     MenuService.prototype.getMenuItemDetails = function (_menuItemId) {
         return this.get("menu-item/" + _menuItemId);
     };
@@ -4221,6 +4230,26 @@ var MenuService = /** @class */ (function () {
         var url = this.config.railsMenuApi + '/' + apiMethod;
         return this.httpClient.get(url);
     };
+    Object.defineProperty(MenuService.prototype, "subMenuId", {
+        get: function () {
+            return this._subMenuId;
+        },
+        set: function (id) {
+            this._subMenuId = id;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(MenuService.prototype, "subMenuItems", {
+        get: function () {
+            return this._subMenuItems;
+        },
+        set: function (items) {
+            this._subMenuItems = items;
+        },
+        enumerable: true,
+        configurable: true
+    });
     MenuService = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__local_utils_constants__["a" /* Config */], __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["a" /* HttpClient */]])
