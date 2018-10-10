@@ -38,7 +38,7 @@ export class Config {
   public cardClassMap = {
     0 : 'unknown',
     1 : 'visa',
-    2 : 'master-card',
+    2 : 'mastercard',
     3 : 'american-express',
     4 : 'discover',
     5 : 'diners-club',
