@@ -16,7 +16,7 @@ import * as _ from 'lodash';
 @AutoUnsubscribe()
 
 export class SubMenuComponent implements OnInit {
-  private subMenuId: number = null;
+  private subMenuId: string = null;
   public pageContent : IPost;
   public acf : any;
   public subMenuItems: any;
@@ -60,10 +60,17 @@ export class SubMenuComponent implements OnInit {
       this.featuredImage = (post[0].featured_media !== 0) ? post[0]._embedded['wp:featuredmedia'][0].media_details.sizes.full.source_url : '//via.placeholder.com/1440x500';
       this.featuredImageAlt = (post[0].featured_media !== 0) ? post[0]._embedded['wp:featuredmedia'][0].alt_text : post[0].title.rendered;
 
-      this.menuService.getSubMenuItems(this.subMenuId).subscribe(subMenuItems => {
-        this.subMenuItems = subMenuItems;
-        console.log(subMenuItems);
-      });
+      // If the menu service is still holding onto the same submenu items, don't call for them again
+      if(this.menuService.subMenuId !== this.subMenuId){
+        this.menuService.getSubMenuItems(this.subMenuId).subscribe(subMenuItems => {
+          this.menuService.subMenuItems = subMenuItems;
+          this.menuService.subMenuId = this.subMenuId;
+          this.subMenuItems = subMenuItems;
+        });
+      }
+      else{
+        this.subMenuItems = this.menuService.subMenuItems;
+      }
     });
 
     if(this.menuMap === undefined){
