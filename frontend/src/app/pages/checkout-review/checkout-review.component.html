@@ -2,7 +2,8 @@
   <div class="basic-page-content center">
     <h1>Review Your Order</h1>
     <div class="form-errors text-left" *ngIf="errorData?.error"><p>{{ errorData?.error }}</p></div>
-    <div class="checkout-wrapper">
+    <div class="form-errors text-left" *ngIf="bagItems.length === 0"><p>There is currently nothing in your bag. Please return to <a routerLink="/menu">our menu</a>.</p></div>
+    <div class="checkout-wrapper" *ngIf="bagItems.length > 0">
       <div class="left-pane">
         <div class="items">
           <div class="review-item-card">
