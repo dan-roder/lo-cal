@@ -15,7 +15,8 @@ export class MenuCustomizeComponent implements OnInit {
   public quantity: number = 1;
   public itemContent : any;
   public menuItemDetails : any;
-  public salesItemDetails : SalesItem;
+  private salesItemDetails : SalesItem;
+  public orderedSalesItemDetails : SalesItem;
   public multipleSalesItems : Array<SalesItem> = [];
   private _itemPrice : number;
   private _totalPrice : number;
@@ -195,7 +196,6 @@ export class MenuCustomizeComponent implements OnInit {
 
   private getMenuItemDetails( menuItemId ){
     this.menuService.getMenuItemDetails(menuItemId).subscribe(menuItemDetails => {
-      console.log(menuItemDetails);
       // Set necessary variables for template rendering
       this.menuItemDetails = menuItemDetails;
 
@@ -225,7 +225,8 @@ export class MenuCustomizeComponent implements OnInit {
           defaults = this.salesItemDetails.DefaultOptions;
         }
 
-        this.registerCustomizationVariables( this.salesItemDetails.ModGroups, defaults );
+        this.orderedSalesItemDetails = this.orderModifierGroups( this.salesItemDetails.ModifierGroups, this.salesItemDetails.ModGroups );
+        this.registerCustomizationVariables( this.orderedSalesItemDetails, defaults );
       }
     });
   }
@@ -235,7 +236,8 @@ export class MenuCustomizeComponent implements OnInit {
     let tempObj = new Object();
     let reqMods = new Array;
 
-    _.forEach(allModifiers, function(modifierGroup, modGroupKey){
+    _.forEach(allModifiers, (modifierGroup) => {
+
       // Create new object to store values in
       let modObject = new Object();
       modObject['maximumItems'] = (modifierGroup.MaximumItems === 0) ? 'unlimited' : modifierGroup.MaximumItems;
@@ -271,6 +273,28 @@ export class MenuCustomizeComponent implements OnInit {
     this.requiredModifierGroups = reqMods;
   }
 
+  private orderModifierGroups(orderGroup, detailGroup){
+    let orderArr = _.values(orderGroup);
+
+    // Sort the modifier groups
+    let sortedCollection = _.sortBy(detailGroup, function(item){
+      return orderGroup.indexOf(item.ModifierGroupId)
+    });
+
+    // Sort modifiers in groups
+    _.forEach(detailGroup, modGroup => {
+      let modOrder = _.values(modGroup.Modifiers);
+
+      let sortedGroup = _.sortBy(modGroup.Mods, (item) => {
+        return modOrder.indexOf(item.ModifierId);
+      })
+
+      modGroup.Mods = sortedGroup;
+    });
+
+    return sortedCollection;
+  }
+
   public updateDataPerSize(salesId: string){
     this.salesItemDetails = _.find(this.menuItemDetails.salesItems, {'SalesItemId': +salesId});
     this.calorieCount = +this.salesItemDetails.CaloricValue;
@@ -285,6 +309,7 @@ export class MenuCustomizeComponent implements OnInit {
         defaults = this.salesItemDetails.DefaultOptions;
       }
 
+      this.orderedSalesItemDetails = this.orderModifierGroups( this.salesItemDetails.ModifierGroups, this.salesItemDetails.ModGroups );
       this.registerCustomizationVariables( this.salesItemDetails.ModGroups, defaults );
     }
 
