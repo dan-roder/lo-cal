@@ -18,6 +18,7 @@
                   <p class="additions small-text" *ngIf="lineItem?.modifiers">
                     <span class="modifier" *ngFor="let mod of lineItem?.modifiers; let last = last;">{{ mod?.name }}<span class="separator" *ngIf="!last">, </span></span>
                   </p>
+                  <p class="special-instructions" *ngIf="lineItem?.specialInstructions">{{ lineItem?.specialInstructions }}</p>
                 </div>
                 <div class="item-price">
                   <span class="price">{{ lineItem?.fullPrice | currency }}</span>
