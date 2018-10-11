@@ -84,7 +84,7 @@ export class CheckoutReviewComponent implements OnInit {
 
 
     this.orderService.putOrder(this.bagItems).subscribe(response => {
-      // TODO: Error checking for other result codes
+
       if(response.ResultCode === 0 || response.ResultCode === 4){
         // Save to LocalStorage and route to checkout
         this.orderService.saveOrderToLocalStorage(response).subscribe(result => {
@@ -98,6 +98,10 @@ export class CheckoutReviewComponent implements OnInit {
         this.errorData.error = "We're sorry. There was an error placing your order. Please try again."
         this.wpService.logError('Put Order Error: ' + JSON.stringify(response)).subscribe(() => {});
       }
+    }, error => {
+      this.processing = false;
+      this.errorData.error = "We're sorry. There was an error placing your order. Please try again."
+      this.wpService.logError('Put Order Error: ' + JSON.stringify(error)).subscribe(() => {});
     });
   }
 
