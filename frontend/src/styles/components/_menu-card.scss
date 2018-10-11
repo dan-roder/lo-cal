@@ -313,7 +313,13 @@
   }// .item
 
   .review-item-card{
+    .image{
+      width: 15%;
+    }
+
     .bag-detail-card{
+      width: 85%;
+
       .details{
         > span{
           border-left: 1px solid $c;
