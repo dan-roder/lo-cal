@@ -18,6 +18,11 @@
     p.additions{
       margin: 0;
     }
+
+    p.special-instructions{
+      @include fontsize(13);
+      margin: 0;
+    }
   }
 
   .line-items{
