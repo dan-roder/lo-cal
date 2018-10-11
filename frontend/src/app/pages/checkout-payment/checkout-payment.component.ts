@@ -310,7 +310,7 @@ export class CheckoutPaymentComponent implements OnInit {
     return vehicleInfo;
   }
 
-  // TODO/Maybe: Only if you're able to save more than 1 card
+  // Currently not in use as API doesn't seem to allow for multiple saved payments
   public whichPayment(value){
     console.log(value);
   }
