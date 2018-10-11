@@ -29,7 +29,7 @@ export class BagComponent implements OnInit {
   public itemsInBagCounter : number = 0;
 
 
-  constructor(private bagService: BagService, private orderService: OrderService, private router: Router) { }
+  constructor(private bagService: BagService, private router: Router) { }
 
   ngOnInit() {
     this.bagCount = this.bagService.itemCountInBag;
@@ -38,14 +38,12 @@ export class BagComponent implements OnInit {
   toggleBagState(target){
     if(target !== undefined){
       if(target.className !== undefined && target.className.indexOf('checkout-overlay') !== -1){
-        this.state = (this.state === 'invisible') ? 'visible' : 'invisible';
-        this.bagState.emit(this.state);
+        this.bagService.toggleBagState();
       }
 
       return;
     }
-    this.state = (this.state === 'invisible') ? 'visible' : 'invisible';
-    this.bagState.emit(this.state);
+    this.bagService.toggleBagState();
   }
 
   public removeFromBagAtIndex( index ){
@@ -64,6 +62,11 @@ export class BagComponent implements OnInit {
   get bagTotalPrice(): number{
     // TODO: Bag price at one point after placing an order and then adding a new item to the cart was displaying a very inflated price. need to ensure this works correctly
     return this.bagService.totalPrice;
+  }
+
+  public goToCheckout(){
+    this.bagService.toggleBagState();
+    this.router.navigateByUrl('/checkout/review');
   }
 
 }

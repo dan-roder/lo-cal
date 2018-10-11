@@ -14,7 +14,7 @@ export class MainLayoutComponent implements OnInit {
   public mainMenuLinks: any;
   public currentUrl : any;
   public openBag: EventEmitter<any> = new EventEmitter<any>();
-  public bagState: string = 'invisible';
+  public _bagState: string = 'invisible';
   public _numberOfItemsInBag : number = 0;
   public _bagItems : Array<LineItem> = [];
   public mobileMenuState: string = 'mobileMenuClosed';
@@ -33,7 +33,7 @@ export class MainLayoutComponent implements OnInit {
 
   toggleBagState(){
     if(this.numberOfItemsInBag > 0){
-      this.bagState = (this.bagState === 'invisible') ? 'visible' : 'invisible';
+      this.bagService.toggleBagState();
     }
   }
 
@@ -46,6 +46,10 @@ export class MainLayoutComponent implements OnInit {
       return;
     }
     this.mobileMenuState = (this.mobileMenuState === 'mobileMenuClosed') ? 'mobileMenuOpen' : 'mobileMenuClosed';
+  }
+
+  get bagState(): string{
+    return this.bagService.bagState;
   }
 
   get bagItems() : Array<LineItem>{

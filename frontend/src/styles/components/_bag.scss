@@ -224,6 +224,7 @@
     margin: 15px 0;
 
     a{
+      cursor: pointer;
       display: block;
       padding: 15px;
       @include fontsize(16);

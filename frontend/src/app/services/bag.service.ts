@@ -10,6 +10,7 @@ export class BagService {
   public _itemsInBag : Array<LineItem> = [];
   public _itemCountInBag : number = 0;
   private _totalPrice : number;
+  public _bagState : string = 'invisible';
 
   constructor(protected localStorage: LocalStorage) {
     this.localStorage.getItem('bag').subscribe(bagItemsFromLocalStorage => {
@@ -45,6 +46,7 @@ export class BagService {
     this.saveToLocalStorage();
 
     lineItem = null;
+    this.toggleBagState();
   }
 
   public quickAddLineItem( passedMenuItem ){
@@ -68,6 +70,7 @@ export class BagService {
     this.saveToLocalStorage();
 
     lineItem = null;
+    this.toggleBagState();
   }
 
   public orderItemAgain( lineItem: LineItem ){
@@ -131,6 +134,18 @@ export class BagService {
     });
 
     this._totalPrice = value;
+  }
+
+  public toggleBagState(){
+    this.bagState = (this.bagState === 'invisible') ? 'visible' : 'invisible';
+  }
+
+  get bagState(): string{
+    return this._bagState;
+  }
+
+  set bagState(state: string){
+    this._bagState = state;
   }
 
   get itemCountInBag() : number{
