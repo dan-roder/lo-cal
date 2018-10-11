@@ -1,9 +1,6 @@
 <section class="account-section">
   <header class="account-heading" *ngIf="canSeeOrder">
     <h3>Order #{{ orderDetails?.OrderId }}</h3>
-    <div class="red-button small-text">
-      <button (click)="addOrderToBag()">Order Again</button>
-    </div>
   </header>
   <header class="account-heading" *ngIf="!canSeeOrder">
     <h3>We're Sorry</h3>
