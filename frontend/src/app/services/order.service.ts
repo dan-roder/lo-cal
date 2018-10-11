@@ -113,6 +113,8 @@ export class OrderService {
       let initialPrice = value.UnitPrice;
       let addOnPrice = 0;
       let modArray = Array();
+      let specialInstructions = value.SpecialInstructions;
+
       _.forEach(value.Modifiers, function(value, key){
         addOnPrice += (value.UnitPrice > 0 && value.FreeQuantity === 0) ? value.UnitPrice : 0;
         let modOject = {
@@ -125,7 +127,8 @@ export class OrderService {
         'name' : value.Name,
         'fullPrice' : finalPrice,
         'quantity' : value.Quantity,
-        'modifiers' : modArray
+        'modifiers' : modArray,
+        'specialInstructions' : specialInstructions
       }
       orderArray.push(obj);
     });
