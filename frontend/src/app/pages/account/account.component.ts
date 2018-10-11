@@ -152,7 +152,6 @@ export class AccountComponent implements OnInit {
       // Disable the select again
       this.accountForm.controls['full-address']['controls']['state'].disable();
 
-      // TODO: Customer Address does not save to lo-cal api
       this.customerService.updateCustomerInfo(updateCustomer).subscribe(data => {
         this.customerService.getCustomerInfo(this.customerId).subscribe(updatedCustomerInfo => {
           this.patchAccountForm(updatedCustomerInfo);
