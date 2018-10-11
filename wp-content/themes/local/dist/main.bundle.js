@@ -939,7 +939,7 @@ var MainLayoutComponent = /** @class */ (function () {
         this.localStorage = localStorage;
         this.router = router;
         this.openBag = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
-        this.bagState = 'invisible';
+        this._bagState = 'invisible';
         this._numberOfItemsInBag = 0;
         this._bagItems = [];
         this.mobileMenuState = 'mobileMenuClosed';
@@ -951,7 +951,7 @@ var MainLayoutComponent = /** @class */ (function () {
     };
     MainLayoutComponent.prototype.toggleBagState = function () {
         if (this.numberOfItemsInBag > 0) {
-            this.bagState = (this.bagState === 'invisible') ? 'visible' : 'invisible';
+            this.bagService.toggleBagState();
         }
     };
     MainLayoutComponent.prototype.toggleMobileMenuState = function (target) {
@@ -964,6 +964,13 @@ var MainLayoutComponent = /** @class */ (function () {
         }
         this.mobileMenuState = (this.mobileMenuState === 'mobileMenuClosed') ? 'mobileMenuOpen' : 'mobileMenuClosed';
     };
+    Object.defineProperty(MainLayoutComponent.prototype, "bagState", {
+        get: function () {
+            return this.bagService.bagState;
+        },
+        enumerable: true,
+        configurable: true
+    });
     Object.defineProperty(MainLayoutComponent.prototype, "bagItems", {
         get: function () {
             return this.bagService.itemsInBag;
@@ -1160,7 +1167,6 @@ var AccountComponent = /** @class */ (function () {
             };
             // Disable the select again
             this.accountForm.controls['full-address']['controls']['state'].disable();
-            // TODO: Customer Address does not save to lo-cal api
             this.customerService.updateCustomerInfo(updateCustomer).subscribe(function (data) {
                 _this.customerService.getCustomerInfo(_this.customerId).subscribe(function (updatedCustomerInfo) {
                     _this.patchAccountForm(updatedCustomerInfo);
@@ -1830,7 +1836,7 @@ var CheckoutPaymentComponent = /** @class */ (function () {
         };
         return vehicleInfo;
     };
-    // TODO/Maybe: Only if you're able to save more than 1 card
+    // Currently not in use as API doesn't seem to allow for multiple saved payments
     CheckoutPaymentComponent.prototype.whichPayment = function (value) {
         console.log(value);
     };
@@ -1851,7 +1857,7 @@ var CheckoutPaymentComponent = /** @class */ (function () {
 /***/ "./src/app/pages/checkout-review/checkout-review.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"basic-page-container checkout-review\">\n  <div class=\"basic-page-content center\">\n    <h1>Review Your Order</h1>\n    <div class=\"form-errors text-left\" *ngIf=\"errorData?.error\"><p>{{ errorData?.error }}</p></div>\n    <div class=\"checkout-wrapper\">\n      <div class=\"left-pane\">\n        <div class=\"items\">\n          <div class=\"review-item-card\">\n            <div class=\"item clearfix\" *ngFor=\"let menuItem of bagItems; let i = index;\">\n              <div class=\"item-review-wrapper\">\n                <div class=\"left image\">\n                  <img [src]=\"menuItem?.cartImage\" alt=\"\" class=\"item-image\">\n                  <img src=\"/wp-content/themes/local/dist/assets/svgs/delete-cross-icon.svg\" alt=\"X to remove item from cart\" class=\"remove-image\" (click)=\"removeFromBagAtIndex(i)\">\n                </div>\n                <div class=\"bag-detail-card\">\n                  <div class=\"title-container\">\n                    <div class=\"title\">{{ menuItem?.Name }} <span class=\"quantity\">x {{ menuItem?.Quantity }}</span></div>\n                  </div>\n                  <div class=\"ingredients\" *ngIf=\"menuItem?.ShortDescription !== undefined\">\n                    {{ (menuItem?.ShortDescription | allergens)?.description }}\n                  </div>\n                  <div class=\"additions\" *ngIf=\"menuItem?.Modifiers\">\n                    <span class=\"modifier\" *ngFor=\"let mod of menuItem?.Modifiers; let last = last;\">{{ mod?.Name }}<span class=\"separator\" *ngIf=\"!last\">,</span></span>\n                  </div>\n                  <div class=\"details-and-edit\">\n                    <div class=\"details\">\n                      <span class=\"price\">{{ menuItem?.ExtendedPrice | currency }}</span>\n                      <span class=\"calories\" *ngIf=\"menuItem?.caloricValue\">{{ menuItem?.caloricValue }} cal</span>\n                      <span class=\"allergens\" *ngIf=\"(menuItem?.ShortDescription.indexOf('[') > -1)\">\n                        <span class=\"allergen\" *ngFor=\"let allergen of (menuItem?.ShortDescription | allergens).allergens\">{{ allergen }}</span>\n                      </span>\n                    </div>\n                    <div class=\"edit\">\n                      <a tabindex=\"0\" (click)=\"editItemAtIndex(i)\" (keyup.enter)=\"editItemAtIndex(i)\" role=\"button\">EDIT</a>\n                    </div>\n                  </div><!-- /. details-and-edit -->\n                </div><!-- /.bag-detail-card -->\n              </div><!-- /.item-review-wrapper -->\n              <div class=\"edit-pane\" [hidden]=\"isOpen !== i\">\n                <div class=\"edit-pane-wrapper\">\n                  <div class=\"quantity-selector\">\n                    <div class=\"quantity-changer\">\n                      <span class=\"quantity-text\">Quantity</span>\n                      <span class=\"minus\" (click)=\"decrementQuantity(menuItem)\">-</span>\n                      <span class=\"quantity\">{{ menuItem?.Quantity }}</span>\n                      <span class=\"plus\" (click)=\"incrementQuantity(menuItem)\">+</span>\n                    </div>\n                  </div>\n                  <div class=\"customize-this\">\n                    <p><a routerLink=\"/\">Go back to customize this item</a></p>\n                  </div>\n                </div>\n              </div><!-- /.edit-pane -->\n            </div><!-- /.item -->\n            <div class=\"red-button small-text\">\n              <div class=\"loading-gif button-size\" *ngIf=\"processing\"></div>\n              <button (click)=\"putOrder()\" [ngClass]=\"{'disabled' : !timeForm.valid || !selectedTime}\" *ngIf=\"!processing\">Proceed to Checkout</button>\n              <div class=\"required-message\" *ngIf=\"submitAttempted && !selectedTime\">\n                <p>Please select a pickup time.</p>\n              </div>\n            </div>\n          </div><!-- /.review-item-card -->\n        </div>\n      </div>\n      <div class=\"order-summary\">\n        <div class=\"itemized-summary\">\n          <h4>Order Summary</h4>\n          <div class=\"item flex-between\" *ngFor=\"let menuItem of bagItems\">\n            <div class=\"item-specifics\">\n              <div class=\"title semi-bold\"><span class=\"quantity\">{{ menuItem?.Quantity }} x</span> <span class=\"item-name\">{{ menuItem?.Name }}</span></div>\n              <div class=\"additions\" *ngIf=\"menuItem?.Modifiers\">\n                <span class=\"modifier\" *ngFor=\"let mod of menuItem?.Modifiers; let last = last;\">{{ mod?.Name }}<span class=\"separator\" *ngIf=\"!last\">,</span></span>\n              </div>\n            </div>\n            <div class=\"item-price\">\n              <span class=\"price\">{{ menuItem?.ExtendedPrice | currency }}</span>\n            </div>\n          </div>\n          <div class=\"item flex-between\" *ngFor=\"let menuItem of allOrderDetails?.LineItems\">\n            <div class=\"item-specifics\">\n              <div class=\"title semi-bold\"><span class=\"quantity\">{{ menuItem?.Quantity }} x</span> <span class=\"item-name\">{{ menuItem?.Name }}</span></div>\n              <div class=\"additions\" *ngIf=\"menuItem?.Modifiers\">\n                <span class=\"modifier\" *ngFor=\"let mod of menuItem?.Modifiers; let last = last;\">{{ mod?.Name }}<span class=\"separator\" *ngIf=\"!last\">,</span></span>\n              </div>\n            </div>\n            <div class=\"item-price\">\n              <span class=\"price\">{{ menuItem?.ExtendedPrice | currency }}</span>\n            </div>\n          </div>\n          <div class=\"flex-between subtotal\">\n            <span class=\"label\">Subtotal</span>\n            <span class=\"value\">{{ totalBagPrice | currency }}</span>\n          </div>\n        </div><!-- /.itemized-summary -->\n        <div class=\"pricing-and-location\">\n          <div class=\"pricing-details\">\n            <form action=\"\" class=\"lo-cal-form\" [formGroup]=\"timeForm\">\n              <label for=\"pickup-time\" class=\"pickup-time-label\">Select a time to pickup your order?</label>\n              <select name=\"pickup-time\"  id=\"pickup-time\" formControlName=\"pickup-time\" class=\"pickup-time\" [(ngModel)]=\"timeSelectBox\" (ngModelChange)=\"timeSelectChanged()\">\n                <option value=\"\">-- Select --</option>\n                <option value=\"next\">Next Available</option>\n                <option disabled>---------------</option>\n                <option [value]=\"time?.Time\" *ngFor=\"let time of times\">{{ time?.Time | date:\"h:mma\" }}</option>\n              </select>\n            </form>\n\n            <!-- ADD Location to show next-available time before submission -->\n            <div class=\"next-available-time\" *ngIf=\"selectedTime\">\n              <p><strong>Pickup at: </strong>{{ selectedTime | date:\"E MMM d, h:mma\" }}</p>\n            </div>\n\n            <div class=\"red-button full-width-button small-text\">\n              <div class=\"loading-gif button-size\" *ngIf=\"processing\"></div>\n              <button (click)=\"putOrder()\" [ngClass]=\"{'disabled' : !timeForm.valid || !selectedTime}\" *ngIf=\"!processing\">Proceed to Checkout</button>\n              <div class=\"required-message\" *ngIf=\"submitAttempted && !selectedTime\">\n                <p>Please select a pickup time.</p>\n              </div>\n            </div>\n          </div>\n          <div class=\"location-details\" [innerHtml]=\"addressData?.content?.rendered | safeHtml\">\n\n          </div>\n        </div><!-- /.pricing-and-location -->\n\n      </div>\n    </div>\n\n  </div>\n</div>"
+module.exports = "<div class=\"basic-page-container checkout-review\">\n  <div class=\"basic-page-content center\">\n    <h1>Review Your Order</h1>\n    <div class=\"form-errors text-left\" *ngIf=\"errorData?.error\"><p>{{ errorData?.error }}</p></div>\n    <div class=\"form-errors text-left\" *ngIf=\"bagItems.length === 0\"><p>There is currently nothing in your bag. Please return to <a routerLink=\"/menu\">our menu</a>.</p></div>\n    <div class=\"checkout-wrapper\" *ngIf=\"bagItems.length > 0\">\n      <div class=\"left-pane\">\n        <div class=\"items\">\n          <div class=\"review-item-card\">\n            <div class=\"item clearfix\" *ngFor=\"let menuItem of bagItems; let i = index;\">\n              <div class=\"item-review-wrapper\">\n                <div class=\"left image\">\n                  <img [src]=\"menuItem?.cartImage\" alt=\"\" class=\"item-image\">\n                  <img src=\"/wp-content/themes/local/dist/assets/svgs/delete-cross-icon.svg\" alt=\"X to remove item from cart\" class=\"remove-image\" (click)=\"removeFromBagAtIndex(i)\">\n                </div>\n                <div class=\"bag-detail-card\">\n                  <div class=\"title-container\">\n                    <div class=\"title\">{{ menuItem?.Name }} <span class=\"quantity\">x {{ menuItem?.Quantity }}</span></div>\n                  </div>\n                  <div class=\"ingredients\" *ngIf=\"menuItem?.ShortDescription !== undefined\">\n                    {{ (menuItem?.ShortDescription | allergens)?.description }}\n                  </div>\n                  <div class=\"additions\" *ngIf=\"menuItem?.Modifiers\">\n                    <span class=\"modifier\" *ngFor=\"let mod of menuItem?.Modifiers; let last = last;\">{{ mod?.Name }}<span class=\"separator\" *ngIf=\"!last\">,</span></span>\n                  </div>\n                  <div class=\"details-and-edit\">\n                    <div class=\"details\">\n                      <span class=\"price\">{{ menuItem?.ExtendedPrice | currency }}</span>\n                      <span class=\"calories\" *ngIf=\"menuItem?.caloricValue\">{{ menuItem?.caloricValue }} cal</span>\n                      <span class=\"allergens\" *ngIf=\"(menuItem?.ShortDescription.indexOf('[') > -1)\">\n                        <span class=\"allergen\" *ngFor=\"let allergen of (menuItem?.ShortDescription | allergens).allergens\">{{ allergen }}</span>\n                      </span>\n                    </div>\n                    <div class=\"edit\">\n                      <a tabindex=\"0\" (click)=\"editItemAtIndex(i)\" (keyup.enter)=\"editItemAtIndex(i)\" role=\"button\">EDIT</a>\n                    </div>\n                  </div><!-- /. details-and-edit -->\n                </div><!-- /.bag-detail-card -->\n              </div><!-- /.item-review-wrapper -->\n              <div class=\"edit-pane\" [hidden]=\"isOpen !== i\">\n                <div class=\"edit-pane-wrapper\">\n                  <div class=\"quantity-selector\">\n                    <div class=\"quantity-changer\">\n                      <span class=\"quantity-text\">Quantity</span>\n                      <span class=\"minus\" (click)=\"decrementQuantity(menuItem)\">-</span>\n                      <span class=\"quantity\">{{ menuItem?.Quantity }}</span>\n                      <span class=\"plus\" (click)=\"incrementQuantity(menuItem)\">+</span>\n                    </div>\n                  </div>\n                  <div class=\"customize-this\">\n                    <p><a routerLink=\"/\">Go back to customize this item</a></p>\n                  </div>\n                </div>\n              </div><!-- /.edit-pane -->\n            </div><!-- /.item -->\n            <div class=\"red-button small-text\">\n              <div class=\"loading-gif button-size\" *ngIf=\"processing\"></div>\n              <button (click)=\"putOrder()\" [ngClass]=\"{'disabled' : !timeForm.valid || !selectedTime}\" *ngIf=\"!processing\">Proceed to Checkout</button>\n              <div class=\"required-message\" *ngIf=\"submitAttempted && !selectedTime\">\n                <p>Please select a pickup time.</p>\n              </div>\n            </div>\n          </div><!-- /.review-item-card -->\n        </div>\n      </div>\n      <div class=\"order-summary\">\n        <div class=\"itemized-summary\">\n          <h4>Order Summary</h4>\n          <div class=\"item flex-between\" *ngFor=\"let menuItem of bagItems\">\n            <div class=\"item-specifics\">\n              <div class=\"title semi-bold\"><span class=\"quantity\">{{ menuItem?.Quantity }} x</span> <span class=\"item-name\">{{ menuItem?.Name }}</span></div>\n              <div class=\"additions\" *ngIf=\"menuItem?.Modifiers\">\n                <span class=\"modifier\" *ngFor=\"let mod of menuItem?.Modifiers; let last = last;\">{{ mod?.Name }}<span class=\"separator\" *ngIf=\"!last\">,</span></span>\n              </div>\n            </div>\n            <div class=\"item-price\">\n              <span class=\"price\">{{ menuItem?.ExtendedPrice | currency }}</span>\n            </div>\n          </div>\n          <div class=\"item flex-between\" *ngFor=\"let menuItem of allOrderDetails?.LineItems\">\n            <div class=\"item-specifics\">\n              <div class=\"title semi-bold\"><span class=\"quantity\">{{ menuItem?.Quantity }} x</span> <span class=\"item-name\">{{ menuItem?.Name }}</span></div>\n              <div class=\"additions\" *ngIf=\"menuItem?.Modifiers\">\n                <span class=\"modifier\" *ngFor=\"let mod of menuItem?.Modifiers; let last = last;\">{{ mod?.Name }}<span class=\"separator\" *ngIf=\"!last\">,</span></span>\n              </div>\n            </div>\n            <div class=\"item-price\">\n              <span class=\"price\">{{ menuItem?.ExtendedPrice | currency }}</span>\n            </div>\n          </div>\n          <div class=\"flex-between subtotal\">\n            <span class=\"label\">Subtotal</span>\n            <span class=\"value\">{{ totalBagPrice | currency }}</span>\n          </div>\n        </div><!-- /.itemized-summary -->\n        <div class=\"pricing-and-location\">\n          <div class=\"pricing-details\">\n            <form action=\"\" class=\"lo-cal-form\" [formGroup]=\"timeForm\">\n              <label for=\"pickup-time\" class=\"pickup-time-label\">Select a time to pickup your order?</label>\n              <select name=\"pickup-time\"  id=\"pickup-time\" formControlName=\"pickup-time\" class=\"pickup-time\" [(ngModel)]=\"timeSelectBox\" (ngModelChange)=\"timeSelectChanged()\">\n                <option value=\"\">-- Select --</option>\n                <option value=\"next\">Next Available</option>\n                <option disabled>---------------</option>\n                <option [value]=\"time?.Time\" *ngFor=\"let time of times\">{{ time?.Time | date:\"h:mma\" }}</option>\n              </select>\n            </form>\n\n            <!-- ADD Location to show next-available time before submission -->\n            <div class=\"next-available-time\" *ngIf=\"selectedTime\">\n              <p><strong>Pickup at: </strong>{{ selectedTime | date:\"E MMM d, h:mma\" }}</p>\n            </div>\n\n            <div class=\"red-button full-width-button small-text\">\n              <div class=\"loading-gif button-size\" *ngIf=\"processing\"></div>\n              <button (click)=\"putOrder()\" [ngClass]=\"{'disabled' : !timeForm.valid || !selectedTime}\" *ngIf=\"!processing\">Proceed to Checkout</button>\n              <div class=\"required-message\" *ngIf=\"submitAttempted && !selectedTime\">\n                <p>Please select a pickup time.</p>\n              </div>\n            </div>\n          </div>\n          <div class=\"location-details\" [innerHtml]=\"addressData?.content?.rendered | safeHtml\">\n\n          </div>\n        </div><!-- /.pricing-and-location -->\n\n      </div>\n    </div>\n\n  </div>\n</div>"
 
 /***/ }),
 
@@ -1939,7 +1945,6 @@ var CheckoutReviewComponent = /** @class */ (function () {
         }
         this.processing = true;
         this.orderService.putOrder(this.bagItems).subscribe(function (response) {
-            // TODO: Error checking for other result codes
             if (response.ResultCode === 0 || response.ResultCode === 4) {
                 // Save to LocalStorage and route to checkout
                 _this.orderService.saveOrderToLocalStorage(response).subscribe(function (result) {
@@ -1953,6 +1958,10 @@ var CheckoutReviewComponent = /** @class */ (function () {
                 _this.errorData.error = "We're sorry. There was an error placing your order. Please try again.";
                 _this.wpService.logError('Put Order Error: ' + JSON.stringify(response)).subscribe(function () { });
             }
+        }, function (error) {
+            _this.processing = false;
+            _this.errorData.error = "We're sorry. There was an error placing your order. Please try again.";
+            _this.wpService.logError('Put Order Error: ' + JSON.stringify(error)).subscribe(function () { });
         });
     };
     CheckoutReviewComponent.prototype.timeSelectChanged = function () {
@@ -3422,6 +3431,8 @@ var SubMenuComponent = /** @class */ (function () {
         }
     };
     SubMenuComponent.prototype.addToBag = function (item) {
+        // TODO: Quick add does not have cart image attached to it
+        console.log(item);
         // Push full object to bag service
         this.bagService.quickAddLineItem(item);
     };
@@ -3820,6 +3831,7 @@ var BagService = /** @class */ (function () {
         this._lineItems = [];
         this._itemsInBag = [];
         this._itemCountInBag = 0;
+        this._bagState = 'invisible';
         this.localStorage.getItem('bag').subscribe(function (bagItemsFromLocalStorage) {
             _this.itemsInBag = bagItemsFromLocalStorage || [];
             _this.updatePrice();
@@ -3848,6 +3860,7 @@ var BagService = /** @class */ (function () {
         // Save to localStorage
         this.saveToLocalStorage();
         lineItem = null;
+        this.toggleBagState();
     };
     BagService.prototype.quickAddLineItem = function (passedMenuItem) {
         var lineItem = {
@@ -3858,7 +3871,9 @@ var BagService = /** @class */ (function () {
             SpecialInstructions: passedMenuItem.SpecialInstructions,
             UnitPrice: passedMenuItem.defaultPrice,
             Quantity: 1,
-            ExtendedPrice: passedMenuItem.defaultPrice
+            ExtendedPrice: passedMenuItem.defaultPrice,
+            cartImage: passedMenuItem.cartImage,
+            caloricValue: passedMenuItem.caloricValue
         };
         // Push menuItem and lineItem into arrays
         this._itemsInBag.push(lineItem);
@@ -3867,6 +3882,7 @@ var BagService = /** @class */ (function () {
         // Save to localStorage
         this.saveToLocalStorage();
         lineItem = null;
+        this.toggleBagState();
     };
     BagService.prototype.orderItemAgain = function (lineItem) {
         this._itemsInBag.push(lineItem);
@@ -3918,6 +3934,19 @@ var BagService = /** @class */ (function () {
         });
         this._totalPrice = value;
     };
+    BagService.prototype.toggleBagState = function () {
+        this.bagState = (this.bagState === 'invisible') ? 'visible' : 'invisible';
+    };
+    Object.defineProperty(BagService.prototype, "bagState", {
+        get: function () {
+            return this._bagState;
+        },
+        set: function (state) {
+            this._bagState = state;
+        },
+        enumerable: true,
+        configurable: true
+    });
     Object.defineProperty(BagService.prototype, "itemCountInBag", {
         get: function () {
             return (this._itemsInBag === null) ? 0 : this._itemsInBag.length;
@@ -4594,7 +4623,7 @@ var WordpressService = /** @class */ (function () {
 /***/ "./src/app/shared/components/bag/bag.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"checkout-overlay\" [ngClass]=\"state\" (click)=\"toggleBagState($event.target)\">\n  <div class=\"checkout-content-wrapper\" [@hideShowBag]='state'>\n    <div class=\"checkout-inner-wrapper\">\n\n        <div class=\"checkout-top\">\n          <div class=\"checkout-header\">\n            <div class=\"back\">\n            </div>\n            <div class=\"checkout-title\">My Bag</div>\n            <div class=\"close\" (click)=\"toggleBagState()\">\n              <span class=\"close-1\"></span>\n              <span class=\"close-2\"></span>\n            </div>\n          </div><!-- /.checkout-header -->\n\n          <div class=\"items\">\n\n            <div class=\"item\" *ngFor=\"let menuItem of bagItems; let i = index;\">\n              <div class=\"item-review-wrapper\">\n                <div class=\"left image\">\n                  <img [src]=\"menuItem?.cartImage\" alt=\"\" class=\"item-image\">\n                  <img src=\"/wp-content/themes/local/dist/assets/svgs/delete-cross-icon.svg\" alt=\"X to remove item from cart\" class=\"remove-image\" (click)=\"removeFromBagAtIndex(i)\">\n                </div>\n                <div class=\"bag-detail-card\">\n                  <div class=\"title-container\">\n                    <div class=\"title\">{{ menuItem?.Name }} <span class=\"quantity\">x {{ menuItem?.Quantity }}</span></div>\n                  </div>\n                  <div class=\"ingredients\" *ngIf=\"menuItem?.ShortDescription\">\n                    {{ (menuItem?.ShortDescription | allergens)?.description }}\n                  </div>\n                  <div class=\"additions\" *ngIf=\"menuItem?.Modifiers\">\n                    <span class=\"modifier\" *ngFor=\"let mod of menuItem?.Modifiers; let last = last;\">{{ mod?.Name }}<span class=\"separator\" *ngIf=\"!last\">,</span> </span>\n                  </div>\n                  <div class=\"special-instructions\" *ngIf=\"menuItem?.SpecialInstructions\">\n                    <p>{{ menuItem?.SpecialInstructions }}</p>\n                  </div>\n                  <div class=\"fine-details\">\n                    <span class=\"price\">{{ menuItem?.ExtendedPrice | currency }}</span>\n                    <span class=\"calories\" *ngIf=\"menuItem?.caloricValue\">{{ menuItem?.caloricValue }} cal</span>\n                    <span class=\"allergens\" *ngIf=\"(menuItem?.ShortDescription.indexOf('[') > -1)\">\n                      <span class=\"allergen\" *ngFor=\"let allergen of (menuItem?.ShortDescription | allergens).allergens\">{{ allergen }}</span>\n                    </span>\n                  </div>\n                </div><!-- /.bag-detail-card -->\n              </div><!-- /.item -->\n              </div><!-- /.item-review-wrapper -->\n          </div><!-- /.checkout-items -->\n        </div><!-- /.checkout-top -->\n\n\n        <div class=\"checkout-bottom\">\n          <div class=\"cart-prices\">\n            <div class=\"price-wrapper\">\n              <div class=\"flex-between total\">\n                <span class=\"label medium\">Total</span>\n                <span class=\"value medium\">{{ bagTotalPrice | currency }}</span>\n              </div>\n              <div class=\"checkout-button red-button\">\n                <a routerLink=\"/checkout/review\">Checkout</a>\n              </div>\n            </div>\n          </div><!-- /.cart-prices -->\n        </div><!-- /.checkout-bottom -->\n\n    </div><!-- /.checkout-inner-wrapper -->\n  </div><!-- /.checkout-content-wrapper -->\n</div><!-- /.checkout-overlay -->"
+module.exports = "<div class=\"checkout-overlay\" [ngClass]=\"state\" (click)=\"toggleBagState($event.target)\">\n  <div class=\"checkout-content-wrapper\" [@hideShowBag]='state'>\n    <div class=\"checkout-inner-wrapper\">\n\n        <div class=\"checkout-top\">\n          <div class=\"checkout-header\">\n            <div class=\"back\">\n            </div>\n            <div class=\"checkout-title\">My Bag</div>\n            <div class=\"close\" (click)=\"toggleBagState()\">\n              <span class=\"close-1\"></span>\n              <span class=\"close-2\"></span>\n            </div>\n          </div><!-- /.checkout-header -->\n\n          <div class=\"items\">\n\n            <div class=\"item\" *ngFor=\"let menuItem of bagItems; let i = index;\">\n              <div class=\"item-review-wrapper\">\n                <div class=\"left image\">\n                  <img [src]=\"menuItem?.cartImage\" alt=\"\" class=\"item-image\">\n                  <img src=\"/wp-content/themes/local/dist/assets/svgs/delete-cross-icon.svg\" alt=\"X to remove item from cart\" class=\"remove-image\" (click)=\"removeFromBagAtIndex(i)\">\n                </div>\n                <div class=\"bag-detail-card\">\n                  <div class=\"title-container\">\n                    <div class=\"title\">{{ menuItem?.Name }} <span class=\"quantity\">x {{ menuItem?.Quantity }}</span></div>\n                  </div>\n                  <div class=\"ingredients\" *ngIf=\"menuItem?.ShortDescription\">\n                    {{ (menuItem?.ShortDescription | allergens)?.description }}\n                  </div>\n                  <div class=\"additions\" *ngIf=\"menuItem?.Modifiers\">\n                    <span class=\"modifier\" *ngFor=\"let mod of menuItem?.Modifiers; let last = last;\">{{ mod?.Name }}<span class=\"separator\" *ngIf=\"!last\">,</span> </span>\n                  </div>\n                  <div class=\"special-instructions\" *ngIf=\"menuItem?.SpecialInstructions\">\n                    <p>{{ menuItem?.SpecialInstructions }}</p>\n                  </div>\n                  <div class=\"fine-details\">\n                    <span class=\"price\">{{ menuItem?.ExtendedPrice | currency }}</span>\n                    <span class=\"calories\" *ngIf=\"menuItem?.caloricValue\">{{ menuItem?.caloricValue }} cal</span>\n                    <span class=\"allergens\" *ngIf=\"(menuItem?.ShortDescription.indexOf('[') > -1)\">\n                      <span class=\"allergen\" *ngFor=\"let allergen of (menuItem?.ShortDescription | allergens).allergens\">{{ allergen }}</span>\n                    </span>\n                  </div>\n                </div><!-- /.bag-detail-card -->\n              </div><!-- /.item -->\n              </div><!-- /.item-review-wrapper -->\n          </div><!-- /.checkout-items -->\n        </div><!-- /.checkout-top -->\n\n\n        <div class=\"checkout-bottom\">\n          <div class=\"cart-prices\">\n            <div class=\"price-wrapper\">\n              <div class=\"flex-between total\">\n                <span class=\"label medium\">Total</span>\n                <span class=\"value medium\">{{ bagTotalPrice | currency }}</span>\n              </div>\n              <div class=\"checkout-button red-button\">\n                <a (click)=\"goToCheckout()\">Checkout</a>\n              </div>\n            </div>\n          </div><!-- /.cart-prices -->\n        </div><!-- /.checkout-bottom -->\n\n    </div><!-- /.checkout-inner-wrapper -->\n  </div><!-- /.checkout-content-wrapper -->\n</div><!-- /.checkout-overlay -->"
 
 /***/ }),
 
@@ -4606,8 +4635,7 @@ module.exports = "<div class=\"checkout-overlay\" [ngClass]=\"state\" (click)=\"
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_animations__ = __webpack_require__("./node_modules/@angular/animations/esm5/animations.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__local_services_bag_service__ = __webpack_require__("./src/app/services/bag.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__local_services_order_service__ = __webpack_require__("./src/app/services/order.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_router__ = __webpack_require__("./node_modules/@angular/router/esm5/router.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_router__ = __webpack_require__("./node_modules/@angular/router/esm5/router.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -4621,11 +4649,9 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-
 var BagComponent = /** @class */ (function () {
-    function BagComponent(bagService, orderService, router) {
+    function BagComponent(bagService, router) {
         this.bagService = bagService;
-        this.orderService = orderService;
         this.router = router;
         this.state = 'invisible';
         this.bagCount = 0;
@@ -4638,13 +4664,11 @@ var BagComponent = /** @class */ (function () {
     BagComponent.prototype.toggleBagState = function (target) {
         if (target !== undefined) {
             if (target.className !== undefined && target.className.indexOf('checkout-overlay') !== -1) {
-                this.state = (this.state === 'invisible') ? 'visible' : 'invisible';
-                this.bagState.emit(this.state);
+                this.bagService.toggleBagState();
             }
             return;
         }
-        this.state = (this.state === 'invisible') ? 'visible' : 'invisible';
-        this.bagState.emit(this.state);
+        this.bagService.toggleBagState();
     };
     BagComponent.prototype.removeFromBagAtIndex = function (index) {
         this.bagService.removeFromBagAtIndex(index);
@@ -4667,6 +4691,10 @@ var BagComponent = /** @class */ (function () {
         enumerable: true,
         configurable: true
     });
+    BagComponent.prototype.goToCheckout = function () {
+        this.bagService.toggleBagState();
+        this.router.navigateByUrl('/checkout/review');
+    };
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
         __metadata("design:type", String)
@@ -4700,7 +4728,7 @@ var BagComponent = /** @class */ (function () {
                 ])
             ]
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__local_services_bag_service__["a" /* BagService */], __WEBPACK_IMPORTED_MODULE_3__local_services_order_service__["a" /* OrderService */], __WEBPACK_IMPORTED_MODULE_4__angular_router__["c" /* Router */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__local_services_bag_service__["a" /* BagService */], __WEBPACK_IMPORTED_MODULE_3__angular_router__["c" /* Router */]])
     ], BagComponent);
     return BagComponent;
 }());
