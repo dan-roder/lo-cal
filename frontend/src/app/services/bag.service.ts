@@ -58,7 +58,9 @@ export class BagService {
       SpecialInstructions : passedMenuItem.SpecialInstructions,
       UnitPrice : passedMenuItem.defaultPrice,
       Quantity : 1,
-      ExtendedPrice : passedMenuItem.defaultPrice
+      ExtendedPrice : passedMenuItem.defaultPrice,
+      cartImage : passedMenuItem.cartImage,
+      caloricValue : passedMenuItem.caloricValue
     };
 
     // Push menuItem and lineItem into arrays
