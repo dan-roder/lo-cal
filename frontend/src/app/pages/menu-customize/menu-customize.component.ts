@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { WordpressService } from '@local/services/wp.service';
 import { MenuService } from '@local/services/menu-service.service';
 import { BagService } from '@local/services/bag.service';
-import { ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { SalesItem } from '@local/models/SalesItem';
 import * as _ from 'lodash';
 import { DefaultOption } from '@local/models/DefaultOption';
@@ -35,11 +35,12 @@ export class MenuCustomizeComponent implements OnInit {
     private wpService: WordpressService,
     private menuService: MenuService,
     private bagService: BagService,
-    private router: ActivatedRoute
+    private router: Router,
+    private activatedRoute: ActivatedRoute
   ) { }
 
   ngOnInit() {
-    let slug = (this.router.snapshot.paramMap.get('item'));
+    let slug = (this.activatedRoute.snapshot.paramMap.get('item'));
 
     this.wpService.getPostBySlug(slug, 'menu_item').subscribe(item => {
       this.itemContent = item;
@@ -48,6 +49,7 @@ export class MenuCustomizeComponent implements OnInit {
       this.featuredImage = (item[0].featured_media !== 0) ? item[0]._embedded['wp:featuredmedia'][0].media_details.sizes.full.source_url : '//via.placeholder.com/1440x500';
       this.featuredImageAlt = (item[0].featured_media !== 0) ? item[0]._embedded['wp:featuredmedia'][0].alt_text : '';
       this.getMenuItemDetails(menuItemId);
+      console.log(this.bagService.editingLineItem);
     });
   }
 
@@ -180,6 +182,7 @@ export class MenuCustomizeComponent implements OnInit {
     menuItem['cartImage'] = (this.itemContent[0].acf !== undefined && this.itemContent[0].acf.cart_image !== undefined) ? this.itemContent[0].acf.cart_image.url : '//via.placeholder.com/160x240';
     menuItem['caloricValue'] = this.calorieCount;
     menuItem['SpecialInstructions'] = this.specialInstructions;
+    menuItem['returnUrl'] = this.router.url;
 
     // Push full object to bag service
     this.bagService.createLineItem(menuItem);
@@ -196,6 +199,7 @@ export class MenuCustomizeComponent implements OnInit {
 
   private getMenuItemDetails( menuItemId ){
     this.menuService.getMenuItemDetails(menuItemId).subscribe(menuItemDetails => {
+      console.log(menuItemDetails);
       // Set necessary variables for template rendering
       this.menuItemDetails = menuItemDetails;
 
