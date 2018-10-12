@@ -21,6 +21,7 @@ export interface LineItem{
   CompValue?: number; // (number , optional) = The comp value if there is a price
   cartImage?: string; // Temporary location for cart image string
   caloricValue?: number;
+  returnUrl?: string;
 }
 
 export interface LineItemModifier{
