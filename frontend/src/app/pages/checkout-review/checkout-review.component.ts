@@ -44,7 +44,16 @@ export class CheckoutReviewComponent implements OnInit {
       this.orderService.customerInfo = customerData;
     });
 
-    this.getAddressContent();
+    // Get address data from post
+    if(!this.wpService.addressContent){
+      this.wpService.getAddressContent().subscribe(addressData => {
+        this.addressData = addressData;
+        this.wpService.addressContent = addressData;
+      })
+    }
+    else{
+      this.addressData = this.wpService.addressContent;
+    }
   }
 
   public removeFromBagAtIndex( index ){
@@ -130,10 +139,10 @@ export class CheckoutReviewComponent implements OnInit {
     })
   }
 
-  private getAddressContent(){
-    this.wpService.getPost(3812).subscribe(postData => {
-      this.addressData = postData;
-    })
+  public customizeReturn(item){
+    this.bagService.editingLineItem = item;
+
+    this.router.navigateByUrl(item.returnUrl);
   }
 
   get totalBagPrice(){
