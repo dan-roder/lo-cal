@@ -85,6 +85,8 @@ export class SubMenuComponent implements OnInit {
   }
 
   public addToBag(item){
+    // TODO: Quick add does not have cart image attached to it
+    console.log(item);
     // Push full object to bag service
     this.bagService.quickAddLineItem(item);
   }
