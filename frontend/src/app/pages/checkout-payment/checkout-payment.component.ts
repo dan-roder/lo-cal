@@ -35,6 +35,7 @@ export class CheckoutPaymentComponent implements OnInit {
   public cardNumber: string = '';
   public pickupTimeError: boolean = false;
   public genericOrderError: boolean = false;
+  public addressData: any;
 
   constructor(private orderService: OrderService, private fb: FormBuilder, private constants: Config, private customerService: CustomerService, private router: Router, private localStorage: LocalStorage, private wpService: WordpressService) {
     this.contactInfoForm = fb.group({
@@ -72,7 +73,18 @@ export class CheckoutPaymentComponent implements OnInit {
           console.log(error);
         });
       }
-    })
+    });
+
+    // Get address data from post
+    if(!this.wpService.addressContent){
+      this.wpService.getAddressContent().subscribe(addressData => {
+        this.addressData = addressData;
+        this.wpService.addressContent = addressData;
+      })
+    }
+    else{
+      this.addressData = this.wpService.addressContent;
+    }
 
     // Get Full Order Details from API
     this.orderService.getPreSavedOrder().subscribe(order => {
