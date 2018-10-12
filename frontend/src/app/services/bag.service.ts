@@ -11,6 +11,7 @@ export class BagService {
   public _itemCountInBag : number = 0;
   private _totalPrice : number;
   public _bagState : string = 'invisible';
+  public _editingItem : LineItem;
 
   constructor(protected localStorage: LocalStorage) {
     this.localStorage.getItem('bag').subscribe(bagItemsFromLocalStorage => {
@@ -34,7 +35,8 @@ export class BagService {
       ExtendedPrice : passedMenuItem.TotalPrice,
       Modifiers : modifiers,
       cartImage : passedMenuItem.cartImage,
-      caloricValue : passedMenuItem.caloricValue
+      caloricValue : passedMenuItem.caloricValue,
+      returnUrl : passedMenuItem.returnUrl
     };
 
     // Push menuItem and lineItem into arrays
@@ -60,7 +62,8 @@ export class BagService {
       Quantity : 1,
       ExtendedPrice : passedMenuItem.defaultPrice,
       cartImage : passedMenuItem.cartImage,
-      caloricValue : passedMenuItem.caloricValue
+      caloricValue : passedMenuItem.caloricValue,
+      returnUrl : passedMenuItem.returnUrl
     };
 
     // Push menuItem and lineItem into arrays
@@ -168,6 +171,14 @@ export class BagService {
 
   set totalPrice(price: number){
     this._totalPrice = price;
+  }
+
+  get editingLineItem(): LineItem{
+    return this._editingItem;
+  }
+
+  set editingLineItem(item: LineItem){
+    this._editingItem = item;
   }
 
   protected saveToLocalStorage(){
