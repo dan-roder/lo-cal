@@ -8,6 +8,7 @@ import 'rxjs/add/operator/map';
 
 @Injectable()
 export class WordpressService {
+  private _addressContent : any;
 
   constructor(private http: Http, private config: Config, private httpClient: HttpClient) {}
 
@@ -122,5 +123,19 @@ export class WordpressService {
     return this.httpClient.post(this.config.wordpressApiUrl + `/contact_form/v2/submit`, finalData).map(result => {
       return result;
     })
+  }
+
+  public getAddressContent():any{
+    return this.getPost(3812).map(postData => {
+      return this.addressContent = postData;
+    });
+  }
+
+  get addressContent(): any{
+    return this._addressContent;
+  }
+
+  set addressContent(address){
+    this._addressContent = address;
   }
 }
