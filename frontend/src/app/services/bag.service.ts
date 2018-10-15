@@ -12,6 +12,7 @@ export class BagService {
   private _totalPrice : number;
   public _bagState : string = 'invisible';
   public _editingItem : LineItem;
+  public _editingIndex : number;
 
   constructor(protected localStorage: LocalStorage) {
     this.localStorage.getItem('bag').subscribe(bagItemsFromLocalStorage => {
@@ -180,6 +181,14 @@ export class BagService {
 
   set editingLineItem(item: LineItem){
     this._editingItem = item;
+  }
+
+  get editingIndex(): number{
+    return this._editingIndex;
+  }
+
+  set editingIndex(num: number){
+    this._editingIndex = num;
   }
 
   protected saveToLocalStorage(){
