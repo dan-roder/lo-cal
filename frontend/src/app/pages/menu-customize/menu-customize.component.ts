@@ -30,6 +30,7 @@ export class MenuCustomizeComponent implements OnInit {
   public sizeChoice : any;
   public requiredModifierGroups : Array<any> = [];
   public submitAttempted : boolean = false;
+  public menuError : boolean = false;
 
   constructor(
     private wpService: WordpressService,
@@ -232,6 +233,8 @@ export class MenuCustomizeComponent implements OnInit {
         this.orderedSalesItemDetails = this.orderModifierGroups( this.salesItemDetails.ModifierGroups, this.salesItemDetails.ModGroups );
         this.registerCustomizationVariables( this.orderedSalesItemDetails, defaults );
       }
+    }, error => {
+      this.menuError = true;
     });
   }
 
