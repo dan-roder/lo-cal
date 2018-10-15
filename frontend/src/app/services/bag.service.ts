@@ -109,7 +109,8 @@ export class BagService {
               Name : modifier.Name,
               ItemOptionGroupId : modifierGroupId,
               SalesItemOptionId : modifier.ModifierId,
-              Quantity : modifierQuantity
+              Quantity : modifierQuantity,
+              ModifierId : modifier.ModifierId
             };
 
             formattedLineItemModifierArray.push(lineItemModifierObject);
