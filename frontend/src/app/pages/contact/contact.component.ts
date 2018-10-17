@@ -21,7 +21,6 @@ export class ContactComponent implements OnInit {
 
   constructor(private wpService: WordpressService, private fb: FormBuilder) {
     this.contactForm = fb.group({
-      'contact-reason' : [null, Validators.required],
       'first-name' : [null, Validators.required],
       'last-name' : [null, Validators.required],
       'email' : [null, [Validators.required, Validators.email]],
@@ -47,7 +46,6 @@ export class ContactComponent implements OnInit {
     if(formData.valid){
       this.processing = true;
       let data = {
-        'contactReason' : formData.get('contact-reason').value,
         'firstName' : formData.get('first-name').value,
         'lastName' : formData.get('last-name').value,
         'email' : formData.get('email').value,
