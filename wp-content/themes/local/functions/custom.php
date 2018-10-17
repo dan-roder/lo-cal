@@ -70,7 +70,7 @@ function handle_contact_submission(WP_REST_Request $request){
 
       $headers = array('Content-Type: text/html; charset=UTF-8');
 
-      wp_mail('droder@req.co', 'Contact Submission From: ' . $firstName . ' ' . $lastName, $message, $headers);
+      wp_mail('info@lo-calkitchen.com', 'Contact Submission From: ' . $firstName . ' ' . $lastName, $message, $headers);
     }
 
     return 'success';
