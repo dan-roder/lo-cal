@@ -9,7 +9,7 @@
 
     .item{
       width: 50%;
-      margin: 0 0 30px;
+      margin: 0 -.3px 30px;
 
       @include breakpoint($bp-768){
         width: 25%;
