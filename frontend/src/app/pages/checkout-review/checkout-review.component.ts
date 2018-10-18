@@ -139,10 +139,10 @@ export class CheckoutReviewComponent implements OnInit {
     })
   }
 
-  public customizeReturn(item){
+  public customizeReturn(item, index){
     this.bagService.editingLineItem = item;
-
-    this.router.navigateByUrl(item.returnUrl);
+    this.bagService.editingIndex = index;
+    this.router.navigate([item.returnUrl], {'queryParams': {'returnUrl': '/checkout/review'}});
   }
 
   get totalBagPrice(){
