@@ -92,7 +92,8 @@
       </div>
 
       <div class="add-button red-button">
-        <button *ngIf="totalPrice" (click)="addToBag()" [ngClass]="{ 'disabled': requiredModifierGroups.length }">Add to Bag (+{{ totalPrice | currency }})</button>
+        <button *ngIf="totalPrice && (editingIndex === undefined)" (click)="addToBag()" [ngClass]="{ 'disabled': requiredModifierGroups.length }">Add to Bag (+{{ totalPrice | currency }})</button>
+        <button *ngIf="totalPrice && (editingIndex !== undefined)" (click)="saveChanges()" [ngClass]="{ 'disabled': requiredModifierGroups.length }">Save Changes (+{{ totalPrice | currency }})</button>
         <p class="customization-errors text-center" *ngIf="requiredModifierGroups.length && submitAttempted">Please select an item from the required modifier groups.</p>
       </div>
     </div><!-- /.right -->
