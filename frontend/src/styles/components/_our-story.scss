@@ -5,12 +5,33 @@
   background-position: right;
   position: relative;
   @extend %overlay;
+  &:before{
+    background: rgba($black, .4);
+  }
 
   .content{
     position: relative;
   }
 
   .body{
-    max-width: 50%;
+    max-width: 80%;
+
+    p{
+      color: $white;
+    }
+  }
+
+  @include breakpoint($bp-768){
+    &:before{
+      background: rgba($black, .1);
+    }
+
+    .body{
+      max-width: 50%;
+
+      p{
+        color: $off-black;
+      }
+    }
   }
 }
