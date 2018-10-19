@@ -142,3 +142,27 @@ function signup_for_newsletter(WP_REST_Request $request){
   return rest_ensure_response($respBody);
 
 }
+
+/**
+ * REST API endpoint for posting error messages to Wordpress plugin
+ */
+add_action( 'rest_api_init', 'get_submenu_items' );
+
+function get_submenu_items() {
+  register_rest_route( 'sub_menus/v2', 'items/', array(
+    'methods' => 'GET',
+    'callback' => 'get_submenus'
+  ));
+}
+
+function get_submenus(WP_REST_Request $request){
+  $posts = get_posts(array(
+    'numberposts'	=> -1,
+    'post_type'		=> 'menu_item',
+    'meta_key'		=> 'submenu',
+    'meta_value'	=> 'coffee'
+  ));
+
+  return rest_ensure_response($posts);
+
+}
