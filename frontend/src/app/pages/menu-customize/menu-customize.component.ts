@@ -50,7 +50,6 @@ export class MenuCustomizeComponent implements OnInit {
       this.featuredImage = (item[0].featured_media !== 0) ? item[0]._embedded['wp:featuredmedia'][0].media_details.sizes.full.source_url : '//via.placeholder.com/1440x500';
       this.featuredImageAlt = (item[0].featured_media !== 0) ? item[0]._embedded['wp:featuredmedia'][0].alt_text : '';
       this.getMenuItemDetails(menuItemId);
-      console.log(this.bagService.editingLineItem);
     });
   }
 
@@ -216,30 +215,36 @@ export class MenuCustomizeComponent implements OnInit {
         this.sizeChoice = this.salesItemDetails.SalesItemId;
       }
 
-      this.calorieCount = (this.salesItemDetails.CaloricValue !== null) ? +this.salesItemDetails.CaloricValue : ((typeof this.menuItemDetails.item.CaloricServingUnit !== 'string') ? +this.menuItemDetails.item.CaloricServingUnit : +this.menuItemDetails.item.CaloricServingUnit);
-      this.itemPrice = this.salesItemDetails.Price;
-
-      // Calculate initial cost based on initial quantity of 1
-      this.recalculateCost();
-
       // Initialize defaults
       let defaults = [];
-      if(this.salesItemDetails.ModGroups.length > 0){
+
+      this.orderedSalesItemDetails = this.orderModifierGroups( this.salesItemDetails.ModifierGroups, this.salesItemDetails.ModGroups );
+      // If bagService editingLineItem contains an item. Reset modifiers
+      if(this.bagService.editingLineItem){
+        defaults = this.bagService.editingLineItem.Modifiers;
+        this.registerCustomizationVariables( this.orderedSalesItemDetails, defaults );
+      }
+      else if(this.salesItemDetails.ModGroups.length > 0){
         // Does the sales item have defaults?
         if(this.salesItemDetails.DefaultOptions.length > 0){
           defaults = this.salesItemDetails.DefaultOptions;
         }
 
-        this.orderedSalesItemDetails = this.orderModifierGroups( this.salesItemDetails.ModifierGroups, this.salesItemDetails.ModGroups );
         this.registerCustomizationVariables( this.orderedSalesItemDetails, defaults );
       }
+
+      this.calorieCount = (this.salesItemDetails.CaloricValue !== null) ? +this.salesItemDetails.CaloricValue : ((typeof this.menuItemDetails.item.CaloricServingUnit !== 'string') ? +this.menuItemDetails.item.CaloricServingUnit : +this.menuItemDetails.item.CaloricServingUnit);
+      this.itemPrice = this.salesItemDetails.Price;
+
+      // Calculate initial cost based on initial quantity of 1
+      this.recalculateCost();
     }, error => {
       this.menuError = true;
     });
   }
 
   // Set up initial customization object and required modifier object to handle customization logic
-  private registerCustomizationVariables( allModifiers, defaultOptions : Array<DefaultOption> = [] ){
+  private registerCustomizationVariables( allModifiers, defaultOptions : Array<any> = [] ){
     let tempObj = new Object();
     let reqMods = new Array;
 
@@ -253,13 +258,16 @@ export class MenuCustomizeComponent implements OnInit {
       modObject['modifiers'] = new Object();
       modObject['groupDetails'] = new Object();
 
-      _.forEach(modifierGroup.Mods, function(modifier, key){
+      _.forEach(modifierGroup.Mods, (modifier) => {
         modObject['groupDetails'] = modifierGroup;
         modObject['modifiers'][modifier.$id] = new Object();
+
         let isModDefault = _.find(defaultOptions, {'ModifierId': modifier.ModifierId});
+
         if(isModDefault !== undefined){
-          modObject['modifiers'][modifier.$id]['quantity'] = isModDefault.DefaultQuantity;
+          modObject['modifiers'][modifier.$id]['quantity'] = (isModDefault.DefaultQuantity || isModDefault.Quantity);
           modObject['currentlySelected'].push(modifier);
+          this.currentModifierArray.push(modifier);
         }
         else{
           modObject['modifiers'][modifier.$id]['quantity'] = 0;
@@ -284,7 +292,7 @@ export class MenuCustomizeComponent implements OnInit {
     let orderArr = _.values(orderGroup);
 
     // Sort the modifier groups
-    let sortedCollection = _.sortBy(detailGroup, function(item){
+    let sortedCollection = _.sortBy(detailGroup, (item) => {
       return orderGroup.indexOf(item.ModifierGroupId)
     });
 
@@ -356,5 +364,9 @@ export class MenuCustomizeComponent implements OnInit {
 
   set itemPrice(price : number){
     this._itemPrice = price;
+  }
+
+  get editingIndex(): number{
+    return this.bagService.editingIndex;
   }
 }
