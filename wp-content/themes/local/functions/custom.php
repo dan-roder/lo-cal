@@ -149,19 +149,34 @@ function signup_for_newsletter(WP_REST_Request $request){
 add_action( 'rest_api_init', 'get_submenu_items' );
 
 function get_submenu_items() {
-  register_rest_route( 'sub_menus/v2', 'items/', array(
+  register_rest_route( 'sub_menus/v2', 'items/(?P<category>[a-zA-Z-]+)', array(
     'methods' => 'GET',
     'callback' => 'get_submenus'
   ));
 }
 
 function get_submenus(WP_REST_Request $request){
+  $category = $request->get_param('category');
+
   $posts = get_posts(array(
     'numberposts'	=> -1,
     'post_type'		=> 'menu_item',
     'meta_key'		=> 'submenu',
-    'meta_value'	=> 'coffee'
+    'meta_value'	=> $category
   ));
+
+  try {
+    // merge the acf in with the original post data
+    for($i = 0; $i < count($posts); ++$i) {
+      $post = $posts[$i];
+
+      $acf = get_fields($post->ID);
+
+      $post->acf = $acf;
+    }
+  } catch(Exception $e) {
+    return $this->error($e->getMessage());
+  }
 
   return rest_ensure_response($posts);
 
