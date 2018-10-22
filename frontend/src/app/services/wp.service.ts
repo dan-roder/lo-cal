@@ -125,6 +125,14 @@ export class WordpressService {
     })
   }
 
+  public getSubMenu(category: string){
+    return this.httpClient.get(this.config.wordpressApiUrl + `/sub_menus/v2/items/${category}`).map(result => {
+      return result;
+    }, error => {
+      return error;
+    })
+  }
+
   public getAddressContent():any{
     return this.getPost(3812).map(postData => {
       return this.addressContent = postData;
