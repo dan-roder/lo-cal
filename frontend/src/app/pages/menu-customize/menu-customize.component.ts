@@ -21,7 +21,7 @@ export class MenuCustomizeComponent implements OnInit {
   private _itemPrice : number;
   private _totalPrice : number;
   private defaultItemId : number;
-  public customizationData : Object;
+  public customizationData : Object = {};
   public specialInstructions : string;
   private _calorieCount : number = 0;
   public currentModifierArray : Array<any> = [];
@@ -184,6 +184,9 @@ export class MenuCustomizeComponent implements OnInit {
     menuItem['SpecialInstructions'] = this.specialInstructions;
     menuItem['returnUrl'] = this.router.url;
 
+    // TODO: Something strange happening that created a double return Url
+    console.log(this.router.url);
+
     // Push full object to bag service
     this.bagService.createLineItem(menuItem);
 
@@ -193,7 +196,12 @@ export class MenuCustomizeComponent implements OnInit {
     totalPrice = null;
   }
 
+  public saveChanges(){
+
+  }
+
   private recalculateCost(){
+    // Add price of modifiers
     this.totalPrice = this.itemPrice * this.quantity;
   }
 
@@ -207,6 +215,7 @@ export class MenuCustomizeComponent implements OnInit {
       this.defaultItemId = menuItemDetails['item']['DefaultItemId'];
 
       // Using default Sales Item Id, return object with all details of that Sales Item
+      // TODO: Need to set correct salesItemDetails if editing a different size
       this.salesItemDetails = _.find(menuItemDetails['salesItems'], {'SalesItemId': this.defaultItemId});
 
       // Need to account for sizes if there is more than 1 sales item
@@ -214,11 +223,14 @@ export class MenuCustomizeComponent implements OnInit {
         this.multipleSalesItems = menuItemDetails['salesItems'];
         this.sizeChoice = this.salesItemDetails.SalesItemId;
       }
+      // Initialize item price
+      this.itemPrice = this.salesItemDetails.Price;
 
       // Initialize defaults
       let defaults = [];
 
       this.orderedSalesItemDetails = this.orderModifierGroups( this.salesItemDetails.ModifierGroups, this.salesItemDetails.ModGroups );
+
       // If bagService editingLineItem contains an item. Reset modifiers
       if(this.bagService.editingLineItem){
         defaults = this.bagService.editingLineItem.Modifiers;
@@ -232,12 +244,6 @@ export class MenuCustomizeComponent implements OnInit {
 
         this.registerCustomizationVariables( this.orderedSalesItemDetails, defaults );
       }
-
-      this.calorieCount = (this.salesItemDetails.CaloricValue !== null) ? +this.salesItemDetails.CaloricValue : ((typeof this.menuItemDetails.item.CaloricServingUnit !== 'string') ? +this.menuItemDetails.item.CaloricServingUnit : +this.menuItemDetails.item.CaloricServingUnit);
-      this.itemPrice = this.salesItemDetails.Price;
-
-      // Calculate initial cost based on initial quantity of 1
-      this.recalculateCost();
     }, error => {
       this.menuError = true;
     });
@@ -245,10 +251,10 @@ export class MenuCustomizeComponent implements OnInit {
 
   // Set up initial customization object and required modifier object to handle customization logic
   private registerCustomizationVariables( allModifiers, defaultOptions : Array<any> = [] ){
-    let tempObj = new Object();
     let reqMods = new Array;
 
     _.forEach(allModifiers, (modifierGroup) => {
+      this.customizationData[modifierGroup.$id] = new Object();
 
       // Create new object to store values in
       let modObject = new Object();
@@ -257,40 +263,33 @@ export class MenuCustomizeComponent implements OnInit {
       modObject['currentlySelected'] = new Array;
       modObject['modifiers'] = new Object();
       modObject['groupDetails'] = new Object();
+      this.customizationData[modifierGroup.$id] = modObject;
 
       _.forEach(modifierGroup.Mods, (modifier) => {
-        modObject['groupDetails'] = modifierGroup;
-        modObject['modifiers'][modifier.$id] = new Object();
+        this.customizationData[modifierGroup.$id]['groupDetails'] = modifierGroup;
+        this.customizationData[modifierGroup.$id]['modifiers'][modifier.$id] = new Object();
+        this.customizationData[modifierGroup.$id]['modifiers'][modifier.$id]['quantity'] = 0;
 
         let isModDefault = _.find(defaultOptions, {'ModifierId': modifier.ModifierId});
 
         if(isModDefault !== undefined){
-          modObject['modifiers'][modifier.$id]['quantity'] = (isModDefault.DefaultQuantity || isModDefault.Quantity);
-          modObject['currentlySelected'].push(modifier);
-          this.currentModifierArray.push(modifier);
+          this.addModifier(modifierGroup, modifier);
         }
-        else{
-          modObject['modifiers'][modifier.$id]['quantity'] = 0;
-        }
-
       });
 
       // If the modifier group has a minimum item requirement, push to array
-      if(modifierGroup.MinimumItems > 0 && modObject['currentlySelected'].length <= 0){
+      if(modifierGroup.MinimumItems > 0 && this.customizationData[modifierGroup.$id]['currentlySelected'].length <= 0){
         reqMods.push({'$id' : modifierGroup.$id});
       }
 
-      tempObj[modifierGroup.$id] = new Object();
-      tempObj[modifierGroup.$id] = modObject;
     });
 
-    this.customizationData = tempObj;
     this.requiredModifierGroups = reqMods;
+
+    this.recalculateCost();
   }
 
   private orderModifierGroups(orderGroup, detailGroup){
-    let orderArr = _.values(orderGroup);
-
     // Sort the modifier groups
     let sortedCollection = _.sortBy(detailGroup, (item) => {
       return orderGroup.indexOf(item.ModifierGroupId)
