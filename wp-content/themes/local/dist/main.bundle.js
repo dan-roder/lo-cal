@@ -2526,6 +2526,7 @@ var MenuCustomizeComponent = /** @class */ (function () {
         this.activatedRoute = activatedRoute;
         this.quantity = 1;
         this.multipleSalesItems = [];
+        this.customizationData = {};
         this._calorieCount = 0;
         this.currentModifierArray = [];
         this.featuredImage = '';
@@ -2652,6 +2653,8 @@ var MenuCustomizeComponent = /** @class */ (function () {
         menuItem['caloricValue'] = this.calorieCount;
         menuItem['SpecialInstructions'] = this.specialInstructions;
         menuItem['returnUrl'] = this.router.url;
+        // TODO: Something strange happening that created a double return U
+        console.log(this.router.url);
         // Push full object to bag service
         this.bagService.createLineItem(menuItem);
         // Wipe out local values
@@ -2659,7 +2662,18 @@ var MenuCustomizeComponent = /** @class */ (function () {
         quantity = null;
         totalPrice = null;
     };
+    MenuCustomizeComponent.prototype.saveChanges = function () {
+        // if the array of required mods is not empty, don't add to bag
+        if (this.requiredModifierGroups.length > 0) {
+            this.submitAttempted = true; // triggers showing of error messages
+            return; // disallow adding to bag
+        }
+        this.bagService.removeFromBagAtIndex(this.bagService.editingIndex);
+        this.bagService.editingIndex = undefined;
+        this.addToBag();
+    };
     MenuCustomizeComponent.prototype.recalculateCost = function () {
+        // Add price of modifiers
         this.totalPrice = this.itemPrice * this.quantity;
     };
     MenuCustomizeComponent.prototype.getMenuItemDetails = function (menuItemId) {
@@ -2671,12 +2685,15 @@ var MenuCustomizeComponent = /** @class */ (function () {
             // Find default Sales Item Id
             _this.defaultItemId = menuItemDetails['item']['DefaultItemId'];
             // Using default Sales Item Id, return object with all details of that Sales Item
+            // TODO: Need to set correct salesItemDetails if editing a different size
             _this.salesItemDetails = __WEBPACK_IMPORTED_MODULE_5_lodash__["find"](menuItemDetails['salesItems'], { 'SalesItemId': _this.defaultItemId });
             // Need to account for sizes if there is more than 1 sales item
             if (menuItemDetails['salesItems'].length > 1) {
                 _this.multipleSalesItems = menuItemDetails['salesItems'];
                 _this.sizeChoice = _this.salesItemDetails.SalesItemId;
             }
+            // Initialize item price
+            _this.itemPrice = _this.salesItemDetails.Price;
             // Initialize defaults
             var defaults = [];
             _this.orderedSalesItemDetails = _this.orderModifierGroups(_this.salesItemDetails.ModifierGroups, _this.salesItemDetails.ModGroups);
@@ -2692,10 +2709,6 @@ var MenuCustomizeComponent = /** @class */ (function () {
                 }
                 _this.registerCustomizationVariables(_this.orderedSalesItemDetails, defaults);
             }
-            _this.calorieCount = (_this.salesItemDetails.CaloricValue !== null) ? +_this.salesItemDetails.CaloricValue : ((typeof _this.menuItemDetails.item.CaloricServingUnit !== 'string') ? +_this.menuItemDetails.item.CaloricServingUnit : +_this.menuItemDetails.item.CaloricServingUnit);
-            _this.itemPrice = _this.salesItemDetails.Price;
-            // Calculate initial cost based on initial quantity of 1
-            _this.recalculateCost();
         }, function (error) {
             _this.menuError = true;
         });
@@ -2704,9 +2717,9 @@ var MenuCustomizeComponent = /** @class */ (function () {
     MenuCustomizeComponent.prototype.registerCustomizationVariables = function (allModifiers, defaultOptions) {
         var _this = this;
         if (defaultOptions === void 0) { defaultOptions = []; }
-        var tempObj = new Object();
         var reqMods = new Array;
         __WEBPACK_IMPORTED_MODULE_5_lodash__["forEach"](allModifiers, function (modifierGroup) {
+            _this.customizationData[modifierGroup.$id] = new Object();
             // Create new object to store values in
             var modObject = new Object();
             modObject['maximumItems'] = (modifierGroup.MaximumItems === 0) ? 'unlimited' : modifierGroup.MaximumItems;
@@ -2714,31 +2727,25 @@ var MenuCustomizeComponent = /** @class */ (function () {
             modObject['currentlySelected'] = new Array;
             modObject['modifiers'] = new Object();
             modObject['groupDetails'] = new Object();
+            _this.customizationData[modifierGroup.$id] = modObject;
             __WEBPACK_IMPORTED_MODULE_5_lodash__["forEach"](modifierGroup.Mods, function (modifier) {
-                modObject['groupDetails'] = modifierGroup;
-                modObject['modifiers'][modifier.$id] = new Object();
+                _this.customizationData[modifierGroup.$id]['groupDetails'] = modifierGroup;
+                _this.customizationData[modifierGroup.$id]['modifiers'][modifier.$id] = new Object();
+                _this.customizationData[modifierGroup.$id]['modifiers'][modifier.$id]['quantity'] = 0;
                 var isModDefault = __WEBPACK_IMPORTED_MODULE_5_lodash__["find"](defaultOptions, { 'ModifierId': modifier.ModifierId });
                 if (isModDefault !== undefined) {
-                    modObject['modifiers'][modifier.$id]['quantity'] = (isModDefault.DefaultQuantity || isModDefault.Quantity);
-                    modObject['currentlySelected'].push(modifier);
-                    _this.currentModifierArray.push(modifier);
-                }
-                else {
-                    modObject['modifiers'][modifier.$id]['quantity'] = 0;
+                    _this.addModifier(modifierGroup, modifier);
                 }
             });
             // If the modifier group has a minimum item requirement, push to array
-            if (modifierGroup.MinimumItems > 0 && modObject['currentlySelected'].length <= 0) {
+            if (modifierGroup.MinimumItems > 0 && _this.customizationData[modifierGroup.$id]['currentlySelected'].length <= 0) {
                 reqMods.push({ '$id': modifierGroup.$id });
             }
-            tempObj[modifierGroup.$id] = new Object();
-            tempObj[modifierGroup.$id] = modObject;
         });
-        this.customizationData = tempObj;
         this.requiredModifierGroups = reqMods;
+        this.recalculateCost();
     };
     MenuCustomizeComponent.prototype.orderModifierGroups = function (orderGroup, detailGroup) {
-        var orderArr = __WEBPACK_IMPORTED_MODULE_5_lodash__["values"](orderGroup);
         // Sort the modifier groups
         var sortedCollection = __WEBPACK_IMPORTED_MODULE_5_lodash__["sortBy"](detailGroup, function (item) {
             return orderGroup.indexOf(item.ModifierGroupId);
