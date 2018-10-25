@@ -32,13 +32,13 @@
               </div>
               <div class="calories">{{ modifier?.ItemModifiers[0]?.CaloricValue }} <span *ngIf="modifier?.ItemModifiers[0]?.CaloricValue !== null">cal</span> </div>
               <div class="choice-controls">
-                <span class="minus" [ngClass]="(customizationData[modGroup?.$id].currentlySelected.length > 0 && customizationData[modGroup?.$id].modifiers[modifier?.$id].quantity > 0) ? 'enabled' : 'disabled'" (click)="removeModifier(modGroup, modifier)">-</span>
+                <button class="minus" [disabled]="!(customizationData[modGroup?.$id].currentlySelected.length > 0 && customizationData[modGroup?.$id].modifiers[modifier?.$id].quantity > 0)" (click)="removeModifier(modGroup, modifier)" tabindex="0">-</button>
                 <span class="quantity-container" [ngClass]="customizationData[modGroup?.$id].modifiers[modifier?.$id]?.quantity > 0 ? 'populated' : ''">
                   <span class="quantity" *ngIf="customizationData[modGroup?.$id].modifiers[modifier?.$id]?.quantity !== 0">
                     {{ customizationData[modGroup?.$id].modifiers[modifier?.$id]?.quantity }}
                   </span>
                 </span>
-                <span class="plus" [ngClass]="((customizationData[modGroup?.$id].currentlySelected.length < modGroup?.MaximumItems) || (modGroup?.MaximumItems === 0 && customizationData[modGroup?.$id].modifiers[modifier?.$id].quantity < 1)) ? 'enabled' : 'disabled'" (click)="addModifier(modGroup, modifier)">+</span>
+                <button class="plus" [disabled]="!((customizationData[modGroup?.$id].currentlySelected.length < modGroup?.MaximumItems) || (modGroup?.MaximumItems === 0 && customizationData[modGroup?.$id].modifiers[modifier?.$id].quantity < 1))" (click)="addModifier(modGroup, modifier)"  tabindex="0">+</button>
               </div>
             </div><!-- /.option -->
           </div><!-- /.options -->
