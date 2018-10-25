@@ -119,7 +119,7 @@
             justify-content: flex-end;
             align-items: center;
 
-            span{
+            button{
               margin: 0 3px;
               display: inline-block;
 
@@ -127,15 +127,10 @@
               &.minus{
                 @include fontsize(22);
                 @include transition(opacity,200ms);
-                cursor: auto;
 
-                &.disabled{
+                &:disabled{
                   opacity: .4;
-                }
-
-                &.enabled{
-                  opacity: 1;
-                  cursor: pointer;
+                  cursor: auto;
                 }
               }
             }
@@ -285,8 +280,12 @@
   .plus,
   .minus{
     color: $orange-red;
-    @include fontsize(30);
+    @include fontsize(21);
     cursor: pointer;
+    appearance: none;
+    border: none;
+    background: none;
+    padding: 0;
   }
 
   .customization-errors{
