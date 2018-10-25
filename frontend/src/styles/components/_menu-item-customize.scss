@@ -85,7 +85,6 @@
       .header{
         padding: 30px 20px;
         display: flex;
-        // grid-template-columns: 2fr 2fr .5fr;
         justify-content: space-between;
         align-items: center;
         border-bottom: 1px solid $e1;
@@ -110,18 +109,18 @@
         .option{
           padding: 20px;
           border-top: 1px solid $e1;
-          display: grid;
-          grid-template-columns: 2fr 1fr .5fr;
           justify-content: space-between;
           align-items: center;
-          // display: flex;
+          display: flex;
 
           .choice-controls{
+            flex-basis: 25%;
             display: flex;
-            justify-content: space-between;
+            justify-content: flex-end;
             align-items: center;
 
             span{
+              margin: 0 3px;
               display: inline-block;
 
               &.plus,
@@ -140,6 +139,14 @@
                 }
               }
             }
+          }
+
+          .ingredient{
+            flex-basis: 50%;
+          }
+
+          .calories{
+            flex-basis: 25%;
           }
 
           &:first-child{
