@@ -184,7 +184,7 @@ export class MenuCustomizeComponent implements OnInit {
     menuItem['SpecialInstructions'] = this.specialInstructions;
     menuItem['returnUrl'] = this.router.url;
 
-    // TODO: Something strange happening that created a double return Url
+    // TODO: Something strange happening that created a double return U
     console.log(this.router.url);
 
     // Push full object to bag service
@@ -197,7 +197,15 @@ export class MenuCustomizeComponent implements OnInit {
   }
 
   public saveChanges(){
+    // if the array of required mods is not empty, don't add to bag
+    if(this.requiredModifierGroups.length > 0){
+      this.submitAttempted = true; // triggers showing of error messages
+      return; // disallow adding to bag
+    }
 
+    this.bagService.removeFromBagAtIndex(this.bagService.editingIndex);
+    this.bagService.editingIndex = undefined;
+    this.addToBag();
   }
 
   private recalculateCost(){
