@@ -188,6 +188,21 @@
 
   .final-product{
     padding: 20px;
+    position: fixed;
+    top: 86px;
+    left: 0;
+    right: 0;
+    background: $white;
+    @include transition(top);
+
+    .scrolled &{
+      top: 58px;
+    }
+
+    @include breakpoint($bp-768){
+      position: static;
+      background: transparent;
+    }
 
     .title{
       @extend %sofia-semi-bold;
