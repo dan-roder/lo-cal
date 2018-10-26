@@ -43,18 +43,21 @@
   }
 
   .checkout-options{
-    display: flex;
-    justify-content: space-between;
     text-align: center;
 
-    .left{
-      width: 46%;
-    }
+    @include breakpoint($bp-768){
+      display: flex;
+      justify-content: space-between;
 
-    .right{
-      width: 46%;
-      padding-left: 4%;
-      border-left: 1px solid $light-grey;
+      .left{
+        width: 46%;
+      }
+
+      .right{
+        width: 46%;
+        padding-left: 4%;
+        border-left: 1px solid $light-grey;
+      }
     }
 
     .guest-link{
