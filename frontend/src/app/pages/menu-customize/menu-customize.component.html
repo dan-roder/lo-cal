@@ -1,10 +1,11 @@
 <div class="page-item-detail">
-  <div class="menu-item-header">
-    <div class="overlay-container">
-      <h1 class="title">{{ menuItemDetails?.item?.DisplayName }}</h1>
-      <img *ngIf="featuredImage" [src]="featuredImage" [alt]="featuredImageAlt">
+  <header class="header-container">
+    <div class="content" [ngStyle]="{'background-image':'url(' + featuredImage + ')'}">
+      <div class="header-content text-center">
+        <h1 class="title">{{ menuItemDetails?.item?.DisplayName }}</h1>
+      </div>
     </div>
-  </div>
+  </header>
 
   <div class="customization-container center-1440">
     <div class="left customization-options">
@@ -78,9 +79,9 @@
       <div class="quantity-wrapper">
         <div class="text">Quantity</div>
         <div class="quantity-changer">
-          <span class="minus" (click)="decrementQuantity()">-</span>
+          <button class="minus" (click)="decrementQuantity()" tabindex="0">-</button>
           <span class="quantity">{{ quantity }}</span>
-          <span class="plus" (click)="incrementQuantity()">+</span>
+          <button class="plus" (click)="incrementQuantity()" tabindex="0">+</button>
         </div>
       </div>
 
