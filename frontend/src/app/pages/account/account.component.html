@@ -197,7 +197,7 @@
 <div class="account-section">
   <div class="account-heading">
     <h3>Saved Payments</h3>
-    <a href="" (click)="editPayments()" role="button">{{ editingPassword ? 'Cancel' : 'Edit' }}</a>
+    <a href="" (click)="editPayments()" role="button">{{ editingPayments ? 'Cancel' : 'Edit' }}</a>
   </div>
   <div class="payments" *ngIf="savedPayments">
     <div class="payment id-{{ savedPayments?.AccountId }}">
