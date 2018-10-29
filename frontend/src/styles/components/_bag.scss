@@ -1,14 +1,48 @@
 .checkout-overlay{
   position: fixed;
-  top: 86px;
+  top: 0;
   right: 0;
   left: 0;
   bottom: 0;
+  z-index: 4;
   background: rgba(0,0,0,.6);
+  @include transition();
+  pointer-events: none;
+  opacity: 0;
+  display: none;
+
+  @include breakpoint($bp-500){
+    display: block;
+  }
+
+  &.visible{
+    pointer-events: auto;
+    opacity: 1;
+  }
+
+  .scrolled &{
+    top: 58px;
+
+    @include breakpoint($bp-860){
+      top: 68px;
+    }
+  }
+}
+
+.main-checkout-wrapper{
+  position: fixed;
+  top: 86px;
+  right: 0;
+  bottom: 0;
+  left: 0;
   opacity: 0;
   pointer-events: none;
   z-index: 5;
   @include transition();
+
+  @include breakpoint($bp-500){
+    left: auto;
+  }
 
   @include breakpoint($bp-860){
     top: 96px;
