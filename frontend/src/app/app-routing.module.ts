@@ -34,29 +34,29 @@ const routes: Routes = [
     path: '',
     component: MainLayoutComponent,
     children: [
-      { path: '', component: HomeComponent },
-      { path: 'our-story', component: OurStoryComponent },
-      { path: 'our-food', component: OurFoodComponent },
-      { path: 'catering', component: CateringComponent },
-      { path: 'login', component: LoginComponent },
-      { path: 'password-reset', component: PasswordResetComponent },
-      { path: 'create-account', component: CreateAccountComponent },
-      { path: 'contact', component: ContactComponent },
-      { path: 'blog', component: BlogComponent },
+      { path: '', component: HomeComponent, data: { title: 'Home' } },
+      { path: 'our-story', component: OurStoryComponent, data: { title: 'Our Story' }  },
+      { path: 'our-food', component: OurFoodComponent, data: { title: 'Our Food' }  },
+      { path: 'catering', component: CateringComponent, data: { title: 'Catering' }  },
+      { path: 'login', component: LoginComponent, data: { title: 'Login' }  },
+      { path: 'password-reset', component: PasswordResetComponent, data: { title: 'Reset Password' }  },
+      { path: 'create-account', component: CreateAccountComponent, data: { title: 'Create Account' }  },
+      { path: 'contact', component: ContactComponent, data: { title: 'Contact Us' }  },
+      { path: 'blog', component: BlogComponent, data: { title: 'Blog' }  },
       { path: 'blog/:post', component: BlogPostComponent },
-      { path: 'account', component: AccountLayoutComponent, canActivate: [AuthGuard],
+      { path: 'account', component: AccountLayoutComponent, data: { title: 'Account' }, canActivate: [AuthGuard],
         children: [
-          { path: '', component: AccountComponent },
-          { path: 'order-history', component: OrderHistoryComponent },
+          { path: '', component: AccountComponent, data: { title: 'Account' }  },
+          { path: 'order-history', component: OrderHistoryComponent, data: { title: 'Order History' }  },
           { path: 'order-history/:orderid', component: OrderDetailComponent }
         ]
       },
       {
-        path: 'checkout', component: CheckoutLoginComponent
+        path: 'checkout', component: CheckoutLoginComponent, data: { title: 'Checkout' }
       },
-      { path: 'checkout/review', component: CheckoutReviewComponent, canActivate: [AccessGuard] },
-      { path: 'checkout/payment', component: CheckoutPaymentComponent, canActivate: [OrderGuard] },
-      { path: 'checkout/confirmation', component: ConfirmationComponent }
+      { path: 'checkout/review', component: CheckoutReviewComponent, canActivate: [AccessGuard], data: { title: 'Review Your Order' }  },
+      { path: 'checkout/payment', component: CheckoutPaymentComponent, canActivate: [OrderGuard], data: { title: 'Complete Your Order' }  },
+      { path: 'checkout/confirmation', component: ConfirmationComponent, data: { title: 'Confirmation' }  }
     ]
   },
   {
@@ -71,7 +71,8 @@ const routes: Routes = [
         path: '',
         component: MenuPageComponent
       },
-    ]
+    ],
+    data: { title: 'Menu' }
   },
   {
     path: 'menu/:category',
