@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-root',
@@ -6,4 +8,24 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'app works!';
+
+  constructor(private router: Router, private activatedRoute: ActivatedRoute, private titleService: Title){
+
+  }
+
+  ngOnInit(){
+    this.router.events
+      .filter((event) => event instanceof NavigationEnd)
+      .map(() => this.activatedRoute)
+      .map((route) => {
+        while (route.firstChild) route = route.firstChild;
+        return route;
+      })
+      .filter((route) => route.outlet === 'primary')
+      .mergeMap((route) => route.data)
+      .subscribe((event) => {
+        let title = (event['title'] !== 'Home' && event['title'] !== undefined) ? event['title'] + ' | Lo-Cal Kitchen' : 'Lo-Cal Kitchen';
+        this.titleService.setTitle(title)
+      });
+  }
 }
