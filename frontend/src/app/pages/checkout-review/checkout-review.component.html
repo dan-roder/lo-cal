@@ -5,6 +5,12 @@
     <div class="form-errors text-left" *ngIf="bagItems.length === 0"><p>There is currently nothing in your bag. Please return to <a routerLink="/menu">our menu</a>.</p></div>
     <div class="checkout-wrapper" *ngIf="bagItems.length > 0">
       <div class="left-pane">
+        <div class="time-selector">
+          <div class="times-wrapper">
+            <div class="time" *ngFor="let time of times" tabindex="0" (click)="selectTime(time?.Time)">{{ time?.Time | date:"h:mma" }}</div>
+          </div>
+        </div>
+
         <div class="items">
           <div class="review-item-card">
             <div class="item clearfix" *ngFor="let menuItem of bagItems; let i = index;">
@@ -63,6 +69,7 @@
           </div><!-- /.review-item-card -->
         </div>
       </div>
+
       <div class="order-summary">
         <div class="itemized-summary">
           <h4>Order Summary</h4>

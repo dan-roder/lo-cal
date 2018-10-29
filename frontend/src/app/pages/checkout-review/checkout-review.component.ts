@@ -126,6 +126,11 @@ export class CheckoutReviewComponent implements OnInit {
     }
   }
 
+  public selectTime(time){
+    console.log(time);
+    this.selectedTime = time;
+  }
+
   private getNextAvailableTime(){
     this.orderService.getNextAvailableTime().subscribe(nextTime => {
       this.selectedTime = nextTime;
