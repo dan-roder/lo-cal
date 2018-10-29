@@ -1,4 +1,5 @@
-<div class="checkout-overlay" [ngClass]="state" (click)="toggleBagState($event.target)">
+<div class="checkout-overlay" [ngClass]="state" (click)="toggleBagState($event.target)"></div><!-- /.checkout-overlay -->
+<div class="main-checkout-wrapper" [ngClass]="state">
   <div class="checkout-content-wrapper" [@hideShowBag]='state'>
     <div class="checkout-inner-wrapper">
 
@@ -7,10 +8,7 @@
             <div class="back">
             </div>
             <div class="checkout-title">My Bag</div>
-            <div class="close" (click)="toggleBagState($event.target)">
-              <span class="close-1"></span>
-              <span class="close-2"></span>
-            </div>
+            <button class="close" (click)="toggleBagState($event.target)" tabindex="0"></button>
           </div><!-- /.checkout-header -->
 
           <div class="items">
@@ -19,7 +17,7 @@
               <div class="item-review-wrapper">
                 <div class="left image">
                   <img [src]="menuItem?.cartImage" alt="" class="item-image">
-                  <img src="/wp-content/themes/local/dist/assets/svgs/delete-cross-icon.svg" alt="X to remove item from cart" class="remove-image" (click)="removeFromBagAtIndex(i)">
+                  <img src="/wp-content/themes/local/dist/assets/svgs/delete-cross-icon.svg" alt="X to remove item from cart" class="remove-image" (click)="removeFromBagAtIndex(i)" tabindex="0">
                 </div>
                 <div class="bag-detail-card">
                   <div class="title-container">
@@ -64,4 +62,4 @@
 
     </div><!-- /.checkout-inner-wrapper -->
   </div><!-- /.checkout-content-wrapper -->
-</div><!-- /.checkout-overlay -->
+</div><!-- /.main-checkout-wrapper -->
