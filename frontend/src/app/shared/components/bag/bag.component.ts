@@ -37,7 +37,7 @@ export class BagComponent implements OnInit {
 
   toggleBagState(target){
     if(target !== undefined){
-      if(target.className !== undefined && target.className.indexOf('checkout-overlay') !== -1){
+      if(target.className !== undefined && (target.className.indexOf('checkout-overlay') !== -1 || target.className.indexOf('close') !== -1)){
         this.bagService.toggleBagState();
       }
 
