@@ -1,0 +1,28 @@
+.time-selector{
+  margin: 0 0 30px;
+  border: 1px solid $light-grey;
+
+  .times-wrapper{
+    overflow-x: scroll;
+    -webkit-overflow-scrolling: touch;
+    white-space: nowrap;
+    background: $white;
+  }
+
+  .time{
+    display: inline-block;
+    border-left: 1px solid $light-grey;
+    padding: 15px;
+    cursor: pointer;
+    @include transition();
+
+    &.selected{
+      background: $orange-red;
+      color: $white;
+    }
+
+    &:first-child{
+      border-left: none;
+    }
+  }
+}
