@@ -32,7 +32,6 @@ export class MainLayoutComponent implements OnInit {
   }
 
   toggleBagState(){
-    console.log(this.bagState);
     if(this.numberOfItemsInBag > 0 || this.bagState === 'visible'){
       this.bagService.toggleBagState();
     }
