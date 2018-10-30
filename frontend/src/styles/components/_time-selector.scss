@@ -11,10 +11,16 @@
 
   .time{
     display: inline-block;
+    border: none;
     border-left: 1px solid $light-grey;
     padding: 15px;
     cursor: pointer;
     @include transition();
+
+    &:focus{
+      outline: 0;
+      background: $c;
+    }
 
     &.selected{
       background: $orange-red;
