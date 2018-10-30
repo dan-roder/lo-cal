@@ -2,7 +2,6 @@ import { Component, OnInit, EventEmitter } from '@angular/core';
 import { WordpressService } from '@local/services/wp.service';
 import { BagService } from '@local/services/bag.service';
 import { LineItem } from '@local/models/LineItem';
-import { LocalStorage } from '@ngx-pwa/local-storage';
 import { Router } from '@angular/router';
 
 
@@ -22,7 +21,6 @@ export class MainLayoutComponent implements OnInit {
   constructor(
     private wpService: WordpressService,
     private bagService: BagService,
-    private localStorage: LocalStorage,
     private router: Router
   ) { }
 
