@@ -7,6 +7,7 @@
     <div class="checkout-wrapper" *ngIf="!pickupTimeError">
       <div class="form-errors" *ngIf="genericOrderError"><p>We're sorry. An unknown error occurred. Please try again and if this error persists please contact us at </p></div>
       <div class="left-pane">
+        <!-- TODO: REMOVE THIS STEP FROM PAYMENT SCREEN. IT'S NOW ON REVIEW -->
         <div class="step">
           <div class="inner-step-wrapper">
             <div class="step-heading" (click)="editSection(1, $event.type)" (focus)="editSection(1, $event.type)" tabindex="0">1. Pickup</div>
