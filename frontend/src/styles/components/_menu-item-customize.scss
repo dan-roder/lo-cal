@@ -328,6 +328,8 @@
       @include fontsize(22);
       color: $orange-red;
       cursor: pointer;
+      border: none;
+      background: none;
     }
   }
 }// .quantity-changer
