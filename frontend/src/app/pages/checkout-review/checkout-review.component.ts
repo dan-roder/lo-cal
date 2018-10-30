@@ -3,9 +3,9 @@ import { BagService } from '@local/services/bag.service';
 import { OrderService } from '@local/services/order.service';
 import { Order } from '@local/models/Order';
 import { Router } from '@angular/router';
-import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { CustomerService } from '@local/services/customer.service';
 import { WordpressService } from '@local/services/wp.service';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'lo-cal-checkout-review',
@@ -14,7 +14,6 @@ import { WordpressService } from '@local/services/wp.service';
 export class CheckoutReviewComponent implements OnInit {
   public isOpen: number = -1;
   public allOrderDetails : Order;
-  public timeForm : FormGroup;
   public timeSelectBox : string;
   public selectedTime : any;
   public times : any;
@@ -23,17 +22,18 @@ export class CheckoutReviewComponent implements OnInit {
   public addressData : any;
   public bagTotalPrice : number;
   public submitAttempted : boolean = false;
+  public pickupForm : FormGroup;
 
   constructor(
     private bagService: BagService,
     private orderService: OrderService,
     private router: Router,
-    private fb: FormBuilder,
     private customerService: CustomerService,
-    private wpService: WordpressService) {
-      this.timeForm = fb.group({
-        'pickup-time' : ['', Validators.required]
-      })
+    private wpService: WordpressService,
+    private fb: FormBuilder) {
+      this.pickupForm = fb.group({
+        'pickup-selection' : [null, Validators.required]
+      });
     }
 
   ngOnInit() {
@@ -84,13 +84,14 @@ export class CheckoutReviewComponent implements OnInit {
 
   public putOrder(){
     // Ensure time was selected
-    if(!this.selectedTime){
+    if(!this.selectedTime || !this.pickupForm.valid){
       this.submitAttempted = true;
       return;
     }
 
     this.processing = true;
 
+    this.orderService.orderMode = this.pickupForm.get('pickup-selection').value;
 
     this.orderService.putOrder(this.bagItems).subscribe(response => {
 
@@ -114,27 +115,9 @@ export class CheckoutReviewComponent implements OnInit {
     });
   }
 
-  public timeSelectChanged(){
-    switch(this.timeSelectBox){
-      case 'next':
-        this.getNextAvailableTime();
-      break;
-      default:
-        this.orderService.promiseDateTime = this.timeSelectBox;
-        this.selectedTime = this.timeSelectBox;
-      break;
-    }
-  }
-
   public selectTime(time){
-    console.log(time);
     this.selectedTime = time;
-  }
-
-  private getNextAvailableTime(){
-    this.orderService.getNextAvailableTime().subscribe(nextTime => {
-      this.selectedTime = nextTime;
-    })
+    this.orderService.promiseDateTime = time;
   }
 
   private retrievePickupTimes(){
