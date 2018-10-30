@@ -19,6 +19,7 @@ export class OrderService {
   private _customerInfo : Customer;
   public _currentOrder : Order;
   private _promiseDateTime : any;
+  private _orderMode : number;
 
   constructor(
     private httpClient: HttpClient,
@@ -51,7 +52,7 @@ export class OrderService {
         PromiseDateTime : this.promiseDateTime,
         LineItems : bagItems,
         Customer : this.customerInfo,
-        OrderMode : 'Pickup',
+        OrderMode : this.orderMode,
         PaymentMode : 'Unknown'
       }
     }
@@ -158,5 +159,13 @@ export class OrderService {
 
   set promiseDateTime(time: any){
     this._promiseDateTime = time;
+  }
+
+  get orderMode(): number{
+    return this._orderMode;
+  }
+
+  set orderMode(mode: number){
+    this._orderMode = mode;
   }
 }
