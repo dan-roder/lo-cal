@@ -234,6 +234,9 @@ export class MenuCustomizeComponent implements OnInit {
       // Initialize item price
       this.itemPrice = this.salesItemDetails.Price;
 
+      // Set up calories
+      this.calorieCount = this.setCalorieCount();
+
       // Initialize defaults
       let defaults = [];
 
@@ -342,6 +345,11 @@ export class MenuCustomizeComponent implements OnInit {
   public isGroupRequired(groupId): boolean{
     let isRequired = _.find(this.requiredModifierGroups, {'$id': groupId});
     return (isRequired !== undefined) ? true : false;
+  }
+
+  private setCalorieCount(): number{
+    let cals = (this.salesItemDetails.CaloricValue !== null && this.salesItemDetails.CaloricValue !== undefined) ? +this.salesItemDetails.CaloricValue : ((this.menuItemDetails.item.CaloricServingUnit !== null && this.menuItemDetails.item.CaloricServingUnit !== undefined) ? +this.menuItemDetails.item.CaloricServingUnit : 0);
+    return cals;
   }
 
   /**
