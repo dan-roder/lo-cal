@@ -4,10 +4,6 @@
         <h1>Thank You For Your Order!</h1>
         <h2 class="red-text">Here's the Lo-Down</h2>
       </div>
-      <!-- <div class="featured-image center" *ngIf="featuredImage">
-        <img [src]="featuredImage?.source_url" [alt]="featuredImage?.alt_text">
-      </div> -->
-      <!-- TODO: ADD NOTE TO CALL THE STORE IF THE ORDER MODE CAME BACK AS CURBSIDE -->
       <div class="content center-740">
         <div class="order-details">
           <h3 class="details-title">Order #{{ orderResult?.OrderId }}</h3>
@@ -26,6 +22,13 @@
                 </div>
               </div>
             </div><!-- /.line-items -->
+            <div class="curbside-pickup" *ngIf="orderResult?.Order?.OrderMode === 4">
+              <h3 class="details-title">Curbside Pickup</h3>
+              <p>Click the button below to call the store and let us know you've arrived!</p>
+              <p class="red-button full-width-button">
+                <a href="tel:+1-516-625-3300" class="red-button">Call Us</a>
+              </p>
+            </div>
             <div class="payment-information" *ngIf="orderResult?.Order?.Payments[0]">
               <h3 class="details-title">Payment Information</h3>
               <div class="payment-details">
