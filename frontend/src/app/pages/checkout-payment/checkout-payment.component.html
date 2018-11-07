@@ -7,60 +7,10 @@
     <div class="checkout-wrapper" *ngIf="!pickupTimeError">
       <div class="form-errors" *ngIf="genericOrderError"><p>We're sorry. An unknown error occurred. Please try again and if this error persists please contact us at </p></div>
       <div class="left-pane">
-        <!-- TODO: REMOVE THIS STEP FROM PAYMENT SCREEN. IT'S NOW ON REVIEW -->
         <div class="step">
           <div class="inner-step-wrapper">
-            <div class="step-heading" (click)="editSection(1, $event.type)" (focus)="editSection(1, $event.type)" tabindex="0">1. Pickup</div>
+            <div class="step-heading" (click)="editSection(1, $event.type)" (focus)="editSection(1, $event.type)" tabindex="0">1. Contact Information</div>
             <div class="step-wrapper" [hidden]="sectionOpen !== 1">
-              <form action="" class="lo-cal-form" [formGroup]="pickupForm">
-                <div class="response">
-                  <fieldset>
-                    <legend>How would you like to pickup your order?</legend>
-                    <div class="radio-options flex-between">
-                      <div class="option">
-                        <label for="in-store">
-                          <input type="radio" name="pickup-selection" id="in-store" value="1" formControlName="pickup-selection">
-                          <span class="semi-bold">In Store Pick Up</span>
-                        </label>
-                      </div>
-                      <div class="option">
-                        <label for="curbside">
-                          <input type="radio" name="pickup-selection" id="curbside" value="4" formControlName="pickup-selection">
-                          <span class="semi-bold">Curbside Pickup</span>
-                        </label>
-                      </div>
-                    </div>
-                  </fieldset>
-                  <div class="car-options" *ngIf="pickupForm.controls['pickup-selection'].value === '4'">
-                    <div class="form-section half-and-half">
-                      <div class="form-component form-component-text">
-                        <label for="vehicle-make" class="visuallyhidden">Vehicle Make</label>
-                        <input type="text" name="vehicle-make" id="vehicle-make" formControlName="vehicle-make" placeholder="Vehicle Make*">
-                      </div>
-                      <div class="form-component form-component-text">
-                        <label for="vehicle-model" class="visuallyhidden">Vehicle Model</label>
-                        <input type="text" name="vehicle-model" id="vehicle-model" formControlName="vehicle-model" placeholder="Vehicle Model*">
-                      </div>
-                    </div>
-                    <div class="form-section half-and-half">
-                      <div class="form-component form-component-text">
-                        <label for="vehicle-color" class="visuallyhidden">Vehicle Color</label>
-                        <input type="text" name="vehicle-color" id="vehicle-color" formControlName="vehicle-color" placeholder="Vehicle Color*">
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="next-step black-button">
-                  <button [disabled]="!pickupForm.valid"(click)="nextStep()">Next Step</button>
-                </div>
-              </form>
-            </div>
-          </div><!-- /. inner-step-wrapper -->
-        </div><!-- /.step -->
-        <div class="step">
-          <div class="inner-step-wrapper">
-            <div class="step-heading" (click)="editSection(2, $event.type)" (focus)="editSection(2, $event.type)" tabindex="0">2. Contact Information</div>
-            <div class="step-wrapper" [hidden]="sectionOpen !== 2">
               <form action="" class="lo-cal-form" [formGroup]="contactInfoForm">
                 <div class="form-section half-and-half">
                   <div class="form-component form-component-text">
@@ -94,8 +44,8 @@
         </div><!-- /.step -->
         <div class="step">
           <div class="inner-step-wrapper">
-            <div class="step-heading" (click)="editSection(3, $event.type)" (focus)="editSection(3, $event.type)" tabindex="0">3. Payment</div>
-            <div class="step-wrapper" [hidden]="sectionOpen !== 3">
+            <div class="step-heading" (click)="editSection(2, $event.type)" (focus)="editSection(2, $event.type)" tabindex="0">2. Payment</div>
+            <div class="step-wrapper" [hidden]="sectionOpen !== 2">
               <form action="" class="lo-cal-form" [formGroup]="paymentForm">
                 <div class="saved-payment-wrapper">
                   <div class="radio-options flex-between saved-payment-wrapper">
@@ -163,7 +113,7 @@
         </div><!-- /.step -->
         <div class="step step-4">
           <div class="inner-step-wrapper">
-            <div class="step-heading" tabindex="0">4. Place Your Order</div>
+            <div class="step-heading" tabindex="0">3. Place Your Order</div>
             <div class="step-wrapper">
               <p class="question semi-bold">Your total: {{ currentOrder?.TotalAmount | currency }}</p>
             </div>
