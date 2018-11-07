@@ -252,6 +252,10 @@ export class MenuCustomizeComponent implements OnInit {
 
         this.registerCustomizationVariables( this.orderedSalesItemDetails, defaults );
       }
+      else{
+        // This case is any prepared foods that don't have customization and are as is
+        this.recalculateCost();
+      }
     }, error => {
       this.menuError = true;
     });
