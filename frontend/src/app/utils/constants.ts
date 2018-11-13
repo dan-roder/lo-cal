@@ -4,12 +4,12 @@ import { WindowRef } from './windowref';
 @Injectable()
 export class Config {
   public wordpressApiUrl : string = '';
-  public railsMenuApi : string = 'https://api.lo-calkitchen.com/menus/1';
+  public railsMenuApi : string = 'https://api.lo-calkitchen.com/menus/2';
   public railsCustomerEndpoint : string = 'https://api.lo-calkitchen.com/customers';
   public authenticateEndpoint : string = 'https://api.lo-calkitchen.com/authenticate';
   public railsOrderEndpoint : string = 'https://api.lo-calkitchen.com/orders';
-  public railsTimeEndpoint : string = 'https://api.lo-calkitchen.com/times/1';
-  public allTimesEndpoint : string = 'https://api.lo-calkitchen.com/times/1/1/0/1001';
+  public railsTimeEndpoint : string = 'https://api.lo-calkitchen.com/times/2';
+  public allTimesEndpoint : string = 'https://api.lo-calkitchen.com/times/2/1/0/1001';
   public securityQuestionEndpoint : string = 'https://api.lo-calkitchen.com/securityquestions?Email='
   public mailchimpEndpoint : string = 'https://us14.api.mailchimp.com/3.0/lists/1ab7655e84/members';
   public siteId : number = 1;
