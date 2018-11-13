@@ -6,6 +6,9 @@
     <div class="checkout-wrapper" *ngIf="bagItems.length > 0">
       <div class="left-pane">
         <h4>How would you like to pickup your order?</h4>
+        <div class="required-message review-errors" *ngIf="submitAttempted && !pickupForm.valid">
+          <p>Please select a pickup method.</p>
+        </div>
         <div class="inner-step-wrapper">
           <form action="" class="lo-cal-form" [formGroup]="pickupForm">
             <div class="radio-options flex-between">
@@ -45,15 +48,15 @@
 
         <div class="time-selector" *ngIf="times">
           <h4>Choose your Pickup Time</h4>
+          <div class="required-message review-errors" *ngIf="submitAttempted && !selectedTime">
+            <p>Please select a pickup time.</p>
+          </div>
           <div class="times-wrapper">
             <button class="time" *ngFor="let time of times" tabindex="0" (click)="selectTime(time?.Time)" [ngClass]="selectedTime === time?.Time ? 'selected' : ''">{{ time?.Time | date:"h:mma" }}</button>
           </div>
           <!-- ADD Location to show next-available time before submission -->
           <div class="next-available-time" *ngIf="selectedTime">
             <p><strong>Pickup on: </strong>{{ selectedTime | date:"E MMM d, h:mma" }}</p>
-          </div>
-          <div class="required-message" *ngIf="submitAttempted && !selectedTime">
-            <p>Please select a pickup time.</p>
           </div>
         </div>
 
@@ -107,7 +110,7 @@
             </div><!-- /.item -->
             <div class="red-button small-text">
               <div class="loading-gif button-size" *ngIf="processing"></div>
-              <button (click)="putOrder()" [ngClass]="{'disabled' : !selectedTime}" *ngIf="!processing">Proceed to Checkout</button>
+              <button (click)="putOrder()" [ngClass]="{'disabled' : (!selectedTime || !pickupForm.valid)}" *ngIf="!processing">Proceed to Checkout</button>
             </div>
           </div><!-- /.review-item-card -->
         </div>
@@ -148,7 +151,10 @@
 
             <div class="red-button full-width-button small-text">
               <div class="loading-gif button-size" *ngIf="processing"></div>
-              <button (click)="putOrder()" [ngClass]="{'disabled' : !selectedTime}" *ngIf="!processing">Proceed to Checkout</button>
+              <button (click)="putOrder()" [ngClass]="{'disabled' : (!selectedTime || !pickupForm.valid)}" *ngIf="!processing">Proceed to Checkout</button>
+              <div class="required-message" *ngIf="submitAttempted && !pickupForm.valid">
+                <p>Please select a pickup method.</p>
+              </div>
               <div class="required-message" *ngIf="submitAttempted && !selectedTime">
                 <p>Please select a pickup time.</p>
               </div>
