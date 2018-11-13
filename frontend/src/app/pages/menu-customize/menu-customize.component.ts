@@ -23,7 +23,7 @@ export class MenuCustomizeComponent implements OnInit {
   private defaultItemId : number;
   public customizationData : Object = {};
   public specialInstructions : string;
-  private _calorieCount : number = 0;
+  private _calorieCount : any;
   public currentModifierArray : Array<any> = [];
   public featuredImage : string = '';
   public featuredImageAlt : string = '';
@@ -234,9 +234,6 @@ export class MenuCustomizeComponent implements OnInit {
       // Initialize item price
       this.itemPrice = this.salesItemDetails.Price;
 
-      // Set up calories
-      this.calorieCount = this.setCalorieCount();
-
       // Initialize defaults
       let defaults = [];
 
@@ -248,6 +245,9 @@ export class MenuCustomizeComponent implements OnInit {
         this.registerCustomizationVariables( this.orderedSalesItemDetails, defaults );
       }
       else if(this.salesItemDetails.ModGroups.length > 0){
+        // Set up calories
+        this.calorieCount = this.setCalorieCount();
+
         // Does the sales item have defaults?
         if(this.salesItemDetails.DefaultOptions.length > 0){
           defaults = this.salesItemDetails.DefaultOptions;
@@ -256,6 +256,7 @@ export class MenuCustomizeComponent implements OnInit {
         this.registerCustomizationVariables( this.orderedSalesItemDetails, defaults );
       }
       else{
+        this.calorieCountString();
         // This case is any prepared foods that don't have customization and are as is
         this.recalculateCost();
       }
@@ -351,9 +352,13 @@ export class MenuCustomizeComponent implements OnInit {
     return (isRequired !== undefined) ? true : false;
   }
 
-  private setCalorieCount(): number{
+  private setCalorieCount(): any{
     let cals = (this.salesItemDetails.CaloricValue !== null && this.salesItemDetails.CaloricValue !== undefined) ? +this.salesItemDetails.CaloricValue : ((this.menuItemDetails.item.CaloricServingUnit !== null && this.menuItemDetails.item.CaloricServingUnit !== undefined) ? +this.menuItemDetails.item.CaloricServingUnit : 0);
     return cals;
+  }
+
+  private calorieCountString(){
+    this.calorieCount = this.menuItemDetails.item.CaloricServingUnit;
   }
 
   /**
@@ -361,11 +366,11 @@ export class MenuCustomizeComponent implements OnInit {
    * Getters & Setters
    *
    */
-  get calorieCount(): number{
+  get calorieCount(): any{
     return this._calorieCount;
   }
 
-  set calorieCount(calories: number){
+  set calorieCount(calories: any){
     this._calorieCount = calories;
   }
 
