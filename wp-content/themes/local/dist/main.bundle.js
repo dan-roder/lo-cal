@@ -1216,6 +1216,7 @@ var AccountComponent = /** @class */ (function () {
             };
             this.customerService.updateLoginInfo(loginInfo).subscribe(function (result) {
                 if (result === null) {
+                    _this.editingPassword = false;
                     _this.passwordSuccess = 'Password successfully changed. You will now be logged out and need to log in again.';
                     _this.destroyAndLogout();
                 }
@@ -1223,7 +1224,6 @@ var AccountComponent = /** @class */ (function () {
                 _this.passwordError = error.error.message;
             });
         }
-        this.editingPassword = false;
     };
     AccountComponent.prototype.updateSecurityQuestion = function (formData) {
         var _this = this;
@@ -5544,12 +5544,12 @@ var Config = /** @class */ (function () {
     function Config(winRef) {
         this.winRef = winRef;
         this.wordpressApiUrl = '';
-        this.railsMenuApi = 'https://api.lo-calkitchen.com/menus/1';
+        this.railsMenuApi = 'https://api.lo-calkitchen.com/menus/2';
         this.railsCustomerEndpoint = 'https://api.lo-calkitchen.com/customers';
         this.authenticateEndpoint = 'https://api.lo-calkitchen.com/authenticate';
         this.railsOrderEndpoint = 'https://api.lo-calkitchen.com/orders';
-        this.railsTimeEndpoint = 'https://api.lo-calkitchen.com/times/1';
-        this.allTimesEndpoint = 'https://api.lo-calkitchen.com/times/1/1/0/1001';
+        this.railsTimeEndpoint = 'https://api.lo-calkitchen.com/times/2';
+        this.allTimesEndpoint = 'https://api.lo-calkitchen.com/times/2/1/0/1001';
         this.securityQuestionEndpoint = 'https://api.lo-calkitchen.com/securityquestions?Email=';
         this.mailchimpEndpoint = 'https://us14.api.mailchimp.com/3.0/lists/1ab7655e84/members';
         this.siteId = 1;
