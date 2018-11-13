@@ -207,6 +207,10 @@ img{
   + .header{
     padding: 10px 20px 30px;
   }
+
+  &.review-errors{
+    padding: 0 0 20px;
+  }
 }
 
 button.close{
