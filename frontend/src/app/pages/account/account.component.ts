@@ -177,6 +177,7 @@ export class AccountComponent implements OnInit {
 
       this.customerService.updateLoginInfo(loginInfo).subscribe((result) => {
         if(result === null){
+          this.editingPassword = false;
           this.passwordSuccess = 'Password successfully changed. You will now be logged out and need to log in again.';
           this.destroyAndLogout();
         }
@@ -184,8 +185,6 @@ export class AccountComponent implements OnInit {
         this.passwordError = error.error.message;
       });
     }
-
-    this.editingPassword = false;
   }
 
   public updateSecurityQuestion(formData){
