@@ -86,6 +86,8 @@ export class CheckoutReviewComponent implements OnInit {
     // Ensure time was selected
     if(!this.selectedTime || !this.pickupForm.valid){
       this.submitAttempted = true;
+
+      // TODO: Ensure when order is PUT, 30min delay has not elapsed
       return;
     }
 
@@ -123,6 +125,7 @@ export class CheckoutReviewComponent implements OnInit {
   private retrievePickupTimes(){
     this.orderService.retrieveTimes('1').subscribe(times => {
       // 0 position in array indicates current day
+      // TODO: Filter out times that are shorter than 30min from current time
       this.times = times[0].Value;
     })
   }
