@@ -163,9 +163,10 @@
               <p>{{ orderResultForTesting }}</p>
               <button [disabled]="((!paymentForm.valid && (paymentChoice !== '3')) || !contactInfoForm.valid) && !processing" *ngIf="!processing" (click)="submitOrder()">Place Order Now</button>
             </div>
-            <p class="go-back text-center">
+            <!-- TODO: Maybe come back to make this a real link -->
+            <!-- <p class="go-back text-center">
               <a href="">or go back to edit your order</a>
-            </p>
+            </p> -->
           </div>
           <div class="location-details" [innerHtml]="addressData?.content?.rendered | safeHtml">
         </div><!-- /.pricing-and-location -->
