@@ -3,15 +3,14 @@ import { WindowRef } from './windowref';
 
 @Injectable()
 export class Config {
-  // TODO: Change endpoint URLs to use siteId from here instead of hardcoded
   public siteId : number = 2;
   public wordpressApiUrl : string = '';
-  public railsMenuApi : string = 'https://api.lo-calkitchen.com/menus/2';
+  public railsMenuApi : string = `https://api.lo-calkitchen.com/menus/${this.siteId}`;
   public railsCustomerEndpoint : string = 'https://api.lo-calkitchen.com/customers';
   public authenticateEndpoint : string = 'https://api.lo-calkitchen.com/authenticate';
   public railsOrderEndpoint : string = 'https://api.lo-calkitchen.com/orders';
-  public railsTimeEndpoint : string = 'https://api.lo-calkitchen.com/times/2';
-  public allTimesEndpoint : string = 'https://api.lo-calkitchen.com/times/2/1/0/1001';
+  public railsTimeEndpoint : string = `https://api.lo-calkitchen.com/times/${this.siteId}`;
+  public allTimesEndpoint : string = `https://api.lo-calkitchen.com/times/${this.siteId}/1/0/1001`;
   public securityQuestionEndpoint : string = 'https://api.lo-calkitchen.com/securityquestions?Email='
   public mailchimpEndpoint : string = 'https://us14.api.mailchimp.com/3.0/lists/1ab7655e84/members';
   public menuId : number = 1001;

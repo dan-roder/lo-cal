@@ -5543,15 +5543,14 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var Config = /** @class */ (function () {
     function Config(winRef) {
         this.winRef = winRef;
-        // TODO: Change endpoint URLs to use siteId from here instead of hardcoded
         this.siteId = 2;
         this.wordpressApiUrl = '';
-        this.railsMenuApi = 'https://api.lo-calkitchen.com/menus/2';
+        this.railsMenuApi = "https://api.lo-calkitchen.com/menus/" + this.siteId;
         this.railsCustomerEndpoint = 'https://api.lo-calkitchen.com/customers';
         this.authenticateEndpoint = 'https://api.lo-calkitchen.com/authenticate';
         this.railsOrderEndpoint = 'https://api.lo-calkitchen.com/orders';
-        this.railsTimeEndpoint = 'https://api.lo-calkitchen.com/times/2';
-        this.allTimesEndpoint = 'https://api.lo-calkitchen.com/times/2/1/0/1001';
+        this.railsTimeEndpoint = "https://api.lo-calkitchen.com/times/" + this.siteId;
+        this.allTimesEndpoint = "https://api.lo-calkitchen.com/times/" + this.siteId + "/1/0/1001";
         this.securityQuestionEndpoint = 'https://api.lo-calkitchen.com/securityquestions?Email=';
         this.mailchimpEndpoint = 'https://us14.api.mailchimp.com/3.0/lists/1ab7655e84/members';
         this.menuId = 1001;
