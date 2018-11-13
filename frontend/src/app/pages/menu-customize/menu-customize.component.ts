@@ -70,6 +70,8 @@ export class MenuCustomizeComponent implements OnInit {
     if(currentSelectionsArray.length < maxSelectionsForGroup || maxSelectionsForGroup === 0){
 
       // If maxSelectionsForGroup is 0. only allow 1 of anything
+      // TODO: Jeff mentioned wanting people to be able to select as many of these as they'd like
+      //    May remove this code block if that's the case
       if(maxSelectionsForGroup === 0){
         let isItemAlreadySelected = _.findIndex(this.currentModifierArray, {'$id': modifierClicked.$id});
 
