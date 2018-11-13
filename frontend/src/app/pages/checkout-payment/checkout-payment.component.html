@@ -120,7 +120,7 @@
             <div class="red-button small-text" [ngClass]="processing ? 'loading' : ''">
               <div class="loading-gif button-size" *ngIf="processing"></div>
               <p>{{ orderResultForTesting }}</p>
-              <button [disabled]="(!pickupForm.valid || (!paymentForm.valid && (paymentChoice !== '3')) || !contactInfoForm.valid) && !processing && !pickupTimeError" *ngIf="!processing" (click)="submitOrder()" tabindex="0">Place Order Now</button>
+              <button [disabled]="((!paymentForm.valid && (paymentChoice !== '3')) || !contactInfoForm.valid) && !processing && !pickupTimeError" *ngIf="!processing" (click)="submitOrder()" tabindex="0">Place Order Now</button>
             </div>
             <!-- <p class="terms-and-conditions small-text">
               By placing your order you agree to our Terms of Conditions. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vehicula ac orci sed venenatis. Phasellus venenatis blandit nulla non pretium. Sed id metus non nisi pulvinar dictum.
@@ -161,7 +161,7 @@
             <div class="red-button full-width-button small-text" [ngClass]="processing ? 'loading' : ''">
               <div class="loading-gif button-size" *ngIf="processing"></div>
               <p>{{ orderResultForTesting }}</p>
-              <button [disabled]="(!pickupForm.valid || (!paymentForm.valid && (paymentChoice !== '3')) || !contactInfoForm.valid) && !processing" *ngIf="!processing" (click)="submitOrder()">Place Order Now</button>
+              <button [disabled]="((!paymentForm.valid && (paymentChoice !== '3')) || !contactInfoForm.valid) && !processing" *ngIf="!processing" (click)="submitOrder()">Place Order Now</button>
             </div>
             <p class="go-back text-center">
               <a href="">or go back to edit your order</a>
