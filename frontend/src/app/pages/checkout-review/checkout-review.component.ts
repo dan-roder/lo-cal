@@ -6,6 +6,8 @@ import { Router } from '@angular/router';
 import { CustomerService } from '@local/services/customer.service';
 import { WordpressService } from '@local/services/wp.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import * as moment from 'moment';
+import * as _ from 'lodash';
 
 @Component({
   selector: 'lo-cal-checkout-review',
@@ -87,9 +89,12 @@ export class CheckoutReviewComponent implements OnInit {
     if(!this.selectedTime || !this.pickupForm.valid){
       this.submitAttempted = true;
 
-      // TODO: Ensure when order is PUT, 30min delay has not elapsed
       return;
     }
+
+    // TODO: Ensure when order is PUT, 30min delay has not elapsed
+    this.ensureEnoughTime(this.selectedTime);
+    return;
 
     this.processing = true;
 
@@ -122,11 +127,21 @@ export class CheckoutReviewComponent implements OnInit {
     this.orderService.promiseDateTime = time;
   }
 
+  private ensureEnoughTime(time){
+    // Is selected time still later than
+    let validPickupTime = moment().add(25, 'minutes').format();
+    let isValid = moment(validPickupTime).isBefore(time);
+    return isValid;
+  }
+
   private retrievePickupTimes(){
     this.orderService.retrieveTimes('1').subscribe(times => {
       // 0 position in array indicates current day
       // TODO: Filter out times that are shorter than 30min from current time
       this.times = times[0].Value;
+      _.map(this.times, (time) => {
+        if(this.ensureEnoughTime(time.Time)) return time;
+      });
     })
   }
 
