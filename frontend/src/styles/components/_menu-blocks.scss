@@ -39,12 +39,16 @@
 
         a{
           text-decoration: none;
-          @include fontsize(18);
+          @include fontsize(15);
           @extend %sofia-medium;
           color: $c-31;
           text-transform: uppercase;
           display: block;
           @include transition(color, 200ms);
+
+          @include breakpoint($bp-360){
+            @include fontsize(16);
+          }
 
           @include breakpoint($bp-460){
             @include fontsize(22);

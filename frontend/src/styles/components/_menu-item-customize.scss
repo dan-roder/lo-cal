@@ -188,12 +188,12 @@
 
   .final-product{
     padding: 20px;
-    position: fixed;
+    // position: fixed;
     top: 86px;
     left: 0;
     right: 0;
-    background: $white;
-    @include transition(top);
+    // background: $white;
+    // @include transition(top);
 
     .scrolled &{
       top: 58px;
