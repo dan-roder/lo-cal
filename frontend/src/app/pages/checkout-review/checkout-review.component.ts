@@ -25,6 +25,7 @@ export class CheckoutReviewComponent implements OnInit {
   public bagTotalPrice : number;
   public submitAttempted : boolean = false;
   public pickupForm : FormGroup;
+  public timeElapsedError : boolean = false;
 
   constructor(
     private bagService: BagService,
@@ -92,9 +93,12 @@ export class CheckoutReviewComponent implements OnInit {
       return;
     }
 
-    // TODO: Ensure when order is PUT, 30min delay has not elapsed
-    this.ensureEnoughTime(this.selectedTime);
-    return;
+    // Ensure when order is PUT, 30min delay has not elapsed
+    if(!this.ensureEnoughTime(this.selectedTime)){
+      this.selectedTime = '';
+      this.timeElapsedError = true;
+      return;
+    }
 
     this.processing = true;
 
@@ -127,7 +131,7 @@ export class CheckoutReviewComponent implements OnInit {
     this.orderService.promiseDateTime = time;
   }
 
-  private ensureEnoughTime(time){
+  public ensureEnoughTime(time){
     // Is selected time still later than
     let validPickupTime = moment().add(25, 'minutes').format();
     let isValid = moment(validPickupTime).isBefore(time);
@@ -137,9 +141,10 @@ export class CheckoutReviewComponent implements OnInit {
   private retrievePickupTimes(){
     this.orderService.retrieveTimes('1').subscribe(times => {
       // 0 position in array indicates current day
+      let todaysTimes = times[0].Value;
       this.times = times[0].Value;
       // Filter out times that are shorter than 30min from current time
-      _.map(this.times, (time) => {
+      this.times = _.filter(todaysTimes, (time) => {
         if(this.ensureEnoughTime(time.Time)) return time;
       });
     })
