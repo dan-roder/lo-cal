@@ -2,7 +2,6 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { WordpressService } from '../../services/wp.service';
 import { MenuService } from '../../services/menu-service.service';
 import { AutoUnsubscribe } from "ngx-auto-unsubscribe";
-import { SubMenu } from '@local/models/SubMenu';
 
 @Component({
   selector: 'lo-cal-menu',
@@ -33,7 +32,15 @@ export class MenuPageComponent implements OnInit {
     });
 
     // Get featured menu item menu
-    this.wpService.getMenu(5).subscribe(m => this.subMenuLinks = m.items);
+    if(this.wpService.subMenu === null){
+      this.wpService.getMenu(5).subscribe(m => {
+        this.wpService.subMenu = m.items;
+        this.subMenuLinks = m.items;
+      });
+    }
+    else{
+      this.subMenuLinks = this.wpService.subMenu;
+    }
   }
 
   ngOnDestroy(){}
