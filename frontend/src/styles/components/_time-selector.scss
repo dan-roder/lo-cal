@@ -17,6 +17,12 @@
     cursor: pointer;
     @include transition();
 
+    &:disabled{
+      text-decoration: line-through;
+      background: $light-grey;
+      opacity: .7;
+    }
+
     &:focus{
       outline: 0;
       background: $c;
