@@ -45,7 +45,15 @@ export class SubMenuComponent implements OnInit {
     this.subMenuId = this.menuService.menuItemId;
 
     // Get featured menu item menu
-    this.wpService.getMenu(5).subscribe(m => this.subMenuLinks = m.items);
+    if(this.wpService.subMenu === null){
+      this.wpService.getMenu(5).subscribe(m => {
+        this.wpService.subMenu = m.items;
+        this.subMenuLinks = m.items;
+      });
+    }
+    else{
+      this.subMenuLinks = this.wpService.subMenu;
+    }
   }
 
   public getPostAndMenuItems(){
