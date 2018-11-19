@@ -18,16 +18,18 @@
 
   @include breakpoint($bp-600){
     padding: 0;
-    margin: 10px;
-    flex-basis: calc(50% - 20px);
+    // margin: 10px;
+    // flex-basis: calc(50% - 20px);
+    width: 50%;
   }
 
   @include breakpoint($bp-768){
-    flex-basis: calc(33.333% - 20px);
+    // flex-basis: calc(33.333% - 20px);
+    width: 33.3333%;
   }
 
   .card-wrapper{
-    margin: 0 0 30px;
+    margin: 0 10px 30px;
   }
 
   img{
