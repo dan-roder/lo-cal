@@ -5,6 +5,13 @@
         <h1 class="title">{{ menuItemDetails?.item?.DisplayName }}</h1>
       </div>
     </div>
+    <div class="menu-menu">
+      <ul class="menu">
+        <li *ngFor="let item of subMenuLinks" [attr.class]="item.classes ? item.classes : null">
+          <a routerLink="{{ item.object_slug }}" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" [innerHtml]="item?.title | safeHtml"></a>
+        </li>
+      </ul>
+    </div>
   </header>
 
   <div class="customization-container center-1440">
