@@ -5,12 +5,14 @@ import { BagService } from '@local/services/bag.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { SalesItem } from '@local/models/SalesItem';
 import * as _ from 'lodash';
-import { DefaultOption } from '@local/models/DefaultOption';
-
+import { AutoUnsubscribe } from 'ngx-auto-unsubscribe';
 @Component({
   selector: 'lo-cal-menu-customize',
   templateUrl: './menu-customize.component.html'
 })
+
+@AutoUnsubscribe()
+
 export class MenuCustomizeComponent implements OnInit {
   public quantity: number = 1;
   public itemContent : any;
@@ -31,6 +33,7 @@ export class MenuCustomizeComponent implements OnInit {
   public requiredModifierGroups : Array<any> = [];
   public submitAttempted : boolean = false;
   public menuError : boolean = false;
+  public subMenuLinks : any;
 
   constructor(
     private wpService: WordpressService,
@@ -51,6 +54,9 @@ export class MenuCustomizeComponent implements OnInit {
       this.featuredImageAlt = (item[0].featured_media !== 0) ? item[0]._embedded['wp:featuredmedia'][0].alt_text : '';
       this.getMenuItemDetails(menuItemId);
     });
+
+    // Get featured menu item menu
+    this.wpService.getMenu(5).subscribe(m => this.subMenuLinks = m.items);
   }
 
   public addModifier(modGroup, modifierClicked){
@@ -395,4 +401,6 @@ export class MenuCustomizeComponent implements OnInit {
   get editingIndex(): number{
     return this.bagService.editingIndex;
   }
+
+  ngOnDestroy(){ }
 }
