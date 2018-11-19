@@ -9,7 +9,7 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class WordpressService {
   private _addressContent : any;
-  private _subMenu : any;
+  private _subMenu : any = null;
 
   constructor(private http: Http, private config: Config, private httpClient: HttpClient) {}
 
