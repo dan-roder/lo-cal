@@ -137,8 +137,8 @@ export class CheckoutReviewComponent implements OnInit {
   private retrievePickupTimes(){
     this.orderService.retrieveTimes('1').subscribe(times => {
       // 0 position in array indicates current day
-      // TODO: Filter out times that are shorter than 30min from current time
       this.times = times[0].Value;
+      // Filter out times that are shorter than 30min from current time
       _.map(this.times, (time) => {
         if(this.ensureEnoughTime(time.Time)) return time;
       });
