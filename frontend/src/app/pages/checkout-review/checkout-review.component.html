@@ -51,11 +51,14 @@
           <div class="required-message review-errors" *ngIf="submitAttempted && !selectedTime">
             <p>Please select a pickup time.</p>
           </div>
+          <div class="required-message review-errors" *ngIf="timeElapsedError">
+            <p>This pickup time is no longer valid. Please select a new time that is more than 25 minutes from now.</p>
+          </div>
           <div class="times-wrapper">
-            <button class="time" *ngFor="let time of times" tabindex="0" (click)="selectTime(time?.Time)" [ngClass]="selectedTime === time?.Time ? 'selected' : ''">{{ time?.Time | date:"h:mma" }}</button>
+            <button class="time" *ngFor="let time of times" tabindex="0" (click)="selectTime(time?.Time)" [ngClass]="selectedTime === time?.Time ? 'selected' : ''" [disabled]='!ensureEnoughTime(time?.Time)'>{{ time?.Time | date:"h:mma" }}</button>
           </div>
           <!-- ADD Location to show next-available time before submission -->
-          <div class="next-available-time" *ngIf="selectedTime">
+          <div class="next-available-time" *ngIf="selectedTime && !timeElapsedError">
             <p><strong>Pickup on: </strong>{{ selectedTime | date:"E MMM d, h:mma" }}</p>
           </div>
         </div>
