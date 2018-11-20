@@ -1,4 +1,8 @@
 .blog-post{
+  .featured-image{
+    text-align: center;
+  }
+
   .content{
     p,a{
       @extend %sofia-light;
