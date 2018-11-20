@@ -15,17 +15,15 @@ export class CardImagePipe implements PipeTransform {
       let postObj = _.find(menuItemMap, {'menuid' : String(alohaMenuId)});
 
       if(postObj !== undefined){
-        return this.wpService.getCustomPostTypeById('menu_item', postObj.id).map(post => {
-          if(post.acf.submenu_image !== undefined){
-            return post.acf.submenu_image.url;
-          }
-          else{
-            return "";
-          }
-        });
+        if(postObj.submenu_image !== undefined){
+          return postObj.submenu_image.url;
+        }
+        else{
+          return '';
+        }
       }
       else{
-        return Observable.of('');
+        return '';
       }
     }
   }
