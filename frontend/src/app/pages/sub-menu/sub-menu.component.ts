@@ -6,7 +6,7 @@ import { WordpressService } from '@local/services/wp.service';
 import { IPost } from '@local/models/post';
 import { BagService } from '@local/services/bag.service';
 import * as _ from 'lodash';
-
+import { Title } from '@angular/platform-browser';
 @Component({
   selector: 'lo-cal-sub-menu',
   templateUrl: './sub-menu.component.html',
@@ -31,7 +31,7 @@ export class SubMenuComponent implements OnInit {
   public featuredImage : string = '';
   public featuredImageAlt : string = '';
 
-  constructor(private menuService: MenuService, private activatedRoute: ActivatedRoute, private wpService: WordpressService, private bagService: BagService, private router: Router) {
+  constructor(private menuService: MenuService, private activatedRoute: ActivatedRoute, private wpService: WordpressService, private bagService: BagService, private router: Router, private titleService: Title) {
     this.navSubscription = this.router.events.subscribe((e: any) => {
       // If it is a NavigationEnd event re-initalise the component
       if (e instanceof NavigationEnd) {
@@ -63,6 +63,8 @@ export class SubMenuComponent implements OnInit {
       this.pageContent = post[0];
       this.acf = post[0].acf;
       this.subMenuId = this.acf.submenuid;
+
+      this.titleService.setTitle(this.decode(post[0].title.rendered) + ' | Lo-Cal Kitchen');
 
       // TODO: Find alternative placeholder image for submenu pages
       this.featuredImage = (post[0].featured_media !== 0) ? post[0]._embedded['wp:featuredmedia'][0].media_details.sizes.full.source_url : '//via.placeholder.com/1440x500';
@@ -101,6 +103,12 @@ export class SubMenuComponent implements OnInit {
     if (this.navSubscription) {
       this.navSubscription.unsubscribe();
     }
+  }
+
+  public decode(str: string) {
+    return str.replace(/&#(\d+);/g, function(match, dec) {
+      return String.fromCharCode(dec);
+    });
   }
 
 }
