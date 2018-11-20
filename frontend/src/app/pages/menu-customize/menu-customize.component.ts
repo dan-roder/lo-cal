@@ -6,6 +6,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { SalesItem } from '@local/models/SalesItem';
 import * as _ from 'lodash';
 import { AutoUnsubscribe } from 'ngx-auto-unsubscribe';
+import { Title } from '@angular/platform-browser';
 @Component({
   selector: 'lo-cal-menu-customize',
   templateUrl: './menu-customize.component.html'
@@ -40,7 +41,8 @@ export class MenuCustomizeComponent implements OnInit {
     private menuService: MenuService,
     private bagService: BagService,
     private router: Router,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private titleService: Title
   ) { }
 
   ngOnInit() {
@@ -199,9 +201,6 @@ export class MenuCustomizeComponent implements OnInit {
     menuItem['SpecialInstructions'] = this.specialInstructions;
     menuItem['returnUrl'] = this.router.url;
 
-    // TODO: Something strange happening that created a double return U
-    console.log(this.router.url);
-
     // Push full object to bag service
     this.bagService.createLineItem(menuItem);
 
@@ -231,6 +230,8 @@ export class MenuCustomizeComponent implements OnInit {
   private getMenuItemDetails( menuItemId ){
     this.menuService.getMenuItemDetails(menuItemId).subscribe(menuItemDetails => {
       console.log(menuItemDetails);
+      // Set the title
+      this.titleService.setTitle(menuItemDetails['item'].DisplayName + ' | Lo-Cal Kitchen');
       // Set necessary variables for template rendering
       this.menuItemDetails = menuItemDetails;
 
