@@ -3,9 +3,9 @@
     <h1>Complete Your Order</h1>
 
     <div class="form-errors" *ngIf="pickupTimeError"><p>Your scheduled pickup time is no longer valid. Please <a routerLink="/checkout/review">go back</a> to choose a new time.</p></div>
+    <div class="form-errors" *ngIf="genericOrderError"><p>We're sorry. An unknown error occurred. Please try again and if this error persists please contact us at 516-625-3300.</p></div>
 
     <div class="checkout-wrapper" *ngIf="!pickupTimeError">
-      <div class="form-errors" *ngIf="genericOrderError"><p>We're sorry. An unknown error occurred. Please try again and if this error persists please contact us at </p></div>
       <div class="left-pane">
         <div class="step">
           <div class="inner-step-wrapper">
