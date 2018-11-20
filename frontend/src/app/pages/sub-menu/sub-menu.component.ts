@@ -81,20 +81,15 @@ export class SubMenuComponent implements OnInit {
       }
     });
 
-    if(this.menuMap === undefined){
-      this.wpService.getMenuMapObject().subscribe(menuMap => {
-        this.menuMap = menuMap;
-        this.wpSubMenuItems = _.filter(menuMap, {'submenu' : this.menuSlug});
-      })
-    }
-    else{
-      this.wpSubMenuItems = _.filter(this.menuMap, {'submenu' : this.menuSlug});
-    }
+    this.wpService.getSubMenu(this.menuSlug).subscribe((items) => {
+      this.wpSubMenuItems = _(items).map('acf').flatten().value();
+    });
   }
 
+  // TODO: create your own items shouldn't be able to be quick added
   public addToBag(item){
-    // TODO: Quick add does not have cart image attached to it
-    console.log(item);
+    let cartImage = _.find(this.wpSubMenuItems, {'menuid': String(item.MenuItemId)});
+    item.cartImage = (cartImage.cart_image !== undefined) ? cartImage.cart_image.url : '';
     // Push full object to bag service
     this.bagService.quickAddLineItem(item);
   }
