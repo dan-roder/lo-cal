@@ -340,12 +340,15 @@
       }// .allergens
     }// .bag-detail-card
 
-    .red-button button{
-      @include fontsize(14);
+    .red-button{
       display: none;
 
       @include breakpoint($bp-680){
-        display: inline-block;
+        display: block;;
+      }
+
+      button{
+        @include fontsize(14);
       }
     }
   }// .review-item-card
