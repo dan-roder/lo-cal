@@ -28,7 +28,6 @@ export class CreateAccountComponent implements OnInit {
       'first-name' : [null, [Validators.required, Validators.maxLength(28)]],
       'last-name' : [null, [Validators.required, Validators.maxLength(28)]],
       'email' : ['', [Validators.required, Validators.email, Validators.maxLength(45)]],
-      // TODO: Implement more strict password rules from Ken's regex
       'password' : ['', [Validators.required, Validators.minLength(8)]],
       'confirm-password' : ['', Validators.required],
       'security-question' : ['', Validators.required],

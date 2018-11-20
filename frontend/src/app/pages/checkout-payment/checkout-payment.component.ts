@@ -157,6 +157,7 @@ export class CheckoutPaymentComponent implements OnInit {
       }
       else{
         this.wpService.logError('Payment Order Error: ' + JSON.stringify(orderResults)).subscribe((result) => {console.log('error:' + result)});
+        this.genericOrderError = true;
       }
     }, error => {
       this.processing = false;
