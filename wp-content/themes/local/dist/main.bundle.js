@@ -2541,6 +2541,7 @@ module.exports = "<div class=\"page-item-detail\">\n  <header class=\"header-con
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_lodash__ = __webpack_require__("./node_modules/lodash/lodash.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_lodash___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_lodash__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_ngx_auto_unsubscribe__ = __webpack_require__("./node_modules/ngx-auto-unsubscribe/dist/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__angular_platform_browser__ = __webpack_require__("./node_modules/@angular/platform-browser/esm5/platform-browser.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -2557,13 +2558,15 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var MenuCustomizeComponent = /** @class */ (function () {
-    function MenuCustomizeComponent(wpService, menuService, bagService, router, activatedRoute) {
+    function MenuCustomizeComponent(wpService, menuService, bagService, router, activatedRoute, titleService) {
         this.wpService = wpService;
         this.menuService = menuService;
         this.bagService = bagService;
         this.router = router;
         this.activatedRoute = activatedRoute;
+        this.titleService = titleService;
         this.quantity = 1;
         this.multipleSalesItems = [];
         this.customizationData = {};
@@ -2703,8 +2706,6 @@ var MenuCustomizeComponent = /** @class */ (function () {
         menuItem['caloricValue'] = this.calorieCount;
         menuItem['SpecialInstructions'] = this.specialInstructions;
         menuItem['returnUrl'] = this.router.url;
-        // TODO: Something strange happening that created a double return U
-        console.log(this.router.url);
         // Push full object to bag service
         this.bagService.createLineItem(menuItem);
         // Wipe out local values
@@ -2730,6 +2731,9 @@ var MenuCustomizeComponent = /** @class */ (function () {
         var _this = this;
         this.menuService.getMenuItemDetails(menuItemId).subscribe(function (menuItemDetails) {
             console.log(menuItemDetails);
+            // Set the title
+            var safeTitle = _this.decode(menuItemDetails['item'].DisplayName);
+            _this.titleService.setTitle(safeTitle + ' | Lo-Cal Kitchen');
             // Set necessary variables for template rendering
             _this.menuItemDetails = menuItemDetails;
             // Find default Sales Item Id
@@ -2846,6 +2850,11 @@ var MenuCustomizeComponent = /** @class */ (function () {
     MenuCustomizeComponent.prototype.calorieCountString = function () {
         this.calorieCount = this.menuItemDetails.item.CaloricServingUnit;
     };
+    MenuCustomizeComponent.prototype.decode = function (str) {
+        return str.replace(/&#(\d+);/g, function (match, dec) {
+            return String.fromCharCode(dec);
+        });
+    };
     Object.defineProperty(MenuCustomizeComponent.prototype, "calorieCount", {
         /**
          *
@@ -2899,7 +2908,8 @@ var MenuCustomizeComponent = /** @class */ (function () {
             __WEBPACK_IMPORTED_MODULE_2__local_services_menu_service_service__["a" /* MenuService */],
             __WEBPACK_IMPORTED_MODULE_3__local_services_bag_service__["a" /* BagService */],
             __WEBPACK_IMPORTED_MODULE_4__angular_router__["c" /* Router */],
-            __WEBPACK_IMPORTED_MODULE_4__angular_router__["a" /* ActivatedRoute */]])
+            __WEBPACK_IMPORTED_MODULE_4__angular_router__["a" /* ActivatedRoute */],
+            __WEBPACK_IMPORTED_MODULE_7__angular_platform_browser__["d" /* Title */]])
     ], MenuCustomizeComponent);
     return MenuCustomizeComponent;
 }());
@@ -3455,7 +3465,7 @@ var PostComponent = /** @class */ (function () {
 /***/ "./src/app/pages/sub-menu/sub-menu.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"page-landing-page\">\n  <header class=\"header-container\">\n    <div class=\"content\" [ngStyle]=\"{'background-image':'url(' + featuredImage + ')'}\">\n      <div class=\"header-content text-center\">\n        <h1 [innerHtml]=\"pageContent?.title?.rendered\"></h1>\n      </div>\n    </div>\n  </header>\n\n  <div class=\"menu-menu\">\n    <ul class=\"menu\">\n      <li *ngFor=\"let item of subMenuLinks\" [attr.class]=\"item.classes ? item.classes : null\">\n        <a [routerLink]=\"['/menu', item.object_slug]\" routerLinkActive=\"active\" [routerLinkActiveOptions]=\"{exact:true}\" [innerHtml]=\"item?.title | safeHtml\"></a>\n      </li>\n    </ul>\n  </div>\n\n  <!-- Menu Card Layout HTML -->\n  <div class=\"section-white menu-categories center\" id=\"featured\">\n    <h2 class=\"capitalize text-center\" [innerHtml]=\"pageContent?.title?.rendered\"></h2>\n    <p class=\"sub-menu-description\" *ngIf=\"subMenuItems?.menu[0]?.Description\">\n      {{ subMenuItems?.menu[0]?.Description }}\n    </p>\n\n    <div class=\"content clearfix sub-menu-cards-wrapper\">\n\n      <div class=\"menu-card\" *ngFor=\"let item of subMenuItems?.menuItems\">\n        <div class=\"card-wrapper\">\n          <div class=\"image\" *ngIf=\"(item?.MenuItemId | cardImage:wpSubMenuItems | async) !== ''\">\n            <a [routerLink]=\"(item?.DisplayName | safeUrl)\"><img src=\"{{ item?.MenuItemId | cardImage:wpSubMenuItems | async }}\" alt=\"\"></a>\n          </div>\n          <div class=\"details\">\n            <h4 class=\"title\"><a [routerLink]=\"(item?.DisplayName | safeUrl)\">{{ item?.DisplayName }}</a></h4>\n            <div class=\"description\">\n              <p>\n                {{ (item?.Description | allergens).description }}\n              </p>\n            </div>\n            <div class=\"fine-details\">\n              <span class=\"price\">{{ item?.defaultPrice | currency }}</span>\n              <span class=\"calories\" *ngIf=\"item?.CaloricServingUnit\">{{ item?.CaloricServingUnit }} cal</span>\n              <span class=\"allergens\" *ngIf=\"(item?.Description | allergens).allergens\">\n                <span class=\"allergen\" *ngFor=\"let allergen of (item?.Description | allergens).allergens\">{{ allergen }}</span>\n              </span>\n              <button class=\"add-to-cart\" (click)=\"addToBag(item)\" *ngIf=\"item?.SalesItemIds.length <= 1\">Add</button>\n            </div>\n          </div>\n        </div>\n      </div><!-- /.menu-card -->\n\n    </div>\n  </div>\n  <!-- Menu Card Layout HTML -->\n</div>"
+module.exports = "<div class=\"page-landing-page\">\n  <header class=\"header-container\">\n    <div class=\"content\" [ngStyle]=\"{'background-image':'url(' + featuredImage + ')'}\">\n      <div class=\"header-content text-center\">\n        <h1 [innerHtml]=\"pageContent?.title?.rendered\"></h1>\n      </div>\n    </div>\n  </header>\n\n  <div class=\"menu-menu\">\n    <ul class=\"menu\">\n      <li *ngFor=\"let item of subMenuLinks\" [attr.class]=\"item.classes ? item.classes : null\">\n        <a [routerLink]=\"['/menu', item.object_slug]\" routerLinkActive=\"active\" [routerLinkActiveOptions]=\"{exact:true}\" [innerHtml]=\"item?.title | safeHtml\"></a>\n      </li>\n    </ul>\n  </div>\n\n  <!-- Menu Card Layout HTML -->\n  <div class=\"section-white menu-categories center\" id=\"featured\">\n    <h2 class=\"capitalize text-center\" [innerHtml]=\"pageContent?.title?.rendered\"></h2>\n    <p class=\"sub-menu-description\" *ngIf=\"subMenuItems?.menu[0]?.Description\">\n      {{ subMenuItems?.menu[0]?.Description }}\n    </p>\n\n    <div class=\"content clearfix sub-menu-cards-wrapper\">\n\n      <div class=\"menu-card\" *ngFor=\"let item of subMenuItems?.menuItems\">\n        <div class=\"card-wrapper\">\n          <div class=\"image\" *ngIf=\"(item?.MenuItemId | cardImage:wpSubMenuItems) !== ''\">\n            <a [routerLink]=\"(item?.DisplayName | safeUrl)\"><img src=\"{{ (item?.MenuItemId | cardImage:wpSubMenuItems).submenu_image }}\" alt=\"{{ (item?.MenuItemId | cardImage:wpSubMenuItems).submenu_alt }}\"></a>\n          </div>\n          <div class=\"details\">\n            <h4 class=\"title\"><a [routerLink]=\"(item?.DisplayName | safeUrl)\">{{ item?.DisplayName }}</a></h4>\n            <div class=\"description\">\n              <p>\n                {{ (item?.Description | allergens).description }}\n              </p>\n            </div>\n            <div class=\"fine-details\">\n              <span class=\"price\">{{ item?.defaultPrice | currency }}</span>\n              <span class=\"calories\" *ngIf=\"item?.CaloricServingUnit\">{{ item?.CaloricServingUnit }} cal</span>\n              <span class=\"allergens\" *ngIf=\"(item?.Description | allergens).allergens\">\n                <span class=\"allergen\" *ngFor=\"let allergen of (item?.Description | allergens).allergens\">{{ allergen }}</span>\n              </span>\n              <button class=\"add-to-cart\" (click)=\"addToBag(item)\" *ngIf=\"item?.SalesItemIds.length <= 1\">Add</button>\n            </div>\n          </div>\n        </div>\n      </div><!-- /.menu-card -->\n\n    </div>\n  </div>\n  <!-- Menu Card Layout HTML -->\n</div>"
 
 /***/ }),
 
@@ -3472,6 +3482,7 @@ module.exports = "<div class=\"page-landing-page\">\n  <header class=\"header-co
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__local_services_bag_service__ = __webpack_require__("./src/app/services/bag.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_lodash__ = __webpack_require__("./node_modules/lodash/lodash.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_lodash___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_lodash__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__angular_platform_browser__ = __webpack_require__("./node_modules/@angular/platform-browser/esm5/platform-browser.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -3488,14 +3499,16 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var SubMenuComponent = /** @class */ (function () {
-    function SubMenuComponent(menuService, activatedRoute, wpService, bagService, router) {
+    function SubMenuComponent(menuService, activatedRoute, wpService, bagService, router, titleService) {
         var _this = this;
         this.menuService = menuService;
         this.activatedRoute = activatedRoute;
         this.wpService = wpService;
         this.bagService = bagService;
         this.router = router;
+        this.titleService = titleService;
         this.subMenuId = null;
         this.menuSlug = '';
         this.featuredImage = '';
@@ -3530,6 +3543,7 @@ var SubMenuComponent = /** @class */ (function () {
             _this.pageContent = post[0];
             _this.acf = post[0].acf;
             _this.subMenuId = _this.acf.submenuid;
+            _this.titleService.setTitle(_this.decode(post[0].title.rendered) + ' | Lo-Cal Kitchen');
             // TODO: Find alternative placeholder image for submenu pages
             _this.featuredImage = (post[0].featured_media !== 0) ? post[0]._embedded['wp:featuredmedia'][0].media_details.sizes.full.source_url : '//via.placeholder.com/1440x500';
             _this.featuredImageAlt = (post[0].featured_media !== 0) ? post[0]._embedded['wp:featuredmedia'][0].alt_text : post[0].title.rendered;
@@ -3545,19 +3559,14 @@ var SubMenuComponent = /** @class */ (function () {
                 _this.subMenuItems = _this.menuService.subMenuItems;
             }
         });
-        if (this.menuMap === undefined) {
-            this.wpService.getMenuMapObject().subscribe(function (menuMap) {
-                _this.menuMap = menuMap;
-                _this.wpSubMenuItems = __WEBPACK_IMPORTED_MODULE_6_lodash__["filter"](menuMap, { 'submenu': _this.menuSlug });
-            });
-        }
-        else {
-            this.wpSubMenuItems = __WEBPACK_IMPORTED_MODULE_6_lodash__["filter"](this.menuMap, { 'submenu': this.menuSlug });
-        }
+        this.wpService.getSubMenu(this.menuSlug).subscribe(function (items) {
+            _this.wpSubMenuItems = __WEBPACK_IMPORTED_MODULE_6_lodash__(items).map('acf').flatten().value();
+        });
     };
+    // TODO: create your own items shouldn't be able to be quick added
     SubMenuComponent.prototype.addToBag = function (item) {
-        // TODO: Quick add does not have cart image attached to it
-        console.log(item);
+        var cartImage = __WEBPACK_IMPORTED_MODULE_6_lodash__["find"](this.wpSubMenuItems, { 'menuid': String(item.MenuItemId) });
+        item.cartImage = (cartImage.cart_image !== undefined) ? cartImage.cart_image.url : '';
         // Push full object to bag service
         this.bagService.quickAddLineItem(item);
     };
@@ -3569,6 +3578,11 @@ var SubMenuComponent = /** @class */ (function () {
             this.navSubscription.unsubscribe();
         }
     };
+    SubMenuComponent.prototype.decode = function (str) {
+        return str.replace(/&#(\d+);/g, function (match, dec) {
+            return String.fromCharCode(dec);
+        });
+    };
     SubMenuComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: 'lo-cal-sub-menu',
@@ -3576,7 +3590,7 @@ var SubMenuComponent = /** @class */ (function () {
             encapsulation: __WEBPACK_IMPORTED_MODULE_0__angular_core__["ViewEncapsulation"].None
         }),
         Object(__WEBPACK_IMPORTED_MODULE_3_ngx_auto_unsubscribe__["a" /* AutoUnsubscribe */])(),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__services_menu_service_service__["a" /* MenuService */], __WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* ActivatedRoute */], __WEBPACK_IMPORTED_MODULE_4__local_services_wp_service__["a" /* WordpressService */], __WEBPACK_IMPORTED_MODULE_5__local_services_bag_service__["a" /* BagService */], __WEBPACK_IMPORTED_MODULE_2__angular_router__["c" /* Router */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__services_menu_service_service__["a" /* MenuService */], __WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* ActivatedRoute */], __WEBPACK_IMPORTED_MODULE_4__local_services_wp_service__["a" /* WordpressService */], __WEBPACK_IMPORTED_MODULE_5__local_services_bag_service__["a" /* BagService */], __WEBPACK_IMPORTED_MODULE_2__angular_router__["c" /* Router */], __WEBPACK_IMPORTED_MODULE_7__angular_platform_browser__["d" /* Title */]])
     ], SubMenuComponent);
     return SubMenuComponent;
 }());
@@ -3684,11 +3698,8 @@ var AllergensPipe = /** @class */ (function () {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CardImagePipe; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__local_services_wp_service__ = __webpack_require__("./src/app/services/wp.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_lodash__ = __webpack_require__("./node_modules/lodash/lodash.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_lodash___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_lodash__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs__ = __webpack_require__("./node_modules/rxjs/Rx.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_lodash__ = __webpack_require__("./node_modules/lodash/lodash.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_lodash___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_lodash__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -3700,27 +3711,25 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
-
-
 var CardImagePipe = /** @class */ (function () {
-    function CardImagePipe(wpService) {
-        this.wpService = wpService;
+    function CardImagePipe() {
     }
     CardImagePipe.prototype.transform = function (alohaMenuId, menuItemMap) {
         if (alohaMenuId) {
-            var postObj = __WEBPACK_IMPORTED_MODULE_2_lodash__["find"](menuItemMap, { 'menuid': String(alohaMenuId) });
+            var postObj = __WEBPACK_IMPORTED_MODULE_1_lodash__["find"](menuItemMap, { 'menuid': String(alohaMenuId) });
             if (postObj !== undefined) {
-                return this.wpService.getCustomPostTypeById('menu_item', postObj.id).map(function (post) {
-                    if (post.acf.submenu_image !== undefined) {
-                        return post.acf.submenu_image.url;
-                    }
-                    else {
-                        return "";
-                    }
-                });
+                var returnObj = {};
+                if (postObj.submenu_image !== undefined) {
+                    returnObj['submenu_image'] = postObj.submenu_image.url;
+                    returnObj['submenu_alt'] = postObj.submenu_image.alt;
+                    return returnObj;
+                }
+                else {
+                    return '';
+                }
             }
             else {
-                return __WEBPACK_IMPORTED_MODULE_3_rxjs__["Observable"].of('');
+                return '';
             }
         }
     };
@@ -3728,7 +3737,7 @@ var CardImagePipe = /** @class */ (function () {
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Pipe"])({
             name: 'cardImage'
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__local_services_wp_service__["a" /* WordpressService */]])
+        __metadata("design:paramtypes", [])
     ], CardImagePipe);
     return CardImagePipe;
 }());
