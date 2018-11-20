@@ -231,7 +231,8 @@ export class MenuCustomizeComponent implements OnInit {
     this.menuService.getMenuItemDetails(menuItemId).subscribe(menuItemDetails => {
       console.log(menuItemDetails);
       // Set the title
-      this.titleService.setTitle(menuItemDetails['item'].DisplayName + ' | Lo-Cal Kitchen');
+      let safeTitle = this.decode(menuItemDetails['item'].DisplayName);
+      this.titleService.setTitle(safeTitle + ' | Lo-Cal Kitchen');
       // Set necessary variables for template rendering
       this.menuItemDetails = menuItemDetails;
 
@@ -375,6 +376,12 @@ export class MenuCustomizeComponent implements OnInit {
 
   private calorieCountString(){
     this.calorieCount = this.menuItemDetails.item.CaloricServingUnit;
+  }
+
+  private decode(str: string) {
+    return str.replace(/&#(\d+);/g, function(match, dec) {
+      return String.fromCharCode(dec);
+    });
   }
 
   /**
