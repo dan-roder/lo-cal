@@ -6,7 +6,10 @@
       </div>
       <div class="content center-740">
         <div class="order-details">
-          <h3 class="details-title">Order #{{ orderResult?.OrderId }}</h3>
+          <div class="order-number">
+            <h3>Order #{{ orderResult?.OrderId }}</h3>
+            <p>Pickup at: {{ orderResult?.Order.PromiseDateTime | date:"E MMM d, yyyy, h:mma" }}</p>
+          </div>
           <div class="order-summary">
             <div class="line-items" *ngIf="orderItemsForDisplay">
               <div class="line-item flex-between" *ngFor="let lineItem of orderItemsForDisplay">
