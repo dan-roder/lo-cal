@@ -238,8 +238,12 @@ export class MenuCustomizeComponent implements OnInit {
       this.defaultItemId = menuItemDetails['item']['DefaultItemId'];
 
       // Using default Sales Item Id, return object with all details of that Sales Item
-      // TODO: Need to set correct salesItemDetails if editing a different size
-      this.salesItemDetails = _.find(menuItemDetails['salesItems'], {'SalesItemId': this.defaultItemId});
+      if(this.bagService.editingLineItem){
+        this.salesItemDetails = _.find(menuItemDetails['salesItems'], {'SalesItemId': this.bagService.editingLineItem.SalesItemId});
+      }
+      else{
+        this.salesItemDetails = _.find(menuItemDetails['salesItems'], {'SalesItemId': this.defaultItemId});
+      }
 
       // Need to account for sizes if there is more than 1 sales item
       if(menuItemDetails['salesItems'].length > 1){
