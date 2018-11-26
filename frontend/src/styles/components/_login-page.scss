@@ -1,5 +1,9 @@
 .login-wrapper{
-  padding: 200px 0;
+  padding: 120px 0;
+
+  @include breakpont($bp-768){
+    padding: 200px 0;
+  }
 
   .account-actions{
     display: flex;
