@@ -1,12 +1,17 @@
 .checkout-wrapper{
 
+  .review-screen{
+    .itemized-summary{
+      display: none;
+
+      @include breakpoint($bp-680){
+        display: block;
+      }
+    }
+  }
+
   .itemized-summary{
     @include fontsize(14);
-    display: none;
-
-    @include breakpoint($bp-680){
-      display: block;
-    }
 
     .item{
       margin: 0 0 20px;
