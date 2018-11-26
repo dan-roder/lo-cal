@@ -1340,7 +1340,6 @@ var BlogPostComponent = /** @class */ (function () {
             if (page[0].featured_media != 0) {
                 _this.wordpressService.getMedia(page[0].featured_media).subscribe(function (media) { _this.featuredImage = media; console.log(media); });
             }
-            console.log(page);
         });
     };
     BlogPostComponent.prototype.ngOnDestroy = function () { };

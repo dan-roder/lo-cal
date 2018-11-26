@@ -25,7 +25,6 @@ export class BlogPostComponent implements OnInit {
       if(page[0].featured_media != 0){
         this.wordpressService.getMedia(page[0].featured_media).subscribe(media => {this.featuredImage = media; console.log(media)});
       }
-      console.log(page);
     })
   }
 
