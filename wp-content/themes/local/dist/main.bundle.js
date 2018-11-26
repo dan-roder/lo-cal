@@ -2158,6 +2158,7 @@ var ConfirmationComponent = /** @class */ (function () {
         var _this = this;
         this.localStorage.removeItem('order').subscribe(function () { });
         this.localStorage.removeItem('bag').subscribe(function () { });
+        this.localStorage.removeItem('vehicle').subscribe(function () { });
         // Get current customer to check if they were a guest customer
         this.customerService.getCurrentCustomer().subscribe(function (customer) {
             if (customer.IsGuest) {
