@@ -27,6 +27,7 @@ export class ConfirmationComponent implements OnInit {
   ngOnInit() {
     this.localStorage.removeItem('order').subscribe(() => {});
     this.localStorage.removeItem('bag').subscribe(() => {});
+    this.localStorage.removeItem('vehicle').subscribe(() => {});
     // Get current customer to check if they were a guest customer
     this.customerService.getCurrentCustomer().subscribe((customer: Customer) => {
       if(customer.IsGuest){
