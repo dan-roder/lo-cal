@@ -44,7 +44,7 @@ export class CheckoutPaymentComponent implements OnInit {
       'first-name' : [null, Validators.required],
       'last-name' : [null, Validators.required],
       'email' : [null, [Validators.required, Validators.email]],
-      'phone' : [null]
+      'phone' : [null, Validators.required]
     });
     this.paymentForm = fb.group({
       'payment-choice' : [this.paymentChoice, Validators.required],
