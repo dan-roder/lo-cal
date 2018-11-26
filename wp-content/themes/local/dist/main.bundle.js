@@ -2768,8 +2768,12 @@ var MenuCustomizeComponent = /** @class */ (function () {
             // Find default Sales Item Id
             _this.defaultItemId = menuItemDetails['item']['DefaultItemId'];
             // Using default Sales Item Id, return object with all details of that Sales Item
-            // TODO: Need to set correct salesItemDetails if editing a different size
-            _this.salesItemDetails = __WEBPACK_IMPORTED_MODULE_5_lodash__["find"](menuItemDetails['salesItems'], { 'SalesItemId': _this.defaultItemId });
+            if (_this.bagService.editingLineItem) {
+                _this.salesItemDetails = __WEBPACK_IMPORTED_MODULE_5_lodash__["find"](menuItemDetails['salesItems'], { 'SalesItemId': _this.bagService.editingLineItem.SalesItemId });
+            }
+            else {
+                _this.salesItemDetails = __WEBPACK_IMPORTED_MODULE_5_lodash__["find"](menuItemDetails['salesItems'], { 'SalesItemId': _this.defaultItemId });
+            }
             // Need to account for sizes if there is more than 1 sales item
             if (menuItemDetails['salesItems'].length > 1) {
                 _this.multipleSalesItems = menuItemDetails['salesItems'];
