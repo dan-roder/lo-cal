@@ -8,6 +8,8 @@ import { WordpressService } from '@local/services/wp.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import * as moment from 'moment';
 import * as _ from 'lodash';
+import { Vehicle } from '@local/models/Payment';
+import { LocalStorage } from '@ngx-pwa/local-storage';
 
 @Component({
   selector: 'lo-cal-checkout-review',
@@ -33,9 +35,13 @@ export class CheckoutReviewComponent implements OnInit {
     private router: Router,
     private customerService: CustomerService,
     private wpService: WordpressService,
-    private fb: FormBuilder) {
+    private fb: FormBuilder,
+    private localStorage: LocalStorage) {
       this.pickupForm = fb.group({
-        'pickup-selection' : [null, Validators.required]
+        'pickup-selection' : [null, Validators.required],
+        'vehicle-make' : [null],
+        'vehicle-model' : [null],
+        'vehicle-color' : [null]
       });
     }
 
@@ -104,6 +110,12 @@ export class CheckoutReviewComponent implements OnInit {
 
     this.orderService.orderMode = this.pickupForm.get('pickup-selection').value;
 
+    let vehicle : Vehicle = {};
+    if(this.pickupForm.get('pickup-selection').value === '4'){
+      vehicle = this.constructVehicleObject();
+      this.localStorage.setItem('vehicle', vehicle).subscribe(() => {});
+    }
+
     this.orderService.putOrder(this.bagItems).subscribe(response => {
 
       if(response.ResultCode === 0 || response.ResultCode === 4){
@@ -154,6 +166,16 @@ export class CheckoutReviewComponent implements OnInit {
     this.bagService.editingLineItem = item;
     this.bagService.editingIndex = index;
     this.router.navigate([item.returnUrl], {'queryParams': {'returnUrl': '/checkout/review'}});
+  }
+
+  protected constructVehicleObject(): Vehicle{
+    let vehicleInfo: Vehicle = {
+      Make: this.pickupForm.get('vehicle-make').value,
+      Model: this.pickupForm.get('vehicle-model').value,
+      Color: this.pickupForm.get('vehicle-color').value
+    }
+
+    return vehicleInfo;
   }
 
   get totalBagPrice(){
