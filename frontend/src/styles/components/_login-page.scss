@@ -1,7 +1,7 @@
 .login-wrapper{
   padding: 120px 0;
 
-  @include breakpont($bp-768){
+  @include breakpoint($bp-768){
     padding: 200px 0;
   }
 
