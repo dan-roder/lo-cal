@@ -8,6 +8,7 @@ import { AutoUnsubscribe } from 'ngx-auto-unsubscribe';
 import { SavedPayment } from '@local/models/Payment';
 import { DOCUMENT } from '@angular/platform-browser';
 import { Router } from '@angular/router';
+import { WordpressService } from '@local/services/wp.service';
 
 @AutoUnsubscribe()
 
@@ -35,9 +36,10 @@ export class AccountComponent implements OnInit {
   public questionSuccess : string = '';
   public accountProcessing : boolean = false;
   public passwordProcessing : boolean = false;
+  public accountError : string = '';
 
 
-  constructor(private customerService: CustomerService, private localStorage : LocalStorage, private fb: FormBuilder, @Inject(DOCUMENT) private document: any, private router: Router) {
+  constructor(private customerService: CustomerService, private localStorage : LocalStorage, private fb: FormBuilder, @Inject(DOCUMENT) private document: any, private router: Router, private wpService: WordpressService) {
     this.accountForm = fb.group({
       'first-name' : [null, Validators.required],
       'last-name' : [null, Validators.required],
@@ -158,10 +160,14 @@ export class AccountComponent implements OnInit {
           this.localStorage.setItem('user', updatedCustomerInfo).subscribe(() => {});
           this.editing = false;
           this.accountProcessing = false;
+          this.accountError = '';
         })
       }, error => {
         // Update failed for some reason. Show error, return form to initial state
         this.errorOccurred = true;
+        this.accountProcessing = false;
+        this.accountError = error.error.message;
+        this.wpService.logError('Payment Order Error: ' + JSON.stringify(error)).subscribe((result) => {console.log('error:' + result)});
         this.patchAccountForm(this.customer);
       })
     }
