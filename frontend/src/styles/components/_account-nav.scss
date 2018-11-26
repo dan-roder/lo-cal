@@ -1,8 +1,4 @@
 .account-navigation{
-  display: none;
-  @include breakpoint($bp-768){
-    display: block;
-  }
 
   ul{
     margin: 0;
