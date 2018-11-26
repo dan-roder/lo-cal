@@ -8,7 +8,7 @@
         <div class="order-details">
           <div class="order-number">
             <h3>Order #{{ orderResult?.OrderId }}</h3>
-            <p>Pickup at: {{ orderResult?.Order.PromiseDateTime | date:"E MMM d, yyyy, h:mma" }}</p>
+            <p>Pickup Time: {{ orderResult?.Order.PromiseDateTime | date:"E MMM d, yyyy, h:mma" }}</p>
           </div>
           <div class="order-summary">
             <div class="line-items" *ngIf="orderItemsForDisplay">
