@@ -36,6 +36,8 @@ export class CheckoutPaymentComponent implements OnInit {
   public pickupTimeError: boolean = false;
   public genericOrderError: boolean = false;
   public addressData: any;
+  private orderMode : number;
+  private _vehicle : Vehicle = {};
 
   constructor(private orderService: OrderService, private fb: FormBuilder, private constants: Config, private customerService: CustomerService, private router: Router, private localStorage: LocalStorage, private wpService: WordpressService) {
     this.contactInfoForm = fb.group({
@@ -91,6 +93,13 @@ export class CheckoutPaymentComponent implements OnInit {
       let orderId = order.OrderId;
 
       this.orderService.getFullOrderDetails(orderId).subscribe(fullOrder => {
+        this.orderMode = fullOrder.OrderMode;
+        if(fullOrder.OrderMode === 4){
+          // If orderMode was set as curbside, retrieve vehicle infor
+          this.localStorage.getItem('vehicle').subscribe((vehicleObj) => {
+            this.vehicle = vehicleObj;
+          });
+        }
         this.orderForDisplay = this.orderService.calculateTotalWithModifiers(fullOrder);
         this.currentOrder = fullOrder;
       })
@@ -178,10 +187,6 @@ export class CheckoutPaymentComponent implements OnInit {
 
   protected constructClearCreditCardPayment(): InSubmitOrderInformation{
     let expirationDate = this.paymentForm.get('expiration-date').value;
-    let vehicle : Vehicle = {};
-    if(this.pickupForm.get('pickup-selection').value === '4'){
-      vehicle = this.constructVehicleObject();
-    }
     let finalExpDate = this.formatDate(expirationDate);
 
     // Set final CC number: resolves view value vs model value discrepancy
@@ -198,7 +203,7 @@ export class CheckoutPaymentComponent implements OnInit {
         ProcessingType : 0,
       }],
       SendEmail: true,
-      Vehicle: vehicle
+      Vehicle: this.vehicle
     }
 
     return inSubmitOrderInfo;
@@ -216,11 +221,6 @@ export class CheckoutPaymentComponent implements OnInit {
   }
 
   protected constructSecurePayment(): InSubmitOrderInformation{
-    let vehicle : Vehicle = {};
-
-    if(this.pickupForm.get('pickup-selection').value === '4'){
-      vehicle = this.constructVehicleObject();
-    }
     let inSubmitOrderInfo : InSubmitOrderInformation = {
       PaymentMethods : [{
         PaymentMethod : 0,
@@ -228,7 +228,7 @@ export class CheckoutPaymentComponent implements OnInit {
         PaymentMethodType : this.savedPaymentMethods.MethodType,
         Amount: this.currentOrder.BalanceDueAmount
       }],
-      Vehicle : vehicle,
+      Vehicle : this.vehicle,
       SendEmail: true
     }
 
@@ -313,18 +313,16 @@ export class CheckoutPaymentComponent implements OnInit {
     this.router.navigate(['/checkout/confirmation']);
   }
 
-  protected constructVehicleObject(): Vehicle{
-    let vehicleInfo: Vehicle = {
-      Make: this.pickupForm.get('vehicle-make').value,
-      Model: this.pickupForm.get('vehicle-model').value,
-      Color: this.pickupForm.get('vehicle-color').value
-    }
-
-    return vehicleInfo;
-  }
-
   // Currently not in use as API doesn't seem to allow for multiple saved payments
   public whichPayment(value){
     console.log(value);
+  }
+
+  set vehicle(vehicle: Vehicle){
+    this._vehicle = vehicle;
+  }
+
+  get vehicle(): Vehicle{
+    return this._vehicle;
   }
 }
