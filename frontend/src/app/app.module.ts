@@ -129,7 +129,7 @@ import { RecaptchaFormsModule } from 'ng-recaptcha/forms';
     PasswordResetComponent
   ],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
     FormsModule,
     ReactiveFormsModule,
     HttpModule,
