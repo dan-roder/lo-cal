@@ -160,6 +160,7 @@ function get_submenus(WP_REST_Request $request){
 
   $posts = get_posts(array(
     'numberposts'	=> -1,
+    'post_status' => 'publish',
     'post_type'		=> 'menu_item',
     'meta_key'		=> 'submenu',
     'meta_value'	=> $category
