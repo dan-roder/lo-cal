@@ -6,7 +6,8 @@ import { WordpressService } from '@local/services/wp.service';
 import { IPost } from '@local/models/post';
 import { BagService } from '@local/services/bag.service';
 import * as _ from 'lodash';
-import { Title } from '@angular/platform-browser';
+import { Title, Meta } from '@angular/platform-browser';
+
 @Component({
   selector: 'lo-cal-sub-menu',
   templateUrl: './sub-menu.component.html',
@@ -31,7 +32,14 @@ export class SubMenuComponent implements OnInit {
   public featuredImage : string = '';
   public featuredImageAlt : string = '';
 
-  constructor(private menuService: MenuService, private activatedRoute: ActivatedRoute, private wpService: WordpressService, private bagService: BagService, private router: Router, private titleService: Title) {
+  constructor(
+    private menuService: MenuService,
+    private activatedRoute: ActivatedRoute,
+    private wpService: WordpressService,
+    private bagService: BagService,
+    private router: Router,
+    private titleService: Title,
+    private meta: Meta) {
     this.navSubscription = this.router.events.subscribe((e: any) => {
       // If it is a NavigationEnd event re-initalise the component
       if (e instanceof NavigationEnd) {
@@ -62,6 +70,11 @@ export class SubMenuComponent implements OnInit {
     this.wpService.getPostBySlug(this.menuSlug, 'menu_categories').subscribe(post => {
       this.pageContent = post[0];
       this.acf = post[0].acf;
+
+      if(this.acf.meta_description){
+        this.meta.addTag({ name: 'description', content: this.acf.meta_description});
+      }
+
       this.subMenuId = this.acf.submenuid;
 
       this.titleService.setTitle(this.decode(post[0].title.rendered) + ' | Lo-Cal Kitchen');
@@ -83,6 +96,7 @@ export class SubMenuComponent implements OnInit {
     });
 
     this.wpService.getSubMenu(this.menuSlug).subscribe((items) => {
+      console.log(items);
       this.wpSubMenuItems = _(items).map('acf').flatten().value();
     });
   }
