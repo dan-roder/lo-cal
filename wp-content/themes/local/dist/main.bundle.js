@@ -475,6 +475,13 @@ var AppComponent = /** @class */ (function () {
         this.activatedRoute = activatedRoute;
         this.titleService = titleService;
         this.title = 'app works!';
+        this.router.events.subscribe(function (event) {
+            if (event instanceof __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* NavigationEnd */]) {
+                console.log(event.urlAfterRedirects);
+                window.ga('set', 'page', event.urlAfterRedirects);
+                window.ga('send', 'pageview');
+            }
+        });
     }
     AppComponent.prototype.ngOnInit = function () {
         var _this = this;
