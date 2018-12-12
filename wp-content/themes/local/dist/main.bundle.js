@@ -477,8 +477,12 @@ var AppComponent = /** @class */ (function () {
         this.title = 'app works!';
         this.router.events.subscribe(function (event) {
             if (event instanceof __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* NavigationEnd */]) {
-                window.ga('set', 'page', event.urlAfterRedirects);
-                window.ga('send', 'pageview');
+                // ensure this isn't getting blocked
+                console.log(typeof window.ga);
+                if (typeof window.ga !== 'undefined') {
+                    window.ga('set', 'page', event.urlAfterRedirects);
+                    window.ga('send', 'pageview');
+                }
             }
         });
     }

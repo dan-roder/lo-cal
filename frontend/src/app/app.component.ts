@@ -12,8 +12,12 @@ export class AppComponent {
   constructor(private router: Router, private activatedRoute: ActivatedRoute, private titleService: Title){
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
-        (<any>window).ga('set', 'page', event.urlAfterRedirects);
-        (<any>window).ga('send', 'pageview');
+        // ensure this isn't getting blocked
+        console.log(typeof (<any>window).ga);
+        if(typeof (<any>window).ga !== 'undefined'){
+          (<any>window).ga('set', 'page', event.urlAfterRedirects);
+          (<any>window).ga('send', 'pageview');
+        }
       }
     });
   }
