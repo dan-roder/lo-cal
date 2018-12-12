@@ -24,29 +24,31 @@
 
     <div class="content clearfix sub-menu-cards-wrapper">
 
-      <div class="menu-card" *ngFor="let item of subMenuItems?.menuItems">
-        <div class="card-wrapper">
-          <div class="image" *ngIf="(item?.MenuItemId | cardImage:wpSubMenuItems) !== ''">
-            <a [routerLink]="(item?.DisplayName | safeUrl)"><img src="{{ (item?.MenuItemId | cardImage:wpSubMenuItems).submenu_image }}" alt="{{ (item?.MenuItemId | cardImage:wpSubMenuItems).submenu_alt }}"></a>
-          </div>
-          <div class="details">
-            <h4 class="title"><a [routerLink]="(item?.DisplayName | safeUrl)">{{ item?.DisplayName }}</a></h4>
-            <div class="description">
-              <p>
-                {{ (item?.Description | allergens).description }}
-              </p>
+      <ng-container *ngFor="let item of subMenuItems?.menuItems">
+        <div class="menu-card" *ngIf="item?.DisplayName">
+          <div class="card-wrapper">
+            <div class="image" *ngIf="(item?.MenuItemId | cardImage:wpSubMenuItems) !== ''">
+              <a [routerLink]="(item?.DisplayName | safeUrl)"><img src="{{ (item?.MenuItemId | cardImage:wpSubMenuItems).submenu_image }}" alt="{{ (item?.MenuItemId | cardImage:wpSubMenuItems).submenu_alt }}"></a>
             </div>
-            <div class="fine-details">
-              <span class="price">{{ item?.defaultPrice | currency }}</span>
-              <span class="calories" *ngIf="item?.CaloricServingUnit">{{ item?.CaloricServingUnit }} cal</span>
-              <span class="allergens" *ngIf="(item?.Description | allergens).allergens">
-                <span class="allergen" *ngFor="let allergen of (item?.Description | allergens).allergens">{{ allergen }}</span>
-              </span>
-              <button class="add-to-cart" (click)="addToBag(item)" *ngIf="item?.SalesItemIds.length <= 1">Add</button>
+            <div class="details">
+              <h4 class="title"><a [routerLink]="(item?.DisplayName | safeUrl)">{{ item?.DisplayName }}</a></h4>
+              <div class="description">
+                <p>
+                  {{ (item?.Description | allergens).description }}
+                </p>
+              </div>
+              <div class="fine-details">
+                <span class="price">{{ item?.defaultPrice | currency }}</span>
+                <span class="calories" *ngIf="item?.CaloricServingUnit">{{ item?.CaloricServingUnit }} cal</span>
+                <span class="allergens" *ngIf="(item?.Description | allergens).allergens">
+                  <span class="allergen" *ngFor="let allergen of (item?.Description | allergens).allergens">{{ allergen }}</span>
+                </span>
+                <button class="add-to-cart" (click)="addToBag(item)" *ngIf="item?.SalesItemIds.length <= 1">Add</button>
+              </div>
             </div>
           </div>
-        </div>
-      </div><!-- /.menu-card -->
+        </div><!-- /.menu-card -->
+      </ng-container>
 
     </div>
   </div>
