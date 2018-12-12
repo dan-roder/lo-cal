@@ -13,7 +13,6 @@ export class AppComponent {
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
         // ensure this isn't getting blocked
-        console.log(typeof (<any>window).ga);
         if(typeof (<any>window).ga !== 'undefined'){
           (<any>window).ga('set', 'page', event.urlAfterRedirects);
           (<any>window).ga('send', 'pageview');
