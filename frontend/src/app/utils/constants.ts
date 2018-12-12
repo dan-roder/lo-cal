@@ -3,7 +3,7 @@ import { WindowRef } from './windowref';
 
 @Injectable()
 export class Config {
-  public siteId : number = 1;
+  public siteId : number = 2;
   public wordpressApiUrl : string = '';
   public railsMenuApi : string = `https://api.lo-calkitchen.com/menus/${this.siteId}`;
   public railsCustomerEndpoint : string = 'https://api.lo-calkitchen.com/customers';
