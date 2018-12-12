@@ -3539,7 +3539,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 var SubMenuComponent = /** @class */ (function () {
-    function SubMenuComponent(menuService, activatedRoute, wpService, bagService, router, titleService) {
+    function SubMenuComponent(menuService, activatedRoute, wpService, bagService, router, titleService, meta) {
         var _this = this;
         this.menuService = menuService;
         this.activatedRoute = activatedRoute;
@@ -3547,6 +3547,7 @@ var SubMenuComponent = /** @class */ (function () {
         this.bagService = bagService;
         this.router = router;
         this.titleService = titleService;
+        this.meta = meta;
         this.subMenuId = null;
         this.menuSlug = '';
         this.featuredImage = '';
@@ -3580,6 +3581,9 @@ var SubMenuComponent = /** @class */ (function () {
         this.wpService.getPostBySlug(this.menuSlug, 'menu_categories').subscribe(function (post) {
             _this.pageContent = post[0];
             _this.acf = post[0].acf;
+            if (_this.acf.meta_description) {
+                _this.meta.addTag({ name: 'description', content: _this.acf.meta_description });
+            }
             _this.subMenuId = _this.acf.submenuid;
             _this.titleService.setTitle(_this.decode(post[0].title.rendered) + ' | Lo-Cal Kitchen');
             _this.featuredImage = (post[0].featured_media !== 0) ? post[0]._embedded['wp:featuredmedia'][0].media_details.sizes.full.source_url : '';
@@ -3628,7 +3632,13 @@ var SubMenuComponent = /** @class */ (function () {
             encapsulation: __WEBPACK_IMPORTED_MODULE_0__angular_core__["ViewEncapsulation"].None
         }),
         Object(__WEBPACK_IMPORTED_MODULE_3_ngx_auto_unsubscribe__["a" /* AutoUnsubscribe */])(),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__services_menu_service_service__["a" /* MenuService */], __WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* ActivatedRoute */], __WEBPACK_IMPORTED_MODULE_4__local_services_wp_service__["a" /* WordpressService */], __WEBPACK_IMPORTED_MODULE_5__local_services_bag_service__["a" /* BagService */], __WEBPACK_IMPORTED_MODULE_2__angular_router__["c" /* Router */], __WEBPACK_IMPORTED_MODULE_7__angular_platform_browser__["e" /* Title */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__services_menu_service_service__["a" /* MenuService */],
+            __WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* ActivatedRoute */],
+            __WEBPACK_IMPORTED_MODULE_4__local_services_wp_service__["a" /* WordpressService */],
+            __WEBPACK_IMPORTED_MODULE_5__local_services_bag_service__["a" /* BagService */],
+            __WEBPACK_IMPORTED_MODULE_2__angular_router__["c" /* Router */],
+            __WEBPACK_IMPORTED_MODULE_7__angular_platform_browser__["e" /* Title */],
+            __WEBPACK_IMPORTED_MODULE_7__angular_platform_browser__["d" /* Meta */]])
     ], SubMenuComponent);
     return SubMenuComponent;
 }());
@@ -5656,7 +5666,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var Config = /** @class */ (function () {
     function Config(winRef) {
         this.winRef = winRef;
-        this.siteId = 1;
+        this.siteId = 2;
         this.wordpressApiUrl = '';
         this.railsMenuApi = "https://api.lo-calkitchen.com/menus/" + this.siteId;
         this.railsCustomerEndpoint = 'https://api.lo-calkitchen.com/customers';
