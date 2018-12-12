@@ -7,6 +7,7 @@ import { SalesItem } from '@local/models/SalesItem';
 import * as _ from 'lodash';
 import { AutoUnsubscribe } from 'ngx-auto-unsubscribe';
 import { Title } from '@angular/platform-browser';
+import { Meta } from '@angular/platform-browser';
 @Component({
   selector: 'lo-cal-menu-customize',
   templateUrl: './menu-customize.component.html'
@@ -42,7 +43,8 @@ export class MenuCustomizeComponent implements OnInit {
     private bagService: BagService,
     private router: Router,
     private activatedRoute: ActivatedRoute,
-    private titleService: Title
+    private titleService: Title,
+    private meta: Meta
   ) { }
 
   ngOnInit() {
@@ -51,6 +53,10 @@ export class MenuCustomizeComponent implements OnInit {
     this.wpService.getPostBySlug(slug, 'menu_item').subscribe(item => {
       this.itemContent = item;
       let menuItemId = item[0].acf.menuid;
+
+      if(item[0].acf.meta_description){
+        this.meta.addTag({ name: 'description', content: item[0].acf.meta_description});
+      }
 
       this.featuredImage = (item[0].featured_media !== 0) ? item[0]._embedded['wp:featuredmedia'][0].media_details.sizes.full.source_url : '//via.placeholder.com/1440x500';
       this.featuredImageAlt = (item[0].featured_media !== 0) ? item[0]._embedded['wp:featuredmedia'][0].alt_text : '';
