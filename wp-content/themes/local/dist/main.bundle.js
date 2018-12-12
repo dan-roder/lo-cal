@@ -498,7 +498,7 @@ var AppComponent = /** @class */ (function () {
             selector: 'app-root',
             template: __webpack_require__("./src/app/app.component.html")
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */], __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */], __WEBPACK_IMPORTED_MODULE_2__angular_platform_browser__["d" /* Title */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */], __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */], __WEBPACK_IMPORTED_MODULE_2__angular_platform_browser__["e" /* Title */]])
     ], AppComponent);
     return AppComponent;
 }());
@@ -2589,14 +2589,16 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var MenuCustomizeComponent = /** @class */ (function () {
-    function MenuCustomizeComponent(wpService, menuService, bagService, router, activatedRoute, titleService) {
+    function MenuCustomizeComponent(wpService, menuService, bagService, router, activatedRoute, titleService, meta) {
         this.wpService = wpService;
         this.menuService = menuService;
         this.bagService = bagService;
         this.router = router;
         this.activatedRoute = activatedRoute;
         this.titleService = titleService;
+        this.meta = meta;
         this.quantity = 1;
         this.multipleSalesItems = [];
         this.customizationData = {};
@@ -2613,6 +2615,9 @@ var MenuCustomizeComponent = /** @class */ (function () {
         this.wpService.getPostBySlug(slug, 'menu_item').subscribe(function (item) {
             _this.itemContent = item;
             var menuItemId = item[0].acf.menuid;
+            if (item[0].acf.meta_description) {
+                _this.meta.addTag({ name: 'description', content: item[0].acf.meta_description });
+            }
             _this.featuredImage = (item[0].featured_media !== 0) ? item[0]._embedded['wp:featuredmedia'][0].media_details.sizes.full.source_url : '//via.placeholder.com/1440x500';
             _this.featuredImageAlt = (item[0].featured_media !== 0) ? item[0]._embedded['wp:featuredmedia'][0].alt_text : '';
             _this.getMenuItemDetails(menuItemId);
@@ -2941,7 +2946,8 @@ var MenuCustomizeComponent = /** @class */ (function () {
             __WEBPACK_IMPORTED_MODULE_3__local_services_bag_service__["a" /* BagService */],
             __WEBPACK_IMPORTED_MODULE_4__angular_router__["c" /* Router */],
             __WEBPACK_IMPORTED_MODULE_4__angular_router__["a" /* ActivatedRoute */],
-            __WEBPACK_IMPORTED_MODULE_7__angular_platform_browser__["d" /* Title */]])
+            __WEBPACK_IMPORTED_MODULE_7__angular_platform_browser__["e" /* Title */],
+            __WEBPACK_IMPORTED_MODULE_7__angular_platform_browser__["d" /* Meta */]])
     ], MenuCustomizeComponent);
     return MenuCustomizeComponent;
 }());
@@ -3497,7 +3503,7 @@ var PostComponent = /** @class */ (function () {
 /***/ "./src/app/pages/sub-menu/sub-menu.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"page-landing-page\">\n  <header class=\"header-container\">\n    <div class=\"content\" [ngStyle]=\"{'background-image':'url(' + featuredImage + ')'}\">\n      <div class=\"header-content text-center\">\n        <h1 [innerHtml]=\"pageContent?.title?.rendered\"></h1>\n      </div>\n    </div>\n  </header>\n\n  <div class=\"menu-menu\">\n    <ul class=\"menu\">\n      <li *ngFor=\"let item of subMenuLinks\" [attr.class]=\"item.classes ? item.classes : null\">\n        <a [routerLink]=\"['/menu', item.object_slug]\" routerLinkActive=\"active\" [routerLinkActiveOptions]=\"{exact:true}\" [innerHtml]=\"item?.title | safeHtml\"></a>\n      </li>\n    </ul>\n  </div>\n\n  <!-- Menu Card Layout HTML -->\n  <div class=\"section-white menu-categories center\" id=\"featured\">\n    <h2 class=\"capitalize text-center\" [innerHtml]=\"pageContent?.title?.rendered\"></h2>\n    <p class=\"sub-menu-description\" *ngIf=\"subMenuItems?.menu[0]?.Description\">\n      {{ subMenuItems?.menu[0]?.Description }}\n    </p>\n\n    <div class=\"content clearfix sub-menu-cards-wrapper\">\n\n      <div class=\"menu-card\" *ngFor=\"let item of subMenuItems?.menuItems\">\n        <div class=\"card-wrapper\">\n          <div class=\"image\" *ngIf=\"(item?.MenuItemId | cardImage:wpSubMenuItems) !== ''\">\n            <a [routerLink]=\"(item?.DisplayName | safeUrl)\"><img src=\"{{ (item?.MenuItemId | cardImage:wpSubMenuItems).submenu_image }}\" alt=\"{{ (item?.MenuItemId | cardImage:wpSubMenuItems).submenu_alt }}\"></a>\n          </div>\n          <div class=\"details\">\n            <h4 class=\"title\"><a [routerLink]=\"(item?.DisplayName | safeUrl)\">{{ item?.DisplayName }}</a></h4>\n            <div class=\"description\">\n              <p>\n                {{ (item?.Description | allergens).description }}\n              </p>\n            </div>\n            <div class=\"fine-details\">\n              <span class=\"price\">{{ item?.defaultPrice | currency }}</span>\n              <span class=\"calories\" *ngIf=\"item?.CaloricServingUnit\">{{ item?.CaloricServingUnit }} cal</span>\n              <span class=\"allergens\" *ngIf=\"(item?.Description | allergens).allergens\">\n                <span class=\"allergen\" *ngFor=\"let allergen of (item?.Description | allergens).allergens\">{{ allergen }}</span>\n              </span>\n              <button class=\"add-to-cart\" (click)=\"addToBag(item)\" *ngIf=\"item?.SalesItemIds.length <= 1\">Add</button>\n            </div>\n          </div>\n        </div>\n      </div><!-- /.menu-card -->\n\n    </div>\n  </div>\n  <!-- Menu Card Layout HTML -->\n</div>"
+module.exports = "<div class=\"page-landing-page\">\n  <header class=\"header-container\">\n    <div class=\"content\" [ngStyle]=\"{'background-image':'url(' + featuredImage + ')'}\">\n      <div class=\"header-content text-center\">\n        <h1 [innerHtml]=\"pageContent?.title?.rendered\"></h1>\n      </div>\n    </div>\n  </header>\n\n  <div class=\"menu-menu\">\n    <ul class=\"menu\">\n      <li *ngFor=\"let item of subMenuLinks\" [attr.class]=\"item.classes ? item.classes : null\">\n        <a [routerLink]=\"['/menu', item.object_slug]\" routerLinkActive=\"active\" [routerLinkActiveOptions]=\"{exact:true}\" [innerHtml]=\"item?.title | safeHtml\"></a>\n      </li>\n    </ul>\n  </div>\n\n  <!-- Menu Card Layout HTML -->\n  <div class=\"section-white menu-categories center\" id=\"featured\">\n    <h2 class=\"capitalize text-center\" [innerHtml]=\"pageContent?.title?.rendered\"></h2>\n    <p class=\"sub-menu-description\" *ngIf=\"subMenuItems?.menu[0]?.Description\">\n      {{ subMenuItems?.menu[0]?.Description }}\n    </p>\n\n    <div class=\"content clearfix sub-menu-cards-wrapper\">\n\n      <ng-container *ngFor=\"let item of subMenuItems?.menuItems\">\n        <div class=\"menu-card\" *ngIf=\"item?.DisplayName\">\n          <div class=\"card-wrapper\">\n            <div class=\"image\" *ngIf=\"(item?.MenuItemId | cardImage:wpSubMenuItems) !== ''\">\n              <a [routerLink]=\"(item?.DisplayName | safeUrl)\"><img src=\"{{ (item?.MenuItemId | cardImage:wpSubMenuItems).submenu_image }}\" alt=\"{{ (item?.MenuItemId | cardImage:wpSubMenuItems).submenu_alt }}\"></a>\n            </div>\n            <div class=\"details\">\n              <h4 class=\"title\"><a [routerLink]=\"(item?.DisplayName | safeUrl)\">{{ item?.DisplayName }}</a></h4>\n              <div class=\"description\">\n                <p>\n                  {{ (item?.Description | allergens).description }}\n                </p>\n              </div>\n              <div class=\"fine-details\">\n                <span class=\"price\">{{ item?.defaultPrice | currency }}</span>\n                <span class=\"calories\" *ngIf=\"item?.CaloricServingUnit\">{{ item?.CaloricServingUnit }} cal</span>\n                <span class=\"allergens\" *ngIf=\"(item?.Description | allergens).allergens\">\n                  <span class=\"allergen\" *ngFor=\"let allergen of (item?.Description | allergens).allergens\">{{ allergen }}</span>\n                </span>\n                <button class=\"add-to-cart\" (click)=\"addToBag(item)\" *ngIf=\"item?.SalesItemIds.length <= 1\">Add</button>\n              </div>\n            </div>\n          </div>\n        </div><!-- /.menu-card -->\n      </ng-container>\n\n    </div>\n  </div>\n  <!-- Menu Card Layout HTML -->\n</div>"
 
 /***/ }),
 
@@ -3591,6 +3597,7 @@ var SubMenuComponent = /** @class */ (function () {
             }
         });
         this.wpService.getSubMenu(this.menuSlug).subscribe(function (items) {
+            console.log(items);
             _this.wpSubMenuItems = __WEBPACK_IMPORTED_MODULE_6_lodash__(items).map('acf').flatten().value();
         });
     };
@@ -3621,7 +3628,7 @@ var SubMenuComponent = /** @class */ (function () {
             encapsulation: __WEBPACK_IMPORTED_MODULE_0__angular_core__["ViewEncapsulation"].None
         }),
         Object(__WEBPACK_IMPORTED_MODULE_3_ngx_auto_unsubscribe__["a" /* AutoUnsubscribe */])(),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__services_menu_service_service__["a" /* MenuService */], __WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* ActivatedRoute */], __WEBPACK_IMPORTED_MODULE_4__local_services_wp_service__["a" /* WordpressService */], __WEBPACK_IMPORTED_MODULE_5__local_services_bag_service__["a" /* BagService */], __WEBPACK_IMPORTED_MODULE_2__angular_router__["c" /* Router */], __WEBPACK_IMPORTED_MODULE_7__angular_platform_browser__["d" /* Title */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__services_menu_service_service__["a" /* MenuService */], __WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* ActivatedRoute */], __WEBPACK_IMPORTED_MODULE_4__local_services_wp_service__["a" /* WordpressService */], __WEBPACK_IMPORTED_MODULE_5__local_services_bag_service__["a" /* BagService */], __WEBPACK_IMPORTED_MODULE_2__angular_router__["c" /* Router */], __WEBPACK_IMPORTED_MODULE_7__angular_platform_browser__["e" /* Title */]])
     ], SubMenuComponent);
     return SubMenuComponent;
 }());
