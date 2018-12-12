@@ -477,7 +477,6 @@ var AppComponent = /** @class */ (function () {
         this.title = 'app works!';
         this.router.events.subscribe(function (event) {
             if (event instanceof __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* NavigationEnd */]) {
-                console.log(event.urlAfterRedirects);
                 window.ga('set', 'page', event.urlAfterRedirects);
                 window.ga('send', 'pageview');
             }
@@ -2476,6 +2475,7 @@ module.exports = "<div class=\"home page-front\">\n\n    <header class=\"header-
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_wp_service__ = __webpack_require__("./src/app/services/wp.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ngx_auto_unsubscribe__ = __webpack_require__("./node_modules/ngx-auto-unsubscribe/dist/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_platform_browser__ = __webpack_require__("./node_modules/@angular/platform-browser/esm5/platform-browser.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -2488,15 +2488,20 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var HomeComponent = /** @class */ (function () {
-    function HomeComponent(wpService) {
+    function HomeComponent(wpService, meta) {
         this.wpService = wpService;
+        this.meta = meta;
     }
     HomeComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.wpService.getPage(4).subscribe(function (page) {
             _this.pageContent = page;
             _this.acf = page.acf;
+            if (page.acf.meta_description) {
+                _this.meta.addTag({ name: 'description', content: page.acf.meta_description });
+            }
             if (page.featured_media != 0) {
                 _this.wpService.getMedia(page.featured_media).subscribe(function (media) { return _this.featuredImage = media; });
             }
@@ -2510,7 +2515,7 @@ var HomeComponent = /** @class */ (function () {
             template: __webpack_require__("./src/app/pages/home/home.component.html")
         }),
         Object(__WEBPACK_IMPORTED_MODULE_2_ngx_auto_unsubscribe__["a" /* AutoUnsubscribe */])(),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__services_wp_service__["a" /* WordpressService */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__services_wp_service__["a" /* WordpressService */], __WEBPACK_IMPORTED_MODULE_3__angular_platform_browser__["d" /* Meta */]])
     ], HomeComponent);
     return HomeComponent;
 }());

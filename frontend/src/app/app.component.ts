@@ -12,7 +12,6 @@ export class AppComponent {
   constructor(private router: Router, private activatedRoute: ActivatedRoute, private titleService: Title){
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
-        console.log(event.urlAfterRedirects);
         (<any>window).ga('set', 'page', event.urlAfterRedirects);
         (<any>window).ga('send', 'pageview');
       }
