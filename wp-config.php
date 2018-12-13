@@ -194,6 +194,26 @@ switch($_SERVER['REQUEST_URI']){
     header('Location: https://'. $_SERVER['HTTP_HOST'] . '/contact');
     exit();
   break;
+  case '/new-blog':
+    header('HTTP/1.0 301 Moved Permanently');
+    header('Location: https://'. $_SERVER['HTTP_HOST'] . '/blog');
+    exit();
+  break;
+  case '/blog/2016/11/21/food-the-life-of-my-love':
+    header('HTTP/1.0 301 Moved Permanently');
+    header('Location: https://'. $_SERVER['HTTP_HOST'] . '/blog/food-the-life-of-my-love');
+    exit();
+  break;
+  case '/new-blog/2017/2/28/tasting-day':
+    header('HTTP/1.0 301 Moved Permanently');
+    header('Location: https://'. $_SERVER['HTTP_HOST'] . '/blog/tasting-day');
+    exit();
+  break;
+  case '/new-blog/2017/3/1/cihqfjmlvoitityq482lmy46hecigj':
+    header('HTTP/1.0 301 Moved Permanently');
+    header('Location: https://'. $_SERVER['HTTP_HOST'] . '/blog/frozen-yogurt-and-popcorn');
+    exit();
+  break;
 }
 
 
