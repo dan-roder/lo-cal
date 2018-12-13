@@ -183,6 +183,19 @@ if (isset($_ENV['PANTHEON_ENVIRONMENT']) && php_sapi_name() != 'cli') {
   }
 }
 
+switch($_SERVER['REQUEST_URI']){
+  case '/our-story-1':
+    header('HTTP/1.0 301 Moved Permanently');
+    header('Location: https://'. $_SERVER['HTTP_HOST'] . '/our-story');
+    exit();
+  break;
+  case '/contact-1':
+    header('HTTP/1.0 301 Moved Permanently');
+    header('Location: https://'. $_SERVER['HTTP_HOST'] . '/contact');
+    exit();
+  break;
+}
+
 
 /** Absolute path to the WordPress directory. */
 if ( !defined('ABSPATH') )
