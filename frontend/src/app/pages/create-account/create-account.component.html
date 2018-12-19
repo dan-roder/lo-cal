@@ -34,6 +34,12 @@
         <div class="error-message" *ngIf="accountForm.controls['email'].value.length > 45">Max length for email is 45 characters.</div>
       </div>
       <div class="form-component form-component-text">
+        <label for="phone" class="visuallyhidden">Phone</label>
+        <input type="text" name="phone" id="phone" formControlName="phone" placeholder="Phone* " [ngClass]="{'has-error':!accountForm.controls['phone'].valid && submittedOnce}">
+        <div class="error-message" *ngIf="!accountForm.controls['phone'].valid && submittedOnce">This field is required.</div>
+        <div class="error-message" *ngIf="accountForm.controls['phone'].errors?.pattern">Phone number should be 9 digits with no spaces or hyphens.</div>
+      </div>
+      <div class="form-component form-component-text">
         <label for="password" class="visuallyhidden">Password</label>
         <input type="password" name="password" id="password" formControlName="password" placeholder="Password* (8 or more characters)" [ngClass]="{'has-error':!accountForm.controls['password'].valid && submittedOnce}">
         <div class="error-message" *ngIf="!accountForm.controls['password'].valid && submittedOnce">This field is required.</div>
