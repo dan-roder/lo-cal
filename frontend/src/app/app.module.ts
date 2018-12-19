@@ -35,6 +35,7 @@ import { ConfirmationComponent } from './pages/confirmation/confirmation.compone
 import { OrderHistoryComponent } from './pages/order-history/order-history.component';
 import { OrderDetailComponent } from './pages/order-detail/order-detail.component';
 import { PasswordResetComponent } from './pages/password-reset/password-reset.component';
+import { NotFoundComponent } from './pages/not-found-component/not-found.component';
 
 // Shared Components
 import { HeaderComponent } from './shared/components/header/header.component';
@@ -126,7 +127,8 @@ import { RecaptchaFormsModule } from 'ng-recaptcha/forms';
     CardImagePipe,
     NoXPipe,
     AllergenRolloverPipe,
-    PasswordResetComponent
+    PasswordResetComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),

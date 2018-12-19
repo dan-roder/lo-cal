@@ -27,6 +27,7 @@ import { AccountLayoutComponent } from '@local/layouts/account-layout/account-la
 import { ConfirmationComponent } from '@local/pages/confirmation/confirmation.component';
 import { OrderDetailComponent } from '@local/pages/order-detail/order-detail.component';
 import { PasswordResetComponent } from '@local/pages/password-reset/password-reset.component';
+import { NotFoundComponent } from './pages/not-found-component/not-found.component';
 
 
 const routes: Routes = [
@@ -56,7 +57,8 @@ const routes: Routes = [
       },
       { path: 'checkout/review', component: CheckoutReviewComponent, canActivate: [AccessGuard], data: { title: 'Review Your Order' }  },
       { path: 'checkout/payment', component: CheckoutPaymentComponent, canActivate: [OrderGuard], data: { title: 'Complete Your Order' }  },
-      { path: 'checkout/confirmation', component: ConfirmationComponent, data: { title: 'Confirmation' }  }
+      { path: 'checkout/confirmation', component: ConfirmationComponent, data: { title: 'Confirmation' } },
+      { path: '**',  component: NotFoundComponent, data: { title: '404' }  }
     ]
   },
   {
@@ -100,6 +102,7 @@ const routes: Routes = [
       }
     ]
   },
+  { path: '**',  component: NotFoundComponent },
 ]
 
 @NgModule({

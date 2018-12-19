@@ -1,0 +1,11 @@
+<div class="basic-page-container blog-post">
+  <div class="basic-page-content" *ngIf="pageContent">
+    <div class="blog-details center-960">
+      <h1 [innerHtml]="pageContent?.title?.rendered" class="text-center"></h1>
+    </div>
+    <div class="featured-image center" *ngIf="featuredImage">
+      <img [src]="featuredImage?.source_url" [alt]="featuredImage?.alt_text">
+    </div>
+    <div class="content center-740" [innerHtml]="pageContent?.content?.rendered | safeHtml"></div>
+  </div>
+</div>
