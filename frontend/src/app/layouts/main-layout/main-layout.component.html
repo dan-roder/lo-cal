@@ -1,4 +1,4 @@
-<div class="mobile-menu" *responsive="{ sizes: {min:300, max:860}}" [ngClass]="mobileMenuState" (click)="toggleMobileMenuState($event.target)">
+<div class="mobile-menu" *responsive="{ sizes: {min:300, max:980}}" [ngClass]="mobileMenuState" (click)="toggleMobileMenuState($event.target)">
   <div class="close white">
     <span></span>
     <span></span>
@@ -15,7 +15,7 @@
 <div class="site-container" [ngClass]="mobileMenuState" loCalWindowScroll>
   <div class="sticky-header">
     <div class="menu-container clearfix">
-      <lo-cal-hamburger (mobileMenuState)="toggleMobileMenuState()" *responsive="{ sizes: {min:300, max:860}}"></lo-cal-hamburger>
+      <lo-cal-hamburger (mobileMenuState)="toggleMobileMenuState()" *responsive="{ sizes: {min:300, max:980}}"></lo-cal-hamburger>
       <ul class="menu main-menu">
         <li>
           <h1 class="logo" *ngIf="currentUrl == '/'"><a routerLink="/"><span class="visuallyhidden">Lo•Cal Kitchen</span></a></h1>
