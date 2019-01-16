@@ -23,7 +23,8 @@ export class CheckoutLoginComponent implements OnInit {
     this.guestForm = fb.group({
       'first-name' : ['', [Validators.required, Validators.maxLength(28)]],
       'last-name' : ['', [Validators.required, Validators.maxLength(28)]],
-      'email-address' : ['', [Validators.required, Validators.email, Validators.maxLength(45)]]
+      'email-address' : ['', [Validators.required, Validators.email, Validators.maxLength(45)]],
+      'phone' : ['', [Validators.required, Validators.pattern('^[0-9]{10}$')]]
     })
   }
 
@@ -38,6 +39,7 @@ export class CheckoutLoginComponent implements OnInit {
         FirstName : formData.controls['first-name'].value,
         LastName : formData.controls['last-name'].value,
         EMail : formData.controls['email-address'].value,
+        VoicePhone : formData.controls['phone'].value,
         IsGuest : true
       }
 
