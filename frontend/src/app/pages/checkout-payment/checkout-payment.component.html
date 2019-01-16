@@ -34,6 +34,7 @@
                     <label for="phone" class="visuallyhidden">Phone</label>
                     <input type="text" name="phone" id="phone" formControlName="phone" placeholder="Phone*">
                     <div class="error-message" *ngIf="!contactInfoForm.controls['phone'].valid && submittedOnce">This field is required.</div>
+                    <div class="error-message" *ngIf="contactInfoForm.controls['phone'].errors?.pattern">Phone number must be 10 digits with no spaces or special characters.</div>
                   </div>
                 </div>
                 <div class="next-step black-button">
