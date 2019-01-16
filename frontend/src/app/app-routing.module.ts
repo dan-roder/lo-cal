@@ -58,7 +58,6 @@ const routes: Routes = [
       { path: 'checkout/review', component: CheckoutReviewComponent, canActivate: [AccessGuard], data: { title: 'Review Your Order' }  },
       { path: 'checkout/payment', component: CheckoutPaymentComponent, canActivate: [OrderGuard], data: { title: 'Complete Your Order' }  },
       { path: 'checkout/confirmation', component: ConfirmationComponent, data: { title: 'Confirmation' } },
-      { path: '**',  component: NotFoundComponent, data: { title: '404' }  }
     ]
   },
   {
