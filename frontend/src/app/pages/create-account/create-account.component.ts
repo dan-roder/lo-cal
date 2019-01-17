@@ -29,6 +29,10 @@ export class CreateAccountComponent implements OnInit {
       'last-name' : [null, [Validators.required, Validators.maxLength(28)]],
       'email' : ['', [Validators.required, Validators.email, Validators.maxLength(45)]],
       'phone' : ['', [Validators.required, Validators.pattern('^[0-9]{10}$')]],
+<<<<<<< HEAD
+=======
+      // TODO: Implement more strict password rules from Ken's regex
+>>>>>>> livetest
       'password' : ['', [Validators.required, Validators.minLength(8)]],
       'confirm-password' : ['', Validators.required],
       'security-question' : ['', Validators.required],

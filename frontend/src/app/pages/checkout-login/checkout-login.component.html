@@ -26,10 +26,17 @@
               <div class="error-message" *ngIf="!guestForm.controls['email-address'].valid && submittedOnce">This field is required.</div>
             </div>
             <div class="form-component form-component-text">
+<<<<<<< HEAD
               <label for="phone" class="visuallyhidden">Phone Number</label>
               <input type="text" name="phone" id="phone" formControlName="phone" placeholder="Phone Number*" [ngClass]="{'has-error':!guestForm.controls['phone'].valid && submittedOnce}">
               <div class="error-message" *ngIf="!guestForm.controls['phone'].valid && submittedOnce">This field is required.</div>
               <div class="error-message" *ngIf="guestForm.controls['phone'].errors?.pattern">Phone number must be 10 digits with no spaces or special characters.</div>
+=======
+              <label for="phone" class="visuallyhidden">Phone</label>
+              <input type="text" name="phone" id="phone" formControlName="phone" placeholder="Phone* " [ngClass]="{'has-error':!guestForm.controls['phone'].valid && submittedOnce}">
+              <div class="error-message" *ngIf="!guestForm.controls['phone'].valid && submittedOnce">This field is required.</div>
+              <div class="error-message" *ngIf="guestForm.controls['phone'].errors?.pattern">Phone number should be 9 digits with no spaces or hyphens.</div>
+>>>>>>> livetest
             </div>
             <div class="submit red-button full-width-button">
               <input type="submit" value="Checkout as Guest" [disabled]="!guestForm.valid">
