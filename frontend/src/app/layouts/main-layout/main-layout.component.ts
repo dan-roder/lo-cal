@@ -26,7 +26,7 @@ export class MainLayoutComponent implements OnInit {
 
   ngOnInit() {
     this.currentUrl = this.router.url;
-    this.wpService.getMenu(2).subscribe(m => this.mainMenuLinks = m.items);
+    this.wpService.getMenu(2).subscribe(m => {this.mainMenuLinks = m.items; console.log(m)});
   }
 
   toggleBagState(){

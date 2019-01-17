@@ -16,7 +16,7 @@
       display: inline-block;
       margin: 0 0 0 12px;
 
-      @include breakpoint($bp-980){
+      @include breakpoint($bp-1080){
         margin: 0 0 0 20px;
       }
 
@@ -32,7 +32,7 @@
         cursor: pointer;
         padding: 35px 0;
 
-        @include breakpoint($bp-980){
+        @include breakpoint($bp-1080){
           letter-spacing: 1px;
         }
 
@@ -83,7 +83,7 @@
     width: 110px;
     margin: 0 auto;
 
-    @include breakpoint($bp-860){
+    @include breakpoint($bp-980){
       float: left;
       width: auto;
       margin: 0;
@@ -92,7 +92,7 @@
     li{
       display: none;
 
-      @include breakpoint($bp-860){
+      @include breakpoint($bp-980){
         display: inline-block;
       }
 
