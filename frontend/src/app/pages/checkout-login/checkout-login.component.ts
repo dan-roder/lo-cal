@@ -24,11 +24,7 @@ export class CheckoutLoginComponent implements OnInit {
       'first-name' : ['', [Validators.required, Validators.maxLength(28)]],
       'last-name' : ['', [Validators.required, Validators.maxLength(28)]],
       'email-address' : ['', [Validators.required, Validators.email, Validators.maxLength(45)]],
-<<<<<<< HEAD
       'phone' : ['', [Validators.required, Validators.pattern('^[0-9]{10}$')]]
-=======
-      'phone' : ['', [Validators.required, Validators.pattern('^[0-9]{10}$')]],
->>>>>>> livetest
     })
   }
 
