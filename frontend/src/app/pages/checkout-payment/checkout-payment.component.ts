@@ -39,7 +39,13 @@ export class CheckoutPaymentComponent implements OnInit {
   private orderMode : number;
   private _vehicle : Vehicle = {};
 
-  constructor(private orderService: OrderService, private fb: FormBuilder, private constants: Config, private customerService: CustomerService, private router: Router, private localStorage: LocalStorage, private wpService: WordpressService) {
+  constructor(private orderService: OrderService,
+     private fb: FormBuilder,
+     private constants: Config,
+     private customerService: CustomerService,
+     private router: Router,
+     private localStorage: LocalStorage,
+     private wpService: WordpressService) {
     this.contactInfoForm = fb.group({
       'first-name' : [null, Validators.required],
       'last-name' : [null, Validators.required],
