@@ -44,6 +44,7 @@ export class AccountComponent implements OnInit {
       'first-name' : [null, Validators.required],
       'last-name' : [null, Validators.required],
       'email' : [null, [Validators.required, Validators.email]],
+      'phone' : ['', [Validators.required, Validators.pattern('^[0-9]{10}$')]],
       'full-address' : fb.group({
         'address' : [null, Validators.required],
         'address2' : null,
@@ -89,6 +90,7 @@ export class AccountComponent implements OnInit {
       'first-name' : customerData.FirstName,
       'last-name' : customerData.LastName,
       'email' : customerData.EMail,
+      'phone' : customerData.VoicePhone,
       'full-address' : {
         'address' : customerData.Addresses[0].AddressLine1,
         'address2' : customerData.Addresses[0].AddressLine2,
@@ -138,6 +140,7 @@ export class AccountComponent implements OnInit {
           EMail : formData.get('email').value,
           FirstName : formData.get('first-name').value,
           LastName : formData.get('last-name').value,
+          VoicePhone : formData.get('phone').value,
           Addresses : [{
             AddressType : 1,
             AddressId : 1,

@@ -28,6 +28,7 @@ export class CreateAccountComponent implements OnInit {
       'first-name' : [null, [Validators.required, Validators.maxLength(28)]],
       'last-name' : [null, [Validators.required, Validators.maxLength(28)]],
       'email' : ['', [Validators.required, Validators.email, Validators.maxLength(45)]],
+      'phone' : ['', [Validators.required, Validators.pattern('^[0-9]{10}$')]],
       'password' : ['', [Validators.required, Validators.minLength(8)]],
       'confirm-password' : ['', Validators.required],
       'security-question' : ['', Validators.required],
@@ -61,6 +62,7 @@ export class CreateAccountComponent implements OnInit {
             EMail : form.controls.email.value,
             FirstName : form.controls['first-name'].value,
             LastName : form.controls['last-name'].value,
+            VoicePhone : form.controls['phone'].value,
             Addresses : [{
               AddressType : 1,
               AddressId : 1,
@@ -80,7 +82,7 @@ export class CreateAccountComponent implements OnInit {
       this.customerService.createCustomer(registration).subscribe(data => {
         if('Errors' in data){
           // TODO: Errors comes as an array, loop instead of cherry picking first one
-          switch(data['Errors'][0].ErrorCode){
+          switch(data['Errors'][0]['ErrorCode']){
             case 163:
               this.existingAccount = true;
             break;
@@ -97,6 +99,7 @@ export class CreateAccountComponent implements OnInit {
             this.handleRedirection(data);
           }
           else{
+            console.log(data);
             // Account successfully created, show generic success message
             this.accountSuccess = true;
           }

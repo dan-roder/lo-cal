@@ -50,7 +50,7 @@ export class CheckoutPaymentComponent implements OnInit {
       'first-name' : [null, Validators.required],
       'last-name' : [null, Validators.required],
       'email' : [null, [Validators.required, Validators.email]],
-      'phone' : [null, Validators.required]
+      'phone' : ['', [Validators.required, Validators.pattern('^[0-9]{10}$')]]
     });
     this.paymentForm = fb.group({
       'payment-choice' : [this.paymentChoice, Validators.required],
@@ -303,7 +303,8 @@ export class CheckoutPaymentComponent implements OnInit {
     this.contactInfoForm.patchValue({
       'first-name' : customer.FirstName,
       'last-name' : customer.LastName,
-      'email' : customer.EMail
+      'email' : customer.EMail,
+      'phone' : customer.VoicePhone
     })
   }
 

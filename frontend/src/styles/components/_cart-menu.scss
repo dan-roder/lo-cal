@@ -5,7 +5,7 @@
   margin: 0;
   padding: 0;
 
-  @include breakpoint($bp-860){
+  @include breakpoint($bp-980){
     float: right;
   }
 
@@ -14,7 +14,7 @@
     display: inline-block;
     margin: 0 0 0 5px;
 
-    @include breakpoint($bp-860){
+    @include breakpoint($bp-980){
       margin: 0 0 0 12px;
     }
 
@@ -27,7 +27,7 @@
       border-bottom: 3px solid transparent;
       @include transition(padding);
 
-      @include breakpoint($bp-860){
+      @include breakpoint($bp-980){
         padding: 35px 0;
       }
 
@@ -64,7 +64,7 @@
       align-items: center;
       height: 24px;
 
-      @include breakpoint($bp-860){
+      @include breakpoint($bp-980){
         padding-left: 30px;
       }
     }
@@ -93,7 +93,7 @@
           top: 10px;
         }
 
-        @include breakpoint($bp-860){
+        @include breakpoint($bp-980){
           position: static;
           width: 20px;
           height: 20px;
@@ -107,7 +107,7 @@
         &.populated{
           width: 18px;
 
-          @include breakpoint($bp-860){
+          @include breakpoint($bp-980){
             width: 22px;
           }
         }
@@ -117,7 +117,7 @@
     .bag-text{
       display: none;
 
-      @include breakpoint($bp-860){
+      @include breakpoint($bp-980){
         display: inline-block;
       }
     }
@@ -129,7 +129,7 @@
     .account-text{
       display: none;
 
-      @include breakpoint($bp-860){
+      @include breakpoint($bp-980){
         display: inline-block;
       }
     }

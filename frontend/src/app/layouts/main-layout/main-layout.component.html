@@ -1,4 +1,4 @@
-<div class="mobile-menu" *responsive="{ sizes: {min:300, max:860}}" [ngClass]="mobileMenuState" (click)="toggleMobileMenuState($event.target)">
+<div class="mobile-menu" *responsive="{ sizes: {min:300, max:980}}" [ngClass]="mobileMenuState" (click)="toggleMobileMenuState($event.target)">
   <div class="close white">
     <span></span>
     <span></span>
@@ -7,7 +7,7 @@
     <ul>
       <li><a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Home</a></li>
       <li *ngFor="let item of mainMenuLinks" [attr.class]="item.classes ? item.classes : null">
-        <a routerLink="/{{ item.object_slug }}" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">{{ item.title }}</a>
+        <a [href]="item?.url" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" [target]="item?.target">{{ item.title }}</a>
       </li>
     </ul>
   </div>
@@ -15,14 +15,14 @@
 <div class="site-container" [ngClass]="mobileMenuState" loCalWindowScroll>
   <div class="sticky-header">
     <div class="menu-container clearfix">
-      <lo-cal-hamburger (mobileMenuState)="toggleMobileMenuState()" *responsive="{ sizes: {min:300, max:860}}"></lo-cal-hamburger>
+      <lo-cal-hamburger (mobileMenuState)="toggleMobileMenuState()" *responsive="{ sizes: {min:300, max:980}}"></lo-cal-hamburger>
       <ul class="menu main-menu">
         <li>
           <h1 class="logo" *ngIf="currentUrl == '/'"><a routerLink="/"><span class="visuallyhidden">Lo•Cal Kitchen</span></a></h1>
           <div class="logo" *ngIf="currentUrl != '/'"><a routerLink="/"><span class="visuallyhidden">Lo•Cal Kitchen</span></a></div>
         </li>
         <li *ngFor="let item of mainMenuLinks" [attr.class]="item.classes ? item.classes : null">
-          <a routerLink="/{{ item.object_slug }}" routerLinkActive="active">{{ item.title }}</a>
+          <a [href]="item?.url" routerLinkActive="active" [target]="item?.target">{{ item.title }}</a>
         </li>
       </ul>
       <ul class="cart-menu menu">
