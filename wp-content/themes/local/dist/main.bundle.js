@@ -1911,7 +1911,13 @@ var CheckoutPaymentComponent = /** @class */ (function () {
             selector: 'lo-cal-checkout-payment',
             template: __webpack_require__("./src/app/pages/checkout-payment/checkout-payment.component.html")
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__local_services_order_service__["a" /* OrderService */], __WEBPACK_IMPORTED_MODULE_2__angular_forms__["FormBuilder"], __WEBPACK_IMPORTED_MODULE_3__local_utils_constants__["a" /* Config */], __WEBPACK_IMPORTED_MODULE_4__local_services_customer_service__["a" /* CustomerService */], __WEBPACK_IMPORTED_MODULE_7__angular_router__["c" /* Router */], __WEBPACK_IMPORTED_MODULE_8__ngx_pwa_local_storage__["a" /* LocalStorage */], __WEBPACK_IMPORTED_MODULE_9__local_services_wp_service__["a" /* WordpressService */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__local_services_order_service__["a" /* OrderService */],
+            __WEBPACK_IMPORTED_MODULE_2__angular_forms__["FormBuilder"],
+            __WEBPACK_IMPORTED_MODULE_3__local_utils_constants__["a" /* Config */],
+            __WEBPACK_IMPORTED_MODULE_4__local_services_customer_service__["a" /* CustomerService */],
+            __WEBPACK_IMPORTED_MODULE_7__angular_router__["c" /* Router */],
+            __WEBPACK_IMPORTED_MODULE_8__ngx_pwa_local_storage__["a" /* LocalStorage */],
+            __WEBPACK_IMPORTED_MODULE_9__local_services_wp_service__["a" /* WordpressService */]])
     ], CheckoutPaymentComponent);
     return CheckoutPaymentComponent;
 }());
