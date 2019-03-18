@@ -1765,7 +1765,7 @@ var CheckoutPaymentComponent = /** @class */ (function () {
             console.log("orderResults:", orderResults);
             // Logging all order result objects
             _this.wpService.logError('Payment Result: ' + JSON.stringify(orderResults)).subscribe(function (result) {
-                console.log("Order Result logged", result);
+                console.log("Order Result logged", orderResults);
             });
             _this.orderResultForTesting = orderResults.ResultCode;
             // TODO: At the current point in time this is only reached if we get a successful API response
@@ -1858,7 +1858,7 @@ var CheckoutPaymentComponent = /** @class */ (function () {
     };
     CheckoutPaymentComponent.prototype.saveOrderAndRedirect = function (orderResults) {
         var _this = this;
-        console.log("saving order and redirecting: " + orderResults);
+        console.log("saving order and redirecting:", orderResults);
         this.localStorage.setItem('orderResult', orderResults).subscribe(function () {
             // If Customer wishes to save payment method
             if (_this.paymentForm.get('save-payment').value) {
@@ -5772,7 +5772,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var Config = /** @class */ (function () {
     function Config(winRef) {
         this.winRef = winRef;
-        this.siteId = 1;
+        this.siteId = 2;
         this.wordpressApiUrl = '';
         this.railsMenuApi = "https://api.lo-calkitchen.com/menus/" + this.siteId;
         this.railsCustomerEndpoint = 'https://api.lo-calkitchen.com/customers';
