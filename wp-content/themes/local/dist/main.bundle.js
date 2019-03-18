@@ -1613,6 +1613,7 @@ module.exports = "<div class=\"basic-page-container checkout-review\">\n  <div c
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__local_services_wp_service__ = __webpack_require__("./src/app/services/wp.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_angular_cc_library__ = __webpack_require__("./node_modules/angular-cc-library/index.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_angular_cc_library___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_10_angular_cc_library__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_ngx_auto_unsubscribe__ = __webpack_require__("./node_modules/ngx-auto-unsubscribe/dist/index.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1622,6 +1623,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+
 
 
 
@@ -1915,7 +1917,9 @@ var CheckoutPaymentComponent = /** @class */ (function () {
         enumerable: true,
         configurable: true
     });
+    CheckoutPaymentComponent.prototype.ngOnDestroy = function () { };
     CheckoutPaymentComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_11_ngx_auto_unsubscribe__["a" /* AutoUnsubscribe */])(),
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: 'lo-cal-checkout-payment',
             template: __webpack_require__("./src/app/pages/checkout-payment/checkout-payment.component.html")
@@ -5760,7 +5764,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var Config = /** @class */ (function () {
     function Config(winRef) {
         this.winRef = winRef;
-        this.siteId = 1;
+        this.siteId = 2;
         this.wordpressApiUrl = '';
         this.railsMenuApi = "https://api.lo-calkitchen.com/menus/" + this.siteId;
         this.railsCustomerEndpoint = 'https://api.lo-calkitchen.com/customers';
