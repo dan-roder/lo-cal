@@ -171,7 +171,7 @@ export class CheckoutPaymentComponent implements OnInit {
         this.saveOrderAndRedirect(orderResults);
       }
       else{
-        this.wpService.logError('Payment Order Error: ' + JSON.stringify(orderResults)).subscribe((result) => {console.log('error:' + result)});
+        this.wpService.logError('Success-Payment Order Error: ' + JSON.stringify(orderResults)).subscribe((result) => {console.log('error:' + result)});
         this.genericOrderError = true;
       }
     }, error => {
@@ -286,6 +286,10 @@ export class CheckoutPaymentComponent implements OnInit {
         // Save payment method, then navigate to confirmation
         this.customerService.savePaymentMethod(paymentInfoForSaving, this.currentCustomer.CustomerId).subscribe(() => {
           this.navigateToConfirmation();
+        }, (error) => {
+          this.wpService.logError('Error Saving Payment: ' + JSON.stringify(error)).subscribe((result) => {
+            this.navigateToConfirmation();
+          });
         });
       }
       else{

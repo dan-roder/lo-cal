@@ -1764,7 +1764,7 @@ var CheckoutPaymentComponent = /** @class */ (function () {
                 _this.saveOrderAndRedirect(orderResults);
             }
             else {
-                _this.wpService.logError('Payment Order Error: ' + JSON.stringify(orderResults)).subscribe(function (result) { console.log('error:' + result); });
+                _this.wpService.logError('Success-Payment Order Error: ' + JSON.stringify(orderResults)).subscribe(function (result) { console.log('error:' + result); });
                 _this.genericOrderError = true;
             }
         }, function (error) {
