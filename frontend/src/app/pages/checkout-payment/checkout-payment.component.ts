@@ -286,6 +286,10 @@ export class CheckoutPaymentComponent implements OnInit {
         // Save payment method, then navigate to confirmation
         this.customerService.savePaymentMethod(paymentInfoForSaving, this.currentCustomer.CustomerId).subscribe(() => {
           this.navigateToConfirmation();
+        }, (error) => {
+          this.wpService.logError('Error Saving Payment: ' + JSON.stringify(error)).subscribe((result) => {
+            this.navigateToConfirmation();
+          });
         });
       }
       else{
