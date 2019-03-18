@@ -133,12 +133,12 @@ export class CheckoutPaymentComponent implements OnInit {
     this.processing = true;
     // 2. Retrieve order
     this.orderService.getPreSavedOrder().subscribe(order => {
-      console.log(`pre-saved order ${order}`);
+      console.log(`pre-saved order:`, order);
       let orderId = order.OrderId;
 
       // Retrieve order again to ensure local storage order wasn't manipulated
       this.orderService.getFullOrderDetails(orderId).subscribe(fullOrder => {
-        console.log(`full order details: ${fullOrder}`);
+        console.log(`full order details:`, fullOrder);
         this.currentOrder = fullOrder;
         // 3. Construct order with all form details
         this.constructOrder(fullOrder);
@@ -169,10 +169,10 @@ export class CheckoutPaymentComponent implements OnInit {
 
     // Order object with payment has been created, submit to API
     this.orderService.submitOrder(finalOrderForSubmission, this.currentOrder.OrderId).subscribe(orderResults => {
-      console.log(`orderResults: ${orderResults}`);
+      console.log(`orderResults:`, orderResults);
       // Logging all order result objects
       this.wpService.logError('Payment Result: ' + JSON.stringify(orderResults)).subscribe((result) => {
-        console.log(`Order Result logged: ${result}`);
+        console.log(`Order Result logged`, result);
       });
       this.orderResultForTesting = orderResults.ResultCode;
 
@@ -308,7 +308,7 @@ export class CheckoutPaymentComponent implements OnInit {
       }
     }, (error) => {
       this.wpService.logError('Error saving localStorage Result: ' + JSON.stringify(error)).subscribe((result) => {
-        console.log(`Error saving localStorage Result: ${error}`);
+        console.log(`Error saving localStorage Result:`, error);
         this.navigateToConfirmation();
       });
     });
