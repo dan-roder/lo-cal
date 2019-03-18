@@ -1864,6 +1864,10 @@ var CheckoutPaymentComponent = /** @class */ (function () {
                 // Save payment method, then navigate to confirmation
                 _this.customerService.savePaymentMethod(paymentInfoForSaving, _this.currentCustomer.CustomerId).subscribe(function () {
                     _this.navigateToConfirmation();
+                }, function (error) {
+                    _this.wpService.logError('Error Saving Payment: ' + JSON.stringify(error)).subscribe(function (result) {
+                        _this.navigateToConfirmation();
+                    });
                 });
             }
             else {
