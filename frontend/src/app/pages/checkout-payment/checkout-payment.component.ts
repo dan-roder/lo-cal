@@ -12,6 +12,9 @@ import { RailsSavePayment, InSubmitOrderInformation, RailsInSubmitOrder, SavedPa
 import { LocalStorage } from '@ngx-pwa/local-storage';
 import { WordpressService } from '@local/services/wp.service';
 import { CreditCardValidator, CreditCard } from 'angular-cc-library';
+import { AutoUnsubscribe } from 'ngx-auto-unsubscribe';
+
+@AutoUnsubscribe()
 
 @Component({
   selector: 'lo-cal-checkout-payment',
@@ -341,4 +344,6 @@ export class CheckoutPaymentComponent implements OnInit {
   get vehicle(): Vehicle{
     return this._vehicle;
   }
+
+  ngOnDestroy(){ }
 }
