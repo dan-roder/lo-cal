@@ -5764,7 +5764,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var Config = /** @class */ (function () {
     function Config(winRef) {
         this.winRef = winRef;
-        this.siteId = 2;
+        this.siteId = 1;
         this.wordpressApiUrl = '';
         this.railsMenuApi = "https://api.lo-calkitchen.com/menus/" + this.siteId;
         this.railsCustomerEndpoint = 'https://api.lo-calkitchen.com/customers';
