@@ -1731,9 +1731,11 @@ var CheckoutPaymentComponent = /** @class */ (function () {
         this.processing = true;
         // 2. Retrieve order
         this.orderService.getPreSavedOrder().subscribe(function (order) {
+            console.log("pre-saved order:", order);
             var orderId = order.OrderId;
             // Retrieve order again to ensure local storage order wasn't manipulated
             _this.orderService.getFullOrderDetails(orderId).subscribe(function (fullOrder) {
+                console.log("full order details:", fullOrder);
                 _this.currentOrder = fullOrder;
                 // 3. Construct order with all form details
                 _this.constructOrder(fullOrder);
@@ -1760,10 +1762,10 @@ var CheckoutPaymentComponent = /** @class */ (function () {
         };
         // Order object with payment has been created, submit to API
         this.orderService.submitOrder(finalOrderForSubmission, this.currentOrder.OrderId).subscribe(function (orderResults) {
-            console.log(orderResults);
+            console.log("orderResults:", orderResults);
             // Logging all order result objects
             _this.wpService.logError('Payment Result: ' + JSON.stringify(orderResults)).subscribe(function (result) {
-                console.log("Order Result logged: " + result);
+                console.log("Order Result logged", result);
             });
             _this.orderResultForTesting = orderResults.ResultCode;
             // TODO: At the current point in time this is only reached if we get a successful API response
@@ -1856,6 +1858,7 @@ var CheckoutPaymentComponent = /** @class */ (function () {
     };
     CheckoutPaymentComponent.prototype.saveOrderAndRedirect = function (orderResults) {
         var _this = this;
+        console.log("saving order and redirecting: " + orderResults);
         this.localStorage.setItem('orderResult', orderResults).subscribe(function () {
             // If Customer wishes to save payment method
             if (_this.paymentForm.get('save-payment').value) {
@@ -1880,6 +1883,11 @@ var CheckoutPaymentComponent = /** @class */ (function () {
             else {
                 _this.navigateToConfirmation();
             }
+        }, function (error) {
+            _this.wpService.logError('Error saving localStorage Result: ' + JSON.stringify(error)).subscribe(function (result) {
+                console.log("Error saving localStorage Result:", error);
+                _this.navigateToConfirmation();
+            });
         });
     };
     CheckoutPaymentComponent.prototype.detectCardType = function (val) {
