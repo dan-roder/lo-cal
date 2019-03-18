@@ -1758,8 +1758,11 @@ var CheckoutPaymentComponent = /** @class */ (function () {
         };
         // Order object with payment has been created, submit to API
         this.orderService.submitOrder(finalOrderForSubmission, this.currentOrder.OrderId).subscribe(function (orderResults) {
+            console.log(orderResults);
             // Logging all order result objects
-            _this.wpService.logError('Payment Result: ' + JSON.stringify(orderResults));
+            _this.wpService.logError('Payment Result: ' + JSON.stringify(orderResults)).subscribe(function (result) {
+                console.log("Order Result logged: " + result);
+            });
             _this.orderResultForTesting = orderResults.ResultCode;
             // TODO: At the current point in time this is only reached if we get a successful API response
             if (orderResults.ResultCode == 0 || orderResults.ResultCode == 4) {
