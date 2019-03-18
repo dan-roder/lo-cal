@@ -164,6 +164,11 @@ export class CheckoutPaymentComponent implements OnInit {
 
     // Order object with payment has been created, submit to API
     this.orderService.submitOrder(finalOrderForSubmission, this.currentOrder.OrderId).subscribe(orderResults => {
+      console.log(orderResults);
+      // Logging all order result objects
+      this.wpService.logError('Payment Result: ' + JSON.stringify(orderResults)).subscribe((result) => {
+        console.log(`Order Result logged: ${result}`);
+      });
       this.orderResultForTesting = orderResults.ResultCode;
 
       // TODO: At the current point in time this is only reached if we get a successful API response
@@ -171,7 +176,7 @@ export class CheckoutPaymentComponent implements OnInit {
         this.saveOrderAndRedirect(orderResults);
       }
       else{
-        this.wpService.logError('Success-Payment Order Error: ' + JSON.stringify(orderResults)).subscribe((result) => {console.log('error:' + result)});
+        this.wpService.logError('Success-Payment Order Error: ' + JSON.stringify(orderResults));
         this.genericOrderError = true;
       }
     }, error => {
