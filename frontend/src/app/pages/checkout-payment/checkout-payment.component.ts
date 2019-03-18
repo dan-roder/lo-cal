@@ -172,7 +172,7 @@ export class CheckoutPaymentComponent implements OnInit {
       console.log(`orderResults:`, orderResults);
       // Logging all order result objects
       this.wpService.logError('Payment Result: ' + JSON.stringify(orderResults)).subscribe((result) => {
-        console.log(`Order Result logged`, result);
+        console.log(`Order Result logged`, orderResults);
       });
       this.orderResultForTesting = orderResults.ResultCode;
 
@@ -279,7 +279,7 @@ export class CheckoutPaymentComponent implements OnInit {
   }
 
   protected saveOrderAndRedirect(orderResults: any){
-    console.log(`saving order and redirecting: ${orderResults}`)
+    console.log(`saving order and redirecting:`, orderResults);
     this.localStorage.setItem('orderResult', orderResults).subscribe(() => {
       // If Customer wishes to save payment method
       if(this.paymentForm.get('save-payment').value){
