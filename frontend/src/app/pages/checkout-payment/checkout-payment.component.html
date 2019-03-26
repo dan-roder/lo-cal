@@ -121,7 +121,6 @@
             </div>
             <div class="red-button small-text" [ngClass]="processing ? 'loading' : ''">
               <div class="loading-gif button-size" *ngIf="processing"></div>
-              <p>{{ orderResultForTesting }}</p>
               <button [disabled]="((!paymentForm.valid && (paymentChoice !== '3')) || !contactInfoForm.valid) && !processing && !pickupTimeError" *ngIf="!processing" (click)="submitOrder()" tabindex="0">Place Order Now</button>
             </div>
             <!-- <p class="terms-and-conditions small-text">
@@ -162,7 +161,6 @@
 
             <div class="red-button full-width-button small-text" [ngClass]="processing ? 'loading' : ''">
               <div class="loading-gif button-size" *ngIf="processing"></div>
-              <p>{{ orderResultForTesting }}</p>
               <button [disabled]="((!paymentForm.valid && (paymentChoice !== '3')) || !contactInfoForm.valid) && !processing" *ngIf="!processing" (click)="submitOrder()">Place Order Now</button>
             </div>
           </div>
