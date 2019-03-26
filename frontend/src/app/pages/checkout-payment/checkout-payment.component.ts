@@ -279,17 +279,17 @@ export class CheckoutPaymentComponent implements OnInit {
   }
 
   protected saveOrderAndRedirect(orderResults: any){
-    console.log(`saving order and redirecting:`, orderResults);
     this.localStorage.setItem('orderResult', orderResults).subscribe(() => {
       // If Customer wishes to save payment method
       if(this.paymentForm.get('save-payment').value){
         // Ensure we have the correctly formatted credit card number
         let finalCreditCardNumber = this.finalCardFormat(this.cardNumber);
+        let finalExpDate = this.formatDate(this.paymentForm.get('expiration-date').value);
 
         let paymentInfoForSaving : RailsSavePayment = {
           payment : {
-            AccountNumber: this.paymentForm.get('card-number').value,
-            ExpirationDate: finalCreditCardNumber,
+            AccountNumber: finalCreditCardNumber,
+            ExpirationDate: finalExpDate,
             PaymentMethodType: this.cardType
           }
         }
