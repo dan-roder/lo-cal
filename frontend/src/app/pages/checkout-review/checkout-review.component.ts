@@ -152,6 +152,7 @@ export class CheckoutReviewComponent implements OnInit {
 
   private retrievePickupTimes(){
     this.orderService.retrieveTimes('1').subscribe(times => {
+      console.log(times);
       // 0 position in array indicates current day
       let todaysTimes = times[0].Value;
       this.times = times[0].Value;
