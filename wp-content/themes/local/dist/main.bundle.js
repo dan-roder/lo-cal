@@ -2928,6 +2928,8 @@ var MenuCustomizeComponent = /** @class */ (function () {
             if (this.salesItemDetails.DefaultOptions.length > 0) {
                 defaults = this.salesItemDetails.DefaultOptions;
             }
+            // Clear customizationData object
+            this.customizationData = {};
             this.orderedSalesItemDetails = this.orderModifierGroups(this.salesItemDetails.ModifierGroups, this.salesItemDetails.ModGroups);
             this.registerCustomizationVariables(this.salesItemDetails.ModGroups, defaults);
         }
@@ -5836,7 +5838,7 @@ var Config = /** @class */ (function () {
         // Setting API URL based on current environment
         switch (winRef.nativeWindow.location.hostname) {
             case 'localhost':
-                this.wordpressApiUrl = "https://local.lndo.site/wp-json";
+                this.wordpressApiUrl = "https://lo-cal.lndo.site/wp-json";
                 break;
             case 'live-lo-cal.pantheonsite.io':
                 this.wordpressApiUrl = "https://www.lo-calkitchen.com/wp-json";
