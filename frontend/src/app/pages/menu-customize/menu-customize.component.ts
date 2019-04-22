@@ -364,6 +364,8 @@ export class MenuCustomizeComponent implements OnInit {
         defaults = this.salesItemDetails.DefaultOptions;
       }
 
+      // Clear customizationData object
+      this.customizationData = {};
       this.orderedSalesItemDetails = this.orderModifierGroups( this.salesItemDetails.ModifierGroups, this.salesItemDetails.ModGroups );
       this.registerCustomizationVariables( this.salesItemDetails.ModGroups, defaults );
     }
