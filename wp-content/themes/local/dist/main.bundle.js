@@ -2690,7 +2690,8 @@ var MenuCustomizeComponent = /** @class */ (function () {
             this.subMenuLinks = this.wpService.subMenu;
         }
     };
-    MenuCustomizeComponent.prototype.addModifier = function (modGroup, modifierClicked) {
+    MenuCustomizeComponent.prototype.addModifier = function (modGroup, modifierClicked, isDefault) {
+        if (isDefault === void 0) { isDefault = false; }
         // Retrieve maxSelections for Modifier Group and if any are currently selected
         var maxSelectionsForGroup = modGroup.MaximumItems;
         var currentSelectionsArray = this.customizationData[modGroup.$id]['currentlySelected'];
@@ -2718,7 +2719,9 @@ var MenuCustomizeComponent = /** @class */ (function () {
             // If modifier item has modifier values with it
             if (modifierClicked.ItemModifiers.length > 0) {
                 // Add to total calorie count
-                this.calorieCount += (+modifierClicked.ItemModifiers[0].CaloricValue);
+                if (!isDefault) {
+                    this.calorieCount += (+modifierClicked.ItemModifiers[0].CaloricValue);
+                }
                 // If there are FreeModifiers allowed in the modGroup &&
                 //    If modGroup's currently selected items exceed the amount of free modifiers, add to price
                 if (this.customizationData[modGroup.$id]['currentlySelected'].length > modGroup.FreeModifiers) {
@@ -2854,6 +2857,7 @@ var MenuCustomizeComponent = /** @class */ (function () {
             else if (_this.salesItemDetails.ModGroups.length > 0) {
                 // Set up calories
                 _this.calorieCount = _this.setCalorieCount();
+                console.log(_this.calorieCount);
                 // Does the sales item have defaults?
                 if (_this.salesItemDetails.DefaultOptions.length > 0) {
                     defaults = _this.salesItemDetails.DefaultOptions;
@@ -2890,7 +2894,7 @@ var MenuCustomizeComponent = /** @class */ (function () {
                 _this.customizationData[modifierGroup.$id]['modifiers'][modifier.$id]['quantity'] = 0;
                 var isModDefault = __WEBPACK_IMPORTED_MODULE_5_lodash__["find"](defaultOptions, { 'ModifierId': modifier.ModifierId });
                 if (isModDefault !== undefined) {
-                    _this.addModifier(modifierGroup, modifier);
+                    _this.addModifier(modifierGroup, modifier, true);
                 }
             });
             // If the modifier group has a minimum item requirement, push to array
