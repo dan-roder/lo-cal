@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { WordpressService } from '@local/services/wp.service';
 import { MenuService } from '@local/services/menu-service.service';
 import { BagService } from '@local/services/bag.service';
@@ -15,7 +15,7 @@ import { Meta } from '@angular/platform-browser';
 
 @AutoUnsubscribe()
 
-export class MenuCustomizeComponent implements OnInit {
+export class MenuCustomizeComponent implements OnInit, OnDestroy {
   public quantity: number = 1;
   public itemContent : any;
   public menuItemDetails : any;
@@ -74,7 +74,7 @@ export class MenuCustomizeComponent implements OnInit {
     }
   }
 
-  public addModifier(modGroup, modifierClicked){
+  public addModifier(modGroup, modifierClicked, isDefault: boolean = false){
     // Retrieve maxSelections for Modifier Group and if any are currently selected
     let maxSelectionsForGroup = modGroup.MaximumItems;
     let currentSelectionsArray = this.customizationData[modGroup.$id]['currentlySelected'];
@@ -108,7 +108,9 @@ export class MenuCustomizeComponent implements OnInit {
       // If modifier item has modifier values with it
       if(modifierClicked.ItemModifiers.length > 0){
         // Add to total calorie count
-        this.calorieCount += (+modifierClicked.ItemModifiers[0].CaloricValue);
+        if(!isDefault){
+          this.calorieCount += (+modifierClicked.ItemModifiers[0].CaloricValue);
+        }
 
         // If there are FreeModifiers allowed in the modGroup &&
         //    If modGroup's currently selected items exceed the amount of free modifiers, add to price
@@ -272,6 +274,7 @@ export class MenuCustomizeComponent implements OnInit {
       else if(this.salesItemDetails.ModGroups.length > 0){
         // Set up calories
         this.calorieCount = this.setCalorieCount();
+        console.log(this.calorieCount);
 
         // Does the sales item have defaults?
         if(this.salesItemDetails.DefaultOptions.length > 0){
@@ -314,7 +317,7 @@ export class MenuCustomizeComponent implements OnInit {
         let isModDefault = _.find(defaultOptions, {'ModifierId': modifier.ModifierId});
 
         if(isModDefault !== undefined){
-          this.addModifier(modifierGroup, modifier);
+          this.addModifier(modifierGroup, modifier, true);
         }
       });
 
