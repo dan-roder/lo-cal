@@ -36,6 +36,7 @@ export class MenuCustomizeComponent implements OnInit, OnDestroy {
   public submitAttempted : boolean = false;
   public menuError : boolean = false;
   public subMenuLinks : any;
+  public specialInstructionsError: boolean = false;
 
   constructor(
     private wpService: WordpressService,
@@ -179,12 +180,23 @@ export class MenuCustomizeComponent implements OnInit, OnDestroy {
       this.recalculateCost();
     }
   }
-
+  public onSpecialInstructionsChange($event) {
+    if ($event.length > 30) {
+      this.specialInstructionsError = true
+    } else {
+      this.specialInstructionsError = false
+    }
+  }
   public addToBag(){
     // if the array of required mods is not empty, don't add to bag
     if(this.requiredModifierGroups.length > 0){
       this.submitAttempted = true; // triggers showing of error messages
       return; // disallow adding to bag
+    }
+
+    // don't add to bag if special instructions are too long
+    if(this.specialInstructionsError) {
+      return;
     }
 
     // Adding to bag needs to have all details of modifications
