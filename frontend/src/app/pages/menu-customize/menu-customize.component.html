@@ -81,7 +81,8 @@
 
       <div class="special-instructions">
         <label for="special-instructions">Add Special Instruction (optional)</label>
-        <textarea name="special-instructions" id="special-instructions" cols="30" rows="5" [(ngModel)]="specialInstructions"></textarea>
+        <p class="customization-errors" *ngIf="specialInstructionsError">Special instructions must be less than 30 characters.</p>
+        <textarea name="special-instructions" id="special-instructions" cols="30" rows="5" [(ngModel)]="specialInstructions" (ngModelChange)="onSpecialInstructionsChange($event)"></textarea>
       </div><!-- /.special-instructions -->
 
       <div class="quantity-wrapper">
