@@ -43,7 +43,7 @@
                 <span class="allergens" *ngIf="(item?.Description | allergens).allergens">
                   <span class="allergen" *ngFor="let allergen of (item?.Description | allergens).allergens">{{ allergen }}</span>
                 </span>
-                <button class="add-to-cart" (click)="addToBag(item)" *ngIf="item?.SalesItemIds.length <= 1">Add</button>
+                <button class="add-to-cart" (click)="addToBag(item)" *ngIf="!(item?.checkForMinItems.DefaultOptions.length === 0 && item?.checkForMinItems.MinimumItems) && item?.SalesItemIds.length <= 1">Add</button>
               </div>
             </div>
           </div>
