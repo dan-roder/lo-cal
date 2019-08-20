@@ -1,4 +1,12 @@
+# This is the entire code repository for both the Wordpress site and Angular Frontend application that runs the [Lo-Cal Kitchen website](https://www.lo-calkitchen.com)
+
 # WordPress
+
+I use lando to set up the site locally. A .lando.yml file already exists when you pull the repository.
+
+## Steps to set up the Wordpress site
+
+## 1. Clone repository from Pantheon project Lo-Cal
 
 This is a WordPress repository configured to run on the [Pantheon platform](https://pantheon.io).
 
