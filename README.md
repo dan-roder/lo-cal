@@ -10,12 +10,13 @@ I use [lando](https://docs.lando.dev/) to set up the site locally. A .lando.yml 
 
 3. Run the following commands and provide the answers to the questions as below
 
-`lando pull`  
-Pull code from: `none`  
-Pull database from: dev, test, or live  
-Pull files from: dev, test, or live  
-
-4. Once the database and files have been pulled run `lando start`
+```bash
+$ lando pull
+$ Pull code from: none
+$ Pull database from: Choose (dev, test, or live)
+$ Pull files from: Choose (dev, test, or live)
+$ lando start
+```
 
 Lando will provide you with the local URLs for the environment. If for some reason the URLs provided for the local environment aren't the same as what's in the **wp-config-local.php** file you will need to modify this local config to match those URLs
 
@@ -25,11 +26,16 @@ Lando will provide you with the local URLs for the environment. If for some reas
 
 2. Run the following commands:
 
-`npm install`  
-`ng serve`
+```bash
+$ npm install
+$ ng serve
+```
 
 **Note**: Occasionally the auto-reload will continue to compile and reload non-stop. To fix this, type Ctrl + C to stop the Angular app and run:  
-`ng build --env=prod --deploy-url="/wp-content/themes/local/dist/"`  
+```bash
+$ ng build --env=prod --deploy-url="/wp-content/themes/local/dist/"
+```
+
 This builds the Angular app into the Wordpress theme. After this you can re-run `ng serve`
 
 ## Deploying Angular changes to Dev/Test/Live
