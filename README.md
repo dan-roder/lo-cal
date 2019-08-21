@@ -6,7 +6,11 @@ I use lando to set up the site locally. A .lando.yml file already exists when yo
 
 ## Steps to set up the Wordpress site
 
-## 1. Clone repository from Pantheon project Lo-Cal
+### 1. Clone repository from Pantheon project [Lo-Cal](https://dashboard.pantheon.io/sites/8645f154-c3a6-4a8c-b026-286e0cb3166d#dev/code)
+
+### 2. Change into the Lo-Cal directory
+
+### 3. Run the following commands and provide the answers to the
 
 This is a WordPress repository configured to run on the [Pantheon platform](https://pantheon.io).
 
