@@ -2,7 +2,7 @@
 
 ## IMPORTANT NOTE
 
-The most important thing to note about the Angular application is **Line 6 of ./frontend/src/app/utils/constants.ts**. This line contains this code:
+The most important line of code is **Line 6 of ./frontend/src/app/utils/constants.ts**. This line contains this code:
 ```javascript
 public siteId : number = 2;
 ```
