@@ -6,17 +6,27 @@ I use lando to set up the site locally. A .lando.yml file already exists when yo
 
 ## Steps to set up the Wordpress site
 
-### 1. Clone repository from Pantheon project [Lo-Cal](https://dashboard.pantheon.io/sites/8645f154-c3a6-4a8c-b026-286e0cb3166d#dev/code)
+1. Clone repository from Pantheon project [Lo-Cal](https://dashboard.pantheon.io/sites/8645f154-c3a6-4a8c-b026-286e0cb3166d#dev/code)
 
-### 2. Change into the Lo-Cal directory
+2. Change into the Lo-Cal directory
 
-### 3. Run the following commands and provide the answers to the
+3. Run the following commands and provide the answers to the questions as below
 
-This is a WordPress repository configured to run on the [Pantheon platform](https://pantheon.io).
+`lando pull`
+Pull code from: `none`
+Pull database from: `live`
+Pull files from: `live`
 
-Pantheon is website platform optimized and configured to run high performance sites with an amazing developer workflow. There is built-in support for features such as Varnish, Redis, Apache Solr, New Relic, Nginx, PHP-FPM, MySQL, PhantomJS and more. 
+4. Once the database and files have been pulled run `lando start`
 
-## Getting Started
+## To run the Angular Application locally
+
+1. CD into the **frontend** directory
+
+2. Run the following commands:
+
+`npm install`
+`ng serve`
 
 ### 1. Spin-up a site
 
