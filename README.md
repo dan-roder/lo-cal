@@ -1,5 +1,18 @@
 # This is the entire code repository for both the Wordpress site and Angular Frontend application that runs the [Lo-Cal Kitchen website](https://www.lo-calkitchen.com)
 
+## IMPORTANT NOTE
+
+The most important thing to note about the Angular application is **Line 6 of ./frontend/src/app/utils/constants.ts**. This line contains this code:
+```javascript
+public siteId : number = 2;
+```
+
+This siteId determines which API endpoint is used for the point of sale.
+- SiteId 1 = Test API/Point of Sale
+- SiteId 2 = Live API/Point of Sale system for the actual restaurant  
+
+**The master branch should ALWAYS be SiteId 2**
+
 ## Steps to set up the Wordpress site
 
 I use [lando](https://docs.lando.dev/) to set up the site locally. A .lando.yml file already exists when you pull the repository.
