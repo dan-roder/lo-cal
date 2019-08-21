@@ -17,7 +17,7 @@ Pull code from: `none`
 Pull database from: dev, test, or live  
 Pull files from: dev, test, or live  
 
-4. Once the database and files have been pulled run `lando start`  
+4. Once the database and files have been pulled run `lando start`
 
 Lando will provide you with the local URLs for the environment. If for some reason the URLs provided for the local environment aren't the same as what's in the **wp-config-local.php** file you will need to modify this local config to match those URLs
 
@@ -33,6 +33,14 @@ Lando will provide you with the local URLs for the environment. If for some reas
 **Note**: Occasionally the auto-reload will continue to compile and reload non-stop. To fix this, type Ctrl + C to stop the Angular app and run:  
 `ng build --env=prod --deploy-url="/wp-content/themes/local/dist/"`  
 This builds the Angular app into the Wordpress theme. After this you can re-run `ng serve`
+
+### Deploying Angular changes to Dev/Test/Live
+
+Simply changing Angular component files and pushing them to this respository does not make them run within the Wordpress site. To deploy code changes you must build the application into the Wordpress theme directory. To do this run the following command:  
+
+`ng build --env=prod --deploy-url="/wp-content/themes/local/dist/"`  
+
+Commit and push the resulting files to dev, test, then live.
 
 ### 1. Spin-up a site
 
