@@ -14,8 +14,8 @@ I use lando to set up the site locally. A .lando.yml file already exists when yo
 
 `lando pull`  
 Pull code from: `none`  
-Pull database from: `live`  
-Pull files from: `live`  
+Pull database from: dev, test, or live  
+Pull files from: dev, test, or live  
 
 4. Once the database and files have been pulled run `lando start`
 
@@ -25,8 +25,12 @@ Pull files from: `live`
 
 2. Run the following commands:
 
-`npm install`
+`npm install`  
 `ng serve`
+
+Note: Occasionally the auto-reload will continue to compile and reload non-stop. To fix this, type Ctrl + C to stop the Angular app and run:  
+`ng build --env=prod --deploy-url="/wp-content/themes/local/dist/"`  
+This builds the Angular app into the Wordpress theme. After this you can re-run `ng serve`
 
 ### 1. Spin-up a site
 
