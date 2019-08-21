@@ -42,6 +42,8 @@ This builds the Angular app into the Wordpress theme. After this you can re-run 
 
 Simply changing Angular component files and pushing them to this respository does not make them run within the Wordpress site. To deploy code changes you must build the application into the Wordpress theme directory. To do this run the following command:  
 
-`ng build --env=prod --deploy-url="/wp-content/themes/local/dist/"`  
+```bash
+ng build --env=prod --deploy-url="/wp-content/themes/local/dist/"
+```
 
 Commit and push the resulting files to dev, test, then live.
